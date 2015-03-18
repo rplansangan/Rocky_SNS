@@ -6,20 +6,20 @@
 			<div class="col-sm-12 col-xs-12 col-md-7 col-lg-7 top-pets">
 				<h2>Top Pets</h2>
 				<ul class="first-top-pet">
-					<li><img src="{{ URL::asset('assets/images/browncat.png') }}"></li>
-					<li><img src="{{ URL::asset('assets/images/garfielking.png') }}"></li>
-					<li><img src="{{ URL::asset('assets/images/odie.png') }}"></li>
-					<li><img src="{{ URL::asset('assets/images/odiedif.png') }}"></li>
-					<li><img src="{{ URL::asset('assets/images/nermal.png') }}"></li>
+					<li><img src="{{ URL::asset('assets/images/browncat.png') }}"><p>Namename</p></li>
+					<li><img src="{{ URL::asset('assets/images/garfielking.png') }}"><p>Namename</p></li>
+					<li><img src="{{ URL::asset('assets/images/odie.png') }}"><p>Namename</p></li>
+					<li><img src="{{ URL::asset('assets/images/odiedif.png') }}"><p>Namename</p></li>
+					<li><img src="{{ URL::asset('assets/images/nermal.png') }}"><p>Namename</p>/li>
 
 				</ul>
 
 				<ul class="sec-top-pet">
-					<li><img src="{{ URL::asset('assets/images/garfielking.png') }}"></li>
-					<li><img src="{{ URL::asset('assets/images/browncat.png') }}"></li>
-					<li><img src="{{ URL::asset('assets/images/odiedif.png') }}"></li>
-					<li><img src="{{ URL::asset('assets/images/nermal.png') }}"></li>
-					<li><img src="{{ URL::asset('assets/images/odie.png') }}"></li>
+					<li><img src="{{ URL::asset('assets/images/garfielking.png') }}"><p>Namename</p></li>
+					<li><img src="{{ URL::asset('assets/images/browncat.png') }}"><p>Namename</p></li>
+					<li><img src="{{ URL::asset('assets/images/odiedif.png') }}"><p>Namename</p></li>
+					<li><img src="{{ URL::asset('assets/images/nermal.png') }}"><p>Namename</p></li>
+					<li><img src="{{ URL::asset('assets/images/odie.png') }}"><p>Namename</p></li>
 				</ul>
 			</div>
 
