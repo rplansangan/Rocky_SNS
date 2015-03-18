@@ -47,7 +47,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="reglname" class="col-sm-4 control-label">Lastname:</label>
+						<label for="reglname" class="col-sm-4 control-label">Last Name:</label>
 						<div class="col-sm-8">
 							<input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
 						</div>
@@ -73,7 +73,7 @@
 							</label>
 						</div>
 					</div>
-					<div class="form-group">
+					<div class="form-group text-right">
 						<div class="col-sm-offset-2 col-sm-10">
 							<input type="submit" value="Sign Up" class="btn btn-default">
 						</div>

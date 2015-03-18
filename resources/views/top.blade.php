@@ -1,28 +1,30 @@
- <div class="header-container col-sm-12 col-xs-12 col-md-12 col-lg-12">
+ <div class="header-container">
   <div class="container">
-   <div class="col-sm-12 col-xs-12 col-md-8 col-lg-8 logo">
-    <img src="{{ URL::asset('assets/images/rocky-logo.png') }}">
+   <div class="col-md-6 col-lg-6 logo">
+      <img src="{{ URL::asset('assets/images/rocky-logo.png') }}">
+    </div>
+    <div class="col-md-6 col-lg-6 pt-links text-right">
+       <a class="about"  href="#">About</a>
+       <a class="privacy"  href="#">Privacy</a>
+       <a class="terms" href="#">Terms</a>
+     </div>
   </div>
-  <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 pt-links">
-   <a class="privacy"  href="#">Privacy</a>
-   <a class="terms" href="#">Terms</a>
- </div>
-</div>
 </div>
 
 @if($auth)
   <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 subhead-content">
    <div class="container">
-     <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 slogan">
-        <h1>The Newest Community For Dog Lovers</h1>
-      </div>
-
-      <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 login">
-        
-      </div>
+     <ul class="nav nav-pills navbar-right">
+        <li role="presentation"><a href="#">My Rocky</a></li>
+        <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa fa-cog"></i></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="">Change password</a></li>
+            <li><a href="">Log out</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
-
 @endif
 
 @unless($auth)

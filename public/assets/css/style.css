@@ -1,10 +1,19 @@
+ /*============Default============*/
+.page-header {
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+  border-bottom: 1px solid #eee;
+  font-family: 'Montserrat', sans-serif important;
+}
+
+
  /*============Header============*/
  .header-container {
   background-color: #e74c3c;
   border-bottom: 2px solid #86170B;
 }
 
-.pt-links a.privacy {
+.pt-links a.privacy , .pt-links a.about {
   margin-right: 20px;
 }
 
@@ -16,7 +25,7 @@
 
 .pt-links {
   margin-top: 50px;
-  text-align: center;
+  text-align: right;
 }
 
 .header-container {
@@ -165,6 +174,143 @@ ul.sec-top-pet li img {
 .register-main > div{
   padding: 10px;
 }
+
+
+/*============Newsfeed Sub Header============*/
+.navbar-right li a {
+  color: #89342C;
+  font-family: 'Montserrat', sans-serif important;
+}
+
+.middle .page-header h2 {
+  font-size: 20px;
+}
+
+.newsfeed-area {
+  border-top: 1px solid #eee;
+}
+
+.middle .btn {
+  margin-top: 23px;
+  padding: 3px 20px;
+  background: #E74C3C;
+  color: #fff;
+}
+
+
+/*============LEFT SIDEBAR============*/
+.bg-rocky{
+   background: rgba(242, 197, 181, 0.5);
+   background-image: url('../images/animals.png');
+   background-position: bottom left;
+   background-repeat: no-repeat;
+}
+
+.middle{
+  background-color: white;
+}
+.left {
+  text-indent: 50px;
+}
+
+.left-nav {
+  padding: 20px;
+  font-family: 'Montserrat', sans-serif important;
+}
+
+.left-nav .list-group {
+  margin-bottom: 0;
+}
+
+.left-nav a:hover {
+  background-color: #F9BBB5;
+  background-image: url();
+  background-position: left;
+  background-repeat: no-repeat;
+  color: #300D03;
+  padding: 10px 20px 10px 20px;
+}
+
+a.list-group-item.loc {
+  background-image: url('../images/Locate_my_pet.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+a.list-group-item.petday {
+  background-image: url('../images/pet_of_the_day.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+a.list-group-item.trend {
+  background-image: url('../images/Trending.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+a.list-group-item.ads {
+  background-image: url('../images/Advertise.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+a.list-group-item.shop {
+  background-image: url('../images/Shop.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+a.list-group-item.track {
+  background-image: url('../images/Trackers.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+
+/*============RIGHT SIDEBAR============*/
+
+.right {
+  text-align: center;
+  padding: 0 20px;
+}
+
+.right-nav div:last-child {
+  margin-bottom: 20px;
+}
+
+.right-nav div {
+  background: #fff;
+  margin: 20px 0 10px 0;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #DEDDDC;
+}
+
+.right legend {
+  font-family: 'Montserrat', sans-serif important;
+}
+
+.right nav ul {
+  padding: 0;
+  list-style: none;
+  display: table;
+  margin: 0 auto !important;
+}
+
+.right nav ul li {
+  margin-bottom: 5px;
+}
+
+.right nav ul li a img {
+  margin-right: 5px;
+}
+
+.right nav ul li a {
+  color: #414040;
+  font-family: 'Montserrat', sans-serif important;
+}
+
 
 /*============Footer============*/
 .footer {
