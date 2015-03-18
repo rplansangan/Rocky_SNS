@@ -210,7 +210,19 @@ ul.sec-top-pet li img {
 
 .right {
   text-align: center;
-  background: rgba(242, 197, 181, 0.5);
+  padding: 0 20px;
+}
+
+.right-nav div:last-child {
+  margin-bottom: 20px;
+}
+
+.right-nav div {
+  background: #fff;
+  margin: 20px 0 10px 0;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #DEDDDC;
 }
 
 .right legend {
@@ -231,6 +243,7 @@ ul.sec-top-pet li img {
 .right nav ul li a img {
   margin-right: 5px;
   background: #fff;
+  background: #F9BBB5;
 }
 
 .right nav ul li a {
