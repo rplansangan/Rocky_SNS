@@ -201,6 +201,39 @@ ul.sec-top-pet li img {
 }
 
 
+/*============RIGHT SIDEBAR============*/
+
+.right {
+  text-align: center;
+  background: rgba(242, 197, 181, 0.5);
+}
+
+.right legend {
+  font-family: 'Montserrat', sans-serif important;
+}
+
+.right nav ul {
+  padding: 0;
+  list-style: none;
+  display: table;
+  margin: 0 auto !important;
+}
+
+.right nav ul li {
+  margin-bottom: 5px;
+}
+
+.right nav ul li a img {
+  margin-right: 5px;
+  background: #fff;
+}
+
+.right nav ul li a {
+  color: #414040;
+  font-family: 'Montserrat', sans-serif important;
+}
+
+
 /*============Footer============*/
 .footer {
   background: #E74C3C;
@@ -224,12 +257,4 @@ ul.sec-top-pet li img {
   .container {
     width: 1170px;
   }
-}
-
-
-/*============right============*/
-
-.right > div{
-  border-left: 1px solid rgba(0,0,0,0.5);
-  border-bottom: 1px solid rgba(0,0,0,0.5);
 }
