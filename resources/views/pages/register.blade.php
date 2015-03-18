@@ -4,7 +4,7 @@
 	<!--<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
 		@include('sidebar')
 	</div>-->
-	<div class="col-sm-12 col-xs-12 col-md-9 col-md-offset-2 col-lg-9 col-lg-offset-2 land-main-cont register-main">
+	<div class="col-sm-12 col-xs-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2 land-main-cont register-main">
 		<div class="row">
 			<div class="page-header">
 				<h2>Welcome to Rocky Superdog</h2>
