@@ -46,7 +46,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="reglname" class="col-sm-4 control-label">Lastname:</label>
+						<label for="reglname" class="col-sm-4 control-label">Last Name:</label>
 						<div class="col-sm-8">
 							<input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
 						</div>

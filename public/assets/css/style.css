@@ -175,6 +175,32 @@ ul.sec-top-pet li img {
   padding: 10px;
 }
 
+/*============NEWSFEED(LEFT SIDEBAR)============*/
+.left {
+  text-align: center;
+  background: rgba(242, 197, 181, 0.5);
+}
+
+.left-nav {
+  padding: 20px;
+  font-family: 'Montserrat', sans-serif important;
+}
+
+.left-nav .list-group {
+  margin-bottom: 0;
+}
+
+.left-nav a:hover {
+  background-color: #F9BBB5;
+  background-image: url();
+  background-position: left;
+  background-repeat: no-repeat;
+  color: #300D03;
+  text-align: center;
+  padding: 10px 20px 10px 20px;
+}
+
+
 /*============Footer============*/
 .footer {
   background: #E74C3C;
