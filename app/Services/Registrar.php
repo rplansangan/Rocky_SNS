@@ -1,6 +1,6 @@
-<?php namespace App\Services;
+<?php namespace SNS\Services;
 
-use App\User;
+use SNS\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 
