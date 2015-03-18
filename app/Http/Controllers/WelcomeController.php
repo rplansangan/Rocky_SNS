@@ -30,10 +30,12 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('pages.landing');
+		$data['auth'] = false;
+		return view('pages.landing' , $data);
 	}
 	public function register()
 	{
-		return view('pages.register');
+		$data['auth'] = false;
+		return view('pages.register' , $data);
 	}
 }
