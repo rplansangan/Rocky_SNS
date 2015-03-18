@@ -14,6 +14,10 @@
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
+Route::get('register', array(
+	'as' => 'register',
+	'uses' => 'WelcomeController@register'
+));
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
