@@ -1,27 +1,17 @@
- <div class="header-container col-sm-12 col-xs-12 col-md-12 col-lg-12">
+ <div class="header-container">
   <div class="container">
    <div class="col-md-6 col-lg-6 logo">
       <img src="{{ URL::asset('assets/images/rocky-logo.png') }}">
     </div>
-    <div class="col-md-4 col-lg-4 pt-links text-right">
+    <div class="col-md-6 col-lg-6 pt-links text-right">
+       <a class="about"  href="#">About</a>
        <a class="privacy"  href="#">Privacy</a>
        <a class="terms" href="#">Terms</a>
      </div>
   </div>
 </div>
 
-@if($auth)
-  <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 subhead-content">
-   <div class="container">
-     <ul class="nav nav-pills navbar-right">
-        <li role="presentation"><a href="#">About</a></li>
-        <li role="presentation"><a href="#">Contact Us</a></li>
-        <li role="presentation"><a href="#">Settings</a></li>
-      </ul>
-    </div>
-  </div>
 
-@endif
 
 @unless($auth)
   <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 subhead-content">
