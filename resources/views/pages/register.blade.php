@@ -34,7 +34,7 @@
 					<label class="col-sm-2 control-label">Gender:</label>
 					<div class="radio col-sm-2">
 						<label>
-							<input type="radio" name="gender" value="M">
+							<input type="radio" name="gender" value="M" checked>
 							Male
 						</label>
 					</div>
@@ -87,10 +87,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">State/Province</label>
 					<div class='col-sm-8'>
-						<select name="state" class="form-control">
-							<option></option>
-							<option>Pampanga</option>
-						</select>
+						<input type='text' name="stateprovince" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
