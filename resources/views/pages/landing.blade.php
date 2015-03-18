@@ -72,7 +72,7 @@
 							</label>
 						</div>
 					</div>
-					<div class="form-group">
+					<div class="form-group text-right">
 						<div class="col-sm-offset-2 col-sm-10">
 							<a href="{{ route('register') }}" class="btn btn-default">Sign up</a>
 						</div>

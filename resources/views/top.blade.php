@@ -16,7 +16,12 @@
    <div class="container">
      <ul class="nav nav-pills navbar-right">
         <li role="presentation"><a href="#">My Rocky</a></li>
-        <li role="presentation"><a href="#">Settings</a></li>
+        <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa fa-cog"></i></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="">Change password</a></li>
+            <li><a href="">Log out</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
