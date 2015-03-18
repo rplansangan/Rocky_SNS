@@ -46,14 +46,11 @@
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Password</label>
-					<div class='col-sm-8'>
-						<input type='password' name="password" class="form-control" />
+					<div class="col-sm-4">
+						<input type="password" name="password" class="form-control" placeholder="Password">
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Confirm Password</label>
-					<div class='col-sm-8'>
-						<input type='password' name="confirm_password" class="form-control" />
+					<div class="col-sm-4">
+						<input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password">
 					</div>
 				</div>
 				<div class="form-group">

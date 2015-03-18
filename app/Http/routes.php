@@ -23,7 +23,10 @@ Route::get('home', array(
 	'as' => 'home',
 	'uses' => 'HomeController@index'
 	));
-
+Route::get('mypet', array(
+	'as' => 'mypet',
+	'uses' => 'HomeController@map'
+	));
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
