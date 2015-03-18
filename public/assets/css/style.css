@@ -25,16 +25,16 @@
       }
 
 
-      /*============SUBHeader============*/
-      .subhead-content {
-        background: #F9BBB5;
-        border-top: 1px solid #931507;
-		    padding: 15px;
-        -webkit-box-shadow: 0px 5px 8px 0px rgba(50, 50, 50, 0.30);
-        -moz-box-shadow: 0px 5px 8px 0px rgba(50, 50, 50, 0.30);
-        box-shadow: 0px 5px 8px 0px rgba(50, 50, 50, 0.30);
-        z-index: 999;
-      }
+    /*============SUBHeader============*/
+    .subhead-content {
+      background: #F9BBB5;
+      border-top: 1px solid #931507;
+		  padding: 15px;
+      -webkit-box-shadow: 0px 5px 8px 0px rgba(50, 50, 50, 0.30);
+      -moz-box-shadow: 0px 5px 8px 0px rgba(50, 50, 50, 0.30);
+      box-shadow: 0px 5px 8px 0px rgba(50, 50, 50, 0.30);
+      z-index: 999;
+    }
 	  
 	  .slogan h1 {
   		font-size: 25px !important;
@@ -164,6 +164,16 @@
     }
     .register-main > div{
       padding: 10px;
+    }
+
+
+    /*============REGISTER PAGE============*/
+    .page-header h2 {
+      font-family: 'Montserrat', sans-serif important;
+    }
+
+    .help-block {
+      font-family: 'Montserrat', sans-serif important;
     }
 
     /*============Footer============*/

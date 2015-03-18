@@ -1,10 +1,10 @@
 @extends('master')
 @section('content')
 <div class="container-fluid">
-	<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
+	<!--<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
 		@include('sidebar')
-	</div>
-	<div class="col-sm-12 col-xs-12 col-md-9 col-lg-9 land-main-cont register-main">
+	</div>-->
+	<div class="col-sm-12 col-xs-12 col-md-9 col-md-offset-2 col-lg-9 col-lg-offset-2 land-main-cont register-main">
 		<div class="row">
 			<div class="page-header">
 				<h2>Welcome to Rocky Superdog</h2>
@@ -17,10 +17,10 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Name:</label>
 					<div class="col-sm-4">
-						<input type="text" name="first_name" class="form-control" placeholder="First Name">
+						<input type="text" name="first_name" class="form-control" placeholder="First Name" required>
 					</div>
 					<div class="col-sm-4">
-						<input type="text" name="last_name" class="form-control" placeholder="Last Name">
+						<input type="text" name="last_name" class="form-control" placeholder="Last Name" required>
 					</div>
 				</div>
 				<div class="form-group">
@@ -33,7 +33,7 @@
 					<label class="col-sm-2 control-label">Gender:</label>
 					<div class="radio col-sm-2">
 						<label>
-							<input type="radio" name="gender" value="M">
+							<input type="radio" name="gender" value="M" checked>
 							Male
 						</label>
 					</div>

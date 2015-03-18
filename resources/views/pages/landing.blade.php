@@ -61,7 +61,7 @@
 						<label class="col-sm-4 control-label">Gender:</label>
 						<div class="radio col-sm-2">
 							<label>
-								<input type="radio" name="gender" value="M">
+								<input type="radio" name="gender" value="M" checked>
 								Male
 							</label>
 						</div>
