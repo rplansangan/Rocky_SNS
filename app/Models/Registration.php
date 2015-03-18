@@ -1,4 +1,4 @@
-<?php namespace SNS;
+<?php namespace SNS\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -16,5 +16,9 @@ class Registration extends Model {
 								'alias', 'email_address', 'is_deactivated', 'last_deactivated', 'last_profile_update', 'user_id');
 	
 	protected $dates = array('deleted_at');
+	
+	public function emailValidation() {
+		return $this->hasOne('SNS\Models\EmailValidation');
+	}
 
 }
