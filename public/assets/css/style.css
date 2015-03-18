@@ -1,203 +1,192 @@
  /*============Header============*/
-      .header-container {
-        background-color: #e74c3c;
-        border-bottom: 2px solid #86170B;
-      }
+ .header-container {
+  background-color: #e74c3c;
+  border-bottom: 2px solid #86170B;
+}
 
-      .pt-links a.privacy {
-        margin-right: 20px;
-      }
+.pt-links a.privacy {
+  margin-right: 20px;
+}
 
-      .pt-links a {
-        font-size: 11px;
-        color: #fff;
-        font-family: 'Montserrat', sans-serif;
-      }
+.pt-links a {
+  font-size: 11px;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
 
-      .pt-links {
-        margin-top: 50px;
-        text-align: center;
-      }
+.pt-links {
+  margin-top: 50px;
+  text-align: center;
+}
 
-      .header-container {
-        background-color: #e74c3c;
-        border-color: #c0392b;
-      }
-
-
-    /*============SUBHeader============*/
-    .subhead-content {
-      background: #F9BBB5;
-      border-top: 1px solid #931507;
-		  padding: 15px;
-      -webkit-box-shadow: 0px 5px 8px 0px rgba(50, 50, 50, 0.30);
-      -moz-box-shadow: 0px 5px 8px 0px rgba(50, 50, 50, 0.30);
-      box-shadow: 0px 5px 8px 0px rgba(50, 50, 50, 0.30);
-      z-index: 999;
-    }
-	  
-	  .slogan h1 {
-  		font-size: 25px !important;
-  		font-family: 'Montserrat', sans-serif important;
-	  }
-
-    .login form.form-inline {
-      float: right;
-    }
-	  
-	  .login label {
-  		font-size: 12px;
-  		font-family: 'Montserrat', sans-serif;
-	  }
-			  
-	  .login input {
-  		font-size: 16px;
-  		font-family: 'Montserrat', sans-serif;
-      padding: 0px 5px;
-	  }
-	  
-	  .login .btn {
-  		margin-top: 23px;
-  		padding: 3px 20px;
-      background: #E74C3C;
-  		color: #fff;
-	  }
-	  
-	  
-	  
-	  /*============Top Pets============*/
-    .land-content {
-      background-image: url('../images/land-bg.png');
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
-
-    .land-main-cont{
-      background-color: rgba(252, 236, 236, 0.80);
-    }
-
-	  .top-pets {
-		  margin: 10px 0;
-	  }
-		  
-	  .top-pets h2 {
-  		font-size: 22px !important;
-  		font-family: 'Montserrat', sans-serif important;
-  		text-align: center;
-	  }
-	  
-	  .top-pets ul {
-  		display: table;
-  		margin: 0 auto !important;
-  		padding: 0;
-	  }
-	  
-	  .top-pets ul li {
-  		list-style: none;
-  		float: left;
-  		margin: 15px 0;
-      text-align: center;
-	  }
-	  
-	  ul.first-top-pet li img {
-  		width: 100px;
-  		height: 100px;
-  		border-radius: 50%;
-  		background: #ECE5E4;
-  		margin-left: 7.8px;
-	  }
-	  
-	  ul.sec-top-pet li img {
-		  width: 100px;
-		  height: 100px;
-		  border-radius: 50%;
-		  background: #ECE5E4;
-		  margin-left: 7.8px;
-	  }
-	  
-	  .top-pets ul li img:hover {
-	    transition: box-shadow 0.4s ease;
-		  -webkit-box-shadow: 4px 2px 8px 0px rgba(50, 50, 50, 0.45);
-		  -moz-box-shadow: 4px 2px 8px 0px rgba(50, 50, 50, 0.45);
-		  box-shadow: 4px 2px 8px 0px rgba(50, 50, 50, 0.45);
-		  visibility: visible;
-	  }
-	  
-	  .top-pets ul li p {
-		  text-align: center;
-		  font-family: 'Montserrat', sans-serif;
-		  margin-top: 5px;
-      padding: 0 10px;
-	  }
+.header-container {
+  background-color: #e74c3c;
+  border-color: #c0392b;
+}
 
 
-    /*============Registration============*/
-    .reg h2 {
-      font-size: 26px !important;
-      font-family: 'Montserrat', sans-serif important;
-      margin-bottom: 10px !important;
-    }
+/*============SUBHeader============*/
+.subhead-content {
+  background: #F9BBB5;
+  border-top: 1px solid #931507;
+  padding: 15px;
+  -webkit-box-shadow: 0px 5px 8px 0px rgba(50, 50, 50, 0.30);
+  -moz-box-shadow: 0px 5px 8px 0px rgba(50, 50, 50, 0.30);
+  box-shadow: 0px 5px 8px 0px rgba(50, 50, 50, 0.30);
+  z-index: 999;
+}
 
-    .reg h3 {
-      font-size: 22px !important;
-      font-family: 'Montserrat', sans-serif important;
-      margin-bottom: 20px !important;
-    }
+.slogan h1 {
+  font-size: 25px !important;
+  font-family: 'Montserrat', sans-serif important;
+}
 
-    .reg label {
-      font-size: 12px;
-      font-family: 'Montserrat', sans-serif;
-    }
-        
-    .reg input {
-      font-size: 16px;
-      font-family: 'Montserrat', sans-serif;
-      padding: 0px 5px;
-    }
-    
-    .reg .btn {
-      margin-top: 23px;
-      padding: 3px 20px;
-      background: #E74C3C;
-      color: #fff;
-    }
-    .register-main > div{
-      padding: 10px;
-    }
+.login form.form-inline {
+  float: right;
+}
 
+.login label {
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+}
 
-    /*============REGISTER PAGE============*/
-    .page-header h2 {
-      font-family: 'Montserrat', sans-serif important;
-    }
+.login input {
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 0px 5px;
+}
 
-    .help-block {
-      font-family: 'Montserrat', sans-serif important;
-    }
-
-    /*============Footer============*/
-    .footer {
-      background: #E74C3C;
-      padding: 15px;
-      -webkit-box-shadow: 0px -5px 8px 0px rgba(50, 50, 50, 0.3);
-      -moz-box-shadow: 0px -5px 8px 0px rgba(50, 50, 50, 0.3);
-      box-shadow: 0px -5px 8px 0px rgba(50, 50, 50, 0.3);
-      z-index: 999;
-    }
-
-    .footer p {
-      font-size: 12px;
-      font-family: 'Montserrat', sans-serif important;
-      color: #fff;
-      margin: 0;
-    }
+.login .btn {
+  margin-top: 23px;
+  padding: 3px 20px;
+  background: #E74C3C;
+  color: #fff;
+}
 
 
-      /*============Responsive============*/
 
-      @media only screen(min-width: 1200px){
-        .container {
-          width: 1170px;
-        }
-      }
+/*============Top Pets============*/
+.land-content {
+  background-image: url('../images/land-bg.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.land-main-cont{
+  background-color: rgba(252, 236, 236, 0.80);
+}
+
+.top-pets {
+  margin: 10px 0;
+}
+
+.top-pets h2 {
+  font-size: 22px !important;
+  font-family: 'Montserrat', sans-serif important;
+  text-align: center;
+}
+
+.top-pets ul {
+  display: table;
+  margin: 0 auto !important;
+  padding: 0;
+}
+
+.top-pets ul li {
+  list-style: none;
+  float: left;
+  margin: 15px 0;
+  text-align: center;
+}
+
+ul.first-top-pet li img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #ECE5E4;
+  margin-left: 7.8px;
+}
+
+ul.sec-top-pet li img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #ECE5E4;
+  margin-left: 7.8px;
+}
+
+.top-pets ul li img:hover {
+ transition: box-shadow 0.4s ease;
+ -webkit-box-shadow: 4px 2px 8px 0px rgba(50, 50, 50, 0.45);
+ -moz-box-shadow: 4px 2px 8px 0px rgba(50, 50, 50, 0.45);
+ box-shadow: 4px 2px 8px 0px rgba(50, 50, 50, 0.45);
+ visibility: visible;
+}
+
+.top-pets ul li p {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 5px;
+  padding: 0 10px;
+}
+
+
+/*============Registration============*/
+.reg h2 {
+  font-size: 26px !important;
+  font-family: 'Montserrat', sans-serif important;
+  margin-bottom: 10px !important;
+}
+
+.reg h3 {
+  font-size: 22px !important;
+  font-family: 'Montserrat', sans-serif important;
+  margin-bottom: 20px !important;
+}
+
+.reg label {
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.reg input {
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 0px 5px;
+}
+
+.reg .btn {
+  margin-top: 23px;
+  padding: 3px 20px;
+  background: #E74C3C;
+  color: #fff;
+}
+.register-main > div{
+  padding: 10px;
+}
+
+/*============Footer============*/
+.footer {
+  background: #E74C3C;
+  padding: 15px;
+  -webkit-box-shadow: 0px -5px 8px 0px rgba(50, 50, 50, 0.3);
+  -moz-box-shadow: 0px -5px 8px 0px rgba(50, 50, 50, 0.3);
+  box-shadow: 0px -5px 8px 0px rgba(50, 50, 50, 0.3);
+  z-index: 999;
+}
+
+.footer p {
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif important;
+  color: #fff;
+  margin: 0;
+}
+
+/*============Responsive============*/
+
+@media only screen(min-width: 1200px){
+  .container {
+    width: 1170px;
+  }
+}

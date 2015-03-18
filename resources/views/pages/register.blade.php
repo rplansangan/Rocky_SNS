@@ -17,10 +17,10 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Name:</label>
 					<div class="col-sm-4">
-						<input type="text" name="first_name" class="form-control" placeholder="First Name" required>
+						<input type="text" name="first_name" class="form-control" placeholder="First Name">
 					</div>
 					<div class="col-sm-4">
-						<input type="text" name="last_name" class="form-control" placeholder="Last Name" required>
+						<input type="text" name="last_name" class="form-control" placeholder="Last Name">
 					</div>
 				</div>
 				<div class="form-group">
@@ -33,7 +33,7 @@
 					<label class="col-sm-2 control-label">Gender:</label>
 					<div class="radio col-sm-2">
 						<label>
-							<input type="radio" name="gender" value="M" checked>
+							<input type="radio" name="gender" value="M">
 							Male
 						</label>
 					</div>
@@ -114,8 +114,11 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Profile Picture</label>
 					<div class='col-sm-8'>
-						<input type='file' name="userfile" class="form-control" />
+						<input type='file' name="userfile" class="custom-file-input" />
 					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-3 col-sm-offset-2 view-image-here"></div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-12 text-center">Please help us grow our community <br> Invite as many as your friends to join Rocky Superdog Community</label>
