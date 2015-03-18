@@ -10,7 +10,7 @@
 					<li><img src="{{ URL::asset('assets/images/garfielking.png') }}"><p>Namename</p></li>
 					<li><img src="{{ URL::asset('assets/images/odie.png') }}"><p>Namename</p></li>
 					<li><img src="{{ URL::asset('assets/images/odiedif.png') }}"><p>Namename</p></li>
-					<li><img src="{{ URL::asset('assets/images/nermal.png') }}"><p>Namename</p>/li>
+					<li><img src="{{ URL::asset('assets/images/nermal.png') }}"><p>Namename</p></li>
 
 				</ul>
 
