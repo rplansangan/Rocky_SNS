@@ -22,6 +22,15 @@
   </head>
   <body>
     @include('top')
+    
+    @if($errors->any())
+    	<ul>
+    		@foreach($errors->all() as $error)
+					<li>{{ $error }}</li>
+			@endforeach
+    	</ul>
+    @endif
+    
     @yield('content')
     @include('footer')
   </body>

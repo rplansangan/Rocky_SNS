@@ -4,6 +4,7 @@ use SNS\Models\EmailValidation;
 use Carbon\Carbon;
 use SNS\Models\Registration;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Mail;
 
 class ValidationService {
 	
@@ -19,18 +20,33 @@ class ValidationService {
 	 */
 	protected $hash;
 	
-	public function __construct() {
-		$this->model = new EmailValidation();
-	}
+	/**
+	 * Confirmation details id & hash
+	 * @var array
+	 */
+	protected $confirm;
 	
+	/**
+	 * 
+	 * @var array
+	 */
+	protected $errors;
+	
+	/**
+	 * 
+	 */
+	protected function makeHash() {
+		$this->hash = md5(Carbon::now() . $this->registration->registration_id);
+	}
 	/**
 	 * Creates a record for validation
 	 * 
 	 */
-	protected function createInitial() {		
-		$this->hash = Hash::make(Carbon::now() . $this->registration->registration_id);
-		
-		return $this->model->save(array('registration_id' => $this->registration->registration_id, 'hash' => $this->hash));
+	protected function createInitial() {
+		$model = new EmailValidation();
+		$model->registration_id = $this->registration->registration_id;
+		$model->hash = $this->hash;
+		return $model->save();
 	}
 	
 	/**
@@ -39,7 +55,7 @@ class ValidationService {
 	protected function dispatchEmail() {
 		$reg = $this->registration;
 		
-		Mail::send('emails.validation', array('hash' => $this->hash), function($message) use($reg) {
+		Mail::send('emails.validation', array('id' => $this->registration->registration_id, 'hash' => $this->hash), function($message) use($reg) {
 			$message
 				->to($reg->email_address, $reg->last_name . ', ' . $reg->first_name)
 				->subject(Lang::get('emailvalidation.message_header'));
@@ -49,25 +65,61 @@ class ValidationService {
 	public function send(Registration $reg) {
 		$this->registration = $reg;
 		
+		$this->makeHash();
+		
 		$this->createInitial();
 		
 		$this->dispatchEmail();
 	}
 	
-	protected function performSearch($hash) {
-		return $this->model->where('hash', $hash)->get();
+	/**
+	 * Performs a query using the given hash
+	 * @param string $hash
+	 */
+	protected function performSearch() {
+		return $this->query['validation'] =  EmailValidation::where('id', $this->id)->where('hash', $this->hash)->get();	
 	}
 	
-	protected function validateTimeOut($query) {
-		$temp = $query->fetch('created_at');
-		$temp = $temp[0];
+	protected function validateTimeOut() {
+		$temp = $this->query['validation']->fetch('created_at');
 		
-		echo $diff = Carbon::now()->diffInMinutes($temp);
+		$diff = Carbon::now()->diffInMinutes(Carbon::parse($temp[0]));
+// 		echo $diff;
+		if($diff > 30) {
+			// insert message time out here
+			return false;
+		}
+		
+		return true;
 	}
 	
-	public function confirm($hash) {
-		$query = $this->performSearch($hash);
+	protected function activateRegistration() {
+		$query = Registration::find($this->id);
+		$query->is_deactivated = 0;
+		$query->save();
 		
-		$this->validateTimeOut($query);
+// 		$validation = EmailValidation::where('hash', $this->hash)->where('registration_id', $this->id)->delete();
+		return $this->query['registration'] = $query;;
+	}
+	
+	public function confirm($id, $hash) {
+		$this->id = $id;
+		$this->hash = $hash;	
+		
+		$query = $this->performSearch();
+		
+		if($query->isEmpty()) {
+			// insert invalid hash message here
+			return false;
+		}
+		
+		if($this->validateTimeOut()) {
+			$this->activateRegistration();
+		} else {
+			// insert view for sending a validation
+			return false;
+		}
+		
+		return $this->query['registration'];
 	}
 }

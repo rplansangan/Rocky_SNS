@@ -144,6 +144,8 @@ return [
 		'SNS\Providers\ConfigServiceProvider',
 		'SNS\Providers\EventServiceProvider',
 		'SNS\Providers\RouteServiceProvider',
+			
+		'Barryvdh\Debugbar\ServiceProvider',
 
 	],
 

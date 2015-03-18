@@ -30,6 +30,7 @@ class CreateRegistrationsTable extends Migration {
 			$table->tinyInteger('phone_number');
 			$table->string('alias', 50);
 			$table->string('email_address', 100);
+			$table->boolean('is_deactivated');
 			$table->timestamp('last_deactivated');
 			$table->timestamp('last_profile_update');
 			$table->integer('user_id');

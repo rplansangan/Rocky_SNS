@@ -4,9 +4,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class EmailValidation extends Model {
 
-	protected $table = 'email_validation';
+	protected $table = 'email_validations';
 	
-	protected $fillable = array('user_id', 'hash');
+	protected $fillable = array('registration_id', 'hash');
 	
 	public function registration() {
 		return $this->belongsTo('SNS\Models\Registration');

@@ -12,9 +12,19 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+
+// Registration & Validation
 Route::get('register', array(
 	'as' => 'register',
-	'uses' => 'WelcomeController@register'
+	'uses' => 'EmailValidationController@register'
+));
+Route::post('validate', array(
+	'as' => 'register.postInitial',
+	'uses' => 'EmailValidationController@fromInitial'
+));
+Route::get('validate/email/{id}/{hash}', array(
+	'as' => 'register.validateHash',
+	'uses' => 'EmailValidationController@validateRegistration'
 ));
 
 

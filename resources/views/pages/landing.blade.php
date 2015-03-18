@@ -26,17 +26,18 @@
 			<div class="col-sm-12 col-xs-12 col-md-5 col-lg-5 reg">
 				<h2>Not a member yet?</h2>
 				<h3>Register for free</h3>
-				<form class="form-horizontal">
+				<form action="{{ route('register.postInitial') }}" method="POST" class="form-horizontal">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<div class="form-group">
-						<label for="regemail" class="col-sm-4 control-label">Email Address</label>
+						<label for="email_address" class="col-sm-4 control-label">Email Address</label>
 						<div class="col-sm-8">
-							<input type="email" class="form-control" name="email" placeholder="Email Address" required>
+							<input type="email" class="form-control" name="email_address" placeholder="Email Address" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="regconfirmemail" class="col-sm-4 control-label">Confirm Email:</label>
 						<div class="col-sm-8">
-							<input type="email" class="form-control" name="confirm_email" placeholder="Confirm Email" required>
+							<input type="email" class="form-control" name="email_address_confirmation" placeholder="Confirm Email" required>
 						</div>
 					</div>
 					<div class="form-group">
@@ -54,7 +55,7 @@
 					<div class="form-group">
 						<label for="regbday" class="col-sm-4 control-label">Birthday:</label>
 						<div class="col-sm-8">
-							<input type="date" class="form-control" id="regbday" name="birth_date" required>
+							<input type="date" class="form-control" id="birth_date" name="birth_date" required>
 						</div>
 					</div>
 					<div class="form-group">
@@ -74,7 +75,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<a href="{{ route('register') }}" class="btn btn-default">Sign up</a>
+							<input type="submit" value="Sign Up" class="btn btn-default">
 						</div>
 					</div>
 				</form>

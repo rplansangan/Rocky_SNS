@@ -33,9 +33,4 @@ class WelcomeController extends Controller {
 		$data['auth'] = false;
 		return view('pages.landing' , $data);
 	}
-	public function register()
-	{
-		$data['auth'] = false;
-		return view('pages.register' , $data);
-	}
 }
