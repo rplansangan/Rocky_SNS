@@ -11,7 +11,16 @@
   </div>
 </div>
 
-
+@if($auth)
+  <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 subhead-content">
+   <div class="container">
+     <ul class="nav nav-pills navbar-right">
+        <li role="presentation"><a href="#">My Rocky</a></li>
+        <li role="presentation"><a href="#">Settings</a></li>
+      </ul>
+    </div>
+  </div>
+@endif
 
 @unless($auth)
   <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 subhead-content">

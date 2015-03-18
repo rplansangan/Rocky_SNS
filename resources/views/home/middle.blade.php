@@ -23,17 +23,17 @@
 	<h2>News Feed</h2>
 </div>
 
-<div class="comment" data-example-id="media-alignment">
-	<div class="media">
-		<div class="media-left">
-			<a href="#">
-				<img class="media-object"  alt="64x64" src="{{ URL::asset('assets/images/browncat.png') }}" data-holder-rendered="true" style="width: 64px; height: 64px;">
-			</a>
-		</div>
-		<div class="media-body">
-			<h2 class="media-heading">Rocky Superdog</h2>
-			<h4 class="media-heading">March 20 2015 12:00:00 AM</h4>
-			<p>Hello</p>
-		</div>
-	</div>		
-</div>
+<ul class="media-list">
+  <li class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object" src="{{ URL::asset('assets/images/browncat.png') }}" withd="64px" height="64px" alt="profile picture">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">Superdog</h4>
+      <small class="media-heading">March 18 2015 12:00:00 am</small>
+      <p>However, for most routes and controller actions, you will be returning a full Illuminate\Http\Response instance or a view. Returning a full Response instance allows you to customize the response's HTTP status code and headers. A Response instance inherits from the Symfony\Component\HttpFoundation\Response class, providing a variety of methods for building HTTP </p>
+    </div>
+  </li>
+</ul>

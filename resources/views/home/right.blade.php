@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-lg-12 col-md-12">
-		<legend>Friends</legend>
+		<legend>My Pets</legend>
 		<nav>
 			<ul>
 				<li><a href="#"><img src="{{ URL::asset('assets/images/browncat.png') }}" width="30px" height="30px" class="img-circle"> Supername number 1</a></li>
@@ -12,5 +12,5 @@
 	</div>
 </div>
 <div class="row">
-	
+
 </div>

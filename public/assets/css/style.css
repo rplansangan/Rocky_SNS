@@ -176,9 +176,14 @@ ul.sec-top-pet li img {
 }
 
 /*============NEWSFEED(LEFT SIDEBAR)============*/
-.left , .right {
+.bg-rocky{
+   background: rgba(242, 197, 181, 0.5);
+}
+.middle{
+  background-color: white;
+}
+.left {
   text-align: center;
-  background: rgba(242, 197, 181, 0.5);
 }
 
 .left-nav {
