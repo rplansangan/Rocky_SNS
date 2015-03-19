@@ -38,4 +38,9 @@ class HomeController extends Controller {
 		$data['auth'] = true;
 		return view('pages.mypet' , $data);
 	}
+
+	public function pet_of_the_day(){
+		$data['auth'] = true;
+		return view('pages.petoftheday' , $data);
+	}
 }

@@ -260,7 +260,7 @@ a.list-group-item.trend {
 }
 
 a.list-group-item.ads {
-  background-image: url('../images/Advertise.png');
+  background-image: url('../images/Advertised.png');
   background-position: left;
   background-repeat: no-repeat;
 }
@@ -345,4 +345,11 @@ a.list-group-item.track {
   .container {
     width: 1170px;
   }
+}
+
+
+/*========= OTHER ============ */
+
+.dropdown-menu{
+  margin: 15px 0 0;
 }

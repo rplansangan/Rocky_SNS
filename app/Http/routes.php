@@ -60,7 +60,10 @@ Route::get('mypet', array(
 	'as' => 'mypet',
 	'uses' => 'HomeController@map'
 	));
-
+Route::get('pet_of_the_day', array(
+	'as' => 'mypet',
+	'uses' => 'HomeController@pet_of_the_day'
+	));
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
