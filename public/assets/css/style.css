@@ -208,6 +208,49 @@ ul.sec-top-pet li img {
 }
 
 
+/*============Pet of the Day Page============*/
+.col-lg-12.pd-infos {
+  margin: 30px 0;
+}
+
+.pd-content h1 {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin: 30px 0;
+  color: #E74C3C !important;
+  font-family: 'Montserrat', sans-serif important;
+}
+
+.pd-photo a img {
+  border: 3px solid #FFB1A9;
+  border-radius: 5px;
+}
+
+.pd-name {
+  text-align: center;
+}
+
+.pd-name h2 {
+  margin: 60px 0;
+  color: #8E7068 !important;
+  font-family: 'Montserrat', sans-serif important;
+}
+
+.pd-infos ul {
+  padding: 0;
+}
+
+.pd-infos ul li {
+  list-style: none;
+  font-family: 'Montserrat', sans-serif important;
+  color: #3D1409;
+}
+
+.pd-infos ul li span {
+  color: #E74C3C;
+}
+
+
 /*============LEFT SIDEBAR============*/
 .bg-rocky{
    background: rgba(242, 197, 181, 0.5);
