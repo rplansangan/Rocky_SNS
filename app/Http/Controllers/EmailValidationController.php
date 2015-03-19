@@ -14,6 +14,7 @@ class EmailValidationController extends Controller {
 	
 	public function __construct() {
 		$this->service = new ValidationService();
+		$this->middleware('guest');
 	}
 	
 	public function register(Request $request) {
@@ -34,16 +35,16 @@ class EmailValidationController extends Controller {
 	}
 	
 	public function sendValidation(Request $request) {
-		$mergedRules = array_merge(Registration::$initialRules, Registration::$extendedRules);
+// 		$mergedRules = array_merge(Registration::$initialRules, Registration::$extendedRules);
 		$input = array_except($request->all(), array('_token'));
-		$validate = Validator::make($input, $mergedRules);
+// 		$validate = Validator::make($input, $mergedRules);
 		
-		Session::put('details', $input);		
-		if($validate->fails()) {
-			$data['auth'] = false;
-			return view('pages.register', $data)
-					->withErrors($validate->errors()->all());
-		}
+// 		Session::put('details', $input);		
+// 		if($validate->fails()) {
+// 			$data['auth'] = false;
+// 			return view('pages.register', $data)
+// 					->withErrors($validate->errors()->all());
+// 		}
 		
 		$reg = new Registration();
 		$reg->last_name = $input['last_name'];

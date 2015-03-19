@@ -49,6 +49,10 @@ class ValidationService {
 		return $model->save();
 	}
 	
+	protected function removeHash() {
+		EmailValidation::where('hash', $this->hash)->where('registration_id', $this->id)->delete();
+	}
+	
 	/**
 	 * Sends an e-mail to the user containing a hash value
 	 */
@@ -98,7 +102,8 @@ class ValidationService {
 		$query->is_deactivated = 0;
 		$query->save();
 		
-		$validation = EmailValidation::where('hash', $this->hash)->where('registration_id', $this->id)->delete();
+		$this->removeHash();
+		
 		return $this->query['registration'] = $query;;
 	}
 	

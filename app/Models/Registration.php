@@ -22,11 +22,11 @@ class Registration extends Model {
 			'first_name' => 'required',
 			'last_name' => 'required',
 			'birth_date' => 'required',
-			'gender' => 'required'
+			'gender' => 'required',
+			'password' => 'required|confirmed',
 	);
 	
-	public static $extendedRules = array(
-			'password' => 'required|confirmed',
+	public static $extendedRules = array(			
 			'address_line1' => 'required',
 			'city' => 'required',
 			'zip' => 'required',
