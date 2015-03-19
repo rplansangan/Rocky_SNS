@@ -98,7 +98,7 @@ class ValidationService {
 		$query->is_deactivated = 0;
 		$query->save();
 		
-// 		$validation = EmailValidation::where('hash', $this->hash)->where('registration_id', $this->id)->delete();
+		$validation = EmailValidation::where('hash', $this->hash)->where('registration_id', $this->id)->delete();
 		return $this->query['registration'] = $query;;
 	}
 	
@@ -120,6 +120,6 @@ class ValidationService {
 			return false;
 		}
 		
-		return $this->query['registration'];
+		return true;
 	}
 }

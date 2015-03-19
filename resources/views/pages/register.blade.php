@@ -1,6 +1,5 @@
 @extends('master')
 @section('content')
-{{ print_r($details) }}
 <div class="container-fluid">
 	<!--<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
 		@include('sidebar')
@@ -13,34 +12,43 @@
 			</div>
 		</div>
 		<div class="row">
-			<form method="POST" action="" class="form-horizontal col-sm-12  col-lg-12 col-md-12  col-xs-12 reg " role="form">
+			<form method="POST" action="{{ route('register.sendValidation') }}" class="form-horizontal col-sm-12  col-lg-12 col-md-12  col-xs-12 reg " role="form">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Name:</label>
 					<div class="col-sm-4">
-						<input type="text" name="first_name" class="form-control" placeholder="First Name">
+						<input type="text" name="first_name" class="form-control" placeholder="First Name" @if(Session::has('details.first_name')) value="{{ Session::get('details.first_name') }}" @endif>
 					</div>
 					<div class="col-sm-4">
-						<input type="text" name="last_name" class="form-control" placeholder="Last Name">
+						<input type="text" name="last_name" class="form-control" placeholder="Last Name" @if(Session::has('details.first_name')) value="{{ Session::get('details.first_name') }}" @endif>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Birthdate:</label>
 					<div class='col-sm-8'>
-						<input type="date" class="form-control" id="regbday" name="birth_date" required>
+						<input type="date" class="form-control" id="birth_date" name="birth_date" required @if(Session::has('details.birth_date')) value="{{ Session::get('details.birth_date') }}" @endif>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">E-mail Address:</label>
+					<div class="col-sm-4">
+						<input type="email" class="form-control" name="email_address" placeholder="Email Address" required @if(Session::has('details.email_address')) value="{{ Session::get('details.email_address') }}" @endif>
+					</div>
+					<div class="col-sm-4">
+						<input type="email" class="form-control" name="email_address_confirmation" placeholder="Confirm Email Address" required @if(Session::has('details.email_address_confirmation')) value="{{ Session::get('details.email_address_confirmation') }}" @endif>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Gender:</label>
 					<div class="radio col-sm-2">
 						<label>
-							<input type="radio" name="gender" value="M">
+							<input type="radio" name="gender" value="M" @if(Session::get('details.gender') == 'M') checked @endif>
 							Male
 						</label>
 					</div>
 					<div class="radio col-sm-2">
 						<label>
-							<input type="radio" name="gender" value="F">
+							<input type="radio" name="gender" value="F" @if(Session::get('details.gender') == 'F') check @endif>
 							Female
 						</label>
 					</div>
@@ -51,7 +59,7 @@
 						<input type="password" name="password" class="form-control" placeholder="Password">
 					</div>
 					<div class="col-sm-4">
-						<input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password">
+						<input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
 					</div>
 				</div>
 				<div class="form-group">

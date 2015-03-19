@@ -29,7 +29,7 @@ class WelcomeController extends Controller {
 	 * @return Response
 	 */
 	public function index()
-	{
+	{	
 		$data['auth'] = false;
 		return view('pages.landing' , $data);
 	}

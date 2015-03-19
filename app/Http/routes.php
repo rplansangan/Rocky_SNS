@@ -11,18 +11,21 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', array(
+	'as' => 'index',
+	'uses' => 'WelcomeController@index'
+));
 
 // Registration & Validation
-Route::get('register', array(
+Route::any('register', array(
 	'as' => 'register',
 	'uses' => 'EmailValidationController@register'
 ));
-Route::post('validate', array(
-	'as' => 'register.postInitial',
-	'uses' => 'EmailValidationController@fromInitial'
+Route::post('register/validate', array(
+	'as' => 'register.sendValidation',
+	'uses' => 'EmailValidationController@sendValidation'
 ));
-Route::get('validate/email/{id}/{hash}', array(
+Route::get('register/validate/{id}/{hash}', array(
 	'as' => 'register.validateHash',
 	'uses' => 'EmailValidationController@validateRegistration'
 ));

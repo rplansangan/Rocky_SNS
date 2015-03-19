@@ -6,6 +6,7 @@ use SNS\Models\Registration;
 use SNS\Services\ValidationService;
 use SNS\Models\EmailValidation;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 
 class EmailValidationController extends Controller {
 	
@@ -15,35 +16,59 @@ class EmailValidationController extends Controller {
 		$this->service = new ValidationService();
 	}
 	
-	public function register()	{
+	public function register(Request $request) {
+		$input = array_except($request->all(), array('_token'));
+		$validate = Validator::make($input, Registration::$initialRules);
+		
+		if($validate->fails()) {
+			if(!Session::has('details')) {
+				return redirect()->back()
+				->withInput($request->all())
+				->withErrors($validate->errors()->all());
+			}			
+		}
+		
+		Session::put('details', $input);
 		$data['auth'] = false;
 		return view('pages.register' , $data);
 	}
 	
-	protected function dispatchValidation(Registration $reg) {
-		$this->service->send($reg);
-	}
-	
-	public function fromInitial(Request $request) {
-		$reg = new Registration();
+	public function sendValidation(Request $request) {
+		$mergedRules = array_merge(Registration::$initialRules, Registration::$extendedRules);
+		$input = array_except($request->all(), array('_token'));
+		$validate = Validator::make($input, $mergedRules);
 		
-		$validate = Validator::make(array_except($request->all(), array('_token')), Registration::$initialRules);
-		
-		if($validate->passes()) {
-			$reg->email_address = $request['email_address'];
-			$reg->first_name = $request['first_name'];
-			$reg->last_name = $request['last_name'];
-			$reg->birth_date = $request['birth_date'];
-			$reg->gender = $request['gender'];
-			$reg->is_deactivated = 1;
-			$reg->save();
-			
-			$this->dispatchValidation($reg);
-		} else {
-			return redirect()->back()->withErrors($validate->errors());
+		Session::put('details', $input);		
+		if($validate->fails()) {
+			$data['auth'] = false;
+			return view('pages.register', $data)
+					->withErrors($validate->errors()->all());
 		}
 		
-
+		$reg = new Registration();
+		$reg->last_name = $input['last_name'];
+		$reg->first_name = $input['first_name'];
+		$reg->birth_date=  $input['birth_date'];
+		$reg->gender = $input['gender'];
+		$reg->address_line1 = $input['address_line1'];
+		$reg->address_line2 = $input['address_line2'];
+		$reg->city = $input['city'];
+		$reg->zip = $input['zip'];
+		$reg->state = $input['state'];
+		$reg->country = $input['country'];
+		$reg->phone_country_code = $input['phone_country_code'];
+		$reg->phone_area_code = $input['phone_area_code'];
+		$reg->phone_number = $input['phone_number'];
+		$reg->alias = '';
+		$reg->email_address = $input['email_address'];
+		$reg->is_deactivated = 1;
+		$reg->save();
+				
+		$this->service->send($reg);
+		Session::forget('details');
+		echo 'email verification sent.';
+// 		return view();
+		
 	}
 	
 	public function validateRegistration($id, $hash) {	
@@ -52,10 +77,11 @@ class EmailValidationController extends Controller {
 		if($service) {
 			$data['details'] = $service;
 			$data['auth'] = false;
-			return view('pages.register', $data);
+			return redirect()->route('index');
 		} else {
+			echo 'errors:';
 			// view for errors
-			return;
+// 			return;
 		}
 	}
 }

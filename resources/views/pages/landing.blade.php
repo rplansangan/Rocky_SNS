@@ -26,7 +26,7 @@
 			<div class="col-sm-12 col-xs-12 col-md-5 col-lg-5 reg">
 				<h2>Not a member yet?</h2>
 				<h3>Register for free</h3>
-				<form action="{{ route('register.postInitial') }}" method="POST" class="form-horizontal">
+				<form action="{{ route('register') }}" method="POST" class="form-horizontal">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<div class="form-group">
 						<label for="email_address" class="col-sm-4 control-label">Email Address</label>

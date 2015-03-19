@@ -25,6 +25,16 @@ class Registration extends Model {
 			'gender' => 'required'
 	);
 	
+	public static $extendedRules = array(
+			'password' => 'required|confirmed',
+			'address_line1' => 'required',
+			'city' => 'required',
+			'zip' => 'required',
+			'state' => 'required',
+			'phone_number' => 'required'
+			
+	);
+	
 	public function emailValidation() {
 		return $this->hasOne('SNS\Models\EmailValidation');
 	}
