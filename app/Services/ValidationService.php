@@ -102,6 +102,8 @@ class ValidationService {
 		$query->is_deactivated = 0;
 		$query->save();
 		
+		$query->user()->update(array('is_deactivated' => 0));
+		
 		$this->removeHash();
 		
 		return $this->query['registration'] = $query;;

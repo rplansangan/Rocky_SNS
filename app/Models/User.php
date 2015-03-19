@@ -40,4 +40,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	
 	protected $dates = array('deleted_at');
 
+	public function registration() {
+		return $this->hasOne('SNS\Models\Registration', 'user_id');
+	}
+	
 }

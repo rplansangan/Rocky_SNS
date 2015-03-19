@@ -38,5 +38,9 @@ class Registration extends Model {
 	public function emailValidation() {
 		return $this->hasOne('SNS\Models\EmailValidation');
 	}
+	
+	public function user() {
+		return $this->belongsTo('SNS\Models\User');
+	}
 
 }

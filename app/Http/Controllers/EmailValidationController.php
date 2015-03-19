@@ -42,6 +42,7 @@ class EmailValidationController extends Controller {
 		$reg->birth_date = $input['birth_date'];
 		$reg->gender = $input['gender'];
 		$reg->user_id = $user->user_id;
+		$reg->is_deactivated = 1;
 		$reg->save();		
 		
 		$this->service->send($reg);

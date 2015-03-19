@@ -1,5 +1,6 @@
 <?php
 
+use SNS\Models\Registration;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -10,6 +11,10 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('test', function() {
+	
+});
+
 Route::get('/', array(
 	'as' => 'index',
 	'uses' => 'WelcomeController@index'
