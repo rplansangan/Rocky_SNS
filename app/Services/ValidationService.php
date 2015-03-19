@@ -131,7 +131,7 @@ class ValidationService {
 	}
 	
 	public function resend($id) {
-		$this->id;
+		$this->id = $id;;
 		
 		$this->makeHash();
 		

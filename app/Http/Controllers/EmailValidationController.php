@@ -48,8 +48,9 @@ class EmailValidationController extends Controller {
 		
 		Session::put('details', $input);
 		$data['auth'] = false;
-
-		return redirect('message')->with('id', $id);
+		$this->service->send($reg);
+		
+		return redirect('message')->with('id', $user->id);
 	}
 	
 	public function sendValidation(Request $request) {
@@ -83,7 +84,7 @@ class EmailValidationController extends Controller {
 		$reg->is_deactivated = 1;
 		$reg->save();
 				
-		$this->service->send($reg);
+		
 		Session::forget('details');
 		echo 'email verification sent.';
 // 		return view();
@@ -102,6 +103,12 @@ class EmailValidationController extends Controller {
 			// view for errors
 // 			return;
 		}
+	}
+	
+	public function resend($id) {
+		$this->service->resend($id);
+		
+		return redirect('message')->with('id', $id);
 	}
 
 
