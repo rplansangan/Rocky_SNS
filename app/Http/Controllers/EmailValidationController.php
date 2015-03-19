@@ -22,6 +22,7 @@ class EmailValidationController extends Controller {
 		$input = array_except($request->all(), array('_token'));
 		$validate = Validator::make($input, Registration::$initialRules);
 		
+
 		if($validate->fails()) {
 			return redirect()->back()
 				->withInput($request->all())
@@ -45,7 +46,10 @@ class EmailValidationController extends Controller {
 		$reg->is_deactivated = 1;
 		$reg->save();		
 		
-		$this->service->send($reg);
+		Session::put('details', $input);
+		$data['auth'] = false;
+
+		return redirect('message')->with('id', $id);
 	}
 	
 	public function sendValidation(Request $request) {
@@ -78,7 +82,8 @@ class EmailValidationController extends Controller {
 		$reg->email_address = $input['email_address'];
 		$reg->is_deactivated = 1;
 		$reg->save();
-		
+				
+		$this->service->send($reg);
 		Session::forget('details');
 		echo 'email verification sent.';
 // 		return view();
@@ -97,5 +102,11 @@ class EmailValidationController extends Controller {
 			// view for errors
 // 			return;
 		}
+	}
+
+
+	public function validateMessage(){
+		$data['auth'] = false;
+		return view('pages.message' , $data);
 	}
 }

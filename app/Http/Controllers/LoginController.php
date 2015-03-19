@@ -20,13 +20,14 @@ class LoginController extends Controller {
 	
 	public function signin(Request $request){
 		$input = array_except($request->all(), array('_token'));
-		
-		print_r($input);
 
-		if (Auth::attempt($input)) {
-	        echo 'ok';
+		if (Auth::validate($input)) {
+	       return redirect()->intended('/');
 	    } else {
-	        echo "Wrong.";
+	        echo 'wrong';
 	    }
+
+
+	    var_dump(Auth::check());
 	}
 }
