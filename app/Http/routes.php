@@ -18,14 +18,14 @@ Route::get('/', array(
 	'uses' => 'WelcomeController@index'
 ));
 // Login
-Route::any('login', array(
+Route::post('login', array(
 	'as' => 'login',
 	'uses' => 'LoginController@signin'
 ));
-Route::any('do_login', array(
-	'as' => 'login',
-	'uses' => 'LoginController@login'
-));
+// Route::any('do_login', array(
+// 	'as' => 'login',
+// 	'uses' => 'LoginController@login'
+// ));
 // Registration & Validation
 Route::any('register', array(
 	'as' => 'register',
