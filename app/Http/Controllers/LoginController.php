@@ -21,13 +21,17 @@ class LoginController extends Controller {
 	public function signin(Request $request){
 		$input = array_except($request->all(), array('_token'));
 
-		if (Auth::validate($input)) {
-	       return redirect()->intended('/');
-	    } else {
-	        echo 'wrong';
-	    }
+		if (Auth::attempt($input)) {
+			return redirect()->intended('home');
+		} else {
+			return redirect('do_login')->with('message' , ' Wrong Email / Password');
+		}
+	}
 
 
-	    var_dump(Auth::check());
+	public function login(){
+		$data['auth'] = false;
+		$data['message'] = "Wrong";
+		return view('pages.login' , $data);
 	}
 }

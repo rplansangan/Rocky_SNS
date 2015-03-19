@@ -22,7 +22,10 @@ Route::any('login', array(
 	'as' => 'login',
 	'uses' => 'LoginController@signin'
 ));
-
+Route::any('do_login', array(
+	'as' => 'login',
+	'uses' => 'LoginController@login'
+));
 // Registration & Validation
 Route::any('register', array(
 	'as' => 'register',
@@ -44,6 +47,9 @@ Route::get('message', array(
 	'as' => 'validate',
 	'uses' => 'EmailValidationController@validateMessage'
 ));
+
+
+
 
 
 Route::get('home', array(
