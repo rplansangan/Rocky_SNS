@@ -1,6 +1,6 @@
 @extends('master')
 @section('site_title')
-Rocky the Super Dog
+Rocky the Superdog
 @stop
 
 @section('content')
