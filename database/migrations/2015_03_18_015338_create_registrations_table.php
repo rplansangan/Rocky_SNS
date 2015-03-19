@@ -34,6 +34,7 @@ class CreateRegistrationsTable extends Migration {
 			$table->timestamp('last_deactivated');
 			$table->timestamp('last_profile_update');
 			$table->integer('user_id');
+			$table->boolean('is_validated');
 			$table->softDeletes();
 			$table->timestamps();
 		});

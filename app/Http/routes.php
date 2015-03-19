@@ -39,7 +39,7 @@ Route::get('register/validate/{id}/{hash}', array(
 	'as' => 'register.validateHash',
 	'uses' => 'EmailValidationController@validateRegistration'
 ));
-Route::get('register/validate/resend/{id}', array(
+Route::get('register/resend/{id}', array(
 	'as' => 'register.validateRehash',
 	'uses' => 'EmailValidationController@resend'
 ));
@@ -61,7 +61,7 @@ Route::get('mypet', array(
 	'uses' => 'HomeController@map'
 	));
 Route::get('pet_of_the_day', array(
-	'as' => 'mypet',
+	'as' => 'pet_of_the_day',
 	'uses' => 'HomeController@pet_of_the_day'
 	));
 Route::controllers([

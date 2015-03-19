@@ -30,7 +30,13 @@ class ValidationService {
 	 * 
 	 * @var array
 	 */
-	protected $errors;
+	public $errors = array();
+	
+	/**
+	 * 
+	 * @var string
+	 */
+	protected $is_validated;
 	
 	/**
 	 * 
@@ -81,17 +87,17 @@ class ValidationService {
 	 * @param string $hash
 	 */
 	protected function performSearch() {
-		return $this->query['validation'] =  EmailValidation::where('id', $this->id)->where('hash', $this->hash)->get();	
+		return $this->query['validation'] =  EmailValidation::where('registration_id', $this->id)->where('hash', $this->hash)->get();	
 	}
 	
 	protected function validateTimeOut() {
 		$temp = $this->query['validation']->fetch('created_at');
 		
 		$diff = Carbon::now()->diffInMinutes(Carbon::parse($temp[0]));
-// 		echo $diff;
+		
 		if($diff > 30) {
-			// insert message time out here
-			return false;
+			$this->errors['timeout'] = Lang::get('emailvalidation.message_validation_timeout');
+			return $this;
 		}
 		
 		return true;
@@ -99,14 +105,26 @@ class ValidationService {
 	
 	protected function activateRegistration() {
 		$query = Registration::find($this->id);
-		$query->is_deactivated = 0;
+		$query->is_validated = 0;
 		$query->save();
 		
-		$query->user()->update(array('is_deactivated' => 0));
+		$query->user()->update(array('is_validated' => 0));
 		
 		$this->removeHash();
 		
 		return $this->query['registration'] = $query;;
+	}
+	
+	protected function confirmRegistration() {
+		$query = Registration::find($this->id)->get();
+		$is_validated = $query->fetch('is_validated');
+		
+		if($is_validated[0] == 1) {
+			$this->errors['validated'] = Lang::get('emailvalidation.message_validation_validated');
+			$this->is_validated = true;
+			return true;
+		}
+		return false;
 	}
 	
 	public function confirm($id, $hash) {
@@ -117,26 +135,44 @@ class ValidationService {
 		
 		if($query->isEmpty()) {
 			// insert invalid hash message here
-			return false;
+			$this->errors['notfound'] = Lang::get('emailvalidation.message_validation_notfound');
+			return $this;
 		}
 		
 		if($this->validateTimeOut()) {
 			$this->activateRegistration();
 		} else {
-			// insert view for sending a validation
 			return false;
 		}
 		
-		return true;
+		return $this;
 	}
 	
 	public function resend($id) {
 		$this->id = $id;;
 		
+		$this->registration = Registration::find($this->id);
+		
+		if($this->confirmRegistration()) {
+			return $this;
+		}
+		
 		$this->makeHash();
 		
 		$this->removeHash();
 		
+		$this->createHash();
+		
 		$this->dispatchEmail();
+		
+		return $this;
+	}
+	
+	public function passes() {
+		if($this->errors == NULL) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
