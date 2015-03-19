@@ -1,4 +1,4 @@
-<?php namespace SNS;
+<?php namespace SNS\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -22,14 +22,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var string
 	 */
-	protected $table = 'user';
+	protected $table = 'users';
 
 	/**
 	 * The attributes that are mass assignable.
 	 *
 	 * @var array
 	 */
-	protected $fillable = array('email_address', 'password', 'role_id');
+	protected $fillable = array('email_address', 'password', 'role_id', 'is_deactivated');
 
 	/**
 	 * The attributes excluded from the model's JSON form.
