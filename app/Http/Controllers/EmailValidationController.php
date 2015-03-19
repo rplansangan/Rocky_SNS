@@ -20,13 +20,13 @@ class EmailValidationController extends Controller {
 		$input = array_except($request->all(), array('_token'));
 		$validate = Validator::make($input, Registration::$initialRules);
 		
-		if($validate->fails()) {
-			if(!Session::has('details')) {
-				return redirect()->back()
-				->withInput($request->all())
-				->withErrors($validate->errors()->all());
-			}			
-		}
+		//if($validate->fails()) {
+			//if(!Session::has('details')) {
+				//return redirect()->back()
+				//->withInput($request->all())
+				//->withErrors($validate->errors()->all());
+			//}			
+		//}
 		
 		Session::put('details', $input);
 		$data['auth'] = false;
