@@ -1,6 +1,9 @@
 @extends('master')
+@section('site_title')
+Rocky Registration
+@stop
+
 @section('content')
-{{ print_r($details) }}
 <div class="container-fluid">
 	<!--<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
 		@include('sidebar')

@@ -1,4 +1,8 @@
 @extends('master')
+@section('site_title')
+Rocky the Super Dog
+@stop
+
 @section('content')
 	<div class="container-fluid bg-rocky">
 		<div class="row">
