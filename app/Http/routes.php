@@ -39,7 +39,7 @@ Route::get('register/validate/{id}/{hash}', array(
 	'as' => 'register.validateHash',
 	'uses' => 'EmailValidationController@validateRegistration'
 ));
-Route::get('register/validate/resend/{id}', array(
+Route::get('register/resend/{id}', array(
 	'as' => 'register.validateRehash',
 	'uses' => 'EmailValidationController@resend'
 ));

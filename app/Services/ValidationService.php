@@ -81,7 +81,7 @@ class ValidationService {
 	 * @param string $hash
 	 */
 	protected function performSearch() {
-		return $this->query['validation'] =  EmailValidation::where('id', $this->id)->where('hash', $this->hash)->get();	
+		return $this->query['validation'] =  EmailValidation::where('registration_id', $this->id)->where('hash', $this->hash)->get();	
 	}
 	
 	protected function validateTimeOut() {
@@ -133,9 +133,13 @@ class ValidationService {
 	public function resend($id) {
 		$this->id = $id;;
 		
+		$this->registration = Registration::find($this->id);
+		
 		$this->makeHash();
 		
 		$this->removeHash();
+		
+		$this->createHash();
 		
 		$this->dispatchEmail();
 	}

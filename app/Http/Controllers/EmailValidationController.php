@@ -8,6 +8,7 @@ use SNS\Models\EmailValidation;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use SNS\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class EmailValidationController extends Controller {
 	
@@ -31,7 +32,7 @@ class EmailValidationController extends Controller {
 		
 		$user = new User();
 		$user->email_address = $input['email_address'];
-		$user->password = $input['password'];
+		$user->password = Hash::make($input['password']);
 		$user->role_id = 1;
 		$user->is_deactivated = 1;
 		$user->save();
@@ -50,7 +51,7 @@ class EmailValidationController extends Controller {
 		$data['auth'] = false;
 		$this->service->send($reg);
 		
-		return redirect('message')->with('id', $user->id);
+		return view('pages.message', $data)->with('id', $user->user_id);
 	}
 	
 	public function sendValidation(Request $request) {
@@ -107,8 +108,8 @@ class EmailValidationController extends Controller {
 	
 	public function resend($id) {
 		$this->service->resend($id);
-		
-		return redirect('message')->with('id', $id);
+		$data['auth'] = false;
+		return view('pages.message', $data)->with('id', $id);
 	}
 
 
