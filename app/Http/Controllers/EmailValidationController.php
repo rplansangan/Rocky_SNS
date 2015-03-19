@@ -34,7 +34,7 @@ class EmailValidationController extends Controller {
 		$user->email_address = $input['email_address'];
 		$user->password = Hash::make($input['password']);
 		$user->role_id = 1;
-		$user->is_deactivated = 1;
+		$user->is_deactivated = 0;
 		$user->save();
 		
 		$reg = new Registration();
@@ -44,72 +44,43 @@ class EmailValidationController extends Controller {
 		$reg->birth_date = $input['birth_date'];
 		$reg->gender = $input['gender'];
 		$reg->user_id = $user->user_id;
-		$reg->is_deactivated = 1;
+		$reg->is_deactivated = 0;
+		$reg->is_validated = 0;
 		$reg->save();		
 		
 		Session::put('details', $input);
 		$data['auth'] = false;
 		$this->service->send($reg);
 		
-		return view('pages.message', $data)->with('id', $user->user_id);
-	}
-	
-	public function sendValidation(Request $request) {
-// 		$mergedRules = array_merge(Registration::$initialRules, Registration::$extendedRules);
-		$input = array_except($request->all(), array('_token'));
-// 		$validate = Validator::make($input, $mergedRules);
-		
-// 		Session::put('details', $input);		
-// 		if($validate->fails()) {
-// 			$data['auth'] = false;
-// 			return view('pages.register', $data)
-// 					->withErrors($validate->errors()->all());
-// 		}
-		
-		$reg = new Registration();
-		$reg->last_name = $input['last_name'];
-		$reg->first_name = $input['first_name'];
-		$reg->birth_date=  $input['birth_date'];
-		$reg->gender = $input['gender'];
-		$reg->address_line1 = $input['address_line1'];
-		$reg->address_line2 = $input['address_line2'];
-		$reg->city = $input['city'];
-		$reg->zip = $input['zip'];
-		$reg->state = $input['state'];
-		$reg->country = $input['country'];
-		$reg->phone_country_code = $input['phone_country_code'];
-		$reg->phone_area_code = $input['phone_area_code'];
-		$reg->phone_number = $input['phone_number'];
-		$reg->alias = '';
-		$reg->email_address = $input['email_address'];
-		$reg->is_deactivated = 1;
-		$reg->save();
-				
-		
-		Session::forget('details');
-		echo 'email verification sent.';
-// 		return view();
-		
+		return view('pages.message', $data)->with('id', $user->user_id)->with('validation_errors', null);
 	}
 	
 	public function validateRegistration($id, $hash) {	
 		$service = $this->service->confirm($id, $hash);
 		
-		if($service) {
-			$data['details'] = $service;
+		if($service->passes()) {
 			$data['auth'] = false;
 			return redirect()->route('index');
 		} else {
-			echo 'errors:';
-			// view for errors
-// 			return;
+			$data['auth'] = false;
+			return view('pages.message', $data)->with('validation_errors', $service->errors)->with('id', $id);
 		}
 	}
 	
 	public function resend($id) {
-		$this->service->resend($id);
-		$data['auth'] = false;
-		return view('pages.message', $data)->with('id', $id);
+		$service = $this->service->resend($id);
+		
+		echo "<pre>";
+		var_dump($service->passes());
+		echo "</pre>";
+		
+		if($service->passes()) {
+			$data['auth'] = false;
+			return view('pages.message', $data)->with('id', $id)->with('validation_errors', null);
+		} else {
+			return redirect('/');
+		}
+		
 	}
 
 
