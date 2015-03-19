@@ -1,7 +1,7 @@
 <div class="page-header">
 	<h2>Post</h2>
 </div>
-<div class="post-area col-sm-12 col-xs-12 col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1 ">
+<div class="post-area col-sm-12 col-xs-12 col-lg-11 col-md-11 ">
 	<form method="POST" action="{{ url('login') }}" class="form-horizontal " role="form">
 		<div class="form-group">
 			<textarea class="form-control" max="500" name="post_message" id="post_message" placeholder=" Say Something..."></textarea>
@@ -20,26 +20,8 @@
 </div>
 
 <div class="newsfeed-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
-	<div class="page-header">
-		<h2>News Feed</h2>
-	</div>
+	<legend>News feed</legend>
 	<ul class="media-list">
-	  <li class="media">
-	    <div class="media-left">
-	      <a href="#">
-	        <img class="media-object" src="{{ URL::asset('assets/images/browncat.png') }}" withd="64px" height="64px" alt="profile picture">
-	      </a>
-	    </div>
-	    <div class="media-body">
-	      <h4 class="media-heading">Superdog</h4>
-	      <small class="media-heading">March 18 2015 12:00:00 am</small>
-	      <p>However, for most routes and controller actions, you will be returning a full Illuminate\Http\Response instance or a view. Returning a full Response instance allows you to customize the response's HTTP status code and headers. A Response instance inherits from the Symfony\Component\HttpFoundation\Response class, providing a variety of methods for building HTTP </p>
-	    </div>
-	  </li>
-	</ul>
-</div>
-
-<ul class="media-list">
 	<li class="media">
 		<div class="media-left">
 			<a href="#">
@@ -71,3 +53,5 @@
 		</div>
 	</li>
 </ul>
+</div>
+

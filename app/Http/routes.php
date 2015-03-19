@@ -61,7 +61,7 @@ Route::get('mypet', array(
 	'uses' => 'HomeController@map'
 	));
 Route::get('pet_of_the_day', array(
-	'as' => 'mypet',
+	'as' => 'pet_of_the_day',
 	'uses' => 'HomeController@pet_of_the_day'
 	));
 Route::controllers([
