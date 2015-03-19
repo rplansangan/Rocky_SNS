@@ -31,6 +31,7 @@ class EmailValidationController extends Controller {
 		
 		Session::put('details', $input);
 		$data['auth'] = false;
+
 		return view('pages.register' , $data);
 	}
 	
