@@ -65,7 +65,7 @@ Route::get('pet_of_the_day', array(
 	'uses' => 'HomeController@pet_of_the_day'
 	));
 Route::controllers([
-	'auth' => 'Auth\AuthController',
+// 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
 
