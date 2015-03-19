@@ -8,6 +8,5 @@ $(document).ready(function(){
 			alert("The Image is Larger than 3MB");
 			$(".custom-file-input").replaceWith($(".custom-file-input").clone());
 		}
-		
 	});
 });

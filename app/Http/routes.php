@@ -14,6 +14,11 @@ Route::get('/', array(
 	'as' => 'index',
 	'uses' => 'WelcomeController@index'
 ));
+// Login
+Route::any('login', array(
+	'as' => 'login',
+	'uses' => 'LoginController@signin'
+));
 
 // Registration & Validation
 Route::any('register', array(

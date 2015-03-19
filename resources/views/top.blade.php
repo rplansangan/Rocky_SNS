@@ -37,7 +37,8 @@
     </div>
 
     <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 login">
-      <form class="form-inline">
+      <form action="{{ route('login') }}" method="POST" class="form-inline">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="form-group">
           <label for="email">Email</label><br/>
           <input type="email" name="email" id="email" class="form-control" placeholder=" email@example.com" required>
