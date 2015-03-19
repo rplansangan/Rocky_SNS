@@ -7,6 +7,7 @@ use SNS\Services\ValidationService;
 use SNS\Models\EmailValidation;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+use SNS\Models\User;
 
 class EmailValidationController extends Controller {
 	
@@ -21,18 +22,29 @@ class EmailValidationController extends Controller {
 		$input = array_except($request->all(), array('_token'));
 		$validate = Validator::make($input, Registration::$initialRules);
 		
-		//if($validate->fails()) {
-			//if(!Session::has('details')) {
-				//return redirect()->back()
-				//->withInput($request->all())
-				//->withErrors($validate->errors()->all());
-			//}			
-		//}
+		if($validate->fails()) {
+			return redirect()->back()
+				->withInput($request->all())
+				->withErrors($validate->errors()->all());
+		}
 		
-		Session::put('details', $input);
-		$data['auth'] = false;
-
-		return view('pages.register' , $data);
+		$user = new User();
+		$user->email_address = $input['email_address'];
+		$user->password = $input['password'];
+		$user->role_id = 1;
+		$user->is_deactivated = 1;
+		$user->save();
+		
+		$reg = new Registration();
+		$reg->email_address = $input['email_address'];
+		$reg->last_name = $input['last_name'];
+		$reg->first_name = $input['first_name'];
+		$reg->birth_date = $input['birth_date'];
+		$reg->gender = $input['gender'];
+		$reg->user_id = $user->user_id;
+		$reg->save();		
+		
+		$this->service->send($reg);
 	}
 	
 	public function sendValidation(Request $request) {
@@ -65,8 +77,7 @@ class EmailValidationController extends Controller {
 		$reg->email_address = $input['email_address'];
 		$reg->is_deactivated = 1;
 		$reg->save();
-				
-		$this->service->send($reg);
+		
 		Session::forget('details');
 		echo 'email verification sent.';
 // 		return view();

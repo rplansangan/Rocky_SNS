@@ -6,5 +6,4 @@ Please Verify this email address to complete your Rocky The Superdog account by 
 
 :hash
 
-If you\'re not :name or didn\'t request verification, you can ignore this email. :route'		
-);
+If you\'re not :name or didn\'t request verification, you can ignore this email. :route');
