@@ -10,7 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
 Route::get('/', array(
 	'as' => 'index',
 	'uses' => 'WelcomeController@index'
@@ -21,16 +20,14 @@ Route::any('register', array(
 	'as' => 'register',
 	'uses' => 'EmailValidationController@register'
 ));
-Route::post('register/validate', array(
-	'as' => 'register.sendValidation',
-	'uses' => 'EmailValidationController@sendValidation'
-));
 Route::get('register/validate/{id}/{hash}', array(
 	'as' => 'register.validateHash',
 	'uses' => 'EmailValidationController@validateRegistration'
 ));
-
-
+Route::get('register/validate/resend/{id}', array(
+	'as' => 'register.validateRehash',
+	'uses' => 'EmailValidationController@resend'
+));
 
 Route::get('home', array(
 	'as' => 'home',

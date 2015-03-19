@@ -42,7 +42,7 @@ class ValidationService {
 	 * Creates a record for validation
 	 * 
 	 */
-	protected function createInitial() {
+	protected function createHash() {
 		$model = new EmailValidation();
 		$model->registration_id = $this->registration->registration_id;
 		$model->hash = $this->hash;
@@ -50,7 +50,7 @@ class ValidationService {
 	}
 	
 	protected function removeHash() {
-		EmailValidation::where('hash', $this->hash)->where('registration_id', $this->id)->delete();
+		EmailValidation::where('registration_id', $this->id)->delete();
 	}
 	
 	/**
@@ -59,7 +59,7 @@ class ValidationService {
 	protected function dispatchEmail() {
 		$reg = $this->registration;
 		
-		Mail::send('emails.validation', array('id' => $this->registration->registration_id, 'hash' => $this->hash), function($message) use($reg) {
+		Mail::send('emails.validation', array('route' => route('register.validateHash', array($this->registration->registration_id, $this->hash)), 'name' => $this->registration->first_name, 'hash' => $this->hash), function($message) use($reg) {
 			$message
 				->to($reg->email_address, $reg->last_name . ', ' . $reg->first_name)
 				->subject(Lang::get('emailvalidation.message_header'));
@@ -71,7 +71,7 @@ class ValidationService {
 		
 		$this->makeHash();
 		
-		$this->createInitial();
+		$this->createHash();
 		
 		$this->dispatchEmail();
 	}
@@ -126,5 +126,15 @@ class ValidationService {
 		}
 		
 		return true;
+	}
+	
+	public function resend($id) {
+		$this->id;
+		
+		$this->makeHash();
+		
+		$this->removeHash();
+		
+		$this->dispatchEmail();
 	}
 }
