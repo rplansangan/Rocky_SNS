@@ -1,7 +1,9 @@
  <div class="header-container">
   <div class="container">
    <div class="col-md-6 col-lg-6 logo">
-      <img src="{{ URL::asset('assets/images/rocky-logo.png') }}">
+      <a href="{{ route('home') }}">
+        <img src="{{ URL::asset('assets/images/rocky-logo.png') }}">
+      </a>
     </div>
     <div class="col-md-6 col-lg-6 pt-links text-right">
        <a class="about"  href="#">About</a>
