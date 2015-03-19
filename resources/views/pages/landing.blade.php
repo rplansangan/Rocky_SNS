@@ -46,22 +46,22 @@ Welcome to Rocky The Superdog
 					</div>
 					<div class="form-group">
 						<label for="regpassword" class="col-sm-4 control-label">Password:</label>
-						<div class="col-sm-4 pass">
+						<div class="col-sm-8 pass">
 							<input type="password" name="password" class="form-control" placeholder="Password">
 						</div>
-						<div class="col-sm-4 con_pass">
-							<input type="password" name="password_confirmation" class="form-control" placeholder="Confirm">
+					</div>
+					<div class="form-group">
+						<label for="regpassword" class="col-sm-4 control-label"></label>
+						<div class="col-sm-8 con_pass">
+							<input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="regfname" class="col-sm-4 control-label">First Name:</label>
-						<div class="col-sm-8">
+						<div class="col-sm-4">
 							<input type="text" class="form-control" name="first_name" placeholder="First Name" required>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="reglname" class="col-sm-4 control-label">Last Name:</label>
-						<div class="col-sm-8">
+						<div class="col-sm-4">
 							<input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
 						</div>
 					</div>
