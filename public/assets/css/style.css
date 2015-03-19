@@ -197,6 +197,10 @@ ul.sec-top-pet li img {
   color: #fff;
 }
 
+.newsfeed-area ul li div a img.media-object {
+  border: 1px solid #F8E1D9;
+}
+
 
 /*============LEFT SIDEBAR============*/
 .bg-rocky{

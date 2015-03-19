@@ -1,4 +1,8 @@
 @extends('master')
+@section('site_title')
+Rocky Registration
+@stop
+
 @section('content')
 <div class="container-fluid">
 	<!--<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
@@ -95,10 +99,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">State/Province</label>
 					<div class='col-sm-8'>
-						<select name="state" class="form-control">
-							<option></option>
-							<option>Pampanga</option>
-						</select>
+						<input type='text' name="stateprovince" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">

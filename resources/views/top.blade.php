@@ -31,7 +31,7 @@
   <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 subhead-content">
    <div class="container">
      <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 slogan">
-      <h1>The Newest Community For Dog Lovers</h1>
+      <h1>The Newest Community For Pet Lovers</h1>
     </div>
 
     <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 login">
