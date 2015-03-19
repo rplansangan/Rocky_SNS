@@ -175,6 +175,12 @@ ul.sec-top-pet li img {
   padding: 10px;
 }
 
+.register-page {
+  background-image: url('../images/animals.png');
+  background-position: bottom left;
+  background-repeat: repeat-x;
+}
+
 
 /*============Newsfeed Sub Header============*/
 .navbar-right li a {

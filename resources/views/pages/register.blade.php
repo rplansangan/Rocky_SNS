@@ -4,6 +4,7 @@ Rocky Registration
 @stop
 
 @section('content')
+<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 register-page">
 <div class="container-fluid">
 	<!--<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
 		@include('sidebar')
@@ -397,5 +398,6 @@ Rocky Registration
 			</form>
 		</div>
 	</div>
+</div>
 </div>
 @stop
