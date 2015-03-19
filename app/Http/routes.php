@@ -34,7 +34,10 @@ Route::get('register/validate/{id}/{hash}', array(
 	'as' => 'register.validateHash',
 	'uses' => 'EmailValidationController@validateRegistration'
 ));
-
+Route::get('message', array(
+	'as' => 'validate',
+	'uses' => 'EmailValidationController@validateMessage'
+));
 
 
 Route::get('home', array(

@@ -32,7 +32,7 @@ class EmailValidationController extends Controller {
 		Session::put('details', $input);
 		$data['auth'] = false;
 
-		return view('pages.register' , $data);
+		return redirect('message');
 	}
 	
 	public function sendValidation(Request $request) {
@@ -85,5 +85,11 @@ class EmailValidationController extends Controller {
 			// view for errors
 // 			return;
 		}
+	}
+
+
+	public function validateMessage(){
+		$data['auth'] = false;
+		return view('pages.message' , $data);
 	}
 }
