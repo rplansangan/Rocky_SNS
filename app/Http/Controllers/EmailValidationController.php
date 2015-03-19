@@ -35,6 +35,7 @@ class EmailValidationController extends Controller {
 		$user->password = Hash::make($input['password']);
 		$user->role_id = 1;
 		$user->is_deactivated = 0;
+		$user->is_validated = 0;
 		$user->save();
 		
 		$reg = new Registration();

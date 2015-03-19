@@ -105,10 +105,10 @@ class ValidationService {
 	
 	protected function activateRegistration() {
 		$query = Registration::find($this->id);
-		$query->is_validated = 0;
+		$query->is_validated = 1;
 		$query->save();
 		
-		$query->user()->update(array('is_validated' => 0));
+		$query->user()->update(array('is_validated' => 1));
 		
 		$this->removeHash();
 		

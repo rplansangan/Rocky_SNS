@@ -20,7 +20,7 @@ class LoginController extends Controller {
 	
 	public function signin(Request $request){
 		$input = array_except($request->all(), array('_token'));
-
+		$input = array_merge($input, array('is_validated' => 1));
 		if (Auth::attempt($input)) {
 			return redirect()->intended('home');
 		} else {
@@ -33,5 +33,10 @@ class LoginController extends Controller {
 		$data['auth'] = false;
 		$data['message'] = "Wrong";
 		return view('pages.login' , $data);
+	}
+	
+	public function logout() {
+		Auth::logout();
+		return redirect('/');
 	}
 }

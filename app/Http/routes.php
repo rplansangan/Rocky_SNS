@@ -22,6 +22,10 @@ Route::post('login', array(
 	'as' => 'login',
 	'uses' => 'LoginController@signin'
 ));
+Route::get('logout', array(
+	'as' => 'logout',
+	'uses' => 'LoginController@logout'
+));
 // Route::any('do_login', array(
 // 	'as' => 'login',
 // 	'uses' => 'LoginController@login'
@@ -66,6 +70,6 @@ Route::get('pet_of_the_day', array(
 	));
 Route::controllers([
 // 	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+// 	'password' => 'Auth\PasswordController',
 ]);
 
