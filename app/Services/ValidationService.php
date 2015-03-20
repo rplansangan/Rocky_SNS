@@ -21,12 +21,6 @@ class ValidationService {
 	protected $hash;
 	
 	/**
-	 * Confirmation details id & hash
-	 * @var array
-	 */
-	protected $confirm;
-	
-	/**
 	 * 
 	 * @var array
 	 */
@@ -110,8 +104,6 @@ class ValidationService {
 		
 		$query->user()->update(array('is_validated' => 1));
 		
-		$this->removeHash();
-		
 		return $this->query['registration'] = $query;;
 	}
 	
@@ -134,7 +126,6 @@ class ValidationService {
 		$query = $this->performSearch();
 		
 		if($query->isEmpty()) {
-			// insert invalid hash message here
 			$this->errors['notfound'] = Lang::get('emailvalidation.message_validation_notfound');
 			return $this;
 		}
@@ -166,6 +157,10 @@ class ValidationService {
 		$this->dispatchEmail();
 		
 		return $this;
+	}
+	
+	public function deleteHash($id, $hash) {
+		EmailValidation::where('registration_id', $id)->where('hash', $hash)->delete();
 	}
 	
 	public function passes() {

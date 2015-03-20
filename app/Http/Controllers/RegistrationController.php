@@ -10,20 +10,19 @@ use Illuminate\Support\Facades\Session;
 use SNS\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class EmailValidationController extends Controller {
+class RegistrationController extends Controller {
 	
 	protected $service;
 	
 	public function __construct() {
 		$this->service = new ValidationService();
-		$this->middleware('guest');
+// 		$this->middleware('guest');
 	}
 	
 	public function register(Request $request) {
 		$input = array_except($request->all(), array('_token'));
 		$validate = Validator::make($input, Registration::$initialRules);
 		
-
 		if($validate->fails()) {
 			return redirect()->back()
 				->withInput($request->all())
@@ -49,7 +48,6 @@ class EmailValidationController extends Controller {
 		$reg->is_validated = 0;
 		$reg->save();		
 		
-		Session::put('details', $input);
 		$data['auth'] = false;
 		$this->service->send($reg);
 		
@@ -60,28 +58,29 @@ class EmailValidationController extends Controller {
 		$service = $this->service->confirm($id, $hash);
 		
 		if($service->passes()) {
-			$data['auth'] = false;
-			return redirect()->route('index');
+			$this->service->deleteHash($id, $hash);
+			return redirect()->route('register.details', $id);
 		} else {
 			$data['auth'] = false;
 			return view('pages.message', $data)->with('validation_errors', $service->errors)->with('id', $id);
 		}
 	}
 	
+	public function details($id) {
+		Session::put('details', Registration::find($id)->toArray());
+		$data['auth'] = false;
+		return view('pages.register', $data);
+	}
+	
 	public function resend($id) {
 		$service = $this->service->resend($id);
 		
-		echo "<pre>";
-		var_dump($service->passes());
-		echo "</pre>";
-		
-		if($service->passes()) {
+		if($service->passes()) {			
 			$data['auth'] = false;
 			return view('pages.message', $data)->with('id', $id)->with('validation_errors', null);
 		} else {
 			return redirect('/');
-		}
-		
+		}		
 	}
 
 

@@ -6,9 +6,6 @@ Rocky Registration
 @section('content')
 <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 register-page">
 <div class="container-fluid">
-	<!--<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
-		@include('sidebar')
-	</div>-->
 	<div class="col-sm-12 col-xs-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2 land-main-cont register-main">
 		<div class="row">
 			<div class="page-header">
@@ -53,18 +50,9 @@ Rocky Registration
 					</div>
 					<div class="radio col-sm-2">
 						<label>
-							<input type="radio" name="gender" value="F" @if(Session::get('details.gender') == 'F') check @endif>
+							<input type="radio" name="gender" value="F" @if(Session::get('details.gender') == 'F') checked @endif>
 							Female
 						</label>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Password</label>
-					<div class="col-sm-4">
-						<input type="password" name="password" class="form-control" placeholder="Password">
-					</div>
-					<div class="col-sm-4">
-						<input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
 					</div>
 				</div>
 				<div class="form-group">
