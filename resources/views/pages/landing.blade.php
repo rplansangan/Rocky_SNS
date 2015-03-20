@@ -31,46 +31,49 @@ Welcome to Rocky The Superdog
 				<h2>Not a member yet?</h2>
 				<h3>Register for free</h3>
 				<form action="{{ route('register') }}" method="POST" class="form-horizontal">
-					<input type="hidden" name="_token" value="{{ csrf_token() }}">
-					<div class="form-group">
-						<label for="email_address" class="col-sm-4 control-label">Email Address</label>
-						<div class="col-sm-8">
-							<input type="email" class="form-control" name="email_address" placeholder="Email Address" required>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="regconfirmemail" class="col-sm-4 control-label">Confirm Email:</label>
-						<div class="col-sm-8">
-							<input type="email" class="form-control" name="email_address_confirmation" placeholder="Confirm Email" required>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="regpassword" class="col-sm-4 control-label">Password:</label>
-						<div class="col-sm-8 pass">
-							<input type="password" name="password" class="form-control" placeholder="Password">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="regpassword" class="col-sm-4 control-label"></label>
-						<div class="col-sm-8 con_pass">
-							<input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="regfname" class="col-sm-4 control-label">First Name:</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" name="first_name" placeholder="First Name" required>
-						</div>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="regbday" class="col-sm-4 control-label">Birthday:</label>
-						<div class="col-sm-8">
-							<input type="date" class="form-control" id="birth_date" name="birth_date" required>
-						</div>
-					</div>
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					<span class="input input--kaede">
+						<input class="input__field input__field--kaede" type="email" id="input-35" required />
+						<label class="input__label input__label--kaede" for="input-35">
+							<span class="input__label-content input__label-content--kaede">Email Address</span>
+						</label>
+					</span>
+					<span class="input input--kaede">
+						<input class="input__field input__field--kaede" type="email" id="input-36" required />
+						<label class="input__label input__label--kaede" for="input-36">
+							<span class="input__label-content input__label-content--kaede">Confirm Email</span>
+						</label>
+					</span>
+					<span class="input input--kaede">
+						<input class="input__field input__field--kaede" type="password" id="input-37" required />
+						<label class="input__label input__label--kaede" for="input-37">
+							<span class="input__label-content input__label-content--kaede">Password</span>
+						</label>
+					</span>
+					<span class="input input--kaede">
+						<input class="input__field input__field--kaede" type="password" id="input-38" required />
+						<label class="input__label input__label--kaede" for="input-38">
+							<span class="input__label-content input__label-content--kaede">Confirm Password</span>
+						</label>
+					</span>
+					<span class="input input--kaede">
+						<input class="input__field input__field--kaede" type="text" id="input-39" required />
+						<label class="input__label input__label--kaede" for="input-39">
+							<span class="input__label-content input__label-content--kaede">First Name</span>
+						</label>
+					</span>
+					<span class="input input--kaede">
+						<input class="input__field input__field--kaede" type="text" id="input-40" required />
+						<label class="input__label input__label--kaede" for="input-40">
+							<span class="input__label-content input__label-content--kaede">Last Name</span>
+						</label>
+					</span>
+					<span class="input input--kaede">
+						<input class="input__field input__field--kaede" type="date" id="input-41" required />
+						<label class="input__label input__label--kaede" for="input-41">
+							<span class="input__label-content input__label-content--kaede">Birthday</span>
+						</label>
+					</span>
 					<div class="form-group">
 						<label class="col-sm-4 control-label">Gender:</label>
 						<div class="radio col-sm-2">

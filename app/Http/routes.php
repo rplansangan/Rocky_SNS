@@ -31,6 +31,10 @@ Route::get('logout', array(
 	'uses' => 'LoginController@logout'
 ));
 // Registration & Validation
+Route::any('register', array(
+	'as' => 'register',
+	'uses' => 'RegistrationController@register'
+));
 Route::post('register/validate', array(
 	'as' => 'register.sendValidation',
 	'uses' => 'RegistrationController@sendValidation'
@@ -43,17 +47,13 @@ Route::get('register/resend/{id}', array(
 	'as' => 'register.validateRehash',
 	'uses' => 'RegistrationController@resend'
 ));
-Route::post('register', array(
-	'as' => 'register',
-	'uses' => 'RegistrationController@register'
-));
-Route::get('register/{id}', array(
-	'as' => 'register.details',
-	'uses' => 'RegistrationController@details'
-));
 Route::get('message', array(
 	'as' => 'validate',
 	'uses' => 'RegistrationController@validateMessage'
+));
+Route::get('register/{id}', array(
+ 'as' => 'register.details',
+ 'uses' => 'RegistrationController@details'
 ));
 
 

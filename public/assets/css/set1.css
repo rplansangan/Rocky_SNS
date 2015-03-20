@@ -956,8 +956,8 @@
 .input--kaede {
 	display: block;
 	overflow: hidden;
-	margin: 1em auto 2em;
-	background: #EFEEEE;
+	margin: 8px 0;
+  	background: #FDD0CC;
 }
 
 .input__field--kaede {
@@ -990,7 +990,7 @@
 }
 
 .input__label-content--kaede {
-	padding: 1.5em 0;
+	padding: 5px 0;
 }
 
 .input__field--kaede:focus,
