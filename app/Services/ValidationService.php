@@ -130,7 +130,7 @@ class ValidationService {
 			return $this;
 		}
 		
-		if($this->validateTimeOut() != true) {
+		if($this->validateTimeOut() == true) {
 			$this->activateRegistration();
 		} else {
 			return $this;

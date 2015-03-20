@@ -9,10 +9,12 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller {
 	
 	public function __construct() {
-		$this->middleware('guest');
+
 	}
 	
 	public function signin(Request $request){
+		$this->middleware('guest');
+		
 		$input = array_except($request->all(), array('_token'));
 		$input = array_merge($input, array('is_validated' => 1));
 		
@@ -25,12 +27,16 @@ class LoginController extends Controller {
 
 
 	public function attempted(){
+		$this->middleware('guest');
+		
 		$data['auth'] = false;
 		$data['message'] = "Wrong";
 		return view('pages.login' , $data);
 	}
 	
 	public function logout() {
+		$this->middleware('auth');
+		
 		Auth::logout();
 		return redirect('/');
 	}

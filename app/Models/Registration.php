@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class Registration extends Model {
 
@@ -41,6 +42,10 @@ class Registration extends Model {
 	
 	public function user() {
 		return $this->belongsTo('SNS\Models\User');
+	}
+	
+	public function getBirthDateAttribute($date) {
+		return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d');
 	}
 
 }
