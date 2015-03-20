@@ -30,6 +30,9 @@
 @endif
 
 @unless($auth)
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/set1.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/normalize.css') }}" />
+
   <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 subhead-content">
    <div class="container">
      <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 slogan">
@@ -39,18 +42,61 @@
     <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 login">
       <form action="{{ route('login') }}" method="POST" class="form-inline">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <div class="form-group">
-          <label for="email">Email</label><br/>
-          <input type="email" name="email_address" id="email" class="form-control" placeholder=" email@example.com" required>
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label><br/>
-          <input type="password" name="password" id="password" class="form-control" placeholder=" password" required>
-        </div>
-        <button type="submit" class="btn btn-default">Login</button>
+        <span class="input input--minoru col-md-5 col-lg-5">
+          <input type="email" name="email_address" id="email" class="input__field input__field--yoko" type="text" />
+          <label class="input__label input__label--yoko" for="input-17">
+            <span class="input__label-content input__label-content--yoko">Email</span>
+          </label>
+        </span>
+        <span class="input input--minoru col-md-5 col-lg-5">
+          <input type="password" name="password" id="password" class="input__field input__field--yoko" type="text" />
+          <label class="input__label input__label--yoko" for="input-17">
+            <span class="input__label-content input__label-content--yoko">Password</span>
+          </label>
+        </span>
+        <span class="col-md-2 col-lg-2">
+          <button type="submit" class="btn btn-default">Login</button>
+        </span>
       </form>
     </div>
   </div>
 </div>
+
+<script src="{{ URL::asset('assets/js/classie.js') }}"></script>
+    <script>
+      (function() {
+        // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+        if (!String.prototype.trim) {
+          (function() {
+            // Make sure we trim BOM and NBSP
+            var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+            String.prototype.trim = function() {
+              return this.replace(rtrim, '');
+            };
+          })();
+        }
+
+        [].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+          // in case the input is already filled..
+          if( inputEl.value.trim() !== '' ) {
+            classie.add( inputEl.parentNode, 'input--filled' );
+          }
+
+          // events:
+          inputEl.addEventListener( 'focus', onInputFocus );
+          inputEl.addEventListener( 'blur', onInputBlur );
+        } );
+
+        function onInputFocus( ev ) {
+          classie.add( ev.target.parentNode, 'input--filled' );
+        }
+
+        function onInputBlur( ev ) {
+          if( ev.target.value.trim() === '' ) {
+            classie.remove( ev.target.parentNode, 'input--filled' );
+          }
+        }
+      })();
+    </script>
 
 @endunless
