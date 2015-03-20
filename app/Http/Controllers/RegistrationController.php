@@ -4,7 +4,6 @@ use SNS\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use SNS\Models\Registration;
 use SNS\Services\ValidationService;
-use SNS\Models\EmailValidation;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use SNS\Models\User;

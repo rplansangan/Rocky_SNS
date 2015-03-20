@@ -1,6 +1,4 @@
 <?php
-
-use SNS\Models\Registration;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,7 +9,9 @@ use SNS\Models\Registration;
 | and give it the controller to call when that URI is requested.
 |
 */
-
+Route::get('test', function() {
+	return redirect()->route('login');
+});
 
 Route::get('/', array(
 	'as' => 'index',
@@ -22,14 +22,14 @@ Route::post('login', array(
 	'as' => 'login',
 	'uses' => 'LoginController@signin'
 ));
+Route::get('login', array(
+	'as' => 'login.attempted',
+	'uses' => 'LoginController@attempted'
+));
 Route::get('logout', array(
 	'as' => 'logout',
 	'uses' => 'LoginController@logout'
 ));
-// Route::any('do_login', array(
-// 	'as' => 'login',
-// 	'uses' => 'LoginController@login'
-// ));
 // Registration & Validation
 Route::post('register/validate', array(
 	'as' => 'register.sendValidation',

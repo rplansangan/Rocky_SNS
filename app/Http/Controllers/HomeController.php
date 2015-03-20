@@ -1,6 +1,5 @@
 <?php namespace SNS\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller {
 
 	/*
@@ -31,9 +30,6 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-// 		echo "<pre>";
-// 		print_r(Auth::user());
-// 		echo "</pre>";
 		$data['auth'] = true;
 		return view('pages.homepage' , $data);
 	}

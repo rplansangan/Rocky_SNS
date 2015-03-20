@@ -1,35 +1,30 @@
 <?php namespace SNS\Http\Controllers;
 
+use SNS\Http\Requests;
 use SNS\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use SNS\Services\ValidationService;
-use Auth;
-use SNS\Models\User;
-use SNS\Models\Registration;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Session;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller {
 	
-	protected $service;
-	
 	public function __construct() {
-		$this->service = new ValidationService();
+		$this->middleware('guest');
 	}
 	
 	public function signin(Request $request){
 		$input = array_except($request->all(), array('_token'));
 		$input = array_merge($input, array('is_validated' => 1));
+		
 		if (Auth::attempt($input)) {
 			return redirect()->intended('home');
-		} else {
-			return redirect('do_login')->with('message' , ' Wrong Email / Password');
+		} else { 
+			return redirect()->route('login')->withInput(array_except($input, array('password', 'is_validated')));
 		}
 	}
 
 
-	public function login(){
+	public function attempted(){
 		$data['auth'] = false;
 		$data['message'] = "Wrong";
 		return view('pages.login' , $data);
