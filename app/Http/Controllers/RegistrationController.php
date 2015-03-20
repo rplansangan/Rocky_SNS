@@ -75,7 +75,7 @@ class RegistrationController extends Controller {
 	public function resend($id) {
 		$service = $this->service->resend($id);
 		
-		if($service->passes()) {			
+		if($service->check()) {			
 			$data['auth'] = false;
 			return view('pages.message', $data)->with('id', $id)->with('validation_errors', null);
 		} else {

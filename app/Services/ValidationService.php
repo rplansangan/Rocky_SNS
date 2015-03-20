@@ -163,11 +163,17 @@ class ValidationService {
 		EmailValidation::where('registration_id', $id)->where('hash', $hash)->delete();
 	}
 	
+	public function check() {
+		if(!$this->is_validated) {
+			return true;
+		} 
+		return false;
+	}
+	
 	public function passes() {
 		if($this->errors == NULL) {
 			return true;
-		} else {
-			return false;
 		}
+		return false;
 	}
 }
