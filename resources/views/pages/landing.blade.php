@@ -33,43 +33,43 @@ Welcome to Rocky The Superdog
 				<form action="{{ route('register') }}" method="POST" class="form-horizontal">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<span class="input input--kaede">
-						<input class="input__field input__field--kaede" type="email" id="input-35" required />
+						<input class="input__field input__field--kaede" type="email" name="email_address" id="input-35" required />
 						<label class="input__label input__label--kaede" for="input-35">
 							<span class="input__label-content input__label-content--kaede">Email Address</span>
 						</label>
 					</span>
 					<span class="input input--kaede">
-						<input class="input__field input__field--kaede" type="email" id="input-36" required />
+						<input class="input__field input__field--kaede" type="email" name="email_address_confirm" id="input-36" required />
 						<label class="input__label input__label--kaede" for="input-36">
 							<span class="input__label-content input__label-content--kaede">Confirm Email</span>
 						</label>
 					</span>
 					<span class="input input--kaede">
-						<input class="input__field input__field--kaede" type="password" id="input-37" required />
+						<input class="input__field input__field--kaede" type="password" name="password" id="input-37" required />
 						<label class="input__label input__label--kaede" for="input-37">
 							<span class="input__label-content input__label-content--kaede">Password</span>
 						</label>
 					</span>
 					<span class="input input--kaede">
-						<input class="input__field input__field--kaede" type="password" id="input-38" required />
+						<input class="input__field input__field--kaede" type="password" name="password_confirm" id="input-38" required />
 						<label class="input__label input__label--kaede" for="input-38">
 							<span class="input__label-content input__label-content--kaede">Confirm Password</span>
 						</label>
 					</span>
 					<span class="input input--kaede">
-						<input class="input__field input__field--kaede" type="text" id="input-39" required />
+						<input class="input__field input__field--kaede" type="text" name="first_name" id="input-39" required />
 						<label class="input__label input__label--kaede" for="input-39">
 							<span class="input__label-content input__label-content--kaede">First Name</span>
 						</label>
 					</span>
 					<span class="input input--kaede">
-						<input class="input__field input__field--kaede" type="text" id="input-40" required />
+						<input class="input__field input__field--kaede" type="text" name="last_name" id="input-40" required />
 						<label class="input__label input__label--kaede" for="input-40">
 							<span class="input__label-content input__label-content--kaede">Last Name</span>
 						</label>
 					</span>
 					<span class="input input--kaede">
-						<input class="input__field input__field--kaede" type="date" id="input-41" required />
+						<input class="input__field input__field--kaede" type="date" name="birth_date" id="input-41" required />
 						<label class="input__label input__label--kaede" for="input-41">
 							<span class="input__label-content input__label-content--kaede">Birthday</span>
 						</label>

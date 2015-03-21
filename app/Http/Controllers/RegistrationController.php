@@ -27,7 +27,7 @@ class RegistrationController extends Controller {
 				->withInput($request->all())
 				->withErrors($validate->errors()->all());
 		}
-		
+
 		$user = new User();
 		$user->email_address = $input['email_address'];
 		$user->password = Hash::make($input['password']);
