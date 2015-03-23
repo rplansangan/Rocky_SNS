@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use SNS\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class RegistrationController extends Controller {
 	
@@ -55,7 +56,7 @@ class RegistrationController extends Controller {
 	
 	public function validateRegistration($id, $hash) {	
 		$service = $this->service->confirm($id, $hash);
-		
+				
 		if($service->check()) {
 			$this->service->deleteHash($id, $hash);
 			return redirect()->route('register.details', $id);
@@ -69,6 +70,26 @@ class RegistrationController extends Controller {
 		Session::put('details', Registration::find($id)->toArray());
 		$data['auth'] = false;
 		return view('pages.register', $data);
+	}
+	
+	public function updateDetails(Request $request, $id) {
+		Session::forget('details');
+		$input = array_except($request->all(), array('_token'));
+		
+		if($input) {
+			$reg = Registration::find($id);
+			while(($current = current($input)) ==! FALSE)  {
+				$reg->{key($input)} = current($input);
+				next($input);
+			}
+			$reg->save();
+		}	
+
+		Auth::loginUsingId($reg->registration_id);
+		
+		return redirect()->route('home');
+		
+		
 	}
 	
 	public function resend($id) {

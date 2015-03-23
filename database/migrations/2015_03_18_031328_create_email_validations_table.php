@@ -17,6 +17,7 @@ class CreateEmailValidationsTable extends Migration {
 			$table->increments('id');
 			$table->integer('registration_id');
 			$table->string('hash');
+			$table->softDeletes();
 			$table->timestamps();
 		});
 	}

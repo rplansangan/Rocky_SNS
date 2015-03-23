@@ -1,4 +1,6 @@
 <?php
+
+use SNS\Models\Registration;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -9,22 +11,16 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('test', function() {
-	return redirect()->route('login');
-});
+
 
 Route::get('/', array(
 	'as' => 'index',
 	'uses' => 'WelcomeController@index'
 ));
 // Login
-Route::post('login', array(
+Route::any('login', array(
 	'as' => 'login',
 	'uses' => 'LoginController@signin'
-));
-Route::get('login', array(
-	'as' => 'login.attempted',
-	'uses' => 'LoginController@attempted'
 ));
 Route::get('logout', array(
 	'as' => 'logout',
@@ -35,6 +31,7 @@ Route::any('register', array(
 	'as' => 'register',
 	'uses' => 'RegistrationController@register'
 ));
+
 Route::post('register/validate', array(
 	'as' => 'register.sendValidation',
 	'uses' => 'RegistrationController@sendValidation'
@@ -52,8 +49,13 @@ Route::get('message', array(
 	'uses' => 'RegistrationController@validateMessage'
 ));
 Route::get('register/{id}', array(
- 'as' => 'register.details',
- 'uses' => 'RegistrationController@details'
+	'as' => 'register.details',
+	'uses' => 'RegistrationController@details'
+));
+Route::post('register/update/{id}', array(
+	'as' => 'register.detailsUpdate',
+	'uses' => 'RegistrationController@updateDetails'
+
 ));
 Route::post('register/update/{id}', array(
  'as' => 'register.detailsUpdate',
@@ -76,8 +78,25 @@ Route::get('pet_of_the_day', array(
 	'as' => 'pet_of_the_day',
 	'uses' => 'HomeController@pet_of_the_day'
 	));
+Route::get('trending', array(
+	'as' => 'trending',
+	'uses' => 'HomeController@trending'
+	));
+Route::get('advertise', array(
+	'as' => 'advertise',
+	'uses' => 'HomeController@advertise'
+	));
+Route::get('shop', array(
+	'as' => 'shop',
+	'uses' => 'HomeController@shop'
+	));
+Route::get('trackers', array(
+	'as' => 'trackers',
+	'uses' => 'HomeController@trackers'
+	));
+
 Route::controllers([
-// 	'auth' => 'Auth\AuthController',
-// 	'password' => 'Auth\PasswordController',
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
 ]);
 
