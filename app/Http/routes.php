@@ -1,6 +1,8 @@
 <?php
 
 use SNS\Models\Registration;
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,7 +13,10 @@ use SNS\Models\Registration;
 | and give it the controller to call when that URI is requested.
 |
 */
-
+Route::get('test', function() {
+	$r = new Request();
+	print_r($r);
+});
 
 Route::get('/', array(
 	'as' => 'index',
