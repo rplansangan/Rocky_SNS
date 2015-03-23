@@ -1,6 +1,4 @@
 <?php
-
-use SNS\Models\Registration;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,16 +9,22 @@ use SNS\Models\Registration;
 | and give it the controller to call when that URI is requested.
 |
 */
-
+Route::get('test', function() {
+	return redirect()->route('login');
+});
 
 Route::get('/', array(
 	'as' => 'index',
 	'uses' => 'WelcomeController@index'
 ));
 // Login
-Route::any('login', array(
+Route::post('login', array(
 	'as' => 'login',
 	'uses' => 'LoginController@signin'
+));
+Route::get('login/attempt', array(
+	'as' => 'login.attempted',
+	'uses' => 'LoginController@attempted'
 ));
 Route::get('logout', array(
 	'as' => 'logout',
@@ -29,23 +33,27 @@ Route::get('logout', array(
 // Registration & Validation
 Route::any('register', array(
 	'as' => 'register',
-	'uses' => 'EmailValidationController@register'
-));
-Route::post('register/validate', array(
-	'as' => 'register.sendValidation',
-	'uses' => 'EmailValidationController@sendValidation'
+	'uses' => 'RegistrationController@register'
 ));
 Route::get('register/validate/{id}/{hash}', array(
 	'as' => 'register.validateHash',
-	'uses' => 'EmailValidationController@validateRegistration'
+	'uses' => 'RegistrationController@validateRegistration'
 ));
 Route::get('register/resend/{id}', array(
 	'as' => 'register.validateRehash',
-	'uses' => 'EmailValidationController@resend'
+	'uses' => 'RegistrationController@resend'
 ));
 Route::get('message', array(
 	'as' => 'validate',
-	'uses' => 'EmailValidationController@validateMessage'
+	'uses' => 'RegistrationController@validateMessage'
+));
+Route::get('register/{id}', array(
+	'as' => 'register.details',
+	'uses' => 'RegistrationController@details'
+));
+Route::post('register/update/{id}', array(
+	'as' => 'register.detailsUpdate',
+	'uses' => 'RegistrationController@updateDetails'
 ));
 
 
@@ -68,9 +76,9 @@ Route::get('trending', array(
 	'as' => 'trending',
 	'uses' => 'HomeController@trending'
 	));
-Route::get('advertise', array(
-	'as' => 'advertise',
-	'uses' => 'HomeController@advertise'
+Route::get('advertised', array(
+	'as' => 'advertised',
+	'uses' => 'HomeController@advertised'
 	));
 Route::get('shop', array(
 	'as' => 'shop',
@@ -80,9 +88,8 @@ Route::get('trackers', array(
 	'as' => 'trackers',
 	'uses' => 'HomeController@trackers'
 	));
-
 Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+// 	'auth' => 'Auth\AuthController',
+// 	'password' => 'Auth\PasswordController',
 ]);
 
