@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use SNS\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class RegistrationController extends Controller {
 	
@@ -82,8 +83,13 @@ class RegistrationController extends Controller {
 				next($input);
 			}
 			$reg->save();
-		}		
+		}	
+
+		Auth::loginUsingId($reg->registration_id);
+		
 		return redirect()->route('home');
+		
+		
 	}
 	
 	public function resend($id) {
