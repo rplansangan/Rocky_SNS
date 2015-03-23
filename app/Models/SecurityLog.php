@@ -1,4 +1,4 @@
-<?php namespace SNS\Models;
+<?php namespace SNS;
 
 use Illuminate\Database\Eloquent\Model;
 
