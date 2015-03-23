@@ -81,7 +81,10 @@ class ValidationService {
 	 * @param string $hash
 	 */
 	protected function performSearch() {
-		return $this->query['validation'] =  EmailValidation::where('registration_id', $this->id)->where('hash', $this->hash)->get();	
+		return $this->query['validation'] =  EmailValidation::where('registration_id', $this->id)
+												->where('hash', $this->hash)
+												->orderBy('created_at', 'desc')
+												->take(1)->get();	
 	}
 	
 	protected function validateTimeOut() {
@@ -164,7 +167,7 @@ class ValidationService {
 	}
 	
 	public function check() {
-		if(!$this->is_validated) {
+		if(!$this->is_validated && $this->errors == NULL) {
 			return true;
 		} 
 		return false;

@@ -22,7 +22,7 @@ Route::post('login', array(
 	'as' => 'login',
 	'uses' => 'LoginController@signin'
 ));
-Route::get('login', array(
+Route::get('login/attempt', array(
 	'as' => 'login.attempted',
 	'uses' => 'LoginController@attempted'
 ));

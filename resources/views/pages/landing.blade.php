@@ -39,7 +39,7 @@ Welcome to Rocky The Superdog
 						</label>
 					</span>
 					<span class="input input--kaede">
-						<input class="input__field input__field--kaede" type="email" name="email_address_confirm" id="input-36" required />
+						<input class="input__field input__field--kaede" type="email" name="email_address_confirmation" id="input-36" required />
 						<label class="input__label input__label--kaede" for="input-36">
 							<span class="input__label-content input__label-content--kaede">Confirm Email</span>
 						</label>
@@ -51,7 +51,7 @@ Welcome to Rocky The Superdog
 						</label>
 					</span>
 					<span class="input input--kaede">
-						<input class="input__field input__field--kaede" type="password" name="password_confirm" id="input-38" required />
+						<input class="input__field input__field--kaede" type="password" name="password_confirmation" id="input-38" required />
 						<label class="input__label input__label--kaede" for="input-38">
 							<span class="input__label-content input__label-content--kaede">Confirm Password</span>
 						</label>

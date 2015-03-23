@@ -55,7 +55,7 @@ class RegistrationController extends Controller {
 	
 	public function validateRegistration($id, $hash) {	
 		$service = $this->service->confirm($id, $hash);
-		
+				
 		if($service->check()) {
 			$this->service->deleteHash($id, $hash);
 			return redirect()->route('register.details', $id);
