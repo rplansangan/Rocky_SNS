@@ -22,6 +22,10 @@ Route::any('login', array(
 	'as' => 'login',
 	'uses' => 'LoginController@signin'
 ));
+Route::get('login/attempt', array(
+ 	'as' => 'login.attempt',
+ 	'uses' => 'LoginController@attempted'
+ ));
 Route::get('logout', array(
 	'as' => 'logout',
 	'uses' => 'LoginController@logout'
@@ -96,7 +100,7 @@ Route::get('trackers', array(
 	));
 
 Route::controllers([
-	'auth' => 'Auth\AuthController',
+// 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
 

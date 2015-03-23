@@ -24,16 +24,16 @@ class LoginController extends Controller {
 		if (Auth::attempt($input)) {
 			return redirect()->intended('home');
 		} else {
-			return redirect('do_login')->with('message' , ' Wrong Email / Password');
+			return redirect()->route('login.attempt')->with('message' , ' Wrong Email / Password');
 		}
 	}
 
-
-	public function login(){
+	public function attempted(){
 		$data['auth'] = false;
 		$data['message'] = "Wrong";
 		return view('pages.login' , $data);
 	}
+	
 	public function logout(){
 		Auth::logout();
 		return redirect('/');
