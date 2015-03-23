@@ -108,8 +108,4 @@ class RegistrationController extends Controller {
 		$data['auth'] = false;
 		return view('pages.message' , $data);
 	}
-
-	public function updateDetails($id){
-		return redirect()->route('home');
-	}
 }
