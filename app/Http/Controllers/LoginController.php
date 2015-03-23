@@ -34,4 +34,8 @@ class LoginController extends Controller {
 		$data['message'] = "Wrong";
 		return view('pages.login' , $data);
 	}
+	public function logout(){
+		Auth::logout();
+		return redirect('/');
+	}
 }

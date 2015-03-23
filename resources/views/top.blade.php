@@ -21,7 +21,7 @@
         <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa fa-cog"></i></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="">Change password</a></li>
-            <li><a href="">Log out</a></li>
+            <li><a href="{{ route('logout') }}">Log out</a></li>
           </ul>
         </li>
       </ul>

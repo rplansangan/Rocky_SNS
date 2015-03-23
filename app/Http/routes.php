@@ -22,9 +22,9 @@ Route::any('login', array(
 	'as' => 'login',
 	'uses' => 'LoginController@signin'
 ));
-Route::any('do_login', array(
-	'as' => 'login',
-	'uses' => 'LoginController@login'
+Route::get('logout', array(
+	'as' => 'logout',
+	'uses' => 'LoginController@logout'
 ));
 // Registration & Validation
 Route::any('register', array(
@@ -64,6 +64,23 @@ Route::get('pet_of_the_day', array(
 	'as' => 'pet_of_the_day',
 	'uses' => 'HomeController@pet_of_the_day'
 	));
+Route::get('trending', array(
+	'as' => 'trending',
+	'uses' => 'HomeController@trending'
+	));
+Route::get('advertise', array(
+	'as' => 'advertise',
+	'uses' => 'HomeController@advertise'
+	));
+Route::get('shop', array(
+	'as' => 'shop',
+	'uses' => 'HomeController@shop'
+	));
+Route::get('trackers', array(
+	'as' => 'trackers',
+	'uses' => 'HomeController@trackers'
+	));
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
