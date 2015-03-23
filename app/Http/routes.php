@@ -1,8 +1,4 @@
 <?php
-
-use SNS\Models\Registration;
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -13,24 +9,20 @@ use Illuminate\Http\Request;
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('test', function() {
-	$r = new Request();
-	print_r($r);
-});
-
 Route::get('/', array(
 	'as' => 'index',
 	'uses' => 'WelcomeController@index'
 ));
 // Login
-Route::any('login', array(
+Route::post('login', array(
 	'as' => 'login',
 	'uses' => 'LoginController@signin'
 ));
 Route::get('login/attempt', array(
- 	'as' => 'login.attempt',
- 	'uses' => 'LoginController@attempted'
- ));
+	'as' => 'login.attempted',
+	'uses' => 'LoginController@attempted'
+));
+
 Route::get('logout', array(
 	'as' => 'logout',
 	'uses' => 'LoginController@logout'
@@ -39,11 +31,6 @@ Route::get('logout', array(
 Route::any('register', array(
 	'as' => 'register',
 	'uses' => 'RegistrationController@register'
-));
-
-Route::post('register/validate', array(
-	'as' => 'register.sendValidation',
-	'uses' => 'RegistrationController@sendValidation'
 ));
 Route::get('register/validate/{id}/{hash}', array(
 	'as' => 'register.validateHash',
@@ -64,11 +51,6 @@ Route::get('register/{id}', array(
 Route::post('register/update/{id}', array(
 	'as' => 'register.detailsUpdate',
 	'uses' => 'RegistrationController@updateDetails'
-
-));
-Route::post('register/update/{id}', array(
- 'as' => 'register.detailsUpdate',
- 'uses' => 'RegistrationController@updateDetails'
 ));
 
 
@@ -91,9 +73,9 @@ Route::get('trending', array(
 	'as' => 'trending',
 	'uses' => 'HomeController@trending'
 	));
-Route::get('advertise', array(
-	'as' => 'advertise',
-	'uses' => 'HomeController@advertise'
+Route::get('advertised', array(
+	'as' => 'advertised',
+	'uses' => 'HomeController@advertised'
 	));
 Route::get('shop', array(
 	'as' => 'shop',
@@ -103,9 +85,8 @@ Route::get('trackers', array(
 	'as' => 'trackers',
 	'uses' => 'HomeController@trackers'
 	));
-
 Route::controllers([
 // 	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+// 	'password' => 'Auth\PasswordController',
 ]);
 

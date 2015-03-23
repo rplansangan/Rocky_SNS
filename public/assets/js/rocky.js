@@ -9,4 +9,15 @@ $(document).ready(function(){
 			$(".custom-file-input").replaceWith($(".custom-file-input").clone());
 		}
 	});
+
+	$('.hide_submit').hide();
+	$('#post_message').focusout(function(){
+		var l = $(this).val();
+		if(l == ""){
+			$('.hide_submit').fadeOut();
+		}
+	});
+	$('#post_message').focus(function(){
+		$('.hide_submit').hide().fadeIn().show();
+	});
 });

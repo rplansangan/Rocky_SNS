@@ -73,6 +73,7 @@ class RegistrationController extends Controller {
 	}
 	
 	public function updateDetails(Request $request, $id) {
+
 		Session::forget('details');
 		$input = array_except($request->all(), array('_token'));
 		
@@ -88,7 +89,6 @@ class RegistrationController extends Controller {
 		Auth::loginUsingId($reg->registration_id);
 		
 		return redirect()->route('home');
-		
 		
 	}
 	
@@ -107,9 +107,5 @@ class RegistrationController extends Controller {
 	public function validateMessage(){
 		$data['auth'] = false;
 		return view('pages.message' , $data);
-	}
-
-	public function updateDetails($id){
-		return redirect()->route('home');
 	}
 }
