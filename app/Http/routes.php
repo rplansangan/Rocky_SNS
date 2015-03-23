@@ -35,10 +35,6 @@ Route::any('register', array(
 	'as' => 'register',
 	'uses' => 'RegistrationController@register'
 ));
-Route::post('register/validate', array(
-	'as' => 'register.sendValidation',
-	'uses' => 'RegistrationController@sendValidation'
-));
 Route::get('register/validate/{id}/{hash}', array(
 	'as' => 'register.validateHash',
 	'uses' => 'RegistrationController@validateRegistration'
@@ -52,8 +48,12 @@ Route::get('message', array(
 	'uses' => 'RegistrationController@validateMessage'
 ));
 Route::get('register/{id}', array(
- 'as' => 'register.details',
- 'uses' => 'RegistrationController@details'
+	'as' => 'register.details',
+	'uses' => 'RegistrationController@details'
+));
+Route::post('register/update/{id}', array(
+	'as' => 'register.detailsUpdate',
+	'uses' => 'RegistrationController@updateDetails'
 ));
 
 
