@@ -1,7 +1,7 @@
 <div class="page-header">
 	<h2>Post</h2>
 </div>
-<div class="post-area col-sm-12 col-xs-12 col-lg-11 col-md-11 ">
+<div class="post-area col-sm-12 col-xs-12 col-lg-12 col-md-12 ">
 	<form method="POST" action="{{ url('login') }}" class="form-horizontal " role="form">
 		<div class="form-group">
 			<textarea class="form-control" max="500" name="post_message" id="post_message" placeholder=" Say Something..."></textarea>
@@ -9,7 +9,7 @@
 		<div class="form-group text-right hide_submit">
 			<div class="row">
 				<div class="col-sm-6 col-lg-6 col-xs-6 col-md-6">
-					<input type="file" name="userfile" id="fileuploader" class="form-control">
+					<input type="file" name="userfile" id="fileuploader" class="form-control" multiple>
 				</div>
 				<div class="col-sm-6 col-lg-6 col-xs-6 col-md-6">
 					<input type="submit" value="post" class="btn btn-color">

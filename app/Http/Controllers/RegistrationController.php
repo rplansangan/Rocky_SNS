@@ -71,6 +71,17 @@ class RegistrationController extends Controller {
 		return view('pages.register', $data);
 	}
 	
+	public function updateDetails(Request $request, $id) {
+// 		Session::forget('details');
+		$input = array_except($request->all(), array('_token'));
+		while(($current = current($input)) ==! FALSE)  {
+			echo key($input);
+			echo current($input) . '<br/>';
+			next($input);
+		}
+// 		return redirect()->route('home');
+	}
+	
 	public function resend($id) {
 		$service = $this->service->resend($id);
 		

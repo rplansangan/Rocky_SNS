@@ -14,7 +14,7 @@ Rocky Registration
 			</div>
 		</div>
 		<div class="row">
-			<form method="POST" action="{{ route('register.sendValidation') }}" class="form-horizontal col-sm-12  col-lg-12 col-md-12  col-xs-12 reg " role="form">
+			<form method="POST" action="{{ route('register.detailsUpdate', Session::get('details.registration_id')) }}" class="form-horizontal col-sm-12  col-lg-12 col-md-12  col-xs-12 reg " role="form">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Name:</label>

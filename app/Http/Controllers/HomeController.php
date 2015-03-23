@@ -43,22 +43,18 @@ class HomeController extends Controller {
 		$data['auth'] = true;
 		return view('pages.petoftheday' , $data);
 	}
-
 	public function trending(){
 		$data['auth'] = true;
 		return view('pages.trending' , $data);
 	}
-
-	public function advertise(){
+	public function advertised(){
 		$data['auth'] = true;
-		return view('pages.advertise' , $data);	
+		return view('pages.advertise' , $data);
 	}
-
 	public function shop(){
 		$data['auth'] = true;
 		return view('pages.shop' , $data);
 	}
-
 	public function trackers(){
 		$data['auth'] = true;
 		return view('pages.trackers' , $data);
