@@ -25,9 +25,9 @@ class CreateRegistrationsTable extends Migration {
 			$table->string('zip', 10);
 			$table->string('state', 3);
 			$table->string('country', 3);
-			$table->tinyInteger('phone_country_code');
-			$table->tinyInteger('phone_area_code');
-			$table->tinyInteger('phone_number');
+			$table->integer('phone_country_code');
+			$table->integer('phone_area_code');
+			$table->integer('phone_number');
 			$table->string('alias', 50);
 			$table->string('email_address', 100);
 			$table->boolean('is_deactivated');

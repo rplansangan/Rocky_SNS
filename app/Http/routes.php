@@ -26,6 +26,7 @@ Route::get('login/attempt', array(
 	'as' => 'login.attempted',
 	'uses' => 'LoginController@attempted'
 ));
+
 Route::get('logout', array(
 	'as' => 'logout',
 	'uses' => 'LoginController@logout'

@@ -88,7 +88,7 @@ Rocky Registration
 				<div class="form-group">
 					<label class="col-sm-2 control-label">State/Province</label>
 					<div class='col-sm-8'>
-						<input type='text' name="stateprovince" class="form-control" />
+						<input type='text' name="state" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">

@@ -20,23 +20,18 @@ class LoginController extends Controller {
 		
 		if (Auth::attempt($input)) {
 			return redirect()->intended('home');
-		} else { 
-			return redirect()->route('login.attempted')->withInput(array_except($input, array('password', 'is_validated')));
+		} else {
+			return redirect()->route('login.attempt')->with('message' , ' Wrong Email / Password');
 		}
 	}
 
-
 	public function attempted(){
-		$this->middleware('guest');
-		
 		$data['auth'] = false;
 		$data['message'] = "Wrong";
 		return view('pages.login' , $data);
 	}
 	
-	public function logout() {
-		$this->middleware('auth');
-		
+	public function logout(){
 		Auth::logout();
 		return redirect('/');
 	}

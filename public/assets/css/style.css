@@ -63,6 +63,11 @@
 .login input {
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;
+  padding: 2px 5px;
+}
+
+.login form span.col-md-5 {
+  margin-top: 23px;
 }
 
 .login .btn {
