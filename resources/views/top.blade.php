@@ -42,16 +42,16 @@
     <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 login">
       <form action="{{ route('login') }}" method="POST" class="form-inline">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <span class="input input--minoru col-md-5 col-lg-5">
-          <input type="email" name="email_address" id="email" class="input__field input__field--yoko" required />
-          <label class="input__label input__label--yoko" for="input-17">
-            <span class="input__label-content input__label-content--yoko">Email</span>
+        <span class="col-md-5 col-lg-5">
+          <input type="email" name="email_address" id="input-10" required />
+          <label for="input-10">
+            <span placeholder="Email Address">Email</span>
           </label>
         </span>
-        <span class="input input--minoru col-md-5 col-lg-5">
-          <input type="password" name="password" id="password" class="input__field input__field--yoko" required />
-          <label class="input__label input__label--yoko" for="input-17">
-            <span class="input__label-content input__label-content--yoko">Password</span>
+        <span class="col-md-5 col-lg-5">
+          <input type="password" name="password" id="input-11" required />
+          <label for="input-11">
+            <span placeholder="Password">Password</span>
           </label>
         </span>
         <span class="col-md-2 col-lg-2">

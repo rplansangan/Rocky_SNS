@@ -55,6 +55,10 @@ Route::get('register/{id}', array(
  'as' => 'register.details',
  'uses' => 'RegistrationController@details'
 ));
+Route::post('register/update/{id}', array(
+ 'as' => 'register.detailsUpdate',
+ 'uses' => 'RegistrationController@updateDetails'
+));
 
 
 
