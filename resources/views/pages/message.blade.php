@@ -7,6 +7,14 @@ Confirm Rocky The Superdog Account
 <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 msg-content">
 	<div class="container">
 		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 msg-text">
+			@if($validation_errors)
+				<ul>
+					@foreach($validation_errors as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+			@endif
+		
 			<h1>Final Step...</h1>
 
 			<p>Please check the email we sent you to verify your account.</p>

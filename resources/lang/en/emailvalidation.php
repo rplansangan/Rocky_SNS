@@ -6,4 +6,9 @@ Please Verify this email address to complete your Rocky The Superdog account by 
 
 :route
 
-If you\'re not :name or didn\'t request verification, you can ignore this email.');
+If you\'re not :name or didn\'t request verification, you can ignore this email.',
+		'message_validation_timeout' => 'Your token is no longer valid. Click here to get a new one.',
+		'message_validation_notfound' => 'Your token is invalid',
+		'message_validation_validated' => 'You account has already been activated.'
+		
+);

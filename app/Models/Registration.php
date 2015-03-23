@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class Registration extends Model {
 
@@ -13,7 +14,7 @@ class Registration extends Model {
 	
 	protected $fillable = array('last_name', 'first_name', 'birth_date', 'gender', 'address_line1', 'address_line2',
 								'city', 'zip', 'state', 'country', 'phone_country_code', 'phone_area_code', 'phone_number',
-								'alias', 'email_address', 'is_deactivated', 'last_deactivated', 'last_profile_update', 'user_id');
+								'alias', 'email_address', 'is_deactivated', 'last_deactivated', 'last_profile_update', 'user_id', 'is_validated');
 	
 	protected $dates = array('deleted_at');
 	
@@ -41,6 +42,10 @@ class Registration extends Model {
 	
 	public function user() {
 		return $this->belongsTo('SNS\Models\User');
+	}
+	
+	public function getBirthDateAttribute($date) {
+		return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d');
 	}
 
 }

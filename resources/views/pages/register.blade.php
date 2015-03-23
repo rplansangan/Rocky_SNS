@@ -6,9 +6,6 @@ Rocky Registration
 @section('content')
 <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 register-page">
 <div class="container-fluid">
-	<!--<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
-		@include('sidebar')
-	</div>-->
 	<div class="col-sm-12 col-xs-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2 land-main-cont register-main">
 		<div class="row">
 			<div class="page-header">
@@ -22,49 +19,40 @@ Rocky Registration
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Name:</label>
 					<div class="col-sm-4">
-						<input type="text" name="first_name" class="form-control" placeholder="First Name" @if(Session::has('details.first_name')) value="{{ Session::get('details.first_name') }}" @endif>
+						<input type="text" name="first_name" class="form-control" placeholder="First Name" @if(Session::has('details.first_name')) value="{{ Session::get('details.first_name') }}" @endif disabled>
 					</div>
 					<div class="col-sm-4">
-						<input type="text" name="last_name" class="form-control" placeholder="Last Name" @if(Session::has('details.first_name')) value="{{ Session::get('details.first_name') }}" @endif>
+						<input type="text" name="last_name" class="form-control" placeholder="Last Name" @if(Session::has('details.last_name')) value="{{ Session::get('details.last_name') }}" @endif disabled>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Birthdate:</label>
 					<div class='col-sm-8'>
-						<input type="date" class="form-control" id="birth_date" name="birth_date" required @if(Session::has('details.birth_date')) value="{{ Session::get('details.birth_date') }}" @endif>
+						<input type="date" class="form-control" id="birth_date" name="birth_date" required @if(Session::has('details.birth_date')) value="{{ Session::get('details.birth_date') }}" @endif disabled>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">E-mail Address:</label>
 					<div class="col-sm-4">
-						<input type="email" class="form-control" name="email_address" placeholder="Email Address" required @if(Session::has('details.email_address')) value="{{ Session::get('details.email_address') }}" @endif>
+						<input type="email" class="form-control" name="email_address" placeholder="Email Address" required @if(Session::has('details.email_address')) value="{{ Session::get('details.email_address') }}" @endif disabled>
 					</div>
 					<div class="col-sm-4">
-						<input type="email" class="form-control" name="email_address_confirmation" placeholder="Confirm Email Address" required @if(Session::has('details.email_address_confirmation')) value="{{ Session::get('details.email_address_confirmation') }}" @endif>
+						<input type="email" class="form-control" name="email_address_confirmation" placeholder="Confirm Email Address" required @if(Session::has('details.email_address')) value="{{ Session::get('details.email_address') }}" @endif disabled>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Gender:</label>
 					<div class="radio col-sm-2">
 						<label>
-							<input type="radio" name="gender" value="M" @if(Session::get('details.gender') == 'M') checked @endif>
+							<input type="radio" name="gender" value="M" @if(Session::get('details.gender') == 'M') checked @endif disabled>
 							Male
 						</label>
 					</div>
 					<div class="radio col-sm-2">
 						<label>
-							<input type="radio" name="gender" value="F" @if(Session::get('details.gender') == 'F') check @endif>
+							<input type="radio" name="gender" value="F" @if(Session::get('details.gender') == 'F') checked @endif disabled>
 							Female
 						</label>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Password</label>
-					<div class="col-sm-4">
-						<input type="password" name="password" class="form-control" placeholder="Password">
-					</div>
-					<div class="col-sm-4">
-						<input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
 					</div>
 				</div>
 				<div class="form-group">
