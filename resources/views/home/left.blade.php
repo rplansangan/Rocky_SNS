@@ -9,10 +9,4 @@
 			<a href="{{ route('trackers') }}" class="list-group-item track">Trackers</a>
 		</div>
 	</div>
-
-	<div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 left-addpet">
-		<div class="add-my-pet">
-			<a href="#">Add A Pet</a>
-		</div>
-	</div>
 </div>

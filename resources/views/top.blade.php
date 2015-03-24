@@ -1,3 +1,5 @@
+<?php use Illuminate\Support\Facades\Auth; ?>
+
  <div class="header-container">
   <div class="container">
    <div class="col-md-6 col-lg-6 logo">
@@ -17,7 +19,8 @@
   <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 subhead-content">
    <div class="container">
      <ul class="nav nav-pills navbar-right">
-        <li role="presentation"><a href="#">My Rocky</a></li>
+        <li role="presentation"><a href="{{ route('profile.showProfile', Auth::id()) }}">Master</a></li>
+        <li role="presentation"><a href="#">Add A Pet</a></li>
         <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa fa-cog"></i></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="">Change password</a></li>

@@ -54,7 +54,11 @@ Route::post('register/update/{id}', array(
 ));
 
 
-
+/*Profile route*/
+Route::get('profile/{id}', array(
+	'as' => 'profile.showProfile',
+	'uses' => 'ProfileController@showProfile'
+));
 
 
 Route::get('home', array(
