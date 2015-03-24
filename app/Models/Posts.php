@@ -25,7 +25,7 @@ class Posts extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array('post_message', 'user_id', 'post_tags', 'post_slug', 'image_id');
+	protected $fillable = array('post_message', 'user_id', 'post_tags', 'image_id');
 	
 	protected $dates = array('deleted_at');
 	
@@ -35,7 +35,7 @@ class Posts extends Model {
 	}
 	
 	public function image() {
-		return $this->belongsTo('SNS\Models\Posts');
+		return $this->HasMany('SNS\Models\Images');
 	}
 
 }

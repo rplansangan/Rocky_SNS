@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration {
 			$table->mediumText('post_message');
 			$table->integer('user_id');
 			$table->char('post_tags', 100);
-			$table->char('post_slug', 3);
+// 			$table->char('post_slug', 3);
 			$table->integer('image_id');
 			$table->softDeletes();
 			$table->timestamps();

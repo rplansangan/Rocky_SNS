@@ -3,7 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class images extends Model {
+class Images extends Model {
 
 	use SoftDeletes;
 	
@@ -25,7 +25,7 @@ class images extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array('user_id', 'image_path', 'is_profile_picture', 'post_id', 'pet_id');
+	protected $fillable = array('user_id', 'image_path', 'image_name', 'image_mime', 'image_ext', 'is_profile_picture', 'post_id', 'pet_id');
 	
 	
 	protected $dates = array('deleted_at');
@@ -36,11 +36,11 @@ class images extends Model {
 	}
 	
 	public function post() {
-		return $this->hasOne('SNS\Models\Posts');
+		return $this->belongsTo('SNS\Models\Posts');
 	}
 	
 	public function pet() {
-		return $this->hasOne('SNS\Models\Pets');
+		return $this->HasMany('SNS\Models\Pets');
 	}
 
 }

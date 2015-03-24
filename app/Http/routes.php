@@ -9,6 +9,14 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('test', array(
+	'uses' => 'UploadsController@testView'
+));
+Route::post('test/upload', array(
+	'as' => 'test.upload',
+	'uses' => 'UploadsController@testUpload'
+));
+
 Route::get('/', array(
 	'as' => 'index',
 	'uses' => 'WelcomeController@index'

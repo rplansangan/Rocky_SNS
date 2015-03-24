@@ -19,6 +19,7 @@ class CreatePetsTable extends Migration {
 			$table->string('pet_name', 100);
 			$table->string('pet_type', 5);
 			$table->string('breed', 5);
+			$table->tinyInteger('selected');
 			$table->softDeletes();
 			$table->timestamps();
 		});

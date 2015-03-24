@@ -29,6 +29,14 @@ class AppServiceProvider extends ServiceProvider {
 			'Illuminate\Contracts\Auth\Registrar',
 			'SNS\Services\Registrar'
 		);
+		
+		$this->app->bind('postservice', function() {
+			return new \SNS\Libraries\Services\PostService;
+		});
+		
+		$this->app->bind('storagehelper', function() {
+			return new \SNS\Libraries\Helpers\StorageHelper;
+		});
 	}
 
 }
