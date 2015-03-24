@@ -12,7 +12,7 @@
 
 	<div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 left-addpet">
 		<div class="add-my-pet">
-			<a href="#">Add Pet</a>
+			<a href="#">Add A Pet</a>
 		</div>
 	</div>
 </div>

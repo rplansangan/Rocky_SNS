@@ -1,7 +1,7 @@
  /*============Default============*/
 .page-header {
   padding-bottom: 9px;
-  margin: 40px 0 20px;
+  margin: 30px 0 20px;
   border-bottom: 1px solid #eee;
   font-family: 'Montserrat', sans-serif important;
 }
@@ -199,10 +199,11 @@ ul.sec-top-pet li img {
 
 .newsfeed-area {
   border-top: 1px solid #eee;
+  padding-top: 30px;
 }
 
 .middle .btn {
-  margin-top: 23px;
+  margin-top: 0px;
   padding: 3px 20px;
   background: #E74C3C;
   color: #fff;
@@ -359,6 +360,35 @@ a.list-group-item.track {
   background-image: url('../images/TrackersBG.png');
   background-position: left;
   background-repeat: no-repeat;
+}
+
+.left-addpet {
+  padding: 10px 20px;
+}
+
+.add-my-pet {
+  background-image: url('../images/plusBG.png');
+  background-position: left;
+  background-repeat: no-repeat;
+  padding: 8px 15px;
+  background-color: #fff;
+  width: 100%;
+  text-indent: 25px;
+  border-left: 3px solid #C0C0C0;
+  border-bottom: 3px solid #C0C0C0;
+}
+
+.add-my-pet a {
+  width: 100%;
+  display: inline-block;
+  color: #555;
+  font-family: 'Montserrat', sans-serif important;
+  font-size: 18px;
+}
+
+.add-my-pet a:hover {
+  text-decoration: none !important;
+  color: #E74C3C;
 }
 
 
