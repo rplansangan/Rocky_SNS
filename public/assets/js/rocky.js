@@ -10,7 +10,6 @@ $(document).ready(function(){
 		}
 	});
 
-	$('.hide_submit').hide();
 	$('#post_message').focusout(function(){
 		var l = $(this).val();
 		if(l == ""){
@@ -36,6 +35,9 @@ $(document).ready(function(){
 		return false;
 		e.preventDefault();
 	});
+
+	$('#OpenImgUpload').click(function(){ $('#fileuploader').trigger('click'); });
+	$(".comment-box" ).elastic();
 });
 
 
