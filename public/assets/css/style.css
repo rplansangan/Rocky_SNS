@@ -232,6 +232,10 @@ ul.sec-top-pet li img {
   height: 30px;
 }
 
+a.nf-like {
+  color: #E74C3C;
+}
+
 
 /*============Pet of the Day Page============*/
 .col-lg-12.pd-infos {
