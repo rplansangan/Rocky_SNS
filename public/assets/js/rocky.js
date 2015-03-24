@@ -20,4 +20,26 @@ $(document).ready(function(){
 	$('#post_message').focus(function(){
 		$('.hide_submit').hide().fadeIn().show();
 	});
+
+	$('#form-post').on('submit',function(e){
+		data = new FormData($('#form-post')[0]);
+		$.ajax({
+			url : $(this).attr('action'),
+			type : 'post',
+			data: data,
+			processData: false,
+			contentType: false,
+			success: function(r){
+				$('.append-post').hide().fadeIn().append(r);
+			}
+		});
+		return false;
+		e.preventDefault();
+	});
 });
+
+
+
+
+
+

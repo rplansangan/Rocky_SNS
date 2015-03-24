@@ -2,14 +2,15 @@
 	<h2>Post</h2>
 </div>
 <div class="post-area col-sm-12 col-xs-12 col-lg-12 col-md-12 ">
-	<form method="POST" action="{{ url('login') }}" class="form-horizontal " role="form">
+	<form method="POST" action="{{ url('test') }}" class="form-horizontal " id="form-post" role="form" enctype="multipart/form-data">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<div class="form-group">
 			<textarea class="form-control" max="500" name="post_message" id="post_message" placeholder=" Say Something..."></textarea>
 		</div>
 		<div class="form-group text-right hide_submit">
 			<div class="row">
 				<div class="col-sm-6 col-lg-6 col-xs-6 col-md-6">
-					<input type="file" name="userfile" id="fileuploader" class="form-control" multiple>
+					<input type="file" name="userfile[]" id="fileuploader" class="form-control" multiple>
 				</div>
 				<div class="col-sm-6 col-lg-6 col-xs-6 col-md-6">
 					<input type="submit" value="post" class="btn btn-color">
@@ -21,6 +22,9 @@
 
 <div class="newsfeed-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
 	<legend>News feed</legend>
+	<ul class="media-list append-post">
+
+	</ul>
 	<ul class="media-list">
 	<li class="media">
 		<div class="media-left">
