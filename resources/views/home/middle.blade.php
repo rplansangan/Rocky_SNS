@@ -1,5 +1,5 @@
 <div role="tabpanel" class="  post-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
-	<form method="POST" action="{{ url('test') }}" class="form-horizontal" id="form-post" role="form" enctype="multipart/form-data">
+	<form method="POST" action="{{ route('test') }}" class="form-horizontal" id="form-post" role="form" enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<input type="file" name="userfile[]" id="fileuploader" class="form-control" multiple>
 		<!-- Nav tabs -->
@@ -35,9 +35,6 @@
 <div class="newsfeed-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
 	<legend>News feed</legend>
 	<ul class="media-list append-post">
-
-	</ul>
-	<ul class="media-list">
 		<li class="media">
 			<div class="media-left">
 				<a href="#">

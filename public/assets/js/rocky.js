@@ -29,7 +29,7 @@ $(document).ready(function(){
 			processData: false,
 			contentType: false,
 			success: function(r){
-				$('.append-post').hide().fadeIn().append(r);
+				$(r).hide().fadeIn().insertBefore('.append-post > li:first-child');
 			}
 		});
 		return false;
