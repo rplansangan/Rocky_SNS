@@ -38,6 +38,8 @@ $(document).ready(function(){
 
 	$('#OpenImgUpload').click(function(){ $('#fileuploader').trigger('click'); });
 	$(".comment-box" ).elastic();
+
+	 
 });
 
 

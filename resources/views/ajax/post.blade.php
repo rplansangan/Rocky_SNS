@@ -1,3 +1,13 @@
+<script type="text/javascript">
+	$('.comment-box').keypress(function (e) {
+		var key = e.which;
+		if(key == 13) 
+		{
+			alert('enjter');
+		}
+	});
+</script>
+
 <li class="media">
 	<div class="media-left">
 		<a href="#">
