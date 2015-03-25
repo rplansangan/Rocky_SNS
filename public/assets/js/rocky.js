@@ -22,7 +22,7 @@ $(document).ready(function(){
 
 	$('#form-post').on('submit',function(e){
 		data = new FormData($('#form-post')[0]);
-		if($('#post_message').val() != "" || $('.custom-file-input').files[0].size != 0){
+		if($('#post_message').val() != "" ){
 			$.ajax({
 				url : $(this).attr('action'),
 				type : 'post',
