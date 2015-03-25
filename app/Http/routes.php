@@ -84,6 +84,11 @@ Route::get('profile/{id}', array(
 	'uses' => 'ProfileController@showProfile'
 ));
 
+Route::post('likes/set/{post_id}', array(
+	'as' => 'likes.set',
+	'uses' => 'LikesController@setLike'
+));
+
 
 Route::get('home', array(
 	'as' => 'home',

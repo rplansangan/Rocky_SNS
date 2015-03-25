@@ -58,22 +58,43 @@ class PostRepository {
 	}
 	
 	/**
-	 *
-	 * @param integer $take
+	 * Post formatting and retrieving of relationships
+	 * @param array $posts
+	 * @return multitype:array object
 	 */
-	public function initialNewsFeed($take) {
-		$collection = $this->post->select(array('post_id', 'post_message', 'created_at', 'user_id'))->take($take)->latest()->get();
-	
+	protected function postIterator($posts) {
 		$return = array();
-	
-		foreach($collection as $single) {
+		
+		foreach($posts as $single) {
 			$return[] = array(
 					'message' => $single,
 					'file' => $single->image()->select(array('image_id', 'image_path', 'image_name', 'image_ext',))->first(),
 					'user' => $single->user()->select(array('registration_id', 'last_name', 'first_name'))->first()
 			);
 		}
+		
 		return $return;
+	}
+	
+	/**
+	 * Gets initial items for news feed
+	 * @param integer $take
+	 */
+	public function initialNewsFeed($take) {
+		$collection = $this->post->select(array('post_id', 'post_message', 'created_at', 'user_id'))->take($take)->latest()->get();
+		
+		return $this->postIterator($collection);
+	}
+	
+	/**
+	 * Gets news feed items given an offset
+	 * @param integer $skip
+	 * @param integer $take
+	 */
+	public function incrementalNewsFeed($skip, $take) {
+		$collection = $this->photo->skip($skip)->take($take)->latest()->get();
+		
+		return $this->postIterator($collection);
 	}
 	
 }

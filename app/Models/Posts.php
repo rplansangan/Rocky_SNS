@@ -40,11 +40,14 @@ class Posts extends Model {
 	}
 	
 	public function image() {
-		return $this->HasMany('SNS\Models\Images', 'post_id');
+		return $this->hasMany('SNS\Models\Images', 'post_id');
+	}
+	
+	public function likes() {
+		return $this->hasMany('SNS\Models\Likes', 'post_id');
 	}
 	
 	public function getCreatedAtAttribute($date) {
-		// March 23 at 4:49pm 
 		return Carbon::createFromFormat(self::$dbDateFormat, $date)->format(self::$newsFeedFormat);
 	}
 

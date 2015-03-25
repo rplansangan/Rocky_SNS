@@ -69,6 +69,8 @@ class PostService {
 	 * @param integer $take
 	 */
 	public function incrementalNewsFeed($skip, $take) {
-		return $this->photo->skip($skip)->take($take)->latest()->get();
+		return $this->photo->incrementalNewsFeed($skip, $take);
 	}
+	
+// 	public function createLike($post_id)
 }
