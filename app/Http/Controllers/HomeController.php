@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use SNS\Libraries\Facades\PostService;
 
 class HomeController extends Controller {
 
@@ -39,6 +40,7 @@ class HomeController extends Controller {
 	public function index()
 	{
 		$data['auth'] = true;
+		$data['newsfeed'] = PostService::initialNewsFeed();
 		return view('pages.homepage' , $data);
 	}
 

@@ -114,10 +114,10 @@ Route::get('trackers', array(
 	'uses' => 'HomeController@trackers'
 	));
 
-// Route::any('test', array(
-// 	'as' => 'test',
-// 	'uses' => 'HomeController@test'
-// 	));
+Route::any('test', array(
+	'as' => 'test',
+	'uses' => 'HomeController@test'
+	));
 Route::controllers([
 // 	'auth' => 'Auth\AuthController',
 // 	'password' => 'Auth\PasswordController',

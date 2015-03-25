@@ -41,23 +41,30 @@
 <div class="newsfeed-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
 	<legend>News feed</legend>
 	<ul class="media-list append-post">
+		@foreach($newsfeed as $single)
 		<li class="media">
 			<div class="media-left">
 				<a href="#">
-					<img class="media-object" src="{{ URL::asset('assets/images/browncat.png') }}" withd="64px" height="64px" alt="profile picture">
+					<img class="media-object" src="{{ URL::asset('assets/images/browncat.png') }}" width="64px" height="64px" alt="profile picture">
 				</a>
 			</div>
 			<div class="media-body">
-				<h4 class="media-heading">Superdog</h4>
-				<small class="media-heading">March 18 2015 12:00:00 am</small>
-				<p>However, for most routes and controller actions, you will be returning a full Illuminate\Http\Response instance or a view. Returning a full Response instance allows you to customize the response's HTTP status code and headers. A Response instance inherits from the Symfony\Component\HttpFoundation\Response class, providing a variety of methods for building HTTP </p>
-				<p><a class="nf-like" href="#"><i class="fa fa-thumbs-up"></i> 1 Likes....</a> <a class="nf-like" href="javascript:void(0)">Comment</a></p>
+				<h4 class="media-heading">
+				{{ $single['user']->first_name }} {{ $single['user']->last_name }}
+				</h4>
+				<small class="media-heading">{{ $single['message']->created_at }}</small>
+				<p>{{ $single['message']->post_message }}</p>
+				@if(isset($single['file']))
+				<img src="{{ route('files.get.image', array($single['message']->user_id, $single['file']->image_id)) }}">
+				@endif
+				<p><a href="#"><i class="fa fa-thumbs-up"></i> 1 Likes....</a> <a href="javascript:void(0)">Comment</a></p>
 				<form method="POST" action="{{ url('login') }}"  role="form" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<textarea max="500" name="post_message" class="comment-box" placeholder=" Say Something..."></textarea>
 				</form>	
 			</div>
 		</li>
+		@endforeach
 	</ul>
 </div>
 

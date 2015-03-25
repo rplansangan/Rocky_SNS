@@ -49,4 +49,31 @@ class PostRepository {
 		return $return;
 	}
 	
+	/**
+	 * 
+	 * @param integer $id
+	 */
+	public function getPost($id) {
+		return $this->post->find($id);
+	}
+	
+	/**
+	 *
+	 * @param integer $take
+	 */
+	public function initialNewsFeed($take) {
+		$collection = $this->post->take($take)->latest()->get();
+	
+		$return = array();
+	
+		foreach($collection as $single) {
+			$return[] = array(
+					'message' => $single,
+					'file' => $single->image()->first(),
+					'user' => $single->user()->first()
+			);
+		}
+		return $return;
+	}
+	
 }

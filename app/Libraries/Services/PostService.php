@@ -23,6 +23,10 @@ class PostService {
 		$this->post = new PostRepository();
 	}
 	
+	protected function getUser($user_id) {
+		
+	}
+	
 	/**
 	 * Creates post data
 	 * IMPORTANT NOTE:
@@ -56,7 +60,7 @@ class PostService {
 			$take = 5;
 		}
 		
-		return $this->photo->take($take)->latest()->get();
+		return $this->post->initialNewsFeed($take);
 	}
 	
 	/**
