@@ -71,8 +71,6 @@ class HomeController extends Controller {
 	}
 
 	public function test(Request $request){
-		$input = array_except($request->all(), array('_token'));
-		$data['info'] = $input;
-		return view('ajax.post' , $data);
+		print_r($request->all());
 	}
 }

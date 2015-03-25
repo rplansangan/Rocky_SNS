@@ -42,6 +42,20 @@ $(document).ready(function(){
 	$('#form-post')[0].reset()
 	$('#OpenImgUpload').click(function(){ $('#fileuploader').trigger('click'); });
 	 
+	$('.comment-like').on('click' , function(e){
+		var id = $(this).attr('value');
+		var url = $(this).attr('value2');
+		var token = $(this).attr('value3');
+		$.ajax({
+				url : url,
+				type : 'post',
+				data: {id:id ,_token:token},
+				success: function(r){
+					alert(r)
+				}
+			});
+		e.preventDefault();
+	});
 });
 
 
