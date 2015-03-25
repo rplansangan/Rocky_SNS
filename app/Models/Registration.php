@@ -50,6 +50,8 @@ class Registration extends Model {
 			
 	);
 	
+	public static $dbDateFormat = 'Y-m-d H:i:s';
+	
 	// RELATIONSHIPS
 	public function emailValidation() {
 		return $this->hasOne('SNS\Models\EmailValidation');
@@ -64,7 +66,7 @@ class Registration extends Model {
 	}
 	
 	public function getBirthDateAttribute($date) {
-		return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d');
+		return Carbon::createFromFormat(self::$dbDateFormat, $date)->format('Y-m-d');
 	}
 
 }
