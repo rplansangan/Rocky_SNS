@@ -29,6 +29,7 @@ $(document).ready(function(){
 			processData: false,
 			contentType: false,
 			success: function(r){
+				$('.append-post').find('script').remove();
 				$(r).hide().fadeIn().insertBefore('.append-post > li:first-child');
 			}
 		});
@@ -36,8 +37,10 @@ $(document).ready(function(){
 		e.preventDefault();
 	});
 
+	$('#form-post')[0].reset()
 	$('#OpenImgUpload').click(function(){ $('#fileuploader').trigger('click'); });
-	$(".comment-box" ).elastic();
+
+
 
 	 
 });
