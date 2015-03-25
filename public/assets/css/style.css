@@ -246,23 +246,36 @@ a.nf-like {
   border-bottom: 1px solid #eee;
   padding-bottom: 10px;
   margin: 30px 0;
-  color: #E74C3C !important;
+  color: #555564 !important;
   font-family: 'Montserrat', sans-serif important;
 }
 
-.pd-photo a img {
-  border: 3px solid #FFB1A9;
-  border-radius: 5px;
-}
-
-.pd-name {
+.pd-photo {
   text-align: center;
 }
 
+.pd-photo a img {
+  border: 3px solid #FD8E00;
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(50, 50, 50, 0.45);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(50, 50, 50, 0.45);
+  box-shadow: 4px 4px 8px 0px rgba(50, 50, 50, 0.45);
+  background: #fff;
+}
+
 .pd-name h2 {
-  margin: 60px 0;
-  color: #8E7068 !important;
+  color: #FFFFFF !important;
   font-family: 'Montserrat', sans-serif important;
+  background-image: url('../images/name_ribbon.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  padding: 20px 10px 10px 10px;
+  text-align: center;
+  margin: -9px;
+}
+
+.pd-name a:hover {
+  text-decoration: none;
 }
 
 .pd-infos ul {

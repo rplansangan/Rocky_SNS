@@ -2,11 +2,11 @@
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 pd-content">
 		<h1>PET OF THE DAY</h1>
 
-		<div class="col-sm-12 col-xs-12 col-md-5 col-lg-5 pd-photo">
+		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 pd-photo">
 			<a href="#"><img src="{{ URL::asset('assets/images/garfielking.png') }}"></a>
 		</div>
 
-		<div class="col-sm-12 col-xs-12 col-md-7 col-lg-7 pd-name">
+		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 pd-name">
 			<a href="#"><h2>Mypet Name</h2></a>
 		</div>
 
