@@ -54,7 +54,7 @@ class PostRepository {
 	 * @param integer $id
 	 */
 	public function getPost($id) {
-		return $this->post->find($id);
+		return $this->post->select(array('post_id', 'post_message', 'created_at', 'user_id'))->find($id);
 	}
 	
 	/**
@@ -62,15 +62,15 @@ class PostRepository {
 	 * @param integer $take
 	 */
 	public function initialNewsFeed($take) {
-		$collection = $this->post->take($take)->latest()->get();
+		$collection = $this->post->select(array('post_id', 'post_message', 'created_at', 'user_id'))->take($take)->latest()->get();
 	
 		$return = array();
 	
 		foreach($collection as $single) {
 			$return[] = array(
 					'message' => $single,
-					'file' => $single->image()->first(),
-					'user' => $single->user()->first()
+					'file' => $single->image()->select(array('image_id', 'image_path', 'image_name', 'image_ext',))->first(),
+					'user' => $single->user()->select(array('registration_id', 'last_name', 'first_name'))->first()
 			);
 		}
 		return $return;

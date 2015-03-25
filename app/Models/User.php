@@ -50,10 +50,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->hasMany('SNS\Models\Pets', 'user_id');
 	}
 	
-	public function posts() {
-		return $this->hasMany('SNS\Models\Posts', 'user_id');
-	}
-	
 	public function images() {
 		return $this->hasMany('SNS\Models\Images', 'user_id');
 	}

@@ -59,6 +59,10 @@ class Registration extends Model {
 		return $this->belongsTo('SNS\Models\User');
 	}
 	
+	public function posts() {
+		return $this->hasMany('SNS\Models\Posts', 'user_id');
+	}
+	
 	public function getBirthDateAttribute($date) {
 		return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d');
 	}

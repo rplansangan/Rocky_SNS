@@ -31,7 +31,7 @@ class Posts extends Model {
 	
 	// RELATIONSHIPS
 	public function user() {
-		return $this->belongsTo('SNS\Models\User');
+		return $this->belongsTo('SNS\Models\Registration');
 	}
 	
 	public function image() {
