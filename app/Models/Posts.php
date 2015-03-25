@@ -35,7 +35,7 @@ class Posts extends Model {
 	}
 	
 	public function image() {
-		return $this->HasMany('SNS\Models\Images');
+		return $this->HasMany('SNS\Models\Images', 'post_id');
 	}
 
 }

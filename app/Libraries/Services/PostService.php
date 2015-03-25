@@ -2,6 +2,7 @@
 
 use SNS\Libraries\Repositories\ImageRepository;
 use SNS\Libraries\Repositories\PostRepository;
+use SNS\Models\Registration;
 
 class PostService {
 	
@@ -34,10 +35,32 @@ class PostService {
 		if(array_key_exists('_token', $data)) {
 			array_forget($data, '_token');
 		} 
+				
+		$return = $this->post->createWithImage($data);
 		
-		$this->post->create($data['message']);
+		$return['user'] = Registration::find($return['message']->user_id); 
 		
-		var_dump($this->image->create($data['file']));
+		return $return;
+	}
+	
+	/**
+	 * 
+	 * @param integer $take
+	 */
+	public function initialNewsFeed($take = null) {
+		if(!$take) {
+			$take = 5;
+		}
 		
+		return $this->photo->take($take)->latest()->get();
+	}
+	
+	/**
+	 * 
+	 * @param integer $skip
+	 * @param integer $take
+	 */
+	public function incrementalNewsFeed($skip, $take) {
+		return $this->photo->skip($skip)->take($take)->latest()->get();
 	}
 }
