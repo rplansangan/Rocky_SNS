@@ -22,26 +22,25 @@ $(document).ready(function(){
 
 	$('#form-post').on('submit',function(e){
 		data = new FormData($('#form-post')[0]);
-		$.ajax({
-			url : $(this).attr('action'),
-			type : 'post',
-			data: data,
-			processData: false,
-			contentType: false,
-			success: function(r){
-				$('.append-post').find('script').remove();
-				$(r).hide().fadeIn().insertBefore('.append-post > li:first-child');
-			}
-		});
+		if($('#post_message').val() != "" || $('.custom-file-input').files[0].size != 0){
+			$.ajax({
+				url : $(this).attr('action'),
+				type : 'post',
+				data: data,
+				processData: false,
+				contentType: false,
+				success: function(r){
+					$('.append-post').find('script').remove();
+					$(r).hide().fadeIn().insertBefore('.append-post > li:first-child');
+				}
+			});
+		}
 		return false;
 		e.preventDefault();
 	});
 
 	$('#form-post')[0].reset()
 	$('#OpenImgUpload').click(function(){ $('#fileuploader').trigger('click'); });
-
-
-
 	 
 });
 

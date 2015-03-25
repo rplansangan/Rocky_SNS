@@ -55,7 +55,7 @@
 				<small class="media-heading">{{ $single['message']->created_at }}</small>
 				<p>{{ $single['message']->post_message }}</p>
 				@if(isset($single['file']))
-				<img src="{{ route('files.get.image', array($single['message']->user_id, $single['file']->image_id)) }}">
+				<img class="col-sm-12"  src="{{ route('files.get.image', array($single['message']->user_id, $single['file']->image_id)) }}">
 				@endif
 				<p><a href="#"><i class="fa fa-thumbs-up"></i> 1 Likes....</a> <a href="javascript:void(0)">Comment</a></p>
 				<form method="POST" action="{{ url('login') }}"  role="form" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

@@ -27,7 +27,7 @@ class LoginController extends Controller {
 
 	public function attempted(){
 		$data['auth'] = false;
-		$data['message'] = "Wrong";
+		$data['message'] = "Wrong Email / Password";
 		return view('pages.login' , $data);
 	}
 	
