@@ -1,6 +1,7 @@
 <?php namespace SNS\Libraries\Helpers;
 
 use Illuminate\Support\Facades\Storage;
+
 class StorageHelper {
 	
 	public function folder_exists($dir) {

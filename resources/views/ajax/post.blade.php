@@ -15,9 +15,12 @@
 		</a>
 	</div>
 	<div class="media-body">
-		<h4 class="media-heading"></h4>
-		<small class="media-heading">March 18 2015 12:00:00 am</small>
-		<p>{{ $info['post_message'] }}</p>
+		<h4 class="media-heading">
+		{{ $user->first_name }} {{ $user->last_name }}
+		</h4>
+		<small class="media-heading">{{ $message->created_at }}</small>
+		<p>{{ $message->post_message }}</p>
+		<img src="{{ route('files.get.image', array($message->user_id, $file->image_id)) }}">
 		<p><a href="#"><i class="fa fa-thumbs-up"></i> 1 Likes....</a> <a href="javascript:void(0)">Comment</a></p>
 		<form method="POST" action="{{ url('login') }}"  role="form" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">

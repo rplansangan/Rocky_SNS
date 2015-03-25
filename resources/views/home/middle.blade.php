@@ -1,7 +1,7 @@
 <div role="tabpanel" class="  post-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
-	<form method="POST" action="{{ route('test') }}" class="form-horizontal" id="form-post" role="form" enctype="multipart/form-data">
+	<form method="POST" action="{{ route('files.newsfeed') }}" class="form-horizontal" id="form-post" role="form" enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
-		<input type="file" name="userfile[]" id="fileuploader" class="form-control" multiple>
+		<input type="file" name="file" id="fileuploader" class="form-control">
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs" role="tablist">
 			<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Post</a></li>
@@ -14,7 +14,7 @@
 				<ul class="comment-post">
 					<li>
 						<div class="form-group">
-							<textarea class="form-control" max="500" name="post_message" id="post_message" placeholder=" Say Something..."></textarea>
+							<textarea class="form-control" max="500" name="message" id="post_message" placeholder=" Say Something..."></textarea>
 						</div>
 					</li>
 					<li>

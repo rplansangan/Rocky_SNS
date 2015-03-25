@@ -2,6 +2,10 @@
 
 use SNS\Models\Posts;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use SNS\Libraries\Facades\StorageHelper;
+use SNS\Models\Images;
+
 class PostRepository { 
 	
 	/**
@@ -19,6 +23,30 @@ class PostRepository {
 				'user_id' => Auth::id(),
 				'post_message' => $data,				
 		));
+	}
+	
+	public function createWithImage($data) {
+		$return['message'] = $this->post->create(array(
+				'user_id' => Auth::id(),
+				'post_message' => $data['message']
+		));
+		
+		$filename = md5($data['file']->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
+		$dir = StorageHelper::create(Auth::id());
+		
+		$img_data = new Images(array(
+				'user_id' => Auth::id(),
+				'image_path' => $dir,
+				'image_name' => $filename,
+				'image_mime' => $data['file']->getMimeType(),
+				'image_ext' => $data['file']->getClientOriginalExtension()
+		));
+		
+		$return['file'] = $return['message']->image()->save($img_data);
+		
+		$data['file']->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);			
+		
+		return $return;
 	}
 	
 }
