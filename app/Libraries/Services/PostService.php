@@ -36,8 +36,12 @@ class PostService {
 			array_forget($data, '_token');
 		} 
 				
-		$return = $this->post->createWithImage($data);
-		
+		if(array_key_exists('file', $data)) {
+			$return = $this->post->createWithImage($data);
+		} else {
+			$return['message'] = $this->post->create($data['message']);
+		}
+				
 		$return['user'] = Registration::find($return['message']->user_id); 
 		
 		return $return;
