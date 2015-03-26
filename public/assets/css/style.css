@@ -343,6 +343,29 @@ ul.nav.nav-tabs li a {
 }
 
 
+/*============COMMENTS============*/
+.com-name span {
+  color: #F55F4F;
+  font-weight: 600;
+}
+
+.media-body.com-name {
+  display: inline-block;
+  width: auto;
+  margin-top: 5px;
+}
+
+ul.comments {
+  background: #FAEFEB;
+  padding: 10px 15px;
+  border: 1px solid #E5E4E4;
+}
+
+ul.comments .media-left {
+  display: inline-block;
+}
+
+
 /*============LEFT SIDEBAR============*/
 .bg-rocky{
    background: rgba(242, 197, 181, 0.5);
