@@ -19,7 +19,13 @@
   <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 subhead-content">
    <div class="container">
      <ul class="nav nav-pills navbar-right">
-        <li role="presentation"><a href="{{ route('profile.showProfile', Auth::id()) }}">Master</a></li>
+          @if (Request::url() == route('profile.showProfile', Auth::id()))
+            <li role="presentation"><a href="#">Pets</a></li>
+
+          @else
+            <li role="presentation"><a href="{{ route('profile.showProfile', Auth::id()) }}">Master</a></li>
+
+          @endif
         <li role="presentation"><a href="#">Add A Pet</a></li>
         <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa fa-cog"></i></a>
           <ul class="dropdown-menu" role="menu">

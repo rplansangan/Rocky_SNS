@@ -32,12 +32,10 @@
 	</form>
 </div>
 
-<div class="newsfeed-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
-	<legend>News feed</legend>
+<div class="profile-feed col-sm-12 col-xs-12 col-lg-12 col-md-12">
 	<ul class="media-list append-post">
-		@foreach($newsfeed as $single)
-			@include('ajax.post', array('user' => $single->user, 'message' => $single, 'image' => $single->image, 'like' => $single->like))
+		@foreach($posts as $single)
+			@include('ajax.post', array('user' => $single->user, 'message' => $single, 'image' => $single->image))
 		@endforeach
 	</ul>
 </div>
-

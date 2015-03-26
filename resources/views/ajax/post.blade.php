@@ -24,7 +24,7 @@
 <li class="media">
 	<div class="media-left">
 		<a href="#">
-			<img class="media-object" src="{{ URL::asset('assets/images/browncat.png') }}" width="64px" height="64px" alt="profile picture">
+			<img class="media-object" src="{{ URL::asset('assets/images/jon.jpg') }}" width="64px" height="64px" alt="profile picture">
 		</a>
 	</div>
 	<div class="media-body">
@@ -51,6 +51,9 @@
 		</p>
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-form">
 			<textarea max="500" name="post_message" class="comment-box" post_id="{{ $message->post_id }}" href="{{ route('test2') }}" _token="{{ csrf_token() }}" placeholder=" Say Something..."></textarea>
-		</div>	
+			<div class="comments">
+				<p></p>
+			</div>
+		</div>
 	</div>
 </li>
