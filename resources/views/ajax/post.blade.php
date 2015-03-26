@@ -1,25 +1,31 @@
+@if($include_script)
 <script type="text/javascript">
-	$('.comment-box').keypress(function (e) {
-		var key = e.which;
-		if(key == 13) 
-		{
-			var url = $(this).attr('href');
-			var id = $(this).attr('post_id');
-			var token = $(this).attr('_token');
-			var message = $(this).val();
-			var a = this;
+$('.comment-box').keypress(function (e) {
+	var key = e.which;
+	if(key == 13) 
+	{
+		var url = $(this).attr('href');
+		var id = $(this).attr('post_id');
+		var token = $(this).attr('_token');
+		var message = $(this).val();
+		var a = this;
+		if(message != ""){
 			$.ajax({
 				url : url,
 				type : 'post',
 				data: { id:id , _token:token , message:message },
 				success: function(r){
-					alert(r);
+					$(a).val('');
+					$(a).text('');
+					$(a).next().append(r);
 				}
 			});
 		}
-	});
-	$(".comment-box" ).elastic();
+	}
+});
+$(".comment-box" ).elastic();
 </script>
+@endif
 
 <li class="media">
 	<div class="media-left">
@@ -36,9 +42,12 @@
 		@if(isset($image))
 		<img class="col-sm-12" src="{{ route('files.get.image', array($message->user_id, $image->image_id)) }}">
 		@endif
-		<p><a class="nf-like comment-like" href="#" value="{{ $message->post_id }}" value2="{{ route('likes.set', array($message->post_id)) }}" value3="{{ csrf_token() }}"><i class="fa fa-thumbs-up"></i><span class="like-counter"></span></a> <a class="nf-like" href="javascript:void(0)">Comment</a></p>
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-form">
+		<a class="nf-like comment-like" href="#" value="{{ $message->post_id }}" value2="{{ route('likes.set', array($message->post_id)) }}" value3="{{ csrf_token() }}"><i class="fa fa-thumbs-up"></i><span class="like-counter"></span></a> <a class="nf-like comment-form" href="javascript:void(0)">Comment</a>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-form-hidden">
 			<textarea max="500" name="post_message" class="comment-box" post_id="{{ $message->post_id }}" href="{{ route('test2') }}" _token="{{ csrf_token() }}" placeholder=" Say Something..."></textarea>
+			<ul class="comment-box comment-area">
+				
+			</ul>
 		</div>	
 	</div>
 </li>

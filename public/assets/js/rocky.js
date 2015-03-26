@@ -21,6 +21,7 @@ $(document).ready(function(){
 	});
 
 	$('#form-post').on('submit',function(e){
+		$('.append-post').find('script').remove();
 		data = new FormData($('#form-post')[0]);
 		if($('#post_message').val() != "" ){
 			$.ajax({
@@ -30,16 +31,15 @@ $(document).ready(function(){
 				processData: false,
 				contentType: false,
 				success: function(r){
-					$('.append-post').find('script').remove();
 					$(r).hide().fadeIn().insertBefore('.append-post > li:first-child');
+					$('#form-post')[0].reset()
 				}
 			});
 		}
 		return false;
 		e.preventDefault();
 	});
-
-	$('#form-post')[0].reset()
+	
 	$('#OpenImgUpload').click(function(){ $('#fileuploader').trigger('click'); });
 
 	$('.comment-like').on('click' , function(e){
@@ -57,6 +57,20 @@ $(document).ready(function(){
 		});	
 		e.preventDefault();
 	});
+
+	$('.comment-form-hidden').hide();
+
+	alreadyloading = false;
+    $(window).scroll(function() {
+        if ($('body').height() <= ($(window).height() + $(window).scrollTop())) {
+            if (alreadyloading == false) {
+                
+                alreadyloading = true;
+                
+                alert('ok');
+            }
+        }
+    });
 });
 
 
