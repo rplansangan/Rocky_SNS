@@ -6,6 +6,10 @@
   font-family: 'Montserrat', sans-serif important;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 
  /*============Header============*/
  .header-container {
@@ -245,7 +249,6 @@ ul.nav.nav-tabs li a {
 }
 
 
-
 /*============Profile Page============*/
 .prof-photo {
   margin-top: 20px;
@@ -264,6 +267,24 @@ ul.nav.nav-tabs li a {
   color: #E74C3C;
 }
 
+
+/*============Pet List Page============*/
+.petlist-info .dl-horizontal dd {
+  margin-left: 80px;
+}
+
+.petlist-info .dl-horizontal dt {
+  width: 60px;
+}
+
+.petlist-info h4 {
+  color: #89342C;
+  font-weight: 600;
+}
+
+.petlist-info a:hover > h4 {
+  color: #F9BBB5;
+}
 
 
 /*============Pet of the Day Page============*/

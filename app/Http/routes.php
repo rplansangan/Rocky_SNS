@@ -82,6 +82,11 @@ Route::get('profile/{id}', array(
 	'uses' => 'ProfileController@showProfile'
 ));
 
+Route::get('petlist/{id}', array(
+	'as' => 'profile.petlist',
+	'uses' => 'ProfileController@petlist'
+));
+
 Route::post('likes/set/{post_id}', array(
 	'as' => 'likes.set',
 	'uses' => 'PostsController@setLike'

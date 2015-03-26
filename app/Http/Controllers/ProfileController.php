@@ -15,4 +15,10 @@ class ProfileController extends Controller {
 		$data['auth'] = true;
 		return view('profile.profile' , $data)->with('profile', $profileDetails)->with('posts', $collection);
 	}
+
+	public function petlist($id){
+		$profileDetails = Registration::find($id); 
+		$data['auth'] = true;
+		return view('profile.petlist' , $data)->with('profile', $profileDetails);
+	}
 }
