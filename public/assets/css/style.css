@@ -227,14 +227,43 @@ ul.sec-top-pet li img {
 #fileuploader{
   display: none;
 }
-.comment-box{
+textarea.comment-box{
   width: 100%;
   height: 30px;
+}
+
+ul.nav.nav-tabs li a {
+  color: #E74C3C;
 }
 
 .newsfeed-area ul li p a {
   color: #E74C3C;
 }
+
+.comment-form {
+  padding-left: 0;
+}
+
+
+
+/*============Profile Page============*/
+.prof-photo {
+  margin-top: 20px;
+}
+
+.prof-photo img {
+  border: 4px double #F58174;
+}
+
+.prof-name h4 {
+  text-indent: 105px;
+  color: #E74C3C;
+}
+
+.profile-feed ul li p a {
+  color: #E74C3C;
+}
+
 
 
 /*============Pet of the Day Page============*/

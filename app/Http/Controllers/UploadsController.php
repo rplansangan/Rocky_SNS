@@ -22,7 +22,7 @@ class UploadsController extends Controller {
 	}
 	
 	public function newsfeed(Request $request) {
-		return view('ajax.post' , PostService::create($request->all()));
+		return view('ajax.post' , PostService::create($request->all()))->with('include_script' , true);
 	}
 	
 	public function getImage($user_id, $file_id){

@@ -69,8 +69,7 @@ class HomeController extends Controller {
 		$data['auth'] = true;
 		return view('pages.trackers' , $data);
 	}
-
 	public function test(Request $request){
-		print_r($request->all());
+		echo '1';
 	}
 }
