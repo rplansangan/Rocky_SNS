@@ -1,11 +1,22 @@
-<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 profile-container">
-	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-content">
-		<div class="col-sm-12 col-xs-12 col-md-5 col-lg-5 pd-photo">
-			<a href="#"><img src="{{ URL::asset('assets/images/browncat.png') }}"></a>
-		</div>
 
-		<div class="col-sm-12 col-xs-12 col-md-7 col-lg-7 pd-name">
-			<a href="#"><h4>{{ $profile->first_name }} {{ $profile->last_name }}</h4></a>
+
+@extends('master')
+@section('site_title')
+Rocky the Superdog
+@stop
+
+@section('content')
+	<div class="container-fluid bg-rocky">
+		<div class="row">
+			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 left">
+				@include('home.profile-left')
+			</div>
+			<div class="col-lg-6 col-lg-6 col-md-3 col-sm-12 col-xs-12 middle">
+				@include('home.profile')
+			</div>
+			<div class="col-lg-3 col-lg-6 col-md-3 col-sm-12 col-xs-12 right">
+				@include('home.right')
+			</div>
 		</div>
 	</div>
-</div>
+@stop
