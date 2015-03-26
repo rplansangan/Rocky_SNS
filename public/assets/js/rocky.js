@@ -50,10 +50,19 @@ $(document).ready(function(){
     $(window).scroll(function() {
         if ($('body').height() <= ($(window).height() + $(window).scrollTop())) {
             if (alreadyloading == false) {
-                
-                alreadyloading = true;
-                
-                alert('ok');
+            	alreadyloading = true;
+                var items = $("#home-newsfeed > li").length;
+                var route = $('#route-newsfeed-refresh').val();
+                var token = $('#route-newsfeed-refresh').attr('_token');
+                $.ajax({
+    				url : route,
+    				type : 'post',
+    				data: { offset:items , _token:token},
+    				success: function(r){
+    					$('#home-newsfeed').append(r);
+    					alreadyloading = false;
+    				}
+    			});
             }
         }
     });

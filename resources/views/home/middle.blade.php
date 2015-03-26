@@ -4,6 +4,7 @@ ul.nav.nav-tabs li a {
 }
 </style>
 <div role="tabpanel" class="  post-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
+	<input type="hidden" id="route-newsfeed-refresh" value="{{ route('newsfeed.refresh') }}" _token="{{ csrf_token() }}">
 	<form method="POST" action="{{ route('files.newsfeed') }}" class="form-horizontal" id="form-post" role="form" enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<input type="file" name="file" id="fileuploader" class="form-control">
@@ -39,7 +40,7 @@ ul.nav.nav-tabs li a {
 
 <div class="newsfeed-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
 	<legend>News feed</legend>
-	<ul class="media-list append-post">
+	<ul id="home-newsfeed" class="media-list append-post">
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$('.comment-box').keypress(function (e) {

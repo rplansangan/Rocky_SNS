@@ -95,6 +95,10 @@ Route::post('comment/set/{post_id}', array(
 	'as' => 'comments.set',
 	'uses' => 'PostsController@createComment'
 ));
+Route::post('newsfeed/refresh', array(
+	'as' => 'newsfeed.refresh',
+	'uses' => 'PostsController@getNextNewsFeed'
+));
 
 
 Route::get('home', array(

@@ -74,8 +74,11 @@ class PostService {
 	 * @param integer $skip
 	 * @param integer $take
 	 */
-	public function incrementalNewsFeed($skip, $take) {
-		return $this->photo->incrementalNewsFeed($skip, $take);
+	public function incrementalNewsFeed($skip, $take = null) {
+		if(!$take) {
+			$take = 5;
+		}
+		return $this->post->incrementalNewsFeed($skip, $take);
 	}
 	
 	public function like($post_id) {
