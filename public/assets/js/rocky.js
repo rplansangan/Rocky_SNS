@@ -41,19 +41,20 @@ $(document).ready(function(){
 
 	$('#form-post')[0].reset()
 	$('#OpenImgUpload').click(function(){ $('#fileuploader').trigger('click'); });
-	 
+
 	$('.comment-like').on('click' , function(e){
 		var id = $(this).attr('value');
 		var url = $(this).attr('value2');
 		var token = $(this).attr('value3');
+		var a = this;
 		$.ajax({
-				url : url,
-				type : 'post',
-				data: {id:id ,_token:token},
-				success: function(r){
-					alert(r)
-				}
-			});
+			url : url,
+			type : 'post',
+			data: {id:id , _token:token},
+			success: function(r){
+				$(a).children('span').text(r);
+			}
+		});	
 		e.preventDefault();
 	});
 });
