@@ -21,7 +21,6 @@
      <ul class="nav nav-pills navbar-right">
           @if (Request::url() == route('profile.showProfile', Auth::id()))
             <li role="presentation"><a href="{{ route('profile.petlist', Auth::id()) }}">Pets</a></li>
-
           @else
             <li role="presentation"><a href="{{ route('profile.showProfile', Auth::id()) }}">Master</a></li>
 

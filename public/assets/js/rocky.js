@@ -58,6 +58,9 @@ $(document).ready(function(){
     				url : route,
     				type : 'post',
     				data: { offset:items , _token:token},
+    				 beforeSend: function() {
+				        $("#load-here").html('loading');
+				    },
     				success: function(r){
     					$('#home-newsfeed').append(r);
     					alreadyloading = false;

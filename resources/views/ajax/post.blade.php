@@ -40,6 +40,7 @@ $('.comment-like').on('click' , function(e){
 		});	
 		e.preventDefault();
 	});
+	$('.comment-form-hidden').hide();
 </script>
 @endif
 
@@ -69,15 +70,15 @@ $('.comment-like').on('click' , function(e){
 				</span>
 			</a>
 			<a class="nf-like comment-form" href="javascript:void(0)">Comment</a>
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-form comment-form-hidden">
-			<textarea max="500" name="post_message" class="comment-box" post_id="{{ $message->post_id }}" href="{{ route('comments.set', $message->post_id) }}" _token="{{ csrf_token() }}" placeholder=" Say Something..."></textarea>
-			<ul class="comments">
-				@if($comments)
-					@foreach($comments as $comment)
-						@include('ajax.comments', $comment)
-					@endforeach
-				@endif
-			</ul>
-		</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-form comment-form-hidden">
+				<textarea max="500" name="post_message" class="comment-box" post_id="{{ $message->post_id }}" href="{{ route('comments.set', $message->post_id) }}" _token="{{ csrf_token() }}" placeholder=" Say Something..."></textarea>
+				<ul class="comments">
+					@if($comments)
+						@foreach($comments as $comment)
+							@include('ajax.comments', $comment)
+						@endforeach
+					@endif
+				</ul>
+			</div>
 	</div>
 </li>
