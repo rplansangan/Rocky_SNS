@@ -62,7 +62,7 @@ class PostRepository {
 	 * @param integer $take
 	 */
 	public function initialNewsFeed($take) {
-		return $this->post->with('user', 'image')->take($take)->latest()->get();
+		return $this->post->with('user', 'image', 'like')->take($take)->latest()->get();
 	}
 	
 	/**
@@ -71,7 +71,7 @@ class PostRepository {
 	 * @param integer $take
 	 */
 	public function incrementalNewsFeed($skip, $take) {		
-		return $this->post->with('user', 'image')->skip($skip)->take($take)->latest()->get();
+		return $this->post->with('user', 'image', 'like')->skip($skip)->take($take)->latest()->get();
 	}
 	
 }
