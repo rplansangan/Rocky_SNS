@@ -42,7 +42,7 @@
 	<legend>News feed</legend>
 	<ul class="media-list append-post">
 		@foreach($newsfeed as $single)
-			@include('ajax.post', array('user' => $single->user, 'message' => $single, 'image' => $single->image, 'like' => $single->like))
+			@include('ajax.post', array('user' => $single->user, 'message' => $single, 'image' => $single->image, 'like' => $single->like, 'comments' => $single->comment))
 		@endforeach
 	</ul>
 </div>

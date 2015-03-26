@@ -62,7 +62,7 @@ class PostRepository {
 	 * @param integer $take
 	 */
 	public function initialNewsFeed($take) {
-		return $this->post->with('user', 'image', 'like')->take($take)->latest()->get();
+		return $this->post->with('user', 'image', 'like', 'comment', 'comment.user')->take($take)->latest()->get();
 	}
 	
 	/**

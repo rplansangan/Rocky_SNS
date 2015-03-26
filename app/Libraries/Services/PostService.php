@@ -3,6 +3,8 @@
 use SNS\Libraries\Repositories\ImageRepository;
 use SNS\Libraries\Repositories\PostRepository;
 use SNS\Models\Registration;
+use SNS\Libraries\Facades\Likes;
+use SNS\Libraries\Facades\Comments;
 
 class PostService {
 	
@@ -23,8 +25,12 @@ class PostService {
 		$this->post = new PostRepository();
 	}
 	
-	protected function getUser($user_id) {
+	protected function token($data) {
+		if(array_key_exists('_token', $data)) {
+			array_forget($data, '_token');
+		}
 		
+		return $data;
 	}
 	
 	/**
@@ -36,9 +42,7 @@ class PostService {
 	 * @param array $data
 	 */
 	public function create($data) {
-		if(array_key_exists('_token', $data)) {
-			array_forget($data, '_token');
-		} 
+		$data = $this->token($data);
 				
 		if(array_key_exists('file', $data)) {
 			$return = $this->post->createWithImage($data);
@@ -72,5 +76,13 @@ class PostService {
 		return $this->photo->incrementalNewsFeed($skip, $take);
 	}
 	
-// 	public function createLike($post_id)
+	public function like($post_id) {
+		return Likes::set($post_id);
+	}
+	
+	public function createComment($data) {
+		$this->token($data);
+		
+		return Comments::set($data);
+	}
 }

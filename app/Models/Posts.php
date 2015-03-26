@@ -47,6 +47,10 @@ class Posts extends Model {
 		return $this->hasMany('SNS\Models\Likes', 'post_id');
 	}
 	
+	public function comment() {
+		return $this->hasMany('SNS\Models\Comments', 'post_id');
+	}
+	
 	public function getCreatedAtAttribute($date) {
 		return Carbon::createFromFormat(self::$dbDateFormat, $date)->format(self::$newsFeedFormat);
 	}

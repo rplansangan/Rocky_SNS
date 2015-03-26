@@ -50,7 +50,10 @@
 			<a class="nf-like" href="javascript:void(0)">Comment</a>
 		</p>
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-form">
-			<textarea max="500" name="post_message" class="comment-box" post_id="{{ $message->post_id }}" href="{{ route('test2') }}" _token="{{ csrf_token() }}" placeholder=" Say Something..."></textarea>
-		</div>	
+			<textarea max="500" name="post_message" class="comment-box" post_id="{{ $message->post_id }}" href="{{ route('comments.set', $message->post_id) }}" _token="{{ csrf_token() }}" placeholder=" Say Something..."></textarea>
+		</div>
+		@foreach($comments as $comment)
+			@include('ajax.comments', $comment)
+		@endforeach	
 	</div>
 </li>

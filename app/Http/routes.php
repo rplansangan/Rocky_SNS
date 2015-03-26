@@ -1,4 +1,6 @@
 <?php
+
+use SNS\Libraries\Repositories\CommentsRepository;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -10,6 +12,7 @@
 |
 */
 Route::get('test', function() {
+
 });
 Route::get('testupload/{uid}/{fid}', array(
 	'uses' => 'UploadsController@getImage'
@@ -80,7 +83,11 @@ Route::get('profile/{id}', array(
 
 Route::post('likes/set/{post_id}', array(
 	'as' => 'likes.set',
-	'uses' => 'LikesController@setLike'
+	'uses' => 'PostsController@setLike'
+));
+Route::post('comment/set/{post_id}', array(
+	'as' => 'comments.set',
+	'uses' => 'PostsController@createComment'
 ));
 
 
