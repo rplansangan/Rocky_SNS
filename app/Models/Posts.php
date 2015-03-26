@@ -40,10 +40,10 @@ class Posts extends Model {
 	}
 	
 	public function image() {
-		return $this->hasMany('SNS\Models\Images', 'post_id');
+		return $this->hasOne('SNS\Models\Images', 'post_id');
 	}
 	
-	public function likes() {
+	public function like() {
 		return $this->hasMany('SNS\Models\Likes', 'post_id');
 	}
 	

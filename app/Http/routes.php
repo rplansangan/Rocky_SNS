@@ -1,5 +1,4 @@
 <?php
-use SNS\Models\Posts;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,11 +10,6 @@ use SNS\Models\Posts;
 |
 */
 Route::get('test', function() {
-	$collection = Posts::all();
-	
-	echo "<pre>";
-	print_r($collection);
-	echo "</pre>";
 });
 Route::get('testupload/{uid}/{fid}', array(
 	'uses' => 'UploadsController@getImage'

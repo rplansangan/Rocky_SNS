@@ -17,7 +17,6 @@ class CreateLikesTable extends Migration {
 			$table->increments('like_id');
 			$table->integer('post_id');
 			$table->integer('like_user_id');
-			$table->boolean('is_unliked');
 			$table->softDeletes();
 			$table->timestamps();
 		});
