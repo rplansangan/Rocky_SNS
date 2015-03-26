@@ -42,21 +42,7 @@ $(document).ready(function(){
 	
 	$('#OpenImgUpload').click(function(){ $('#fileuploader').trigger('click'); });
 
-	$('.comment-like').on('click' , function(e){
-		var id = $(this).attr('value');
-		var url = $(this).attr('value2');
-		var token = $(this).attr('value3');
-		var a = this;
-		$.ajax({
-			url : url,
-			type : 'post',
-			data: {id:id , _token:token},
-			success: function(r){
-				$(a).children('span').text(r);
-			}
-		});	
-		e.preventDefault();
-	});
+	
 
 	$('.comment-form-hidden').hide();
 

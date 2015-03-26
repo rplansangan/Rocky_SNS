@@ -24,6 +24,22 @@ $('.comment-box').keypress(function (e) {
 	}
 });
 $(".comment-box" ).elastic();
+
+$('.comment-like').on('click' , function(e){
+		var id = $(this).attr('value');
+		var url = $(this).attr('value2');
+		var token = $(this).attr('value3');
+		var a = this;
+		$.ajax({
+			url : url,
+			type : 'post',
+			data: {id:id , _token:token},
+			success: function(r){
+				$(a).children('span').text(r);
+			}
+		});	
+		e.preventDefault();
+	});
 </script>
 @endif
 
@@ -52,16 +68,16 @@ $(".comment-box" ).elastic();
 					@endif
 				</span>
 			</a>
-			<a class="nf-like" href="javascript:void(0)">Comment</a>
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-form">
+			<a class="nf-like comment-form" href="javascript:void(0)">Comment</a>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-form comment-form-hidden">
 			<textarea max="500" name="post_message" class="comment-box" post_id="{{ $message->post_id }}" href="{{ route('comments.set', $message->post_id) }}" _token="{{ csrf_token() }}" placeholder=" Say Something..."></textarea>
-			<div class="comments">
+			<ul class="comments">
 				@if($comments)
 					@foreach($comments as $comment)
 						@include('ajax.comments', $comment)
 					@endforeach
 				@endif
-			</div>
+			</ul>
 		</div>
 	</div>
 </li>
