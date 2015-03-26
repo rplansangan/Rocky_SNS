@@ -14,6 +14,6 @@ class CommentsRepository {
 		
 		$temp = Comments::where('post_id', $data['id'])->with('user')->get();
 		
-		return $temp->first();
+		return $temp->last();
 	}
 }

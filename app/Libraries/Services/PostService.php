@@ -51,6 +51,8 @@ class PostService {
 		}
 				
 		$return['user'] = Registration::find($return['message']->user_id); 
+		$return['like'] = 0;
+		$return['comments'] = 0;
 		
 		return $return;
 	}

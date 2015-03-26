@@ -1,12 +1,8 @@
-<<<<<<< HEAD
 <style>
 ul.nav.nav-tabs li a {
 	color: #E74C3C;
 }
 </style>
-
-=======
->>>>>>> origin/master
 <div role="tabpanel" class="  post-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
 	<form method="POST" action="{{ route('files.newsfeed') }}" class="form-horizontal" id="form-post" role="form" enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -82,7 +78,8 @@ ul.nav.nav-tabs li a {
 				'message' => $single, 
 				'image' => $single->image, 
 				'like' => $single->like, 
-				'comments' => $single->comment
+				'comments' => $single->comment,
+				'include_script' => false
 			))
 		@endforeach
 	</ul>

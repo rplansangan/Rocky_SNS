@@ -1,6 +1,7 @@
 <?php
 
-use SNS\Libraries\Repositories\CommentsRepository;
+
+use SNS\Libraries\Facades\Comments;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,7 +13,7 @@ use SNS\Libraries\Repositories\CommentsRepository;
 |
 */
 Route::get('test', function() {
-
+	print_r(Comments::set(array('id' => 50, 'message' => '50 - 4')));
 });
 Route::get('testupload/{uid}/{fid}', array(
 	'uses' => 'UploadsController@getImage'
