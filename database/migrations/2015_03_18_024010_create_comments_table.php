@@ -20,6 +20,9 @@ class CreateCommentsTable extends Migration {
 			$table->integer('comment_user_id');
 			$table->softDeletes();
 			$table->timestamps();
+			
+			$table->index('post_id');
+			$table->index('comment_user_id');
 		});
 	}
 

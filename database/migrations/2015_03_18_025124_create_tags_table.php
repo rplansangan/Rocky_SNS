@@ -20,6 +20,9 @@ class CreateTagsTable extends Migration {
 			$table->tinyInteger('is_untagged');
 			$table->softDeletes();
 			$table->timestamps();
+			
+			$table->index('post_id');
+			$table->index('tagged_user_id');
 		});
 	}
 

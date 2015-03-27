@@ -19,6 +19,9 @@ class CreateMentionsTable extends Migration {
 			$table->integer('comment_id');
 			$table->softDeletes();
 			$table->timestamps();
+			
+			$table->index('post_id');
+			$table->index('comment_id');
 		});
 	}
 

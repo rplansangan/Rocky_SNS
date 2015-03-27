@@ -25,6 +25,10 @@ class CreateImagesTable extends Migration {
 			$table->integer('pet_id');
 			$table->softDeletes();
 			$table->timestamps();
+			
+			$table->index('user_id');
+			$table->index('post_id');
+			$table->index('pet_id');
 		});
 	}
 

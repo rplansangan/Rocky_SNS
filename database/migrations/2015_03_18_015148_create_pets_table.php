@@ -22,6 +22,8 @@ class CreatePetsTable extends Migration {
 			$table->tinyInteger('selected');
 			$table->softDeletes();
 			$table->timestamps();
+			
+			$table->index('user_id');
 		});
 	}
 

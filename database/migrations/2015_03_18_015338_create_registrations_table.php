@@ -37,6 +37,8 @@ class CreateRegistrationsTable extends Migration {
 			$table->boolean('is_validated');
 			$table->softDeletes();
 			$table->timestamps();
+			
+			$table->index('user_id');
 		});
 	}
 

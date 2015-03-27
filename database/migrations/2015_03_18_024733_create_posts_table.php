@@ -22,6 +22,9 @@ class CreatePostsTable extends Migration {
 			$table->integer('image_id');
 			$table->softDeletes();
 			$table->timestamps();
+			
+			$table->index('user_id');
+			$table->index('image_id');
 		});
 	}
 
