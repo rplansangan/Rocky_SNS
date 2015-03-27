@@ -7,6 +7,7 @@
 			<a href="{{ route('advertised') }}" class="list-group-item ads">Advertise</a>
 			<a href="{{ route('shop') }}" class="list-group-item shop">Shop</a>
 			<a href="{{ route('trackers') }}" class="list-group-item track">Trackers</a>
+			<a href="#" class="list-group-item friends">Friends</a>
 		</div>
 	</div>
 </div>

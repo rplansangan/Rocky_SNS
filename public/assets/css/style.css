@@ -472,6 +472,18 @@ a.list-group-item.track {
   background-repeat: no-repeat;
 }
 
+a.list-group-item.friends {
+  background-image: url('../images/FriendsBG2.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+.left-nav a.friends:hover {
+  background-image: url('../images/FriendsBG.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
 .left-addpet {
   padding: 10px 20px;
 }
@@ -521,10 +533,6 @@ a.list-group-item.track {
   border: 1px solid #DEDDDC;
 }
 
-.right legend {
-  font-family: 'Montserrat', sans-serif important;
-}
-
 .right nav ul {
   padding: 0;
   list-style: none;
@@ -540,9 +548,21 @@ a.list-group-item.track {
   margin-right: 5px;
 }
 
-.right nav ul li a {
-  color: #414040;
+.right-nav {
   font-family: 'Montserrat', sans-serif important;
+}
+
+p.addesc {
+  font-size: 11px;
+}
+
+p.adtitle {
+  font-weight: 600;
+}
+
+.rightads a {
+  color: #E74C3C;
+  font-size: 13px;
 }
 
 
