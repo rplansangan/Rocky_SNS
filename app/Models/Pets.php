@@ -25,9 +25,17 @@ class Pets extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array('user_id', 'pet_name', 'pet_type', 'breed');
+	protected $fillable = array('user_id', 'pet_name', 'pet_type', 'breed', 'pet_bday', 'pet_gender', 'food', 'pet_likes', 'pet_dislikes');
 	
 	protected $dates = array('deleted_at');
+
+	public static $initialRules = array(
+		'pet_name' => 'required',
+		'pet_type' => 'required',
+		'breed' => 'required',
+		'pet_bday' => 'require',
+		'pet_gender' => 'required',
+	)
 	
 	// RELATIONSHIPS
 	public function user() {

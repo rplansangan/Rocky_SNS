@@ -240,7 +240,7 @@ ul.nav.nav-tabs li a {
   color: #E74C3C;
 }
 
-.newsfeed-area ul li p a {
+ul#home-newsfeed li a {
   color: #E74C3C;
 }
 
@@ -263,7 +263,7 @@ ul.nav.nav-tabs li a {
   color: #E74C3C;
 }
 
-.profile-feed ul li p a {
+.profile-feed ul li a {
   color: #E74C3C;
 }
 

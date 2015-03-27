@@ -3,6 +3,7 @@
 use SNS\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use SNS\Models\Registration;
+use SNS\Models\Pets;
 use SNS\Services\ValidationService;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
@@ -107,5 +108,29 @@ class RegistrationController extends Controller {
 	public function validateMessage(){
 		$data['auth'] = false;
 		return view('pages.message' , $data);
+	}
+
+	public function registerpet(Request $request){
+		/*$input = array_except($request->all(), array('_token'));
+		$validate = validator::make($input, Pets::$InitialRules)
+
+		if($validate->fails()){
+			return redirect()->back()
+			->withInput($request->all())
+			->withErrors($validate->errors()->all());
+		}
+
+		$pet = new pet();
+		$pet->pet_name = $input['pet_name'];
+		$pet->pet_type = $input['pet_type'];
+		$pet->breed = $input['breed'];
+		$pet->pet_bday = $input['pet_bday'];
+		$pet->pet_gender = $input['pet_gender'];
+		$pet->food = $input['food'];
+		$pet->pet_likes = $input['pet_likes'];
+		$pet->pet_dislikes = $input['pet_dislikes'];*/
+
+		$data['auth'] = true;
+		return view('pages.petregister', $data);
 	}
 }

@@ -74,7 +74,14 @@ Route::post('register/update/{id}', array(
 	'as' => 'register.detailsUpdate',
 	'uses' => 'RegistrationController@updateDetails'
 ));
-
+Route::any('register/{id}/pet', array(
+	'as' => 'register.petdetails',
+	'uses' => 'RegistrationController@registerpet',
+));
+Route::post('register/update/{id}/pet', array(
+	'as' => 'register.petdetailsUpdate',
+	'uses' => 'RegistrationController@updatepetdetails'
+));
 
 /*Profile route*/
 Route::get('profile/{id}', array(
