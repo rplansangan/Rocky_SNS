@@ -5,6 +5,7 @@ use SNS\Libraries\Repositories\PostRepository;
 use SNS\Models\Registration;
 use SNS\Libraries\Facades\Likes;
 use SNS\Libraries\Facades\Comments;
+use Illuminate\Support\Facades\Auth;
 
 class PostService {
 	
@@ -61,12 +62,12 @@ class PostService {
 	 * 
 	 * @param integer $take
 	 */
-	public function initialNewsFeed($take = null) {
+	public function initialNewsFeed($id = null ,$take = null) {
 		if(!$take) {
 			$take = 5;
 		}
 		
-		return $this->post->initialNewsFeed($take);
+		return $this->post->initialNewsFeed($id, $take);
 	}
 	
 	/**

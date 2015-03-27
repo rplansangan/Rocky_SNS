@@ -11,7 +11,7 @@ class ProfileController extends Controller {
 
 	public function showProfile($id){
 		$profileDetails = Registration::find($id); 
-		$collection = PostService::initialNewsFeed();
+		$collection = PostService::initialNewsFeed($id);
 		$data['auth'] = true;
 		return view('profile.profile' , $data)->with('profile', $profileDetails)->with('posts', $collection);
 	}

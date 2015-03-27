@@ -61,8 +61,11 @@ class PostRepository {
 	 * Gets initial items for news feed
 	 * @param integer $take
 	 */
-	public function initialNewsFeed($take) {
-		return $this->post->with('user', 'image', 'like', 'comment', 'comment.user')->take($take)->latest()->get();
+	public function initialNewsFeed($id, $take) {
+		if(!$id) {
+			return $this->post->with('user', 'image', 'like', 'comment', 'comment.user')->take($take)->latest()->get();
+		}
+		return $this->post->where('user_id', $id)->with('user', 'image', 'like', 'comment', 'comment.user')->take($take)->latest()->get();
 	}
 	
 	/**
