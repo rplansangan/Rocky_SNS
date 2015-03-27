@@ -34,6 +34,7 @@
 
 <div class="profile-feed col-sm-12 col-xs-12 col-lg-12 col-md-12">
 	<ul class="media-list append-post">
+		@include('scripts.nf_pagination')
 		@foreach($posts as $single)
 			@include('ajax.post', array(
 				'user' => $single->user, 
