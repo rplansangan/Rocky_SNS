@@ -25,7 +25,7 @@
             <li role="presentation"><a href="{{ route('profile.showProfile', Auth::id()) }}">Master</a></li>
 
           @endif
-        <li role="presentation"><a href="{{ route('register.pet', Auth::id()) }}">Add A Pet</a></li>
+        <li role="presentation"><a href="{{ route('register.petdetails', Auth::id()) }}">Add A Pet</a></li>
         <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa fa-cog"></i></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="">Change password</a></li>

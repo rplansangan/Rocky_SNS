@@ -149,13 +149,14 @@ class RegistrationController extends Controller {
 				'image_path' => $dir,
 				'image_name' => $filename,
 				'image_mime' => $file->getMimeType(),
-				'image_ext' => $file->getClientOriginalExtension()
+				'image_ext' => $file->getClientOriginalExtension(),
+				'is_profile_picture' => 1
 		));
 		
 		$pet->image()->save($img_data);
 		
 		$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
 		
-// 		return redirect()->;
+		return redirect()->route('profile.petlist', Auth::id());
 	}
 }
