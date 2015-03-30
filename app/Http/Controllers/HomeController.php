@@ -72,4 +72,8 @@ class HomeController extends Controller {
 	public function test(Request $request){
 		echo '1';
 	}
+
+	public function addadvertise(){
+		return view('pages.addadvertise');
+	}
 }

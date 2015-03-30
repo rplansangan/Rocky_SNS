@@ -31,4 +31,8 @@ class ProfileController extends Controller {
 		$data['auth'] = true;
 		return view('profile.profilepet', $data)->with('profile', $profileDetails[0]);
 	}
+
+	public function settings(){
+		return view('profile.settings');
+	}
 }

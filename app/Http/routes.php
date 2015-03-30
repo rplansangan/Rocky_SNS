@@ -141,6 +141,21 @@ Route::get('trackers', array(
 	'uses' => 'HomeController@trackers'
 	));
 
+
+/* ADVERTISE */
+Route::get('add_advertise', array(
+	'as' => 'addadvertise',
+	'uses' => 'HomeController@addadvertise'
+	));
+
+
+/* SETTINGS */
+
+Route::get('settings', array(
+	'as' => 'settings',
+	'uses' => 'ProfileController@settings'
+));
+
 Route::post('test2', array(
 	'as' => 'test2',
 	'uses' => 'HomeController@test'
