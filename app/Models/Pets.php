@@ -45,5 +45,9 @@ class Pets extends Model {
 	public function image() {
 		return $this->hasMany('SNS\Models\Images', 'pet_id');
 	}
+	
+	public function profile_pic() {
+		return $this->hasOne('SNS\Models\Images', 'pet_id');
+	}
 
 }
