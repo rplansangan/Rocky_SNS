@@ -6,7 +6,8 @@
 			<p class="addesc">Lorem ipsum dolor sit amet, consectetur...</p>
 			<a href="#">more</a>
 		</div>
-		<div class="col-lg-12 col-md-12 ">
+
+		<div class="col-lg-12 col-md-12">
 			<img src="{{ URL::asset('assets/images/ad2.jpg') }}" width="130px">
 			<p class="adtitle">Title</p>
 			<p class="addesc">Lorem ipsum dolor sit amet, consectetur...</p>
