@@ -15,7 +15,7 @@
   </div>
 </div>
 
-@if($auth)
+@if(Auth::id())
   <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 subhead-content">
    <div class="container">
      <ul class="nav nav-pills navbar-right">
@@ -25,7 +25,7 @@
             <li role="presentation"><a href="{{ route('profile.showProfile', Auth::id()) }}">Master</a></li>
 
           @endif
-        <li role="presentation"><a href="{{ route('register.petdetails', Auth::id()) }}">Add A Pet</a></li>
+        <li role="presentation"><a href="{{ route('register.pet', Auth::id()) }}">Add A Pet</a></li>
         <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa fa-cog"></i></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="">Change password</a></li>
@@ -37,7 +37,7 @@
   </div>
 @endif
 
-@unless($auth)
+@unless(Auth::id())
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/set1.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/normalize.css') }}" />
 

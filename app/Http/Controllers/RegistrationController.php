@@ -121,7 +121,7 @@ class RegistrationController extends Controller {
 	public function petRegister(Request $request) {
 		$input = array_except($request->all(), array('_token'));
 		$validate = Validator::make($input, Pets::$initialRules);
-		
+
 		if($validate->fails()){
 			return redirect()->back()
 			->withInput($request->all())
@@ -156,6 +156,6 @@ class RegistrationController extends Controller {
 		
 		$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
 		
-		return redirect()->;
+// 		return redirect()->;
 	}
 }
