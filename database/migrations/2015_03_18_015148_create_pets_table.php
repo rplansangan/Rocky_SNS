@@ -20,10 +20,10 @@ class CreatePetsTable extends Migration {
 			$table->string('pet_type', 5);
 			$table->string('breed', 5);
 			$table->datetime('pet_bday', 10);
-			$table->string('gender', 1);
+			$table->string('pet_gender', 1);
 			$table->string('food', 255);
-			$table->string('likes', 255);
-			$table->string('dislikes', 255);
+			$table->string('pet_likes', 255);
+			$table->string('pet_dislikes', 255);
 			$table->tinyInteger('selected');
 			$table->softDeletes();
 			$table->timestamps();

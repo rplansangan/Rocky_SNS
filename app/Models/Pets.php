@@ -33,9 +33,9 @@ class Pets extends Model {
 		'pet_name' => 'required',
 		'pet_type' => 'required',
 		'breed' => 'required',
-		'pet_bday' => 'require',
+		'pet_bday' => 'required|date',
 		'pet_gender' => 'required',
-	)
+	);
 	
 	// RELATIONSHIPS
 	public function user() {
@@ -43,7 +43,7 @@ class Pets extends Model {
 	}
 	
 	public function image() {
-		return $this->belongsTo('SNS\Models\Images');
+		return $this->hasMany('SNS\Models\Images', 'pet_id');
 	}
 
 }

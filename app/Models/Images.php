@@ -25,7 +25,7 @@ class Images extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array('user_id', 'image_path', 'image_name', 'image_mime', 'image_ext', 'is_profile_picture', 'post_id', 'pet_id');
+	protected $fillable = array('user_id', 'pet_id', 'image_path', 'image_name', 'image_mime', 'image_ext', 'is_profile_picture', 'post_id', 'pet_id');
 	
 	
 	protected $dates = array('deleted_at');
@@ -40,7 +40,18 @@ class Images extends Model {
 	}
 	
 	public function pet() {
-		return $this->HasMany('SNS\Models\Pets');
+		return $this->belongsTo('SNS\Models\Pets');
+	}
+	
+	// SCOPES
+	/**
+	 * 
+	 * @param unknown $query
+	 * @param string $user_id
+	 * @param string $pet_id
+	 */
+	public function scopeProfilePicture($query, $user_id, $pet_id = null) {
+		return $query->where('user_id', $user_id)->where('pet_id', $pet_id)->get();
 	}
 
 }

@@ -1,15 +1,18 @@
 <?php namespace SNS\Http\Controllers;
 
-use SNS\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use SNS\Models\Registration;
 use SNS\Models\Pets;
+use SNS\Models\User;
 use SNS\Services\ValidationService;
+use SNS\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
-use SNS\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use SNS\Libraries\Facades\StorageHelper;
+use SNS\Models\Images;
+use Carbon\Carbon;
 
 class RegistrationController extends Controller {
 	
@@ -110,17 +113,23 @@ class RegistrationController extends Controller {
 		return view('pages.message' , $data);
 	}
 
-	public function registerpet(Request $request){
-		/*$input = array_except($request->all(), array('_token'));
-		$validate = validator::make($input, Pets::$InitialRules)
-
+	public function registerpet() {
+		$data['auth'] = true;
+		return view('pages.petregister', $data);
+	}
+	
+	public function petRegister(Request $request) {
+		$input = array_except($request->all(), array('_token'));
+		$validate = Validator::make($input, Pets::$initialRules);
+		
 		if($validate->fails()){
 			return redirect()->back()
 			->withInput($request->all())
 			->withErrors($validate->errors()->all());
 		}
-
-		$pet = new pet();
+		
+		$pet = new Pets();
+		$pet->user_id = Auth::id();
 		$pet->pet_name = $input['pet_name'];
 		$pet->pet_type = $input['pet_type'];
 		$pet->breed = $input['breed'];
@@ -128,9 +137,25 @@ class RegistrationController extends Controller {
 		$pet->pet_gender = $input['pet_gender'];
 		$pet->food = $input['food'];
 		$pet->pet_likes = $input['pet_likes'];
-		$pet->pet_dislikes = $input['pet_dislikes'];*/
-
-		$data['auth'] = true;
-		return view('pages.petregister', $data);
+		$pet->pet_dislikes = $input['pet_dislikes'];
+		$pet->save();
+		
+		$file = $request->file('petfile');
+		$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
+		$dir = StorageHelper::create(Auth::id());
+		
+		$img_data = new Images(array(
+				'user_id' => Auth::id(),
+				'image_path' => $dir,
+				'image_name' => $filename,
+				'image_mime' => $file->getMimeType(),
+				'image_ext' => $file->getClientOriginalExtension()
+		));
+		
+		$pet->image()->save($img_data);
+		
+		$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
+		
+		return redirect()->;
 	}
 }

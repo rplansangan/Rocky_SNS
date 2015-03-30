@@ -14,7 +14,7 @@ Rocky Registration
 			</div>
 		</div>
 		<div class="row">
-			<form method="POST" action="{{ route('profile.petlist') }}" class="form-horizontal col-sm-12  col-lg-12 col-md-12  col-xs-12 reg " role="form">
+			<form method="POST" action="{{ route('register.petRegister', Auth::id()) }}" class="form-horizontal col-sm-12  col-lg-12 col-md-12  col-xs-12 reg " role="form" enctype="multipart/form-data">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Profile Picture</label>
@@ -64,19 +64,19 @@ Rocky Registration
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Food:</label>
 					<div class="col-sm-8">
-						<input type="text" name="breed" class="form-control" placeholder="Food">
+						<input type="text" name="food" class="form-control" placeholder="Food">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Likes:</label>
 					<div class="col-sm-8">
-						<input type="text" name="breed" class="form-control" placeholder="Likes">
+						<input type="text" name="pet_likes" class="form-control" placeholder="Likes">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Dislikes:</label>
 					<div class="col-sm-8">
-						<input type="text" name="breed" class="form-control" placeholder="Dislikes">
+						<input type="text" name="pet_dislikes" class="form-control" placeholder="Dislikes">
 					</div>
 				</div>
 				<div class="form-group">

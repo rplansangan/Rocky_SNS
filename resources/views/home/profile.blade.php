@@ -1,3 +1,4 @@
+@if(Auth::id() == $profile->registration_id)
 <div role="tabpanel" class="  post-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
 	<form method="POST" action="{{ route('files.newsfeed') }}" class="form-horizontal" id="form-post" role="form" enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -31,8 +32,9 @@
 		</div>
 	</form>
 </div>
-
+@endif
 <div class="profile-feed col-sm-12 col-xs-12 col-lg-12 col-md-12">
+	<legend>News feed</legend>
 	<ul class="media-list append-post">
 		@include('scripts.nf_pagination')
 		@foreach($posts as $single)
