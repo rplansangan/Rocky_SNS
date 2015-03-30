@@ -110,9 +110,9 @@ class RegistrationController extends Controller {
 		return view('pages.message' , $data);
 	}
 
-	public function registerpet(Request $request){
-		/*$input = array_except($request->all(), array('_token'));
-		$validate = validator::make($input, Pets::$InitialRules)
+	public function addpet(Request $request){
+		$input = array_except($request->all(), array('_token'));
+		/*$validate = validator::make($input, Pets::$InitialRules)
 
 		if($validate->fails()){
 			return redirect()->back()
@@ -130,7 +130,10 @@ class RegistrationController extends Controller {
 		$pet->pet_likes = $input['pet_likes'];
 		$pet->pet_dislikes = $input['pet_dislikes'];*/
 
-		$data['auth'] = true;
-		return view('pages.petregister', $data);
+		print_r($input);
+	}
+
+	public function addpetform(){
+		return view('pages.petregister');
 	}
 }

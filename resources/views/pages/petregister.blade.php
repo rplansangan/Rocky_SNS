@@ -14,13 +14,16 @@ Rocky Registration
 			</div>
 		</div>
 		<div class="row">
-			<form method="POST" action="{{ route('profile.petlist') }}" class="form-horizontal col-sm-12  col-lg-12 col-md-12  col-xs-12 reg " role="form">
+			<form method="POST" action="{{ route('register.addpet') }}" class="form-horizontal col-sm-12  col-lg-12 col-md-12  col-xs-12 reg " role="form" enctype="multipart/form-data">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Profile Picture</label>
 					<div class='col-sm-8'>
 						<input type='file' name="petfile" class="custom-file-input" />
 					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-3 col-sm-offset-2 view-image-here"></div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Name:</label>

@@ -75,8 +75,12 @@ Route::post('register/update/{id}', array(
 	'uses' => 'RegistrationController@updateDetails'
 ));
 Route::any('register/{id}/pet', array(
-	'as' => 'register.petdetails',
-	'uses' => 'RegistrationController@registerpet',
+	'as' => 'register.pet',
+	'uses' => 'RegistrationController@addpetform',
+));
+Route::any('register/addpet', array(
+	'as' => 'register.addpet',
+	'uses' => 'RegistrationController@addpet',
 ));
 Route::post('register/update/{id}/pet', array(
 	'as' => 'register.petdetailsUpdate',
@@ -88,12 +92,10 @@ Route::get('profile/{id}', array(
 	'as' => 'profile.showProfile',
 	'uses' => 'ProfileController@showProfile'
 ));
-
 Route::get('petlist/{id}', array(
 	'as' => 'profile.petlist',
 	'uses' => 'ProfileController@petlist'
 ));
-
 Route::post('likes/set/{post_id}', array(
 	'as' => 'likes.set',
 	'uses' => 'PostsController@setLike'
