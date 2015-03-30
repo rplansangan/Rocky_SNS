@@ -15,7 +15,7 @@
   </div>
 </div>
 
-@if(Auth::id())
+@if($auth)
   <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 subhead-content">
    <div class="container">
      <ul class="nav nav-pills navbar-right">
@@ -37,7 +37,7 @@
   </div>
 @endif
 
-@unless(Auth::id())
+@unless($auth)
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/set1.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/normalize.css') }}" />
 

@@ -23,9 +23,6 @@ Rocky Registration
 					</div>
 				</div>
 				<div class="form-group">
-					<div class="col-sm-3 col-sm-offset-2 view-image-here"></div>
-				</div>
-				<div class="form-group">
 					<label class="col-sm-2 control-label">Name:</label>
 					<div class="col-sm-8">
 						<input type="text" name="pet_name" class="form-control" placeholder="Name">

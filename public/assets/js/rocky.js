@@ -42,6 +42,8 @@ $(document).ready(function(){
 	
 	$('#OpenImgUpload').click(function(){ $('#fileuploader').trigger('click'); });
 
+	
+
 	$('.comment-form-hidden').hide();
 
 	alreadyloading = false;
@@ -56,7 +58,7 @@ $(document).ready(function(){
     				url : route,
     				type : 'post',
     				data: { offset:items , _token:token},
-    				beforeSend: function() {
+    				 beforeSend: function() {
 				        $("#load-here").html('loading');
 				    },
     				success: function(r){

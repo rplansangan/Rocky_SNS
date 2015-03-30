@@ -79,24 +79,25 @@ Route::post('register/{id}/register_pet', array(
 	'as' => 'register.petRegister',
 	'uses' => 'RegistrationController@petRegister'
 ));
-Route::post('register/update/{id}/pet', array(
-	'as' => 'register.petdetailsUpdate',
-	'uses' => 'RegistrationController@updatepetdetails'
-));
 
 /*Profile route*/
 Route::get('profile/{id}', array(
 	'as' => 'profile.showProfile',
 	'uses' => 'ProfileController@showProfile'
 ));
+
 Route::get('petlist/{id}', array(
 	'as' => 'profile.petlist',
 	'uses' => 'ProfileController@petlist'
 ));
+<<<<<<< HEAD
 Route::get('profile/{id}/pet/{pet_id}', array(
 	'as' => 'profile.showPetProfile',
 	'uses' => 'ProfileController@showPetProfile'
 ));
+=======
+
+>>>>>>> parent of a49df14... 1
 Route::post('likes/set/{post_id}', array(
 	'as' => 'likes.set',
 	'uses' => 'PostsController@setLike'
