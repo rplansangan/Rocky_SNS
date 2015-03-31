@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-photo">
-		<a href="#">
+		<a href="{{ route('profile.showProfile', Auth::id()) }}">
 			@if(isset($pet->image))	
 				<img src="{{ route('files.get.image', array($user->user_id, $user->image[0]->image_id)) }}">
 			@else
@@ -10,7 +10,7 @@
 	</div>
 
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-name">
-		<a href="#"><h4>{{ $profile->first_name }} {{ $profile->last_name }}</h4></a>
+		<a href="{{ route('profile.showProfile', Auth::id()) }}"><h4>{{ $profile->first_name }} {{ $profile->last_name }}</h4></a>
 	</div>
 </div>
 

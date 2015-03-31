@@ -277,6 +277,11 @@ ul#home-newsfeed li a {
   width: 60px;
 }
 
+.petlist-container {
+  border-bottom: 1px solid #FCD5D1;
+  margin-bottom: 20px;
+}
+
 .petlist-info h4 {
   color: #89342C;
   font-weight: 600;
@@ -284,6 +289,11 @@ ul#home-newsfeed li a {
 
 .petlist-info a:hover > h4 {
   color: #F9BBB5;
+}
+
+.petlist-container .glyphicon-remove-circle {
+  float: right;
+  color: #E74C3C;
 }
 
 
