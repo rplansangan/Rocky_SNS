@@ -267,6 +267,18 @@ ul#home-newsfeed li a {
   color: #E74C3C;
 }
 
+.prof-photo .glyphicon-edit {
+  position: absolute;
+  right: 60px;
+  top: 4px;
+  color: #E74C3C;
+  visibility: hidden;
+}
+
+.prof-photo:hover > .glyphicon-edit {
+  visibility: visible;
+}
+
 
 /*============Pet List Page============*/
 .petlist-info .dl-horizontal dd {
