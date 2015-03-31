@@ -3,7 +3,13 @@
 
 	@foreach($list as $pet)
 		<div class="col-sm-12 col-xs-12 col-lg-4 col-md-4 petlist-img">
-			<a href="{{ route('profile.showPetProfile', array($pet->user_id, $pet->pet_id)) }}"><img src="{{ route('files.get.image', array($pet->user_id, $pet->image[0]->image_id)) }}" width="120px"></a>
+			<a href="{{ route('profile.showPetProfile', array($pet->user_id, $pet->pet_id)) }}">
+				@if(isset($pet->image))	
+					<img src="{{ route('files.get.image', array($pet->user_id, $pet->image[0]->image_id)) }}" width="120px">
+				@else
+					<img src="{{ URL::asset('assets/images/pet-default.png') }}" width="120px">
+				@endif
+			</a>
 		</div>
 	
 		<div class="col-sm-12 col-xs-12 col-lg-8 col-md-84 petlist-info">

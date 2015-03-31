@@ -1,6 +1,12 @@
 <div class="row">
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-photo">
-		<a href="#"><img src="{{ URL::asset('assets/images/jon.jpg') }}"></a>
+		<a href="#">
+			@if(isset($pet->image))	
+				<img src="{{ route('files.get.image', array($user->user_id, $user->image[0]->image_id)) }}">
+			@else
+				<img src="{{ URL::asset('assets/images/owner-default.png') }}">
+			@endif
+		</a>
 	</div>
 
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-name">

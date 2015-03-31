@@ -140,23 +140,24 @@ class RegistrationController extends Controller {
 		$pet->pet_dislikes = $input['pet_dislikes'];
 		$pet->save();
 		
-		$file = $request->file('petfile');
-		$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
-		$dir = StorageHelper::create(Auth::id());
-		
-		$img_data = new Images(array(
-				'user_id' => Auth::id(),
-				'image_path' => $dir,
-				'image_name' => $filename,
-				'image_mime' => $file->getMimeType(),
-				'image_ext' => $file->getClientOriginalExtension(),
-				'is_profile_picture' => 1
-		));
-		
-		$pet->image()->save($img_data);
-		
-		$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
-		
+		if($request->has('petfile')) {
+			$file = $request->file('petfile');
+			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
+			$dir = StorageHelper::create(Auth::id());
+			
+			$img_data = new Images(array(
+					'user_id' => Auth::id(),
+					'image_path' => $dir,
+					'image_name' => $filename,
+					'image_mime' => $file->getMimeType(),
+					'image_ext' => $file->getClientOriginalExtension(),
+					'is_profile_picture' => 1
+			));
+			
+			$pet->image()->save($img_data);
+			
+			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
+		}
 		return redirect()->route('profile.petlist', Auth::id());
 	}
 }
