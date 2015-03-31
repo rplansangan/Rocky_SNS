@@ -18,7 +18,7 @@ class CreatePetsTable extends Migration {
 			$table->integer('user_id');
 			$table->string('pet_name', 100);
 			$table->string('pet_type', 5);
-			$table->string('breed', 5);
+			$table->string('breed', 55);
 			$table->datetime('pet_bday', 10);
 			$table->string('pet_gender', 1);
 			$table->string('food', 255);

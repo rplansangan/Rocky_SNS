@@ -7,6 +7,7 @@
 				<img src="{{ URL::asset('assets/images/owner-default.png') }}">
 			@endif
 		</a>
+		<div class="glyphicon glyphicon-edit"></div>
 	</div>
 
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-name">
