@@ -35,7 +35,7 @@
 @endif
 <div class="profile-feed col-sm-12 col-xs-12 col-lg-12 col-md-12">
 	<legend>News feed</legend>
-	<ul class="media-list append-post">
+	<ul id="home-newsfeed" class="media-list append-post">
 		@include('scripts.nf_pagination')
 		@foreach($posts as $single)
 			@include('ajax.post', array(
@@ -48,5 +48,4 @@
 			))
 		@endforeach
 	</ul>
-	<span id="load-here"></span>
 </div>

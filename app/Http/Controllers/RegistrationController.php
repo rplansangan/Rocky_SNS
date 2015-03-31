@@ -160,4 +160,12 @@ class RegistrationController extends Controller {
 		}
 		return redirect()->route('profile.petlist', Auth::id());
 	}
+
+	public function merchant_activation(Request $request){
+		$input = array_except($request->all(), array('_token'));
+		$validate = Validator::make($input, Registration::$initialRules);
+		echo '<pre>';
+		print_r($input);
+		echo '</pre>';
+	}
 }

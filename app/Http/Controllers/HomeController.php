@@ -59,7 +59,7 @@ class HomeController extends Controller {
 	}
 	public function advertised(){
 		$data['auth'] = true;
-		return view('pages.advertisepage' , $data);
+		return view('pages.advertise' , $data);
 	}
 	public function shop(){
 		$data['auth'] = true;
@@ -69,11 +69,16 @@ class HomeController extends Controller {
 		$data['auth'] = true;
 		return view('pages.trackers' , $data);
 	}
+	public function search(){
+		$data['auth'] = true;
+		return view('pages.search' , $data);
+	}
 	public function test(Request $request){
 		echo '1';
 	}
 
 	public function addadvertise(){
-		return view('pages.addadvertise');
+		$data['auth'] = true;
+		return view('pages.addadvertise' , $data);
 	}
 }

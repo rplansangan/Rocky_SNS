@@ -35,6 +35,7 @@ class ProfileController extends Controller {
 	}
 
 	public function settings(){
-		return view('profile.settings');
+		$data['auth'] = true;
+		return view('profile.settings' , $data);
 	}
 }

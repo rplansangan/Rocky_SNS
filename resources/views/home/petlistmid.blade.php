@@ -3,7 +3,6 @@
 
 	@foreach($list as $pet)
 	<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 petlist-container">
-		<div class="glyphicon glyphicon-remove-circle"></div>
 		<div class="col-sm-12 col-xs-12 col-lg-4 col-md-4 petlist-img">
 			<a href="{{ route('profile.showPetProfile', array($pet->user_id, $pet->pet_id)) }}">
 				@if(isset($pet->image))	
@@ -13,12 +12,11 @@
 				@endif
 			</a>
 		</div>
-		
-		<div class="col-sm-12 col-xs-12 col-lg-8 col-md-84 petlist-info">
+		<div class="col-sm-12 col-xs-12 col-lg-8 col-md-8 petlist-info">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			<a href="{{ route('profile.showPetProfile', array($pet->user_id, $pet->pet_id)) }}"><h4>{{ $pet->pet_name }}</h4></a>
 			<dl class="dl-horizontal">
-			 	<dt>Type:</dt><dd>{{ $pet->pet_type }}</dd>
-					
+			 	<dt>Type:</dt><dd>{{ $pet->pet_type }}</dd>					
 				<dt>Breed:</dt><dd>{{ $pet->breed }}</dd>
 				<dt>Age:</dt>
 				<dd>1 year(s) old</dd>

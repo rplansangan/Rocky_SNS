@@ -379,7 +379,7 @@ Rocky Registration
 					</div>
 				</div>
 				<div class="form-group">
-					<div class='col-sm-8 col-sm-offset-2 Tracker123text-right'>
+					<div class='col-sm-8 col-sm-offset-2 text-right'>
 						<input type='submit' class="btn" value="Continue"/>
 					</div>
 				</div>

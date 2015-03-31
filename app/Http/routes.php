@@ -136,14 +136,20 @@ Route::get('trackers', array(
 	'as' => 'trackers',
 	'uses' => 'HomeController@trackers'
 	));
-
+Route::get('search', array(
+	'as' => 'search',
+	'uses' => 'HomeController@search'
+	));
 
 /* ADVERTISE */
 Route::get('add_advertise', array(
 	'as' => 'addadvertise',
 	'uses' => 'HomeController@addadvertise'
 	));
-
+Route::any('activate_merchant', array(
+	'as' => 'activate_merchant',
+	'uses' => 'RegistrationController@merchant_activation'
+	));
 
 /* SETTINGS */
 
