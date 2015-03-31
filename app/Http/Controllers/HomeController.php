@@ -59,7 +59,7 @@ class HomeController extends Controller {
 	}
 	public function advertised(){
 		$data['auth'] = true;
-		return view('pages.advertise' , $data);
+		return view('pages.advertisepage' , $data);
 	}
 	public function shop(){
 		$data['auth'] = true;
