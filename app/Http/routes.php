@@ -10,7 +10,6 @@
 |
 */
 Route::get('test', function() {
-	
 });
 Route::get('testupload/{uid}/{fid}', array(
 	'uses' => 'UploadsController@getImage'
@@ -90,14 +89,11 @@ Route::get('petlist/{id}', array(
 	'as' => 'profile.petlist',
 	'uses' => 'ProfileController@petlist'
 ));
-<<<<<<< HEAD
 Route::get('profile/{id}/pet/{pet_id}', array(
 	'as' => 'profile.showPetProfile',
 	'uses' => 'ProfileController@showPetProfile'
 ));
-=======
 
->>>>>>> parent of a49df14... 1
 Route::post('likes/set/{post_id}', array(
 	'as' => 'likes.set',
 	'uses' => 'PostsController@setLike'
