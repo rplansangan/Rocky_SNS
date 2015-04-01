@@ -63,9 +63,42 @@ class PostRepository {
 	 */
 	public function initialNewsFeed($id, $take) {
 		if(!$id) {
-			return $this->post->with('user', 'image', 'like', 'comment', 'comment.user')->take($take)->latest()->get();
-		}
-		return $this->post->where('user_id', $id)->with('user', 'image', 'like', 'comment', 'comment.user')->take($take)->latest()->get();
+			return $this->post->with(array(
+					'user' => function ($q) {
+									$q->addSelect(array('registration_id', 'first_name', 'last_name'));
+								},
+					'image' => function ($q) {
+									$q->addSelect(array('image_id'));
+								},
+					'like' => function ($q) {
+						
+								},
+					'comment' => function ($q) {
+									$q->addSelect(array('comment_id', 'post_id' ,'comment_message', 'comment_user_id'));
+								},
+					'comment.user' => function ($q) {
+									$q->addSelect(array('registration_id', 'first_name', 'last_name'));
+								}))->take($take)->latest()->get();
+			}
+		
+		return $this->post
+				->where('user_id', $id)
+				->with(array(
+					'user' => function ($q) {
+									$q->addSelect(array('registration_id', 'first_name', 'last_name'));
+								},
+					'image' => function ($q) {
+									$q->addSelect(array('image_id'));
+								},
+					'like' => function ($q) {
+						
+								},
+					'comment' => function ($q) {
+									$q->addSelect(array('comment_id', 'post_id' ,'comment_message', 'comment_user_id'));
+								},
+					'comment.user' => function ($q) {
+									$q->addSelect(array('registration_id', 'first_name', 'last_name'));
+								}))->take($take)->latest()->get();
 	}
 	
 	/**
@@ -74,7 +107,22 @@ class PostRepository {
 	 * @param integer $take
 	 */
 	public function incrementalNewsFeed($skip, $take) {		
-		return $this->post->with('user', 'image', 'like', 'comment', 'comment.user')->skip($skip)->take($take)->latest()->get();
+		return $this->post->with(array(
+					'user' => function ($q) {
+									$q->addSelect(array('registration_id', 'first_name', 'last_name'));
+								},
+					'image' => function ($q) {
+									$q->addSelect(array('image_id'));
+								},
+					'like' => function ($q) {
+						
+								},
+					'comment' => function ($q) {
+									$q->addSelect(array('comment_id', 'post_id' ,'comment_message', 'comment_user_id'));
+								},
+					'comment.user' => function ($q) {
+									$q->addSelect(array('registration_id', 'first_name', 'last_name'));
+								}))->skip($skip)->take($take)->latest()->get();
 	}
 	
 }

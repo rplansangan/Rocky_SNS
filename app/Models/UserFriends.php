@@ -15,7 +15,7 @@ class UserFriends extends Model {
 	
 	// RELATIONSHIPS
 	public function profile() {
-		return $this->belongsTo('SNS\Models\Registration', 'registration_id');
+		return $this->hasOne('SNS\Models\Registration', 'registration_id', 'friend_user_id');
 	}
 	
 	// SCOPES

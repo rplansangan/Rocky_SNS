@@ -11,8 +11,9 @@ use SNS\Libraries\Facades\FriendService;
 |
 */
 Route::get('test', function() {
+	$var = FriendService::collect(1);
 	echo "<pre>";
-	var_dump(FriendService::add(2));
+	print_r($var);
 	echo "</pre>";
 });
 Route::get('testupload/{uid}/{fid}', array(

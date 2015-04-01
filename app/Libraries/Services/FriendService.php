@@ -3,6 +3,7 @@
 use SNS\Models\UserFriends;
 use SNS\Models\FriendRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Collection;
 class FriendService {
 	
 	/**
@@ -89,5 +90,17 @@ class FriendService {
 		$this->request
 		->ofUserWithReq(Auth::user()->registration->registration_id, $requested_id)
 		->update(array('status' => $status));
+	}
+	
+	/**
+	 * 
+	 * @param integer $user_id
+	 * @return Illuminate\Support\Collection
+	 */
+	public function collect($user_id) {
+		return $this->list->where('user_id', $user_id)
+				->with(array('profile' => function($q) {
+					$q->addSelect(array('registration_id', 'last_name', 'first_name'));
+				}))->get();
 	}
 }
