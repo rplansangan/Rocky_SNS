@@ -18,7 +18,7 @@
      <ul class="nav nav-pills navbar-right">
         <li role="presentation"><a href="{{  route('home') }}">Home</a></li>
           @if (Request::url() == route('profile.showProfile', Auth::id()))
-            <li role="presentation"><a href="{{ route('profile.petlist', Auth::id()) }}">Pets</a></li>
+            <li role="presentation"><a href="{{ route('profile.petlist', Auth::user()->user_id) }}">Pets</a></li>
           @else
             <li role="presentation"><a href="{{ route('profile.showProfile', Auth::id()) }}">{{ Auth::user()->registration->first_name }} {{ Auth::user()->registration->last_name }}</a></li>
           @endif

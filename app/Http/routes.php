@@ -1,4 +1,5 @@
 <?php
+use SNS\Libraries\Facades\FriendService;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -10,6 +11,9 @@
 |
 */
 Route::get('test', function() {
+	echo "<pre>";
+	var_dump(FriendService::add(2));
+	echo "</pre>";
 });
 Route::get('testupload/{uid}/{fid}', array(
 	'uses' => 'UploadsController@getImage'
@@ -37,7 +41,7 @@ Route::post('login', array(
 	'uses' => 'LoginController@signin'
 ));
 Route::get('login/attempt', array(
-	'as' => 'login.attempted',
+	'as' => 'login.attempt',
 	'uses' => 'LoginController@attempted'
 ));
 
