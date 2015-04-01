@@ -240,7 +240,7 @@ ul.nav.nav-tabs li a {
   color: #E74C3C;
 }
 
-ul#home-newsfeed li a {
+ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
   color: #E74C3C;
 }
 

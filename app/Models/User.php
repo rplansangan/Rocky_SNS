@@ -29,7 +29,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = array('email_address', 'password', 'role_id', 'is_deactivated', 'is_validated');
+	protected $fillable = array('email_address', 'password', 'role_id', 'is_deactivated', 'is_validated', 'is_merchant');
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -57,5 +57,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function friends() {
 		return $this->hasMany('SNS\Models\UserFriends', 'user_id');
 	}
+	public function business() {
+		return $this->hasOne('SNS\Models\Business', 'user_id');
+	}
+	
+
 	
 }

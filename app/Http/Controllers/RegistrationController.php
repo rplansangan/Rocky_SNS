@@ -3,6 +3,7 @@
 use SNS\Models\Registration;
 use SNS\Models\Pets;
 use SNS\Models\User;
+use SNS\Models\Business;
 use SNS\Services\ValidationService;
 use SNS\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -164,8 +165,16 @@ class RegistrationController extends Controller {
 	public function merchant_activation(Request $request){
 		$input = array_except($request->all(), array('_token'));
 		$validate = Validator::make($input, Registration::$initialRules);
-		echo '<pre>';
-		print_r($input);
-		echo '</pre>';
+		
+		$business = new Business(array(
+			'business_name' => $input['business_name'],
+			'address_line1' => $input['address_line1'],
+			'address_line2' => $input['address_line2'],
+			'company_background' => $input['company_background']
+		));
+
+		User::find(Auth::id())->business()->save($business);
+		User::find(Auth::id())->update(array('is_merchant' => 1));
+		echo '1';
 	}
 }

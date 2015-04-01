@@ -33,8 +33,9 @@
 	</form>
 </div>
 @endif
-<div class="profile-feed col-sm-12 col-xs-12 col-lg-12 col-md-12">
+<div class="newsfeed-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
 	<legend>News feed</legend>
+	<input type="hidden" id="route-newsfeed-refresh" value="{{ route('newsfeed.refresh') }}" _token="{{ csrf_token() }}">
 	<ul id="home-newsfeed" class="media-list append-post">
 		@include('scripts.nf_pagination')
 		@foreach($posts as $single)
