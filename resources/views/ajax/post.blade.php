@@ -20,7 +20,7 @@
 		<img class="col-sm-12" src="{{ route('files.get.image', array($message->user_id, $image->image_id)) }}">
 		@endif
 			<a class="nf-like comment-like" href="#" value="{{ $message->post_id }}" value2="{{ route('likes.set', array($message->post_id)) }}" value3="{{ csrf_token() }}">
-			<i class="fa fa-thumbs-up"></i>
+			<i class="fa fa-thumbs-up"></i> Like &#8226; 
 				<span class="like-counter">					
 					@if((count($like) == 1) && ($like != FALSE))
 						1 Like
