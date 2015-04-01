@@ -32,7 +32,8 @@ class FriendService {
 	 * @return PHPUnit_Framework_Constraint_IsEmpty
 	 */
 	protected function listCheck($requested_id) {
-		$q = $this->list->ofUserWithReq(Auth::user()->registration->registration_id, $requested_id)->get();
+		$q = $this->list
+				->ofUserWithReq(Auth::user()->registration->registration_id, $requested_id)->get();
 		return $q->isEmpty();
 	}
 	
@@ -42,8 +43,10 @@ class FriendService {
 	 * @return PHPUnit_Framework_Constraint_IsEmpty
 	 */
 	protected function reqCheck($requested_id) {
-		$q = $this->request->ofUserWithReq(Auth::user()->registration->registration_id, $requested_id)->get();
-		return $q->isEmpty();
+		$q = $this->request
+				->ofUserWithReq(Auth::user()->registration->registration_id, $requested_id)
+				->where('status', '0')->get();
+		return $q->isEmpty();		
 	}
 	
 	/**
@@ -60,7 +63,7 @@ class FriendService {
 	}
 	
 	/**
-	 * 
+	 * Sends a friend request to the requested user id if not on the friend list and/or request sent
 	 * @param integer $requested_id
 	 * @return boolean
 	 */
@@ -77,7 +80,14 @@ class FriendService {
 		return false;
 	}
 	
+	/**
+	 * Updates a friend request record
+	 * @param integer $requested_id
+	 * @param integer $status
+	 */
 	public function fromRequest($requested_id, $status) {
-		
+		$this->request
+		->ofUserWithReq(Auth::user()->registration->registration_id, $requested_id)
+		->update(array('status' => $status));
 	}
 }

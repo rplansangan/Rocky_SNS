@@ -18,9 +18,9 @@
      <ul class="nav nav-pills navbar-right">
         <li role="presentation"><a href="{{  route('home') }}">Home</a></li>
           @if (Request::url() == route('profile.showProfile', Auth::id()))
-            <li role="presentation"><a href="{{ route('profile.petlist', Auth::id()) }}">Pets</a></li>
+            <li role="presentation"><a href="{{ route('profile.petlist', Auth::user()->user_id) }}">Pets</a></li>
           @else
-            <li role="presentation"><a href="{{ route('profile.showProfile', Auth::id()) }}">Feeds</a></li>
+            <li role="presentation"><a href="{{ route('profile.showProfile', Auth::user()->user_id) }}">Profile</a></li>
           @endif
         <li role="presentation"><a href="{{  route('search') }}">Search</a></li>
         <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa fa-cog"></i></a>
