@@ -535,6 +535,11 @@ a.list-group-item.friends {
   color: #E74C3C;
 }
 
+.add-friend-btn a p {
+  text-indent: 115px;
+  color: #E74C3C;
+}
+
 
 /*============RIGHT SIDEBAR============*/
 

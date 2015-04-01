@@ -20,7 +20,7 @@
           @if (Request::url() == route('profile.showProfile', Auth::id()))
             <li role="presentation"><a href="{{ route('profile.petlist', Auth::id()) }}">Pets</a></li>
           @else
-            <li role="presentation"><a href="{{ route('profile.showProfile', Auth::id()) }}">Feeds</a></li>
+            <li role="presentation"><a href="{{ route('profile.showProfile', Auth::id()) }}">{{ Auth::user()->registration->first_name }} {{ Auth::user()->registration->last_name }}</a></li>
           @endif
         <li role="presentation"><a href="{{  route('search') }}">Search</a></li>
         <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa fa-cog"></i></a>
