@@ -5,7 +5,7 @@
 	<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 petlist-container">
 		<div class="col-sm-12 col-xs-12 col-lg-4 col-md-4 petlist-img">
 			<a href="{{ route('profile.showPetProfile', array($pet->user_id, $pet->pet_id)) }}">
-				@if(isset($pet->image))	
+				@if(isset($pet->profile_pic))	
 					<img src="{{ route('files.get.image', array($pet->user_id, $pet->image[0]->image_id)) }}" width="120px">
 				@else
 					<img src="{{ URL::asset('assets/images/pet-default.png') }}" width="120px">
