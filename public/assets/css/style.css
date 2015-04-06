@@ -365,6 +365,44 @@ ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
 }
 
 
+/*============SHOP PAGE============*/
+.adshop-content h1 {
+  text-align: center;
+}
+
+.adshop-container {
+  text-align: center;
+}
+
+.adshop-img img {
+  margin: 15px 0;
+}
+
+.btn_adshop {
+  position: absolute;
+  top: 180px;
+  left: 190px;
+}
+
+.btn_adshop a {
+  margin-left: 20px;
+  color: #fff;
+  background: #E74C3C;
+  padding: 8px;
+  border-radius: 5px;
+  visibility: hidden;
+}
+
+.adshop-img:hover > .btn_adshop a {
+  visibility: visible;
+  opacity: 1;
+}
+
+.adshop-img:hover > img {
+  opacity: 0.5;
+}
+
+
 /*============COMMENTS============*/
 .com-name span {
   color: #F55F4F;
