@@ -5,7 +5,7 @@
 			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 left">
 				@include('home.left')
 			</div>
-			<div class="col-lg-6 col-lg-6 col-md-3 col-sm-12 col-xs-12 middle">
+			<div class="col-lg-6 col-lg-6 col-md-3 col-sm-12 col-xs-12 middle usertype-content">
 				<div class="col-sm-12 user-type">
 					<div class="page-header">
 						<h2>User Type</h2>

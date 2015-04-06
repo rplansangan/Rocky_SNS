@@ -11,16 +11,16 @@
 		</div>
 
 		<div class="col-lg-12 pd-infos">
-			<ul class="pd-infos-text">
-				<li><span>Type:</span> Cat</li>
-				<li><span>Breed:</span> Domestic Short Hair</li>
-				<li><span>Age:</span> 2 years old</li>
-				<li><span>Gender:</span> Male</li>
-				<li><span>Likes:</span> Lasagna, squeaky toys, mouse, tummy rub</li>
-				<li><span>Dislikes:</span> Odie, rubber duckies</li>
-				<li><span>Foods:</span> Lasagna, pizza</li>
-				<li><span>Owner:</span> Jon Arbuckle</li>
-			</ul>
+			<dl class="dl-horizontal pd-infos-text">
+			 	<dt>Type:</dt> <dd>Cat</dd>					
+				<dt>Breed:</dt> <dd>Domestic</dd>
+				<dt>Bday:</dt> <dd>2013-02-02 00:00:00</dd>
+				<dt>Gender:</dt> <dd>Male</dd>
+				<dt>Likes:</dt> <dd>Lasagna</dd>
+				<dt>Dislikes:</dt> <dd>Vegetables</dd>
+				<dt>Food:</dt> <dd>Lasagna, Pizza</dd>
+				<dt>Owner:</dt> <dd>{{ Auth::user()->registration->first_name }} {{ Auth::user()->registration->last_name }}</dd>
+			</dl>
 		</div>
 	</div>
 </div>
