@@ -13,7 +13,7 @@ use SNS\Libraries\Facades\FriendService;
 Route::get('test', function() {
 	$var = FriendService::collect(1);
 	echo "<pre>";
-	print_r($var);
+	print_r($_SERVER);
 	echo "</pre>";
 });
 Route::get('testupload/{uid}/{fid}', array(
@@ -110,6 +110,10 @@ Route::post('comment/set/{post_id}', array(
 Route::post('newsfeed/refresh', array(
 	'as' => 'newsfeed.refresh',
 	'uses' => 'PostsController@getNextNewsFeed'
+));
+Route::post('profile/req/add', array(
+	'as' => 'profile.request.add',
+	'uses' => 'ProfileController@addFriend'
 ));
 
 

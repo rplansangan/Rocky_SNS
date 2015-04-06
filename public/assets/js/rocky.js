@@ -69,6 +69,21 @@ $(document).ready(function(){
             }
         }
     });
+    
+    $('#btn_add_friend').on('click', function(e) {
+    	var id = $('#profile_id').val();
+    	var url = $(this).attr('href');
+    	var token = $(this).attr('_token');
+    	$.ajax({
+    		url: url,
+    		type: 'post',
+    		data: { requested_id:id, _token:token },
+    		success: function(response) {
+    			$('#btn_add_friend').text(response);
+    		}
+    	});
+    	e.preventDefault();
+    });
 });
 
 

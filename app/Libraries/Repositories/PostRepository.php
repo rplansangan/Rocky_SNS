@@ -71,7 +71,7 @@ class PostRepository {
 									$q->addSelect(array('image_id'));
 								},
 					'like' => function ($q) {
-						
+									$q->addSelect(array('like_id'));
 								},
 					'comment' => function ($q) {
 									$q->addSelect(array('comment_id', 'post_id' ,'comment_message', 'comment_user_id'));
@@ -91,7 +91,7 @@ class PostRepository {
 									$q->addSelect(array('image_id'));
 								},
 					'like' => function ($q) {
-						
+									$q->addSelect(array('like_id'));
 								},
 					'comment' => function ($q) {
 									$q->addSelect(array('comment_id', 'post_id' ,'comment_message', 'comment_user_id'));
@@ -115,7 +115,7 @@ class PostRepository {
 									$q->addSelect(array('image_id'));
 								},
 					'like' => function ($q) {
-						
+									$q->addSelect(array('like_id'));
 								},
 					'comment' => function ($q) {
 									$q->addSelect(array('comment_id', 'post_id' ,'comment_message', 'comment_user_id'));

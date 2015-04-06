@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use SNS\Models\Registration;
 use SNS\Models\Pets;
 use SNS\Libraries\Facades\PostService;
+use SNS\Libraries\Facades\FriendService;
 
 class ProfileController extends Controller {
 
@@ -34,8 +35,10 @@ class ProfileController extends Controller {
 		return view('profile.profilepet', $data)->with('profile', $profileDetails[0]);
 	}
 	
-	public function addFriend($requested_id) {
-		
+	public function addFriend(Request $request) {
+		if(FriendService::add($request->get('requested_id'))) {
+			return 'Friend request sent.';
+		}
 	}
 
 	public function settings(){
