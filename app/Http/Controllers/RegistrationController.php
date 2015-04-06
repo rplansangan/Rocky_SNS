@@ -22,6 +22,7 @@ class RegistrationController extends Controller {
 	public function __construct() {
 		$this->service = new ValidationService();
 // 		$this->middleware('guest');
+		Auth::user()->business()->bus_id
 	}
 	
 	public function register(Request $request) {
@@ -164,17 +165,7 @@ class RegistrationController extends Controller {
 
 	public function merchant_activation(Request $request){
 		$input = array_except($request->all(), array('_token'));
-		$validate = Validator::make($input, Registration::$initialRules);
-		
-		$business = new Business(array(
-			'business_name' => $input['business_name'],
-			'address_line1' => $input['address_line1'],
-			'address_line2' => $input['address_line2'],
-			'company_background' => $input['company_background']
-		));
-
-		User::find(Auth::id())->business()->save($business);
-		User::find(Auth::id())->update(array('is_merchant' => 1));
-		echo '1';
+		$validate = Validator::make($input, Business::$initialRules);
+		print_r($input);
 	}
 }

@@ -2,6 +2,8 @@
 
 use SNS\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use SNS\Models\Business;
+use SNS\Models\User;
 use SNS\Services\ValidationService;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
@@ -58,8 +60,15 @@ class HomeController extends Controller {
 		return view('pages.trending' , $data);
 	}
 	public function advertised(){
+	    $user = new User();
+	    $ind = $user->isMerc(Auth::id())->get();
 		$data['auth'] = true;
-		return view('pages.advertise' , $data);
+		if(!$ind->isEmpty()){
+			return view('pages.addadvertise' , $data);
+		}else{
+			return view('pages.check' , $data);
+		}
+		
 	}
 	public function shop(){
 		$data['auth'] = true;

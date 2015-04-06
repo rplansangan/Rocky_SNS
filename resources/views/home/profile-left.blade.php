@@ -10,7 +10,7 @@
 		<div class="glyphicon glyphicon-edit"></div>
 	</div>
 
-	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-name">
+	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-name text-center">
 		<a href="{{ route('profile.showProfile', Auth::id()) }}"><h4>{{ $profile->first_name }} {{ $profile->last_name }}</h4></a>
 	</div>
 
