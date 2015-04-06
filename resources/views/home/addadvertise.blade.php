@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h2>Add Advertise</h2>
+	<h2>Add Advertisement</h2>
 </div>
 <form method="POST" action="{{ route('test2') }}" class="form-horizontal col-sm-12  col-lg-12 col-md-12  col-xs-12 reg " role="form" enctype="multipart/form-data">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
