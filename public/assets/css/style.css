@@ -418,7 +418,13 @@ ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
 }
 
 .usertype_btn a:hover {
-  border: 2px solid #E74C3C;
+  border: 1px solid #E74C3C;
+  background: #fff;
+  color: #E74C3C;
+}
+
+.btn_usertype.active {
+  border: 1px solid #E74C3C;
   background: #fff;
   color: #E74C3C;
 }

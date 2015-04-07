@@ -47,43 +47,62 @@ $(document).ready(function(){
 	$('.comment-form-hidden').hide();
 
 	alreadyloading = false;
-    $(window).scroll(function() {
-        if ($('body').height() <= ($(window).height() + $(window).scrollTop())) {
-            if (alreadyloading == false) {
-            	alreadyloading = true;
-                var items = $("#home-newsfeed > li").length;
-                var route = $('#route-newsfeed-refresh').val();
-                var token = $('#route-newsfeed-refresh').attr('_token');
-                $.ajax({
-    				url : route,
-    				type : 'post',
-    				data: { offset:items , _token:token},
-    				 beforeSend: function() {
-				        $("#load-here").html('loading');
-				    },
-    				success: function(r){
-    					$('#home-newsfeed').append(r);
-    					alreadyloading = false;
-    				}
-    			});
-            }
-        }
-    });
-    
-    $('#btn_add_friend').on('click', function(e) {
-    	var id = $('#profile_id').val();
-    	var url = $(this).attr('href');
-    	var token = $(this).attr('_token');
-    	$.ajax({
-    		url: url,
-    		type: 'post',
-    		data: { requested_id:id, _token:token },
-    		success: function(response) {
-    			$('#btn_add_friend').text(response);
-    		}
-    	});
-    	e.preventDefault();
-    });
+	$(window).scroll(function() {
+		if ($('body').height() <= ($(window).height() + $(window).scrollTop())) {
+			if (alreadyloading == false) {
+				alreadyloading = true;
+				var items = $("#home-newsfeed > li").length;
+				var route = $('#route-newsfeed-refresh').val();
+				var token = $('#route-newsfeed-refresh').attr('_token');
+				$.ajax({
+					url : route,
+					type : 'post',
+					data: { offset:items , _token:token},
+					beforeSend: function() {
+						$("#load-here").html('loading');
+					},
+					success: function(r){
+						$('#home-newsfeed').append(r);
+						alreadyloading = false;
+					}
+				});
+			}
+		}
+	});
+
+	$('#btn_add_friend').on('click', function(e) {
+		var id = $('#profile_id').val();
+		var url = $(this).attr('href');
+		var token = $(this).attr('_token');
+		$.ajax({
+			url: url,
+			type: 'post',
+			data: { requested_id:id, _token:token },
+			success: function(response) {
+				$('#btn_add_friend').text(response);
+			}
+		});
+		e.preventDefault();
+	});
+
+	//individual
+	$('.useraddform').hide();
+	$('.btn_indiv').on('click', function(){
+		$('.useraddform').show();
+		$('.merchform').hide();
+	});
+
+	$('.btn_usertype').on('click', function(){
+		$('.btn_usertype').removeClass('active');
+		$(this).addClass('active');
+	});
+
+	//merchant
+	$('.merchform').hide();
+	$('.btn_merch').on('click', function(){
+		$('.useraddform').hide();
+		$('.merchform').show();
+	});
 });
 
 
