@@ -1,3 +1,7 @@
+@if(@$include_script)
+	@include('scripts.nf_pagination')
+@endif
+
 <li class="media">
 	<div class="media-left">
 		<a href="{{ route('profile.showProfile', $user->registration_id) }}">

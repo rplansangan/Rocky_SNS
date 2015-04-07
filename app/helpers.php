@@ -7,11 +7,15 @@ function customPrintR($array){
 }
 function isLike($like){
 	$bool = false;
-	foreach($like->fetch('like_user_id') as $likes){
-		if($likes == Auth::user()->registration->registration_id){
-			$bool = true;
-			break;
+	if($like) {
+		foreach($like->fetch('like_user_id') as $likes){
+			if($likes == Auth::user()->registration->registration_id){
+				$bool = true;
+				break;
+			}
 		}
+		return ($bool) ? "Unlike" : "Like";
 	}
-	return ($bool) ? "Unlike" : "Like";
+	return 'Like';
+	
 }

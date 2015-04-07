@@ -12,7 +12,6 @@ $(document).ready(function(){
 
 
 	$('#form-post').on('submit',function(e){
-		$('.append-post').find('script').remove();
 		data = new FormData($('#form-post')[0]);
 		if($('#post_message').val() != "" ){
 			$.ajax({
@@ -91,6 +90,55 @@ $(document).ready(function(){
 		$('.merchform').show();
 	});
 
+	$(document).on('keypress', '.comment-box' ,function (e) {
+		var key = e.which;
+		if(key == 13) 
+		{
+			var url = $(this).attr('href');
+			var id = $(this).attr('post_id');
+			var token = $(this).attr('_token');
+			var message = $(this).val();
+			var a = this;
+			if(message.length != 0){
+				$.ajax({
+					url : url,
+					type : 'post',
+					data: { id:id , _token:token , message:message },
+					success: function(r){
+						$(a).val('');
+						$(a).next().append(r);
+					}
+				});
+			}
+		}
+	});
+	$(".comment-box" ).elastic();
+	$(document).on('click' , '.comment-like' ,function(e){
+		var id = $(this).attr('value');
+		var url = $(this).attr('value2');
+		var url2 = $(this).attr('value4');
+		var token = $(this).attr('value3');
+		var a = this;
+		$.ajax({
+			url : url,
+			type : 'post',
+			data: {id:id , _token:token},
+			success: function(r){
+				var like = jQuery.parseJSON(r);
+				if(like.liked){
+					$(a).text('Unlike');
+				}else{
+					$(a).text('Like');
+				}
+				$(a).prev().prev().prev().text(like.count);
+			}
+		});
+
+		e.preventDefault();
+	});
+	$(document).on('click' , '.comment-form' , function(){
+		$(this).next().fadeIn();
+	});
 });
 
 
