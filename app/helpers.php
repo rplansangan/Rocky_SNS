@@ -1,6 +1,6 @@
 <?php
 
-function customPrintR($array){
+function custom_print_r($array){
 	echo '<pre>';
 	print_r($array);
 	echo '</pre>';
