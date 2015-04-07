@@ -259,7 +259,7 @@ ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
 }
 
 .prof-name h4 {
-  text-indent: 105px;
+  text-indent: 5px;
   color: #E74C3C;
 }
 
@@ -364,6 +364,10 @@ ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
   color: #E74C3C;
 }
 
+.pd-infos-text {
+  margin-left: 80px;
+}
+
 
 /*============SHOP PAGE============*/
 .adshop-content h1 {
@@ -400,6 +404,29 @@ ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
 
 .adshop-img:hover > img {
   opacity: 0.5;
+}
+
+
+/*============ADVERTISE PAGE============*/
+.usertype_btn {
+  margin-left: 25px;
+}
+
+.usertype_btn a {
+  padding: 5px 20px !important;
+  border-radius: 5px !important;
+}
+
+.usertype_btn a:hover {
+  border: 1px solid #E74C3C;
+  background: #fff;
+  color: #E74C3C;
+}
+
+.btn_usertype.active {
+  border: 1px solid #E74C3C;
+  background: #fff;
+  color: #E74C3C;
 }
 
 
