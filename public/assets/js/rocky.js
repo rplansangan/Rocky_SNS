@@ -72,7 +72,8 @@ $(document).ready(function(){
 	});
 
 	//individual
-	$('.useraddform').hide();
+
+	$('.btn_indiv').addClass('active');
 	$('.btn_indiv').on('click', function(){
 		$('.useraddform').show();
 		$('.merchform').hide();
