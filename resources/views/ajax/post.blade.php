@@ -28,9 +28,9 @@
 			<textarea max="500" name="post_message" class="comment-box" post_id="{{ $message->post_id }}" href="{{ route('comments.set', $message->post_id) }}" _token="{{ csrf_token() }}" placeholder=" Say Something..."></textarea>
 			<ul class="comments">
 				@if($comments)
-				@foreach($comments as $comment)
-				@include('ajax.comments', $comment)
-				@endforeach
+					@foreach($comments as $comment)
+						@include('ajax.comments', $comment)
+					@endforeach
 				@endif
 			</ul>
 		</div>
