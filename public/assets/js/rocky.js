@@ -114,6 +114,7 @@ $(document).ready(function(){
 		}
 	});
 	$(".comment-box" ).elastic();
+	$('.comment-form-hidden').hide();
 	$(document).on('click' , '.comment-like' ,function(e){
 		var id = $(this).attr('value');
 		var url = $(this).attr('value2');
