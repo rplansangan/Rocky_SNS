@@ -8,12 +8,15 @@ use SNS\Models\Registration;
 use SNS\Models\Pets;
 use SNS\Libraries\Facades\PostService;
 use SNS\Libraries\Facades\FriendService;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller {
 
-	public function showProfile($id){
+	public function showProfile($id){ 
 		$profileDetails = Registration::find($id); 
 		$collection = PostService::initialNewsFeed($id);
+		
+		$data['friend_flags'] = FriendService::check($id);
 		$data['auth'] = true;
 		return view('profile.profile' , $data)->with('profile', $profileDetails)->with('posts', $collection);
 	}
@@ -35,10 +38,38 @@ class ProfileController extends Controller {
 		return view('profile.profilepet', $data)->with('profile', $profileDetails[0]);
 	}
 	
-	public function addFriend(Request $request) {
-		if(FriendService::add($request->get('requested_id'))) {
-			return 'Friend request sent.';
+	public function dispatchFriendRequest(Request $request) {
+		switch($request->get('action')) {
+			case 'add':
+				$response['message'] = $this->addFriend($request->get('requested_id'));
+				$response['action'] = 'req';
+				break;		
+			case 'req':
+				$response['message'];
+				$response['action'] = 'add';
+				break;
+				
+			case 'canc':
+				$response['message'] = $this->cancelFriendReq($request->get('requested_id'));
+				$response['action'] = 'add';
+				break;
+			case 'accept':
+				$response['message'];
+				$response['action'];
 		}
+		
+		return json_encode($response);
+	}
+	
+	protected function addFriend($requested_id) {
+		if(FriendService::add($requested_id)) {
+			return trans('profile.friend.is_pending');
+		}
+	}
+	
+	protected function cancelFriendReq($requested_id) {
+		FriendService::fromRequest($requested_id, 2);
+		return trans('profile.friend.add_friend');
 	}
 
 	public function settings(){

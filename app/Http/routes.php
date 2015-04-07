@@ -11,9 +11,10 @@ use SNS\Libraries\Facades\FriendService;
 |
 */
 Route::get('test', function() {
-	$var = FriendService::collect(1);
+	$var = FriendService::add(2);
+	
 	echo "<pre>";
-	print_r($_SERVER);
+	print_r($var);
 	echo "</pre>";
 });
 Route::get('testupload/{uid}/{fid}', array(
@@ -29,7 +30,7 @@ Route::post('files/newsfeed', array(
 ));
 Route::get('files/get/image/{user_id}/{file_id}', array(
 	'as' => 'files.get.image',
-	'uses' => 'UploadsCOntroller@getImage'
+	'uses' => 'UploadsController@getImage'
 ));
 
 Route::get('/', array(
@@ -111,11 +112,10 @@ Route::post('newsfeed/refresh', array(
 	'as' => 'newsfeed.refresh',
 	'uses' => 'PostsController@getNextNewsFeed'
 ));
-Route::post('profile/req/add', array(
-	'as' => 'profile.request.add',
-	'uses' => 'ProfileController@addFriend'
+Route::post('profile/req/friend', array(
+	'as' => 'profile.request.friend',
+	'uses' => 'ProfileController@dispatchFriendRequest'
 ));
-
 
 Route::get('home', array(
 	'as' => 'home',
