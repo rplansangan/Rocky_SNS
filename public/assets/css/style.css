@@ -250,6 +250,10 @@ ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
 
 
 /*============Profile Page============*/
+.prof-inf {
+  text-align: center;
+}
+
 .prof-photo {
   margin-top: 20px;
 }
@@ -259,7 +263,6 @@ ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
 }
 
 .prof-name h4 {
-  text-indent: 5px;
   color: #E74C3C;
 }
 
@@ -269,7 +272,7 @@ ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
 
 .prof-photo .glyphicon-edit {
   position: absolute;
-  right: 60px;
+  right: 80px;
   top: 4px;
   color: #E74C3C;
   visibility: hidden;
@@ -385,7 +388,7 @@ ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
 .btn_adshop {
   position: absolute;
   top: 180px;
-  left: 190px;
+  left: 230px;
 }
 
 .btn_adshop a {
@@ -468,13 +471,11 @@ ul.comments .media-left {
   background-color: white;
   padding: 15px;
 }
-.left {
-  text-indent: 50px;
-}
 
 .left-nav {
   padding: 20px;
   font-family: 'Montserrat', sans-serif important;
+  text-indent: 50px;
 }
 
 .left-nav .list-group {
