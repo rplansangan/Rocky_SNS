@@ -56,7 +56,7 @@
 					</div>
 					<div class="form-group">
 						<div class='col-sm-8 col-sm-offset-3 text-right'>
-							<input type='submit' class="btn" value="Register"/>
+							<input type='submit' class="btn" value="Add"/>
 						</div>
 					</div>
 				</form>
