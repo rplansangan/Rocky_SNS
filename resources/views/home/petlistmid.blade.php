@@ -18,8 +18,7 @@
 			<dl class="dl-horizontal">
 			 	<dt>Type:</dt><dd>{{ $pet->pet_type }}</dd>					
 				<dt>Breed:</dt><dd>{{ $pet->breed }}</dd>
-				<dt>Age:</dt>
-				<dd>1 year(s) old</dd>
+				<dt>Bday:</dt><dd>{{ $pet->pet_bday }}</dd>
 				<dt>Gender:</dt> <dd>@if($pet->pet_gender == 'M') Male @else Female @endif </dd>
 			</dl>
 		</div>

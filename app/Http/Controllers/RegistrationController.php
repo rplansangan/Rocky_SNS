@@ -22,7 +22,6 @@ class RegistrationController extends Controller {
 	public function __construct() {
 		$this->service = new ValidationService();
 // 		$this->middleware('guest');
-		Auth::user()->business()->bus_id
 	}
 	
 	public function register(Request $request) {
@@ -165,7 +164,44 @@ class RegistrationController extends Controller {
 
 	public function merchant_activation(Request $request){
 		$input = array_except($request->all(), array('_token'));
-		$validate = Validator::make($input, Business::$initialRules);
-		print_r($input);
+		
+		$merchant = new Business();
+		$merchant->user_id = Auth::id();
+		$merchant->business_name = $input['business_name'];
+		$merchant->address_line1 = $input['address_line1'];
+		$merchant->address_line2 = $input['address_line2'];
+		$merchant->city = $input['city'];
+		$merchant->zip = $input['zip'];
+		$merchant->state = $input['state'];
+		$merchant->country = $input['country'];
+		$merchant->phone_country_code = $input['phone_country_code'];
+		$merchant->phone_area_code = $input['phone_area_code'];
+		$merchant->phone_number = $input['phone_number'];
+		$merchant->email_address = $input['email_address'];
+		$merchant->contact_person = $input['contact_person'];
+		$merchant->company_background = $input['company_background'];
+		$merchant->save();
+
+		User::where('user_id' , '=' , Auth::id())->update(['is_merchant' => 1]);
+
+		if(isset($input['myfile'])) { 
+			$file = $input['myfile'];
+			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
+			$dir = StorageHelper::create(Auth::id());
+			
+			$img_data = new Images(array(
+					'user_id' => Auth::id(),
+					'image_path' => $dir,
+					'image_name' => $filename,
+					'image_mime' => $file->getMimeType(),
+					'image_ext' => $file->getClientOriginalExtension(),
+					'is_profile_picture' => 0
+			));
+			
+			$merchant->image()->save($img_data);
+			
+			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
+		}
+		return redirect()->route('addadvertise');
 	}
 }

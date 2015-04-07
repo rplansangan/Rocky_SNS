@@ -6,8 +6,8 @@
     </div>
     <div class="media-body com-name">
       <a href="{{ route('profile.showProfile', $comment->user->registration_id) }}">
-      	<span class="media-heading">{{ $comment->user->first_name }} {{ $comment->user->last_name }} </span>
+      	<small>{{ $comment->user->first_name }} {{ $comment->user->last_name }} </small>
       </a>
-      {{ $comment->comment_message }}
+     <p class="help-block"> {{ $comment->comment_message }}</p>
     </div>
   </li>

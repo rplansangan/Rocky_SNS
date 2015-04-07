@@ -42,6 +42,7 @@ class Images extends Model {
 	public function pet() {
 		return $this->belongsTo('SNS\Models\Pets');
 	}
+
 	
 	// SCOPES
 	/**

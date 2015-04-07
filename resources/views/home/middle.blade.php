@@ -41,15 +41,13 @@ ul.nav.nav-tabs li a {
 <div class="newsfeed-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
 	<legend>News feed</legend>
 	<ul id="home-newsfeed" class="media-list append-post">
-		@include('scripts.nf_pagination')
 		@foreach($newsfeed as $single)
 			@include('ajax.post', array(
 				'user' => $single->user, 
 				'message' => $single, 
 				'image' => $single->image, 
 				'like' => $single->like, 
-				'comments' => $single->comment,
-				'include_script' => false
+				'comments' => $single->comment
 			))
 		@endforeach
 	</ul>

@@ -20,27 +20,27 @@ class PostRepository {
 	
 	public function create($data) {
 		return $this->post->create(array(
-				'user_id' => Auth::id(),
-				'post_message' => $data,				
-		));
+			'user_id' => Auth::id(),
+			'post_message' => $data,				
+			));
 	}
 	
 	public function createWithImage($data) {
 		$return['message'] = $this->post->create(array(
-				'user_id' => Auth::id(),
-				'post_message' => $data['message']
-		));
+			'user_id' => Auth::id(),
+			'post_message' => $data['message']
+			));
 		
 		$filename = md5($data['file']->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
 		$dir = StorageHelper::create(Auth::id());
 		
 		$img_data = new Images(array(
-				'user_id' => Auth::id(),
-				'image_path' => $dir,
-				'image_name' => $filename,
-				'image_mime' => $data['file']->getMimeType(),
-				'image_ext' => $data['file']->getClientOriginalExtension()
-		));
+			'user_id' => Auth::id(),
+			'image_path' => $dir,
+			'image_name' => $filename,
+			'image_mime' => $data['file']->getMimeType(),
+			'image_ext' => $data['file']->getClientOriginalExtension()
+			));
 		
 		$return['image'] = $return['message']->image()->save($img_data);
 		
@@ -64,41 +64,41 @@ class PostRepository {
 	public function initialNewsFeed($id, $take) {
 		if(!$id) {
 			return $this->post->with(array(
-					'user' => function ($q) {
-									$q->addSelect(array('registration_id', 'first_name', 'last_name'));
-								},
-					'image' => function ($q) {
-									$q->addSelect(array('image_id', 'post_id'));
-								},
-					'like' => function ($q) {
-									$q->addSelect(array('like_id'));
-								},
-					'comment' => function ($q) {
-									$q->addSelect(array('comment_id', 'post_id' ,'comment_message', 'comment_user_id'));
-								},
-					'comment.user' => function ($q) {
-									$q->addSelect(array('registration_id', 'first_name', 'last_name'));
-								}))->take($take)->latest()->get();
-			}
+				'user' => function ($q) {
+					$q->addSelect(array('registration_id', 'first_name', 'last_name'));
+				},
+				'image' => function ($q) {
+					$q->addSelect(array('image_id', 'post_id'));
+				},
+				'like' => function ($q) {
+					$q->addSelect(array('like_id', 'post_id' , 'like_user_id'));
+				},
+				'comment' => function ($q) {
+					$q->addSelect(array('comment_id', 'post_id' ,'comment_message', 'comment_user_id'));
+				},
+				'comment.user' => function ($q) {
+					$q->addSelect(array('registration_id', 'first_name', 'last_name'));
+				}))->take($take)->latest()->get();
+		}
 		
 		return $this->post
-				->where('user_id', $id)
-				->with(array(
-					'user' => function ($q) {
-									$q->addSelect(array('registration_id', 'first_name', 'last_name'));
-								},
-					'image' => function ($q) {
-									$q->addSelect(array('image_id', 'post_id'));
-								},
-					'like' => function ($q) {
-									$q->addSelect(array('like_id'));
-								},
-					'comment' => function ($q) {
-									$q->addSelect(array('comment_id', 'post_id' ,'comment_message', 'comment_user_id'));
-								},
-					'comment.user' => function ($q) {
-									$q->addSelect(array('registration_id', 'first_name', 'last_name'));
-								}))->take($take)->latest()->get();
+		->where('user_id', $id)
+		->with(array(
+			'user' => function ($q) {
+				$q->addSelect(array('registration_id', 'first_name', 'last_name'));
+			},
+			'image' => function ($q) {
+				$q->addSelect(array('image_id', 'post_id'));
+			},
+			'like' => function ($q) {
+				$q->addSelect(array('like_id', 'post_id' , 'like_user_id'));
+			},
+			'comment' => function ($q) {
+				$q->addSelect(array('comment_id', 'post_id' ,'comment_message', 'comment_user_id'));
+			},
+			'comment.user' => function ($q) {
+				$q->addSelect(array('registration_id', 'first_name', 'last_name'));
+			}))->take($take)->latest()->get();
 	}
 	
 	/**
@@ -108,21 +108,21 @@ class PostRepository {
 	 */
 	public function incrementalNewsFeed($skip, $take) {		
 		return $this->post->with(array(
-					'user' => function ($q) {
-									$q->addSelect(array('registration_id', 'first_name', 'last_name'));
-								},
-					'image' => function ($q) {
-									$q->addSelect(array('image_id', 'post_id'));
-								},
-					'like' => function ($q) {
-									$q->addSelect(array('like_id'));
-								},
-					'comment' => function ($q) {
-									$q->addSelect(array('comment_id', 'post_id' ,'comment_message', 'comment_user_id'));
-								},
-					'comment.user' => function ($q) {
-									$q->addSelect(array('registration_id', 'first_name', 'last_name'));
-								}))->skip($skip)->take($take)->latest()->get();
+			'user' => function ($q) {
+				$q->addSelect(array('registration_id', 'first_name', 'last_name'));
+			},
+			'image' => function ($q) {
+				$q->addSelect(array('image_id', 'post_id'));
+			},
+			'like' => function ($q) {
+				$q->addSelect(array('like_id', 'post_id' , 'like_user_id' ));
+			},
+			'comment' => function ($q) {
+				$q->addSelect(array('comment_id', 'post_id' ,'comment_message', 'comment_user_id'));
+			},
+			'comment.user' => function ($q) {
+				$q->addSelect(array('registration_id', 'first_name', 'last_name'));
+			}))->skip($skip)->take($take)->latest()->get();
 	}
 	
 }

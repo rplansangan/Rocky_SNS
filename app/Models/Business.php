@@ -52,7 +52,7 @@ class Business extends Model {
 			'company_background' => 'required'			
 	);
 
-	public function registration() {
-		return $this->hasOne('SNS\Models\User', 'user_id', 'user_id' );
+	public function image() {
+		return $this->hasMany('SNS\Models\Images', 'business_id');
 	}
 }

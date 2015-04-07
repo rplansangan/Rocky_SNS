@@ -10,6 +10,18 @@
 		</div>
 	</div>
 	<div class="form-group">
+		<label class="col-sm-3 control-label">E-mail Address:</label>
+		<div class="col-sm-8">
+			<input type="email" class="form-control" name="email_address">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Contact Person:</label>
+		<div class="col-sm-8">
+			<input type="text" name="contact_person" class="form-control">
+		</div>
+	</div>
+	<div class="form-group">
 		<label class="col-sm-3 control-label">Address:</label>
 		<div class="col-sm-8">
 			<textarea class="form-control" name="address_line1" placeholder="Address 1" rows="3"></textarea>
@@ -20,10 +32,52 @@
 			<textarea class="form-control" name="address_line2" placeholder="Address 2" rows="3"></textarea>
 		</div>
 	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label">City</label>
+		<div class='col-sm-8'>
+			<input type='text' name="city" class="form-control" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Zip Code</label>
+		<div class='col-sm-8'>
+			<input type='text' name="zip" class="form-control" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-3 control-label">State/Province</label>
+		<div class='col-sm-8'>
+			<input type='text' name="state" class="form-control" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Country</label>
+		<div class='col-sm-8'>
+			{{ country_form }}
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Area Code</label>
+		<div class='col-sm-2'>
+			<input type="text" name="phone_area_code" class="form-control">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-3 control-label">Phone</label>
+		<div class='col-sm-2'>
+			<select name="phone_country_code" class="form-control">
+				<option>63</option>
+			</select>
+		</div>
+		<div class='col-sm-6'>
+			<input type='text' name="phone_number" placeholder="Phone Number" class="form-control" />
+		</div>
+	</div>
 	<div class="form-group">
 		<label class="col-sm-3 control-label">Logo:</label>
 		<div class='col-sm-8'>
-			<input type='file' name="userfile" class="custom-file-input" />
+			<input type='file' name="myfile" class="custom-file-input" />
 		</div>
 	</div>
 	<div class="form-group">
