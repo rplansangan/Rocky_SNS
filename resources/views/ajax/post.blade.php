@@ -1,7 +1,3 @@
-@if($include_script)
-@include('scripts.nf_pagination')
-@endif
-
 <li class="media">
 	<div class="media-left">
 		<a href="{{ route('profile.showProfile', $user->registration_id) }}">
@@ -19,9 +15,9 @@
 		@if(isset($image))
 		<img class="col-sm-12" src="{{ route('files.get.image', array($message->user_id, $image->image_id)) }}">
 		@endif
-		<i class="fa fa-thumbs-up"></i>&nbsp;<span class="like-counter">{{ count($like) }}</span>
-		<i class="fa fa-comment"></i>&nbsp;<span class="comment-counter">{{ count($comments) }}</span>&nbsp; &#8226; 
-		<a class="nf-like comment-like" href="#" value="{{ $message->post_id }}" value2="{{ route('likes.set', array($message->post_id)) }}" value3="{{ csrf_token() }}">Like &#8226;</a>
+		<i class="fa fa-thumbs-up"></i>&nbsp;<span class="like-counter">{{ count($like) }}</span> 
+		<i class="fa fa-comment"></i>&nbsp;<span class="comment-counter">{{ count($comments) }}</span>&nbsp; 
+		<a class="nf-like comment-like" href="#" value="{{ $message->post_id }}" value2="{{ route('likes.set', array($message->post_id)) }}" value3="{{ csrf_token() }}">{{ isLike($like) }} &#8226;</a>
 		<a class="nf-like comment-form" href="javascript:void(0)">Comment</a>
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-form comment-form-hidden">
 			<br>

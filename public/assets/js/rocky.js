@@ -10,15 +10,6 @@ $(document).ready(function(){
 		}
 	});
 
-	$('#post_message').focusout(function(){
-		var l = $(this).val();
-		if(l == ""){
-			$('.hide_submit').fadeOut();
-		}
-	});
-	$('#post_message').focus(function(){
-		$('.hide_submit').hide().fadeIn().show();
-	});
 
 	$('#form-post').on('submit',function(e){
 		$('.append-post').find('script').remove();
@@ -42,9 +33,6 @@ $(document).ready(function(){
 	
 	$('#OpenImgUpload').click(function(){ $('#fileuploader').trigger('click'); });
 
-	
-
-	$('.comment-form-hidden').hide();
 
 	alreadyloading = false;
     $(window).scroll(function() {
@@ -58,12 +46,11 @@ $(document).ready(function(){
     				url : route,
     				type : 'post',
     				data: { offset:items , _token:token},
-    				 beforeSend: function() {
-				        $("#load-here").html('loading');
-				    },
     				success: function(r){
-    					$('#home-newsfeed').append(r);
-    					alreadyloading = false;
+    					if(r != "0"){
+    						$('#home-newsfeed').append(r);
+    						alreadyloading = false;
+    					}
     				}
     			});
             }

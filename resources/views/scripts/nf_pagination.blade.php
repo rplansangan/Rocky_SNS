@@ -1,5 +1,7 @@
 <script>
 $(document).ready(function(){
+	$('.comment-form-hidden').hide();
+	$('.append-post').find('script').remove();
 	$('.comment-box').keypress(function (e) {
 		var key = e.which;
 		if(key == 13) 
@@ -26,6 +28,7 @@ $(document).ready(function(){
 	$('.comment-like').on('click' , function(e){
 		var id = $(this).attr('value');
 		var url = $(this).attr('value2');
+		var url2 = $(this).attr('value4');
 		var token = $(this).attr('value3');
 		var a = this;
 		$.ajax({
@@ -33,9 +36,16 @@ $(document).ready(function(){
 			type : 'post',
 			data: {id:id , _token:token},
 			success: function(r){
-				$(a).children('span').text(r);
+				var like = jQuery.parseJSON(r);
+				if(like.liked){
+					$(a).text('Unlike');
+				}else{
+					$(a).text('Like');
+				}
+				$(a).prev().prev().prev().text(like.count);
 			}
-		});	
+		});
+
 		e.preventDefault();
 	});
 	$('.comment-form').on('click' , function(){
