@@ -427,6 +427,9 @@ ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
   border: 1px solid #E74C3C;
   background: #fff;
   color: #E74C3C;
+  -webkit-box-shadow: inset -5px 4px 15px 0px rgba(50, 50, 50, 0.35);
+  -moz-box-shadow:    inset -5px 4px 15px 0px rgba(50, 50, 50, 0.35);
+  box-shadow:         inset -5px 4px 15px 0px rgba(50, 50, 50, 0.35);
 }
 
 
