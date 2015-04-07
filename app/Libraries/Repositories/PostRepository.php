@@ -68,7 +68,7 @@ class PostRepository {
 									$q->addSelect(array('registration_id', 'first_name', 'last_name'));
 								},
 					'image' => function ($q) {
-									$q->addSelect(array('image_id'));
+									$q->addSelect(array('image_id', 'post_id'));
 								},
 					'like' => function ($q) {
 									$q->addSelect(array('like_id'));
@@ -88,7 +88,7 @@ class PostRepository {
 									$q->addSelect(array('registration_id', 'first_name', 'last_name'));
 								},
 					'image' => function ($q) {
-									$q->addSelect(array('image_id'));
+									$q->addSelect(array('image_id', 'post_id'));
 								},
 					'like' => function ($q) {
 									$q->addSelect(array('like_id'));
@@ -112,7 +112,7 @@ class PostRepository {
 									$q->addSelect(array('registration_id', 'first_name', 'last_name'));
 								},
 					'image' => function ($q) {
-									$q->addSelect(array('image_id'));
+									$q->addSelect(array('image_id', 'post_id'));
 								},
 					'like' => function ($q) {
 									$q->addSelect(array('like_id'));

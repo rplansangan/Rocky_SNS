@@ -14,9 +14,21 @@
 		<a href="{{ route('profile.showProfile', Auth::id()) }}"><h4>{{ $profile->first_name }} {{ $profile->last_name }}</h4></a>
 	</div>
 	@if(Auth::id() != $profile->registration_id)
-	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 add-friend-btn">
-		<a href="{{ route('profile.request.add') }}" id="btn_add_friend" _token="{{ csrf_token() }}">Add Friends</a>
-	</div>
+		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 add-friend-btn">
+			@if($friend_flags->friendRequest())	
+				<a href="{{ route('profile.request.friend') }}" id="btn_add_friend" _token="{{{ csrf_token() }}}" data-act="req">
+					{{ trans('profile.friend.is_pending') }}
+				</a>								
+			@elseif(!$friend_flags->isFriend())
+				<a href="{{ route('profile.request.friend') }}" id="btn_add_friend" _token="{{{ csrf_token() }}}" data-act="add">
+					{{ trans('profile.friend.add_friend') }}
+				</a>
+			@else
+				<a href="{{ route('profile.request.friend') }}" id="btn_add_friend" _token="{{{ csrf_token() }}}" data-act="canc">
+					{{ trans('profile.friend.added') }}					
+				</a>
+			@endif
+		</div>
 	@endif
 </div>
 

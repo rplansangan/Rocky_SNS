@@ -71,15 +71,20 @@ $(document).ready(function(){
     });
     
     $('#btn_add_friend').on('click', function(e) {
-    	var id = $('#profile_id').val();
-    	var url = $(this).attr('href');
-    	var token = $(this).attr('_token');
     	$.ajax({
-    		url: url,
+    		url: $(this).attr('href'),
+    		data: { 
+    				requested_id:$('#profile_id').val(),
+    				_token:$(this).attr('_token'),
+    				action:$(this).attr('data-act')
+    		},
     		type: 'post',
-    		data: { requested_id:id, _token:token },
-    		success: function(response) {
-    			$('#btn_add_friend').text(response);
+    		success:function(r){ 
+    			var r = jQuery.parseJSON(r);
+    			
+    			$('#btn_add_friend').text(r.message);
+    			$('#btn_add_friend').attr('data-act', r.action);
+    			
     		}
     	});
     	e.preventDefault();
