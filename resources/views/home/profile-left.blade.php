@@ -1,15 +1,13 @@
 <div class="row">
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-photo">
-		<a href="{{ route('profile.showProfile', Auth::id()) }}">
+		<a  href="{{ route('profile.showProfile', Auth::id()) }}">
 			@if(isset($pet->image))	
 				<img src="{{ route('files.get.image', array($user->user_id, $user->image[0]->image_id)) }}">
 			@else
 				<img src="{{ URL::asset('assets/images/owner-default.png') }}">
 			@endif
 		</a>
-		<div class="glyphicon glyphicon-edit"></div>
 	</div>
-
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-name text-center">
 		<a href="{{ route('profile.showProfile', Auth::id()) }}"><h4>{{ $profile->first_name }} {{ $profile->last_name }}</h4></a>
 	</div>
