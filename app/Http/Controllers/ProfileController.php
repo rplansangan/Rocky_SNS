@@ -9,8 +9,13 @@ use SNS\Models\Pets;
 use SNS\Libraries\Facades\PostService;
 use SNS\Libraries\Facades\FriendService;
 use Illuminate\Support\Facades\Auth;
+use SNS\Events\FriendRequest;
 
 class ProfileController extends Controller {
+	
+// 	public function __construct() {
+// 		parent::__construct();
+// 	}
 
 	public function showProfile($id){ 
 		$profileDetails = Registration::find($id); 
@@ -43,6 +48,15 @@ class ProfileController extends Controller {
 			case 'add':
 				$response['message'] = $this->addFriend($request->get('requested_id'));
 				$response['action'] = 'req';
+				
+				// Sends a notification to requested_id via FriendRequest event
+				event(new FriendRequest(array(
+					'notification' => array(
+							'origin_user_id' => Auth::id(),
+							'notification_object' => 'FriendRequest',
+							'destination_user_id' => $request->get('requested_id'),
+							'l10n_key' => 'profile.friend.request_msg')
+					)));
 				break;		
 			case 'req':
 				$response['message'];

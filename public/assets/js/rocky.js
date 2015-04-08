@@ -78,7 +78,7 @@ $(document).ready(function(){
     		type: 'post',
     		success:function(r){ 
     			var r = jQuery.parseJSON(r);
-    			
+    			console.log(r);
     			$('#btn_add_friend').text(r.message);
     			$('#btn_add_friend').attr('data-act', r.action);
     			
@@ -88,7 +88,6 @@ $(document).ready(function(){
     });
 
 	//individual
-
 	$('.btn_indiv').addClass('active');
 	$('.btn_indiv').on('click', function(){
 		$('.useraddform').show();
@@ -105,6 +104,10 @@ $(document).ready(function(){
 	$('.btn_merch').on('click', function(){
 		$('.useraddform').hide();
 		$('.merchform').show();
+	});
+
+	$('[data-toggle="tooltip"]').tooltip({
+		placement : 'top'
 	});
 
 	$(document).on('keypress', '.comment-box' ,function (e) {

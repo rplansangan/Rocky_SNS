@@ -37,6 +37,16 @@ a:hover {
   border-color: #c0392b;
 }
 
+#nav-notif:hover #notif-main {
+  display: block;
+}
+
+#notif-main {
+  position: absolute;
+  display: none;
+  padding: 10px;
+  background-color: #FFF;
+}
 
 /*============SUBHeader============*/
 .subhead-content {
@@ -257,6 +267,7 @@ ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
 
 .prof-photo {
   margin-top: 20px;
+  text-align: center;
 }
 
 .prof-photo img {

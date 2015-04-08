@@ -14,7 +14,10 @@ use SNS\Libraries\Facades\PostService;
 
 class MerchantController extends Controller {
 
-
+	public function __construct() {
+		parent::__construct();
+	}	
+	
 	/**
 	 * Create a new controller instance.
 	 *

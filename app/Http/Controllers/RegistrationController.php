@@ -20,6 +20,7 @@ class RegistrationController extends Controller {
 	protected $service;
 	
 	public function __construct() {
+		parent::__construct();
 		$this->service = new ValidationService();
 // 		$this->middleware('guest');
 	}

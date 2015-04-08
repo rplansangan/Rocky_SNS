@@ -1,5 +1,4 @@
 <?php
-use SNS\Libraries\Facades\FriendService;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,11 +10,7 @@ use SNS\Libraries\Facades\FriendService;
 |
 */
 Route::get('test', function() {
-	$var = FriendService::add(2);
-	
-	echo "<pre>";
-	print_r($var);
-	echo "</pre>";
+
 });
 Route::get('testupload/{uid}/{fid}', array(
 	'uses' => 'UploadsController@getImage'

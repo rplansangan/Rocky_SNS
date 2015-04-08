@@ -12,10 +12,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
 
 class UploadsController extends Controller {
-
-	public function testView() {
-		return view('tests.upload_view');
-	}
 	
 	public function upload(Request $request) {
 		PostService::create($request->all());	
