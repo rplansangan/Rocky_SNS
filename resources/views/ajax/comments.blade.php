@@ -8,6 +8,9 @@
       <a href="{{ route('profile.showProfile', $comment->user->registration_id) }}">
       	<small>{{ $comment->user->first_name }} {{ $comment->user->last_name }} </small>
       </a>
-     <p class="help-block"> {{ $comment->comment_message }}</p>
+     <p> {{ $comment->comment_message }}</p>
     </div>
+    @if($comment->comment_user_id == Auth::id())
+      <button type="button" class="close comment-remove" data-label="remove" value=" {{ $comment->comment_id }} "><span>&times;</span></button>
+    @endif
   </li>

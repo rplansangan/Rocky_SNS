@@ -143,8 +143,15 @@ $(document).ready(function(){
 
 		e.preventDefault();
 	});
-	$(document).on('click' , '.comment-form' , function(){
-		$(this).next().fadeIn();
+	$(document).on('click' , '.comment-form-btn' , function(){
+		var data_act = $(this).attr('isClick');
+		if(data_act == 'Open'){
+			$(this).attr('isClick' , 'Closed');
+			$(this).next().fadeIn();
+		}else{
+			$(this).attr('isClick' , 'Open');
+			$(this).next().fadeOut();
+		}
 	});
 });
 

@@ -246,6 +246,7 @@ ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
 
 .comment-form {
   padding-left: 0;
+  padding-right: 0;
 }
 
 
@@ -450,14 +451,20 @@ ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
 
 ul.comments {
   background: #FAEFEB;
-  padding: 10px 15px;
+  padding: 10px !important;
   border: 1px solid #E5E4E4;
 }
 
 ul.comments .media-left {
   display: inline-block;
 }
-
+#home-newsfeed > li{
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding: 15px 0px 15px 0px;
+}
+#home-newsfeed > li > .media-left , #home-newsfeed > li > .media-body{
+  padding: 5px;
+}
 
 /*============LEFT SIDEBAR============*/
 .bg-rocky{
