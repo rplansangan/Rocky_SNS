@@ -1,6 +1,23 @@
-@if(isset($profile->profile_pic))
-	<img src="{{ route('files.get.image', array($profile->user_id, $profile->profile_pic->image_id)) }}">
-@else
-	<img src="{{ URL::asset('assets/images/pet-default.png') }}" width="120px">
-@endif
-<pre>{{ print_r($profile) }}</pre>
+
+
+@extends('master')
+@section('site_title')
+Rocky the Superdog
+@stop
+
+@section('content')
+	<div class="container-fluid bg-rocky">
+		<div class="row">
+			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 left">
+				@include('home.petprofile-left')
+			</div>
+			<div class="col-lg-6 col-lg-6 col-md-3 col-sm-12 col-xs-12 middle">
+			<input type="hidden" id="profile_id" value="{{{ $profile->registration_id }}}">
+				@include('home.petprofile')
+			</div>
+			<div class="col-lg-3 col-lg-6 col-md-3 col-sm-12 col-xs-12 right">
+				@include('home.right')
+			</div>
+		</div>
+	</div>
+@stop

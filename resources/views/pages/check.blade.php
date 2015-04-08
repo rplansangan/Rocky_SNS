@@ -11,8 +11,8 @@
 						<h2>User Type</h2>
 					</div>
 					<div class="col-sm-12 usertype_btn">
-						<a href="javascript:void(0);" class="col-sm-5 btn btn_indiv btn_usertype" data-toggle="tooltip" data-original-title="Tip about this individual button">Individual</a>
-						<a href="javascript:void(0);" class="col-sm-5 col-sm-offset-1 btn btn_merch btn_usertype" data-toggle="tooltip" data-original-title="Tip about this merchant button">
+						<a href="javascript:void(0);" class="col-sm-5 btn btn_indiv btn_usertype" data-toggle="tooltip" data-original-title="Information about this individual button">Individual</a>
+						<a href="javascript:void(0);" class="col-sm-5 col-sm-offset-1 btn btn_merch btn_usertype" data-toggle="tooltip" data-original-title="Information about this merchant button">
 							Merchant
 						</a>
 					</div>
