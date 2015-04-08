@@ -83,7 +83,8 @@ class HomeController extends Controller {
 		return view('pages.search' , $data);
 	}
 	public function test(Request $request){
-		echo '1';
+		$a = $request->all();
+		dd($a['company_background']);
 	}
 
 	public function addadvertise(){
