@@ -77,7 +77,6 @@ $(document).ready(function(){
     });
 
 	//individual
-
 	$('.btn_indiv').addClass('active');
 	$('.btn_indiv').on('click', function(){
 		$('.useraddform').show();
@@ -94,6 +93,10 @@ $(document).ready(function(){
 	$('.btn_merch').on('click', function(){
 		$('.useraddform').hide();
 		$('.merchform').show();
+	});
+
+	$('[data-toggle="tooltip"]').tooltip({
+		placement : 'top'
 	});
 
 	$(document).on('keypress', '.comment-box' ,function (e) {
