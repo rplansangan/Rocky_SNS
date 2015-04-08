@@ -3,9 +3,6 @@
 @endif
 
 <li class="media">
-	@if($)
-
-	@endif
 	<div class="media-left">
 		<a href="{{ route('profile.showProfile', $user->registration_id) }}">
 			<img class="media-object" src="{{ URL::asset('assets/images/jon.jpg') }}" width="64px" height="64px" alt="profile picture">
