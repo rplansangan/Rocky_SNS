@@ -37,6 +37,16 @@ a:hover {
   border-color: #c0392b;
 }
 
+#nav-notif:hover #notif-main {
+  display: block;
+}
+
+#notif-main {
+  position: absolute;
+  display: none;
+  padding: 10px;
+  background-color: #FFF;
+}
 
 /*============SUBHeader============*/
 .subhead-content {

@@ -23,7 +23,16 @@
             <li role="presentation"><a href="{{ route('profile.showProfile', Auth::id()) }}">{{ Auth::user()->registration->first_name }} {{ Auth::user()->registration->last_name }}</a></li>
           @endif
         <li role="presentation"><a href="{{  route('search') }}">Search</a></li>
-        <li role="presentation"><a href=""><span class="glyphicon glyphicon-bell"></span></a></li>
+        <li id="nav-notif" role="presentation">
+        	<a href=""><span class="glyphicon glyphicon-bell"></span></a>
+        	<ul id="notif-main">
+        	@if($user_notifs)
+        		@foreach($user_notifs as $notif)
+        			{{ print_r($notif) }}
+        		@endforeach
+        	@endif
+        	</ul>
+        </li>
         <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa fa-cog"></i></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="{{ route('register.petdetails', Auth::id()) }}">Add A Pet</a></li>

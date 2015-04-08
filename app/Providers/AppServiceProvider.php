@@ -49,6 +49,10 @@ class AppServiceProvider extends ServiceProvider {
 		$this->app->bind('friendservice', function() {
 			return new \SNS\Libraries\Services\FriendService;
 		});
+		
+		$this->app->bind('notifservice', function() {
+			return new \SNS\Libraries\Services\NotificationService;
+		});
 	}
 
 }

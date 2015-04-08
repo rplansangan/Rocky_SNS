@@ -11,9 +11,12 @@ class EventServiceProvider extends ServiceProvider {
 	 * @var array
 	 */
 	protected $listen = [
-		'event.name' => [
-			'EventListener',
-		],
+// 		'event.name' => [
+// 			'EventListener',
+// 		],
+		'SNS\Events\FriendRequest' => [
+			'SNS\Handlers\Events\SendFriendRequest'
+		]
 	];
 
 	/**

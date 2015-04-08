@@ -67,7 +67,7 @@ $(document).ready(function(){
     		type: 'post',
     		success:function(r){ 
     			var r = jQuery.parseJSON(r);
-    			
+    			console.log(r);
     			$('#btn_add_friend').text(r.message);
     			$('#btn_add_friend').attr('data-act', r.action);
     			
