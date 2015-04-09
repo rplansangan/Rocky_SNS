@@ -1,16 +1,20 @@
 $(document).ready(function(){
 	tinymce.init({
 	    selector: ".company_background",
-	    theme: "modern",
-	    plugins: [
-	         "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
-	         "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-	         "save table contextmenu directionality textcolor"
-	   ],
+		toolbar1: "mybutton | insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+		    setup: function(editor) {
+		        editor.addButton('mybutton', {
+		            type: 'button',
+		            text: 'Upload',
+		            onclick: function(){
+		            	editor.insertContent('<img src="http://4.bp.blogspot.com/-_qxynaNliS8/VSSqYpddauI/AAAAAAAABx8/Izb2vjAHHxo/s1600/170122.jpg">');
+		            }
+		        });
+		    }
 	 });
 
-	$('.company_background').html('<img src="http://4.bp.blogspot.com/-_qxynaNliS8/VSSqYpddauI/AAAAAAAABx8/Izb2vjAHHxo/s1600/170122.jpg">');
-	
+	/*$('.company_background').html('<img src="http://4.bp.blogspot.com/-_qxynaNliS8/VSSqYpddauI/AAAAAAAABx8/Izb2vjAHHxo/s1600/170122.jpg">');
+	*/
 	$('.custom-file-input').on('change' , function(event){
 		if(this.files[0].size <= 3145728){
 			var tmppath = URL.createObjectURL(event.target.files[0]);

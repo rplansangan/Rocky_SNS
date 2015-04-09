@@ -1,5 +1,3 @@
-
-
 @extends('master')
 @section('content')
 <div class="container-fluid bg-rocky">
@@ -15,8 +13,8 @@
 				<form method="POST" action="{{ route('test2') }}" class="form-horizontal col-sm-12  col-lg-12 col-md-12  col-xs-12 reg " role="form" enctype="multipart/form-data">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<div class="form-group">
-						<label class="col-sm-3 control-label">Type:</label>
-						<div class="col-sm-8">
+						<label class="col-sm-1 control-label">Type:</label>
+						<div class="col-sm-11">
 							<select name="advertise_type" class="form-control">
 								<option value="pets_for_sale" >Pets for sale</option>
 								<option value="services" >Services</option>
@@ -25,29 +23,19 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-3 control-label">Title:</label>
-						<div class="col-sm-8">
+						<label class="col-sm-1 control-label">Title:</label>
+						<div class="col-sm-11">
 							<input type="text" name="title" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-3 control-label">Banner:</label>
-						<div class='col-sm-8'>
-							<input type='file' name="userfile" class="custom-file-input" />
+						<div class="col-sm-12">
+							<textarea class="form-control company_background" name="company_background" rows="15"></textarea>
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-sm-3 col-sm-offset-3 view-image-here"></div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-3 control-label">Description:</label>
-						<div class="col-sm-8">
-							<textarea class="form-control" name="company_background" rows="5"></textarea>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class='col-sm-8 col-sm-offset-3 text-right'>
-							<input type='submit' class="btn" value="Register"/>
+						<div class='col-sm-8 col-sm-offset-4 text-right'>
+							<input type='submit' class="btn" value="Add"/>
 						</div>
 					</div>
 				</form>

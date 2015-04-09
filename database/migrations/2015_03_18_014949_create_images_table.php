@@ -22,6 +22,7 @@ class CreateImagesTable extends Migration {
 			$table->string('image_ext', 15);
 			$table->boolean('is_profile_picture');
 			$table->integer('post_id');
+			$table->integer('business_id');
 			$table->integer('pet_id');
 			$table->softDeletes();
 			$table->timestamps();
@@ -29,6 +30,7 @@ class CreateImagesTable extends Migration {
 			$table->index('user_id');
 			$table->index('post_id');
 			$table->index('pet_id');
+			$table->index('business_id');
 		});
 	}
 

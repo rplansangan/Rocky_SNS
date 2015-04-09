@@ -15,6 +15,7 @@ class CreateBusinessTable extends Migration {
 		Schema::create('business_registration', function(Blueprint $table)
 		{
 			$table->increments('business_id');
+			$table->integer('user_id');
 			$table->string('business_name', 100)->unique();
 			$table->string('address_line1', 255);
 			$table->string('address_line2', 255);
