@@ -397,24 +397,25 @@ ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
   margin: 15px 0;
 }
 
+.adshop-info {
+  text-align: left;
+  margin-top: 15px;
+}
+
+.adshop-info label {
+  padding-left: 0;
+}
+
 .btn_adshop {
-  position: absolute;
-  top: 180px;
-  left: 230px;
+  position: relative;
+  margin-top: 85px;
 }
 
 .btn_adshop a {
-  margin-left: 20px;
   color: #fff;
   background: #E74C3C;
   padding: 8px;
   border-radius: 5px;
-  visibility: hidden;
-}
-
-.adshop-img:hover > .btn_adshop a {
-  visibility: visible;
-  opacity: 1;
 }
 
 .adshop-img:hover > img {
