@@ -52,6 +52,13 @@ class MerchantController extends Controller {
 	
 	public function activate_merchant(Request $request){
 		$input = array_except($request->all(), array('_token'));
+		$validate = Validator::make($input, Business::$initialRules);
+		
+		if($validate->fails()) {
+			return redirect()->back()
+				->withInput($request->all())
+				->withErrors($validate->errors()->all());
+		}
 	
 		$merchant = new Business();
 		$merchant->user_id = Auth::id();
@@ -91,5 +98,24 @@ class MerchantController extends Controller {
 			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
 		}
 		return redirect()->route('addadvertise');
+	}
+
+	public function add_advertisement(Request $request){
+		$input = array_except($request->all(), array('_token'));
+		$validate = Validator::make($input, Advertisement::$initialRules);
+
+		if($validate->fails()){
+			return redirect()->back()
+			->withInput($request->all())
+			->withErrors($validate->errors()->all())
+		}
+
+		$ads = new Advertisement();
+		$ads->user_id = Auth::id();
+		$ads->ad_type = $input['ad_type'];
+		$ads->ad_title = $input['ad_title'];
+		$ads->ad_desc = $input['ad_desc'];
+
+		return redirect()->route('profile.petlist', Auth::id());
 	}
 }

@@ -75,7 +75,7 @@ class HomeController extends Controller {
 	}
 	public function test(Request $request){
 		$a = $request->all();
-		dd($a['company_background']);
+		print_r($a);
 	}
 
 	public function addadvertise(){
