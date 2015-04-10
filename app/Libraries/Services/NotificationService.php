@@ -18,8 +18,8 @@ class NotificationService {
 	public function sendRequest($params) {		
 		switch($params['params']['origin']) {
 			case 'Registration':
-				$obj = Registration::where('registration_id', $params['params']['id']);
-				$obj->notif_user()->create(array_except($params, array('params')));
+				$obj = Registration::find($params['params']['id'])
+						->notif_user()->create(array_except($params, array('params')));
 				break;
 		}
 		return $conf;

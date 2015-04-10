@@ -57,7 +57,6 @@ class ProfileController extends Controller {
 								'id' => Auth::user()->registration->registration_id,
 							),
 							'origin_user_id' => Auth::user()->registration->registration_id,
-							'notification_object' => 'FriendRequest',
 							'destination_user_id' => $request->get('requested_id'),
 							'l10n_key' => 'profile.friend.request_msg')
 					)));

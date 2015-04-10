@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class NotificationsMorph extends Migration {
+class NotifExtraData extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,8 +13,7 @@ class NotificationsMorph extends Migration {
 	public function up()
 	{
 		Schema::table('notifications', function(Blueprint $table) {
-				$table->renameColumn('notification_object', 'object_type');
-				$table->integer('object_id');
+			$table->string('params', 500);
 		});
 	}
 
@@ -26,8 +25,7 @@ class NotificationsMorph extends Migration {
 	public function down()
 	{
 		Schema::table('notifications', function(Blueprint $table) {
-			$table->renameColumn('object_type', 'notification_object');
-			$table->dropColumn('object_id');
+			$table->dropColumn('params');
 		});
 	}
 

@@ -14,7 +14,8 @@ class Notification extends Model {
 							'destination_user_id',
 							'object_type',
 							'l10n_key',
-							'is_read'
+							'is_read',
+							'params'
 						);
 
 	protected $dates = array('deleted_at');

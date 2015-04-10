@@ -1,4 +1,5 @@
 <?php
+use SNS\Models\Registration;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -10,7 +11,15 @@
 |
 */
 Route::get('test', function() {
-
+	$t = Registration::find(2)->notif_user()->create(array(
+		'origin_user_id' => auth()->id(),
+		'destination_user_id' => 1,
+		'l10n_key' => 'profile.friend.request_msg'
+	));
+	print_r($t);
+	
+	
+	echo 1;
 });
 Route::get('testupload/{uid}/{fid}', array(
 	'uses' => 'UploadsController@getImage'
@@ -144,7 +153,7 @@ Route::get('search', array(
 /* ADVERTISE */
 Route::get('merchant_activation', array(
 	'as' => 'advertised',
-	'uses' => 'MerchantController@advertised'
+	'uses' => 'MerchantController@show_advertise_view'
 ));
 Route::get('add_advertise', array(
 	'as' => 'addadvertise',
@@ -156,7 +165,7 @@ Route::get('activate_merchant', array(
 	));
 Route::post('register_activate_merchant', array(
 	'as' => 'register_activate_merchant',
-	'uses' => 'RegistrationController@merchant_activation'
+	'uses' => 'MerchantController@activate_merchant'
 	));
 Route::get('merchant', array(
 	'as' => 'merchant',

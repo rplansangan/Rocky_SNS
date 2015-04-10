@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use SNS\Libraries\Facades\PostService;
+use Carbon\Carbon;
+use SNS\Libraries\Facades\StorageHelper;
+use SNS\Models\Images;
 
 class MerchantController extends Controller {
 	
@@ -30,7 +33,7 @@ class MerchantController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function advertised(){
+	public function show_advertise_view(){
 	    $user = new User();
 	    $ind = $user->isMerc(Auth::id())->get();
 		$data['auth'] = true;
@@ -45,5 +48,48 @@ class MerchantController extends Controller {
 	public function merchant_activation(){
 		$data['auth'] = true;
 		return view('pages.advertise' , $data);
+	}
+	
+	public function activate_merchant(Request $request){
+		$input = array_except($request->all(), array('_token'));
+	
+		$merchant = new Business();
+		$merchant->user_id = Auth::id();
+		$merchant->business_name = $input['business_name'];
+		$merchant->address_line1 = $input['address_line1'];
+		$merchant->address_line2 = $input['address_line2'];
+		$merchant->city = $input['city'];
+		$merchant->zip = $input['zip'];
+		$merchant->state = $input['state'];
+		$merchant->country = $input['country'];
+		$merchant->phone_country_code = $input['phone_country_code'];
+		$merchant->phone_area_code = $input['phone_area_code'];
+		$merchant->phone_number = $input['phone_number'];
+		$merchant->email_address = $input['email_address'];
+		$merchant->contact_person = $input['contact_person'];
+		$merchant->company_background = $input['company_background'];
+		$merchant->save();
+	
+		User::where('user_id' , '=' , Auth::id())->update(['is_merchant' => 1]);
+	
+		if(isset($input['myfile'])) {
+			$file = $input['myfile'];
+			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
+			$dir = StorageHelper::create(Auth::id());
+	
+			$img_data = new Images(array(
+					'user_id' => Auth::id(),
+					'image_path' => $dir,
+					'image_name' => $filename,
+					'image_mime' => $file->getMimeType(),
+					'image_ext' => $file->getClientOriginalExtension(),
+					'is_profile_picture' => 0
+			));
+	
+			$merchant->image()->save($img_data);
+	
+			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
+		}
+		return redirect()->route('addadvertise');
 	}
 }
