@@ -107,7 +107,7 @@ class MerchantController extends Controller {
 		if($validate->fails()){
 			return redirect()->back()
 			->withInput($request->all())
-			->withErrors($validate->errors()->all())
+			->withErrors($validate->errors()->all());
 		}
 
 		$ads = new Advertisement();
