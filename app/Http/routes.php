@@ -128,10 +128,6 @@ Route::get('trending', array(
 	'as' => 'trending',
 	'uses' => 'HomeController@trending'
 	));
-Route::get('advertised', array(
-	'as' => 'advertised',
-	'uses' => 'HomeController@advertised'
-	));
 Route::get('shop', array(
 	'as' => 'shop',
 	'uses' => 'HomeController@shop'
@@ -146,6 +142,10 @@ Route::get('search', array(
 	));
 
 /* ADVERTISE */
+Route::get('merchant_activation', array(
+	'as' => 'advertised',
+	'uses' => 'MerchantController@advertised'
+));
 Route::get('add_advertise', array(
 	'as' => 'addadvertise',
 	'uses' => 'HomeController@addadvertise'

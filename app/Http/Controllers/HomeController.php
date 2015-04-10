@@ -60,17 +60,7 @@ class HomeController extends Controller {
 		$data['auth'] = true;
 		return view('pages.trending' , $data);
 	}
-	public function advertised(){
-	    $user = new User();
-	    $ind = $user->isMerc(Auth::id())->get();
-		$data['auth'] = true;
-		if(!$ind->isEmpty()){
-			return view('pages.addadvertise' , $data);
-		}else{
-			return view('pages.check' , $data);
-		}
-		
-	}
+	
 	public function shop(){
 		$data['auth'] = true;
 		return view('pages.shop' , $data);

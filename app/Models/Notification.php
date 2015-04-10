@@ -12,7 +12,7 @@ class Notification extends Model {
 	protected $fillable = array(
 							'origin_user_id',
 							'destination_user_id',
-							'notification_object',
+							'object_type',
 							'l10n_key',
 							'is_read'
 						);
@@ -35,5 +35,9 @@ class Notification extends Model {
 	public function scopeUserNotifIncremental($query, $user_id, $take, $offset) {
 		return $query->where('destination_user_id', $user_id)
 				->latest()->take($take)->skip($offset)->get();
+	}
+	
+	public function object() {
+		return $this->morphTo();
 	}
 }

@@ -50,9 +50,13 @@ class ProfileController extends Controller {
 				$response['action'] = 'req';
 				
 				// Sends a notification to requested_id via FriendRequest event
-				event(new FriendRequest(array(
+				$response['test'] = event(new FriendRequest(array(
 					'notification' => array(
-							'origin_user_id' => Auth::id(),
+							'params' => array(
+								'origin' => 'Registration',
+								'id' => Auth::user()->registration->registration_id,
+							),
+							'origin_user_id' => Auth::user()->registration->registration_id,
 							'notification_object' => 'FriendRequest',
 							'destination_user_id' => $request->get('requested_id'),
 							'l10n_key' => 'profile.friend.request_msg')

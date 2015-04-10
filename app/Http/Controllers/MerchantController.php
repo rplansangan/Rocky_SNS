@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Auth;
 use SNS\Libraries\Facades\PostService;
 
 class MerchantController extends Controller {
-
-	public function __construct() {
-		parent::__construct();
-	}	
 	
 	/**
 	 * Create a new controller instance.
@@ -25,6 +21,7 @@ class MerchantController extends Controller {
 	 */
 	public function __construct()
 	{
+		parent::__construct();
 		$this->middleware('auth');
 	}
 
@@ -33,11 +30,16 @@ class MerchantController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
+	public function advertised(){
+	    $user = new User();
+	    $ind = $user->isMerc(Auth::id())->get();
 		$data['auth'] = true;
-		$data['newsfeed'] = PostService::initialNewsFeed();
-		return view('pages.homepage' , $data);
+		if(!$ind->isEmpty()){
+			return view('pages.addadvertise' , $data);
+		}else{
+			return view('pages.check' , $data);
+		}
+		
 	}
 
 	public function merchant_activation(){
