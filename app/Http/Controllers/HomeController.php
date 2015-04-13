@@ -65,7 +65,7 @@ class HomeController extends Controller {
 	    $ind = $user->isMerc(Auth::id())->get();
 		$data['auth'] = true;
 		if(!$ind->isEmpty()){
-			return view('pages.addadvertise' , $data);
+			return view('pages.merchantprofile' , $data);
 		}else{
 			return view('pages.check' , $data);
 		}
