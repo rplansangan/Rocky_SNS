@@ -29,7 +29,14 @@ class NotificationsAlter extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::table('notifications', function(Blueprint $table) {
+			$table->renameColumn('origin_user_id', 'from_user_id');
+			$table->integer('origin_id');
+			$table->string('origin_object', 50);
+			$table->integer('destination_id');
+			$table->string('destination_object', 50);
+			$table->dropColumn(array('destination_user_id', 'notification_object'));
+		});
 	}
 
 }

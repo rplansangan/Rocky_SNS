@@ -27,9 +27,13 @@
         	<a href=""><span class="glyphicon glyphicon-bell"></span></a>
         	<ul id="notif-main">
         	@if($user_notifs)
-        		@foreach($user_notifs as $notif)
-        			{{ print_r($notif) }}
-        		@endforeach
+        		@if(count($user_notifs) != 0)
+	        		@foreach($user_notifs as $notif)
+	        			{{ print_r($notif) }}
+	        		@endforeach
+	        	@else
+	        		No notification.
+	        	@endif
         	@endif
         	</ul>
         </li>

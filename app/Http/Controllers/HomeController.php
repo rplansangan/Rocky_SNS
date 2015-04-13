@@ -60,17 +60,6 @@ class HomeController extends Controller {
 		$data['auth'] = true;
 		return view('pages.trending' , $data);
 	}
-	public function advertised(){
-	    $user = new User();
-	    $ind = $user->isMerc(Auth::id())->get();
-		$data['auth'] = true;
-		if(!$ind->isEmpty()){
-			return view('pages.merchantprofile' , $data);
-		}else{
-			return view('pages.check' , $data);
-		}
-		
-	}
 	public function shop(){
 		$data['auth'] = true;
 		return view('pages.shop' , $data);
@@ -85,7 +74,7 @@ class HomeController extends Controller {
 	}
 	public function test(Request $request){
 		$a = $request->all();
-		dd($a['company_background']);
+		print_r($a);
 	}
 
 	public function addadvertise(){

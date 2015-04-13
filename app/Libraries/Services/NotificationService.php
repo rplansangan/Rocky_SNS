@@ -1,6 +1,7 @@
 <?php namespace SNS\Libraries\Services;
 
 use SNS\Models\Notification;
+use SNS\Models\Registration;
 
 class NotificationService {
 	
@@ -14,9 +15,19 @@ class NotificationService {
 		$this->notif = new Notification();	
 	}
 	
-	public function sendRequest($params) {
-		$this->notif->create($params);
+	public function sendRequest($params) {		
+		switch($params['params']['origin']) {
+			case 'Registration':
+				$obj = Registration::find($params['params']['id'])
+						->notif_user()->create(array_except($params, array('params')));
+				break;
+		}
+		return $conf;
 	}
+	
+	protected function formatNotif($notif_collection) {
+		
+	} 
 	
 	/**
 	 * 
