@@ -179,6 +179,10 @@ $(document).ready(function(){
 			$(this).next().fadeOut();
 		}
 	});
+
+	$(document).on('click' , '#refresh-btn' , function(){
+		location.reload();
+	});
 });
 
 

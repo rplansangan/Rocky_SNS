@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use SNS\Libraries\Facades\PostService;
+use SNS\Libraries\Facades\FriendService;
 use Carbon\Carbon;
 use SNS\Libraries\Facades\StorageHelper;
 use SNS\Models\Images;
@@ -137,12 +138,33 @@ class MerchantController extends Controller {
 					'is_profile_picture' => 0
 			));
 	
-			$post->image()->save($img_data);
+			$advertise->image()->save($img_data);
 	
 			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
 		}
+		if(User::find(Auth::id())->is_merchant == 1){
 
-		return redirect()->route('advertised');
+		}else{
+			return redirect()->route('profile.advertised' , array("id" => Auth::id() , "advertised_id" => $advertise->id) );
+		}
+		
+		
+	}
+
+
+	public function showAdvertised($user_id , $advertise_id){
+		$data['profile'] = Registration::find($user_id);
+
+		$data['post'] = Advertise::where('user_id', $user_id)
+				->where('id', $advertise_id)
+				->with(array('post' , 'image'))->get();
+
+		$data['like'] = Posts::where('user_id', $user_id)
+				->where('advertise_id', $advertise_id)
+				->with(array('like' , 'comment'))->get();		
+		$data['auth'] = true;	
+		$data['friend_flags'] = FriendService::check($user_id);	
+		return view('profile.individual' , $data);
 	}
 
 }
