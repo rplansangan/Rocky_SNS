@@ -1,7 +1,11 @@
 <li class="media">
 	<div class="media-left">
 		<a href="{{ route('profile.showProfile', $user->registration_id) }}">
-			<img class="media-object" src="{{ URL::asset('assets/images/jon.jpg') }}" width="64px" height="64px" alt="profile picture">
+			@if(isset($pet->image))	
+				<img src="{{ route('files.get.image', array($user->user_id, $user->image[0]->image_id)) }}" width="64px" height="64px" alt="profile picture">
+			@else
+				<img src="{{ URL::asset('assets/images/owner-default.png') }}" width="64px" height="64px" alt="profile picture">
+			@endif
 		</a>
 	</div>
 	<div class="media-body">
