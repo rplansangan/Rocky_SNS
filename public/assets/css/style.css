@@ -44,8 +44,9 @@ a:hover {
 #notif-main {
   position: absolute;
   display: none;
-  padding: 0;
-  background-color: #FFF;
+  padding: 10px;
+  background-color: #eee;
+  border-radius: 5px;
   width: 250px;
   left: -190px;
 }
@@ -270,6 +271,11 @@ ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
   padding-right: 0;
 }
 
+span legend {
+  border: 0;
+  margin-bottom: 5px;
+}
+
 
 /*============Profile Page============*/
 .prof-inf {
@@ -478,6 +484,12 @@ ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
 .merch-condetails a {
   color: #333;
   font-size: 16px;
+}
+
+a.btn.btn_merch_addnewads {
+  color: #fff;
+  background: #E74C3C;
+  padding: 6px 12px;
 }
 
 .merch-feat-ad {

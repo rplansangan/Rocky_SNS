@@ -8,7 +8,8 @@
 			<p>Business details lorem ipsum dolor</p>
 		</div>
 		<div class="col-sm-12 col-xs-12 col-lg-5 col-md-5 merch-condetails">
-			Contact No.<a href="tel:0000 000 000"> 0000 000 000</a>
+			<p>Contact No.<a href="tel:0000 000 000"> 0000 000 000</a></p>
+			<a class="btn btn_merch_addnewads" href="">Add new advertisement</a>
 		</div>
 	</div>
 

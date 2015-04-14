@@ -12,7 +12,7 @@ class RemovePidFromAds extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('advertise', function(Blueprint $t) {
+		Schema::table('advertisements', function(Blueprint $t) {
 			$t->dropColumn('post_id');
 		});
 	}
@@ -24,7 +24,7 @@ class RemovePidFromAds extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('advertise', function(Blueprint $t) {
+		Schema::table('advertisements', function(Blueprint $t) {
 			$t->integer('post_id');
 		});
 	}
