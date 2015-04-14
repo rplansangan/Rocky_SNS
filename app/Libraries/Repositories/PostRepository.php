@@ -78,7 +78,7 @@ class PostRepository {
 				},
 				'comment.user' => function ($q) {
 					$q->addSelect(array('registration_id', 'first_name', 'last_name'));
-				}))->take($take)->latest()->get();
+				}))->where('advertise_id' , ' = ' , 0)->take($take)->latest()->get();
 		}
 		
 		return $this->post
@@ -98,7 +98,7 @@ class PostRepository {
 			},
 			'comment.user' => function ($q) {
 				$q->addSelect(array('registration_id', 'first_name', 'last_name'));
-			}))->take($take)->latest()->get();
+			}))->where('advertise_id' , ' = ' , 0)->take($take)->latest()->get();
 	}
 	
 	/**

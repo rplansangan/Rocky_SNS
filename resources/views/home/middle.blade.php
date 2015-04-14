@@ -41,7 +41,7 @@ ul.nav.nav-tabs li a {
 <div class="newsfeed-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
 	<legend>News feed</legend>
 	<div class="text-center">
-		<a href="#"><img style="width:30px" src="{{ URL::asset('assets/images/Refresh2.png') }}"></a>
+		<a href="#" id="refresh-btn"><img style="width:30px" src="{{ URL::asset('assets/images/Refresh2.png') }}"></a>
 	</div>
 	<ul id="home-newsfeed" class="media-list append-post">
 		<li></li>
