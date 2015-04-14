@@ -10,5 +10,6 @@ return [
 		'friend.request_add' => 'Accept',
 		'friend.request_ignore' => 'Ignore',
 		'friend.request_ignore_msg' => "You have ignored <b><a href=':profile_route'>:name's</a></b> friend request",
-		'friend.request_accept_msg' => "You have accepted <b><a href=':profile_route'>:name's</a></b> friend request"
+		'friend.request_accept_msg' => "You have accepted <b><a href=':profile_route'>:name's</a></b> friend request",
+		'friend.request_accept_for_req_msg' => "<b><a href=':profile_route'>:name</a></b> has accepted your friend request"
 ];

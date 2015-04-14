@@ -147,7 +147,7 @@ class FriendService {
 					'id' => $this->ids['current'],
 				),
 				'destination_user_id' => $this->ids['requested'],
-				'l10n_key' => 'profile.friend.request_msg',
+// 				'l10n_key' => 'profile.friend.request_msg',
 				'params' => json_encode(array('notif_type' => 'friend_request'))
 			))));
 			
@@ -204,6 +204,16 @@ class FriendService {
 			$this->ids['requested'],
 			array('friend_accept' => true)
 		);
+		
+		event(new FriendRequestEvent(array(
+			'notification' => array(
+			'details' => array(
+				'origin' => 'Registration',
+				'id' => $this->ids['current'],
+			),
+			'destination_user_id' => $this->ids['requested'],
+			'params' => json_encode(array('notif_type' => 'friend_request', 'friend_accept_for_req' => true))
+		))));
 	}
 	
 	protected function updateRequest($ids, $status) {

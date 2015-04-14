@@ -42,6 +42,7 @@ class NotificationService {
 		$name = $notif->object->registration->first_name . ' ' . $notif->object->registration->last_name;
 		
 		$params = json_decode($notif->params);
+		// if notification params has friend_ignore prop / if friend request is ignored
 		if(isset($params->friend_ignore)) {
 			return view('notifications.friend_request_ignore')
 				->with('active', $this->isActive($notif->is_read))
@@ -49,20 +50,26 @@ class NotificationService {
 				->with('name', $name);
 		}
 		
+		// if notification params has friend_accept prop / if friend request is accepted
 		if(isset($params->friend_accept)) {
 			return view('notifications.friend_request_accept')
 				->with('active', $this->isActive($notif->is_read))
 				->with('profile_route', $profile_route)
 				->with('name', $name);
 		}
+		
+		// if notification params has friend_accept_for_req / if friend request is accepted
+		if(isset($params->friend_accept_for_req)) {
+			return view('notifications.friend_request_accept_for_req')
+				->with('active', $this->isActive($notif->is_read))
+				->with('profile_route', $profile_route)
+				->with('name', $name);
+		}
 			return view('notifications.friend_request')
 				->with('active', $this->isActive($notif->is_read))
-				->with('l10n_key', $notif->l10n_key)
 				->with('profile_route', $profile_route)
 				->with('name', $name)
-				->with('requesting_id', $notif->object->registration->registration_id);
-		
-		
+				->with('requesting_id', $notif->object->registration->registration_id);		
 	}
 	
 	/**
