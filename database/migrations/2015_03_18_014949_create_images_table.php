@@ -23,6 +23,7 @@ class CreateImagesTable extends Migration {
 			$table->boolean('is_profile_picture');
 			$table->integer('post_id');
 			$table->integer('business_id');
+			$table->integer('advertise_id');
 			$table->integer('pet_id');
 			$table->softDeletes();
 			$table->timestamps();

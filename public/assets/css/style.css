@@ -385,6 +385,10 @@ ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
 
 
 /*============SHOP PAGE============*/
+.ads-panel:hover{
+  background-color: rgba(0,0,0,0.5);
+  color:white;
+}
 .adshop-content h1 {
   text-align: center;
 }
@@ -415,11 +419,11 @@ ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
   color: #fff;
   background: #E74C3C;
   padding: 8px;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
 }
 
 .adshop-img:hover > img {
-  opacity: 0.5;
+  /*opacity: 0.5;*/
 }
 
 

@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	tinymce.init({
 	    selector: ".company_background",
-		toolbar1: "mybutton | insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+		toolbar1: " insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
 		    setup: function(editor) {
 		        editor.addButton('mybutton', {
 		            type: 'button',

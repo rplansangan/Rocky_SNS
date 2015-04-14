@@ -5,38 +5,37 @@
 
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<div class="form-group">
-		<label class="col-sm-3 control-label">Type:</label>
+		<label class="col-sm-2 control-label">Type:</label>
 		<div class="col-sm-8">
-			<select name="advertise_type" class="form-control">
-				<option value="pets_for_sale" >Pets for sale</option>
-				<option value="services" >Services</option>
-				<option value="items" >Items</option>
+			<select name="type" class="form-control">
+				<option value="1" >Pets for sale</option>
+				<option value="2" >Services</option>
+				<option value="3" >Items</option>
 			</select>
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-sm-3 control-label">Title:</label>
+		<label class="col-sm-2 control-label">Title:</label>
 		<div class="col-sm-8">
 			<input type="text" name="title" class="form-control">
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-sm-3 control-label">Banner:</label>
+		<label class="col-sm-2 control-label">Banner:</label>
 		<div class='col-sm-8'>
 			<input type='file' name="userfile" class="custom-file-input" />
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="col-sm-3 col-sm-offset-3 view-image-here"></div>
+		<div class="col-sm-3 col-sm-offset-2 view-image-here"></div>
 	</div>
 	<div class="form-group">
-		<label class="col-sm-3 control-label">Description:</label>
-		<div class="col-sm-8">
-			<textarea class="form-control" name="company_background" rows="5"></textarea>
+		<div class="col-sm-12">
+			<textarea class="form-control company_background" name="message" rows="15"></textarea>
 		</div>
 	</div>
 	<div class="form-group">
-		<div class='col-sm-8 col-sm-offset-3 text-right'>
+		<div class='col-sm-11 col-sm-offset-1 text-right'>
 			<input type='submit' class="btn" value="Add"/>
 		</div>
 	</div>
