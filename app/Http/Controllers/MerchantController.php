@@ -143,7 +143,7 @@ class MerchantController extends Controller {
 			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
 		}
 		if(User::find(Auth::id())->is_merchant == 1){
-
+			return redirect()->route('test2');
 		}else{
 			return redirect()->route('profile.advertised' , array("id" => Auth::id() , "advertised_id" => $advertise->id) );
 		}
@@ -165,6 +165,11 @@ class MerchantController extends Controller {
 		$data['auth'] = true;	
 		$data['friend_flags'] = FriendService::check($user_id);	
 		return view('profile.individual' , $data);
+	}
+
+	public function viewAdform(){
+		$data['auth'] = true;
+		return view('pages.addadvertise', $data);
 	}
 
 }

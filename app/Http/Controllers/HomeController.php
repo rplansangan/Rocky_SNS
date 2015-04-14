@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use SNS\Libraries\Facades\PostService;
+use SNS\Models\Advertise;
 
 class HomeController extends Controller {
 
@@ -74,6 +75,8 @@ class HomeController extends Controller {
 	}
 	public function test(Request $request){
 		$data['auth'] = true;
+		$data['details'] = Advertise::where('user_id', Auth::id())->with(array('image', 'post'))->take(1)->latest()->get();
+		$data['info'] = Business::where('user_id', Auth::id())->get();
 		return view('pages.merchantprofile', $data);
 	}
 

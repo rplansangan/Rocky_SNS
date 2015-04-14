@@ -3,25 +3,27 @@
 <div class="container">
 	<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 merchdet-cont">
 		<div class="merch-details col-sm-12 col-xs-12 col-lg-7 col-md-7">
-			<h2>Branch Name</h2>
-			<p>1234 Street Building Address</p>
-			<p>Business details lorem ipsum dolor</p>
+			<h2>{{ $info[0]->business_name }}</h2>
+			<p>{{ $info[0]->address_line1 }} {{ $info[0]->address_line2 }} {{ $info[0]->city }} {{ $info[0]->zip }} {{ $info[0]->state }} {{ $info[0]->country }}</p>
+			<p>{{ $info[0]->company_background }}</p>
 		</div>
 		<div class="col-sm-12 col-xs-12 col-lg-5 col-md-5 merch-condetails">
-			<p>Contact No.<a href="tel:0000 000 000"> 0000 000 000</a></p>
-			<a class="btn btn_merch_addnewads" href="">Add new advertisement</a>
+			<p>Contact No.<a href="tel:{{ $info[0]->phone_number }}"> {{ $info[0]->phone_number }}</a></p>
+			<a class="btn btn_merch_addnewads" href="{{ Route('add_advertisement') }}">Add new advertisement</a>
 		</div>
 	</div>
 
 	<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 merch-feat-ad">
 		<div class="col-sm-12 col-xs-12 col-lg-7 col-md-7 mf-adimg">
-			<img src="{{ URL::asset('assets/images/ad11.jpg') }}" width="500px">
+			@if(isset($details[0]->image[0]))
+				<img class="col-sm-12 thumbnail" src="{{ route('files.get.image', array($details[0]->user_id, $details[0]->image[0]->image_id)) }}" width="500px">
+			@else
+				<img src="{{ URL::asset('assets/images/AdHere.png') }}">
+			@endif
 		</div>
 		<div class="col-sm-12 col-xs-12 col-lg-5 col-md-5 mf-adinfo">
-			<h3>Advertisement Title</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-				Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			<h3>{{ $details[0]->title }}</h3>
+			<p>{!! $details[0]->post->post_message !!}</p>
 			<button type="button" class="btn btn_inquire" data-toggle="modal" data-target="#shopModal" data-type="Inquire Adname">INQUIRE</button>
 			<button type="button" class="btn btn_order" data-toggle="modal" data-target="#shopModal" data-type="Order Adname">ORDER</a>
 		</div>

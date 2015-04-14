@@ -182,6 +182,10 @@ Route::get('profile/{id}/{advertised_id}', array(
 	'as' => 'profile.advertised',
 	'uses' => 'MerchantController@showAdvertised'
 ));
+Route::get('add_advertisment', array(
+	'as' => 'add_advertisement',
+	'uses' => 'MerchantController@viewAdform'
+));
 
 /* SETTINGS */
 
