@@ -38,7 +38,7 @@ class Registration extends Model {
 			'last_name' => 'required',
 			'birth_date' => 'required',
 			'gender' => 'required',
-			'password' => 'required|confirmed',
+			'password' => 'required|confirmed|min:6|max:24',
 	);
 	
 	public static $extendedRules = array(			

@@ -44,11 +44,11 @@ ul.nav.nav-tabs li a {
 		<a href="#"><img style="width:30px" src="{{ URL::asset('assets/images/Refresh2.png') }}"></a>
 	</div>
 	<ul id="home-newsfeed" class="media-list append-post">
-		<li></li>
+	<li></li>
 		@foreach($newsfeed as $single)
 			@include('ajax.post', array(
 				'user' => $single->user, 
-				'message' => $single, 
+				'message' => $single->post, 
 				'image' => $single->image, 
 				'like' => $single->like, 
 				'comments' => $single->comment

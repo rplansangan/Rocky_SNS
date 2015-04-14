@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller {
 	
-// 	public function __construct() {
-// 		parent::__construct();
-// 	}
-
 	public function showProfile($id){ 
 		$profileDetails = Registration::find($id); 
 		$collection = PostService::initialNewsFeed($id);
@@ -82,6 +78,15 @@ class ProfileController extends Controller {
 	public function acceptFriendRequest(Request $request) {
 		FriendService::accept($request->get('req_id'));
 		return redirect()->back();
+	}
+	
+	public function userFriends($user_id) {
+		$friends = FriendService::collect($user_id);
+		foreach($friends as $friend) {
+			echo "<pre>";
+			print_r($friend);
+			echo "</pre>";
+		}
 	}
 
 	public function settings(){

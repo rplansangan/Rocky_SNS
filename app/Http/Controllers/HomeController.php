@@ -43,7 +43,7 @@ class HomeController extends Controller {
 	public function index()
 	{
 		$data['auth'] = true;
-		$data['newsfeed'] = PostService::initialNewsFeed();
+		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
 		return view('pages.homepage' , $data);
 	}
 

@@ -1,7 +1,4 @@
 <?php
-use SNS\Libraries\Facades\Notification;
-use SNS\Libraries\Facades\FriendService;
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -13,9 +10,7 @@ use SNS\Libraries\Facades\FriendService;
 |
 */
 Route::get('test', function() {
-	echo Notification::setIsRead('SNS\Models\User', 1, 2, array('friend_accept' => true));
-// print_r(FriendService::ignore(2));
-echo 'wat';
+
 });
 Route::get('testupload/{uid}/{fid}', array(
 	'uses' => 'UploadsController@getImage'
@@ -123,6 +118,10 @@ Route::post('profile/req/friend_ignore', array(
 Route::post('profile/req/accept/', array(
 	'as' => 'profile.request.add_friend',
 	'uses' => 'ProfileController@acceptFriendRequest'
+));
+Route::get('profile/friends/{id}', array(
+	'as' => 'profile.friends',
+	'uses' => 'ProfileController@userFriends'
 ));
 
 Route::get('home', array(

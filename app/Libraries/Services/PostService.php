@@ -6,6 +6,7 @@ use SNS\Models\Registration;
 use SNS\Libraries\Facades\Likes;
 use SNS\Libraries\Facades\Comments;
 use Illuminate\Support\Facades\Auth;
+use SNS\Libraries\Repositories\NewsfeedRepository;
 
 class PostService {
 	
@@ -24,6 +25,7 @@ class PostService {
 	public function __construct() {
 		$this->image = new ImageRepository();
 		$this->post = new PostRepository();
+		$this->newsfeed = new NewsfeedRepository();
 	}
 	
 	protected function token($data) {
@@ -62,12 +64,12 @@ class PostService {
 	 * 
 	 * @param integer $take
 	 */
-	public function initialNewsFeed($id = null ,$take = null) {
+	public function initialNewsFeed($id, $take = null) {
 		if(!$take) {
 			$take = 5;
 		}
 		
-		return $this->post->initialNewsFeed($id, $take);
+		return $this->newsfeed->initial($id, $take);
 	}
 	
 	/**
@@ -75,11 +77,11 @@ class PostService {
 	 * @param integer $skip
 	 * @param integer $take
 	 */
-	public function incrementalNewsFeed($skip, $take = null) {
+	public function incrementalNewsFeed($id, $skip, $take = null) {
 		if(!$take) {
 			$take = 5;
 		}
-		return $this->post->incrementalNewsFeed($skip, $take);
+		return $this->newsfeed->incremental($id, $skip, $take);
 	}
 	
 	public function like($post_id) {
