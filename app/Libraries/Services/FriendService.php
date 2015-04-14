@@ -4,6 +4,8 @@ use SNS\Models\UserFriends;
 use SNS\Models\FriendRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Collection;
+use SNS\Events\FriendRequest as FriendRequestEvent; 
+use SNS\Libraries\Facades\Notification as Notification_Service;
 
 class FriendService {
 	
@@ -29,10 +31,18 @@ class FriendService {
 	 */
 	protected $status;
 	
+	/**
+	 * 
+	 * @var array
+	 */
+	protected $ids = array();
+	
 	public function __construct() {
 		$this->list = new UserFriends();
 		
 		$this->request = new FriendRequest();
+		
+		$this->ids['current'] = Auth::id();
 	}
 	
 	/**
@@ -40,20 +50,20 @@ class FriendService {
 	 * @param integer $requested_id
 	 * @return boolean
 	 */
-	protected function listCheck($requested_id) {
+	protected function listCheck() {
 		$q = $this->list
-				->ofUserWithReq(Auth::user()->registration->registration_id, $requested_id)->get();
+				->ofUserWithReq($this->ids['current'], $this->ids['requested'])->get();
 		return !$q->isEmpty();
 	}
 	
 	/**
-	 * Returns false if <requested_id> has not set 9/acknowledged user request
+	 * Returns false if <requested_id> has not set 9/ack user request
 	 * @param integer $requested_id
 	 * @return boolean
 	 */
-	protected function reqCheck($requested_id) {
+	protected function reqCheck() {
 		$q = $this->request
-				->ofUserWithReq(Auth::user()->registration->registration_id, $requested_id)
+				->ofUserWithReq($this->ids['current'], $this->ids['requested'])
 				->whereNotIn('status', array(2, 9))->latest()->take(1)->get();
 		return !$q->isEmpty();		
 	}
@@ -65,11 +75,11 @@ class FriendService {
 	 * @return array
 	 */
 	public function check($requested_id) {
-		$response['is_friend'] = $this->listCheck($requested_id);
-		$response['request'] = $this->reqCheck($requested_id);
+		$this->ids['requested'] = $requested_id;
+				
+		$this->status['is_friend'] = $this->listCheck();
+		$this->status['request'] = $this->reqCheck();
 		
-		$this->status = $response;
-
 		return $this;
 	}
 	
@@ -105,9 +115,9 @@ class FriendService {
 	 * Checks for a previous request where status != 9
 	 * @param unknown $requested_id
 	 */
-	protected function previousRequest($requested_id) {
+	protected function previousRequest() {
 		$q = $this->request
-				->ofUserWithReq(Auth::user()->registration->registration_id, $requested_id)
+				->ofUserWithReq($this->ids['current'], $this->ids['requested'])
 				->whereNotIn('status', array(9))->get();
 		
 		if(!$q->isEmpty()) {
@@ -127,12 +137,23 @@ class FriendService {
 		
 		if($this->allowRequest()) {
 			// check first for a previous request just to avoid any error later on
-			$this->previousRequest($requested_id);
+			$this->previousRequest();
+			
+			// Sends a notification to requested_id via FriendRequest event
+			event(new FriendRequestEvent(array(
+				'notification' => array(
+					'details' => array(
+					'origin' => 'Registration',
+					'id' => $this->ids['current'],
+				),
+				'destination_user_id' => $this->ids['requested'],
+				'l10n_key' => 'profile.friend.request_msg',
+				'params' => json_encode(array('notif_type' => 'friend_request'))
+			))));
 			
 			$this->request->create(array(
-					'request_message' => 'from user ' . Auth::user()->registration->registration_id,
-					'requesting_user_id' => Auth::user()->registration->registration_id,
-					'requested_user_id'	=> $requested_id,
+					'requesting_user_id' => $this->ids['current'],
+					'requested_user_id'	=> $this->ids['requested'],
 					'status' => 0
 			));
 			return true;
@@ -140,18 +161,70 @@ class FriendService {
 		return false;
 	}
 	
-	/**
-	 * Updates a friend request record
-	 * @param integer $requested_id
-	 * @param integer $status
-	 */
-	public function fromRequest($requested_id, $status) {
-		$req = $this->request
-		->ofUserWithReq(Auth::user()->registration->registration_id, $requested_id)
-		->update(array('status' => $status));
+	public function ignore($requested_id) {
+		$this->ids['requested'] = $requested_id;
 		
-		// soft delete record so it won't cause an error during checking process
-		$req->delete();
+		$this->updateRequest(array(
+				'requesting_id' => $this->ids['requested'],
+				'requested_id' => $this->ids['current']
+		), 1);
+		
+		Notification_Service::setIsRead(
+			'SNS\Models\User',
+			$this->ids['current'],
+			$this->ids['requested'],
+			array('friend_ignore' => true)
+		);
+	}
+	
+	public function cancel($requested_id) {
+		$this->ids['requested'] = $requested_id;
+	
+		$this->updateRequest(array(
+				'requesting_id' => $this->ids['current'],
+				'requested_id' => $this->ids['requested']
+		), 2);
+		
+		Notification_Service::deleteNotification('SNS\Models\User', $this->ids['current'], $this->ids['requested']);
+	}
+	
+	public function accept($requested_id) {
+		$this->ids['requested'] = $requested_id;
+		
+		$this->updateRequest(array(
+				'requesting_id' => $this->ids['requested'],
+				'requested_id' => $this->ids['current']
+		), 9);
+		
+		$this->addFriendRecords();
+		
+		Notification_Service::setIsRead(
+			'SNS\Models\User',
+			$this->ids['current'],
+			$this->ids['requested'],
+			array('friend_accept' => true)
+		);
+	}
+	
+	protected function updateRequest($ids, $status) {
+		$this->request->ofRequestedUser($ids['requested_id'], $ids['requesting_id'])->update(array('status' => $status));
+		
+		$this->request->ofRequestedUser($ids['requested_id'], $ids['requesting_id'])->delete();
+	}
+	
+	/**
+	 * Adds friend records for both users
+	 */
+	protected function addFriendRecords() {
+		UserFriends::create(array(
+			'user_id' => $this->ids['current'],
+			'friend_user_id' => $this->ids['requested']
+		));
+	
+		UserFriends::create(array(
+			'user_id' => $this->ids['requested'],
+			'friend_user_id' => $this->ids['current']
+		));
 	}
 	
 	/**
@@ -159,7 +232,15 @@ class FriendService {
 	 * @param integer $user_id
 	 * @return Illuminate\Support\Collection
 	 */
-	public function collect($user_id) {
+	public function collect($user_id = null) {
+		if(!$user_id) {
+			if($this->ids['current']) {
+				$user_id = $this->ids['current'];
+			} else {
+				return false;
+			}
+		}
+		
 		return $this->list->where('user_id', $user_id)
 				->with(array('profile' => function($q) {
 					$q->addSelect(array('registration_id', 'last_name', 'first_name'));

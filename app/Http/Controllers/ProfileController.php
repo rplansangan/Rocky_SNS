@@ -10,7 +10,6 @@ use SNS\Models\Business;
 use SNS\Libraries\Facades\PostService;
 use SNS\Libraries\Facades\FriendService;
 use Illuminate\Support\Facades\Auth;
-use SNS\Events\FriendRequest;
 
 class ProfileController extends Controller {
 	
@@ -49,18 +48,6 @@ class ProfileController extends Controller {
 			case 'add':
 				$response['message'] = $this->addFriend($request->get('requested_id'));
 				$response['action'] = 'req';
-				
-				// Sends a notification to requested_id via FriendRequest event
-				$response['test'] = event(new FriendRequest(array(
-					'notification' => array(
-							'params' => array(
-								'origin' => 'Registration',
-								'id' => Auth::user()->registration->registration_id,
-							),
-							'origin_user_id' => Auth::user()->registration->registration_id,
-							'destination_user_id' => $request->get('requested_id'),
-							'l10n_key' => 'profile.friend.request_msg')
-					)));
 				break;		
 			case 'req':
 				$response['message'];
@@ -71,9 +58,6 @@ class ProfileController extends Controller {
 				$response['message'] = $this->cancelFriendReq($request->get('requested_id'));
 				$response['action'] = 'add';
 				break;
-			case 'accept':
-				$response['message'];
-				$response['action'];
 		}
 		
 		return json_encode($response);
@@ -85,9 +69,19 @@ class ProfileController extends Controller {
 		}
 	}
 	
-	protected function cancelFriendReq($requested_id) {
-		FriendService::fromRequest($requested_id, 2);
-		return trans('profile.friend.add_friend');
+	public function cancelFriendReq(Request $request) {
+		FriendService::cancel($request->get('req_id'));
+// 		return trans('profile.friend.add_friend');
+	}
+	
+	protected function ignoreFriendReq(Request $request) {
+		FriendService::ignore($request->get('req_id'));
+		return redirect()->back();
+	}
+	
+	public function acceptFriendRequest(Request $request) {
+		FriendService::accept($request->get('req_id'));
+		return redirect()->back();
 	}
 
 	public function settings(){

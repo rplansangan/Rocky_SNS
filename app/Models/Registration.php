@@ -73,10 +73,6 @@ class Registration extends Model {
 		return $this->hasMany('SNS\Models\Comments', 'comment_user_id');
 	}
 	
-	public function notif_user() {
-		return $this->morphOne('SNS\Models\Notification', 'object');
-	}
-	
 	public function getBirthDateAttribute($date) {
 		return Carbon::createFromFormat(self::$dbDateFormat, $date)->format('Y-m-d');
 	}

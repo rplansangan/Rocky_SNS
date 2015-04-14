@@ -21,4 +21,8 @@ class FriendRequest extends Model {
 	public function scopeOfUserWithReq($query, $user_id, $req_id) {
 		return $query->where('requesting_user_id', $user_id)->where('requested_user_id', $req_id);
 	}
+	
+	public function scopeOfRequestedUser($query, $user_id, $req_id) {
+		return $query->where('requested_user_id', $user_id)->where('requesting_user_id', $req_id);
+	}
 }

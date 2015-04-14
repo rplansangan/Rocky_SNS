@@ -42,6 +42,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	
 	// RELATIONSHIPS
+	public function notif_user() {
+		return $this->morphOne('SNS\Models\Notification', 'origin_object');
+	}
+	
 	public function registration() {
 		return $this->hasOne('SNS\Models\Registration', 'user_id');
 	}
@@ -64,7 +68,5 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function scopeIsMerc($query, $user_id) {
 		return $query->where('user_id', $user_id)->whereIsMerchant(1);
 	}
-	
-
 	
 }

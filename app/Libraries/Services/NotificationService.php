@@ -1,7 +1,7 @@
 <?php namespace SNS\Libraries\Services;
 
 use SNS\Models\Notification;
-use SNS\Models\Registration;
+use SNS\Models\User;
 
 class NotificationService {
 	
@@ -10,23 +10,78 @@ class NotificationService {
 	 * @var SNS\Models\Notification
 	 */
 	protected $notif;
+	
+	protected $models_namespace = 'SNS\Models';
 		
 	public function __construct() {
 		$this->notif = new Notification();	
 	}
 	
 	public function sendRequest($params) {		
-		switch($params['params']['origin']) {
+		switch($params['details']['origin']) {
 			case 'Registration':
-				$obj = Registration::find($params['params']['id'])
-						->notif_user()->create(array_except($params, array('params')));
+				$obj = User::find($params['details']['id'])
+						->notif_user()->create(array_except($params, array('details')));
 				break;
 		}
-		return $conf;
 	}
 	
-	protected function formatNotif($notif_collection) {
+	protected function isActive($is_read) {
+		if(!$is_read) {
+			return 'active';
+		}
+		return 'inactive';
+	}
+	
+	/**
+	 * Formatting method for friend request type notification
+	 * @param View $notif
+	 */
+	protected function formatFriendReq($notif) {
+		$profile_route = route('profile.showProfile', array($notif->object->registration->registration_id));
+		$name = $notif->object->registration->first_name . ' ' . $notif->object->registration->last_name;
 		
+		$params = json_decode($notif->params);
+		if(isset($params->friend_ignore)) {
+			return view('notifications.friend_request_ignore')
+				->with('active', $this->isActive($notif->is_read))
+				->with('profile_route', $profile_route)
+				->with('name', $name);
+		}
+		
+		if(isset($params->friend_accept)) {
+			return view('notifications.friend_request_accept')
+				->with('active', $this->isActive($notif->is_read))
+				->with('profile_route', $profile_route)
+				->with('name', $name);
+		}
+			return view('notifications.friend_request')
+				->with('active', $this->isActive($notif->is_read))
+				->with('l10n_key', $notif->l10n_key)
+				->with('profile_route', $profile_route)
+				->with('name', $name)
+				->with('requesting_id', $notif->object->registration->registration_id);
+		
+		
+	}
+	
+	/**
+	 * Formats each item depending on their respective notif_type
+	 * @param mixed $notif_collection
+	 * @return string
+	 */
+	protected function formatNotif($notif_collection) {
+		$html = '';
+		foreach($notif_collection as $notif) {			
+			$params = json_decode($notif->params);
+			switch($params->notif_type) {
+				case 'friend_request':					
+					$html .= $this->formatFriendReq($notif);
+				break;
+			}
+		}
+		
+		return $html;
 	} 
 	
 	/**
@@ -34,7 +89,9 @@ class NotificationService {
 	 * @param integer $user_id
 	 */
 	public function collectInitial($user_id) {
-		return $this->notif->select(array('origin_user_id', 'l10n_key', 'is_read'))->userNotif($user_id);
+		$notif_collection = $this->notif->select(array('origin_object_id', 'origin_object_type', 'l10n_key', 'is_read', 'params'))->userNotif($user_id);
+		
+		return $this->formatNotif($notif_collection);
 	}
 	
 	/**
@@ -44,6 +101,58 @@ class NotificationService {
 	 * @param integer $offset
 	 */
 	public function collectIncremental($user_id, $take, $offset) {
-		return $this->notif->select(array('origin_user_id', 'l10n_key', 'is_read'))->userNotifIncremental($user_id, $take, $offset);
+		return $this->notif->select(array('origin_object_id', 'l10n_key', 'is_read', 'params'))->userNotifIncremental($user_id, $take, $offset);
+	}
+	
+	/**
+	 * 
+	 * @param string $object_type
+	 * @param integer $notif_id
+	 */
+	public function deleteNotification($object_type, $from, $to) {
+		$this->notif->notifByObj($object_type, $from, $to)
+			->delete();
+	}
+	
+	/**
+	 * 
+	 * @param mixed $object_type
+	 * @param integer $from
+	 * @param integer $to
+	 * @param array $more_params
+	 */
+	public function setIsRead($object_type, $from, $to, $more_params = array()) {
+		if(!$more_params) {
+			$this->notif->notifByObj($object_type, $to, $from)
+				->update(array('is_read' => 1));
+		} else {
+			$params = $this->notif->select('params')
+						->notifByObj($object_type, $to, $from)
+						->latest()->take(1)->get();
+			
+			$this->notif->notifByObj($object_type, $to, $from)
+				->latest()->take(1)->update(array(
+						'is_read' => 1,
+						'params' => $this->mergeParams(json_decode($params[0]->params), $more_params, 'json')
+				));
+		}
+	}
+	
+	protected function mergeParams($params, $more_params, $format = null) {
+		while(($current = current($more_params) != false)) {
+			$key = key($more_params);
+			$params->$key = current($more_params);
+			next($more_params);
+		}
+
+		if(!$format) {
+			return $params;
+		}
+		
+		switch($format) {
+			case 'json':
+				return json_encode($params);
+				break;
+		}
 	}
 }

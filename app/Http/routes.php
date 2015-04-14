@@ -1,5 +1,7 @@
 <?php
-use SNS\Models\Registration;
+use SNS\Libraries\Facades\Notification;
+use SNS\Libraries\Facades\FriendService;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,15 +13,9 @@ use SNS\Models\Registration;
 |
 */
 Route::get('test', function() {
-	$t = Registration::find(2)->notif_user()->create(array(
-		'origin_user_id' => auth()->id(),
-		'destination_user_id' => 1,
-		'l10n_key' => 'profile.friend.request_msg'
-	));
-	print_r($t);
-	
-	
-	echo 1;
+	echo Notification::setIsRead('SNS\Models\User', 1, 2, array('friend_accept' => true));
+// print_r(FriendService::ignore(2));
+echo 'wat';
 });
 Route::get('testupload/{uid}/{fid}', array(
 	'uses' => 'UploadsController@getImage'
@@ -119,6 +115,14 @@ Route::post('newsfeed/refresh', array(
 Route::post('profile/req/friend', array(
 	'as' => 'profile.request.friend',
 	'uses' => 'ProfileController@dispatchFriendRequest'
+));
+Route::post('profile/req/friend_ignore', array(
+	'as' => 'profile.request.friend_ignore',
+	'uses' => 'ProfileController@ignoreFriendReq'
+));
+Route::post('profile/req/accept/', array(
+	'as' => 'profile.request.add_friend',
+	'uses' => 'ProfileController@acceptFriendRequest'
 ));
 
 Route::get('home', array(

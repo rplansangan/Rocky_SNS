@@ -44,8 +44,19 @@ a:hover {
 #notif-main {
   position: absolute;
   display: none;
-  padding: 10px;
+  padding: 0;
   background-color: #FFF;
+  width: 250px;
+  left: -190px;
+}
+
+#notif-main li {
+  list-style: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#notif-main li.notif-outer {
+  padding: 5px 15px;
 }
 
 /*============SUBHeader============*/

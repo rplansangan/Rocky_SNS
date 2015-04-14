@@ -10,9 +10,9 @@ class Notification extends Model {
 	protected $table = 'notifications';
 	
 	protected $fillable = array(
-							'origin_user_id',
 							'destination_user_id',
-							'object_type',
+							'origin_object_type',
+							'origin_object_id',
 							'l10n_key',
 							'is_read',
 							'params'
@@ -38,7 +38,13 @@ class Notification extends Model {
 				->latest()->take($take)->skip($offset)->get();
 	}
 	
+	public function scopeNotifByObj($query, $object_type, $from, $to) {
+		return $query->where('origin_object_type', $object_type)
+			->where('origin_object_id', $from)
+			->where('destination_user_id', $to);
+	}
+	
 	public function object() {
-		return $this->morphTo();
+		return $this->morphTo('origin_object');
 	}
 }
