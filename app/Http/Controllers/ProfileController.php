@@ -6,6 +6,7 @@ use SNS\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use SNS\Models\Registration;
 use SNS\Models\Pets;
+use SNS\Models\Business;
 use SNS\Libraries\Facades\PostService;
 use SNS\Libraries\Facades\FriendService;
 use Illuminate\Support\Facades\Auth;
@@ -92,5 +93,11 @@ class ProfileController extends Controller {
 	public function settings(){
 		$data['auth'] = true;
 		return view('profile.settings' , $data);
+	}
+
+	public function profile_merchant($business_id ){
+		$details = Business::find($business_id);
+		return view('pages/merchantprofile')
+				->with('details', $details);
 	}
 }

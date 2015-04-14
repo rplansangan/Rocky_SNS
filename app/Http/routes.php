@@ -163,6 +163,10 @@ Route::get('activate_merchant', array(
 	'as' => 'activate_merchant',
 	'uses' => 'MerchantController@merchant_activation'
 	));
+Route::post('add_advertisement', array(
+	'as' => 'ads.add_advertisement',
+	'uses' => 'MerchantController@add_advertisement'
+));
 Route::post('register_activate_merchant', array(
 	'as' => 'register_activate_merchant',
 	'uses' => 'MerchantController@activate_merchant'

@@ -143,6 +143,6 @@ class MerchantController extends Controller {
 		}
 
 		return redirect()->route('advertised');
-
 	}
+
 }
