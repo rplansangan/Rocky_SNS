@@ -23,6 +23,9 @@
             <li role="presentation"><a href="{{ route('profile.showProfile', Auth::id()) }}">{{ Auth::user()->registration->first_name }} {{ Auth::user()->registration->last_name }}</a></li>
           @endif
         <li role="presentation"><a href="{{  route('search') }}">Search</a></li>
+        <li role="presentation">
+          <a href=""><span class="glyphicon glyphicon-envelope"></span></a>
+        </li>
         <li id="nav-notif" role="presentation">
         	<a href=""><span class="glyphicon glyphicon-bell"></span></a>
         	<ul id="notif-main">

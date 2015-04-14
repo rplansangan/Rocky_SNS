@@ -116,10 +116,10 @@ $(document).ready(function(){
 
 	$('#shopModal').on('show.bs.modal', function (event) {
 		var button = $(event.relatedTarget)
-		var subject = button.data('subj')
+		var type = button.data('type')
 		var modal = $(this)
-		modal.find('.modal-title').text('Inquire about ' + subject)
-		modal.find('.modal-body input').val(subject)
+		modal.find('.modal-title').text('Inquire about ' + type)
+		modal.find('.modal-body input').val(type)
 	});
 
 	$(document).on('keypress', '.comment-box' ,function (e) {
@@ -178,6 +178,10 @@ $(document).ready(function(){
 			$(this).attr('isClick' , 'Open');
 			$(this).next().fadeOut();
 		}
+	});
+
+	$(document).on('click' , '#refresh-btn' , function(){
+		location.reload();
 	});
 });
 

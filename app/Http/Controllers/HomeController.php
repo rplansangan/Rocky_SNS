@@ -73,8 +73,8 @@ class HomeController extends Controller {
 		return view('pages.search' , $data);
 	}
 	public function test(Request $request){
-		$a = $request->all();
-		print_r($a);
+		$data['auth'] = true;
+		return view('pages.merchantprofile', $data);
 	}
 
 	public function addadvertise(){

@@ -178,10 +178,10 @@ Route::post('merchant/post', array(
 	'as' => 'merchant.post',
 	'uses' => 'MerchantController@add_advertisement'
 	));
-Route::get('merchant', array(
-	'as' => 'merchant',
-	'uses' => 'HomeController@merchant'
-	));
+Route::get('profile/{id}/{advertised_id}', array(
+	'as' => 'profile.advertised',
+	'uses' => 'MerchantController@showAdvertised'
+));
 
 /* SETTINGS */
 
@@ -190,7 +190,7 @@ Route::get('settings', array(
 	'uses' => 'ProfileController@settings'
 ));
 
-Route::post('test2', array(
+Route::get('test2', array(
 	'as' => 'test2',
 	'uses' => 'HomeController@test'
 	));
