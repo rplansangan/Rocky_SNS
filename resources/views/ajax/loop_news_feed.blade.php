@@ -1,4 +1,3 @@
-@include('scripts.nf_pagination')
 @foreach($newsfeed as $single)
 	@include('ajax.post', array(
 		'user' => $single->user, 
@@ -8,3 +7,4 @@
 		'comments' => $single->comment
 	))
 @endforeach
+@include('scripts.nf_pagination')

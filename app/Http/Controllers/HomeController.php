@@ -60,7 +60,6 @@ class HomeController extends Controller {
 		$data['auth'] = true;
 		return view('pages.trending' , $data);
 	}
-	
 	public function shop(){
 		$data['auth'] = true;
 		return view('pages.shop' , $data);
