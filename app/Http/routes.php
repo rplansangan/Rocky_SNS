@@ -191,7 +191,7 @@ Route::get('settings', array(
 	'uses' => 'ProfileController@settings'
 ));
 
-Route::post('test2', array(
+Route::get('test2', array(
 	'as' => 'test2',
 	'uses' => 'HomeController@test'
 	));

@@ -37,6 +37,9 @@
     @endif
     
     @yield('content')
+
+    @include('forms.ads_form_modal')
+
     @include('footer')
   </body>
 </html>
