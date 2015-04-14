@@ -167,6 +167,10 @@ Route::post('register_activate_merchant', array(
 	'as' => 'register_activate_merchant',
 	'uses' => 'MerchantController@activate_merchant'
 	));
+Route::post('merchant/post', array(
+	'as' => 'merchant.post',
+	'uses' => 'MerchantController@add_advertisement'
+	));
 Route::get('merchant', array(
 	'as' => 'merchant',
 	'uses' => 'HomeController@merchant'

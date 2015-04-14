@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use SNS\Models\Registration;
 use SNS\Models\Business;
 use SNS\Models\User;
+use SNS\Models\Advertise;
+use SNS\Models\Posts;
 use SNS\Services\ValidationService;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
@@ -38,7 +40,7 @@ class MerchantController extends Controller {
 	    $ind = $user->isMerc(Auth::id())->get();
 		$data['auth'] = true;
 		if(!$ind->isEmpty()){
-			return view('pages.addadvertise' , $data);
+			return view('pages.merchantprofile' , $data);
 		}else{
 			return view('pages.check' , $data);
 		}
@@ -102,20 +104,45 @@ class MerchantController extends Controller {
 
 	public function add_advertisement(Request $request){
 		$input = array_except($request->all(), array('_token'));
-		$validate = Validator::make($input, Advertisement::$initialRules);
+		$validate = Validator::make($input, Advertise::$initialRules);
 
-		if($validate->fails()){
+		if($validate->fails()) {
 			return redirect()->back()
-			->withInput($request->all())
-			->withErrors($validate->errors()->all());
+				->withInput($request->all())
+				->withErrors($validate->errors()->all());
 		}
 
-		$ads = new Advertisement();
-		$ads->user_id = Auth::id();
-		$ads->ad_type = $input['ad_type'];
-		$ads->ad_title = $input['ad_title'];
-		$ads->ad_desc = $input['ad_desc'];
+		$advertise = new Advertise();
+		$advertise->user_id = Auth::id();
+		$advertise->type = $input['type'];
+		$advertise->title = $input['title'];
+		$advertise->save();
 
-		return redirect()->route('profile.petlist', Auth::id());
+		$post = new Posts();
+		$post->post_message = $input['message'];
+		$post->user_id = Auth::id();
+		$advertise->post()->save($post);
+
+		if(isset($input['userfile'])) {
+			$file = $input['userfile'];
+			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
+			$dir = StorageHelper::create(Auth::id());
+	
+			$img_data = new Images(array(
+					'user_id' => Auth::id(),
+					'image_path' => $dir,
+					'image_name' => $filename,
+					'image_mime' => $file->getMimeType(),
+					'image_ext' => $file->getClientOriginalExtension(),
+					'is_profile_picture' => 0
+			));
+	
+			$post->image()->save($img_data);
+	
+			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
+		}
+
+		return redirect()->route('advertised');
+
 	}
 }

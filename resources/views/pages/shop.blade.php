@@ -41,13 +41,13 @@
 		</form>
 	</div>
 
-	<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-container">
-		<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 adshop-content">
-			<div class="col-sm-12 col-xs-12 col-lg-7 col-md-7 adshop-img">
+	<div class="container">
+		<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 panel ads-panel">
+			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-img">
 				<img src="{{ URL::asset('assets/images/ad11.jpg') }}" width="300px">
 			</div>
 
-			<div class="col-sm-12 col-xs-12 col-lg-5 col-md-5 adshop-info">
+			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-info">
 				<h2>Title</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur...</p>
 				<div class="form-group">
@@ -55,7 +55,7 @@
 					<div class="col-sm-9">
 						<p>Services</p>
 					</div>
-					
+
 					<label class="col-sm-3 control-label">Country:</label>
 					<div class="col-sm-9">
 						<p>Philippines</p>
@@ -63,19 +63,19 @@
 				</div>
 
 				<div class="btn_adshop">
-					<a href="">VIEW</a>
-					<a href="">INQUIRE</a>
-					<a href="">ORDER</a>
+					<a href="" class="btn-sm">VIEW</a>
+					<a href="" class="btn-sm">INQUIRE</a>
+					<a href="" class="btn-sm">ORDER</a>
 				</div>
 			</div>
 		</div>
 
-		<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 adshop-content">
-			<div class="col-sm-12 col-xs-12 col-lg-7 col-md-7 adshop-img">
+		<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 panel panel-default ads-panel">
+			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-img">
 				<img src="{{ URL::asset('assets/images/ad22.jpg') }}" width="300px">
 			</div>
 
-			<div class="col-sm-12 col-xs-12 col-lg-5 col-md-5 adshop-info">
+			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-info">
 				<h2>Title</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur...</p>
 				<div class="form-group">
@@ -83,7 +83,7 @@
 					<div class="col-sm-9">
 						<p>Services</p>
 					</div>
-					
+
 					<label class="col-sm-3 control-label">Country:</label>
 					<div class="col-sm-9">
 						<p>Philippines</p>
@@ -91,19 +91,19 @@
 				</div>
 
 				<div class="btn_adshop">
-					<a href="">VIEW</a>
-					<a href="">INQUIRE</a>
-					<a href="">ORDER</a>
+					<a href="" class="btn-sm">VIEW</a>
+					<a href="" class="btn-sm">INQUIRE</a>
+					<a href="" class="btn-sm">ORDER</a>
 				</div>
 			</div>
 		</div>
 
-		<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 adshop-content">
-			<div class="col-sm-12 col-xs-12 col-lg-7 col-md-7 adshop-img">
-				<img src="{{ URL::asset('assets/images/ad33.png') }}" width="300px">
+		<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 panel panel-default ads-panel">
+			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-img">
+				<img src="{{ URL::asset('assets/images/ad22.jpg') }}" width="300px">
 			</div>
 
-			<div class="col-sm-12 col-xs-12 col-lg-5 col-md-5 adshop-info">
+			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-info">
 				<h2>Title</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur...</p>
 				<div class="form-group">
@@ -111,7 +111,7 @@
 					<div class="col-sm-9">
 						<p>Services</p>
 					</div>
-					
+
 					<label class="col-sm-3 control-label">Country:</label>
 					<div class="col-sm-9">
 						<p>Philippines</p>
@@ -119,96 +119,97 @@
 				</div>
 
 				<div class="btn_adshop">
-					<a href="">VIEW</a>
-					<a href="">INQUIRE</a>
-					<a href="">ORDER</a>
+					<a href="" class="btn-sm">VIEW</a>
+					<a href="" class="btn-sm">INQUIRE</a>
+					<a href="" class="btn-sm">ORDER</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 panel panel-default ads-panel">
+			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-img">
+				<img src="{{ URL::asset('assets/images/ad11.jpg') }}" width="300px">
+			</div>
+
+			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-info">
+				<h2>Title</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur...</p>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Type:</label>
+					<div class="col-sm-9">
+						<p>Services</p>
+					</div>
+
+					<label class="col-sm-3 control-label">Country:</label>
+					<div class="col-sm-9">
+						<p>Philippines</p>
+					</div>
+				</div>
+
+				<div class="btn_adshop">
+					<a href="" class="btn-sm">VIEW</a>
+					<a href="" class="btn-sm">INQUIRE</a>
+					<a href="" class="btn-sm">ORDER</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 panel panel-default ads-panel" >
+			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-img">
+				<img src="{{ URL::asset('assets/images/ad22.jpg') }}" width="300px">
+			</div>
+
+			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-info">
+				<h2>Title</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur...</p>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Type:</label>
+					<div class="col-sm-9">
+						<p>Services</p>
+					</div>
+
+					<label class="col-sm-3 control-label">Country:</label>
+					<div class="col-sm-9">
+						<p>Philippines</p>
+					</div>
+				</div>
+
+				<div class="btn_adshop">
+					<a href="" class="btn-sm">VIEW</a>
+					<a href="" class="btn-sm">INQUIRE</a>
+					<a href="" class="btn-sm">ORDER</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 panel panel-default ads-panel">
+			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-img">
+				<img src="{{ URL::asset('assets/images/ad22.jpg') }}" width="300px">
+			</div>
+
+			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-info">
+				<h2>Title</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur...</p>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Type:</label>
+					<div class="col-sm-9">
+						<p>Services</p>
+					</div>
+
+					<label class="col-sm-3 control-label">Country:</label>
+					<div class="col-sm-9">
+						<p>Philippines</p>
+					</div>
+				</div>
+
+				<div class="btn_adshop">
+					<a href="" class="btn-sm">VIEW</a>
+					<a href="" class="btn-sm">INQUIRE</a>
+					<a href="" class="btn-sm">ORDER</a>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-container">
-		<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 adshop-content">
-			<div class="col-sm-12 col-xs-12 col-lg-7 col-md-7 adshop-img">
-				<img src="{{ URL::asset('assets/images/ad11.jpg') }}" width="300px">
-			</div>
-
-			<div class="col-sm-12 col-xs-12 col-lg-5 col-md-5 adshop-info">
-				<h2>Title</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur...</p>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Type:</label>
-					<div class="col-sm-9">
-						<p>Services</p>
-					</div>
-					
-					<label class="col-sm-3 control-label">Country:</label>
-					<div class="col-sm-9">
-						<p>Philippines</p>
-					</div>
-				</div>
-
-				<div class="btn_adshop">
-					<a href="">VIEW</a>
-					<a href="">INQUIRE</a>
-					<a href="">ORDER</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 adshop-content">
-			<div class="col-sm-12 col-xs-12 col-lg-7 col-md-7 adshop-img">
-				<img src="{{ URL::asset('assets/images/ad22.jpg') }}" width="300px">
-			</div>
-
-			<div class="col-sm-12 col-xs-12 col-lg-5 col-md-5 adshop-info">
-				<h2>Title</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur...</p>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Type:</label>
-					<div class="col-sm-9">
-						<p>Services</p>
-					</div>
-					
-					<label class="col-sm-3 control-label">Country:</label>
-					<div class="col-sm-9">
-						<p>Philippines</p>
-					</div>
-				</div>
-				<div class="btn_adshop">
-					<a href="">VIEW</a>
-					<a href="">INQUIRE</a>
-					<a href="">ORDER</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 adshop-content">
-			<div class="col-sm-12 col-xs-12 col-lg-7 col-md-7 adshop-img">
-				<img src="{{ URL::asset('assets/images/ad33.png') }}" width="300px">
-			</div>
-
-			<div class="col-sm-12 col-xs-12 col-lg-5 col-md-5 adshop-info">
-				<h2>Title</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur...</p>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Type:</label>
-					<div class="col-sm-9">
-						<p>Services</p>
-					</div>
-					
-					<label class="col-sm-3 control-label">Country:</label>
-					<div class="col-sm-9">
-						<p>Philippines</p>
-					</div>
-				</div>
-				<div class="btn_adshop">
-					<a href="">VIEW</a>
-					<a href="">INQUIRE</a>
-					<a href="">ORDER</a>
-				</div>
-			</div>
-		</div>
-	</div>
+</div>
 </div>
 @stop

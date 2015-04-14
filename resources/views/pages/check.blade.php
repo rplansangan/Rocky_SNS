@@ -19,7 +19,7 @@
 				</div>
 
 				<!-- INDIVIDUAL FORM -->
-				@include('forms.add_advertise' , array("action" => route("test2")))
+				@include('forms.add_advertise' , array("action" => route("merchant.post")))
 
 				<!-- MERCHANT FORM -->
 				

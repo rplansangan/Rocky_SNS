@@ -11,7 +11,7 @@
 			</a>
 		</h4>
 		<small class="media-heading">{{ $message->created_at }}</small>
-		<p>{{ $message->post_message }}</p>
+		<p>{!! $message->post_message !!}</p>
 		@if(isset($image))
 		<img class="col-sm-12 thumbnail" src="{{ route('files.get.image', array($message->user_id, $image->image_id)) }}">
 		@endif
