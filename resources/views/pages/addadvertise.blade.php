@@ -10,7 +10,7 @@
 				<div class="page-header">
 					<h2>Add Advertisement</h2>
 				</div>
-				<form method="POST" action="{{ route('test2') }}" class="form-horizontal col-sm-12  col-lg-12 col-md-12  col-xs-12 reg " role="form" enctype="multipart/form-data">
+				<form method="POST" action="{{ route('ads.add_advertisement') }}" class="form-horizontal col-sm-12  col-lg-12 col-md-12  col-xs-12 reg " role="form" enctype="multipart/form-data">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<div class="form-group">
 						<label class="col-sm-1 control-label">Type:</label>

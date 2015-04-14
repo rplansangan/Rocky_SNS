@@ -163,13 +163,17 @@ Route::get('activate_merchant', array(
 	'as' => 'activate_merchant',
 	'uses' => 'MerchantController@merchant_activation'
 	));
+Route::post('add_advertisement', array(
+	'as' => 'ads.add_advertisement',
+	'uses' => 'MerchantController@add_advertisement'
+));
 Route::post('register_activate_merchant', array(
 	'as' => 'register_activate_merchant',
 	'uses' => 'MerchantController@activate_merchant'
 	));
-Route::get('merchant', array(
-	'as' => 'merchant',
-	'uses' => 'HomeController@merchant'
+Route::get('merchant_profile', array(
+	'as' => 'merchant_profile',
+	'uses' => 'ProfileController@profile_merchant'
 	));
 
 /* SETTINGS */

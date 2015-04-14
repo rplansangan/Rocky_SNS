@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use SNS\Models\Registration;
 use SNS\Models\Business;
 use SNS\Models\User;
+use SNS\Models\Advertisement;
 use SNS\Services\ValidationService;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
@@ -112,10 +113,11 @@ class MerchantController extends Controller {
 
 		$ads = new Advertisement();
 		$ads->user_id = Auth::id();
-		$ads->ad_type = $input['ad_type'];
-		$ads->ad_title = $input['ad_title'];
-		$ads->ad_desc = $input['ad_desc'];
+		$ads->post_id = $input['ad_desc'];
+		$ads->advertisement_type = $input['advertisement_type'];
+		$ads->advertisement_title = $input['advertisement_title'];
 
-		return redirect()->route('profile.petlist', Auth::id());
+		return redirect()->route('merchant_profile', Auth::user()->business->business_id);
 	}
+
 }
