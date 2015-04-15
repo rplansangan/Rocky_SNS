@@ -530,6 +530,7 @@ a.btn.btn_merch_addnewads {
   color: #fff;
   background: #E74C3C;
   padding: 6px 12px;
+  border-radius: 5px;
 }
 
 .mf-adimg img {
