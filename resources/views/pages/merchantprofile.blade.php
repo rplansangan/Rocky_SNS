@@ -26,7 +26,7 @@
 			<p>{{ $details[0]->created_at }}  {{ $details[0]->type }}</p>
 			<p>{!! $details[0]->post->post_message !!}</p>
 			<button type="button" class="btn btn_inquire btn-small" data-toggle="modal" data-target="#shopModal" data-type="Inquire" data-advertisetype="INQ"  data-title="{{ $details[0]->title }}" data-id="{{ $details[0]->id }}" data-action="{{ Route('merchant.inquire') }}" >INQUIRE</button>
-			<button type="button" class="btn btn_order btn-small" data-toggle="modal" data-target="#shopModal" data-type="Order" data-advertisetype="ORD" data-title="{{ $details[0]->title }}" data-id="{{ $details[0]->id }}" data-action="{{ Route('merchant.inquire') }}">ORDER</a>
+			<button type="button" class="btn btn_order btn-small" data-toggle="modal" data-target="#shopModal" data-type="Order" data-advertisetype="ORD" data-title="{{ $details[0]->title }}" data-id="{{ $details[0]->id }}" data-action="{{ Route('merchant.inquire') }}">ORDER</button>
 			</div>
 		</div>
 		<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 merch-ads text-center">
