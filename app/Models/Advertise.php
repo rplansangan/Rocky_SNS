@@ -37,7 +37,7 @@ class Advertise extends Model {
 
 	public static $initialRules = array(
 			'message' => 'required'	,	
-			'title' => 'required'		
+			'title' => 'required|max:25'		
 	);
 
 	public function image() {

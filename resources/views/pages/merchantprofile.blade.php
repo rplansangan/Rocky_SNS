@@ -46,7 +46,6 @@
 					</a>
 					<a href="#"><h3>{{ $adver->title }}</h3></a>
 					<p>{{ $adver->created_at }}</p>
-					<p>{{ str_limit($adver->post->post_message, $limit = 40, $end = '...') }}</p>
 				</li>
 			@endforeach
 		</ul>
