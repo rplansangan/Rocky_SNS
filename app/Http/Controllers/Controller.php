@@ -4,6 +4,7 @@ use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use SNS\Libraries\Facades\Notification;
+use Illuminate\Support\Facades\Request;
 
 abstract class Controller extends BaseController {
 
@@ -15,7 +16,9 @@ abstract class Controller extends BaseController {
 	
 	protected function initialize() {
 		if(auth()->check()) {
-			$this->setGlobals();
+			if(!Request::ajax()) {
+				$this->setGlobals();
+			}
 		}	
 	}
 	

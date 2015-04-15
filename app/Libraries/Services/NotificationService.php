@@ -96,7 +96,7 @@ class NotificationService {
 	 * @param integer $user_id
 	 */
 	public function collectInitial($user_id) {
-		$notif_collection = $this->notif->select(array('origin_object_id', 'origin_object_type', 'l10n_key', 'is_read', 'params'))->userNotif($user_id);
+		$notif_collection = $this->notif->select(array('origin_object_id', 'origin_object_type', 'is_read', 'params'))->userNotif($user_id);
 		
 		return $this->formatNotif($notif_collection);
 	}
