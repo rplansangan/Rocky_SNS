@@ -174,10 +174,7 @@ class MerchantController extends Controller {
 		$data['post'] = Advertise::where('user_id', $user_id)
 				->where('id', $advertise_id)
 				->with(array('post' , 'image'))->get();
-
-		$data['like'] = Posts::where('user_id', $user_id)
-				->where('advertise_id', $advertise_id)
-				->with(array('like' , 'comment'))->get();		
+	
 		$data['auth'] = true;	
 		$data['friend_flags'] = FriendService::check($user_id);	
 		return view('profile.individual' , $data);

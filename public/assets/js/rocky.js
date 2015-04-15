@@ -12,7 +12,12 @@ $(document).ready(function(){
 		        });
 		    }
 	 });
-
+	tinymce.init({
+	    selector: ".primary-textarea",
+	    toolbar: false,
+	    menubar : false,
+	    statusbar: false
+	 });
 	/*$('.company_background').html('<img src="http://4.bp.blogspot.com/-_qxynaNliS8/VSSqYpddauI/AAAAAAAABx8/Izb2vjAHHxo/s1600/170122.jpg">');
 	*/
 	$('.custom-file-input').on('change' , function(event){
@@ -28,7 +33,8 @@ $(document).ready(function(){
 
 	$('#form-post').on('submit',function(e){
 		data = new FormData($('#form-post')[0]);
-		if($('#post_message').val() != "" ){
+		data.append('message' , tinyMCE.activeEditor.getContent());
+		if(tinyMCE.activeEditor.getContent() != "" ){
 			$.ajax({
 				url : $(this).attr('action'),
 				type : 'post',
@@ -41,7 +47,6 @@ $(document).ready(function(){
 				}
 			});
 		}
-		return false;
 		e.preventDefault();
 	});
 	
@@ -115,11 +120,11 @@ $(document).ready(function(){
 	});
 
 	$('#shopModal').on('show.bs.modal', function (event) {
-		var button = $(event.relatedTarget)
-		var type = button.data('type')
-		var modal = $(this)
-		modal.find('.modal-title').text('Inquire about ' + type)
-		modal.find('.modal-body input').val(type)
+		var button = $(event.relatedTarget);
+		var type = button.data('type');
+		var modal = $(this);
+		modal.find('.modal-type-form').text(type);
+		modal.find('.modal-body input').val(type);
 	});
 
 	$(document).on('keypress', '.comment-box' ,function (e) {

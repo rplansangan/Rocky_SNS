@@ -20,7 +20,7 @@ ul.nav.nav-tabs li a {
 				<ul class="comment-post">
 					<li>
 						<div class="form-group">
-							<textarea class="form-control" max="500" name="message" id="post_message" placeholder=" Say Something..."></textarea>
+							<textarea class="form-control primary-textarea" max="500" id="post_message" placeholder=" Say Something..."></textarea>
 						</div>
 					</li>
 					<li>
