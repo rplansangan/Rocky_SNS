@@ -73,7 +73,6 @@ class HomeController extends Controller {
 		$data['auth'] = true;
 		return view('pages.search' , $data);
 	}
-	
 
 	public function addadvertise(){
 		$data['auth'] = true;
