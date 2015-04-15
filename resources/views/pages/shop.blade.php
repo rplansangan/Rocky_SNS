@@ -42,18 +42,23 @@
 	</div>
 
 	<div class="container">
+		@foreach($info as $result)
 		<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 panel ads-panel">
 			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-img">
-				<img src="{{ URL::asset('assets/images/ad11.jpg') }}" width="300px">
+				@if(isset($result->image[0]))
+					<img class="col-sm-12 thumbnail" src="{{ route('files.get.image', array($result->user_id, $result->image[0]->image_id)) }}" width="500px">
+				@else
+					<img src="{{ URL::asset('assets/images/AdHere.png') }}">
+				@endif
 			</div>
 
 			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-info">
-				<h3>Advertisement Title</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur...</p>
+				<h3>{{ $result->title }}</h3>
+				{!! $result->post['post_message'] !!}
 				<div class="form-group">
 					<label class="col-sm-3 control-label">Type:</label>
 					<div class="col-sm-9">
-						<p>Services</p>
+						<p>{{ $result->type }}</p>
 					</div>
 
 					<label class="col-sm-3 control-label">Country:</label>
@@ -63,153 +68,15 @@
 				</div>
 
 				<div class="btn_adshop">
-					<a href="#" class="btn btn_view">VIEW</a>
-					<button type="button" class="btn btn_inquire" data-toggle="modal" data-target="#shopModal" data-type="Inquire" >INQUIRE</button>
-					<button type="button" class="btn btn_order" data-toggle="modal" data-target="#shopModal" data-type="Order">ORDER</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 panel panel-default ads-panel">
-			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-img">
-				<img src="{{ URL::asset('assets/images/ad22.jpg') }}" width="300px">
-			</div>
-
-			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-info">
-				<h3>Advertisement Title</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur...</p>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Type:</label>
-					<div class="col-sm-9">
-						<p>Services</p>
-					</div>
-
-					<label class="col-sm-3 control-label">Country:</label>
-					<div class="col-sm-9">
-						<p>Philippines</p>
+					<a href="{{ Route('merchant.profile' , Auth::id() ) }}" class="btn btn_view btn-small">VIEW</a>
+					<button type="button" class="btn btn_inquire btn-small" data-toggle="modal" data-target="#shopModal" data-type="Inquire" data-advertisetype="INQ"  data-title="{{ $result->title }}" data-id="{{ $result->id }}" data-action="{{ Route('merchant.inquire') }}" >INQUIRE</button>
+					<button type="button" class="btn btn_order btn-small" data-toggle="modal" data-target="#shopModal" data-type="Order" data-advertisetype="ORD" data-title="{{ $result->title }}" data-id="{{ $result->id }}" data-action="{{ Route('merchant.inquire') }}">ORDER</a>
 					</div>
 				</div>
 
-				<div class="btn_adshop">
-					<a href="" class="btn btn_view">VIEW</a>
-					<button type="button" class="btn btn_inquire" data-toggle="modal" data-target="#shopModal" data-type="Inquire Adname">INQUIRE</button>
-					<button type="button" class="btn btn_order" data-toggle="modal" data-target="#shopModal" data-type="Order Adname">ORDER</a>
-				</div>
 			</div>
-		</div>
-
-		<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 panel panel-default ads-panel">
-			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-img">
-				<img src="{{ URL::asset('assets/images/ad22.jpg') }}" width="300px">
-			</div>
-
-			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-info">
-				<h3>Advertisement Title</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur...</p>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Type:</label>
-					<div class="col-sm-9">
-						<p>Services</p>
-					</div>
-
-					<label class="col-sm-3 control-label">Country:</label>
-					<div class="col-sm-9">
-						<p>Philippines</p>
-					</div>
-				</div>
-
-				<div class="btn_adshop">
-					<a href="" class="btn btn_view">VIEW</a>
-					<button type="button" class="btn btn_inquire" data-toggle="modal" data-target="#shopModal" data-type="Inquire Adname">INQUIRE</button>
-					<button type="button" class="btn btn_order" data-toggle="modal" data-target="#shopModal" data-type="Order Adname">ORDER</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 panel panel-default ads-panel">
-			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-img">
-				<img src="{{ URL::asset('assets/images/ad11.jpg') }}" width="300px">
-			</div>
-
-			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-info">
-				<h3>Advertisement Title</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur...</p>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Type:</label>
-					<div class="col-sm-9">
-						<p>Services</p>
-					</div>
-
-					<label class="col-sm-3 control-label">Country:</label>
-					<div class="col-sm-9">
-						<p>Philippines</p>
-					</div>
-				</div>
-
-				<div class="btn_adshop">
-					<a href="" class="btn btn_view">VIEW</a>
-					<button type="button" class="btn btn_inquire" data-toggle="modal" data-target="#shopModal" data-type="Inquire Adname">INQUIRE</button>
-					<button type="button" class="btn btn_order" data-toggle="modal" data-target="#shopModal" data-type="Order Adname">ORDER</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 panel panel-default ads-panel" >
-			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-img">
-				<img src="{{ URL::asset('assets/images/ad22.jpg') }}" width="300px">
-			</div>
-
-			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-info">
-				<h3>Advertisement Title</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur...</p>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Type:</label>
-					<div class="col-sm-9">
-						<p>Services</p>
-					</div>
-
-					<label class="col-sm-3 control-label">Country:</label>
-					<div class="col-sm-9">
-						<p>Philippines</p>
-					</div>
-				</div>
-
-				<div class="btn_adshop">
-					<a href="" class="btn btn_view">VIEW</a>
-					<button type="button" class="btn btn_inquire" data-toggle="modal" data-target="#shopModal" data-type="Inquire Adname">INQUIRE</button>
-					<button type="button" class="btn btn_order" data-toggle="modal" data-target="#shopModal" data-type="Order Adname">ORDER</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 panel panel-default ads-panel">
-			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-img">
-				<img src="{{ URL::asset('assets/images/ad22.jpg') }}" width="300px">
-			</div>
-
-			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-info">
-				<h3>Advertisement Title</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur...</p>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Type:</label>
-					<div class="col-sm-9">
-						<p>Services</p>
-					</div>
-
-					<label class="col-sm-3 control-label">Country:</label>
-					<div class="col-sm-9">
-						<p>Philippines</p>
-					</div>
-				</div>
-
-				<div class="btn_adshop">
-					<a href="" class="btn btn_view">VIEW</a>
-					<button type="button" class="btn btn_inquire" data-toggle="modal" data-target="#shopModal" data-type="Inquire Adname">INQUIRE</button>
-					<button type="button" class="btn btn_order" data-toggle="modal" data-target="#shopModal" data-type="Order Adname">ORDER</a>
-				</div>
-			</div>
+			@endforeach
 		</div>
 	</div>
-</div>
-</div>
-@stop
+
+	@stop

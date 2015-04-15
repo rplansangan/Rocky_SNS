@@ -4,13 +4,14 @@ use SNS\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use SNS\Models\Business;
 use SNS\Models\User;
+use SNS\Models\Advertise;
 use SNS\Services\ValidationService;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use SNS\Libraries\Facades\PostService;
-use SNS\Models\Advertise;
+
 
 class HomeController extends Controller {
 
@@ -63,6 +64,7 @@ class HomeController extends Controller {
 	}
 	public function shop(){
 		$data['auth'] = true;
+		$data['info'] = Advertise::with(array('image' , 'post' ))->latest()->get();
 		return view('pages.shop' , $data);
 	}
 	public function trackers(){
