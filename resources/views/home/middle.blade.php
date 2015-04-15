@@ -39,21 +39,28 @@ ul.nav.nav-tabs li a {
 </div>
 
 <div class="newsfeed-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
-	<span class="col-sm-12 col-xs-12 col-lg-6 col-md-6"><legend>News feed</legend></span>
-	<span class="text-right col-sm-12 col-xs-12 col-lg-6 col-md-6">
-		<a href="#"><img style="width:30px" src="{{ URL::asset('assets/images/Refresh2.png') }}"></a>
-	</span>
+	<div class="newsfeed-title col-sm-12 col-xs-12 col-lg-12 col-md-12">
+		<span class="col-sm-12 col-xs-12 col-lg-6 col-md-6"><legend>News feed</legend></span>
+		<span class="text-right col-sm-12 col-xs-12 col-lg-6 col-md-6">
+			<a href="#"><img style="width:30px" src="{{ URL::asset('assets/images/Refresh2.png') }}"></a>
+		</span>
+	</div>
 	<ul id="home-newsfeed" class="media-list append-post col-sm-12 col-xs-12 col-lg-12 col-md-12">
-		<li></li>
-		@foreach($newsfeed as $single)
-			@include('ajax.post', array(
-				'user' => $single->user, 
-				'message' => $single->post, 
-				'image' => $single->image, 
-				'like' => $single->like, 
-				'comments' => $single->comment
-			))
-		@endforeach
+		@if($newsfeed->isEmpty())
+			<li><p>No posts yet</p></li>
+		@else
+			<li>
+				@foreach($newsfeed as $single)
+					@include('ajax.post', array(
+						'user' => $single->user, 
+						'message' => $single->post, 
+						'image' => $single->image, 
+						'like' => $single->like, 
+						'comments' => $single->comment
+					))
+				@endforeach
+			</li>
+		@endif
 	</ul>
 </div>
 
