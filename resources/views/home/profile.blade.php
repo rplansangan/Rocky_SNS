@@ -1,6 +1,5 @@
 @if(Auth::id() == $profile->registration_id)
 <div role="tabpanel" class="  post-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
-	<input type="hidden" id="route-newsfeed-refresh" value="{{ route('newsfeed.refresh') }}" _token="{{ csrf_token() }}">
 	<form method="POST" action="{{ route('files.newsfeed') }}" class="form-horizontal" id="form-post" role="form" enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<input type="file" name="file" id="fileuploader" class="form-control">
@@ -37,16 +36,15 @@
 <div class="newsfeed-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
 	<legend>News feed</legend>
 	<input type="hidden" id="route-newsfeed-refresh" value="{{ route('newsfeed.refresh') }}" _token="{{ csrf_token() }}">
-	<ul id="home-newsfeed" class="media-list append-post">
-		@include('scripts.nf_pagination')
+	<ul id="home-newsfeed" class="media-list append-post col-sm-12 col-xs-12 col-lg-12 col-md-12">
+		<li></li>
 		@foreach($posts as $single)
 			@include('ajax.post', array(
 				'user' => $single->user, 
-				'message' => $single, 
+				'message' => $single->post, 
 				'image' => $single->image, 
 				'like' => $single->like, 
-				'comments' => $single->comment,
-				'include_script' => false
+				'comments' => $single->comment
 			))
 		@endforeach
 	</ul>
