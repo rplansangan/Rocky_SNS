@@ -35,6 +35,10 @@ class Advertise extends Model {
 	
 	protected $dates = array('deleted_at');
 
+	public static $dbDateFormat = 'Y-m-d H:i:s';
+	
+	public static $newsFeedFormat = 'F n @ g:ia';
+	
 	public static $initialRules = array(
 			'message' => 'required'	,	
 			'title' => 'required'		
@@ -51,5 +55,9 @@ class Advertise extends Model {
 	}
 	public function comment() {
 		return $this->hasMany('SNS\Models\Comments', 'post_id');
+	}
+	
+	public function getCreatedAtAttribute($date) {
+		return Carbon::createFromFormat(self::$dbDateFormat, $date)->format(self::$newsFeedFormat);
 	}
 }

@@ -161,7 +161,7 @@ class MerchantController extends Controller {
 			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
 		}
 		if(User::find(Auth::id())->is_merchant == 1){
-			return redirect()->route('merchant.profile');
+			return redirect()->route('merchant.profile', array(Auth::id()));
 		}else{
 			return redirect()->route('profile.advertised' , array("id" => Auth::id() , "advertised_id" => $advertise->id) );
 		}
