@@ -1,6 +1,7 @@
 <?php namespace SNS\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Newsfeed_view extends Model {
 
@@ -10,6 +11,10 @@ class Newsfeed_view extends Model {
 	 * @var string
 	 */
 	protected $table = 'newsfeed';
+	
+	public static $dbDateFormat = 'Y-m-d H:i:s';
+	
+	public static $newsFeedFormat = 'F n @ g:ia';
 	
 	// SCOPES
 	public function scopeOfUser($query, $user_id) {
@@ -35,5 +40,9 @@ class Newsfeed_view extends Model {
 	
 	public function comment() {
 		return $this->hasMany('SNS\Models\Comments', 'post_id', 'post_id');
+	}
+	
+	public function getCreatedAtAttribute($date) {
+		return Carbon::createFromFormat(self::$dbDateFormat, $date)->format(self::$newsFeedFormat); 
 	}
 }

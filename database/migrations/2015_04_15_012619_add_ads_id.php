@@ -16,6 +16,7 @@ class AddAdsId extends Migration {
 		Schema::table('posts', function(Blueprint $t) {
 			$t->integer('advertise_id');
 		});*/
+
 	}
 
 	/**

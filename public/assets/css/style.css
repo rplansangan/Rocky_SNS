@@ -262,7 +262,7 @@ ul.nav.nav-tabs li a {
   color: #E74C3C;
 }
 
-ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span {
+ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span.like-counter, span.comment-counter {
   color: #E74C3C;
 }
 
@@ -514,6 +514,12 @@ a.btn.btn_merch_addnewads {
   color: #333;
 }
 
+.merch-ads ul li a img {
+  border-bottom: 5px solid #D0CECE;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
 .merch-ads a img:hover {
   opacity: 0.6;
 }
@@ -523,6 +529,12 @@ a.btn.btn_merch_addnewads {
   color: #fff;
   background: #E74C3C;
   padding: 6px 12px;
+}
+
+.mf-adimg img {
+  -webkit-box-shadow: -7px 7px 8px 0px rgba(50, 50, 50, 0.35);
+  -moz-box-shadow: -7px 7px 8px 0px rgba(50, 50, 50, 0.35);
+  box-shadow: -7px 7px 8px 0px rgba(50, 50, 50, 0.35);
 }
 
 

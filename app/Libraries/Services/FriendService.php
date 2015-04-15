@@ -52,6 +52,7 @@ class FriendService {
 	 */
 	protected function listCheck() {
 		$q = $this->list
+				->select(array('user_id', 'friend_user_id'))
 				->ofUserWithReq($this->ids['current'], $this->ids['requested'])->get();
 		return !$q->isEmpty();
 	}
@@ -63,6 +64,7 @@ class FriendService {
 	 */
 	protected function reqCheck() {
 		$q = $this->request
+				->select(array('requesting_user_id', 'requested_user_id'))
 				->ofUserWithReq($this->ids['current'], $this->ids['requested'])
 				->whereNotIn('status', array(2, 9))->latest()->take(1)->get();
 		return !$q->isEmpty();		

@@ -53,6 +53,10 @@ class Registration extends Model {
 	public static $dbDateFormat = 'Y-m-d H:i:s';
 	
 	// RELATIONSHIPS
+	public function notif_user() {
+		return $this->morphOne('SNS\Models\Notification', 'origin_object');
+	}
+	
 	public function emailValidation() {
 		return $this->hasOne('SNS\Models\EmailValidation');
 	}
