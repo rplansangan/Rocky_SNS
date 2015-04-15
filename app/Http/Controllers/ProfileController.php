@@ -19,6 +19,7 @@ class ProfileController extends Controller {
 		
 		$data['friend_flags'] = FriendService::check($id);
 		$data['auth'] = true;
+		$data['include_scripts'] = true;
 		return view('profile.profile' , $data)->with('profile', $profileDetails)->with('posts', $collection);
 	}
 

@@ -1,5 +1,6 @@
 @if(Auth::id() == $profile->registration_id)
 <div role="tabpanel" class="  post-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
+	<input type="hidden" id="route-newsfeed-refresh" value="{{ route('newsfeed.refresh') }}" _token="{{ csrf_token() }}">
 	<form method="POST" action="{{ route('files.newsfeed') }}" class="form-horizontal" id="form-post" role="form" enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<input type="file" name="file" id="fileuploader" class="form-control">
@@ -15,7 +16,7 @@
 				<ul class="comment-post">
 					<li>
 						<div class="form-group">
-							<textarea class="form-control" max="500" name="message" id="post_message" placeholder=" Say Something..."></textarea>
+							<textarea class="form-control primary-textarea" max="500" id="post_message" placeholder=" Say Something..."></textarea>
 						</div>
 					</li>
 					<li>

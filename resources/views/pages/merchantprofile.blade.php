@@ -16,9 +16,9 @@
 	<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 merch-feat-ad">
 		<div class="col-sm-12 col-xs-12 col-lg-7 col-md-7 mf-adimg">
 			@if(isset($details[0]->image[0]))
-			<img class="col-sm-12 thumbnail" src="{{ route('files.get.image', array($details[0]->user_id, $details[0]->image[0]->image_id)) }}" width="500px">
+				<img class="col-sm-12 thumbnail" src="{{ route('files.get.image', array($details[0]->user_id, $details[0]->image[0]->image_id)) }}" width="500px">
 			@else
-			<img src="{{ URL::asset('assets/images/AdHere.png') }}">
+				<img src="{{ URL::asset('assets/images/AdHere.png') }}">
 			@endif
 		</div>
 		<div class="col-sm-12 col-xs-12 col-lg-5 col-md-5 mf-adinfo">
@@ -29,7 +29,7 @@
 			<button type="button" class="btn btn_order btn-small" data-toggle="modal" data-target="#shopModal" data-type="Order" data-advertisetype="ORD" data-title="{{ $details[0]->title }}" data-id="{{ $details[0]->id }}" data-action="{{ Route('merchant.inquire') }}">ORDER</a>
 			</div>
 		</div>
-		<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 merch-ads">
+		<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 merch-ads text-center">
 			@if($otherads->isEmpty())
 			<h3>No Other Advertisements</h3>
 			@else
