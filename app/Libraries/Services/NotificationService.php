@@ -37,9 +37,9 @@ class NotificationService {
 	 * Formatting method for friend request type notification
 	 * @param View $notif
 	 */
-	protected function formatFriendReq($notif) {
-		$profile_route = route('profile.showProfile', array($notif->object->registration->registration_id));
-		$name = $notif->object->registration->first_name . ' ' . $notif->object->registration->last_name;
+	protected function formatFriendReq($notif) {		
+		$profile_route = route('profile.showProfile', array($notif->origin_object->registration->registration_id));
+		$name = $notif->origin_object->registration->first_name . ' ' . $notif->origin_object->registration->last_name;
 		
 		$params = json_decode($notif->params);
 		// if notification params has friend_ignore prop / if friend request is ignored
@@ -69,7 +69,7 @@ class NotificationService {
 				->with('active', $this->isActive($notif->is_read))
 				->with('profile_route', $profile_route)
 				->with('name', $name)
-				->with('requesting_id', $notif->object->registration->registration_id);		
+				->with('requesting_id', $notif->origin_object->registration->registration_id);		
 	}
 	
 	/**
@@ -96,7 +96,10 @@ class NotificationService {
 	 * @param integer $user_id
 	 */
 	public function collectInitial($user_id) {
-		$notif_collection = $this->notif->select(array('origin_object_id', 'origin_object_type', 'is_read', 'params'))->userNotif($user_id);
+		$notif_collection = $this->notif
+								->select(array('origin_object_id', 'origin_object_type', 'is_read', 'params'))
+								->with(array('object'))
+								->userNotif($user_id);
 		
 		return $this->formatNotif($notif_collection);
 	}
@@ -108,7 +111,10 @@ class NotificationService {
 	 * @param integer $offset
 	 */
 	public function collectIncremental($user_id, $take, $offset) {
-		return $this->notif->select(array('origin_object_id', 'l10n_key', 'is_read', 'params'))->userNotifIncremental($user_id, $take, $offset);
+		return $this->notif
+					->select(array('origin_object_id', 'l10n_key', 'is_read', 'params'))
+					->with(array('object'))
+					->userNotifIncremental($user_id, $take, $offset);
 	}
 	
 	/**
