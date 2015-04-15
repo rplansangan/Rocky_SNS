@@ -23,7 +23,7 @@
 		</div>
 		<div class="col-sm-12 col-xs-12 col-lg-5 col-md-5 mf-adinfo">
 			<h3>{{ $details[0]->title }}</h3>
-			<p>{{ $details[0]->created_at }}</p>
+			<p>{{ $details[0]->created_at }}  {{ $details[0]->type }}</p>
 			<p>{!! $details[0]->post->post_message !!}</p>
 			<button type="button" class="btn btn_inquire" data-toggle="modal" data-target="#shopModal" data-type="Inquire Adname">INQUIRE</button>
 			<button type="button" class="btn btn_order" data-toggle="modal" data-target="#shopModal" data-type="Order Adname">ORDER</a>
@@ -45,7 +45,7 @@
 						@endif
 					</a>
 					<a href="#"><h3>{{ $adver->title }}</h3></a>
-					<p>{{ $adver->created_at }}</p>
+					<p>{{ $adver->created_at }} {{ $adver->type }}</p>
 				</li>
 			@endforeach
 		</ul>
