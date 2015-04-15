@@ -17,6 +17,7 @@ use SNS\Libraries\Facades\FriendService;
 use Carbon\Carbon;
 use SNS\Libraries\Facades\StorageHelper;
 use SNS\Models\Images;
+use Illuminate\Support\Facades\Redirect;
 
 class MerchantController extends Controller {
 	
@@ -41,11 +42,26 @@ class MerchantController extends Controller {
 	    $ind = $user->isMerc(Auth::id())->get();
 		$data['auth'] = true;
 		if(!$ind->isEmpty()){
-			return view('pages.merchantprofile' , $data);
+			return Redirect::route('merchant.profile', Auth::id());
 		}else{
 			return view('pages.check' , $data);
 		}
-		
+	}
+
+	public function merchantProf($id){
+		$data['auth'] = true;
+		$data['details'] = Advertise::where('user_id', Auth::id())
+				->with(array(
+					'image' => function($q) {
+						$q->addSelect(array('user_id', 'image_id', 'post_id'));
+					},
+					'post' => function($q) {
+						$q->addSelect(array('user_id', 'post_id', 'post_message', 'advertise_id', 'created_at'));
+					}
+					))->take(1)->latest()->get();
+		$data['otherads'] = Advertise::where('user_id', Auth::id())->with(array('image', 'post'))->where('id', '!=', $data['details'][0]->id)->take(6)->latest()->get();
+		$data['info'] = Business::where('user_id', Auth::id())->get();
+		return view('pages.merchantprofile', $data);
 	}
 
 	public function merchant_activation(){
@@ -143,7 +159,7 @@ class MerchantController extends Controller {
 			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
 		}
 		if(User::find(Auth::id())->is_merchant == 1){
-			return redirect()->route('test2');
+			return redirect()->route('merchant.profile');
 		}else{
 			return redirect()->route('profile.advertised' , array("id" => Auth::id() , "advertised_id" => $advertise->id) );
 		}

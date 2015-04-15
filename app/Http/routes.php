@@ -154,6 +154,10 @@ Route::get('search', array(
 	));
 
 /* ADVERTISE */
+Route::get('merchant/{id}', array(
+	'as' => 'merchant.profile',
+	'uses' => 'MerchantController@merchantProf'
+));
 Route::get('merchant_activation', array(
 	'as' => 'advertised',
 	'uses' => 'MerchantController@show_advertise_view'
@@ -194,10 +198,7 @@ Route::get('settings', array(
 	'uses' => 'ProfileController@settings'
 ));
 
-Route::get('test2', array(
-	'as' => 'test2',
-	'uses' => 'HomeController@test'
-	));
+
 Route::controllers([
 // 	'auth' => 'Auth\AuthController',
 // 	'password' => 'Auth\PasswordController',

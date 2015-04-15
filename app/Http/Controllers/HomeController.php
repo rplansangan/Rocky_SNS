@@ -73,12 +73,7 @@ class HomeController extends Controller {
 		$data['auth'] = true;
 		return view('pages.search' , $data);
 	}
-	public function test(Request $request){
-		$data['auth'] = true;
-		$data['details'] = Advertise::where('user_id', Auth::id())->with(array('image', 'post'))->take(1)->latest()->get();
-		$data['info'] = Business::where('user_id', Auth::id())->get();
-		return view('pages.merchantprofile', $data);
-	}
+	
 
 	public function addadvertise(){
 		$data['auth'] = true;
