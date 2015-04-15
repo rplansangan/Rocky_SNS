@@ -23,45 +23,34 @@
 		</div>
 		<div class="col-sm-12 col-xs-12 col-lg-5 col-md-5 mf-adinfo">
 			<h3>{{ $details[0]->title }}</h3>
+			<p>{{ $details[0]->created_at }}</p>
 			<p>{!! $details[0]->post->post_message !!}</p>
 			<button type="button" class="btn btn_inquire" data-toggle="modal" data-target="#shopModal" data-type="Inquire Adname">INQUIRE</button>
 			<button type="button" class="btn btn_order" data-toggle="modal" data-target="#shopModal" data-type="Order Adname">ORDER</a>
 		</div>
 	</div>
 	<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 merch-ads">
+		@if($otherads->isEmpty())
+			<h3>No Other Advertisements</h3>
+		@else
 		<h4>Other Ads by Branch Name</h4>
 		<ul>
-			<li>
-				<a href="#"><img src="{{ URL::asset('assets/images/ad22.jpg') }}" width="250px"></a>
-				<a href="#"><h3>Advertisement Title</h3></a>
-				<p>Lorem ipsum dolor sit amet, consectetur...</p>
-			</li>
-			<li>
-				<a href="#"><img src="{{ URL::asset('assets/images/ad11.jpg') }}" width="250px"></a>
-				<a href="#"><h3>Advertisement Title</h3></a>
-				<p>Lorem ipsum dolor sit amet, consectetur...</p>
-			</li>
-			<li>
-				<a href="#"><img src="{{ URL::asset('assets/images/ad22.jpg') }}" width="250px"></a>
-				<a href="#"><h3>Advertisement Title</h3></a>
-				<p>Lorem ipsum dolor sit amet, consectetur...</p>
-			</li>
-			<li>
-				<a href="#"><img src="{{ URL::asset('assets/images/ad22.jpg') }}" width="250px"></a>
-				<a href="#"><h3>Advertisement Title</h3></a>
-				<p>Lorem ipsum dolor sit amet, consectetur...</p>
-			</li>
-			<li>
-				<a href="#"><img src="{{ URL::asset('assets/images/ad11.jpg') }}" width="250px"></a>
-				<a href="#"><h3>Advertisement Title</h3></a>
-				<p>Lorem ipsum dolor sit amet, consectetur...</p>
-			</li>
-			<li>
-				<a href="#"><img src="{{ URL::asset('assets/images/ad22.jpg') }}" width="250px"></a>
-				<a href="#"><h3>Advertisement Title</h3></a>
-				<p>Lorem ipsum dolor sit amet, consectetur...</p>
-			</li>
+			@foreach($otherads as $adver)
+				<li>
+					<a href="#">
+						@if(isset($details[0]->image[0]))
+							<img class="col-sm-12 thumbnail" src="{{ route('files.get.image', array($details[0]->user_id, $adver->image->image_id)) }}" width="250px">
+						@else
+							<img src="{{ URL::asset('assets/images/AdHere.png') }}" width="250px">
+						@endif
+					</a>
+					<a href="#"><h3>{{ $adver->title }}</h3></a>
+					<p>{{ $adver->created_at }}</p>
+					<p>{{ str_limit($adver->post->post_message, $limit = 40, $end = '...') }}</p>
+				</li>
+			@endforeach
 		</ul>
+		@endif
 	</div>
 </div>
 @stop
