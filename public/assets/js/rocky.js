@@ -122,8 +122,16 @@ $(document).ready(function(){
 	$('#shopModal').on('show.bs.modal', function (event) {
 		var button = $(event.relatedTarget);
 		var type = button.data('type');
+		var advertisetype = button.data('advertisetype');
+		var id = button.data('id');
+		var title = button.data('title');
+		var action = button.data('action');
 		var modal = $(this);
 		modal.find('.modal-type-form').text(type);
+		modal.find('.modal-title').text(title);
+		modal.find('form').attr('action' , action);
+		modal.find('#modal-form-id').attr('value' , id);
+		modal.find('#modal-form-type').attr('value' , advertisetype);
 		modal.find('.modal-body input').val(type);
 	});
 
@@ -187,6 +195,16 @@ $(document).ready(function(){
 
 	$(document).on('click' , '#refresh-btn' , function(){
 		location.reload();
+	});
+
+	$('#form-modal').on('submit' , function(e){
+		var data = $(this).serialize()+"&message="+tinyMCE.activeEditor.getContent();
+		var url = $(this).attr('action');
+		$.post(url , data , function(a){
+			alert('Thank you');
+			$('#shopModal').modal('hide');
+		});
+		e.preventDefault();
 	});
 });
 

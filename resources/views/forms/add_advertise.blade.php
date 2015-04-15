@@ -8,16 +8,16 @@
 		<label class="col-sm-2 control-label">Type:</label>
 		<div class="col-sm-8">
 			<select name="type" class="form-control">
-				<option value="1" >Pets for sale</option>
-				<option value="2" >Services</option>
-				<option value="3" >Items</option>
+				<option value="Pets for Sale" >Pets for sale</option>
+				<option value="Services" >Services</option>
+				<option value="Items" >Items</option>
 			</select>
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-2 control-label">Title:</label>
 		<div class="col-sm-8">
-			<input type="text" name="title" class="form-control">
+			<input type="text" name="title" class="form-control" maxlength="25">
 		</div>
 	</div>
 	<div class="form-group">

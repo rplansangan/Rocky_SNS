@@ -7,6 +7,7 @@ use SNS\Models\Business;
 use SNS\Models\User;
 use SNS\Models\Advertise;
 use SNS\Models\Posts;
+use SNS\Models\AdvertiseOrder;
 use SNS\Services\ValidationService;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
@@ -61,6 +62,7 @@ class MerchantController extends Controller {
 					))->take(1)->latest()->get();
 		$data['otherads'] = Advertise::where('user_id', Auth::id())->with(array('image', 'post'))->where('id', '!=', $data['details'][0]->id)->take(6)->latest()->get();
 		$data['info'] = Business::where('user_id', Auth::id())->get();
+
 		return view('pages.merchantprofile', $data);
 	}
 
@@ -183,6 +185,24 @@ class MerchantController extends Controller {
 	public function viewAdform(){
 		$data['auth'] = true;
 		return view('pages.addadvertise', $data);
+	}
+
+	public function addOrderInquire(Request $request){
+		$input = array_except($request->all(), array('_token'));
+		$validate = Validator::make($input, AdvertiseOrder::$initialRules);
+
+		if($validate->fails()) {
+			return redirect()->back()
+				->withInput($request->all())
+				->withErrors($validate->errors()->all());
+		}
+
+		$order = new AdvertiseOrder();
+		$order->advertise_id = $input['id'];
+		$order->message = $input['message'];
+		$order->type = $input['type'];
+		$order->save();
+
 	}
 
 }

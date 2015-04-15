@@ -63,8 +63,8 @@
 				</div>
 
 				<div class="btn_adshop">
-					<a href="{{ Route('test2') }}" class="btn btn_view">VIEW</a>
-					<button type="button" class="btn btn_inquire" data-toggle="modal" data-target="#shopModal" data-type="Inquire">INQUIRE</button>
+					<a href="#" class="btn btn_view">VIEW</a>
+					<button type="button" class="btn btn_inquire" data-toggle="modal" data-target="#shopModal" data-type="Inquire" >INQUIRE</button>
 					<button type="button" class="btn btn_order" data-toggle="modal" data-target="#shopModal" data-type="Order">ORDER</a>
 				</div>
 			</div>

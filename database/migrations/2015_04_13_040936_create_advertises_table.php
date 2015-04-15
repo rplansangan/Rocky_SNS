@@ -16,8 +16,8 @@ class CreateAdvertisesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('user_id');
-			$table->string('type' , 1);
-			$table->string('title' , 100);
+			$table->string('type' , 10);
+			$table->string('title' , 25);
 			$table->softDeletes();
 			$table->timestamps();
 		});

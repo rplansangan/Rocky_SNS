@@ -18,7 +18,7 @@ class AdvertiseOrder extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'advertisement_order';
+	protected $table = 'advertise_orders';
 
 	/**
 	 * The attributes that are mass assignable.

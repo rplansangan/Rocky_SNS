@@ -9,7 +9,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('test', function() {
+Route::post('test', function() {
 
 });
 Route::get('testupload/{uid}/{fid}', array(
@@ -190,6 +190,10 @@ Route::get('add_advertisment', array(
 	'as' => 'add_advertisement',
 	'uses' => 'MerchantController@viewAdform'
 ));
+Route::post('merchant/inquire', array(
+	'as' => 'merchant.inquire',
+	'uses' => 'MerchantController@addOrderInquire'
+	));
 
 /* SETTINGS */
 
