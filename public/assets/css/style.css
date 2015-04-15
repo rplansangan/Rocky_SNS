@@ -498,23 +498,24 @@ a.btn.btn_merch_addnewads {
   border-bottom: 1px solid #CDCDCD;
 }
 
-.merch-ads ul {
+.merch-ads {
   text-align: center;
-  list-style: none;
-  padding: 0;
 }
 
-.merch-ads ul li {
-  display: inline-block;
-  padding: 0 15px;
-  margin: 15px;
+.merch-ads div {
+  margin-bottom: 30px;
+}
+
+.merch-ads h4 {
+  margin-bottom: 30px;
+  text-align: left;
 }
 
 .merch-ads a {
   color: #333;
 }
 
-.merch-ads ul li a img {
+.merch-ads div a img {
   border-bottom: 5px solid #D0CECE;
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
