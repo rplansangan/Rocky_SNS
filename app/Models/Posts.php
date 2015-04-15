@@ -32,7 +32,7 @@ class Posts extends Model {
 	
 	public static $dbDateFormat = 'Y-m-d H:i:s';
 	
-	public static $newsFeedFormat = 'F n @ g:ia';
+	public static $newsFeedFormat = 'F n @ g:i a';
 	
 	// RELATIONSHIPS
 	public function user() {
