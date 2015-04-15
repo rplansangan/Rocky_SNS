@@ -420,7 +420,6 @@ span legend {
 
 .adshop-info {
   text-align: left;
-  margin-top: 15px;
 }
 
 .adshop-info label {
@@ -430,6 +429,7 @@ span legend {
 .btn_adshop {
   position: relative;
   margin-top: 85px;
+  margin-bottom: 30px;
 }
 
 .btn_adshop a, .btn_adshop .btn {
