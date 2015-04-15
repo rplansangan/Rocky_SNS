@@ -564,6 +564,7 @@ ul.comments .media-left {
 .newsfeed-title {
   padding: 0;
   border-bottom: 1px solid rgba(0,0,0,0.1);
+  margin-bottom: 10px;
 }
 
 #home-newsfeed > li{
