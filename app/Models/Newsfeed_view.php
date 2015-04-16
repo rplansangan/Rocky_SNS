@@ -14,7 +14,7 @@ class Newsfeed_view extends Model {
 	
 	public static $dbDateFormat = 'Y-m-d H:i:s';
 	
-	public static $newsFeedFormat = 'F n @ g:ia';
+	public static $newsFeedFormat = 'F n @ g:i a';
 	
 	// SCOPES
 	public function scopeOfUser($query, $user_id) {

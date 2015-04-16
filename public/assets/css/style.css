@@ -530,6 +530,7 @@ a.btn.btn_merch_addnewads {
   color: #fff;
   background: #E74C3C;
   padding: 6px 12px;
+  border-radius: 5px;
 }
 
 .mf-adimg img {
@@ -560,10 +561,23 @@ ul.comments {
 ul.comments .media-left {
   display: inline-block;
 }
+
+.newsfeed-title {
+  padding: 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  margin-bottom: 10px;
+}
+
 #home-newsfeed > li{
   border-bottom: 1px solid rgba(0,0,0,0.1);
-  padding: 15px 0px 15px 0px;
+  padding: 15px 0px;
 }
+
+#home-newsfeed > li:first-child {
+  border-bottom: 0;
+  padding: 0;
+}
+
 #home-newsfeed > li > .media-left , #home-newsfeed > li > .media-body{
   padding: 5px;
 }
