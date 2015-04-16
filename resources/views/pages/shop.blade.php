@@ -68,9 +68,9 @@
 				</div>
 
 				<div class="btn_adshop">
-					<a href="{{ Route('merchant.profile' , Auth::id() ) }}" class="btn btn_view btn-small">VIEW</a>
-					<button type="button" class="btn btn_inquire btn-small" data-toggle="modal" data-target="#shopModal" data-type="Inquire" data-advertisetype="INQ"  data-title="{{ $result->title }}" data-id="{{ $result->id }}" data-action="{{ Route('merchant.inquire') }}" >INQUIRE</button>
-					<button type="button" class="btn btn_order btn-small" data-toggle="modal" data-target="#shopModal" data-type="Order" data-advertisetype="ORD" data-title="{{ $result->title }}" data-id="{{ $result->id }}" data-action="{{ Route('merchant.inquire') }}">ORDER</a>
+					<a href="{{ Route('merchant.profile' , Auth::id() ) }}" class="btn btn_view btn-sm">VIEW</a>
+					<button type="button" class="btn btn_inquire btn-sm" data-toggle="modal" data-target="#shopModal" data-type="Inquire" data-advertisetype="INQ"  data-title="{{ $result->title }}" data-id="{{ $result->id }}" data-action="{{ Route('merchant.inquire') }}" >INQUIRE</button>
+					<button type="button" class="btn btn_order btn-sm" data-toggle="modal" data-target="#shopModal" data-type="Order" data-advertisetype="ORD" data-title="{{ $result->title }}" data-id="{{ $result->id }}" data-action="{{ Route('merchant.inquire') }}">ORDER</a>
 					</div>
 				</div>
 
