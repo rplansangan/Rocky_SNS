@@ -1,5 +1,3 @@
-<?php use Illuminate\Support\Facades\Auth; ?>
-
  <div class="header-container">
   <div class="container">
    <div class="col-md-6 col-lg-6 logo">
@@ -12,15 +10,15 @@
      </div>
   </div>
 </div>
-@if($auth)
+@if(auth()->check())
   <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 subhead-content">
    <div class="container">
      <ul class="nav nav-pills navbar-right">
         <li role="presentation"><a href="{{  route('home') }}">Home</a></li>
-          @if (Request::url() == route('profile.showProfile', Auth::id()))
+          @if (Request::url() == route('profile.showProfile', auth()->id()))
             <li role="presentation"><a href="{{ route('profile.petlist', Auth::user()->user_id) }}">Pets</a></li>
           @else
-            <li role="presentation"><a href="{{ route('profile.showProfile', Auth::id()) }}">{{ Auth::user()->registration->first_name }} {{ Auth::user()->registration->last_name }}</a></li>
+            <li role="presentation"><a href="{{ route('profile.showProfile', Auth::id()) }}">{{ auth()->user()->registration->first_name }} {{ Auth::user()->registration->last_name }}</a></li>
           @endif
         <li role="presentation"><a href="{{  route('search') }}">Search</a></li>
         <li role="presentation">
@@ -39,7 +37,7 @@
         <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa fa-cog"></i></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="{{ route('register.petdetails', Auth::id()) }}">Add A Pet</a></li>
-            <li><a href="{{ route('settings') }}">Profile Settings</a></li>
+            <li><a href="{{ route('profile.settings') }}">Profile Settings</a></li>
             <li><a href="">Change password</a></li>
             <li><a href="{{ route('logout') }}">Log out</a></li>
           </ul>

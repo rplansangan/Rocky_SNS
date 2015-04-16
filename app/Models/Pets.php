@@ -25,7 +25,17 @@ class Pets extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array('user_id', 'pet_name', 'pet_type', 'breed', 'pet_bday', 'pet_gender', 'food', 'pet_likes', 'pet_dislikes');
+	protected $fillable = array(
+							'user_id',
+							'pet_name',
+							'pet_type',
+							'breed',
+							'pet_bday',
+							'pet_gender',
+							'food',
+							'pet_likes',
+							'pet_dislikes'
+							);
 	
 	protected $dates = array('deleted_at');
 
@@ -36,6 +46,10 @@ class Pets extends Model {
 		'pet_bday' => 'required|date',
 		'pet_gender' => 'required',
 	);
+	
+	public function scopeOfUser($query, $user_id) {
+		return $query->where('user_id', $user_id);
+	}
 	
 	// RELATIONSHIPS
 	public function user() {

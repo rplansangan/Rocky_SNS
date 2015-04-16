@@ -15,19 +15,23 @@ class ProfileController extends Controller {
 	
 	public function showProfile($id){ 
 		$profileDetails = Registration::find($id); 
-		$collection = PostService::initialNewsFeed($id);
+		$collection = PostService::initialNewsFeed(Auth::id(), $id);
 		
 		$data['friend_flags'] = FriendService::check($id);
-		$data['auth'] = true;
+// 		$data['auth'] = true;
 		$data['include_scripts'] = true;
-		return view('profile.profile' , $data)->with('profile', $profileDetails)->with('posts', $collection);
+		return view('profile.profile', $data)
+				->with('profile', $profileDetails)
+				->with('posts', $collection);
 	}
 
 	public function petlist($id){
 		$list = Pets::where('user_id', $id)->with('profile_pic')->get();
 		$profileDetails = Registration::find($id); 
-		$data['auth'] = true;
-		return view('profile.petlist' , $data)->with('profile', $profileDetails)->with('list', $list);
+// 		$data['auth'] = true;
+		return view('profile.petlist')
+				->with('profile', $profileDetails)
+				->with('list', $list);
 	}
 	
 	public function showPetProfile($user_id, $pet_id) {
@@ -36,8 +40,8 @@ class ProfileController extends Controller {
 			$query->where('pet_id', $pet_id);
 		}))->get();
 		
-		$data['auth'] = true;
-		return view('profile.profilepet', $data)->with('profile', $profileDetails[0]);
+// 		$data['auth'] = true;
+		return view('profile.profilepet')->with('profile', $profileDetails[0]);
 	}
 	
 	public function dispatchFriendRequest(Request $request) {
@@ -83,20 +87,18 @@ class ProfileController extends Controller {
 	
 	public function userFriends($user_id) {
 		$friends = FriendService::collect($user_id);
-		foreach($friends as $friend) {
-			echo "<pre>";
-			print_r($friend);
-			echo "</pre>";
-		}
+		return view('pages.friends_listing')
+				->with('friends', $friends);
 	}
 
 	public function settings(){
-		$data['auth'] = true;
-		return view('profile.settings' , $data);
+// 		$data['auth'] = true;
+		return view('profile.settings');
 	}
 
 	public function profile_merchant($business_id ){
 		$details = Business::find($business_id);
+		
 		return view('pages/merchantprofile')
 				->with('details', $details);
 	}

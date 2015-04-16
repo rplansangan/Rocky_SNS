@@ -41,16 +41,16 @@ class MerchantController extends Controller {
 	public function show_advertise_view(){
 	    $user = new User();
 	    $ind = $user->isMerc(Auth::id())->get();
-		$data['auth'] = true;
+// 		$data['auth'] = true;
 		if(!$ind->isEmpty()){
 			return Redirect::route('merchant.profile', Auth::id());
 		}else{
-			return view('pages.check' , $data);
+			return view('pages.check');
 		}
 	}
 
 	public function merchantProf($id){
-		$data['auth'] = true;
+// 		$data['auth'] = true;
 		$data['details'] = Advertise::where('user_id', Auth::id())
 				->with(array(
 					'image' => function($q) {
@@ -67,8 +67,8 @@ class MerchantController extends Controller {
 	}
 
 	public function merchant_activation(){
-		$data['auth'] = true;
-		return view('pages.advertise' , $data);
+// 		$data['auth'] = true;
+		return view('pages.advertise');
 	}
 	
 	public function activate_merchant(Request $request){
@@ -177,14 +177,14 @@ class MerchantController extends Controller {
 				->where('id', $advertise_id)
 				->with(array('post' , 'image'))->get();
 	
-		$data['auth'] = true;	
+// 		$data['auth'] = true;	
 		$data['friend_flags'] = FriendService::check($user_id);	
-		return view('profile.individual' , $data);
+		return view('profile.individual', $data);
 	}
 
 	public function viewAdform(){
-		$data['auth'] = true;
-		return view('pages.addadvertise', $data);
+// 		$data['auth'] = true;
+		return view('pages.addadvertise');
 	}
 
 	public function addOrderInquire(Request $request){

@@ -64,12 +64,12 @@ class PostService {
 	 * 
 	 * @param integer $take
 	 */
-	public function initialNewsFeed($id, $take = null) {
+	public function initialNewsFeed($id, $post_uid= null,  $take = null) {
 		if(!$take) {
 			$take = 5;
 		}
 		
-		return $this->newsfeed->initial($id, $take);
+		return $this->newsfeed->initial($id, $post_uid, $take);
 	}
 	
 	/**
@@ -77,11 +77,11 @@ class PostService {
 	 * @param integer $skip
 	 * @param integer $take
 	 */
-	public function incrementalNewsFeed($id, $skip, $take = null) {
+	public function incrementalNewsFeed($id, $skip, $post_uid, $take = null) {
 		if(!$take) {
 			$take = 5;
 		}
-		return $this->newsfeed->incremental($id, $skip, $take);
+		return $this->newsfeed->incremental($id, $skip, $post_uid, $take);
 	}
 	
 	public function like($post_id) {

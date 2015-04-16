@@ -54,10 +54,10 @@ class RegistrationController extends Controller {
 		$reg->is_validated = 0;
 		$reg->save();		
 		
-		$data['auth'] = false;
+// 		$data['auth'] = false;
 		$this->service->send($reg);
 		
-		return view('pages.message', $data)->with('id', $user->user_id)->with('validation_errors', null);
+		return view('pages.message')->with('id', $user->user_id)->with('validation_errors', null);
 	}
 	
 	public function validateRegistration($id, $hash) {	
@@ -67,15 +67,14 @@ class RegistrationController extends Controller {
 			$this->service->deleteHash($id, $hash);
 			return redirect()->route('register.details', $id);
 		} else {
-			$data['auth'] = false;
-			return view('pages.message', $data)->with('validation_errors', $service->errors)->with('id', $id);
+			return view('pages.message')->with('validation_errors', $service->errors)->with('id', $id);
 		}
 	}
 	
 	public function details($id) {
 		Session::put('details', Registration::find($id)->toArray());
-		$data['auth'] = false;
-		return view('pages.register', $data);
+// 		$data['auth'] = false;
+		return view('pages.register');
 	}
 	
 	public function updateDetails(Request $request, $id) {
@@ -102,8 +101,8 @@ class RegistrationController extends Controller {
 		$service = $this->service->resend($id);
 		
 		if($service->check()) {			
-			$data['auth'] = false;
-			return view('pages.message', $data)->with('id', $id)->with('validation_errors', null);
+// 			$data['auth'] = false;
+			return view('pages.message')->with('id', $id)->with('validation_errors', null);
 		} else {
 			return redirect('/');
 		}		
@@ -111,13 +110,13 @@ class RegistrationController extends Controller {
 
 
 	public function validateMessage(){
-		$data['auth'] = false;
-		return view('pages.message' , $data);
+// 		$data['auth'] = false;
+		return view('pages.message');
 	}
 
 	public function registerpet() {
-		$data['auth'] = true;
-		return view('pages.petregister', $data);
+// 		$data['auth'] = true;
+		return view('pages.petregister');
 	}
 	
 	public function petRegister(Request $request) {

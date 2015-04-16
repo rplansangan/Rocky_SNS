@@ -244,7 +244,7 @@ class FriendService {
 	 * @param integer $user_id
 	 * @return Illuminate\Support\Collection
 	 */
-	public function collect($user_id = null) {
+	public function collect($user_id = null, $user_select = array(), $profile_select = array()) {
 		if(!$user_id) {
 			if($this->ids['current']) {
 				$user_id = $this->ids['current'];
@@ -253,7 +253,14 @@ class FriendService {
 			}
 		}
 		
-		return $this->list->where('user_id', $user_id)
+		if(!$user_select) {
+			return $this->list->where('user_id', $user_id)
+			->with(array('profile' => function($q) {
+				$q->addSelect(array('registration_id', 'last_name', 'first_name'));
+			}))->get();
+		}
+		
+		return $this->list->select($user_select)->where('user_id', $user_id)
 				->with(array('profile' => function($q) {
 					$q->addSelect(array('registration_id', 'last_name', 'first_name'));
 				}))->get();

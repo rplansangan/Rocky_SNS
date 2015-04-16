@@ -19,7 +19,13 @@ class PostsController extends Controller {
 	
 	public function getNextNewsFeed(Request $request) {
 		$skip = $request->get('offset');
-		$posts = PostService::incrementalNewsFeed(auth()->id(), $skip - 1);
+		if($request->get('post_uid') != null) {
+			$post_uid = $request->get('post_uid');
+		} else {
+			$post_uid = null;
+		}
+		
+		$posts = PostService::incrementalNewsFeed(auth()->id(), $skip - 1, $post_uid);
 		$count = count($posts);
 		if($count){
 			return view('ajax.loop_news_feed')->with('newsfeed', $posts);

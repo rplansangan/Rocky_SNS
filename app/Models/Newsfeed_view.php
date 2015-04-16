@@ -21,6 +21,10 @@ class Newsfeed_view extends Model {
 		return $query->where('user_id', $user_id);
 	}
 	
+	public function scopeOfPostUID($query, $user_id) {
+		return $query->where('post_user_id', $user_id);
+	}
+	
 	// RELATIONSHIPS
 	public function post() {
 		return $this->hasOne('SNS\Models\Posts', 'post_id', 'post_id');

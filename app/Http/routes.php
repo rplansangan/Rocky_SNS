@@ -94,7 +94,6 @@ Route::get('profile/{id}/pet/{pet_id}', array(
 	'as' => 'profile.showPetProfile',
 	'uses' => 'ProfileController@showPetProfile'
 ));
-
 Route::post('likes/set/{post_id}', array(
 	'as' => 'likes.set',
 	'uses' => 'PostsController@setLike'
@@ -122,6 +121,10 @@ Route::post('profile/req/accept/', array(
 Route::get('profile/friends/{id}', array(
 	'as' => 'profile.friends',
 	'uses' => 'ProfileController@userFriends'
+));
+Route::get('profile_settings', array(
+'as' => 'profile.settings',
+'uses' => 'ProfileController@settings'
 ));
 
 Route::get('home', array(
@@ -195,12 +198,7 @@ Route::post('merchant/inquire', array(
 	'uses' => 'MerchantController@addOrderInquire'
 	));
 
-/* SETTINGS */
 
-Route::get('settings', array(
-	'as' => 'settings',
-	'uses' => 'ProfileController@settings'
-));
 
 
 Route::controllers([

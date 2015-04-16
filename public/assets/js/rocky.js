@@ -61,10 +61,11 @@ $(document).ready(function(){
                 var items = $("#home-newsfeed > li").length;
                 var route = $('#route-newsfeed-refresh').val();
                 var token = $('#route-newsfeed-refresh').attr('_token');
+                var post_uid = $('#post_uid').val();
                 $.ajax({
     				url : route,
     				type : 'post',
-    				data: { offset:items , _token:token},
+    				data: { offset:items , _token:token, post_uid:post_uid},
     				success: function(r){
     					if(r != "0"){
     						$('#home-newsfeed').append(r);

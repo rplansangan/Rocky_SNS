@@ -44,40 +44,40 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		$data['auth'] = true;
+// 		$data['auth'] = true;
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
 		return view('pages.homepage' , $data);
 	}
 
 	public function map(){
-		$data['auth'] = true;
-		return view('pages.mypet' , $data);
+// 		$data['auth'] = true;
+		return view('pages.mypet');
 	}
 
 	public function pet_of_the_day(){
-		$data['auth'] = true;
-		return view('pages.petoftheday' , $data);
+// 		$data['auth'] = true;
+		return view('pages.petoftheday');
 	}
 	public function trending(){
-		$data['auth'] = true;
-		return view('pages.trending' , $data);
+// 		$data['auth'] = true;
+		return view('pages.trending');
 	}
 	public function shop(){
-		$data['auth'] = true;
+// 		$data['auth'] = true;
 		$data['info'] = Advertise::with(array('image' , 'post' ))->latest()->get();
 		return view('pages.shop' , $data);
 	}
 	public function trackers(){
-		$data['auth'] = true;
-		return view('pages.trackers' , $data);
+// 		$data['auth'] = true;
+		return view('pages.trackers');
 	}
 	public function search(){
-		$data['auth'] = true;
-		return view('pages.search' , $data);
+// 		$data['auth'] = true;
+		return view('pages.search');
 	}
 
 	public function addadvertise(){
-		$data['auth'] = true;
-		return view('pages.addadvertise' , $data);
+// 		$data['auth'] = true;
+		return view('pages.addadvertise');
 	}
 }

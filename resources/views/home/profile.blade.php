@@ -4,6 +4,7 @@
 	<form method="POST" action="{{ route('files.newsfeed') }}" class="form-horizontal" id="form-post" role="form" enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<input type="file" name="file" id="fileuploader" class="form-control">
+		<input type="hidden" id="post_uid" name="_uid" value="{{ Route::getCurrentRoute()->getParameter('id') }}">
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs" role="tablist">
 			<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Post</a></li>
