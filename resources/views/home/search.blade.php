@@ -35,7 +35,7 @@
 		</div>
 		<div class="form-group">
 			<div class='col-sm-8 col-sm-offset-3 text-right'>
-				<input type='submit' class="btn" value="Invite"/>
+				<input type='submit' class="btn" value="Search"/>
 			</div>
 		</div>
 	</form>
