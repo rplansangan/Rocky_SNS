@@ -20,7 +20,11 @@
 			<a href="{{ route('advertised') }}" class="list-group-item ads">Advertise</a>
 			<a href="{{ route('shop') }}" class="list-group-item shop">Shop</a>
 			<a href="{{ route('trackers') }}" class="list-group-item track">Trackers</a>
-			<a href="#" class="list-group-item friends">Friends</a>
+			<a href="{{ route('profile.friends', Auth::id()) }}" class="list-group-item friends">Friends</a>
+			<a href="#" class="list-group-item friends">Compete</a>
+			<a href="#" class="list-group-item friends">Videos</a>
+			<a href="#" class="list-group-item friends">Rocky Ranger</a>
+			<a href="#" class="list-group-item friends">Pet Foundation</a>
 		</div>
 	</div>
 </div>
