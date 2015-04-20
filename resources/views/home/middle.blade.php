@@ -42,7 +42,7 @@ ul.nav.nav-tabs li a {
 	<div class="newsfeed-title col-sm-12 col-xs-12 col-lg-12 col-md-12">
 		<span class="col-sm-12 col-xs-12 col-lg-6 col-md-6"><legend>News feed</legend></span>
 		<span class="text-right col-sm-12 col-xs-12 col-lg-6 col-md-6">
-			<a href="#"><img style="width:30px" src="{{ URL::asset('assets/images/Refresh2.png') }}"></a>
+			<a href="javascript:void(0);" id="refresh-btn" ><img style="width:30px" src="{{ URL::asset('assets/images/Refresh2.png') }}"></a>
 		</span>
 	</div>
 	<ul id="home-newsfeed" class="media-list append-post col-sm-12 col-xs-12 col-lg-12 col-md-12">

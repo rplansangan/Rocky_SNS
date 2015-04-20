@@ -195,7 +195,7 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click' , '#refresh-btn' , function(){
-		location.reload();
+		document.location.reload(true);
 	});
 
 	$('#form-modal').on('submit' , function(e){
@@ -207,6 +207,8 @@ $(document).ready(function(){
 		});
 		e.preventDefault();
 	});
+	$( ".datepicker" ).datepicker();
+	$( ".datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
 });
 
 

@@ -68,14 +68,14 @@ Welcome to Rocky The Superdog
 							<span class="input__label-content input__label-content--kaede">Last Name</span>
 						</label>
 					</span>
-					<span class="input input--kaede">
-						<input class="input__field input__field--kaede" type="date" name="birth_date" id="input-41" required />
-						<label class="input__label input__label--kaede" for="input-41">
-							<span class="input__label-content input__label-content--kaede">Birthday</span>
-						</label>
-					</span>
-					<div class="form-group">
-						<label class="col-sm-4 control-label">Gender:</label>
+					<div class="form-group col-sm-12">
+						<label class="col-sm-5 control-label">Birthdate:</label>
+						<div class="col-sm-7">
+							<input class=" datepicker form-control" type="date" name="birth_date"  required />
+						</div>
+					</div>
+					<div class="form-group col-sm-12">
+						<label class="col-sm-4 col-sm-offset-1 control-label">Gender:</label>
 						<div class="radio col-sm-2">
 							<label>
 								<input type="radio" name="gender" value="M" checked>
