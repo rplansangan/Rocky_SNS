@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use SNS\Models\Business;
 use SNS\Models\User;
 use SNS\Models\Advertise;
+use Carbon\Carbon;
 use SNS\Services\ValidationService;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
@@ -45,6 +46,7 @@ class HomeController extends Controller {
 	public function index()
 	{
 // 		$data['auth'] = true;
+		User::where('user_id' , Auth::id())->update(['last_post' => Carbon::now()]);
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
 		return view('pages.homepage' , $data);
 	}

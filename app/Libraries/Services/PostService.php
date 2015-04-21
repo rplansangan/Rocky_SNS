@@ -3,6 +3,7 @@
 use SNS\Libraries\Repositories\ImageRepository;
 use SNS\Libraries\Repositories\PostRepository;
 use SNS\Models\Registration;
+use SNS\Models\User;
 use SNS\Libraries\Facades\Likes;
 use SNS\Libraries\Facades\Comments;
 use Illuminate\Support\Facades\Auth;
@@ -92,5 +93,16 @@ class PostService {
 		$this->token($data);
 		
 		return Comments::set($data);
+	}
+
+	public function checkNewPost(){
+		return $this->newsfeed->checkNewPost(Auth::id() , User::where('user_id' , Auth::id())->get()[0]->last_post);
+	}
+
+	public function get_newfeeds(){
+		return $this->newsfeed->getnewfeeds(Auth::id() , User::where('user_id' , Auth::id())->get()[0]->last_post );
+	}
+	public function lastpostupdate(){
+		User::where('user_id' , Auth::id())->update(['last_post' => Carbon::now()]);
 	}
 }

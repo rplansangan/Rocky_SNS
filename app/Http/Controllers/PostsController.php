@@ -1,5 +1,8 @@
 <?php namespace SNS\Http\Controllers;
 
+use SNS\Models\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use SNS\Http\Requests;
 use SNS\Http\Controllers\Controller;
 
@@ -31,5 +34,13 @@ class PostsController extends Controller {
 			return view('ajax.loop_news_feed')->with('newsfeed', $posts);
 		}
 		return 0;
+	}
+
+	public function checknewpost(){
+		return PostService::checkNewPost();
+	}
+	public function getnewfeeds(){
+		return view('ajax.loop_news_feed')->with('newsfeed', PostService::get_newfeeds());
+		PostService::lastpostupdate();
 	}
 }

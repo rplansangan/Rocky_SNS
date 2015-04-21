@@ -208,8 +208,14 @@ Route::post('merchant/inquire', array(
 	'uses' => 'MerchantController@addOrderInquire'
 	));
 
-
-
+Route::get('checknewpost', array(
+	'as' => 'post.check',
+	'uses' => 'PostsController@checknewpost'
+	));
+Route::get('getnewfeeds', array(
+	'as' => 'get.newfeeds',
+	'uses' => 'PostsController@getnewfeeds'
+	));
 
 Route::controllers([
 // 	'auth' => 'Auth\AuthController',
