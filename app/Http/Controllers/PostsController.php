@@ -9,7 +9,7 @@ use SNS\Libraries\Facades\PostService;
 class PostsController extends Controller {
 		
 	public function setLike(Request $request) {	
-		return json_encode(PostService::like($request->get('id')));
+		return json_encode(PostService::like($request->get('id'), $request->get('uid')));
 	}
 	
 

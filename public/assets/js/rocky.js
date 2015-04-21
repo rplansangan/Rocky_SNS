@@ -165,11 +165,12 @@ $(document).ready(function(){
 		var url = $(this).attr('value2');
 		var url2 = $(this).attr('value4');
 		var token = $(this).attr('value3');
+		var uid = $(this).attr('puid');
 		var a = this;
 		$.ajax({
 			url : url,
 			type : 'post',
-			data: {id:id , _token:token},
+			data: {id:id , _token:token, uid:uid},
 			success: function(r){
 				var like = jQuery.parseJSON(r);
 				if(like.liked){

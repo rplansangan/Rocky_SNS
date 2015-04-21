@@ -1,3 +1,5 @@
-<li  class="notif-outer {{ $active }}">
-	{!! trans('profile.friend.request_accept_for_req_msg', array('profile_route' => $profile_route, 'name' => $name)) !!}
-</li>
+@extends('notifications.container', array(
+	'route' => $profile_route,
+	'active' => $active,
+	'message' => trans('profile.friend.request_accept_for_req_msg', array('name' => $name))
+))

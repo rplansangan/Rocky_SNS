@@ -27,6 +27,7 @@
         <li id="nav-notif" role="presentation">
         	<a href=""><span class="glyphicon glyphicon-bell"></span></a>
         	<ul id="notif-main">
+        	<div id="notif-header"><strong>Notifications</strong></div>
         	@if($user_notifs)
 	        	{!! $user_notifs !!}
 	        @else 

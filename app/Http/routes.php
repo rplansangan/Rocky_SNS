@@ -1,4 +1,5 @@
 <?php
+use SNS\Libraries\Facades\Notification;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -9,8 +10,17 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::post('test', function() {
-
+Route::get('test', function() {
+	$t = Notification::originId(4)
+				->destinationId(2)
+				->params(array('notif_type' => 'friend_request'))
+				->updateParams(array('friend_accept' => true));
+	echo "<pre>";
+	print_r($t);
+	echo "</pre>";
+$t = \SNS\Models\Notification::find(45);
+$params = json_decode($t->params);
+print_r($params->post_id);
 });
 Route::get('testupload/{uid}/{fid}', array(
 	'uses' => 'UploadsController@getImage'

@@ -12,7 +12,15 @@ class NotificationService {
 	protected $notif;
 	
 	protected $models_namespace = 'SNS\Models';
-		
+	
+	protected $selected_model;
+
+	protected $current_details;
+	
+	protected $destination_details;
+	
+	protected $current_params;
+	
 	public function __construct() {
 		$this->notif = new Notification();	
 	}
@@ -20,10 +28,87 @@ class NotificationService {
 	public function sendRequest($params) {		
 		switch($params['details']['origin']) {
 			case 'Registration':
+			case 'Like':
 				$obj = User::find($params['details']['id'])
 						->notif_user()->create(array_except($params, array('details')));
 				break;
+			
+		
 		}
+	}
+	
+	/**
+	 * 
+	 * @param string $origin
+	 * @param integer $id
+	 * @return \SNS\Libraries\Services\NotificationService
+	 */
+	public function origin($origin, $id) {
+		$this->current_details['details']['origin'] = $origin;
+		$this->current_details['details']['id'] = $id;
+		return $this;
+	}
+	
+	/**
+	 * 
+	 * @param integer $id
+	 * @return \SNS\Libraries\Services\NotificationService
+	 */
+	public function originId($id) {
+		$this->current_details['details']['id'] = $id;
+		return $this;
+	}
+	
+	/**
+	 * 
+	 * @param integer $id
+	 * @return \SNS\Libraries\Services\NotificationService
+	 */
+	public function destinationId($id) {
+		$this->destination_details['destination_user_id'] = $id;
+		return $this;
+	}
+	
+	/**
+	 * 
+	 * @param string $type
+	 * @return \SNS\Libraries\Services\NotificationService
+	 */
+	public function notifType($type) {
+		$this->current_params['params']['notif_type'] = $type;
+		return $this;
+	}
+	
+	/**
+	 * 
+	 * @param array $params
+	 * @return \SNS\Libraries\Services\NotificationService
+	 */
+	public function params($params = array()) {
+		if(!is_null($this->current_params['params'])) {
+			$this->current_params['params'] = array_merge($this->current_params['params'], $params);
+		} else {
+			$this->current_params['params'] = $params;
+		}
+		
+		return $this;
+	}
+	
+	public function updateParams($params = array()) {
+		
+		$this->notif
+			->where('destination_user_id', $this->destination_details['destination_user_id'])
+			->where('origin_object_id', $this->current_details['details']['id'])
+			->where('params', json_encode($this->current_params['params']))
+			->update(array('params' => json_encode(array_merge($params, $this->current_params['params']))));
+				
+		return $this;
+	}
+	
+	public function send() {
+		$params = array_merge($this->current_details, $this->destination_details, $this->current_params);
+		$params['params'] = json_encode($params['params']);
+		$this->sendRequest($params);
 	}
 	
 	protected function isActive($is_read) {
@@ -33,43 +118,60 @@ class NotificationService {
 		return 'inactive';
 	}
 	
+	protected function getOriginUserDetails($notif) {
+		$data['name'] = $notif->origin_object->registration->first_name . ' ' . $notif->origin_object->registration->last_name;
+		$data['profile_route'] = route('profile.showProfile', array($notif->origin_object->registration->registration_id));
+		$data['id'] = $notif->origin_object->registration->registration_id;
+		return $data;
+	}
+	
 	/**
 	 * Formatting method for friend request type notification
 	 * @param View $notif
 	 */
 	protected function formatFriendReq($notif) {		
-		$profile_route = route('profile.showProfile', array($notif->origin_object->registration->registration_id));
-		$name = $notif->origin_object->registration->first_name . ' ' . $notif->origin_object->registration->last_name;
+		$origin_user = $this->getOriginUserDetails($notif);
 		
 		$params = json_decode($notif->params);
 		// if notification params has friend_ignore prop / if friend request is ignored
 		if(isset($params->friend_ignore)) {
 			return view('notifications.friend_request_ignore')
 				->with('active', $this->isActive($notif->is_read))
-				->with('profile_route', $profile_route)
-				->with('name', $name);
+				->with('profile_route', $origin_user['profile_route'])
+				->with('name', $origin_user['name']);
 		}
 		
 		// if notification params has friend_accept prop / if friend request is accepted
 		if(isset($params->friend_accept)) {
 			return view('notifications.friend_request_accept')
 				->with('active', $this->isActive($notif->is_read))
-				->with('profile_route', $profile_route)
-				->with('name', $name);
+				->with('profile_route', $origin_user['profile_route'])
+				->with('name', $origin_user['name']);
 		}
 		
 		// if notification params has friend_accept_for_req / if friend request is accepted
 		if(isset($params->friend_accept_for_req)) {
 			return view('notifications.friend_request_accept_for_req')
 				->with('active', $this->isActive($notif->is_read))
-				->with('profile_route', $profile_route)
-				->with('name', $name);
+				->with('profile_route', $origin_user['profile_route'])
+				->with('name', $origin_user['name']);
 		}
 			return view('notifications.friend_request')
 				->with('active', $this->isActive($notif->is_read))
-				->with('profile_route', $profile_route)
-				->with('name', $name)
-				->with('requesting_id', $notif->origin_object->registration->registration_id);		
+				->with('profile_route', $origin_user['profile_route'])
+				->with('name', $origin_user['name'])
+				->with('requesting_id', $origin_user['id']);		
+	}
+	
+	protected function formatLike($notif) {
+		$origin_user = $this->getOriginUserDetails($notif);
+		$params = json_decode($notif->params);
+		$post_route = route('profile.showProfile', array($notif->destination_user_id)) . '/#post-' . $params->post_id;
+		
+		return view('notifications.post_like')
+				->with('active', $this->isActive($notif->is_read))
+				->with('name', $origin_user['name'])
+				->with('post_route', $post_route);
 	}
 	
 	/**
@@ -85,6 +187,9 @@ class NotificationService {
 				case 'friend_request':					
 					$html .= $this->formatFriendReq($notif);
 				break;
+				case 'post_like':
+					$html .= $this->formatLike($notif);
+				break;
 			}
 		}
 		
@@ -97,7 +202,7 @@ class NotificationService {
 	 */
 	public function collectInitial($user_id) {
 		$notif_collection = $this->notif
-								->select(array('origin_object_id', 'origin_object_type', 'is_read', 'params'))
+								->select(array('origin_object_id', 'origin_object_type', 'is_read', 'params', 'destination_user_id'))
 								->with(array('object'))
 								->userNotif($user_id);
 		

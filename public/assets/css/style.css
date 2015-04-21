@@ -10,6 +10,10 @@ a:hover {
   text-decoration: none;
 }
 
+/*=============GENERAL=============*/
+.bl {
+	display: block !important;
+}
 
  /*============Header============*/
  .header-container {
@@ -44,11 +48,16 @@ a:hover {
 #notif-main {
   position: absolute;
   display: none;
-  padding: 10px;
+  padding: 0;
   background-color: #eee;
   border-radius: 5px;
   width: 250px;
   left: -190px;
+}
+
+#notif-main #notif-header {
+  padding: 5px;
+  border-bottom: 1px solid #DD7676;
 }
 
 #notif-main li {
@@ -58,6 +67,10 @@ a:hover {
 
 #notif-main li.notif-outer {
   padding: 5px 15px;
+}
+
+#notif-main li.notif-outer.active {
+  background-color: #FCD0CC;
 }
 
 /*============SUBHeader============*/

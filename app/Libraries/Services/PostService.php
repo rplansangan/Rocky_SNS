@@ -84,8 +84,8 @@ class PostService {
 		return $this->newsfeed->incremental($id, $skip, $post_uid, $take);
 	}
 	
-	public function like($post_id) {
-		return Likes::set($post_id);
+	public function like($post_id, $destination) {
+		return Likes::set($post_id, $destination);
 	}
 	
 	public function createComment($data) {

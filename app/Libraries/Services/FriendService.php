@@ -200,12 +200,10 @@ class FriendService {
 		
 		$this->addFriendRecords();
 		
-		Notification_Service::setIsRead(
-			'SNS\Models\User',
-			$this->ids['current'],
-			$this->ids['requested'],
-			array('friend_accept' => true)
-		);
+		Notification_Service::originId($this->ids['requested'])
+			->destinationId($this->ids['current'])
+			->params(array('notif_type' => 'friend_request'))
+			->updateParams(array('friend_accept' => true));
 		
 		event(new FriendRequestEvent(array(
 			'notification' => array(

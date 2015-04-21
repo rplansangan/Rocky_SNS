@@ -43,6 +43,10 @@ class Likes extends Model {
 		return $this->belongsTo('SNS\Models\Registration');
 	}
 	
+	public function notif_user() {
+		return $this->hasOne('SNS\Models\User', 'user_id');
+	}
+	
 	public function getCreatedAtAttribute($date) {
 		return Carbon::createFromFormat(self::$dbDateFormat, $date)->format(self::$newsFeedFormat);
 	}
