@@ -67,7 +67,8 @@ class FriendService {
 				->select(array('requesting_user_id', 'requested_user_id'))
 				->ofUserWithReq($this->ids['current'], $this->ids['requested'])
 				->whereNotIn('status', array(2, 9))->latest()->take(1)->get();
-		return !$q->isEmpty();		
+		return !$q->isEmpty();	
+			
 	}
 	
 	/**
@@ -142,16 +143,21 @@ class FriendService {
 			$this->previousRequest();
 			
 			// Sends a notification to requested_id via FriendRequest event
-			event(new FriendRequestEvent(array(
-				'notification' => array(
-					'details' => array(
-					'origin' => 'Registration',
-					'id' => $this->ids['current'],
-				),
-				'destination_user_id' => $this->ids['requested'],
-// 				'l10n_key' => 'profile.friend.request_msg',
-				'params' => json_encode(array('notif_type' => 'friend_request'))
-			))));
+// 			event(new FriendRequestEvent(array(
+// 				'notification' => array(
+// 					'details' => array(
+// 					'origin' => 'Registration',
+// 					'id' => $this->ids['current'],
+// 				),
+// 				'destination_user_id' => $this->ids['requested'],
+// // 				'l10n_key' => 'profile.friend.request_msg',
+// 				'params' => json_encode(array('notif_type' => 'friend_request'))
+// 			))));
+			
+			Notification_Service::origin('Registration', $this->ids['current'])
+				->destinationId($this->ids['requested'])
+				->params(array('notif_type' => 'friend_request'))
+				->send();
 			
 			$this->request->create(array(
 					'requesting_user_id' => $this->ids['current'],
@@ -205,15 +211,10 @@ class FriendService {
 			->params(array('notif_type' => 'friend_request'))
 			->updateParams(array('friend_accept' => true));
 		
-		event(new FriendRequestEvent(array(
-			'notification' => array(
-			'details' => array(
-				'origin' => 'Registration',
-				'id' => $this->ids['current'],
-			),
-			'destination_user_id' => $this->ids['requested'],
-			'params' => json_encode(array('notif_type' => 'friend_request', 'friend_accept_for_req' => true))
-		))));
+		Notification_Service::origin('Registration', $this->ids['current'])
+			->destinationId($this->ids['requested'])
+			->params(array('notif_type' => 'friend_request', 'friend_accept_for_req' => true))
+			->send();	
 	}
 	
 	protected function updateRequest($ids, $status) {

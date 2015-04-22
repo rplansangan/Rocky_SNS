@@ -14,7 +14,7 @@ Route::get('test', function() {
 	$t = Notification::originId(4)
 				->destinationId(2)
 				->params(array('notif_type' => 'friend_request'))
-				->updateParams(array('friend_accept' => true));
+				->delete();
 	echo "<pre>";
 	print_r($t);
 	echo "</pre>";

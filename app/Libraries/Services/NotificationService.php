@@ -21,6 +21,8 @@ class NotificationService {
 	
 	protected $current_params;
 	
+	protected $cur_notif;
+	
 	public function __construct() {
 		$this->notif = new Notification();	
 	}
@@ -31,9 +33,8 @@ class NotificationService {
 			case 'Like':
 				$obj = User::find($params['details']['id'])
 						->notif_user()->create(array_except($params, array('details')));
+				return $obj;
 				break;
-			
-		
 		}
 	}
 	
@@ -94,8 +95,7 @@ class NotificationService {
 		return $this;
 	}
 	
-	public function updateParams($params = array()) {
-		
+	public function updateParams($params = array()) {		
 		$this->notif
 			->where('destination_user_id', $this->destination_details['destination_user_id'])
 			->where('origin_object_id', $this->current_details['details']['id'])
@@ -105,10 +105,28 @@ class NotificationService {
 		return $this;
 	}
 	
+	/**
+	 * 'Sends' a notification
+	 * IMPORTANT NOTE: destination and origin id should first be declared. 
+	 */
 	public function send() {
 		$params = array_merge($this->current_details, $this->destination_details, $this->current_params);
 		$params['params'] = json_encode($params['params']);
-		$this->sendRequest($params);
+		$this->cur_notif = $this->sendRequest($params);
+		
+		return $this;
+	}
+	
+	/**
+	 * 
+	 */
+	public function delete() {
+		$this->notif
+			->where('destination_user_id', $this->destination_details['destination_user_id'])
+			->where('origin_object_id', $this->current_details['details']['id'])
+			->where('params', json_encode($this->current_params['params']))
+			->delete();
+		return $this;
 	}
 	
 	protected function isActive($is_read) {
