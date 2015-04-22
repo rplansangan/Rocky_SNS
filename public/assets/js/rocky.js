@@ -128,6 +128,7 @@ $(document).ready(function(){
 		var title = button.data('title');
 		var action = button.data('action');
 		var modal = $(this);
+
 		modal.find('.modal-type-form').text(type);
 		modal.find('.modal-title').text(title);
 		modal.find('form').attr('action' , action);
@@ -138,8 +139,13 @@ $(document).ready(function(){
 
 	$(document).on('keypress', '.comment-box' ,function (e) {
 		var key = e.which;
-		if(key == 13) 
-		{
+		if (event.shiftKey && event.keyCode == 13) {
+			var content = this.value;
+			var caret = getCaret(this);
+			this.value = content.substring(0, caret) + "<br>" + content.substring(caret, content.length - 1);
+			event.stopPropagation();
+		}
+		else if(key == 13){
 			var url = $(this).attr('href');
 			var id = $(this).attr('post_id');
 			var token = $(this).attr('_token');
