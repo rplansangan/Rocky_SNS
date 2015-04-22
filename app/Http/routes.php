@@ -42,6 +42,10 @@ Route::get('/', array(
 	'as' => 'index',
 	'uses' => 'WelcomeController@index'
 ));
+Route::get('signup', array(
+	'as' => 'signup',
+	'uses' => 'WelcomeController@signup'
+));
 // Login
 Route::post('login', array(
 	'as' => 'login',

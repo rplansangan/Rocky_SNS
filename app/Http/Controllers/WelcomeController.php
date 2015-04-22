@@ -34,4 +34,9 @@ class WelcomeController extends Controller {
 // 		$data['auth'] = false;
 		return view('pages.landing');
 	}
+
+	public function signup()
+	{
+		return view('pages.mainpage');
+	}
 }

@@ -117,6 +117,40 @@ a:hover {
 }
 
 
+/*============Landing Page============*/
+.landing-content {
+  background-image: url('../images/paw-bg.png');
+  background-position: center;
+}
+
+.land-vid {
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.land-btn {
+  margin-bottom: 30px;
+  font-size: 20px;
+  color: #960F06;
+}
+
+.land-btn a {
+  background: #F79187;
+  padding: 6px;
+  font-size: 20px;
+  color: #6B0F06;
+  border-bottom: 4px solid #D26F65;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.land-btn a:hover {
+  transition: background-color 0.5s ease;
+  background-color: #FAD6D6;
+  text-decoration: none;
+  border-bottom: 4px solid #F29F96;
+}
+
 
 /*============Top Pets============*/
 .land-content {
@@ -322,6 +356,21 @@ span legend {
 
 .prof-photo:hover > .glyphicon-edit {
   visibility: visible;
+}
+
+.add-friend-btn {
+  text-align: center;
+}
+
+.add-friend-btn a {
+  color: #F95645;
+  border: 1px solid rgba(231, 76, 60, 0.50);
+  padding: 5px;
+}
+
+.add-friend-btn a:hover {
+  background: #FFFFFF;
+  text-decoration: none;
 }
 
 
