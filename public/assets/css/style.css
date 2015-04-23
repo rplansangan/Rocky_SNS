@@ -760,6 +760,54 @@ a.list-group-item.friends {
   background-repeat: no-repeat;
 }
 
+a.list-group-item.compete {
+  background-image: url('../images/CompeteBG2.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+.left-nav a.compete:hover {
+  background-image: url('../images/CompeteBG.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+a.list-group-item.videos {
+  background-image: url('../images/VideoBG2.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+.left-nav a.videos:hover {
+  background-image: url('../images/VideoBG.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+a.list-group-item.rockyra {
+  background-image: url('../images/RangerBG2.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+.left-nav a.rockyra:hover {
+  background-image: url('../images/RangerBG.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+a.list-group-item.petfo {
+  background-image: url('../images/FoundationBG2.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+.left-nav a.petfo:hover {
+  background-image: url('../images/FoundationBG.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
 .left-addpet {
   padding: 10px 20px;
 }
