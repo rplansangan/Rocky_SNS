@@ -17,7 +17,7 @@ class PostsController extends Controller {
 	
 
 	public function createComment(Request $request) {
-		return view('ajax.comments')->with('comment', PostService::createComment($request));
+		return view('ajax.comments')->with('comment', PostService::createComment($request->get('id'), $request->get('puid'), $request->get('message')));
 	}
 	
 	public function getNextNewsFeed(Request $request) {

@@ -148,6 +148,7 @@ $(document).ready(function(){
 		else if(key == 13){
 			var url = $(this).attr('href');
 			var id = $(this).attr('post_id');
+			var puid = $(this).attr('puid');
 			var token = $(this).attr('_token');
 			var message = $(this).val();
 			var a = this;
@@ -155,7 +156,7 @@ $(document).ready(function(){
 				$.ajax({
 					url : url,
 					type : 'post',
-					data: { id:id , _token:token , message:message },
+					data: { id:id , _token:token , message:message, puid:puid },
 					success: function(r){
 						$(a).val('');
 						$(a).next().append(r);
@@ -218,7 +219,7 @@ $(document).ready(function(){
 		 		$('#refresh-btn').removeClass('hidden');
 		 	}
 		});
-	}, 3000);
+	}, 30000);
 
 	$('#form-modal').on('submit' , function(e){
 		var data = $(this).serialize()+"&message="+tinyMCE.activeEditor.getContent();

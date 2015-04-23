@@ -31,6 +31,7 @@ class NotificationService {
 		switch($params['details']['origin']) {
 			case 'Registration':
 			case 'Like':
+			case 'Comments':
 				$obj = User::find($params['details']['id'])
 						->notif_user()->create(array_except($params, array('details')));
 				return $obj;
@@ -192,6 +193,17 @@ class NotificationService {
 				->with('post_route', $post_route);
 	}
 	
+	protected function formatComment($notif) {
+		$origin_user = $this->getOriginUserDetails($notif);
+		$params = json_decode($notif->params);
+		$post_route = route('profile.showProfile', array($notif->destination_user_id)) . '/#post-' . $params->post_id;
+		
+		return view('notifications.post_comment')
+			->with('active', $this->isActive($notif->is_read))
+			->with('name', $origin_user['name'])
+			->with('post_route', $post_route);
+	}
+	
 	/**
 	 * Formats each item depending on their respective notif_type
 	 * @param mixed $notif_collection
@@ -207,6 +219,9 @@ class NotificationService {
 				break;
 				case 'post_like':
 					$html .= $this->formatLike($notif);
+				break;
+				case 'post_comment':
+					$html .= $this->formatComment($notif);
 				break;
 			}
 		}

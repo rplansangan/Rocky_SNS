@@ -89,10 +89,9 @@ class PostService {
 		return Likes::set($post_id, $destination);
 	}
 	
-	public function createComment($data) {
-		$this->token($data);
+	public function createComment($postId, $postUId, $message) {
 		
-		return Comments::set($data);
+		return Comments::set($postId, $postUId, $message);
 	}
 
 	public function checkNewPost(){
