@@ -29,7 +29,7 @@
 			<ul class="comments">
 				@if($comments)
 					@foreach($comments as $comment)
-						@include('ajax.comments', $comment)
+						@include('ajax.comments', array('comment' => $comment, 'pid' => $message->post_id, 'puid' => $message->user_id))
 					@endforeach
 				@endif
 			</ul>

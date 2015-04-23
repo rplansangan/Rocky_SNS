@@ -23,4 +23,14 @@ class CommentsRepository {
 		
 		return $temp->last();
 	}
+	
+	public function delete($postId, $postUId, $commentId) {
+		Comments::find($commentId)->delete();
+		
+		Notification::origin('Comments', Auth::id())
+			->destinationId($postUId)
+			->notifType('post_comment')
+			->params(array('post_id' => $postId))
+			->delete();
+	}
 }

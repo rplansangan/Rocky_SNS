@@ -90,8 +90,11 @@ class PostService {
 	}
 	
 	public function createComment($postId, $postUId, $message) {
-		
 		return Comments::set($postId, $postUId, $message);
+	}
+	
+	public function deleteComment($postId, $postUId, $commentId) {
+		return Comments::delete($postId, $postUId, $commentId);
 	}
 
 	public function checkNewPost(){

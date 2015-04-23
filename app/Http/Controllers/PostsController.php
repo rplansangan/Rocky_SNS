@@ -17,13 +17,21 @@ class PostsController extends Controller {
 	
 
 	public function createComment(Request $request) {
-		return view('ajax.comments')->with('comment', PostService::createComment($request->get('id'), $request->get('puid'), $request->get('message')));
+		$post = PostService::createComment($request->get('id'), $request->get('puid'), $request->get('message'));
+		return view('ajax.comments')
+			->with('comment', $post)
+			->with('pid', $post->post_id)
+			->with('puid', $request->get('puid'));
+	}
+	
+	public function deleteComment(Request $request) {
+		PostService::deleteComment($request->get('pid'), $request->get('puid'), $request->get('cid'));
 	}
 	
 	public function getNextNewsFeed(Request $request) {
 		$skip = $request->get('offset');
-		if($request->get('post_uid') != null) {
-			$post_uid = $request->get('post_uid');
+		if($request->get('cur_prof') != null) {
+			$post_uid = $request->get('cur_prof');
 		} else {
 			$post_uid = null;
 		}

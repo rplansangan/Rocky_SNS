@@ -62,10 +62,11 @@ $(document).ready(function(){
                 var route = $('#route-newsfeed-refresh').val();
                 var token = $('#route-newsfeed-refresh').attr('_token');
                 var post_uid = $('#post_uid').val();
+                var cur_prof = $('#profile_id').val();
                 $.ajax({
     				url : route,
     				type : 'post',
-    				data: { offset:items , _token:token, post_uid:post_uid},
+    				data: { offset:items , _token:token, post_uid:post_uid, cur_prof:cur_prof},
     				success: function(r){
     					if(r != "0"){
     						$('#home-newsfeed').append(r);
@@ -92,6 +93,21 @@ $(document).ready(function(){
     			$('#btn_add_friend').text(r.message);
     			$('#btn_add_friend').attr('data-act', r.action);
     			
+    		}
+    	});
+    	e.preventDefault();
+    });
+    
+    $('#comment-del').on('click', function(e) {
+    	var cid = $(this).attr('cid');
+    	var pid = $(this).attr('pid');
+    	var puid = $(this).attr('puid');
+    	$.ajax({
+    		url: $('#nf-del').val(),
+    		data: { cid:cid, pid:pid, puid:puid, _token:$(this).attr('token') },
+    		type: 'post',
+    		success:function() {
+    			$('li#comment-'+cid).remove();
     		}
     	});
     	e.preventDefault();
