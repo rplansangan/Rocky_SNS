@@ -1,4 +1,4 @@
- @extends('master')
+@extends('master')
 @section('site_title')
 Confirm Rocky The Superdog Account
 @stop

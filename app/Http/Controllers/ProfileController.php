@@ -94,13 +94,22 @@ class ProfileController extends Controller {
 	}
 
 	public function settings(){
-		return view('profile.settings');
+		
+		return view('profile.settings')->with('details', Registration::find(auth()->id()));
 	}
 	
 	public function editProfile(Request $request) {
-		echo "<pre>";
-		print_r($request->all());
-		echo "</pre>";
+		$input = array_except($request->all(), array('_token'));
+		
+		$reg = Registration::find(Auth::id());
+		while(($current = current($input)) !== false) {
+			$key = key($input);
+			$reg->$key = $current;	
+			next($input);
+		}
+		$reg->save();
+		
+		return redirect()->back()->withInput($input);
 	}
 
 	public function profile_merchant($business_id ){
