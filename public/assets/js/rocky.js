@@ -98,7 +98,7 @@ $(document).ready(function(){
     	e.preventDefault();
     });
     
-    $('#comment-del').on('click', function(e) {
+    $(document).on('click', '#comment-del',function(e) {
     	var cid = $(this).attr('cid');
     	var pid = $(this).attr('pid');
     	var puid = $(this).attr('puid');
@@ -155,13 +155,13 @@ $(document).ready(function(){
 
 	$(document).on('keypress', '.comment-box' ,function (e) {
 		var key = e.which;
-		if (event.shiftKey && event.keyCode == 13) {
-			var content = this.value;
-			var caret = getCaret(this);
-			this.value = content.substring(0, caret) + "<br>" + content.substring(caret, content.length - 1);
-			event.stopPropagation();
-		}
-		else if(key == 13){
+		//if (event.shiftKey && event.keyCode == 13) {
+			//var content = this.value;
+			//var caret = getCaret(this);
+			//this.value = content.substring(0, caret) + "<br>" + content.substring(caret, content.length - 1);
+			//event.stopPropagation();
+		//}
+		if(key == 13){
 			var url = $(this).attr('href');
 			var id = $(this).attr('post_id');
 			var puid = $(this).attr('puid');
