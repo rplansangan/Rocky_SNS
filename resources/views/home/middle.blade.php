@@ -3,7 +3,7 @@ ul.nav.nav-tabs li a {
 	color: #E74C3C;
 }
 </style>
-<div role="tabpanel" class="  post-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
+<div role="tabpanel" class="post-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
 	<input type="hidden" id="route-newsfeed-refresh" value="{{ route('newsfeed.refresh') }}" _token="{{ csrf_token() }}">
 	<form method="POST" action="{{ route('files.newsfeed') }}" class="form-horizontal" id="form-post" role="form" enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">

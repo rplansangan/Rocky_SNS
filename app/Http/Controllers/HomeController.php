@@ -74,4 +74,20 @@ class HomeController extends Controller {
 	public function addadvertise(){
 		return view('pages.addadvertise');
 	}
+
+	public function compete(){
+		return view('pages.compete');
+	}
+
+	public function videos(){
+		return view('pages.videos');
+	}
+
+	public function rockyranger(){
+		return view('pages.rockyranger');
+	}
+
+	public function petfoundation(){
+		return view('pages.petfoundation');
+	}
 }

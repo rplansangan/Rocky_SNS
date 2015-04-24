@@ -843,6 +843,37 @@ a.list-group-item.petfo {
 }
 
 
+
+/*============Friends List============*/
+.friends-list {
+  margin: 15px 0;
+}
+
+.friends-list a {
+  color: #C53C0A;
+}
+
+.friends-list a:hover:after {
+  width: 100%;
+}
+
+.friends-list a:hover {
+  color: #89342C;
+}
+
+.friends-list a:after {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 0;
+  height: 4px;
+  background-color: #E74C3C;
+  content: "";
+  transition: width 0.2s;
+}
+
+
 /*============RIGHT SIDEBAR============*/
 
 .right {

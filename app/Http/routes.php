@@ -177,6 +177,22 @@ Route::get('search', array(
 	'as' => 'search',
 	'uses' => 'HomeController@search'
 	));
+Route::get('compete', array(
+	'as' => 'compete',
+	'uses' => 'HomeController@compete'
+));
+Route::get('videos', array(
+	'as' => 'videos',
+	'uses' => 'HomeController@videos'
+));
+Route::get('rockyranger', array(
+	'as' => 'rockyranger',
+	'uses' => 'HomeController@rockyranger'
+));
+Route::get('petfoundation', array(
+	'as' => 'petfoundation',
+	'uses' => 'HomeController@petfoundation'
+));
 
 /* ADVERTISE */
 Route::get('merchant/{id}', array(
