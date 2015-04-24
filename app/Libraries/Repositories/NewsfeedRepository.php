@@ -40,11 +40,15 @@ class NewsfeedRepository {
 					'post' => function ($q) {
 						$q->addSelect(array('post_id', 'user_id', 'post_message', 'created_at'));
 					},
+					'image' => function ($q) {
+						$q->addSelect(array('image_id', 'post_id'));
+					},
 					'user' => function ($q) {
 						$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
 					},
-					'image' => function ($q) {
-						$q->addSelect(array('image_id', 'post_id'));
+					'user.prof_pic' => function ($q) {
+						$q->addSelect(array('image_id', 'user_id'));
+						$q->whereIsProfilePicture(1);
 					},
 					'like' => function ($q) {
 						$q->addSelect(array('like_id', 'post_id' , 'like_user_id'));
@@ -52,8 +56,12 @@ class NewsfeedRepository {
 					'comment' => function ($q) {
 						$q->addSelect(array('comment_id', 'post_id' ,'comment_message', 'comment_user_id'));
 					},
+					'comment.user.prof_pic' => function($q){
+						$q->addSelect(array('image_id', 'user_id'));
+						$q->whereIsProfilePicture(1);
+					},
 					'comment.user' => function ($q) {
-						$q->addSelect(array('registration_id', 'first_name', 'last_name'));
+						$q->addSelect(array('registration_id', 'first_name', 'last_name', 'user_id'));
 					}
 			))->latest()->take($take)->get();
 		}
@@ -62,11 +70,15 @@ class NewsfeedRepository {
 				'post' => function ($q) {
 					$q->addSelect(array('post_id', 'user_id', 'post_message', 'created_at'));
 				},
+				'image' => function ($q) {
+					$q->addSelect(array('image_id', 'post_id'));
+				},
 				'user' => function ($q) {
 					$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
 				},
-				'image' => function ($q) {
-					$q->addSelect(array('image_id', 'post_id'));
+				'user.prof_pic' => function ($q) {
+					$q->addSelect(array('image_id', 'user_id'));
+					$q->whereIsProfilePicture(1);
 				},
 				'like' => function ($q) {
 					$q->addSelect(array('like_id', 'post_id' , 'like_user_id'));
@@ -74,8 +86,12 @@ class NewsfeedRepository {
 				'comment' => function ($q) {
 					$q->addSelect(array('comment_id', 'post_id' ,'comment_message', 'comment_user_id'));
 				},
+				'comment.user.prof_pic' => function($q){
+					$q->addSelect(array('image_id', 'user_id'));
+					$q->whereIsProfilePicture(1);
+				},
 				'comment.user' => function ($q) {
-					$q->addSelect(array('registration_id', 'first_name', 'last_name'));
+					$q->addSelect(array('registration_id', 'first_name', 'last_name', 'user_id'));
 				}
 		))->latest()->take($take)->get();
 	}
@@ -86,11 +102,15 @@ class NewsfeedRepository {
 					'post' => function ($q) {
 						$q->addSelect(array('post_id', 'user_id', 'post_message', 'created_at'));
 					},
+					'image' => function ($q) {
+						$q->addSelect(array('image_id', 'post_id'));
+					},
 					'user' => function ($q) {
 						$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
 					},
-					'image' => function ($q) {
-						$q->addSelect(array('image_id', 'post_id'));
+					'user.prof_pic' => function ($q) {
+						$q->addSelect(array('image_id', 'user_id'));
+						$q->whereIsProfilePicture(1);
 					},
 					'like' => function ($q) {
 						$q->addSelect(array('like_id', 'post_id' , 'like_user_id'));
@@ -98,8 +118,12 @@ class NewsfeedRepository {
 					'comment' => function ($q) {
 						$q->addSelect(array('comment_id', 'post_id' ,'comment_message', 'comment_user_id'));
 					},
+					'comment.user.prof_pic' => function($q){
+						$q->addSelect(array('image_id', 'user_id'));
+						$q->whereIsProfilePicture(1);
+					},
 					'comment.user' => function ($q) {
-						$q->addSelect(array('registration_id', 'first_name', 'last_name'));
+						$q->addSelect(array('registration_id', 'first_name', 'last_name', 'user_id'));
 					}
 			))->latest()->skip($skip)->take($take)->get();
 		}		
@@ -107,11 +131,15 @@ class NewsfeedRepository {
 				'post' => function ($q) {
 					$q->addSelect(array('post_id', 'user_id', 'post_message', 'created_at'));
 				},
+				'image' => function ($q) {
+					$q->addSelect(array('image_id', 'post_id'));
+				},
 				'user' => function ($q) {
 					$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
 				},
-				'image' => function ($q) {
-					$q->addSelect(array('image_id', 'post_id'));
+				'user.prof_pic' => function ($q) {
+					$q->addSelect(array('image_id', 'user_id'));
+					$q->whereIsProfilePicture(1);
 				},
 				'like' => function ($q) {
 					$q->addSelect(array('like_id', 'post_id' , 'like_user_id'));
@@ -119,8 +147,12 @@ class NewsfeedRepository {
 				'comment' => function ($q) {
 					$q->addSelect(array('comment_id', 'post_id' ,'comment_message', 'comment_user_id'));
 				},
+				'comment.user.prof_pic' => function($q){
+					$q->addSelect(array('image_id', 'user_id'));
+					$q->whereIsProfilePicture(1);
+				},
 				'comment.user' => function ($q) {
-					$q->addSelect(array('registration_id', 'first_name', 'last_name'));
+					$q->addSelect(array('registration_id', 'first_name', 'last_name', 'user_id'));
 				}
 		))->latest()->skip($skip)->take($take)->get();
 	}

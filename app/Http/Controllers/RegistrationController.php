@@ -88,7 +88,28 @@ class RegistrationController extends Controller {
 			$reg->save();
 		}	
 
+		if($request->file('userfile') != null) {
+			$file = $request->file('userfile');
+			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
+			$dir = StorageHelper::create(Auth::id());
+			
+			$img_data = new Images(array(
+					'user_id' => $reg->registration_id,
+					'image_path' => $dir,
+					'image_name' => $filename,
+					'image_mime' => $file->getMimeType(),
+					'image_ext' => $file->getClientOriginalExtension(),
+					'is_profile_picture' => 1
+			));
+			
+			$img_data->save();
+			
+			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
+		}
+		
+
 		Auth::loginUsingId($reg->registration_id);
+		
 		
 		return redirect()->route('home');
 		

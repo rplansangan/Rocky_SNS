@@ -6,9 +6,9 @@ Rocky Registration
 @section('content')
 <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 register-page">
 <div class="container-fluid">
-	<div class="col-sm-12 col-xs-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2 land-main-cont register-main">
+	<div class="col-sm-12 col-xs-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2 land-main-cont register-main" >
 		<div class="row">
-			<div class="page-header">
+			<div class="page-header" style="padding:10px 20px 10px 20px">
 				<h2>Add Your Pet(s)</h2>
 				<small class="help-block">Please complete the form to add your pet</small>
 			</div>
@@ -21,6 +21,9 @@ Rocky Registration
 					<div class='col-sm-8'>
 						<input type='file' name="petfile" class="custom-file-input" />
 					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-3 col-sm-offset-2 view-image-here"></div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Name:</label>

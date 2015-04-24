@@ -10,7 +10,8 @@ Rocky the Superdog
 		<div class="row">
 			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 left">
 				@include('home.profile-left', array(
-					'friend_flags' => $friend_flags
+					'friend_flags' => $friend_flags,
+					'profile_picture' => $profile->prof_pic
 				))
 			</div>
 			<div class="col-lg-6 col-lg-6 col-md-3 col-sm-12 col-xs-12 middle">

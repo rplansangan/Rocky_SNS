@@ -4,8 +4,9 @@
 	<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 merchdet-cont">
 		<div class="merch-details col-sm-12 col-xs-12 col-lg-7 col-md-7">
 			<h2>{{ $info[0]->business_name }}</h2>
-			<p>{{ $info[0]->address_line1 }} {{ $info[0]->address_line2 }} {{ $info[0]->city }} {{ $info[0]->zip }} {{ $info[0]->state }} {{ $info[0]->country }}</p>
-			<p>{!! $info[0]->company_background !!}</p>
+			<p class="bnaddress">{{ $info[0]->address_line1 }} {{ $info[0]->address_line2 }},</p>
+			<p class="bnaddress">{{ $info[0]->city }}, {{ $info[0]->zip }} {{ $info[0]->state }} {{ $info[0]->country }}</p>
+			<p class="bnbg">{!! $info[0]->company_background !!}</p>
 		</div>
 		<div class="col-sm-12 col-xs-12 col-lg-5 col-md-5 merch-condetails">
 			<p>Contact No.<a href="tel:{{ $info[0]->phone_number }}"> {{ $info[0]->phone_number }}</a></p>
@@ -33,7 +34,7 @@
 			@if($otherads->isEmpty())
 			<h3>No Other Advertisements</h3>
 			@else
-			<h4>Other Ads by Branch Name</h4>
+			<h4>Other Ads by {{ $info[0]->business_name }}</h4>
 				@foreach($otherads as $adver)
 					<div class="col-sm-12 col-xs-12 col-lg-4 col-md-4">
 						<a href="#">

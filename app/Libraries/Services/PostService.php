@@ -54,7 +54,8 @@ class PostService {
 			$return['message'] = $this->post->create($data['message']);
 		}
 				
-		$return['user'] = Registration::find($return['message']->user_id); 
+		$return['user'] = Registration::ofId($return['message']->user_id)->with(array('prof_pic'))->get(); 
+		$return['user'] = $return['user'][0];
 		$return['like'] = 0;
 		$return['comments'] = 0;
 		

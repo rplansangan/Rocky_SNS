@@ -1,5 +1,6 @@
 <?php
 use SNS\Libraries\Facades\Notification;
+use SNS\Models\Registration;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,16 +12,8 @@ use SNS\Libraries\Facades\Notification;
 |
 */
 Route::get('test', function() {
-	$t = Notification::originId(4)
-				->destinationId(2)
-				->params(array('notif_type' => 'friend_request'))
-				->delete();
-	echo "<pre>";
-	print_r($t);
-	echo "</pre>";
-$t = \SNS\Models\Notification::find(45);
-$params = json_decode($t->params);
-print_r($params->post_id);
+	custom_print_r(Registration::find(1)->with(array('prof_pic'))->get());
+	echo '1';
 });
 Route::get('testupload/{uid}/{fid}', array(
 	'uses' => 'UploadsController@getImage'
@@ -141,14 +134,13 @@ Route::get('profile/friends/{id}', array(
 	'uses' => 'ProfileController@userFriends'
 ));
 Route::get('profile_settings', array(
-'as' => 'profile.settings',
-'uses' => 'ProfileController@settings'
+	'as' => 'profile.settings',
+	'uses' => 'ProfileController@settings'
 ));
 Route::post('profile/edit', array(
 	'as' => 'profile.setings.patch',
 	'uses' => 'ProfileController@editProfile'
 ));
-
 Route::get('home', array(
 	'as' => 'home',
 	'uses' => 'HomeController@index'
@@ -235,7 +227,6 @@ Route::post('merchant/inquire', array(
 	'as' => 'merchant.inquire',
 	'uses' => 'MerchantController@addOrderInquire'
 	));
-
 Route::get('checknewpost', array(
 	'as' => 'post.check',
 	'uses' => 'PostsController@checknewpost'

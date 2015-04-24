@@ -51,4 +51,5 @@ class PostsController extends Controller {
 		return view('ajax.loop_news_feed')->with('newsfeed', PostService::get_newfeeds());
 		PostService::lastpostupdate();
 	}
+	
 }

@@ -37,7 +37,7 @@ $(document).ready(function(){
 		if(tinyMCE.activeEditor.getContent() != "" ){
 			$.ajax({
 				url : $(this).attr('action'),
-				type : 'post',
+				type :  $(this).attr('method'),
 				data: data,
 				processData: false,
 				contentType: false,
