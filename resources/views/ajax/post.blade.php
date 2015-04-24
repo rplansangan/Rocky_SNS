@@ -1,8 +1,8 @@
 <li id="post-{{{ $message->post_id }}}" class="media">
 	<div class="media-left">
 		<a href="{{ route('profile.showProfile', $user->registration_id) }}">
-			@if(isset($pet->image))	
-				<img src="{{ route('files.get.image', array($user->user_id, $user->image[0]->image_id)) }}" width="64px" height="64px" alt="profile picture">
+			@if($user->prof_pic)	
+				<img src="{{ route('files.get.image', array($user->prof_pic->user_id, $user->prof_pic->image_id)) }}" width="64px" height="64px" alt="profile picture">
 			@else
 				<img src="{{ URL::asset('assets/images/owner-default.png') }}" width="64px" height="64px" alt="profile picture">
 			@endif

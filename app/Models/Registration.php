@@ -52,6 +52,10 @@ class Registration extends Model {
 	
 	public static $dbDateFormat = 'Y-m-d H:i:s';
 	
+	public function scopeOfId($query, $id) {
+		return $query->where('registration_id', $id);
+	}
+
 	// RELATIONSHIPS
 	public function notif_user() {
 		return $this->morphOne('SNS\Models\Notification', 'origin_object');
@@ -77,6 +81,9 @@ class Registration extends Model {
 		return $this->hasMany('SNS\Models\Comments', 'comment_user_id');
 	}
 	
+	public function prof_pic() {
+		return $this->hasOne('SNS\Models\Images', 'user_id', 'user_id');
+	}
 	public function getBirthDateAttribute($date) {
 		return Carbon::createFromFormat(self::$dbDateFormat, $date)->format('Y-m-d');
 	}

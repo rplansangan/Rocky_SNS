@@ -33,11 +33,11 @@ class Newsfeed_view extends Model {
 	public function user() {
 		return $this->hasOne('SNS\Models\Registration', 'user_id', 'post_user_id');
 	}
-	
+
 	public function image() {
 		return $this->hasOne('SNS\Models\Images', 'post_id', 'post_id');
 	}
-	
+
 	public function like() {
 		return $this->hasMany('SNS\Models\Likes', 'post_id', 'post_id');
 	}
