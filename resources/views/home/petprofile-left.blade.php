@@ -1,13 +1,13 @@
 <div class="row">
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-photo">
-			@if(isset($profile->profile_pic))
+			@if(isset($pets->profile_pic))
 				<img src="{{ route('files.get.image', array($profile->user_id, $profile->profile_pic->image_id)) }}">
 			@else
 				<img src="{{ URL::asset('assets/images/pet-default.png') }}">
 			@endif
 	</div>
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-name text-center">
-		<a href="{{ route('profile.petlist', Auth::user()->user_id) }}"><h4>{{ $profile->pet_name }} {{ $profile->pet_name }}</h4></a>
+		<a href="{{ route('profile.petlist', Auth::user()->user_id) }}"><h4>{{ $profile->pet_name }}</h4></a>
 	</div>
 </div>
 

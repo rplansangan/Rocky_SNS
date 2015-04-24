@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-photo">
 		<a  href="{{ route('profile.showProfile', Auth::id()) }}">
-			@if(isset($pet->image))	
+			@if(isset($profile->image))	
 				<img src="{{ route('files.get.image', array($user->user_id, $user->image[0]->image_id)) }}">
 			@else
 				<img src="{{ URL::asset('assets/images/owner-default.png') }}">
