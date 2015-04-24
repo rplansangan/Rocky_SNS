@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 use SNS\Models\Registration;
 use SNS\Models\Pets;
 use SNS\Models\Business;
+use SNS\Models\Images;
 use SNS\Libraries\Facades\PostService;
 use SNS\Libraries\Facades\FriendService;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+use SNS\Libraries\Facades\StorageHelper;
 
 class ProfileController extends Controller {
 	
@@ -19,13 +23,16 @@ class ProfileController extends Controller {
 	}
 	
 	public function showProfile($id){ 
-		$profileDetails = Registration::find($id); 
+		$profileDetails = Registration::ofId($id)->with(array('prof_pic' => function($q) {
+			$q->whereIsProfilePicture(1);
+			$q->addSelect(array('image_id', 'user_id'));
+		}))->get(); 
 		$collection = PostService::initialNewsFeed(Auth::id(), $id);
 		
 		$data['friend_flags'] = FriendService::check($id);
 		$data['include_scripts'] = true;
 		return view('profile.profile', $data)
-				->with('profile', $profileDetails)
+				->with('profile', $profileDetails[0])
 				->with('posts', $collection);
 	}
 
@@ -99,7 +106,7 @@ class ProfileController extends Controller {
 	}
 	
 	public function editProfile(Request $request) {
-		$input = array_except($request->all(), array('_token'));
+		$input = array_except($request->all(), array('_token', 'userfile'));
 		
 		$reg = Registration::find(Auth::id());
 		while(($current = current($input)) !== false) {
@@ -108,6 +115,25 @@ class ProfileController extends Controller {
 			next($input);
 		}
 		$reg->save();
+		
+		if($request->file('userfile') != null) {
+			$file = $request->file('userfile');
+			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
+			$dir = StorageHelper::create(Auth::id());
+				
+			$img_data = new Images(array(
+					'user_id' => $reg->registration_id,
+					'image_path' => $dir,
+					'image_name' => $filename,
+					'image_mime' => $file->getMimeType(),
+					'image_ext' => $file->getClientOriginalExtension(),
+					'is_profile_picture' => 1
+			));
+		
+			$img_data->save();
+		
+			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
+		}
 		
 		return redirect()->back()->withInput($input);
 	}

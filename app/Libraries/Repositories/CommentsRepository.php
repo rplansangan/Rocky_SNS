@@ -13,7 +13,12 @@ class CommentsRepository {
 				'comment_user_id' => Auth::id()
 		));
 		
-		$temp = Comments::where('post_id', $postId)->with('user')->get();
+		$temp = Comments::where('post_id', $postId)->with(array(
+					'user', 
+					'user.prof_pic' => function($q) {
+						$q->addSelect('image_id', 'user_id');
+						$q->where('is_profile_picture', 1);
+				}))->get();
 		
 		Notification::origin('Comments', Auth::id())
 			->destinationId($postUId)

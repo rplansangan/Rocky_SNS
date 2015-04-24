@@ -7,7 +7,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<form method="POST" action="{{ $form_route }}" class="form-horizontal" role="form">
+				<form method="POST" action="{{ $form_route }}" class="form-horizontal" role="form" enctype="multipart/form-data">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<div class="form-group">
 						<label class="col-sm-3 control-label">{{ trans('profile.labels.prof_details.prof_pic') }}</label>

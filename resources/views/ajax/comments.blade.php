@@ -1,7 +1,7 @@
 <li id="comment-{{{ $comment->comment_id }}}" class="media">
     <div class="media-left">
       <a href="{{ route('profile.showProfile', $comment->user->registration_id) }}">
-        @if($comment->user->prof_pic->image_id)
+        @if(isset($comment->user->prof_pic->image_id))
           <img class="media-object" width="30px" height="30px" src="{{ route('files.get.image', array($comment->user->prof_pic->user_id, $comment->user->prof_pic->image_id)) }}">
         @else
            <img class="media-object"  width="30px" height="30px" src="{{ URL::asset('assets/images/jon.jpg') }}" alt="...">

@@ -12,7 +12,7 @@ use SNS\Models\Registration;
 |
 */
 Route::get('test', function() {
-	custom_print_r(Registration::ofId(5)->with(array('prof_pic'))->get());
+	custom_print_r(Registration::find(1)->with(array('prof_pic'))->get());
 	echo '1';
 });
 Route::get('testupload/{uid}/{fid}', array(
