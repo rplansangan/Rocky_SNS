@@ -54,7 +54,6 @@ class RegistrationController extends Controller {
 		$reg->is_validated = 0;
 		$reg->save();		
 		
-// 		$data['auth'] = false;
 		$this->service->send($reg);
 		
 		return view('pages.message')->with('id', $user->user_id)->with('validation_errors', null);
@@ -73,12 +72,10 @@ class RegistrationController extends Controller {
 	
 	public function details($id) {
 		Session::put('details', Registration::find($id)->toArray());
-// 		$data['auth'] = false;
 		return view('pages.register');
 	}
 	
 	public function updateDetails(Request $request, $id) {
-
 		Session::forget('details');
 		$input = array_except($request->all(), array('_token'));
 		
@@ -100,8 +97,7 @@ class RegistrationController extends Controller {
 	public function resend($id) {
 		$service = $this->service->resend($id);
 		
-		if($service->check()) {			
-// 			$data['auth'] = false;
+		if($service->check()) {		
 			return view('pages.message')->with('id', $id)->with('validation_errors', null);
 		} else {
 			return redirect('/');
@@ -110,12 +106,10 @@ class RegistrationController extends Controller {
 
 
 	public function validateMessage(){
-// 		$data['auth'] = false;
 		return view('pages.message');
 	}
 
 	public function registerpet() {
-// 		$data['auth'] = true;
 		return view('pages.petregister');
 	}
 	

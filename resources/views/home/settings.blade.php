@@ -7,7 +7,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<form method="POST" action="{{ route('register.detailsUpdate', Session::get('details.registration_id')) }}" class="form-horizontal" role="form">
+				<form method="POST" action="{{ route('profile.setings.patch') }}" class="form-horizontal" role="form">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<div class="form-group">
 						<label class="col-sm-3 control-label">Profile Picture</label>

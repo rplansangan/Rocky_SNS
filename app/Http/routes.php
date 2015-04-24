@@ -144,6 +144,10 @@ Route::get('profile_settings', array(
 'as' => 'profile.settings',
 'uses' => 'ProfileController@settings'
 ));
+Route::post('profile/edit', array(
+	'as' => 'profile.setings.patch',
+	'uses' => 'ProfileController@editProfile'
+));
 
 Route::get('home', array(
 	'as' => 'home',

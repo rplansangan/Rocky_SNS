@@ -13,12 +13,16 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller {
 	
+	public function __construct() {
+		parent::__construct();
+		$this->middleware('auth');
+	}
+	
 	public function showProfile($id){ 
 		$profileDetails = Registration::find($id); 
 		$collection = PostService::initialNewsFeed(Auth::id(), $id);
 		
 		$data['friend_flags'] = FriendService::check($id);
-// 		$data['auth'] = true;
 		$data['include_scripts'] = true;
 		return view('profile.profile', $data)
 				->with('profile', $profileDetails)
@@ -28,7 +32,6 @@ class ProfileController extends Controller {
 	public function petlist($id){
 		$list = Pets::where('user_id', $id)->with('profile_pic')->get();
 		$profileDetails = Registration::find($id); 
-// 		$data['auth'] = true;
 		return view('profile.petlist')
 				->with('profile', $profileDetails)
 				->with('list', $list);
@@ -40,7 +43,6 @@ class ProfileController extends Controller {
 			$query->where('pet_id', $pet_id);
 		}))->get();
 		
-// 		$data['auth'] = true;
 		return view('profile.profilepet')->with('profile', $profileDetails[0]);
 	}
 	
@@ -92,8 +94,13 @@ class ProfileController extends Controller {
 	}
 
 	public function settings(){
-// 		$data['auth'] = true;
 		return view('profile.settings');
+	}
+	
+	public function editProfile(Request $request) {
+		echo "<pre>";
+		print_r($request->all());
+		echo "</pre>";
 	}
 
 	public function profile_merchant($business_id ){

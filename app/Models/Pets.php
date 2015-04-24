@@ -26,16 +26,23 @@ class Pets extends Model {
 	 * @var array
 	 */
 	protected $fillable = array(
-							'user_id',
-							'pet_name',
-							'pet_type',
-							'breed',
-							'pet_bday',
-							'pet_gender',
-							'food',
-							'pet_likes',
-							'pet_dislikes'
-							);
+			'user_id',
+			'pet_name',
+			'pet_type',
+			'breed',
+			'pet_bday',
+			'pet_gender',
+			'food',
+			'pet_likes',
+			'pet_dislikes',
+			'food_style',
+			'brand',
+			'weight',
+			'height',
+			'behavior',
+			'feeding_interval',
+			'feeding_time',
+			'identifying_marks');
 	
 	protected $dates = array('deleted_at');
 

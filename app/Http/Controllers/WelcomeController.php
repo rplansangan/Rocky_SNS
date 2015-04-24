@@ -31,7 +31,6 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{	
-// 		$data['auth'] = false;
 		return view('pages.landing');
 	}
 
