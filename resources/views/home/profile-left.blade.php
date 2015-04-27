@@ -2,7 +2,7 @@
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-photo">
 		<a  href="{{ route('profile.showProfile', Auth::id()) }}">
 			@if(isset($profile_picture))	
-				<img src="{{ route('files.get.image', array($profile_picture->user_id, $profile_picture->image_id)) }}">
+				<img class="img-responsive" src="{{ route('files.get.image', array($profile_picture->user_id, $profile_picture->image_id)) }}">
 			@else
 				<img src="{{ URL::asset('assets/images/owner-default.png') }}">
 			@endif
@@ -39,7 +39,11 @@
 			<a href="{{ route('advertised') }}" class="list-group-item ads">Advertise</a>
 			<a href="{{ route('shop') }}" class="list-group-item shop">Shop</a>
 			<a href="{{ route('trackers') }}" class="list-group-item track">Trackers</a>
+			@if(Route::current()->getParameter('id') != null)
+			<a href="{{ route('profile.friends', Route::current()->getParameter('id')) }}" class="list-group-item friends">Friends</a>
+			@else
 			<a href="{{ route('profile.friends', Auth::id()) }}" class="list-group-item friends">Friends</a>
+			@endif
 			<a href="#" class="list-group-item compete">Compete</a>
 			<a href="#" class="list-group-item videos">Videos</a>
 			<a href="#" class="list-group-item rockyra">Rocky Ranger</a>

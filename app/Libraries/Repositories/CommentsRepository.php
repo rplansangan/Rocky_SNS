@@ -20,11 +20,13 @@ class CommentsRepository {
 						$q->where('is_profile_picture', 1);
 				}))->get();
 		
-		Notification::origin('Comments', Auth::id())
-			->destinationId($postUId)
-			->notifType('post_comment')
-			->params(array('post_id' => $postId))
-			->send();
+		if(Auth::id() != $postUId) {		
+			Notification::origin('Comments', Auth::id())
+				->destinationId($postUId)
+				->notifType('post_comment')
+				->params(array('post_id' => $postId))
+				->send();
+		}
 		
 		return $temp->last();
 	}

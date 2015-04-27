@@ -59,13 +59,13 @@ class ProfileController extends Controller {
 				$response['message'] = $this->addFriend($request->get('requested_id'));
 				$response['action'] = 'req';
 				break;		
-			case 'req':
-				$response['message'];
-				$response['action'] = 'add';
-				break;
+// 			case 'req':
+// 				$response['message'] = $this->cancelFriendReq($request->get('requested_id'));
+// 				$response['action'] = 'add';
+// 				break;
 				
 			case 'canc':
-				$response['message'] = $this->cancelFriendReq($request->get('requested_id'));
+				$response['message'] = $this->deleteFriend($request->get('requested_id'));
 				$response['action'] = 'add';
 				break;
 		}
@@ -94,14 +94,18 @@ class ProfileController extends Controller {
 		return redirect()->back();
 	}
 	
+	public function deleteFriend($requested_id) {
+		FriendService::delete($requested_id);
+		return trans('profile.friend.add_friend');
+	}
+	
 	public function userFriends($user_id) {
 		$friends = FriendService::collect($user_id);
 		return view('pages.friends_listing')
 				->with('friends', $friends);
 	}
 
-	public function settings(){
-		
+	public function settings(){		
 		return view('profile.settings')->with('details', Registration::find(auth()->id()));
 	}
 	

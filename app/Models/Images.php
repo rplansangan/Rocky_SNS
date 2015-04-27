@@ -54,5 +54,9 @@ class Images extends Model {
 	public function scopeProfilePicture($query, $user_id, $pet_id = null) {
 		return $query->where('user_id', $user_id)->where('pet_id', $pet_id)->get();
 	}
+	
+	public function scopeUserProfPic($query) {
+		return $query->where('is_profile_picture', 1);
+	}
 
 }

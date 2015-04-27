@@ -1,6 +1,4 @@
 <?php
-use SNS\Libraries\Facades\Notification;
-use SNS\Models\Registration;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,8 +10,7 @@ use SNS\Models\Registration;
 |
 */
 Route::get('test', function() {
-	custom_print_r(Registration::find(1)->with(array('prof_pic'))->get());
-	echo '1';
+
 });
 Route::get('testupload/{uid}/{fid}', array(
 	'uses' => 'UploadsController@getImage'
