@@ -32,9 +32,9 @@ Rocky Registration
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">Type:</label>
+					<label class="col-sm-2 control-label">Animal Type:</label>
 					<div class="col-sm-8">
-						<input type="text" name="pet_type" class="form-control" placeholder="Type">
+						<input type="text" name="pet_type" class="form-control" placeholder="eg: Cat">
 					</div>
 				</div>
 				<div class="form-group">
@@ -44,7 +44,7 @@ Rocky Registration
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">Birthdate:</label>
+					<label class="col-sm-2 control-label">Estimated Birthdate:</label>
 					<div class='col-sm-8'>
 						<input type="date" class="form-control" id="pet_bday" name="pet_bday">
 					</div>
@@ -65,9 +65,45 @@ Rocky Registration
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="col-sm-2 control-label">Weight:</label>
+					<div class="col-sm-8">
+						<input type="text" name="weight" class="form-control" placeholder="Weight">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Height:</label>
+					<div class="col-sm-8">
+						<input type="text" name="height" class="form-control" placeholder="Height">
+					</div>
+				</div>
+				<div class="form-group">
 					<label class="col-sm-2 control-label">Food:</label>
 					<div class="col-sm-8">
-						<input type="text" name="food" class="form-control" placeholder="Food">
+						<input type="text" name="food" class="form-control" placeholder="eg: Dog Food">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Food Brand:</label>
+					<div class="col-sm-8">
+						<input type="text" name="brand" class="form-control" placeholder="Food Brand">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Food Style:</label>
+					<div class="col-sm-8">
+						<input type="text" name="food_styletype" class="form-control" placeholder="wet or dry">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Feeding Interval:</label>
+					<div class="col-sm-8">
+						<input type="text" name="feeding_interval" class="form-control" placeholder="eg: twice a day">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Feeding Time:</label>
+					<div class="col-sm-8">
+						<input type="text" name="feeding_time" class="form-control" placeholder="eg: 8am and 5pm">
 					</div>
 				</div>
 				<div class="form-group">
@@ -80,6 +116,12 @@ Rocky Registration
 					<label class="col-sm-2 control-label">Dislikes:</label>
 					<div class="col-sm-8">
 						<input type="text" name="pet_dislikes" class="form-control" placeholder="Dislikes">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Identifying Marks:</label>
+					<div class="col-sm-8">
+						<input type="text" name="identifying_marks" class="form-control" placeholder="Identifying Marks">
 					</div>
 				</div>
 				<div class="form-group">
