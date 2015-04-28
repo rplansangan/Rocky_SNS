@@ -21,17 +21,18 @@ class NotificationService {
 	
 	protected $current_params;
 	
-	protected $cur_notif;
+	protected $notif_type;
 	
 	public function __construct() {
 		$this->notif = new Notification();	
 	}
 	
-	public function sendRequest($params) {		
+	public function sendRequest($params) {	
 		switch($params['details']['origin']) {
 			case 'Registration':
 			case 'Like':
 			case 'Comments':
+			case 'User':
 				$obj = User::find($params['details']['id'])
 						->notif_user()->create(array_except($params, array('details')));
 				return $obj;
@@ -78,6 +79,7 @@ class NotificationService {
 	 */
 	public function notifType($type) {
 		$this->current_params['params']['notif_type'] = $type;
+		$this->notif_type = $type;
 		return $this;
 	}
 	
@@ -88,20 +90,40 @@ class NotificationService {
 	 */
 	public function params($params = array()) {
 		if(!is_null($this->current_params['params'])) {
-			$this->current_params['params'] = array_merge($this->current_params['params'], $params);
+			$this->current_params['params'] = array_merge($this->removeKey($params, array('notif_type')), $params);
 		} else {
-			$this->current_params['params'] = $params;
+			$this->current_params['params'] = $this->removeKey($params, 'notif_type');
 		}
+		
+		if(array_key_exists('notif_type', $params)) {
+			$this->notif_type = $params['notif_type'];
+		} 
 		
 		return $this;
 	}
 	
-	public function updateParams($params = array()) {		
+	protected function removeKey($array, $keys) {
+		$array = array_except($array, $keys);
+		
+		if(count($array) != 0) {
+			return $array;
+		} else {
+			return NULL;
+		}
+	}
+	
+	public function updateParams($params = array()) {	
+		if($this->current_params['params'] != null) {
+			$params = json_encode(array_merge($params, $this->current_params['params']));
+		} else {
+			$params = json_encode(array_merge($params));
+		}
+		
 		$this->notif
 			->where('destination_user_id', $this->destination_details['destination_user_id'])
 			->where('origin_object_id', $this->current_details['details']['id'])
 			->where('params', json_encode($this->current_params['params']))
-			->update(array('params' => json_encode(array_merge($params, $this->current_params['params']))));
+			->update(array('params' => $params));
 				
 		return $this;
 	}
@@ -112,9 +134,11 @@ class NotificationService {
 	 */
 	public function send() {
 		$params = array_merge($this->current_details, $this->destination_details, $this->current_params);
+		$params['notif_type'] = $this->notif_type;
 		$params['params'] = json_encode($params['params']);
+
 		$this->cur_notif = $this->sendRequest($params);
-		
+	
 		return $this;
 	}
 	
@@ -125,6 +149,7 @@ class NotificationService {
 		$this->notif
 			->where('destination_user_id', $this->destination_details['destination_user_id'])
 			->where('origin_object_id', $this->current_details['details']['id'])
+			->where('notif_type', $this->notif_type)
 			->where('params', json_encode($this->current_params['params']))
 			->delete();
 		return $this;
@@ -210,10 +235,9 @@ class NotificationService {
 	 * @return string
 	 */
 	protected function formatNotif($notif_collection) {
-		$html = '';
-		foreach($notif_collection as $notif) {			
-			$params = json_decode($notif->params);
-			switch($params->notif_type) {
+		$html = ''; 
+		foreach($notif_collection as $notif) {		
+			switch($notif->notif_type) {
 				case 'friend_request':					
 					$html .= $this->formatFriendReq($notif);
 				break;
@@ -235,7 +259,7 @@ class NotificationService {
 	 */
 	public function collectInitial($user_id) {
 		$notif_collection = $this->notif
-								->select(array('origin_object_id', 'origin_object_type', 'is_read', 'params', 'destination_user_id'))
+								->select(array('origin_object_id', 'origin_object_type', 'is_read', 'params', 'destination_user_id', 'notif_type'))
 								->with(array('object'))
 								->userNotif($user_id);
 		

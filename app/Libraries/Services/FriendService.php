@@ -217,7 +217,7 @@ class FriendService {
 		$this->updateRequest(array(
 				'requesting_id' => $this->ids['current'],
 				'requested_id' => $this->ids['requested']
-		), 9);
+		), 3);
 		
 		$this->deletedFriendRecords();
 		

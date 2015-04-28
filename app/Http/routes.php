@@ -1,4 +1,6 @@
 <?php
+use SNS\Models\Notification;
+use SNS\Libraries\Facades\Notification as Notification_Service;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -10,7 +12,23 @@
 |
 */
 Route::get('test', function() {
-
+	Notification_Service::origin('User', 1)
+	->destinationId(2)
+	->params(array('notif_type' => 'friend_request'))
+	->send();
+	
+	echo true;
+});
+Route::get('update_notif', function() {
+	$notif = Notification::withTrashed()->get();
+	
+	foreach($notif as $n) {
+		$params = json_decode($n->params, true);
+		$n->notif_type = $params['notif_type'];
+		$n->save();
+	}
+	
+	echo true;
 });
 Route::get('testupload/{uid}/{fid}', array(
 	'uses' => 'UploadsController@getImage'

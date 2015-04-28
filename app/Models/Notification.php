@@ -15,7 +15,8 @@ class Notification extends Model {
 							'origin_object_id',
 							'l10n_key',
 							'is_read',
-							'params'
+							'params',
+							'notif_type'
 						);
 
 	protected $dates = array('deleted_at');

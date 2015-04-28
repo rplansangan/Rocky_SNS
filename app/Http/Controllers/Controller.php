@@ -16,9 +16,9 @@ abstract class Controller extends BaseController {
 	
 	protected function initialize() {
 		if(auth()->check()) {
-			if(!Request::ajax()) {
+// 			if(!Request::ajax()) {
 				$this->setGlobals();
-			}
+// 			}
 		}	
 	}
 	
