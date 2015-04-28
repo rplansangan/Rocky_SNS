@@ -358,17 +358,32 @@ span legend {
   visibility: visible;
 }
 
-.add-friend-btn {
+ul.fr-btns {
+  list-style: none;
   text-align: center;
+  margin-top: 10px;
+}
+
+ul.fr-btns li {
+  display: inline-block;
+  padding: 0 4px;
 }
 
 .add-friend-btn a {
   color: #F95645;
   border: 1px solid rgba(231, 76, 60, 0.50);
-  padding: 5px;
+  padding: 7px !important;
+  background-color: transparent;
 }
 
-.add-friend-btn a:hover {
+.msg-btn button {
+  color: #F95645;
+  border: 1px solid rgba(231, 76, 60, 0.50);
+  padding: 5px !important;
+  background-color: transparent;
+}
+
+.add-friend-btn a:hover, .msg-btn button:hover {
   background: #FFFFFF;
   text-decoration: none;
 }

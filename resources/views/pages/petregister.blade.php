@@ -33,8 +33,19 @@ Rocky Registration
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Animal Type:</label>
-					<div class="col-sm-8">
-						<input type="text" name="pet_type" class="form-control" placeholder="eg: Cat">
+					<div class='col-sm-8'>
+						<select name="pet_type" class="form-control">
+							<option></option>
+							<option>Dog</option>
+							<option>Cat</option>
+							<option>Pig</option>
+							<option>Hamster</option>
+							<option>Rabbit</option>
+							<option>Guinea Pig</option>
+							<option>Hedgehog</option>
+							<option>Bird</option>
+							<option>Fish</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-group">
@@ -90,8 +101,12 @@ Rocky Registration
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Food Style:</label>
-					<div class="col-sm-8">
-						<input type="text" name="food_styletype" class="form-control" placeholder="wet or dry">
+					<div class='col-sm-8'>
+						<select name="food_style" class="form-control">
+							<option></option>
+							<option>Wet</option>
+							<option>Dry</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-group">
@@ -120,8 +135,9 @@ Rocky Registration
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Identifying Marks:</label>
-					<div class="col-sm-8">
-						<input type="text" name="identifying_marks" class="form-control" placeholder="Identifying Marks">
+					<div class='col-sm-8 add-pet-file-div'>
+						<input type='file' name="identifying_marks[]" class="ident_marks col-sm-6" />
+						<input type="text" name="identifying_marks_desc[]" class="col-sm-6" placeholder="Identifying Mark Description" />
 					</div>
 				</div>
 				<div class="form-group">

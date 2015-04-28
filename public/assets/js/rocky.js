@@ -153,6 +153,18 @@ $(document).ready(function(){
 		modal.find('.modal-body input').val(type);
 	});
 
+	//send message
+	$('#sendmsgModal').on('show.bs.modal', function (event) {
+		var button = $(event.relatedTarget)
+		var recipient = button.data('recipient')
+
+		var modal = $(this)
+		modal.find('.modal-title').text('New message to ' + recipient)
+		modal.find('.modal-body input').val(recipient)
+	});
+
+	$('#sendmsgfile').click(function(){ $('#filephotouploader').trigger('click'); });
+
 	$(document).on('keypress', '.comment-box' ,function (e) {
 		var key = e.which;
 		//if (event.shiftKey && event.keyCode == 13) {
@@ -248,6 +260,11 @@ $(document).ready(function(){
 	});
 	$( ".datepicker" ).datepicker();
 	$( ".datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+
+	//add pets
+	$(document).on('change', '.ident_marks', function(){
+		$('.add-pet-file-div').append("<input type='file' name='identifying_marks[]' class='ident_marks col-sm-6' > <input type='text' name='identifying_marks_desc[]' class='col-sm-6' placeholder='Identifying Mark Description' />");
+	});
 });
 
 
