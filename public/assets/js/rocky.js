@@ -18,6 +18,7 @@ $(document).ready(function(){
 	    menubar : false,
 	    statusbar: false
 	 });
+
 	/*$('.company_background').html('<img src="http://4.bp.blogspot.com/-_qxynaNliS8/VSSqYpddauI/AAAAAAAABx8/Izb2vjAHHxo/s1600/170122.jpg">');
 	*/
 	$('.custom-file-input').on('change' , function(event){
