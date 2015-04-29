@@ -160,7 +160,7 @@ $(document).ready(function(){
 
 		var modal = $(this)
 		modal.find('.modal-title').text('New message to ' + recipient)
-		modal.find('.modal-body input').val(recipient)
+		//modal.find('.modal-body input').val(recipient)
 	});
 
 	$('#sendmsgfile').click(function(){ $('#filephotouploader').trigger('click'); });
