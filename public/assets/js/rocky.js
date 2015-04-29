@@ -1,30 +1,28 @@
 $(document).ready(function(){
 	tinymce.init({
-	    selector: ".company_background",
-		toolbar1: " insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-		    setup: function(editor) {
-		        editor.addButton('mybutton', {
-		            type: 'button',
-		            text: 'Upload',
-		            onclick: function(){
-		            	editor.insertContent('<img src="http://4.bp.blogspot.com/-_qxynaNliS8/VSSqYpddauI/AAAAAAAABx8/Izb2vjAHHxo/s1600/170122.jpg">');
-		            }
-		        });
-		    }
-	 });
-	tinymce.init({
-	    selector: ".primary-textarea",
+	    selector: ".video-textarea , .primary-textarea",
 	    toolbar: false,
 	    menubar : false,
 	    statusbar: false
 	 });
+		
 
 	/*$('.company_background').html('<img src="http://4.bp.blogspot.com/-_qxynaNliS8/VSSqYpddauI/AAAAAAAABx8/Izb2vjAHHxo/s1600/170122.jpg">');
 	*/
 	$('.custom-file-input').on('change' , function(event){
+		var ext = this.value.match(/\.(.+)$/)[1];
 		if(this.files[0].size <= 3145728){
-			var tmppath = URL.createObjectURL(event.target.files[0]);
-			$('.view-image-here').html("<img src="+tmppath+" class='img-responsive img-thumbnail'>");
+			switch (ext) {
+		        case 'jpg':
+		        case 'jpeg':
+		        case 'png':
+		        case 'gif':
+		            var tmppath = URL.createObjectURL(event.target.files[0]);
+			        $('.view-image-here').html("<img src="+tmppath+" class='img-responsive img-thumbnail'>");
+		            break;
+		        default:
+		            alert('This is not an allowed file type.');
+		    }
 		}else{
 			alert("The Image is Larger than 3MB");
 			$(".custom-file-input").replaceWith($(".custom-file-input").clone());
@@ -52,6 +50,7 @@ $(document).ready(function(){
 	});
 	
 	$('#OpenImgUpload').click(function(){ $('#fileuploader').trigger('click'); });
+	$('#OpenVideoUpload').click(function(){ $('#fileuploaderVideo').trigger('click'); });
 
 
 	alreadyloading = false;
@@ -266,6 +265,28 @@ $(document).ready(function(){
 	$(document).on('change', '.ident_marks', function(){
 		$('.add-pet-file-div').append("<input type='file' name='identifying_marks[]' class='ident_marks col-sm-6' > <input type='text' name='identifying_marks_desc[]' class='col-sm-6' placeholder='Identifying Mark Description' />");
 	});
+
+	var bar = $('.bar');
+    var percent = $('.percent');
+    var status = $('#status');
+
+    $('#form-video-post').ajaxForm({
+        beforeSend: function() {
+            status.empty();
+            var percentVal = '0%';
+            bar.width(percentVal);
+            percent.html(percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            bar.width(percentVal);
+            percent.html(percentVal);
+        },
+        success: function(xhr) {
+            alert(xhr);
+        }
+    });
+
 });
 
 

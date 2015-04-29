@@ -26,6 +26,7 @@
     <script src="{{ URL::asset('assets/js/rocky.js') }}"></script>
     <script src="{{ URL::asset('assets/js/elastic.js') }}"></script>
     <script src="{{ URL::asset('assets/js/jquery-ui.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/jquery-form.js') }}"></script>
     <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
     <script src="{{ URL::asset('assets/js/component.js') }}"></script>
   </head>

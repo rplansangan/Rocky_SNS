@@ -12,12 +12,7 @@ use SNS\Libraries\Facades\Notification as Notification_Service;
 |
 */
 Route::get('test', function() {
-	Notification_Service::origin('User', 1)
-	->destinationId(2)
-	->params(array('notif_type' => 'friend_request'))
-	->send();
-	
-	echo true;
+	echo phpinfo();
 });
 Route::get('update_notif', function() {
 	$notif = Notification::withTrashed()->get();
@@ -250,7 +245,27 @@ Route::get('getnewfeeds', array(
 	'as' => 'get.newfeeds',
 	'uses' => 'PostsController@getnewfeeds'
 	));
-
+Route::filter('maxUploadFileSize', function()
+{
+    // Check if upload has exceeded max size limit
+    if (! (Request::isMethod('POST') or Request::isMethod('PUT'))) { return; }
+    // Get the max upload size (in Mb, so convert it to bytes)
+    $maxUploadSize = 1024 * 1024 * ini_get('post_max_size');
+    $contentSize = 0;
+    if (isset($_SERVER['HTTP_CONTENT_LENGTH']))
+    {
+        $contentSize = $_SERVER['HTTP_CONTENT_LENGTH'];
+    } 
+    elseif (isset($_SERVER['CONTENT_LENGTH']))
+    {
+        $contentSize = $_SERVER['CONTENT_LENGTH'];
+    }
+    // If content exceeds max size, throw an exception
+    if ($contentSize > $maxUploadSize)
+    {
+        throw new GSVnet\Core\Exceptions\MaxUploadSizeException;
+    }
+});
 Route::controllers([
 // 	'auth' => 'Auth\AuthController',
 // 	'password' => 'Auth\PasswordController',
