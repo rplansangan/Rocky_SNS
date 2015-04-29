@@ -30,4 +30,7 @@ class UploadsController extends Controller {
 		->header('Content-Type', $entry->image_mime);
 	}
 
+	public function testUpload(Request $request){
+		custom_print_r($request->all());
+	}
 }
