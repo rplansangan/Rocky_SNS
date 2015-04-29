@@ -1,6 +1,6 @@
 <?php
-use SNS\Models\Notification;
 use SNS\Libraries\Facades\Notification as Notification_Service;
+use SNS\Libraries\Services\PetService;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,12 +12,9 @@ use SNS\Libraries\Facades\Notification as Notification_Service;
 |
 */
 Route::get('test', function() {
-	Notification_Service::origin('User', 1)
-	->destinationId(2)
-	->params(array('notif_type' => 'friend_request'))
-	->send();
-	
-	echo true;
+	echo "<pre>";
+	PetService::select(array('something'));
+	echo "</pre>";
 });
 Route::get('update_notif', function() {
 	$notif = Notification::withTrashed()->get();

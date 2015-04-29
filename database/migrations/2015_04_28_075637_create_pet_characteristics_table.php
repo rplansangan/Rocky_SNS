@@ -15,6 +15,10 @@ class CreatePetCharacteristicsTable extends Migration {
 		Schema::create('pet_characteristics', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('pet_id');
+			$table->integer('feeding_interval_id');
+			$table->integer('pet_behavior_id');
+			$table->integer('food_brand_id');
 			$table->timestamps();
 		});
 	}

@@ -15,6 +15,10 @@ class CreateFeedingIntervalsTable extends Migration {
 		Schema::create('feeding_intervals', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->string('interval', 100);
+			$table->string('particulars', 250);
+			$table->integer('order');
+			$table->softDeletes();
 			$table->timestamps();
 		});
 	}

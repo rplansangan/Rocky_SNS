@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use SNS\Libraries\Facades\StorageHelper;
 use SNS\Models\Images;
 use Carbon\Carbon;
+use SNS\Libraries\Services\PetService;
 
 class RegistrationController extends Controller {
 	
@@ -176,4 +177,10 @@ class RegistrationController extends Controller {
 		}
 		return redirect()->route('profile.petlist', Auth::id());
 	}
+	
+// 	public function getPetBehavior() {
+// 		return PetService
+// 	}
+	
+	public function getFoodBrand()
 }

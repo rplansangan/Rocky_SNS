@@ -15,6 +15,11 @@ class CreateFoodBrandsTable extends Migration {
 		Schema::create('food_brands', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->string('brand_name', 100);
+			$table->string('particulars', 250);
+			$table->integer('animal_type_id');
+			$table->integer('order');
+			$table->softDeletes();
 			$table->timestamps();
 		});
 	}
