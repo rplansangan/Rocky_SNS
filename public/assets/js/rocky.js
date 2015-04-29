@@ -282,8 +282,8 @@ $(document).ready(function(){
             bar.width(percentVal);
             percent.html(percentVal);
         },
-        success: function(xhr) {
-            alert(xhr);
+        complete: function(xhr) {
+            console.log(xhr.responseText);
         }
     });
 
