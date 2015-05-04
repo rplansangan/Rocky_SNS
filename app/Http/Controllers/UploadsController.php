@@ -22,7 +22,7 @@ class UploadsController extends Controller {
 	}
 	
 	public function getImage($user_id, $file_id){
-	
+		ini_set('memory_limit','256M');
 		$entry = Images::find($file_id);
 		$file = Storage::get($entry->image_path . '/' . $entry->image_name . '.' . $entry->image_ext);
 
@@ -31,6 +31,6 @@ class UploadsController extends Controller {
 	}
 
 	public function testUpload(Request $request){
-		custom_print_r($request->all());
+		return view('ajax.post' , PostService::create($request->all()))->with('include_script' , true);
 	}
 }

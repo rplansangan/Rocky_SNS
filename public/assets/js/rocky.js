@@ -283,7 +283,8 @@ $(document).ready(function(){
             percent.html(percentVal);
         },
         complete: function(xhr) {
-            console.log(xhr.responseText);
+            $(xhr.responseText).hide().fadeIn().insertBefore('.append-post > li:first-child');
+			$('#form-video-post')[0].reset()
         }
     });
 

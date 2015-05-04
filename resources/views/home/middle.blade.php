@@ -15,7 +15,7 @@ ul.nav.nav-tabs li a {
 		<div role="tabpanel" class="tab-pane active" id="home">
 			<form method="POST" action="{{ route('files.newsfeed') }}" class="form-horizontal" id="form-post" role="form" enctype="multipart/form-data">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				<input type="file" name="file" id="fileuploader" class="form-control custom-file-input">
+				<input type="file" name="file" id="fileuploader" class="form-control custom-file-input" accept="image/*">
 				<ul class="comment-post">
 					<li>
 						<div class="form-group">
@@ -38,11 +38,11 @@ ul.nav.nav-tabs li a {
 		<div role="tabpanel" class="tab-pane" id="video">
 			<form method="POST" action="{{ route('test.upload') }}" class="form-horizontal" id="form-video-post" role="form" enctype="multipart/form-data" files="true">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				<input type="file" name="file" id="fileuploaderVideo" class="form-control hidden">
+				<input type="file" name="userfile" id="fileuploaderVideo" class="form-control hidden">
 				<ul class="comment-post">
 					<li>
 						<div class="form-group">
-							<textarea class="form-control" max="500" id="post_video" placeholder=" Say Something..."></textarea>
+							<textarea class="form-control" name="message" max="500" id="post_video" placeholder=" Say Something..."></textarea>
 						</div>
 					</li>
 					<li>
@@ -55,7 +55,7 @@ ul.nav.nav-tabs li a {
 						<div class="form-group text-right">
 							<div class="row">
 								<div class="col-sm-4 col-lg-4 col-xs-4 col-md-4">
-									<select name="" class="form-control">
+									<select name="category" class="form-control">
 										<option>Funny</option>
 										<option>Exhibition</option>
 										<option>Play</option>

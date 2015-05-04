@@ -44,6 +44,10 @@ Route::get('files/get/image/{user_id}/{file_id}', array(
 	'as' => 'files.get.image',
 	'uses' => 'UploadsController@getImage'
 ));
+Route::get('files/get/video/{user_id}/{file_id}', array(
+	'as' => 'files.get.video',
+	'uses' => 'UploadsController@getVideo'
+));
 
 Route::get('/', array(
 	'as' => 'index',
