@@ -5,30 +5,21 @@ use SNS\Models\FoodBrands;
 
 class PetService {
 	
-	protected $select;
+	protected $selects;
 	
 	protected $orderBy;
 	
 	protected $where;
 	
-	public function __construct() {
-		
-	}
+	protected $collection;
 	
-	public static function __callstatic($method, $args) {
-		print_r($args);
-	}
-	
-	
-	public function select($columns = array()) {
-		if(!$column) {
-			$this->select = $columns;
-		}
+	public function select($columns) {
+		$this->selects = $columns;
 		
 		return $this;
 	}
 	
-	public function where($column, $value, $operator) {
+	public function where($column, $value, $operator = null) {
 		$this->where['column'] = $column;
 		$this->where['value'] = $value;
 	
@@ -54,17 +45,25 @@ class PetService {
 		return $this;
 	}
 	
+	public function get() {
+		return $this->collection;
+	}
+	
 	public function listPetBehavior() {
-		return PetBehavior::select($this->select)
+		$this->collection = PetBehavior::select($this->selects)
 				->where($this->where['column'], $this->where['operator'], $this->where['value'])
 				->orderBy($this->orderBy['column'], $this->orderBy['direction'])
 				->get();
+		
+		return $this;
 	}
 	
 	public function listFoodBrand() {
-		return FoodBrands::select($this->select)
+		$this->collection = FoodBrands::select($this->selects)
 				->where($this->where['column'], $this->where['operator'], $this->where['value'])
 				->orderBy($this->orderBy['column'], $this->orderBy['direction'])
 				->get();
+		
+		return $this;
 	}
 }

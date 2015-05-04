@@ -1,6 +1,4 @@
 <?php
-use SNS\Libraries\Facades\Notification as Notification_Service;
-use SNS\Libraries\Services\PetService;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,10 +10,6 @@ use SNS\Libraries\Services\PetService;
 |
 */
 Route::get('test', function() {
-
-	echo "<pre>";
-	PetService::select(array('something'));
-	echo "</pre>";
 
 });
 Route::get('update_notif', function() {
@@ -103,6 +97,10 @@ Route::get('register/{id}/pet', array(
 Route::post('register/{id}/register_pet', array(
 	'as' => 'register.petRegister',
 	'uses' => 'RegistrationController@petRegister'
+));
+Route::post('register/pet/field', array(
+	'as' => 'register.pet.refreshField',
+	'uses' => 'RegistrationController@refreshPetFields'
 ));
 
 /*Profile route*/

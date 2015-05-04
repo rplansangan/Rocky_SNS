@@ -178,9 +178,30 @@ class RegistrationController extends Controller {
 		return redirect()->route('profile.petlist', Auth::id());
 	}
 	
-// 	public function getPetBehavior() {
-// 		return PetService
-// 	}
+	public function refreshPetFields(Request $r) {
+		switch($r->get('action')) {
+			case 'behavior':
+				return $this->getPetBehavior($r->get('id'));
+				break;
+			case 'brand':
+				return $this->getFoodBrands($id);
+				break;
+		}
+	}
 	
-	public function getFoodBrand()
+	protected function getPetBehavior($id) {
+		$q = new PetService();
+		$q->select(array('behavior'))->where('animal_type_id', $id)->orderBy('behavior', 'asc')->listPetBehavior()->get();
+		
+		// to be formatted.
+		return $q;
+	}
+	
+	protected function getFoodBrands($id) {
+		$q = new PetService();
+		$q->select(array('brand_name'))->where('animal_type_id', $id)->orderBy('brand_name', 'asc')->listFoodBrand()->get();
+		
+		// to be formatted.
+		return $q;
+	}
 }
