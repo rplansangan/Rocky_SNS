@@ -1,13 +1,33 @@
 <div class="row">
-	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-photo">
-			@if(isset($pets->profile_pic))
-				<img src="{{ route('files.get.image', array($profile->user_id, $profile->profile_pic->image_id)) }}">
-			@else
-				<img src="{{ URL::asset('assets/images/pet-default.png') }}">
-			@endif
-	</div>
-	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-name text-center">
-		<a href="{{ route('profile.petlist', Auth::user()->user_id) }}"><h4>{{ $profile->pet_name }}</h4></a>
+	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 pet-details">
+		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-photo">
+				@if(isset($pets->profile_pic))
+					<img src="{{ route('files.get.image', array($profile->user_id, $profile->profile_pic->image_id)) }}">
+				@else
+					<img src="{{ URL::asset('assets/images/pet-default.png') }}">
+				@endif
+		</div>
+		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-name text-center">
+			<a href="{{ route('profile.petlist', Auth::user()->user_id) }}"><h4>{{ $profile->pet_name }}</h4></a>
+		</div>
+
+		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 pet-infos text-left">
+			<label>About {{ $profile->pet_name }}</label>
+			<dl class="dl-horizontal">
+				<dt>Animal Type:</dt><dd>{{ $profile->pet_type }}</dd>					
+				<dt>Breed:</dt><dd>{{ $profile->breed }}</dd>
+				<dt>Est Birthday:</dt><dd>{{ $profile->pet_bday }}</dd>
+				<dt>Gender:</dt> <dd>@if($profile->pet_gender == 'M') Male @else Female @endif </dd>
+				<dt>Weight:</dt> <dd>{{ $profile->weight }}</dd>
+				<dt>Height:</dt> <dd>{{ $profile->height }}</dd>
+				<dt>Behavior:</dt> <dd>{{ $profile->behavior }}</dd>
+				<dt>Food:</dt> <dd>{{ $profile->food }}</dd>
+				<dt>Food Style:</dt> <dd>{{ $profile->food_style }}</dd>
+				<dt>Food Brand:</dt> <dd>{{ $profile->brand }}</dd>
+				<dt>Feeding Interval:</dt> <dd>{{ $profile->feeding_interval }}</dd>
+				<dt>Feeding Time:</dt> <dd>{{ $profile->feeding_time }}</dd>
+			</dl>
+		</div>
 	</div>
 </div>
 
