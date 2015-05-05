@@ -10,6 +10,10 @@ class PetService {
 	
 	protected $collection;
 	
+	protected $equivs;
+	
+	protected $formName;
+	
 	public function get() {
 		return $this->collection;
 	}
@@ -30,5 +34,42 @@ class PetService {
 				->get();
 		
 		return $this;
+	}
+	
+	public function setId($attrib) {
+		$this->setAttribEquiv($attrib, 'id');
+		
+		return $this;
+	}
+	
+	public function setLabel($attrib) {
+		$this->setAttribEquiv($attrib, 'label');
+		
+		return $this;
+	}
+	
+	protected function setAttribEquiv($attrib, $key) {
+		$this->equivs[$key] = $attrib;
+		return $this;
+	}
+	
+	protected function getEquiv($key) {
+		return $this->equivs[$key];
+	}
+	
+	public function setFormName($name) {
+		$this->formName = $name;
+		return $this;
+	}
+	
+	public function formatAsSelect() {
+		$items = array();
+		foreach($this->collection as $key) {
+			$items[] = array('id' => $key->{$this->getEquiv('id')}, 'label' => $key->{$this->getEquiv('label')});
+		}
+		
+		$params['items'] = $items;
+		$params['formName'] = $this->formName;
+		return view('partials.generic_select', $params);
 	}
 }

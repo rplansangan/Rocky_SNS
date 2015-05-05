@@ -4,6 +4,30 @@ Rocky Registration
 @stop
 
 @section('content')
+<script>
+$(document).ready(function() {
+	$(document).on('change', '#sel-ani-type', function() {
+		 $.ajax({
+			url: '{{ route("register.pet.refreshField") }}',
+			type: 'post',
+			data:{ id:$('#sel-ani-type').val(), _token:'{{ csrf_token() }}', action:'behavior' },
+			success: function(r){
+				$('#fld-food-brand').replaceWith(r);
+				console.log(r);
+			}
+		 });
+		 $.ajax({
+			 url: '{{ route("register.pet.refreshField") }}',
+				type: 'post',
+				data:{ id:$('#sel-ani-type').val(), _token:'{{ csrf_token() }}', action:'food' },
+				success: function(r){
+					$('#fld-pet-behavior').replaceWith(r);
+					console.log(r);
+				}
+		 });
+	});
+});
+</script>
 <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 register-page">
 <div class="container-fluid">
 	<div class="col-sm-12 col-xs-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2 land-main-cont register-main" >
@@ -34,17 +58,17 @@ Rocky Registration
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Animal Type:</label>
 					<div class='col-sm-8'>
-						<select name="pet_type" class="form-control">
+						<select id="sel-ani-type" name="pet_type" class="form-control">
 							<option></option>
-							<option>Dog</option>
-							<option>Cat</option>
-							<option>Pig</option>
-							<option>Hamster</option>
-							<option>Rabbit</option>
-							<option>Guinea Pig</option>
-							<option>Hedgehog</option>
-							<option>Bird</option>
-							<option>Fish</option>
+							<option value="1">Dog</option>
+							<option value="2">Cat</option>
+							<option value="3">Pig</option>
+							<option value="4">Hamster</option>
+							<option value="5">Rabbit</option>
+							<option value="6">Guinea Pig</option>
+							<option value="7">Hedgehog</option>
+							<option value="8">Bird</option>
+							<option value="9">Fish</option>
 						</select>
 					</div>
 				</div>
@@ -96,7 +120,7 @@ Rocky Registration
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Food Brand:</label>
 					<div class="col-sm-8">
-						<input type="text" name="brand" class="form-control" placeholder="Food Brand">
+						<input id="fld-food-brand" type="text" name="brand" class="form-control" placeholder="Food Brand" disabled>
 					</div>
 				</div>
 				<div class="form-group">
@@ -119,6 +143,12 @@ Rocky Registration
 					<label class="col-sm-2 control-label">Feeding Time:</label>
 					<div class="col-sm-8">
 						<input type="text" name="feeding_time" class="form-control" placeholder="eg: 8am and 5pm">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Behavior</label>
+					<div class="col-sm-8">
+						<input id="fld-pet-behavior" type="text" name="behavior" class="form-control" disabled>
 					</div>
 				</div>
 				<div class="form-group">

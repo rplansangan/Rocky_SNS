@@ -181,7 +181,7 @@ class RegistrationController extends Controller {
 					'is_profile_picture' => 1
 			));
 			
-			$pet->image()->save($img_data);
+			$pet->profile_pic()->save($img_data);
 			
 			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
 		}
@@ -193,8 +193,8 @@ class RegistrationController extends Controller {
 			case 'behavior':
 				return $this->getPetBehavior($r->get('id'));
 				break;
-			case 'brand':
-				return $this->getFoodBrands($id);
+			case 'food':
+				return $this->getFoodBrands($r->get('id'));
 				break;
 		}
 	}
@@ -202,16 +202,20 @@ class RegistrationController extends Controller {
 
 	protected function getPetBehavior($id) {
 		$q = new PetService();
-		$q->select(array('behavior'))->where('animal_type_id', $id)->orderBy('behavior', 'asc')->listPetBehavior()->get();
+		$q->select(array('id', 'behavior'))->where('animal_type_id', $id)->orderBy('behavior', 'asc')->listPetBehavior();
 		
-		// to be formatted.
-		return $q;
+		$q->setId('id');
+		$q->setLabel('behavior');
+		$q->setFormName('behavior');
+		return $q->formatAsSelect();
 	}
 	
 	protected function getFoodBrands($id) {
 		$q = new PetService();
-		$q->select(array('brand_name'))->where('animal_type_id', $id)->orderBy('brand_name', 'asc')->listFoodBrand()->get();
+		$q->select(array('id', 'brand_name'))->where('animal_type_id', $id)->orderBy('brand_name', 'asc')->listFoodBrand();
 		
-		// to be formatted.
-		return $q;
+		$q->setId('id');
+		$q->setLabel('brand_name');
+		$q->setFormName('brand');
+		return $q->formatAsSelect();
 	}
