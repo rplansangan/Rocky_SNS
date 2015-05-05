@@ -20,9 +20,15 @@
 			@if($image->image_mime == 'image/jpeg')
 				<img class="col-sm-12 thumbnail" src="{{ route('files.get.image', array($message->user_id, $image->image_id)) }}">
 			@elseif($image->image_mime == 'video/mp4')
-				<video width="100%" height="240" controls>
-				  <source src="{{ route('files.get.image', array($message->user_id, $image->image_id)) }}" type="video/mp4">
-				</video>
+			<section class="player">
+		        <div>
+		             <video width="100%" height="240" controls>
+					  <source src="{{ route('files.get.image', array($message->user_id, $image->image_id)) }}" type="video/mp4" controls width="200%" height="480">>
+					</video>
+		        </div>
+		    </section>
+
+				
 			@endif
 		@endif
 		<i class="fa fa-thumbs-up"></i>&nbsp;<span class="like-counter">{{{ ($like === 0) ? 0 : $like->count() }}}</span> 
