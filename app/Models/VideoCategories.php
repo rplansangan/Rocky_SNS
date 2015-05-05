@@ -7,7 +7,7 @@ class VideoCategories extends Model {
 
 	use SoftDeletes;
 	
-	protected $table = 'video_categories';
+	protected $table = 'post_categories';
 	
 	protected $fillable = array('category', 'particulars', 'order');
 

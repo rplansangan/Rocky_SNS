@@ -71,18 +71,22 @@ Route::any('register', array(
 	'uses' => 'RegistrationController@register'
 ));
 Route::get('register/validate/{id}/{hash}', array(
+	'middleware' => 'verified',
 	'as' => 'register.validateHash',
 	'uses' => 'RegistrationController@validateRegistration'
 ));
 Route::get('register/resend/{id}', array(
+	'middleware' => 'verified',
 	'as' => 'register.validateRehash',
 	'uses' => 'RegistrationController@resend'
 ));
 Route::get('message', array(
+	'middleware' => 'verified',
 	'as' => 'validate',
 	'uses' => 'RegistrationController@validateMessage'
 ));
 Route::get('register/{id}', array(
+	'middleware' => 'verified',
 	'as' => 'register.details',
 	'uses' => 'RegistrationController@details'
 ));

@@ -18,6 +18,55 @@ class PostRepository {
 		$this->post  = new Posts();
 	}
 	
+	public function setPost($data) {
+		// checks if user has uploaded any file
+		if(array_key_exists('file', $data) && $data['file'] != null) {
+			$file = $data['file'];
+			$data = array_except($data, array('file'));
+		}
+		
+		$post = $this->post->create(array(
+				'user_id' => Auth::id(),
+				'post_message' => $data['message']
+		));
+		
+		if(isset($file)) {
+			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
+			$dir = StorageHelper::create(Auth::id());
+			
+			$post->image()->save(new Images(array(
+					'user_id' => Auth::id(),
+					'image_path' => $dir,
+					'image_name' => $filename,
+					'image_mime' => $file->getMimeType(),
+					'image_ext' => $file->getClientOriginalExtension()
+			)));
+			
+			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $file->getClientOriginalExtension());
+		}
+		
+		$post->load(array(
+				'user' => function($q) {
+					$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
+				},
+				'user.prof_pic' => function($q) {
+					$q->addSelect(array('image_id', 'user_id', 'image_mime', 'is_profile_picture'));
+					$q->where('is_profile_picture', 1);
+				},
+				'image' => function($q) {
+					$q->addSelect(array('image_id', 'post_id', 'image_mime'));
+				},
+				'like' => function($q) {
+					$q->addSelect(array('like_id', 'post_id'));
+				},
+				'comment' => function($q) {
+					$q->addSelect(array('comment_id', 'post_id'));
+				}
+		));
+		
+		return $post;
+	}
+	
 	public function create($data) {
 		return $this->post->create(array(
 			'user_id' => Auth::id(),

@@ -84,6 +84,7 @@ class Registration extends Model {
 	public function prof_pic() {
 		return $this->hasOne('SNS\Models\Images', 'user_id', 'user_id');
 	}
+	
 	public function getBirthDateAttribute($date) {
 		return Carbon::createFromFormat(self::$dbDateFormat, $date)->format('Y-m-d');
 	}
