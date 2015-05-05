@@ -10,7 +10,7 @@
 |
 */
 Route::get('test', function() {
-	echo auth()->user()->is_validated;
+
 });
 Route::get('update_notif', function() {
 	$notif = Notification::withTrashed()->get();

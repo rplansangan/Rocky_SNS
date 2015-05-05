@@ -2,7 +2,6 @@
 
 use SNS\Libraries\Repositories\ImageRepository;
 use SNS\Libraries\Repositories\PostRepository;
-use SNS\Models\Registration;
 use SNS\Models\User;
 use SNS\Libraries\Facades\Likes;
 use SNS\Libraries\Facades\Comments;
@@ -47,21 +46,23 @@ class PostService {
 	 */
 	public function create($data) {
 		$data = $this->token($data);
-				
-		if(array_key_exists('file', $data)) {
-			$return = $this->post->createWithImage($data);
-		} else {
-			$return['message'] = $this->post->create($data['message']);
-		}
-				
-		$return['user'] = Registration::ofId($return['message']->user_id)->with(array('prof_pic' => function($q) {
-			$q->where('is_profile_picture', 1);
-		}))->get(); 
-		$return['user'] = $return['user'][0];
-		$return['like'] = 0;
-		$return['comments'] = 0;
 		
-		return $return;
+		return $this->post->setPost($data);
+				
+// 		if(array_key_exists('file', $data) && $data['file'] != null) {
+// 			$return = $this->post->createWithImage($data);
+// 		} else {
+// 			$return['message'] = $this->post->create($data['message']);
+// 		}
+				
+// 		$return['user'] = User::find($return['message']->user_id)->with(array('prof_pic' => function($q) {
+// 			$q->where('is_profile_picture', 1);
+// 		}))->get(); 
+// 		$return['user'] = $return['user'][0];
+// 		$return['like'] = 0;
+// 		$return['comments'] = 0;
+		
+// 		return $return;
 	}
 
 	
