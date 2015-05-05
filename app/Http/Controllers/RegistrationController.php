@@ -148,7 +148,7 @@ class RegistrationController extends Controller {
 	public function petRegister(Request $request) {
 		$input = array_except($request->all(), array('_token'));
 		$validate = Validator::make($input, Pets::$initialRules);
-
+		
 		if($validate->fails()){
 			return redirect()->back()
 			->withInput($request->all())
@@ -163,11 +163,18 @@ class RegistrationController extends Controller {
 		$pet->pet_bday = $input['pet_bday'];
 		$pet->pet_gender = $input['pet_gender'];
 		$pet->food = $input['food'];
+		$pet->food_style = $input['food_style'];
 		$pet->pet_likes = $input['pet_likes'];
 		$pet->pet_dislikes = $input['pet_dislikes'];
+		$pet->brand = $input['brand'];
+		$pet->weight = $input['weight'];
+		$pet->height = $input['height'];
+		$pet->behavior = $input['behavior'];
+		$pet->feeding_interval = $input['feeding_interval'];
+		$pet->feeding_time = $input['feeding_time'];
 		$pet->save();
 		
-		if($request->has('petfile')) {
+		if($request->file('petfile')) {
 			$file = $request->file('petfile');
 			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
 			$dir = StorageHelper::create(Auth::id());
@@ -219,3 +226,4 @@ class RegistrationController extends Controller {
 		$q->setFormName('brand');
 		return $q->formatAsSelect();
 	}
+}

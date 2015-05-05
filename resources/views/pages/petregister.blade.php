@@ -12,18 +12,16 @@ $(document).ready(function() {
 			type: 'post',
 			data:{ id:$('#sel-ani-type').val(), _token:'{{ csrf_token() }}', action:'behavior' },
 			success: function(r){
-				$('#fld-food-brand').replaceWith(r);
-				console.log(r);
+				$('#fld-pet-behavior').replaceWith(r);
 			}
 		 });
 		 $.ajax({
 			 url: '{{ route("register.pet.refreshField") }}',
-				type: 'post',
-				data:{ id:$('#sel-ani-type').val(), _token:'{{ csrf_token() }}', action:'food' },
-				success: function(r){
-					$('#fld-pet-behavior').replaceWith(r);
-					console.log(r);
-				}
+			type: 'post',
+			data:{ id:$('#sel-ani-type').val(), _token:'{{ csrf_token() }}', action:'food' },
+			success: function(r){
+				$('#fld-food-brand').replaceWith(r);
+			}
 		 });
 	});
 });
