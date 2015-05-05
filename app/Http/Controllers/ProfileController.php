@@ -45,9 +45,9 @@ class ProfileController extends Controller {
 	}
 	
 	public function showPetProfile($user_id, $pet_id) {
-		// don't know why this returns a collection obj instead of model
-		$profileDetails = Pets::where('pet_id', $pet_id)->take(1)->with(array('profile_pic' => function($query) use($pet_id) {
-			$query->where('pet_id', $pet_id);
+		$profileDetails = Pets::find($pet_id)->with(array('profile_pic' => function($query) use($pet_id) {
+			$query->addSelect(array('image_id', 'user_id', 'pet_id'));
+			$query->where('pet_id', $pet_id)->where('is_profile_picture', 1);
 		}))->get();
 		
 		return view('profile.profilepet')->with('profile', $profileDetails[0]);

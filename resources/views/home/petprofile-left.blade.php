@@ -1,10 +1,10 @@
 <div class="row">
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 pet-details">
 		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-photo">
-				@if(isset($pets->profile_pic))
-					<img src="{{ route('files.get.image', array($profile->user_id, $profile->profile_pic->image_id)) }}">
+				@if(isset($profile_pic))
+					<img class="img-responsive" src="{{ route('files.get.image', array($profile->user_id, $profile->profile_pic->image_id)) }}">
 				@else
-					<img src="{{ URL::asset('assets/images/pet-default.png') }}">
+					<img class="img-responsive" src="{{ URL::asset('assets/images/pet-default.png') }}">
 				@endif
 		</div>
 		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-name text-center">
