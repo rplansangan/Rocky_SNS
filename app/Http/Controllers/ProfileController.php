@@ -4,7 +4,6 @@ use SNS\Http\Requests;
 use SNS\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use SNS\Models\Registration;
 use SNS\Models\Pets;
 use SNS\Models\Business;
 use SNS\Models\Images;
@@ -14,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use SNS\Libraries\Facades\StorageHelper;
+use SNS\Models\User;
 
 class ProfileController extends Controller {
 	
@@ -23,27 +23,34 @@ class ProfileController extends Controller {
 	}
 	
 	public function showProfile($id){ 
-		$profileDetails = Registration::ofId($id)->with(array('prof_pic' => function($q) {
+		$profile = User::find($id);
+		
+		$profile->load(array('registration', 'prof_pic' => function($q) {
 			$q->whereIsProfilePicture(1);
 			$q->addSelect(array('image_id', 'user_id'));
-		}))->get(); 
+		}));
+		
 		$collection = PostService::initialNewsFeed(Auth::id(), $id);
 		
 		$data['friend_flags'] = FriendService::check($id);
 		$data['include_scripts'] = true;
 		return view('profile.profile', $data)
-				->with('profile', $profileDetails[0])
+				->with('profile', $profile->registration)
 				->with('posts', $collection);
 	}
 
 	public function petlist($id){
 		$list = Pets::where('user_id', $id)->with('profile_pic')->get();
-		$profileDetails = Registration::find($id)->with(array('prof_pic' => function($q) {
+		
+		$profile = User::find($id);
+		
+		$profile->load(array('registration', 'prof_pic' => function($q) {
 			$q->whereIsProfilePicture(1);
 			$q->addSelect(array('image_id', 'user_id'));
-		}))->get();  
+		}));
+		
 		return view('profile.petlist')
-				->with('profile', $profileDetails[0])
+				->with('profile', $profile->registration)
 				->with('list', $list);
 	}
 	
