@@ -9,7 +9,7 @@ Rocky the Superdog
 	<div class="container-fluid bg-rocky">
 		<div class="row">
 			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 left">
-				@include('home.profile-left')
+				@include('home.profile-left',array('profile_picture' => $profile->prof_pic))
 			</div>
 			<div class="col-lg-6 col-lg-6 col-md-3 col-sm-12 col-xs-12 middle">
 				@include('home.petlistmid', $list)

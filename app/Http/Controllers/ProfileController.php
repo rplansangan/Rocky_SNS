@@ -38,18 +38,28 @@ class ProfileController extends Controller {
 
 	public function petlist($id){
 		$list = Pets::where('user_id', $id)->with('profile_pic')->get();
-		$profileDetails = Registration::find($id); 
+		$profileDetails = Registration::find($id)->with(array('prof_pic' => function($q) {
+			$q->whereIsProfilePicture(1);
+			$q->addSelect(array('image_id', 'user_id'));
+		}))->get();  
 		return view('profile.petlist')
-				->with('profile', $profileDetails)
+				->with('profile', $profileDetails[0])
 				->with('list', $list);
 	}
 	
 	public function showPetProfile($user_id, $pet_id) {
-		$profileDetails = Pets::find($pet_id)->with(array('profile_pic' => function($query) use($pet_id) {
-			$query->addSelect(array('image_id', 'user_id', 'pet_id'));
-			$query->where('pet_id', $pet_id)->where('is_profile_picture', 1);
-		}))->get();
-		
+		$profileDetails = Pets::find($pet_id)->with(array(
+				'profile_pic' => function($query) use($pet_id) {
+					$query->addSelect(array('image_id', 'user_id', 'pet_id'));
+					$query->where('pet_id', $pet_id)->where('is_profile_picture', 1);
+				},
+				'pet_food' => function($q) {
+					$q->addSelect(array('id', 'brand_name'));
+				},
+				'pet_behavior' => function($q) {
+					$q->addSelect(array('id', 'behavior'));
+				}
+			))->get();
 		return view('profile.profilepet')->with('profile', $profileDetails[0]);
 	}
 	

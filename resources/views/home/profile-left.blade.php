@@ -27,6 +27,11 @@
 					<a href="{{ route('profile.request.friend') }}" id="btn_add_friend" _token="{{{ csrf_token() }}}" data-act="canc">
 						{{ trans('profile.friend.added') }}					
 					</a>
+					@if(Route::current()->getParameter('id') != null)
+						<a href="{{ route('profile.friends', Route::current()->getParameter('id')) }}">Friends</a>
+					@else
+						<a href="{{ route('profile.friends', Auth::id()) }}">Friends</a>
+					@endif
 				@endif
 			</li>
 

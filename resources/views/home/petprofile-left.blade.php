@@ -1,8 +1,8 @@
 <div class="row">
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 pet-details">
 		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-photo">
-				@if(isset($profile_pic))
-					<img class="img-responsive" src="{{ route('files.get.image', array($profile->user_id, $profile->profile_pic->image_id)) }}">
+				@if(isset($profile->profile_pic))
+					<img class="img-responsive" src="{{ route('files.get.image', array($profile->profile_pic->user_id, $profile->profile_pic->image_id)) }}">
 				@else
 					<img class="img-responsive" src="{{ URL::asset('assets/images/pet-default.png') }}">
 				@endif
@@ -20,9 +20,9 @@
 				<dt>Gender:</dt> <dd>@if($profile->pet_gender == 'M') Male @else Female @endif </dd>
 				<dt>Weight:</dt> <dd>{{ $profile->weight }}</dd>
 				<dt>Height:</dt> <dd>{{ $profile->height }}</dd>
-				<dt>Behavior:</dt> <dd>{{ $profile->behavior }}</dd>
-				<dt>Food:</dt> <dd>{{ $profile->food }}</dd>
-				<dt>Food Style:</dt> <dd>{{ $profile->food_style }}</dd>
+				<dt>Behavior:</dt> <dd>{{{ $profile->pet_behavior->behavior }}}</dd>
+				<dt>Food:</dt> <dd>{{{ $profile->pet_food->brand_name }}}</dd>
+				<dt>Food Style:</dt> <dd>{{{ $profile->food_style }}}</dd>
 				<dt>Food Brand:</dt> <dd>{{ $profile->brand }}</dd>
 				<dt>Feeding Interval:</dt> <dd>{{ $profile->feeding_interval }}</dd>
 				<dt>Feeding Time:</dt> <dd>{{ $profile->feeding_time }}</dd>
