@@ -97,24 +97,24 @@ Welcome to Rocky The Superdog
 						</label>
 						<div class="radio col-sm-3">
 							<label>
-								<input type="radio" name="is_member" value="true" checked>
+								<input type="radio" name="user_type" value="1" checked>
 								Member
 							</label>
 						</div>
 						<div class="radio col-sm-3">
 							<label>
-								<input type="radio" name="is_merchant" value="true">
+								<input type="radio" name="user_type" value="2">
 								Merchant
 							</label>
 						</div>
 						<div class="radio col-sm-5">
 							<label>
-								<input type="radio" name="is_foundation" value="true">
+								<input type="radio" name="user_type" value="3">
 								Pet Foundation
 							</label>
 						</div>
 					</div>
-					<p class="text-center">By clicking the Sign Up button, you agree to our <a href="#">Terms</a> and that you have read our <a href="#">Privacy policy</a>.</p>
+					<p class="col-sm-12 text-center">By clicking the Sign Up button, you agree to our <a href="#">Terms</a> and that you have read our <a href="#">Privacy policy</a>.</p>
 					<div class="form-group text-right">
 						<div class="col-sm-offset-2 col-sm-10">
 							<input type="submit" value="Sign Up" class="btn btn-default">

@@ -40,13 +40,13 @@ class RegistrationController extends Controller {
 		$user->email_address = $input['email_address'];
 		$user->password = Hash::make($input['password']);
 		$user->role_id = 1;
-		if(isset($input['is_merchant'])) {
-			$user->is_merchant = 1;
-		}
-		if(isset($input['is_member'])) {
+		if(isset($input['user_type']) && (($input['user_type']) == 1)) {
 			$user->is_member = 1;
 		}
-		if(isset($input['is_foundation'])) {
+		if(isset($input['user_type']) && (($input['user_type']) == 2)) {
+			$user->is_merchant = 1;
+		}
+		if(isset($input['user_type']) && (($input['user_type']) == 3)) {
 			$user->is_foundation = 1;
 		}
 		$user->is_deactivated = 0;

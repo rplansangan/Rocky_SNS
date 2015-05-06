@@ -44,7 +44,7 @@ class MerchantController extends Controller {
 		if(!$ind->isEmpty()){
 			return Redirect::route('merchant.profile', Auth::id());
 		}else{
-			return view('pages.check');
+			return view('pages.mercharegister');
 		}
 	}
 
