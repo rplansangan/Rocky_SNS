@@ -1,5 +1,6 @@
 <?php namespace SNS\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -54,6 +55,10 @@ class Pets extends Model {
 		'pet_gender' => 'required',
 	);
 	
+	public $dbDateFormat = 'Y-m-d H:i:s';
+	
+	public $bdayFormat = 'F n, Y';
+	
 	public function scopeOfUser($query, $user_id) {
 		return $query->where('user_id', $user_id);
 	}
@@ -77,6 +82,10 @@ class Pets extends Model {
 	
 	public function pet_behavior() {
 		return $this->hasOne('SNS\Models\PetBehavior', 'id', 'behavior');
+	}
+	
+	public function getPetBdayAttribute($date) {
+		return Carbon::createFromFormat($this->dbDateFormat, $date)->format($this->bdayFormat);
 	}
 
 }

@@ -1,17 +1,13 @@
 <?php namespace SNS\Http\Controllers;
 
 use SNS\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use SNS\Models\Business;
 use SNS\Models\User;
 use SNS\Models\Advertise;
-use Carbon\Carbon;
 use SNS\Services\ValidationService;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use SNS\Libraries\Facades\PostService;
+use Carbon\Carbon;
 
 
 class HomeController extends Controller {
@@ -47,7 +43,7 @@ class HomeController extends Controller {
 	{
 		User::where('user_id' , Auth::id())->update(['last_post' => Carbon::now()]);
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
-		return view('pages.homepage' , $data);
+		return view('pages.homepage', $data);
 	}
 
 	public function map(){

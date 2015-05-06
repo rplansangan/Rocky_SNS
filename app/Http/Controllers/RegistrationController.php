@@ -116,6 +116,7 @@ class RegistrationController extends Controller {
 			$img_data->save();
 			
 			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
+// 			StorageHelper::store($dir, $filename, $file);
 		}
 		
 

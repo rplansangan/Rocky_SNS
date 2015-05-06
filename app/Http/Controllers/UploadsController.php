@@ -3,13 +3,12 @@
 use SNS\Http\Requests;
 use SNS\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
-use SNS\Libraries\Facades\PostService;
-use SNS\Libraries\Helpers\StorageHelper;
-use Illuminate\Support\Facades\Auth;
 use SNS\Models\Images;
-use Illuminate\Support\Facades\Storage;
+use SNS\Libraries\Facades\PostService;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UploadsController extends Controller {
 	
@@ -18,7 +17,7 @@ class UploadsController extends Controller {
 	}
 	
 	public function newsfeed(Request $request) {
-		$post = PostService::create($request->all());
+		$post = PostService::create($request->except(array('file')), $request->file('file'));
 		$params['user'] = $post->user;
 		$params['message'] = $post;
 		$params['image'] = $post->image;

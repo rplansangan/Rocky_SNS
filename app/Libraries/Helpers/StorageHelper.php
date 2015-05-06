@@ -21,4 +21,8 @@ class StorageHelper {
 		
 		return $dir;
 	}
+	
+	public function store($dir, $filename, $contents) {
+		return Storage::put($dir . '/' . $filename, $contents);
+	}
 }

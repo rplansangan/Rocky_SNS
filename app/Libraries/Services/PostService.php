@@ -44,25 +44,10 @@ class PostService {
 	 * 
 	 * @param array $data
 	 */
-	public function create($data) {
+	public function create($data, $file) {
 		$data = $this->token($data);
 		
-		return $this->post->setPost($data);
-				
-// 		if(array_key_exists('file', $data) && $data['file'] != null) {
-// 			$return = $this->post->createWithImage($data);
-// 		} else {
-// 			$return['message'] = $this->post->create($data['message']);
-// 		}
-				
-// 		$return['user'] = User::find($return['message']->user_id)->with(array('prof_pic' => function($q) {
-// 			$q->where('is_profile_picture', 1);
-// 		}))->get(); 
-// 		$return['user'] = $return['user'][0];
-// 		$return['like'] = 0;
-// 		$return['comments'] = 0;
-		
-// 		return $return;
+		return $this->post->setPost($data, $file);
 	}
 
 	
