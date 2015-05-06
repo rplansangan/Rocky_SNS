@@ -2,7 +2,7 @@
 @section('content')
 	<div class="container-fluid bg-rocky">
 		<div class="container">
-			<div class="col-sm-7 col-md-7 col-xs-7 col-lg-7">
+			<div class="col-sm-7 col-md-7 col-xs-7 col-lg-7" style="background-color:white">
 				<div class="page-header">
 					<h2>{{$image->image_title}}</h2>
 				</div>
