@@ -39,9 +39,9 @@ class MerchantController extends Controller {
 	 * @return Response
 	 */
 	public function show_advertise_view(){
-	    $user = new User();
-	    $ind = $user->isMerc(Auth::id())->get();
-		if(!$ind->isEmpty()){
+	    $user = User::find(Auth::id());
+	    $user->load('business');
+		if(isset($user->business->business_id)){
 			return Redirect::route('merchant.profile', Auth::id());
 		}else{
 			return view('pages.mercharegister');
@@ -159,7 +159,8 @@ class MerchantController extends Controller {
 		}
 		if(User::find(Auth::id())->is_merchant == 1){
 			return redirect()->route('merchant.profile', array(Auth::id()));
-		}else{
+		}
+		elseif(User::find(Auth::id())->is_member == 1){
 			return redirect()->route('profile.advertised' , array("id" => Auth::id() , "advertised_id" => $advertise->id) );
 		}
 		
