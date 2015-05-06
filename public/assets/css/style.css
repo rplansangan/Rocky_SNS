@@ -259,6 +259,10 @@ ul.sec-top-pet li img {
   background-repeat: repeat-x;
 }
 
+label.col-sm-12.control-label.user-type {
+  text-align: left;
+}
+
 
 /*============Newsfeed Sub Header============*/
 .navbar-right li a {

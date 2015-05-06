@@ -40,9 +40,19 @@ class RegistrationController extends Controller {
 		$user->email_address = $input['email_address'];
 		$user->password = Hash::make($input['password']);
 		$user->role_id = 1;
+		if(isset($input['is_merchant'])) {
+			$user->is_merchant = 1;
+		}
+		if(isset($input['is_member'])) {
+			$user->is_member = 1;
+		}
+		if(isset($input['is_foundation'])) {
+			$user->is_foundation = 1;
+		}
 		$user->is_deactivated = 0;
 		$user->is_validated = 0;
 		$user->save();
+
 		
 		$reg = new Registration();
 		$reg->email_address = $input['email_address'];
@@ -182,5 +192,7 @@ class RegistrationController extends Controller {
 // 		return PetService
 // 	}
 	
-	public function getFoodBrand()
+	public function getFoodBrand() {
+		
+	}
 }
