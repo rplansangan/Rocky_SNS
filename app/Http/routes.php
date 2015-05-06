@@ -1,6 +1,4 @@
 <?php
-use SNS\Libraries\Facades\Notification as Notification_Service;
-use SNS\Libraries\Services\PetService;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,10 +10,6 @@ use SNS\Libraries\Services\PetService;
 |
 */
 Route::get('test', function() {
-
-	echo "<pre>";
-	PetService::select(array('something'));
-	echo "</pre>";
 
 });
 Route::get('update_notif', function() {
@@ -77,18 +71,22 @@ Route::any('register', array(
 	'uses' => 'RegistrationController@register'
 ));
 Route::get('register/validate/{id}/{hash}', array(
+	'middleware' => 'verified',
 	'as' => 'register.validateHash',
 	'uses' => 'RegistrationController@validateRegistration'
 ));
 Route::get('register/resend/{id}', array(
+	'middleware' => 'verified',
 	'as' => 'register.validateRehash',
 	'uses' => 'RegistrationController@resend'
 ));
 Route::get('message', array(
+	'middleware' => 'verified',
 	'as' => 'validate',
 	'uses' => 'RegistrationController@validateMessage'
 ));
 Route::get('register/{id}', array(
+	'middleware' => 'verified',
 	'as' => 'register.details',
 	'uses' => 'RegistrationController@details'
 ));
@@ -103,6 +101,10 @@ Route::get('register/{id}/pet', array(
 Route::post('register/{id}/register_pet', array(
 	'as' => 'register.petRegister',
 	'uses' => 'RegistrationController@petRegister'
+));
+Route::post('register/pet/field', array(
+	'as' => 'register.pet.refreshField',
+	'uses' => 'RegistrationController@refreshPetFields'
 ));
 
 /*Profile route*/

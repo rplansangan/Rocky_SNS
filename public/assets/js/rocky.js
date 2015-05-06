@@ -29,8 +29,8 @@ $(document).ready(function(){
 		}
 	});
 
-
-	$('#form-post').on('submit',function(e){
+	/*
+		$('#form-post').on('submit',function(e){
 		data = new FormData($('#form-post')[0]);
 		data.append('message' , tinyMCE.activeEditor.getContent());
 		if(tinyMCE.activeEditor.getContent() != "" ){
@@ -48,6 +48,9 @@ $(document).ready(function(){
 		}
 		e.preventDefault();
 	});
+		
+	*/
+	
 	
 	$('#OpenImgUpload').click(function(){ $('#fileuploader').trigger('click'); });
 	$('#OpenVideoUpload').click(function(){ $('#fileuploaderVideo').trigger('click'); });
@@ -270,9 +273,11 @@ $(document).ready(function(){
     var percent = $('.percent');
     var status = $('#status');
 
-    $('#form-video-post').ajaxForm({
+    $('#form-post').ajaxForm({
+    	beforeSubmit: function(arr , $form , option){
+    		arr.push({name:'message', value: tinyMCE.activeEditor.getContent() })
+    	},
         beforeSend: function() {
-            status.empty();
             var percentVal = '0%';
             bar.width(percentVal);
             percent.html(percentVal);
@@ -284,7 +289,10 @@ $(document).ready(function(){
         },
         complete: function(xhr) {
             $(xhr.responseText).hide().fadeIn().insertBefore('.append-post > li:first-child');
-			$('#form-video-post')[0].reset()
+			$('#form-post')[0].reset();
+        },
+        success: function(){
+            percent.fadeOut();
         }
     });
 

@@ -18,11 +18,17 @@ class UploadsController extends Controller {
 	}
 	
 	public function newsfeed(Request $request) {
-		return view('ajax.post' , PostService::create($request->all()))->with('include_script' , true);
+		$post = PostService::create($request->all());
+		$params['user'] = $post->user;
+		$params['message'] = $post;
+		$params['image'] = $post->image;
+		$params['like'] = $post->like;
+		$params['comments'] = $post->comment;
+		return view('ajax.post' , $params)->with('include_script' , true);
 	}
 	
 	public function getImage($user_id, $file_id){
-		ini_set('memory_limit','256M');
+		ini_set('memory_limit','1G');
 		$entry = Images::find($file_id);
 		$file = Storage::get($entry->image_path . '/' . $entry->image_name . '.' . $entry->image_ext);
 
@@ -31,6 +37,7 @@ class UploadsController extends Controller {
 	}
 
 	public function testUpload(Request $request){
-		return view('ajax.post' , PostService::create($request->all()))->with('include_script' , true);
+		custom_print_r($request->all());
+		#return view('ajax.post' , PostService::create($request->all()))->with('include_script' , true);
 	}
 }

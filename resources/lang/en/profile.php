@@ -5,6 +5,7 @@ return [
 		'header.prof_details.top' => 'Profile Details',
 		
 		'labels.prof_details.prof_pic' => 'Profile Picture',
+		'labels.prof_details.email' => 'E-mail Address:',
 		'labels.prof_details.name' => 'Name:',
 		'labels.prof_details.bday' => 'Birthdate:',
 		'labels.prof_details.gender' => 'Gender:',
@@ -17,11 +18,15 @@ return [
 		'labels.prof_details.country' => 'Country',
 		'labels.prof_details.area_code' => 'Area Code',
 		'labels.prof_details.phone_number' => 'Phone Number',
+		'labels.prof_details.intro_text' => 'Please help us grow our community <br> Invite as many as your friends to join Rocky Superdog Community',
 		
 		'placeholders.prof_details.first_name' => 'First Name',
 		'placeholders.prof_details.last_name' => 'Last Name',
 		'placeholders.prof_details.addr_l1' => 'Address Line 1',
 		'placeholders.prof_details.addr_l2' => 'Address Line 2',
+		'placeholders.prof_details.email' => 'E-mail Address',
+		'placeholders.prof_details.conf_email' => 'Confirm E-mail Address',
+		'placeholders.prof_details.phone_number' => 'Phone Number',
 		
 		'friend.add_friend' => 'Add Friend',
 		'friend.added' => 'Friends',
