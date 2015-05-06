@@ -23,6 +23,11 @@ ul.nav.nav-tabs li a {
 						</div>
 					</li>
 					<li>
+						<div class="form-group">
+							<input type="hidden" name="image_title" id="video-title" class="form-control" placeholder="Title">
+						</div>
+					</li>
+					<li>
 						<div class="form-group text-right">
 							<div class="row">
 								<div class="col-sm-4 col-lg-4 col-xs-4 col-md-4">

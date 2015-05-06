@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use SNS\Models\Business;
 use SNS\Models\User;
 use SNS\Models\Advertise;
+use SNS\Models\images;
 use Carbon\Carbon;
 use SNS\Services\ValidationService;
 use Illuminate\Support\Facades\Validator;
@@ -76,11 +77,15 @@ class HomeController extends Controller {
 	}
 
 	public function compete(){
+	
 		return view('pages.compete');
 	}
 
 	public function videos(){
-		return view('pages.videos');
+		
+		$a = Images::with(array('post' , 'register'))->where('image_mime' , 'like' , '%video%')->latest()->get();
+		$data['video'] = $a;
+		return view('pages.videos' , $data);
 	}
 
 	public function rockyranger(){

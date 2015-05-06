@@ -1,5 +1,15 @@
 <?php
 
+function createThumbnail($file , $dir , $name){
+	ini_set('max_execution_time', 120);
+	$name = $name.'_thumb.jpg';
+	$size = "120x90";
+	$getFromSecond = 5;
+	$ffmpeg = storage_path('app').'/ffmpeg/bin/ffmpeg';
+	$dir .= '/'.$name;
+	$cmd = "$ffmpeg -i $file -an -ss $getFromSecond -s $size $dir";
+	shell_exec($cmd);
+}
 function custom_print_r($array){
 	echo '<pre>';
 	print_r($array);

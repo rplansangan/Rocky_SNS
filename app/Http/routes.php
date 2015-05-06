@@ -10,7 +10,11 @@
 |
 */
 Route::get('test', function() {
+	$filePath = 'C:\xampp\htdocs\Rocky_SNS\storage\app\2\1\1f99c16bc5a31da799fd8f971579173a.mp4';
+	$dir = '2/1';
+	$filename = "1f99c16bc5a31da799fd8f971579173a";
 
+	createThumbnail($filePath , storage_path('app') . '/' . $dir , $filename);
 });
 Route::get('update_notif', function() {
 	$notif = Notification::withTrashed()->get();
@@ -38,11 +42,30 @@ Route::get('files/get/image/{user_id}/{file_id}', array(
 	'as' => 'files.get.image',
 	'uses' => 'UploadsController@getImage'
 ));
+Route::get('files/get/thumb/{user_id}/{file_id}', array(
+	'as' => 'files.get.thumb',
+	'uses' => 'UploadsController@getThumb'
+));
 Route::get('files/get/video/{user_id}/{file_id}', array(
 	'as' => 'files.get.video',
 	'uses' => 'UploadsController@getVideo'
 ));
-
+Route::get('video/search/{name}', array(
+	'as' => 'video.search',
+	'uses' => 'PostsController@getVideo'
+));
+Route::get('video/{user_id}/{file_id}', array(
+	'as' => 'video.get',
+	'uses' => 'PostsController@getVideo'
+));
+Route::get('video/upload', array(
+	'as' => 'video.uploadView',
+	'uses' => 'UploadsController@uploadView'
+));
+Route::post('video/upload', array(
+	'as' => 'video.upload',
+	'uses' => 'UploadsController@video'
+));
 Route::get('/', array(
 	'as' => 'index',
 	'uses' => 'WelcomeController@index'

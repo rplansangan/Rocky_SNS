@@ -18,6 +18,7 @@ class CreateImagesTable extends Migration {
 			$table->integer('user_id');
 			$table->string('image_path', 100);
 			$table->string('image_name', 100);
+			$table->string('image_title', 100);
 			$table->string('image_mime', 30);
 			$table->string('image_ext', 15);
 			$table->boolean('is_profile_picture');
