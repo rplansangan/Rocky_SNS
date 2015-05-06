@@ -1,4 +1,5 @@
 <?php
+use SNS\Models\Registration;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -10,11 +11,7 @@
 |
 */
 Route::get('test', function() {
-	$filePath = 'C:\xampp\htdocs\Rocky_SNS\storage\app\2\1\1f99c16bc5a31da799fd8f971579173a.mp4';
-	$dir = '2/1';
-	$filename = "1f99c16bc5a31da799fd8f971579173a";
-
-	createThumbnail($filePath , storage_path('app') . '/' . $dir , $filename);
+	dd(Registration::where('user_id', auth()->id())->with(array('user'))->get());
 });
 Route::get('update_notif', function() {
 	$notif = Notification::withTrashed()->get();

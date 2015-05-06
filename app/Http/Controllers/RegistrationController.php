@@ -171,7 +171,7 @@ class RegistrationController extends Controller {
 		$pet->weight = $input['weight'];
 		$pet->height = $input['height'];
 		$pet->behavior = $input['behavior'];
-		$pet->feeding_interval = $input['feeding_interval'];
+		$pet->feeding_interval = $input['feedSing_interval'];
 		$pet->feeding_time = $input['feeding_time'];
 		$pet->save();
 		
