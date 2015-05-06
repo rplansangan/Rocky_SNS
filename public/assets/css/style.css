@@ -516,6 +516,26 @@ ul.fr-btns li {
 }
 
 
+/*============PET FOUNDATION============*/
+.ads-petfoundation a {
+  background: #E74C3C;
+  padding: 5px;
+  color: #fff;
+  border-right: 3px solid #F9BBB5;
+  border-left: 3px solid #F9BBB5;
+  border-bottom: 3px solid #F9BBB5;
+  border-top: 3px solid #F9BBB5;
+}
+
+.ads-petfoundation a:hover {
+  text-decoration: none;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
+  border-top: 0;
+}
+
+
 /*============SHOP PAGE============*/
 .ads-panel:hover{
   background-color: rgba(221, 221, 221, 0.65);

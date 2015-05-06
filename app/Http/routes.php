@@ -279,6 +279,12 @@ Route::get('getnewfeeds', array(
 	'uses' => 'PostsController@getnewfeeds'
 	));
 
+//Pet Foundation
+Route::post('register_petfoundation', array(
+	'as' => 'register_petfoundation',
+	'uses' => 'PetfoundationController@activate_petfoundation'
+));
+
 Route::controllers([
 // 	'auth' => 'Auth\AuthController',
 // 	'password' => 'Auth\PasswordController',

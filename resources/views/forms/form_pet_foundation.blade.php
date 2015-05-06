@@ -1,13 +1,13 @@
 <div class="row">
-	<form method="POST" action="{{ route('register_activate_merchant') }}" class="form-horizontal col-sm-12  col-lg-12 col-md-12  col-xs-12 reg " role="form" enctype="multipart/form-data">
+	<form method="POST" action="{{ route('register_petfoundation') }}" class="form-horizontal col-sm-12  col-lg-12 col-md-12  col-xs-12 reg " role="form" enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="page-header">
-				<h2>Merchant Registration</h2>
+				<h2>Pet Foundation Registration</h2>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label">Business Name:</label>
+				<label class="col-sm-3 control-label">Pet Foundation Name:</label>
 				<div class="col-sm-8">
-					<input type="text" name="business_name" class="form-control">
+					<input type="text" name="petfoundation_name" class="form-control">
 				</div>
 			</div>
 			<div class="form-group">
@@ -85,9 +85,9 @@
 				<div class="col-sm-3 col-sm-offset-3 view-image-here"></div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label">Company Background:</label>
+				<label class="col-sm-3 control-label">Foundation Background:</label>
 				<div class="col-sm-8">
-					<textarea class="form-control" name="company_background" rows="5"></textarea>
+					<textarea class="form-control" name="petfoundation_background" rows="5"></textarea>
 				</div>
 			</div>
 			<div class="form-group">
