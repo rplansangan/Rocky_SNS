@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use SNS\Libraries\Facades\StorageHelper;
 use SNS\Models\User;
+use SNS\Models\Registration;
 
 class ProfileController extends Controller {
 	
