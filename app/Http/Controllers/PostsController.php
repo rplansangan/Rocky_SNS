@@ -1,6 +1,8 @@
 <?php namespace SNS\Http\Controllers;
 
 use SNS\Models\User;
+use SNS\Models\Images;
+use SNS\Models\Registration;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use SNS\Http\Requests;
@@ -50,6 +52,13 @@ class PostsController extends Controller {
 	public function getnewfeeds(){
 		return view('ajax.loop_news_feed')->with('newsfeed', PostService::get_newfeeds());
 		PostService::lastpostupdate();
+	}
+
+	public function getVideo($id , $file_id){
+		$data['image'] = Images::find($file_id);
+		$data['video'] = Images::with(array('post' , 'register'))->where('image_mime' , 'like' , '%video%')->where('user_id' , Auth::id())->where('image_id' , '!=' , $file_id)->latest()->get();
+		$data['user'] = Registration::find($id);
+		return view('pages.playvideo' , $data);
 	}
 	
 }

@@ -72,11 +72,15 @@ class HomeController extends Controller {
 	}
 
 	public function compete(){
+	
 		return view('pages.compete');
 	}
 
 	public function videos(){
-		return view('pages.videos');
+		
+		$a = Images::with(array('post' , 'register'))->where('image_mime' , 'like' , '%video%')->latest()->get();
+		$data['video'] = $a;
+		return view('pages.videos' , $data);
 	}
 
 	public function rockyranger(){

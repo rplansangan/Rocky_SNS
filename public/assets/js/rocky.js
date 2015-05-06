@@ -52,8 +52,15 @@ $(document).ready(function(){
 	*/
 	
 	
-	$('#OpenImgUpload').click(function(){ $('#fileuploader').trigger('click'); });
-	$('#OpenVideoUpload').click(function(){ $('#fileuploaderVideo').trigger('click'); });
+	$('#OpenImgUpload').click(function(){ 
+		$('#fileuploader').trigger('click'); 
+		$('#video-title').attr('type' , 'hidden');
+		$('#video-title').attr("value" , '');
+	});
+	$('#OpenVideoUpload').click(function(){
+		 $('#fileuploaderVideo').trigger('click'); 
+		 $('#video-title').attr('type' , 'text');
+	});
 
 
 	alreadyloading = false;
@@ -280,7 +287,7 @@ $(document).ready(function(){
         beforeSend: function() {
             var percentVal = '0%';
             bar.width(percentVal);
-            percent.html(percentVal);
+            percent.fadeIn().html(percentVal);
         },
         uploadProgress: function(event, position, total, percentComplete) {
             var percentVal = percentComplete + '%';
@@ -289,13 +296,37 @@ $(document).ready(function(){
         },
         complete: function(xhr) {
             $(xhr.responseText).hide().fadeIn().insertBefore('.append-post > li:first-child');
-			$('#form-post')[0].reset();
+            $("#form-post").trigger('reset');
+        },
+        success: function(){
+            percent.fadeOut();
+            $('#video-title').attr('type' , 'hidden');
+			$('#video-title').attr("value" , '');
+        }
+    });
+
+     $('#video-post').ajaxForm({
+    	beforeSubmit: function(arr , $form , option){
+    		arr.push({name:'message', value: tinyMCE.activeEditor.getContent() })
+    	},
+        beforeSend: function() {
+            var percentVal = '0%';
+            bar.width(percentVal);
+            percent.fadeIn().html(percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            bar.width(percentVal);
+            percent.html(percentVal);
+        },
+        complete: function(xhr) {
+            $(xhr.responseText).hide().fadeIn().insertBefore('.video-list > ul > li:first-child');
+            $("#video-post").trigger('reset');
         },
         success: function(){
             percent.fadeOut();
         }
     });
-
 });
 
 

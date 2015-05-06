@@ -516,6 +516,26 @@ ul.fr-btns li {
 }
 
 
+/*============PET FOUNDATION============*/
+.ads-petfoundation a {
+  background: #E74C3C;
+  padding: 5px;
+  color: #fff;
+  border-right: 3px solid #F9BBB5;
+  border-left: 3px solid #F9BBB5;
+  border-bottom: 3px solid #F9BBB5;
+  border-top: 3px solid #F9BBB5;
+}
+
+.ads-petfoundation a:hover {
+  text-decoration: none;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
+  border-top: 0;
+}
+
+
 /*============SHOP PAGE============*/
 .ads-panel:hover{
   background-color: rgba(221, 221, 221, 0.65);
@@ -1022,24 +1042,29 @@ p.adtitle {
 
 
 /* VIDEO */
-body {
-                font-family: sans-serif;
-                border: 0;
-                margin: 0;
-                padding: 0;
-        }
-        header {
-                text-align: center;
-        }
-.player {
-  display: table;
-  width: 100%;
-  padding: 4px;
+
+video {
+  background: #000;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
-.player > div {
-  display: table-cell;
-  vertical-align: top;
+.video-list{
+  line-height: 2px;
+}
+.video-list p{
+  padding-top: 2px;
+  line-height: 20px;
+  font-size: 12px;
+}
+.video-list .video-date{
+  font-size: 11px;
 }
 .video-list > ul{
   list-style-type: none;
+}
+.video-list > ul > li{
+  margin-left: -35px;
+  padding: 5px;
+  margin-top: 10px; 
+  border-bottom: 1px solid rgba(0,0,0,0.2);
 }

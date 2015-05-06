@@ -2,7 +2,7 @@
 	<form method="POST" action="{{ route('register_activate_merchant') }}" class="form-horizontal col-sm-12  col-lg-12 col-md-12  col-xs-12 reg " role="form" enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="page-header">
-				<h2>Merchant Activation</h2>
+				<h2>Merchant Registration</h2>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">Business Name:</label>
@@ -91,7 +91,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<div class='col-sm-8 col-sm-offset-2 text-right'>
+				<div class='col-sm-8 col-sm-offset-3 text-right'>
 					<input type='submit' class="btn" value="Continue"/>
 				</div>
 			</div>

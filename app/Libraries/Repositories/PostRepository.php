@@ -27,18 +27,25 @@ class PostRepository {
 		if(isset($file)) {
 			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
 			$dir = StorageHelper::create(Auth::id());
-			
+			$mime = $file->getMimeType();
 			$post->image()->save(new Images(array(
 					'user_id' => Auth::id(),
 					'image_path' => $dir,
 					'image_name' => $filename,
 					'image_mime' => $file->getMimeType(),
-					'image_ext' => $file->getClientOriginalExtension()
+					'image_ext' => $file->getClientOriginalExtension(),
+					'image_title' => $data['image_title']
 			)));
 			
-			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $file->getClientOriginalExtension());
 			// file visibility issue
 // 			StorageHelper::store($dir, $filename . '.' . $file->getClientOriginalExtension());
+
+			$file->move(storage_path('app') . '/' . $dir , $filename . '.' . $file->getClientOriginalExtension());
+			$filePath = storage_path('app') . '/' . $dir .'/'. $filename . '.' . $file->getClientOriginalExtension() ;
+
+			if(strstr($mime, 'video/')){
+				createThumbnail($filePath , storage_path('app') . '/' . $dir , $filename);
+			}
 		}
 		
 		$post->load(array(
@@ -50,7 +57,7 @@ class PostRepository {
 					$q->where('is_profile_picture', 1);
 				},
 				'image' => function($q) {
-					$q->addSelect(array('image_id', 'post_id', 'image_mime'));
+					$q->addSelect(array('image_id', 'post_id', 'image_mime' , 'image_title'));
 				},
 				'like' => function($q) {
 					$q->addSelect(array('like_id', 'post_id'));

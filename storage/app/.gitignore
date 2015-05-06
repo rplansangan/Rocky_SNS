@@ -1,2 +1,11 @@
 *
+
 !.gitignore
+!ffmpeg/*
+!ffmpeg/bin/*
+!ffmpeg/doc/*
+!ffmpeg/doc/examples/*
+!ffmpeg/licenses/*
+!ffmpeg/presets/*
+
+!*/
