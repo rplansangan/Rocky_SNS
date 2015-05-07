@@ -240,25 +240,6 @@ $(document).ready(function(){
 		}
 	});
 
-	$(document).on('click' , '#refresh-btn' , function(){
-		var url = $(this).attr('value');
-		var url2 = $('#update-route').val();
-		$.get(url , function(a){
-			$('#refresh-btn').addClass('hidden');
-			$(a).hide().fadeIn().insertBefore('.append-post > li:first-child');
-		});
-		$.get(url2);
-	});
-
-	setInterval(function(){ 
-		var url = $('#check-refresh-route').val();
-		$.get( url , function( data ) {
-		 	if(data != '0'){
-		 		$('#refresh-btn').removeClass('hidden');
-		 	}
-		});
-	}, 30000);
-
 	$('#form-modal').on('submit' , function(e){
 		var data = $(this).serialize()+"&message="+tinyMCE.activeEditor.getContent();
 		var url = $(this).attr('action');

@@ -27,7 +27,7 @@ class UploadsController extends Controller {
 	}
 	
 	public function video(Request $request){
-		$data['video'] = PostService::create($request->all());
+		$data['video'] = PostService::create($request->except(array('file')), $request->file('file'));
 		return view('ajax.video' , $data);
 	}
 	public function getImage($user_id, $file_id){

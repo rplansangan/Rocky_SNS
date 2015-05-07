@@ -5,7 +5,6 @@ use SNS\Models\User;
 use SNS\Models\Images;
 use SNS\Models\Advertise;
 use SNS\Services\ValidationService;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use SNS\Libraries\Facades\PostService;
 use Carbon\Carbon;
@@ -78,9 +77,7 @@ class HomeController extends Controller {
 	}
 
 	public function videos(){
-		
-		$a = Images::with(array('post' , 'register'))->where('image_mime' , 'like' , '%video%')->latest()->get();
-		$data['video'] = $a;
+		$data['video'] = Images::with(array('post' , 'register'))->where('image_mime' , 'like' , '%video%')->latest()->get();
 		return view('pages.videos' , $data);
 	}
 
