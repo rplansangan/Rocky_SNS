@@ -59,11 +59,15 @@ class ValidationService {
 	protected function dispatchEmail() {
 		$reg = $this->registration;
 		
-		Mail::send('emails.validation', array('route' => route('register.validateHash', array($this->registration->registration_id, $this->hash)), 'name' => $this->registration->first_name, 'hash' => $this->hash), function($message) use($reg) {
-			$message
-				->to($reg->email_address, $reg->last_name . ', ' . $reg->first_name)
-				->subject(Lang::get('emailvalidation.message_header'));
-		});
+		Mail::send('emails.validation', array(
+			'route' => route('register.validateHash', array($this->registration->registration_id, $this->hash)),
+			'name' => $this->registration->first_name, 'hash' => $this->hash),
+				function($message) use($reg) {
+					$message
+						->to($reg->email_address, $reg->last_name . ', ' . $reg->first_name)
+						->subject(Lang::get('emailvalidation.message_header'));
+				}
+		);
 	}
 	
 	public function send(Registration $reg) {

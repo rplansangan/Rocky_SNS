@@ -3,19 +3,23 @@
 use SNS\Http\Requests;
 use SNS\Http\Controllers\Controller;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use SNS\Models\Pets;
 use SNS\Models\Business;
 use SNS\Models\Images;
+use SNS\Models\User;
+use SNS\Models\Registration;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use SNS\Libraries\Facades\PostService;
 use SNS\Libraries\Facades\FriendService;
-use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Storage;
 use SNS\Libraries\Facades\StorageHelper;
-use SNS\Models\User;
+use SNS\Libraries\Traits\ProfPicTrait;
 
 class ProfileController extends Controller {
+	
+	use ProfPicTrait;
 	
 	public function __construct() {
 		parent::__construct();
@@ -35,7 +39,7 @@ class ProfileController extends Controller {
 		$data['friend_flags'] = FriendService::check($id);
 		$data['include_scripts'] = true;
 		return view('profile.profile', $data)
-				->with('profile', $profile->registration)
+				->with('profile', $profile)
 				->with('posts', $collection);
 	}
 
@@ -50,7 +54,7 @@ class ProfileController extends Controller {
 		}));
 		
 		return view('profile.petlist')
-				->with('profile', $profile->registration)
+				->with('profile', $profile)
 				->with('list', $list);
 	}
 	
@@ -122,14 +126,20 @@ class ProfileController extends Controller {
 				->with('friends', $friends);
 	}
 
-	public function settings(){		
-		return view('profile.settings')->with('details', Registration::find(auth()->id()));
+	public function settings(){
+		$details = User::find(Auth::id());
+		$details->load('registration');
+				
+		return view('profile.settings')->with('details', $details->registration);
 	}
 	
 	public function editProfile(Request $request) {
 		$input = array_except($request->all(), array('_token', 'userfile'));
 		
-		$reg = Registration::find(Auth::id());
+		$uid = User::find(Auth::id());
+		$uid->load('registration');
+		
+		$reg = Registration::find($uid->registration->registration_id);
 		while(($current = current($input)) !== false) {
 			$key = key($input);
 			$reg->$key = $current;	
@@ -138,12 +148,15 @@ class ProfileController extends Controller {
 		$reg->save();
 		
 		if($request->file('userfile') != null) {
+			// sets is_profile_pic field via ProfPicTrait
+			$this->removePrevious(Auth::id());
+			
 			$file = $request->file('userfile');
 			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
 			$dir = StorageHelper::create(Auth::id());
 				
 			$img_data = new Images(array(
-					'user_id' => $reg->registration_id,
+					'user_id' => $uid->user_id,
 					'image_path' => $dir,
 					'image_name' => $filename,
 					'image_mime' => $file->getMimeType(),

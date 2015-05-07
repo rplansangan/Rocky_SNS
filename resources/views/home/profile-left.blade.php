@@ -1,19 +1,19 @@
 <div class="row">
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-photo">
 		<a  href="{{ route('profile.showProfile', Auth::id()) }}">
-			@if(isset($profile_picture))	
-				<img class="img-responsive" src="{{ route('files.get.image', array($profile_picture->user_id, $profile_picture->image_id)) }}">
+			@if(isset($profile->prof_pic))	
+				<img class="img-responsive" src="{{ route('files.get.image', array($profile->prof_pic->user_id, $profile->prof_pic->image_id)) }}">
 			@else
 				<img src="{{ URL::asset('assets/images/owner-default.png') }}">
 			@endif
 		</a>
 	</div>
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-name text-center">
-		<a href="{{ route('profile.showProfile', Auth::id()) }}"><h4>{{ $profile->first_name }} {{ $profile->last_name }}</h4></a>
+		<a href="{{ route('profile.showProfile', Auth::id()) }}"><h4>{{ $profile->registration->first_name }} {{ $profile->registration->last_name }}</h4></a>
 	</div>
 
 	<ul class="col-sm-12 col-xs-12 col-md-12 col-lg-12 fr-btns">
-		@if(Auth::id() != $profile->registration_id)
+		@if(Auth::id() != $profile->user_id)
 			<li class="add-friend-btn text-center">
 				@if($friend_flags->friendRequest())	
 					<a href="{{ route('profile.request.friend') }}" id="btn_add_friend" _token="{{{ csrf_token() }}}" data-act="req">
@@ -36,7 +36,7 @@
 			</li>
 
 			<li class="msg-btn text-center">
-				<button type="button" class="btn_sendmsg btn-primary" data-toggle="modal" data-target="#sendmsgModal" data-recipient="{{ $profile->first_name }} {{ $profile->last_name }}">Send a Message</button>
+				<button type="button" class="btn_sendmsg btn-primary" data-toggle="modal" data-target="#sendmsgModal" data-recipient="{{ $profile->registration->first_name }} {{ $profile->registration->last_name }}">Send a Message</button>
 			</li>
 		@endif
 	</ul>

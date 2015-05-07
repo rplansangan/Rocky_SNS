@@ -52,7 +52,6 @@ class RegistrationController extends Controller {
 		$user->is_deactivated = 0;
 		$user->is_validated = 0;
 		$user->save();
-
 		
 		$reg = new Registration();
 		$reg->email_address = $input['email_address'];
