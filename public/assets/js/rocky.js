@@ -327,6 +327,7 @@ $(document).ready(function(){
             percent.fadeOut();
         }
     });
+ 
 });
 
 

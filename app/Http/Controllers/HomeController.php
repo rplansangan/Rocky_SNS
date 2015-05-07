@@ -2,6 +2,7 @@
 
 use SNS\Http\Controllers\Controller;
 use SNS\Models\User;
+use SNS\Models\Images;
 use SNS\Models\Advertise;
 use SNS\Services\ValidationService;
 use Illuminate\Support\Facades\Validator;

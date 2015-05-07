@@ -20,7 +20,7 @@
 			@if(strstr($image->image_mime, 'image/'))
 				<img class="col-sm-12 thumbnail" src="{{ route('files.get.image', array($message->user_id, $image->image_id)) }}">
 			@elseif(strstr($image->image_mime, 'video/'))
-				<video width="100%" height="240" controls>
+				<video  width="100%" height="240" controls>
 				  <source src="{{ route('files.get.image', array($message->user_id, $image->image_id)) }}" type="{{ $image->image_mime }}">
 				</video>
 			@endif

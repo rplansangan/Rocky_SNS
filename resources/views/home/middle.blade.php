@@ -3,6 +3,7 @@ ul.nav.nav-tabs li a {
 	color: #E74C3C;
 }
 </style>
+
 <div role="tabpanel" class="post-area col-sm-12 col-xs-12 col-lg-12 col-md-12">
 	<input type="hidden" id="route-newsfeed-refresh" value="{{ route('newsfeed.refresh') }}" _token="{{ csrf_token() }}">
 	<!-- Nav tabs -->
