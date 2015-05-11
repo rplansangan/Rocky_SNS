@@ -12,9 +12,7 @@ class CreateImageTitle extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('images', function(Blueprint $t) {
-			$t->string('image_title' , 100);
-		});
+		
 	}
 
 	/**
