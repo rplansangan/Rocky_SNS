@@ -26,9 +26,14 @@ $(document).ready(function(){
 		}else{
 			alert("The Image is Larger than 3MB");
 			$(".custom-file-input").replaceWith($(".custom-file-input").clone());
+			$('#category-select').addClass('hidden');
 		}
 	});
-
+	$('.custom-file-input-video').on('change' , function(event){
+		if(this.files[0].size == 0){
+			$('#category-select').addClass('hidden');
+		}
+	});
 	/*
 		$('#form-post').on('submit',function(e){
 		data = new FormData($('#form-post')[0]);
@@ -56,37 +61,15 @@ $(document).ready(function(){
 		$('#fileuploader').trigger('click'); 
 		$('#video-title').attr('type' , 'hidden');
 		$('#video-title').attr("value" , '');
+		$('#category-select').removeClass('hidden');
 	});
 	$('#OpenVideoUpload').click(function(){
 		 $('#fileuploaderVideo').trigger('click'); 
 		 $('#video-title').attr('type' , 'text');
+		 $('#category-select').removeClass('hidden');
 	});
 
 
-	alreadyloading = false;
-    $(window).scroll(function() {
-        if ($('body').height() <= ($(window).height() + $(window).scrollTop())) {
-            if (alreadyloading == false) {
-            	alreadyloading = true;
-                var items = $("#home-newsfeed > li").length;
-                var route = $('#route-newsfeed-refresh').val();
-                var token = $('#route-newsfeed-refresh').attr('_token');
-                var post_uid = $('#post_uid').val();
-                var cur_prof = $('#profile_id').val();
-                $.ajax({
-    				url : route,
-    				type : 'post',
-    				data: { offset:items , _token:token, post_uid:post_uid, cur_prof:cur_prof},
-    				success: function(r){
-    					if(r != "0"){
-    						$('#home-newsfeed').append(r);
-    						alreadyloading = false;
-    					}
-    				}
-    			});
-            }
-        }
-    });
     
     $('#btn_add_friend').on('click', function(e) {
     	$.ajax({
@@ -308,7 +291,7 @@ $(document).ready(function(){
             percent.fadeOut();
         }
     });
- 
+
 });
 
 

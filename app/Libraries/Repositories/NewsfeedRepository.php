@@ -18,7 +18,7 @@ class NewsfeedRepository {
 					$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
 				},
 				'image' => function ($q) {
-					$q->addSelect(array('image_id', 'post_id' , 'image_mime'));
+					$q->addSelect(array('image_id', 'post_id' , 'image_mime' , 'category'));
 				},
 				'like' => function ($q) {
 					$q->addSelect(array('like_id', 'post_id' , 'like_user_id'));
@@ -41,7 +41,7 @@ class NewsfeedRepository {
 						$q->addSelect(array('post_id', 'user_id', 'post_message', 'created_at'));
 					},
 					'image' => function ($q) {
-						$q->addSelect(array('image_id', 'post_id' , 'image_mime'));
+						$q->addSelect(array('image_id', 'post_id' , 'image_mime' , 'category'));
 					},
 					'user' => function ($q) {
 						$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
@@ -71,7 +71,7 @@ class NewsfeedRepository {
 					$q->addSelect(array('post_id', 'user_id', 'post_message', 'created_at'));
 				},
 				'image' => function ($q) {
-					$q->addSelect(array('image_id', 'post_id' , 'image_mime'));
+					$q->addSelect(array('image_id', 'post_id' , 'image_mime' , 'category'));
 				},
 				'user' => function ($q) {
 					$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
@@ -103,7 +103,7 @@ class NewsfeedRepository {
 						$q->addSelect(array('post_id', 'user_id', 'post_message', 'created_at'));
 					},
 					'image' => function ($q) {
-						$q->addSelect(array('image_id', 'post_id' , 'image_mime'));
+						$q->addSelect(array('image_id', 'post_id' , 'image_mime' , 'category'));
 					},
 					'user' => function ($q) {
 						$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
@@ -132,7 +132,7 @@ class NewsfeedRepository {
 					$q->addSelect(array('post_id', 'user_id', 'post_message', 'created_at'));
 				},
 				'image' => function ($q) {
-					$q->addSelect(array('image_id', 'post_id' , 'image_mime'));
+					$q->addSelect(array('image_id', 'post_id' , 'image_mime' , 'category'));
 				},
 				'user' => function ($q) {
 					$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
