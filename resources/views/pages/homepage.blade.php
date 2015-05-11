@@ -10,7 +10,7 @@ Rocky the Superdog
 		<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 left">
 			@include('home.left')
 		</div>
-		<div class="col-lg-6 col-lg-6 col-md-3 col-sm-12 col-xs-12 middle">
+		<div id = "home_middle" class="col-lg-6 col-lg-6 col-md-3 col-sm-12 col-xs-12 middle">
 			@include('home.middle', array('newsfeed' => $newsfeed))
 		</div>
 		<div class="col-lg-3 col-lg-6 col-md-3 col-sm-12 col-xs-12 right">
