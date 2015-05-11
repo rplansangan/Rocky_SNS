@@ -282,6 +282,8 @@ Route::post('register_petfoundation', array(
 	'uses' => 'PetfoundationController@activate_petfoundation'
 ));
 
+
+
 Route::controllers([
 // 	'auth' => 'Auth\AuthController',
 // 	'password' => 'Auth\PasswordController',
