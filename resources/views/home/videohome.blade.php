@@ -1,21 +1,26 @@
 <div class="row col-sm-12 col-lg-12 col-xs-12 col-md-12">
-	<div class="col-sm-9">
-		<div class="input-group">
-			<input type="text" class="form-control"  placeholder="Search">
-			<div class="input-group-addon"><a href="#"><i class="fa fa-search"></i></a></div>
+	<form method="get" action="{{ route('video.search') }}">
+		<div class="col-sm-7">
+			<div class="input-group">
+				<input type="text" class="form-control" name="search"  placeholder="Search">
+				<div class="input-group-addon"><i class="fa fa-search"></i></div>
+			</div>
 		</div>
-	</div>
-	<div class="col-sm-3">
-		<a href="{{ route('video.uploadView') }}" class="btn btn-block">Upload Video</a>
-	</div>
+		<div class="col-sm-2">
+			<input type="submit" value="Search" class="btn btn-default">
+		</div>
+		<div class="col-sm-3">
+			<a href="{{ route('video.uploadView') }}" class="btn btn-default">Upload Video</a>
+		</div>
+	</form>
 </div>
 <div class="row col-sm-12 col-lg-12 col-xs-12 col-md-12 video-list">
 	<div class="page-header">
-		<h2>Latest Videos</h2>
+		<h2>{{ $status }}</h2>
 	</div>
 	<ul>
-
-		@foreach($video as $row)
+		@if(count($video) != 0)
+			@foreach($video as $row)
 			<li>
 				<div class="row">
 					<button type="button" class="close"><span aria-hidden="true">&times;</span></button>
@@ -28,13 +33,21 @@
 							<em><small>{{ date('M d Y @ H:i:s A' , strtotime($row->created_at) ) }}</small></em>
 						</span>
 						<span class="text-muted video-date">
-							<em><small>By {{ $row->register->first_name.' '.$row->register->last_name}}</small></em>
+							<em><small>By <a href="{{{ route('profile.showProfile', $row->register->registration_id) }}}">{{ $row->register->first_name.' '.$row->register->last_name}}</a></small></em>
 						</span>
-						<p>{!! $row->post['post_message'] !!}</p>
+						<br>
+						<span class="text-muted video-date" style="line-height:25px">
+							<em><small>- {{ $row->category }}</small></em>
+						</span>
+						<p>{!! str_limit( strip_tags($row->post['post_message']), 20) !!}</p>
 					</div>
 				</div>
 			</li>
-		@endforeach
+			@endforeach
+		@else
+		<p>No Result Found...</p>
+		@endif
+		
 		
 	</ul>
 </div>

@@ -16,8 +16,9 @@
 		</h4>
 		<small class="media-heading">{{ $message->created_at }}</small>
 		@if(isset($image)) 
-				<em><h6><small class="help-block">- {{ $image->category }}</small></h6><em>
-			@endif
+			<em><h6><small class="help-block">- {{ $image->category }}</small></h6><em>
+		@endif
+		<hr>
 		<p>{!! $message->post_message !!}</p>
 		@if(isset($image))
 			@if(strstr($image->image_mime, 'image/'))

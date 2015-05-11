@@ -11,7 +11,7 @@ class Handler extends ExceptionHandler {
 	 * @var array
 	 */
 	protected $dontReport = [
-		'Symfony\Component\HttpKernel\Exception\HttpException'
+		//'Symfony\Component\HttpKernel\Exception\HttpException'
 	];
 
 	/**
@@ -36,6 +36,11 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
+// 		switch($e->getStatusCode()) {
+// 			case '404':
+				
+// 				break;
+// 		}
 		return parent::render($request, $e);
 	}
 

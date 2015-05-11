@@ -66,7 +66,7 @@ class RegistrationController extends Controller {
 		
 		$this->service->send($reg);
 		
-		return view('pages.message')->with('id', $user->user_id)->with('validation_errors', null);
+		return view('pages.message')->with('id', $reg->registration_id)->with('validation_errors', null);
 	}
 	
 	public function validateRegistration($id, $hash) {	

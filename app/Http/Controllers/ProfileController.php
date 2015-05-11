@@ -29,6 +29,22 @@ class ProfileController extends Controller {
 	public function showProfile($id){ 
 		$profile = User::find($id);
 		
+		$profile->load(array('registration' => function($q) {
+				$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
+			}, 'prof_pic' => function($q) {
+				$q->whereIsProfilePicture(1);
+				$q->addSelect(array('image_id', 'user_id'));
+			}
+		));
+		
+		$collection = PostService::initialNewsFeed(Auth::id(), $id);
+		
+		$data['friend_flags'] = FriendService::check($id);
+		$data['include_scripts'] = true;
+		return view('profile.profile', $data)
+				->with('profile', $profile)
+				->with('posts', $collection);
+		
 		if($profile->is_foundation){
 
 		}else{
@@ -48,14 +64,24 @@ class ProfileController extends Controller {
 	}
 
 	public function petlist($id){
-		$list = Pets::where('user_id', $id)->with('profile_pic')->get();
+		$list = Pets::select(array('pet_id', 'user_id', 'pet_name', 'breed', 'pet_bday', 'pet_gender', 'pet_type'))
+						->where('user_id', $id)->with(array(
+							'profile_pic' => function($q) {
+								$q->addSelect('image_id', 'user_id', 'image_mime', 'pet_id');
+								$q->where('is_profile_picture', 1);
+							}
+						))->get();
 		
 		$profile = User::find($id);
 		
-		$profile->load(array('registration', 'prof_pic' => function($q) {
-			$q->whereIsProfilePicture(1);
-			$q->addSelect(array('image_id', 'user_id'));
-		}));
+		$profile->load(array(
+			'registration' => function($q) {
+				$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
+			}, 'prof_pic' => function($q) {
+				$q->whereIsProfilePicture(1);
+				$q->addSelect(array('image_id', 'user_id'));
+			}
+		));
 		
 		return view('profile.petlist')
 				->with('profile', $profile)

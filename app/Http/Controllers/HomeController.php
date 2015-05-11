@@ -1,6 +1,7 @@
 <?php namespace SNS\Http\Controllers;
 
 use SNS\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use SNS\Models\User;
 use SNS\Models\Images;
 use SNS\Models\Advertise;
@@ -58,7 +59,7 @@ class HomeController extends Controller {
 		return view('pages.trending');
 	}
 	public function shop(){
-		$data['info'] = Advertise::with(array('image' , 'post' ))->latest()->get();
+		$data['info'] = Advertise::with(array('post', 'post.image'))->latest()->get();
 		return view('pages.shop' , $data);
 	}
 	public function trackers(){
@@ -76,12 +77,26 @@ class HomeController extends Controller {
 	
 		return view('pages.compete');
 	}
-
-	public function videos(){
-		$data['video'] = Images::with(array('post' , 'register'))->where('image_mime' , 'like' , '%video%')->latest()->get();
+	public function videos(Request $request){
+		if($request->input('search') == null){
+			$data['video'] = Images::with(array('post' , 'register'))->where('image_mime' , 'like' , '%video%')->latest()->get();
+			$data['status'] = "Latest Videos";
+			return view('pages.videos' , $data);
+		}else{
+			$data['status'] = "Latest Videos";
+			$data['video'] = Images::with(array('post' , 'register'))
+			->where('image_title' , 'like' , '%'.$request->input('search').'%')
+			->orWhere('category' , 'like' , '%'.$request->input('search').'%')
+			->having('image_mime' , 'like' , '%video%')
+			->latest()->get();
+			return view('pages.videos' , $data);
+		}
+	}
+	public function myvideo(){
+		$data['status'] = "My Videos";
+		$data['video'] = Images::with(array('post' , 'register'))->where('image_mime' , 'like' , '%video%')->where('user_id' , Auth::id())->latest()->get();
 		return view('pages.videos' , $data);
 	}
-
 	public function rockyranger(){
 		return view('pages.rockyranger');
 	}

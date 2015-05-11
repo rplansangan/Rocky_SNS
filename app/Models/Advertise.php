@@ -43,16 +43,15 @@ class Advertise extends Model {
 			'message' => 'required'	,	
 			'title' => 'required'		
 	);
-
-	public function image() {
-		return $this->hasMany('SNS\Models\Images', 'post_id');
-	}
+	
 	public function post() {
 		return $this->hasOne('SNS\Models\Posts', 'advertise_id');
 	}
+	
 	public function like() {
 		return $this->hasMany('SNS\Models\Likes', 'post_id');
 	}
+	
 	public function comment() {
 		return $this->hasMany('SNS\Models\Comments', 'post_id');
 	}
