@@ -44,6 +44,23 @@ class ProfileController extends Controller {
 		return view('profile.profile', $data)
 				->with('profile', $profile)
 				->with('posts', $collection);
+		
+		if($profile->is_foundation){
+
+		}else{
+				$profile->load(array('registration', 'prof_pic' => function($q) {
+				$q->whereIsProfilePicture(1);
+				$q->addSelect(array('image_id', 'user_id'));
+				}));
+				
+				$collection = PostService::initialNewsFeed(Auth::id(), $id);
+				
+				$data['friend_flags'] = FriendService::check($id);
+				$data['include_scripts'] = true;
+				return view('profile.profile', $data)
+						->with('profile', $profile)
+						->with('posts', $collection);
+		}
 	}
 
 	public function petlist($id){

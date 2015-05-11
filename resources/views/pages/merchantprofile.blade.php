@@ -30,6 +30,7 @@
 			<button type="button" class="btn btn_inquire btn-sm" data-toggle="modal" data-target="#shopModal" data-type="Inquire" data-advertisetype="INQ"  data-title="{{ $details->title }}" data-id="{{ $details->id }}" data-action="{{ Route('merchant.inquire') }}" >INQUIRE</button>
 			<button type="button" class="btn btn_order btn-sm" data-toggle="modal" data-target="#shopModal" data-type="Order" data-advertisetype="ORD" data-title="{{ $details->title }}" data-id="{{ $details->id }}" data-action="{{ Route('merchant.inquire') }}">ORDER</button>
 		</div>
+		</div>
 	</div>
 	@endif
 		<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 merch-ads text-center">

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAdsId extends Migration {
+class CreateImageCategory extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,9 @@ class AddAdsId extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('posts', function(Blueprint $t) {
-			$t->integer('advertise_id');
+		Schema::table('images', function(Blueprint $t) {
+			$t->string('category' , 20);
 		});
-
 	}
 
 	/**
@@ -25,8 +24,8 @@ class AddAdsId extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('posts', function(Blueprint $t) {
-			$t->dropColumn('advertise_id');
+		Schema::table('images', function(Blueprint $t) {
+			$t->removeColumn('category');
 		});
 	}
 

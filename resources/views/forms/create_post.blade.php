@@ -10,7 +10,7 @@
 			<form method="POST" action="{{ route('files.newsfeed') }}" class="form-horizontal" id="form-post" role="form" enctype="multipart/form-data">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<input type="file" name="file" id="fileuploader" class="form-control custom-file-input" accept="image/*">
-				<input type="file" name="file" id="fileuploaderVideo" class="form-control hidden" accept="video/*">
+				<input type="file" name="file" id="fileuploaderVideo" class="form-control hidden custom-file-input-video " accept="video/*">
 				<ul class="comment-post">
 					<li>
 						<div class="form-group">
@@ -26,10 +26,10 @@
 						<div class="form-group text-right">
 							<div class="row">
 								<div class="col-sm-4 col-lg-4 col-xs-4 col-md-4">
-									<select  name="category" class="form-control">
-										<option>Funny</option>
-										<option>Exhibition</option>
-										<option>Play</option>
+									<select name="category" class="form-control hidden" id="category-select">
+										<option "Funny" >Funny</option>
+										<option "Exhibition" >Exhibition</option>
+										<option "Play" >Play</option>
 									</select>
 								</div>
 								<div class="col-sm-8 col-lg-8 col-xs-8 col-md-8">
@@ -42,7 +42,7 @@
 					</li>
 					<li>
 						<div class="form-group">
-							<div class="progress-bar bar percent" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 0%;">0%
+							<div class="progress-bar bar percent progress-bar-info progress-bar-striped" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 0%;">0%
 						</div>
 					</li>
 				</ul>	
