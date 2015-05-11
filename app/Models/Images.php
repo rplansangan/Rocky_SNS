@@ -25,7 +25,7 @@ class Images extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array('user_id', 'pet_id', 'image_path', 'image_name', 'image_title' , 'image_mime', 'image_ext', 'is_profile_picture', 'post_id', 'pet_id');
+	protected $fillable = array('user_id', 'pet_id', 'category','image_path', 'image_name', 'image_title' , 'image_mime', 'image_ext', 'is_profile_picture', 'post_id', 'pet_id');
 	
 	
 	protected $dates = array('deleted_at');

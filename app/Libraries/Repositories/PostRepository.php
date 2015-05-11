@@ -34,7 +34,8 @@ class PostRepository {
 					'image_name' => $filename,
 					'image_mime' => $file->getMimeType(),
 					'image_ext' => $file->getClientOriginalExtension(),
-					'image_title' => $data['image_title']
+					'image_title' => $data['image_title'],
+					'category' => $data['category']
 			)));
 			
 			// file visibility issue
@@ -57,7 +58,7 @@ class PostRepository {
 					$q->where('is_profile_picture', 1);
 				},
 				'image' => function($q) {
-					$q->addSelect(array('image_id', 'post_id', 'image_mime' , 'image_title'));
+					$q->addSelect(array('image_id', 'post_id', 'image_mime' , 'image_title' , 'category'));
 				},
 				'like' => function($q) {
 					$q->addSelect(array('like_id', 'post_id'));

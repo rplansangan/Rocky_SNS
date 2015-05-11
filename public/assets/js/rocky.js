@@ -27,9 +27,14 @@ $(document).ready(function(){
 		}else{
 			alert("The Image is Larger than 3MB");
 			$(".custom-file-input").replaceWith($(".custom-file-input").clone());
+			$('#category-select').addClass('hidden');
 		}
 	});
-
+	$('.custom-file-input-video').on('change' , function(event){
+		if(this.files[0].size == 0){
+			$('#category-select').addClass('hidden');
+		}
+	});
 	/*
 		$('#form-post').on('submit',function(e){
 		data = new FormData($('#form-post')[0]);
@@ -57,37 +62,15 @@ $(document).ready(function(){
 		$('#fileuploader').trigger('click'); 
 		$('#video-title').attr('type' , 'hidden');
 		$('#video-title').attr("value" , '');
+		$('#category-select').removeClass('hidden');
 	});
 	$('#OpenVideoUpload').click(function(){
 		 $('#fileuploaderVideo').trigger('click'); 
 		 $('#video-title').attr('type' , 'text');
+		 $('#category-select').removeClass('hidden');
 	});
 
 
-	alreadyloading = false;
-    $(window).scroll(function() {
-        if ($('body').height() <= ($(window).height() + $(window).scrollTop())) {
-            if (alreadyloading == false) {
-            	alreadyloading = true;
-                var items = $("#home-newsfeed > li").length;
-                var route = $('#route-newsfeed-refresh').val();
-                var token = $('#route-newsfeed-refresh').attr('_token');
-                var post_uid = $('#post_uid').val();
-                var cur_prof = $('#profile_id').val();
-                $.ajax({
-    				url : route,
-    				type : 'post',
-    				data: { offset:items , _token:token, post_uid:post_uid, cur_prof:cur_prof},
-    				success: function(r){
-    					if(r != "0"){
-    						$('#home-newsfeed').append(r);
-    						alreadyloading = false;
-    					}
-    				}
-    			});
-            }
-        }
-    });
     
     $('#btn_add_friend').on('click', function(e) {
     	$.ajax({
@@ -241,25 +224,6 @@ $(document).ready(function(){
 		}
 	});
 
-	$(document).on('click' , '#refresh-btn' , function(){
-		var url = $(this).attr('value');
-		var url2 = $('#update-route').val();
-		$.get(url , function(a){
-			$('#refresh-btn').addClass('hidden');
-			$(a).hide().fadeIn().insertBefore('.append-post > li:first-child');
-		});
-		$.get(url2);
-	});
-
-	setInterval(function(){ 
-		var url = $('#check-refresh-route').val();
-		$.get( url , function( data ) {
-		 	if(data != '0'){
-		 		$('#refresh-btn').removeClass('hidden');
-		 	}
-		});
-	}, 30000);
-
 	$('#form-modal').on('submit' , function(e){
 		var data = $(this).serialize()+"&message="+tinyMCE.activeEditor.getContent();
 		var url = $(this).attr('action');
@@ -328,6 +292,7 @@ $(document).ready(function(){
             percent.fadeOut();
         }
     });
+
 });
 
 
