@@ -63,13 +63,14 @@ class PostsController extends Controller {
 	}
 
 	public function getVideo($id , $file_id){
-		$data['image'] = Images::find($file_id);
+		$data['image'] = Images::find($file_id); 
+		$data['image']->load('register');
 		$data['video'] = Images::with(array('post' , 'register'))
 							->where('image_mime' , 'like' , '%video%')
 							->where('user_id' , Auth::id())
 							->where('image_id' , '!=' , $file_id)
 							->latest()->get();
-		$data['user'] = $data['video'][0]->register;
+		$data['user'] = $data['image']->register;
 
 		return view('pages.playvideo' , $data);
 	}
