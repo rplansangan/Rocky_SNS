@@ -41,11 +41,12 @@ class UploadsController extends Controller {
 
 	public function getThumb($user_id, $file_id){
 		ini_set('memory_limit','1G');
+		
 		$entry = Images::find($file_id);
 		$file = Storage::get($entry->image_path . '/' . $entry->image_name . '_thumb.jpg');
 
 		return (new Response($file, 200))
-		->header('Content-Type', $entry->image_mime);
+		->header('Content-Type', 'image/jpeg');
 	}
 	public function uploadView(){
 		$data['video'] = Images::with(array('post' , 'register'))->where('image_mime' , 'like' , '%video%')->where('user_id' , Auth::id())->latest()->get();

@@ -12,7 +12,7 @@
 			<span class="text-muted video-date">
 				<em><small>By {{ $video->user->first_name.' '.$video->user->last_name}}</small></em>
 			</span>
-			<p>{!! $video->post_message !!}</p>
+			<p>{!! str_limit( strip_tags($video->post_message), 20) !!}</p>
 		</div>
 	</div>
 </li>

@@ -43,13 +43,10 @@ Route::get('files/get/thumb/{user_id}/{file_id}', array(
 	'as' => 'files.get.thumb',
 	'uses' => 'UploadsController@getThumb'
 ));
-Route::get('files/get/video/{user_id}/{file_id}', array(
-	'as' => 'files.get.video',
-	'uses' => 'UploadsController@getVideo'
-));
-Route::get('video/search/{name}', array(
+
+Route::get('video', array(
 	'as' => 'video.search',
-	'uses' => 'PostsController@getVideo'
+	'uses' => 'HomeController@videos'
 ));
 Route::get('video/{user_id}/{file_id}', array(
 	'as' => 'video.get',
@@ -62,6 +59,10 @@ Route::get('video/upload', array(
 Route::post('video/upload', array(
 	'as' => 'video.upload',
 	'uses' => 'UploadsController@video'
+));
+Route::get('video/myvideo', array(
+	'as' => 'video.myvideo',
+	'uses' => 'HomeController@myvideo'
 ));
 Route::get('/', array(
 	'as' => 'index',
