@@ -57,7 +57,7 @@ class HomeController extends Controller {
 		return view('pages.trending');
 	}
 	public function shop(){
-		$data['info'] = Advertise::with(array('image' , 'post' ))->latest()->get();
+		$data['info'] = Advertise::with(array('post', 'post.image'))->latest()->get();
 		return view('pages.shop' , $data);
 	}
 	public function trackers(){

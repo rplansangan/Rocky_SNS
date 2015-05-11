@@ -22,6 +22,7 @@ class StorageHelper {
 		return $dir;
 	}
 	
+	// file permission error. cause: ?
 	public function store($dir, $filename, $contents) {
 		return Storage::put($dir . '/' . $filename, $contents);
 	}

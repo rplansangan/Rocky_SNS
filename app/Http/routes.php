@@ -86,7 +86,7 @@ Route::get('logout', array(
 	'uses' => 'LoginController@logout'
 ));
 // Registration & Validation
-Route::any('register', array(
+Route::post('register', array(
 	'as' => 'register',
 	'uses' => 'RegistrationController@register'
 ));

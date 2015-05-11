@@ -49,17 +49,27 @@ class MerchantController extends Controller {
 	}
 
 	public function merchantProf($id){
-		$data['details'] = Advertise::where('user_id', Auth::id())
-				->with(array(
-					'image' => function($q) {
-						$q->addSelect(array('user_id', 'image_id', 'post_id'));
-					},
-					'post' => function($q) {
-						$q->addSelect(array('user_id', 'post_id', 'post_message', 'advertise_id', 'created_at'));
-					}
-					))->take(1)->latest()->get();
-		$data['otherads'] = Advertise::where('user_id', Auth::id())->with(array('image', 'post'))->where('id', '!=', $data['details'][0]->id)->take(6)->latest()->get();
-		$data['info'] = Business::where('user_id', Auth::id())->get();
+		$user = User::select(array('user_id'))->find($id);
+		$user->load(array(
+			'adverts' => function($q) {
+				$q->addSelect(array('id', 'user_id', 'created_at'));
+			},
+			'bsns_reg',
+			'adverts.post' => function($q) {
+				$q->addSelect(array('user_id', 'post_id', 'post_message', 'advertise_id', 'created_at'));
+			},
+			'adverts.post.image' => function($q) {
+				$q->addSelect(array('user_id', 'image_id', 'post_id'));
+			}
+		));
+				
+		if($user->adverts->isEmpty()) {		
+			return redirect()->route('addadvertise');
+		}
+				
+		$data['details'] = $user->adverts[0];
+		$data['otherads'] = array_except($user->adverts, array(0));
+		$data['info'] = $user->bsns_reg;
 
 		return view('pages.merchantprofile', $data);
 	}
@@ -153,7 +163,7 @@ class MerchantController extends Controller {
 					'is_profile_picture' => 0
 			));
 	
-			$advertise->image()->save($img_data);
+			$advertise->post->image()->save($img_data);
 	
 			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
 		}

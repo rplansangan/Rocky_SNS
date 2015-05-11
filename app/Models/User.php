@@ -69,6 +69,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function prof_pic() {
 		return $this->hasOne('SNS\Models\Images', 'user_id', 'user_id');
 	}
+	
+	public function adverts() {
+		return $this->hasMany('SNS\Models\Advertise', 'user_id', 'user_id');
+	}
+	
+	public function bsns_reg() {
+		return $this->hasOne('SNS\Models\Business', 'user_id', 'user_id');
+	}
 
 	public function scopeIsMerc($query, $user_id) {
 		return $query->where('user_id', $user_id)->whereIsMerchant(1);
