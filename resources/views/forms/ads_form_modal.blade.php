@@ -28,6 +28,8 @@
 	</form>
 </div>
 
+
+<!-- PRIVATE MESSAGE FORM -->
 <div class="modal fade" id="sendmsgModal" tabindex="-1" role="dialog" aria-labelledby="sendmsgModalLabel" aria-hidden="true">
 	<form method="post" id="form-modal">
 		<input type="hidden" name="id" id="modal-form-id">
@@ -49,6 +51,41 @@
 					<button type="button" class="btn btn-file" id="sendmsgfile">Attach File or Photo</button>
 					<input type="file" id="filephotouploader" class="hidden">
 					<input type="submit" class="btn btn-submit btn-primary" value="Send Message">
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+<!-- I FOUND A PET & FIND MY PET FORM -->
+<div class="modal fade" id="misfo" tabindex="-1" role="dialog" aria-labelledby="misfoLabel" aria-hidden="true">
+	<form method="post" id="form-modal">
+		<input type="hidden" name="id" id="modal-form-id">
+		<input type="hidden" name="type" id="modal-form-type">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="misfoLabel"></h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="type-inquire" class="control-label">Sender:</label>
+						<input type="text">
+						<p class="form-control-static modal-type-form"></p>
+					</div>
+					<div class="form-group">
+						<label for="message-inquire" class="control-label">Message:</label>
+						<textarea class="form-control primary-textarea" id="message-inquire"></textarea>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-file" id="sendmsgfile">Upload a Photo</button>
+					<input type="file" id="filephotouploader" class="hidden">
+					<input type="submit" class="btn btn-submit" value="Send Message">
+					<button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
 				</div>
 			</div>
 		</div>
