@@ -74,6 +74,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->hasMany('SNS\Models\Advertise', 'user_id', 'user_id');
 	}
 	
+	public function otheradd(){
+		return $this->hasMany('SNS\Models\Advertise', 'user_id', 'user_id');
+	}
+
 	public function bsns_reg() {
 		return $this->hasOne('SNS\Models\Business', 'user_id', 'user_id');
 	}

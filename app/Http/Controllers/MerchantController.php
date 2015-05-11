@@ -52,7 +52,7 @@ class MerchantController extends Controller {
 		$user = User::select(array('user_id'))->find($id);
 		$user->load(array(
 			'adverts' => function($q) {
-				$q->addSelect(array('id', 'user_id', 'created_at'));
+				$q->addSelect(array('id', 'user_id', 'title' , 'type', 'created_at'))->latest();
 			},
 			'bsns_reg',
 			'adverts.post' => function($q) {
@@ -212,18 +212,35 @@ class MerchantController extends Controller {
 	}
 
 	public function merchadview($id, $advertise_id){
-		$data['details'] = Advertise::where('user_id', Auth::id())
-				->with(array(
-					'image' => function($q) {
-						$q->addSelect(array('user_id', 'image_id', 'post_id'));
-					},
-					'post' => function($q) {
-						$q->addSelect(array('user_id', 'post_id', 'post_message', 'advertise_id', 'created_at'));
-					}
-					))->take(1)->latest()->get();
-		$data['otherads'] = Advertise::where('user_id', Auth::id())->with(array('image', 'post'))->where('id', '!=', $data['details'][0]->id)->take(6)->latest()->get();
-		$data['info'] = Business::where('user_id', Auth::id())->get();
+		$user = User::select(array('user_id'))->find($id);
+		$user->load(array(
+			'adverts' => function($q) use($advertise_id) {
+				$q->addSelect(array('id', 'user_id', 'title' , 'type', 'created_at'))->where('id' , $advertise_id);
+			},
+			'otheradd' => function($q) use($advertise_id){
+				$q->addSelect(array('id', 'user_id', 'title' , 'type', 'created_at'))->where('id' , '!=' , $advertise_id);
+			},
+			'bsns_reg',
+			'adverts.post' => function($q) {
+				$q->addSelect(array('user_id', 'post_id', 'post_message', 'advertise_id', 'created_at'));
+			},
+			'adverts.post.image' => function($q) {
+				$q->addSelect(array('user_id', 'image_id', 'post_id'));
+			},
+			'otheradd.post.image' => function($q) {
+				$q->addSelect(array('user_id', 'image_id', 'post_id'));
+			}
+		));
+				
+		if($user->adverts->isEmpty()) {		
+			return redirect()->route('addadvertise');
+		}
+				
+		$data['details'] = $user->adverts[0];
+		$data['otherads'] = $user->otheradd;
+		$data['info'] = $user->bsns_reg;
 
+		#custom_print_r($user->adverts);
 		return view('pages.merchantprofile', $data);
 	}
 

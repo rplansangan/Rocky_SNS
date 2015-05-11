@@ -30,7 +30,6 @@
 			<button type="button" class="btn btn_inquire btn-sm" data-toggle="modal" data-target="#shopModal" data-type="Inquire" data-advertisetype="INQ"  data-title="{{ $details->title }}" data-id="{{ $details->id }}" data-action="{{ Route('merchant.inquire') }}" >INQUIRE</button>
 			<button type="button" class="btn btn_order btn-sm" data-toggle="modal" data-target="#shopModal" data-type="Order" data-advertisetype="ORD" data-title="{{ $details->title }}" data-id="{{ $details->id }}" data-action="{{ Route('merchant.inquire') }}">ORDER</button>
 		</div>
-		</div>
 	</div>
 	@endif
 		<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 merch-ads text-center">
@@ -40,7 +39,7 @@
 			<h4>Other Ads by {{ $info->business_name }}</h4>
 				@foreach($otherads as $adver)
 					<div class="col-sm-12 col-xs-12 col-lg-4 col-md-4">
-						<a href="#">
+						<a href="{{ Route('merch_adview', array($adver->user_id, $adver->id)) }}">
 							@if(isset($adver->post->image))
 							<img class="col-sm-12 thumbnail" src="{{ route('files.get.image', array($details->user_id, $adver->post->image->image_id)) }}" width="250px">
 							@else
@@ -53,5 +52,5 @@
 				@endforeach
 			@endif
 		</div>
-	</div>
-	@stop
+</div>
+@stop

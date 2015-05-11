@@ -52,6 +52,10 @@ class Advertise extends Model {
 		return $this->hasMany('SNS\Models\Likes', 'post_id');
 	}
 	
+	public function image() {
+		return $this->hasOne('SNS\Models\Images', 'post_id');
+	}
+
 	public function comment() {
 		return $this->hasMany('SNS\Models\Comments', 'post_id');
 	}
