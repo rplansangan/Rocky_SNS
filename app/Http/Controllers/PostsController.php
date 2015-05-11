@@ -26,8 +26,16 @@ class PostsController extends Controller {
 			->with('puid', $request->get('puid'));
 	}
 	
-	public function deleteComment(Request $request) {
-		PostService::deleteComment($request->get('pid'), $request->get('puid'), $request->get('cid'));
+	public function deleteDispatch(Request $r) {
+		switch($r->get('action')) {
+			case 'post':
+				PostService::deletePost($r->get('pid'));
+				break;
+	
+			case 'comment':
+				PostService::deleteComment($r->get('pid'), $r->get('puid'), $r->get('cid'));
+				break;
+		}
 	}
 	
 	public function getNextNewsFeed(Request $request) {

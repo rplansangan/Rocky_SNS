@@ -78,4 +78,12 @@ class PostRepository {
 	public function getPost($id) {
 		return $this->post->select(array('post_id', 'post_message', 'created_at', 'user_id'))->find($id);
 	}
+	
+	public function delete($id) {
+		$this->post = $this->post->find($id);
+		$this->post->image()->delete();
+		$this->post->like()->delete();
+		$this->post->comment()->delete();
+		return $this->post->delete();
+	}
 }

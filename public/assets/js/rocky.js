@@ -92,13 +92,30 @@ $(document).ready(function(){
     	e.preventDefault();
     });
     
-    $(document).on('click', '#comment-del',function(e) {
-    	var cid = $(this).attr('cid');
-    	var pid = $(this).attr('pid');
-    	var puid = $(this).attr('puid');
+    $(document).on('click', '.nf-post #post-del', function(e) {
+    	var action = $(this).attr('data-act');
+    	var pid = $(this).attr('data-pid');
+    	var token = $(this).attr('token');
     	$.ajax({
-    		url: $('#nf-del').val(),
-    		data: { cid:cid, pid:pid, puid:puid, _token:$(this).attr('token') },
+    		url: $('.nf-post #del-route').val(),
+    		data: { action:action, pid:pid, _token:token },
+    		type: 'post',
+    		success: function() {
+    			$('.nf-post#post-'+pid).remove();
+    		}
+    	});
+    	e.preventDefault();
+    });
+    
+    $(document).on('click', '#comment-del',function(e) {
+    	var action = $(this).attr('data-act');
+    	var cid = $(this).attr('data-cid');
+    	var pid = $(this).attr('data-pid');
+    	var puid = $(this).attr('data-puid');
+    	var token = $(this).attr('token');
+    	$.ajax({
+    		url: $('.nf-post #del-route').val(),
+    		data: { action:action, cid:cid, pid:pid, puid:puid, _token:token },
     		type: 'post',
     		success:function() {
     			$('li#comment-'+cid).remove();

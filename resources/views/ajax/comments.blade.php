@@ -15,6 +15,6 @@
      <p> {{ $comment->comment_message }}</p>
     </div>
     @if($comment->comment_user_id == Auth::id())
-      <button type="button" id="comment-del" class="close comment-remove" data-label="remove" cid="{{ $comment->comment_id }}" pid="{{{ $pid }}}" puid="{{{ $puid }}}"token="{{{ csrf_token() }}}"><span>&times;</span></button>
+      <button type="button" id="comment-del" class="close comment-remove" data-label="remove" data-act="comment" data-cid="{{{ $comment->comment_id }}}" data-pid="{{{ $pid }}}" data-puid="{{{ $puid }}}" token="{{{ csrf_token() }}}"><span>&times;</span></button>
     @endif
   </li>
