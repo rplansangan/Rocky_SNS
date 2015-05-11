@@ -17,6 +17,7 @@ $(document).ready(function(){
 		        case 'jpeg':
 		        case 'png':
 		        case 'gif':
+		        case 'JPG':
 		            var tmppath = URL.createObjectURL(event.target.files[0]);
 			        $('.view-image-here').html("<img src="+tmppath+" class='img-responsive img-thumbnail'>");
 		            break;

@@ -73,7 +73,7 @@ class PetfoundationController extends Controller {
 	
 			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
 		}
-		return redirect()->route('petfoundation');
+		#return redirect()->route('petfoundation');
 	}
 
 }

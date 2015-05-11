@@ -1,3 +1,3 @@
 <div class="col-xs-12 petfoundation-mid">
-	TESTTTTT
+	@include('forms.form_pet_foundation')
 </div>

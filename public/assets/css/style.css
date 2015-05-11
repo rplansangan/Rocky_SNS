@@ -119,8 +119,85 @@ a:hover {
 
 /*============Landing Page============*/
 .landing-content {
+  background-color: #F9EDEC;
+}
+
+.landing-content h2 {
+  margin-top: 10px;
+}
+
+.land-mid-vid-btn {
   background-image: url('../images/paw-bg.png');
   background-position: center;
+  padding: 0;
+  border-left: 4px solid #FFADAD;
+  border-right: 4px solid #FFADAD;
+  outline: 4px solid #F9CDC5;
+}
+
+.landing-content span.glyphicon {
+  -webkit-animation-name: blinker;
+  -webkit-animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+
+  -moz-animation-name: blinker;
+  -moz-animation-duration: 0.3s;
+  -moz-animation-timing-function: linear;
+  -moz-animation-iteration-count: infinite;
+
+  animation-name: blinker;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  color: #E74C3C;
+  padding: 5px;
+  background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #FF0000), color-stop(0.15, #FF00FF), color-stop(0.3, #00F), color-stop(0.45, #00FFFF), color-stop(0.6, #00C000),color-stop(0.75, #007700), color-stop(0.9, #EAEA00), color-stop(1, #FF3A00) );
+  background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  color:transparent;
+  font-size: 35px;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+@-moz-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+.land-right-missing img, .land-left-found img {
+  border: 10px dotted #FFB2AB;
+  margin: 10px;
+}
+
+.land-left-found a, .land-right-missing a {
+  color: #E74C3C;
+  text-transform: uppercase;
+}
+
+.land-left-found a:hover, .land-right-missing a:hover {
+  border-bottom: 2px solid #F58B80;
+}
+
+button.btn_found, button.btn_missing {
+  background-color: #E74C3C;
+  color: #fff;
+  text-transform: uppercase;
+  border-bottom: 3px solid #F28C82;
+  margin-top: 10px;
 }
 
 .land-vid {
@@ -158,6 +235,7 @@ a:hover {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  height: 100% !important;
 }
 
 .land-main-cont{
