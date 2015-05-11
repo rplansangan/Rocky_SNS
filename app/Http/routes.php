@@ -267,6 +267,10 @@ Route::post('merchant/inquire', array(
 	'as' => 'merchant.inquire',
 	'uses' => 'MerchantController@addOrderInquire'
 	));
+Route::get('merchant/{id}/{advertise_id}', array(
+	'as' => 'merch_adview',
+	'uses' => 'MerchantController@merchadview'
+	));
 Route::get('checknewpost', array(
 	'as' => 'post.check',
 	'uses' => 'PostsController@checknewpost'

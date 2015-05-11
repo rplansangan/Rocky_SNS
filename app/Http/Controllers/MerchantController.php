@@ -201,4 +201,20 @@ class MerchantController extends Controller {
 
 	}
 
+	public function merchadview($id, $advertise_id){
+		$data['details'] = Advertise::where('user_id', Auth::id())
+				->with(array(
+					'image' => function($q) {
+						$q->addSelect(array('user_id', 'image_id', 'post_id'));
+					},
+					'post' => function($q) {
+						$q->addSelect(array('user_id', 'post_id', 'post_message', 'advertise_id', 'created_at'));
+					}
+					))->take(1)->latest()->get();
+		$data['otherads'] = Advertise::where('user_id', Auth::id())->with(array('image', 'post'))->where('id', '!=', $data['details'][0]->id)->take(6)->latest()->get();
+		$data['info'] = Business::where('user_id', Auth::id())->get();
+
+		return view('pages.merchantprofile', $data);
+	}
+
 }

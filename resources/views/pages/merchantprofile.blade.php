@@ -37,7 +37,7 @@
 			<h4>Other Ads by {{ $info[0]->business_name }}</h4>
 				@foreach($otherads as $adver)
 					<div class="col-sm-12 col-xs-12 col-lg-4 col-md-4">
-						<a href="#">
+						<a href="{{ Route('merch_adview') }}">
 							@if(isset($adver->image[0]))
 							<img class="col-sm-12 thumbnail" src="{{ route('files.get.image', array($details[0]->user_id, $adver->image[0]->image_id)) }}" width="250px">
 							@else
