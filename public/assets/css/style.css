@@ -418,6 +418,7 @@ span legend {
 
 .prof-photo img {
   border: 4px double #F58174;
+  margin: auto;
 }
 
 .prof-name h4 {
@@ -523,7 +524,7 @@ ul.fr-btns li {
   text-align: left;
   text-overflow: ellipsis;
   white-space: nowrap;
-  border: 1px solid;
+  border: 1px solid #E74C3C;;
   padding: 0 10px;
 }
 
@@ -1051,6 +1052,7 @@ a.list-group-item.petfo {
   padding: 10px;
   border-radius: 3px;
   border: 1px solid #DEDDDC;
+  font-style: normal;
 }
 
 .right nav ul {
@@ -1072,17 +1074,8 @@ a.list-group-item.petfo {
   font-family: 'Montserrat', sans-serif important;
 }
 
-p.addesc {
-  font-size: 11px;
-}
-
-p.adtitle {
-  font-weight: 600;
-}
-
-.rightads a {
-  color: #E74C3C;
-  font-size: 13px;
+.right-nav .land-right-missing {
+  margin-top: 5px;
 }
 
 
