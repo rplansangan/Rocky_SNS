@@ -150,9 +150,9 @@ Route::post('comment/set/{post_id}', array(
 	'as' => 'comments.set',
 	'uses' => 'PostsController@createComment'
 ));
-Route::post('comments/del', array(
-	'as' => 'comments.del',
-	'uses' => 'PostsController@deleteComment'
+Route::post('posts/del', array(
+	'as' => 'posts.del.dispatcher',
+	'uses' => 'PostsController@deleteDispatch'
 ));
 Route::post('newsfeed/refresh', array(
 	'as' => 'newsfeed.refresh',

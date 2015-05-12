@@ -50,6 +50,9 @@ class PostService {
 		return $this->post->setPost($data, $file);
 	}
 
+	public function deletePost($id) {
+		return $this->post->delete($id);
+	}	
 	
 	/**
 	 * 

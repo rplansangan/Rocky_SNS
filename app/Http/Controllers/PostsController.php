@@ -26,8 +26,16 @@ class PostsController extends Controller {
 			->with('puid', $request->get('puid'));
 	}
 	
-	public function deleteComment(Request $request) {
-		PostService::deleteComment($request->get('pid'), $request->get('puid'), $request->get('cid'));
+	public function deleteDispatch(Request $r) {
+		switch($r->get('action')) {
+			case 'post':
+				PostService::deletePost($r->get('pid'));
+				break;
+	
+			case 'comment':
+				PostService::deleteComment($r->get('pid'), $r->get('puid'), $r->get('cid'));
+				break;
+		}
 	}
 	
 	public function getNextNewsFeed(Request $request) {
@@ -55,13 +63,14 @@ class PostsController extends Controller {
 	}
 
 	public function getVideo($id , $file_id){
-		$data['image'] = Images::find($file_id);
+		$data['image'] = Images::find($file_id); 
+		$data['image']->load('register');
 		$data['video'] = Images::with(array('post' , 'register'))
 							->where('image_mime' , 'like' , '%video%')
 							->where('user_id' , Auth::id())
 							->where('image_id' , '!=' , $file_id)
 							->latest()->get();
-		$data['user'] = $data['video'][0]->register;
+		$data['user'] = $data['image']->register;
 
 		return view('pages.playvideo' , $data);
 	}

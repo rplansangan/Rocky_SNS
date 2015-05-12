@@ -26,7 +26,7 @@
 				<div class="page-header">
 					<h2>{{$image->image_title}}</h2>
 				</div>
-				<video width="100%" height="350px" autoplay>
+				<video width="100%" height="350px" controls autoplay>
 					<source src="{{ route('files.get.image', array($image->user_id, $image->image_id)) }}" type="{{ $image->image_mime }}">
 					</video>
 					<div class="col-sm-12">

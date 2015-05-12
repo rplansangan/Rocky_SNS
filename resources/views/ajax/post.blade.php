@@ -1,4 +1,5 @@
-<li id="post-{{{ $message->post_id }}}" class="media">
+<li id="post-{{{ $message->post_id }}}" class="nf-post media">
+	<input type="hidden" id="del-route" value="{{{ route('posts.del.dispatcher') }}}">
 	<div class="media-left">
 		<a href="{{ route('profile.showProfile', $user->registration_id) }}">
 			@if($user->prof_pic)	
@@ -9,6 +10,11 @@
 		</a>
 	</div>
 	<div class="media-body">
+		@if(Auth::id() == $message->user_id)
+		<button type="button" id="post-del" class="close post-remove" data-label="remove" data-act="post" data-pid="{{{ $message->post_id }}}" token="{{{ csrf_token() }}}">
+		<span>×</span>
+		</button>
+		@endif
 		<h4 class="media-heading">
 			<a href="{{{ route('profile.showProfile', $user->registration_id) }}}">
 				{{ $user->first_name }} {{ $user->last_name }}
@@ -16,7 +22,7 @@
 		</h4>
 		<small class="media-heading">{{ $message->created_at }}</small>
 		@if(isset($image)) 
-			<em><h6><small class="help-block">- {{ $image->category }}</small></h6><em>
+			<em><h6><small class="help-block">- {{ $image->category }}</small></h6></em>
 		@endif
 		<hr>
 		<p>{!! $message->post_message !!}</p>
