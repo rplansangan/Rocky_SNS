@@ -17,7 +17,9 @@ class UserFriends extends Model {
 	public function profile() {
 		return $this->hasOne('SNS\Models\Registration', 'registration_id', 'friend_user_id');
 	}
-	
+	public function images() {
+		return $this->hasOne('SNS\Models\Images', 'user_id' ,'friend_user_id');
+	}
 	// SCOPES
 	public function scopeOfUser($query, $user_id) {
 		return $query->where('user_id', $user_id);

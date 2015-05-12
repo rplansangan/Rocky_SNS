@@ -4,6 +4,7 @@ use SNS\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use SNS\Models\User;
 use SNS\Models\Images;
+use SNS\Models\Business;
 use SNS\Models\Advertise;
 use SNS\Services\ValidationService;
 use Illuminate\Support\Facades\Auth;
@@ -58,9 +59,24 @@ class HomeController extends Controller {
 	public function trending(){
 		return view('pages.trending');
 	}
-	public function shop(){
-		$data['info'] = Advertise::with(array('post', 'post.image'))->latest()->get();
-		return view('pages.shop' , $data);
+	public function shop(Request $request){
+		$country = $request->input('country');
+		$type = $request->input('type');
+		$state = $request->input('state_ads');
+		$zip = $request->input('zip_ads');
+		if($request->input('search') == 'SEARCH'){
+			$data['info'] = Business::with(array('advertise.post' , 'advertise.post.image',
+				'advertise' => function($q) use($type){
+						if($type){
+							$q->where('type' , $type);
+						}
+					}
+				))->where('state'  , 'LIKE' , '%'.$state.'%')->where('country' , $country)->where('zip' , 'LIKE' , '%'.$zip.'%')->get();
+			return view('pages.shop' , $data);
+		}else{
+			$data['info'] = Business::with(array('advertise' ,'advertise.post' , 'advertise.post.image'))->latest()->get();
+			return view('pages.shop' , $data);	
+		}
 	}
 	public function trackers(){
 		return view('pages.trackers');

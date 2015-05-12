@@ -59,6 +59,10 @@ class Advertise extends Model {
 	public function comment() {
 		return $this->hasMany('SNS\Models\Comments', 'post_id');
 	}
+
+	public function business(){
+		return $this->hasOne('SNS\Models\Business', 'user_id' , 'user_id');
+	}
 	
 	public function getCreatedAtAttribute($date) {
 		return Carbon::createFromFormat(self::$dbDateFormat, $date)->format(self::$newsFeedFormat);
