@@ -65,6 +65,8 @@ class PostService {
 		
 		return $this->newsfeed->initial($id, $post_uid, $take);
 	}
+
+	
 	
 	/**
 	 * 

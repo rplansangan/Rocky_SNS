@@ -239,6 +239,24 @@ button.btn_found, button.btn_missing {
   margin-bottom: 10px;
 }
 
+.foundpets-page a.redi-btn {
+  background: #F79187;
+  padding: 6px;
+  font-size: 20px;
+  color: #6B0F06;
+  border-bottom: 4px solid #D26F65;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  float: right;
+}
+
+.foundpets-page a.redi-btn:hover {
+  transition: background-color 0.5s ease;
+  background-color: #FAD6D6;
+  text-decoration: none;
+  border-bottom: 4px solid #F29F96;
+}
+
 
 /*============Top Pets============*/
 .land-content {
@@ -523,7 +541,7 @@ ul.fr-btns li {
 }
 
 .petmid {
-  background: #FA9381 !important;
+  background: #FFFFFF;
   text-align: left !important;
 }
 

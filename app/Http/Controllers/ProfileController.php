@@ -91,7 +91,7 @@ class ProfileController extends Controller {
 	}
 	
 	public function showPetProfile($user_id, $pet_id) {
-		$profileDetails = Pets::find($pet_id)->with(array(
+		$profileDetails = Pets::where('pet_id',$pet_id)->with(array(
 				'profile_pic' => function($query) use($pet_id) {
 					$query->addSelect(array('image_id', 'user_id', 'pet_id'));
 					$query->where('pet_id', $pet_id)->where('is_profile_picture', 1);
@@ -103,7 +103,10 @@ class ProfileController extends Controller {
 					$q->addSelect(array('id', 'behavior'));
 				}
 			))->get();
-		return view('profile.profilepet')->with('profile', $profileDetails[0]);
+
+		$newsfeed = PostService::initialNewsFeed(Auth::id(),$user_id);
+		
+		return view('profile.profilepet')->with('profile', $profileDetails[0])->with('newsfeed' , $newsfeed);
 	}
 	
 	public function dispatchFriendRequest(Request $request) {

@@ -84,7 +84,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-file" id="sendmsgfile">Upload a Photo</button>
 					<input type="file" id="filephotouploader" class="hidden">
-					<input type="submit" class="btn btn-submit" value="Send Message">
+					<input type="submit" class="btn btn-cancel" data-dismiss="modal" value="Send Message">
 					<button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
 				</div>
 			</div>

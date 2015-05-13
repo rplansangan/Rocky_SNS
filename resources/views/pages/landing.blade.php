@@ -33,7 +33,16 @@ Welcome to Rocky The Superdog
 	<!-- FOUND PET MID CONTENT -->
 	<div class="land-found col-sm-12 col-xs-12 col-md-6 col-lg-6">
 		<div class="foundpets-page col-sm-12 col-xs-12 col-lg-12 col-md-12">
-			<legend><h2 class="text-center">FOUND PETS</h2></legend>
+			<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">
+				<div class="col-xs-12 col-sm-12 col-m-7 col-lg-7">
+					<legend><h2>FOUND PETS</h2></legend>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-m-5 col-lg-5">
+					<a class="redi-btn" href="{{ route('signup') }}">
+						Signup Here!
+					</a>
+				</div>
+			</div>
 
 			<div class="found-imgs-mainp col-sx-12 col-sm-12 col-m-4 col-lg-4">
 				<div class="borderpet">
@@ -227,7 +236,16 @@ Welcome to Rocky The Superdog
 	<!-- MISSING PET MID CONTENT -->
 	<div class="land-missing col-sm-12 col-xs-12 col-md-6 col-lg-6">
 		<div class="foundpets-page col-sm-12 col-xs-12 col-lg-12 col-md-12">
-			<legend><h2 class="text-center">MISSING PETS</h2></legend>
+			<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">
+				<div class="col-xs-12 col-sm-12 col-m-7 col-lg-7">
+					<legend><h2>MISSING PETS</h2></legend>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-m-5 col-lg-5">
+					<a class="redi-btn" href="{{ route('signup') }}">
+						Signup Here!
+					</a>
+				</div>
+			</div>
 
 			<div class="found-imgs-mainp col-sx-12 col-sm-12 col-m-4 col-lg-4">
 				<div class="borderpet">
