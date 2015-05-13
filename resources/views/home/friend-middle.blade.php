@@ -7,7 +7,7 @@
 		@foreach($friends as $friend)
 			<div class="col-sm-12 col-xs-12 col-lg-4 col-md-4 friends-list text-center">
 				@if(!is_null($friend->profile->prof_pic))
-				<img class="img-responsive" src="{{{ route('files.get.image', array($friend->profile->user_id, $friend->profile->prof_pic->image_id)) }}}">
+				<img class="img-responsive" src="{{{ route('files.get.image', array($friend->profile->user_id, $friend->profile->prof_pic->image_id)) }}}" alt="profile picture">
 				@else
 				no profile picture.
 				@endif

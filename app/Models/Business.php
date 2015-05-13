@@ -55,4 +55,7 @@ class Business extends Model {
 	public function image() {
 		return $this->hasMany('SNS\Models\Images', 'business_id');
 	}
+	public function advertise() {
+		return $this->hasMany('SNS\Models\Advertise', 'user_id' , 'user_id');
+	}
 }

@@ -4,22 +4,23 @@
 	<legend><h1>SHOP</h1></legend>
 
 	<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 adshop-search">
-		<form action="" method="POST" class="form-horizontal">
+		<form action="{{ route('shop') }}" method="GET" class="form-horizontal">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="form-group">
 				<label class="col-sm-2 control-label">TYPE:</label>
 				<div class="col-sm-3">
 					<select name="type" class="form-control">
-						<option value='ad' data-title="Andorra">Pets For Sale</option>
-						<option value='ae' data-title="United Arab Emirates">Services</option>
-						<option value='af' data-title="Afghanistan">Items</option>
+						<option value="">- Select type -</option>
+						<option value="Pets for Sale" >Pets for sale</option>
+						<option value="Services" >Services</option>
+						<option value="Items" >Items</option>
 					</select>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">COUNTRY:</label>
 				<div class='col-sm-3'>
-					{{ country_form()}}
+					{{ country_form() }}
 				</div>
 
 				<div class='col-sm-2'>
@@ -31,52 +32,52 @@
 				</div>
 
 				<div class='col-sm-1'>
-					<input type='submit' class="btn" value="SEARCH"/>
+					<input type='submit' class="btn" name="search" value="SEARCH"/>
 				</div>
 
 				<div class='col-sm-1'>
-					<input type='submit' class="btn" value="ALL"/>
+					<input type='submit' class="btn" name="search" value="ALL"/>
 				</div>
 			</div>
 		</form>
 	</div>
 
 	<div class="container">
-		@foreach($info as $result)
-		<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 panel ads-panel">
-			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-img">
-				@if(isset($result->post->image))
-					<img class="col-sm-12 thumbnail" src="{{ route('files.get.image', array($result->user_id, $result->post->image->image_id)) }}" width="400px">
-				@else
-					<img src="{{ URL::asset('assets/images/AdHere.png') }}" width="400px">
-				@endif
-			</div>
+			@foreach($info as $business)
+				@foreach($business->advertise as $row)
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 panel ads-panel">
+						<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-img">
+							@if(isset($row->post->image))
+							<img class="col-sm-12 thumbnail" src="{{ route('files.get.image', array($row->user_id, $row->post->image->image_id)) }}" width="400px">
+							@else
+							<img src="{{ URL::asset('assets/images/AdHere.png') }}" width="400px">
+							@endif
+						</div>
 
-			<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-info">
-				<h3>{{ $result->title }}</h3>
-				{!! $result->post['post_message'] !!}
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Type:</label>
-					<div class="col-sm-9">
-						<p>{{ $result->type }}</p>
+						<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-info">
+							<h3>{{ $row->title }}</h3>
+							{!! $row->post['post_message'] !!}
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type:</label>
+								<div class="col-sm-9">
+									<p>{{ $row->type }}</p>
+								</div>
+
+								<label class="col-sm-3 control-label">Country:</label>
+								<div class="col-sm-9">
+									<p>{{ $business->country}}</p>
+								</div>
+							</div>
+
+							<div class="btn_adshop">
+								<a href="{{ Route('merch_adview' , array( 'id' => Auth::id() , 'advertise_id' => $row->id) ) }}" class="btn btn_view btn-sm">VIEW</a>
+								<button type="button" class="btn btn_inquire btn-sm" data-toggle="modal" data-target="#shopModal" data-type="Inquire" data-advertisetype="INQ"  data-title="{{ $row->title }}" data-id="{{ $row->id }}" data-action="{{ Route('merchant.inquire') }}" >INQUIRE</button>
+								<button type="button" class="btn btn_order btn-sm" data-toggle="modal" data-target="#shopModal" data-type="Order" data-advertisetype="ORD" data-title="{{ $row->title }}" data-id="{{ $row->id }}" data-action="{{ Route('merchant.inquire') }}">ORDER</a>
+							</div>
+						</div>
 					</div>
-
-					<label class="col-sm-3 control-label">Country:</label>
-					<div class="col-sm-9">
-						<p>Philippines</p>
-					</div>
-				</div>
-
-				<div class="btn_adshop">
-					<a href="{{ Route('merch_adview' , array( 'id' => Auth::id() , 'advertise_id' => $result->id) ) }}" class="btn btn_view btn-sm">VIEW</a>
-					<button type="button" class="btn btn_inquire btn-sm" data-toggle="modal" data-target="#shopModal" data-type="Inquire" data-advertisetype="INQ"  data-title="{{ $result->title }}" data-id="{{ $result->id }}" data-action="{{ Route('merchant.inquire') }}" >INQUIRE</button>
-					<button type="button" class="btn btn_order btn-sm" data-toggle="modal" data-target="#shopModal" data-type="Order" data-advertisetype="ORD" data-title="{{ $result->title }}" data-id="{{ $result->id }}" data-action="{{ Route('merchant.inquire') }}">ORDER</a>
-					</div>
-				</div>
-
-			</div>
+				@endforeach
 			@endforeach
-		</div>
 	</div>
 
 	@stop

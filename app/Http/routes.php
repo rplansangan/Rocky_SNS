@@ -285,6 +285,14 @@ Route::post('register_petfoundation', array(
 	'as' => 'register_petfoundation',
 	'uses' => 'PetfoundationController@activate_petfoundation'
 ));
+Route::get('found_pets', array(
+	'as' => 'found_pets',
+	'uses' => 'HomeController@foundPets'
+));
+Route::get('mising_pets', array(
+	'as' => 'missing_pets',
+	'uses' => 'HomeController@missingPets'
+));
 
 
 

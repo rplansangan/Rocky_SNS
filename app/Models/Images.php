@@ -40,7 +40,6 @@ class Images extends Model {
 	public function post() {
 		return $this->belongsTo('SNS\Models\Posts');
 	}
-	
 	public function pet() {
 		return $this->belongsTo('SNS\Models\Pets');
 	}

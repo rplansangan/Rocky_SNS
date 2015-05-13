@@ -291,7 +291,7 @@ class FriendService {
 		}
 		
 		return $this->list->select($user_select)->where('user_id', $user_id)
-				->with(array('profile' => function($q) {
+				->with(array('images','profile' => function($q) {
 					$q->addSelect(array('registration_id', 'last_name', 'first_name'));
 				}))->get();
 	}
