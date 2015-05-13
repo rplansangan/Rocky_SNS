@@ -91,3 +91,71 @@
 		</div>
 	</form>
 </div>
+
+<!-- Missing Pets -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">MISSING PET</h4>
+      </div>
+      <div class="modal-body col-xs-12 col-sm-12 col-m-12 col-lg-12">
+      	<div class="largeimg text-center">
+	        <img src="{{ URL::asset('assets/images/missing1.jpg') }}" width="550px">
+	    </div>
+        <div class="col-xs-12 col-sm-12 col-m-5 col-lg-5 petotherinfos">
+        	<p>Sibe the Siberian</p>
+        	<p>Dog | Siberian Husky</p>
+        	<p>January 2, 2015</p>
+        	<p>Male</p>
+        	<p>48lbs | 23inches</p>
+        	<p>Happy go lucky</p>
+        	<p>Chop House T-Bone Steak Flavor | Alpo</p>
+        	<p>Wet | Twice a day | 8am & 5pm</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-m-7 col-lg-7 marks text-center">
+        	<img src="{{ URL::asset('assets/images/sibe-paw.jpg') }}" width="250px">
+        	<p>paws</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Found Pets -->
+<div class="modal fade" id="foundModal" tabindex="-1" role="dialog" aria-labelledby="foundModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="foundModalLabel">FOUND PET</h4>
+      </div>
+      <div class="modal-body col-xs-12 col-sm-12 col-m-12 col-lg-12">
+      	<div class="largeimg text-center">
+	        <img src="{{ URL::asset('assets/images/found1.jpg') }}" width="550px">
+	    </div>
+        <div class="col-xs-12 col-sm-12 col-m-5 col-lg-5 petotherinfos">
+        	<p>Smiley</p>
+        	<p>Dog | Golden Retriever</p>
+        	<p>January 2, 2015</p>
+        	<p>Male</p>
+        	<p>48lbs | 23inches</p>
+        	<p>Happy go lucky</p>
+        	<p>Chop House T-Bone Steak Flavor | Alpo</p>
+        	<p>Wet | Twice a day | 8am & 5pm</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-m-7 col-lg-7 marks text-center">
+        	<img src="{{ URL::asset('assets/images/ret-paw.jpg') }}" width="250px">
+        	<p>paws</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

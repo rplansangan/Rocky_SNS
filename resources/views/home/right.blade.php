@@ -1,9 +1,9 @@
 <div class="row">
 	<div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 right-nav">
 		<div class="land-left-found col-sm-12 col-xs-12 col-md-12 col-lg-12">
-		<h2><span class="glyphicon glyphicon-hand-right"></span>
-			<a href="#">Found Pets</a>
-		<span class="glyphicon glyphicon-hand-left"></span></h2>
+		<h3><span class="glyphicon glyphicon-hand-right"></span>
+			<a href="{{ Route('found_pets') }}">Found Pets</a>
+		<span class="glyphicon glyphicon-hand-left"></span></h3>
 		<div class="found-imgs">
 			<img src="{{ URL::asset('assets/images/found1.jpg') }}" width="250px" height="185px">
 			<img src="{{ URL::asset('assets/images/found2.jpg') }}" width="250px" height="185px">
@@ -12,9 +12,9 @@
 	</div>
 
 	<div class="land-right-missing col-sm-12 col-xs-12 col-md-12 col-lg-12">
-		<h2><span class="glyphicon glyphicon-hand-right"></span>
-			<a href="#">Missing Pets</a>
-		<span class="glyphicon glyphicon-hand-left"></span></h2>
+		<h3><span class="glyphicon glyphicon-hand-right"></span>
+			<a href="{{ Route('missing_pets') }}">Missing Pets</a>
+		<span class="glyphicon glyphicon-hand-left"></span></h3>
 		<div class="missing-imgs">
 			<img src="{{ URL::asset('assets/images/missing1.jpg') }}" width="250px" height="185px">
 			<img src="{{ URL::asset('assets/images/missing2.jpg') }}" width="250px" height="185px">
