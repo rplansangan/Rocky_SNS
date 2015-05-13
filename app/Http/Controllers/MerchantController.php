@@ -186,6 +186,8 @@ class MerchantController extends Controller {
 				->with(array('post' , 'image'))->get();
 	
 		$data['friend_flags'] = FriendService::check($user_id);	
+
+		#custom_print_r($data['post']);
 		return view('profile.individual', $data);
 	}
 

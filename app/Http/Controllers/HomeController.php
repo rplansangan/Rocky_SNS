@@ -148,4 +148,12 @@ class HomeController extends Controller {
 	public function petfoundation(){
 		return view('pages.petfoundation');
 	}
+
+	public function foundPets(){
+		return view('pages.foundpet');
+	}
+
+	public function missingPets(){
+		return view('pages.missingpet');
+	}
 }

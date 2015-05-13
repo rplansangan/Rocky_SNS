@@ -762,6 +762,62 @@ p.bnbg {
 }
 
 
+/*============FOUND PETS============*/
+.found-imgs-mainp {
+  margin: 10px 0;
+}
+
+.btninf {
+  margin-top: 20px;
+}
+
+.btninf p {
+  color: #000;
+}
+
+.foundpets-page span.glyphicon {
+  padding-right: 6px;
+}
+
+.found-imgs-mainp img {
+  margin-bottom: 10px;
+}
+
+.ownerinfos {
+  margin: auto;
+  display: table;
+}
+
+.borderpet {
+  border: 1px solid #C8C8C8;
+  border-radius: 5px;
+  margin: auto;
+  display: table;
+  padding: 5px;
+}
+
+.borderpet img:hover {
+  cursor: pointer;
+}
+
+.ownerinfos p, .ownerinfos a {
+  margin: 0;
+  color: #E74C3C;
+}
+
+.petotherinfos, .marks {
+  margin: 10px 0;
+}
+
+.petotherinfos p, .marks p {
+  margin: 2px;
+}
+
+.right-nav span.glyphicon {
+  color: #E74C3C;
+}
+
+
 /*============COMMENTS============*/
 .com-name span {
   color: #F55F4F;

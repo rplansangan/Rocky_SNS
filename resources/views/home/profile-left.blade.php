@@ -9,7 +9,7 @@
 		</a>
 	</div>
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-name text-center">
-		<a href="{{ route('profile.showProfile', Auth::id()) }}"><h4>{{ $profile->registration->first_name }} {{ $profile->registration->last_name }}</h4></a>
+		<a href="{{ route('profile.showProfile', Auth::id()) }}"><h4>{{ $profile->first_name }} {{ $profile->last_name }}</h4></a>
 	</div>
 
 	<ul class="col-sm-12 col-xs-12 col-md-12 col-lg-12 fr-btns">
@@ -51,8 +51,6 @@
 			@if(Auth::user()->is_merchant === 1)
 				<a href="{{ route('advertised') }}" class="list-group-item ads">Advertise</a>
 			@elseif(Auth::user()->is_member === 1)
-				<a href="{{ route('addadvertise') }}" class="list-group-item ads">Advertise</a>
-			@else(Auth::user()->is_foundation === 1)
 				<a href="{{ route('addadvertise') }}" class="list-group-item ads">Advertise</a>
 			@endif
 			<a href="{{ route('shop') }}" class="list-group-item shop">Shop</a>
