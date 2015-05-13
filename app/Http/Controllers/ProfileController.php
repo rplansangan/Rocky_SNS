@@ -230,12 +230,20 @@ class ProfileController extends Controller {
 	
 	protected function changePassword($params) {
 		$validate = Validator::make(array(
-					'password' => $params['password'],
-					'new_pass' => $params['new_password'],
-					'new_pass_confirmation' => $params['new_password_confirmation']
+						'password' => $params['password'],
+						'new_pass' => $params['new_password'],
+						'new_pass_confirmation' => $params['new_password_confirmation']
 				), array(
-					'password' => 'required|min:6|max:24',
-					'new_pass' => 'required|confirmed|min:6|max:24'
+						'password' => 'required|min:6|max:24',
+						'new_pass' => 'required|confirmed|min:6|max:24'
+				), array(
+						'password.required' => trans('profile.validation.password.required'),
+						'password.min' => trans('profile.validation.password.min'),
+						'password.max' => trans('profile.validation.password.max'),
+						'new_pass.required' => trans('profile.validation.password.required'),
+						'new_pass.min' => trans('profile.validation.password.min'),
+						'new_pass.max' => trans('profile.validation.password.max'),
+						'new_pass.confirmed' => trans('profile.validation.password.confirm')
 				));
 		
 		if($validate->passes()) {

@@ -43,4 +43,9 @@ return [
 		
 		'settings.password.invalid' => 'Invalid password.',
 		'settings.password.changed' => 'Password changed.',
+		
+		'validation.password.required' => 'Password is required.',
+		'validation.password.min' => 'Password should have at least 6 characters',
+		'validation.password.max' => 'Password should not exceed 24 characters',
+		'validation.password.confirm' => 'Passwords should match.'
 ];
