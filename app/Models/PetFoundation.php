@@ -53,7 +53,7 @@ class PetFoundation extends Model {
 	);
 
 	public function image() {
-		return $this->hasMany('SNS\Models\Images', 'petfoundation_id');
+		return $this->hasOne('SNS\Models\Images', 'petfoundation_id');
 	}
 
 }

@@ -181,6 +181,7 @@ Route::post('profile/edit', array(
 	'as' => 'profile.setings.patch',
 	'uses' => 'ProfileController@editProfile'
 ));
+
 Route::get('home', array(
 	'as' => 'home',
 	'uses' => 'HomeController@index'

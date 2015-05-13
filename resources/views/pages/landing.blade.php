@@ -18,7 +18,7 @@ Welcome to Rocky The Superdog
 
 	<div class="land-mid-vid-btn col-sm-12 col-xs-12 col-md-6 col-lg-6">
 		<div class="land-vid col-sm-12 col-xs-12 col-md-12 col-lg-12">
-			<iframe width="660" height="385" src="https://www.youtube.com/embed/V4BFzpAcYc4?autoplay=1" frameborder="0" allowfullscreen></iframe>
+			<iframe width="100%" height="385" src="https://www.youtube.com/embed/V4BFzpAcYc4?autoplay=1" frameborder="0" allowfullscreen></iframe>
 		</div>
 
 		<div class="land-btn col-sm-12 col-xs-12 col-md-12 col-lg-12 text-center">
