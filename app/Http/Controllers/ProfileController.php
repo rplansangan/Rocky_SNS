@@ -16,6 +16,8 @@ use SNS\Libraries\Facades\PostService;
 use SNS\Libraries\Facades\FriendService;
 use SNS\Libraries\Facades\StorageHelper;
 use SNS\Libraries\Traits\ProfPicTrait;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller {
 	
@@ -207,5 +209,54 @@ class ProfileController extends Controller {
 		
 		return view('pages/merchantprofile')
 				->with('details', $details);
+	}
+
+	
+	public function getSettingsView() {
+		return view('profile.user_settings');
+	}
+	
+	public function getSettingsDispatcher(Request $request) {
+		switch($request->get('action')) {
+			case 'pw':
+				return $this->changePassword(array_except($request->all(), array('_token', 'action')));
+				break;
+				
+			default:
+				return redirect()->back();
+				break;
+		}
+	}
+	
+	protected function changePassword($params) {
+		$validate = Validator::make(array(
+						'password' => $params['password'],
+						'new_pass' => $params['new_password'],
+						'new_pass_confirmation' => $params['new_password_confirmation']
+				), array(
+						'password' => 'required|min:6|max:24',
+						'new_pass' => 'required|confirmed|min:6|max:24'
+				), array(
+						'password.required' => trans('profile.validation.password.required'),
+						'password.min' => trans('profile.validation.password.min'),
+						'password.max' => trans('profile.validation.password.max'),
+						'new_pass.required' => trans('profile.validation.password.required'),
+						'new_pass.min' => trans('profile.validation.password.min'),
+						'new_pass.max' => trans('profile.validation.password.max'),
+						'new_pass.confirmed' => trans('profile.validation.password.confirm')
+				));
+		
+		if($validate->passes()) {
+			$hash = Hash::check($params['password'], Auth::user()->password);
+			
+			if($hash == true) {
+				User::find(Auth::id())->update(array('password' => Hash::make($params['new_password'])));
+				return redirect()->back()->withErrors(array('message' => trans('profile.settings.password.changed')));
+			} else {
+				return redirect()->back()->withErrors(array('message' => trans('profile.settings.password.invalid')));
+			}
+		} else {
+			return redirect()->back()->withErrors($validate->errors()->all());
+		}
 	}
 }

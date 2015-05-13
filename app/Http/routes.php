@@ -1,5 +1,4 @@
 <?php
-use SNS\Models\Registration;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,7 +10,7 @@ use SNS\Models\Registration;
 |
 */
 Route::get('test', function() {
-	dd(Registration::where('user_id', auth()->id())->with(array('user'))->get());
+	
 });
 Route::get('update_notif', function() {
 	$notif = Notification::withTrashed()->get();
@@ -129,10 +128,16 @@ Route::post('register/pet/field', array(
 ));
 
 /*Profile route*/
-Route::get('profile/{id}', array(
-	'as' => 'profile.showProfile',
-	'uses' => 'ProfileController@showProfile'
+Route::get('profile/change', array(
+'as' => 'profile.get.view',
+'uses' => 'ProfileController@getSettingsView'
 ));
+Route::post('profile/change/process', array(
+'as' => 'profile.get.dispatch',
+'uses' => 'ProfileController@getSettingsDispatcher'
+));
+
+
 
 Route::get('petlist/{id}', array(
 	'as' => 'profile.petlist',
@@ -174,7 +179,7 @@ Route::get('profile/friends/{id}', array(
 	'as' => 'profile.friends',
 	'uses' => 'ProfileController@userFriends'
 ));
-Route::get('profile_settings', array(
+Route::get('profile/edit', array(
 	'as' => 'profile.settings',
 	'uses' => 'ProfileController@settings'
 ));
@@ -182,6 +187,13 @@ Route::post('profile/edit', array(
 	'as' => 'profile.setings.patch',
 	'uses' => 'ProfileController@editProfile'
 ));
+
+Route::get('profile/{id}', array(
+	'as' => 'profile.showProfile',
+	'uses' => 'ProfileController@showProfile'
+));
+
+
 Route::get('home', array(
 	'as' => 'home',
 	'uses' => 'HomeController@index'

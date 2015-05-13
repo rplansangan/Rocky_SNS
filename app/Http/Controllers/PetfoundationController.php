@@ -69,11 +69,11 @@ class PetfoundationController extends Controller {
 					'is_profile_picture' => 0
 			));
 	
-			$merchant->image()->save($img_data);
+			$foundation->image()->save($img_data);
 	
 			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
 		}
-		#return redirect()->route('petfoundation');
+		return redirect()->route('petfoundation');
 	}
 
 }

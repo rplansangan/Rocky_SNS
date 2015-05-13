@@ -156,4 +156,5 @@ class HomeController extends Controller {
 	public function missingPets(){
 		return view('pages.missingpet');
 	}
+
 }

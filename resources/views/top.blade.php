@@ -39,7 +39,7 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="{{ route('register.petdetails', Auth::id()) }}">Add A Pet</a></li>
             <li><a href="{{ route('profile.settings') }}">Profile Settings</a></li>
-            <li><a href="">Change password</a></li>
+            <li><a href="{{ route('profile.get.view') }}">Change password</a></li>
             <li><a href="{{ route('logout') }}">Log out</a></li>
           </ul>
         </li>

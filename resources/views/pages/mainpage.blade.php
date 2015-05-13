@@ -87,7 +87,7 @@ Welcome to Rocky The Superdog
 							<div class="form-group col-sm-12">
 								<label class="col-sm-5 control-label">Birthdate:</label>
 								<div class="col-sm-7">
-									<input class=" datepicker form-control" type="date" name="birth_date"  required />
+									<input class=" datepicker form-control" type="text" name="birth_date"  required />
 								</div>
 							</div>
 							<div class="form-group col-sm-12">
@@ -156,7 +156,7 @@ Welcome to Rocky The Superdog
 							<div class="form-group col-sm-12">
 								<label class="col-sm-5 control-label">Birthdate:</label>
 								<div class="col-sm-7">
-									<input class=" datepicker form-control" type="date" name="birth_date"  required />
+									<input class=" datepicker form-control" type="text" name="birth_date"  required />
 								</div>
 							</div>
 							<div class="form-group col-sm-12">
@@ -225,7 +225,7 @@ Welcome to Rocky The Superdog
 							<div class="form-group col-sm-12">
 								<label class="col-sm-5 control-label">Birthdate:</label>
 								<div class="col-sm-7">
-									<input class=" datepicker form-control" type="date" name="birth_date"  required />
+									<input class=" datepicker form-control" type="text" name="birth_date"  required />
 								</div>
 							</div>
 							<div class="form-group col-sm-12">
@@ -294,7 +294,7 @@ Welcome to Rocky The Superdog
 							<div class="form-group col-sm-12">
 								<label class="col-sm-5 control-label">Birthdate:</label>
 								<div class="col-sm-7">
-									<input class=" datepicker form-control" type="date" name="birth_date"  required />
+									<input class=" datepicker form-control" type="text" name="birth_date"  required />
 								</div>
 							</div>
 							<div class="form-group col-sm-12">

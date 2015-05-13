@@ -3,7 +3,7 @@
 		<h1>PET OF THE DAY</h1>
 
 		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 pd-photo">
-			<a href="#"><img src="{{ URL::asset('assets/images/garfielking.png') }}"></a>
+			<a href="#"><img width="250px"src="{{ URL::asset('assets/images/dog4.jpg') }}"></a>
 		</div>
 
 		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 pd-name">

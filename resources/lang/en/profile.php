@@ -39,5 +39,13 @@ return [
 		'friend.request_ignore' => 'Ignore',
 		'friend.request_ignore_msg' => "You have ignored <b>:name's</b> friend request",
 		'friend.request_accept_msg' => "You have accepted <b>:name's</b> friend request",
-		'friend.request_accept_for_req_msg' => "<b>:name</b> has accepted your friend request"
+		'friend.request_accept_for_req_msg' => "<b>:name</b> has accepted your friend request",
+		
+		'settings.password.invalid' => 'Invalid password.',
+		'settings.password.changed' => 'Password changed.',
+		
+		'validation.password.required' => 'Password is required.',
+		'validation.password.min' => 'Password should have at least 6 characters',
+		'validation.password.max' => 'Password should not exceed 24 characters',
+		'validation.password.confirm' => 'Passwords should match.'
 ];
