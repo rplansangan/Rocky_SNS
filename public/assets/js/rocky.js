@@ -310,9 +310,25 @@ $(document).ready(function(){
         }
     });
 
+    //Foundpets
+	$(".land-found" ).elastic();
+	$('.land-found').hide();
+	$('.foundbtn').on('click', function(){
+		$('.land-found').show();
+		$('.land-mid-vid-btn').hide();
+		$('.land-missing').hide();
+	});
+
+	//Missingpets
+	$(".land-missing" ).elastic();
+	$('.land-missing').hide();
+	$('.missingbtn').on('click', function(){
+		$('.land-missing').show();
+		$('.land-mid-vid-btn').hide();
+		$('.land-found').hide();
+	});
+
 });
-
-
 
 
 

@@ -45,11 +45,11 @@
 				<a href="{{ route('addadvertise') }}" class="list-group-item ads">Advertise</a>
 			@endif
 			<a href="{{ route('shop') }}" class="list-group-item shop">Shop</a>
-			<a href="{{ route('trackers') }}" class="list-group-item track">Trackers</a>
+			<a href="{{ route('trackers') }}" class="list-group-item track hidden">Trackers</a>
 			<a href="{{ route('profile.friends', Auth::id()) }}" class="list-group-item friends">Friends</a>
-			<a href="#" class="list-group-item compete">Compete</a>
+			<a href="#" class="list-group-item compete hidden">Compete</a>
 			<a href="#" class="list-group-item videos">Videos</a>
-			<a href="#" class="list-group-item rockyra">Rocky Ranger</a>
+			<a href="#" class="list-group-item rockyra hidden">Rocky Ranger</a>
 			<a href="#" class="list-group-item petfo">Pet Foundation</a>
 		</div>
 	</div>
