@@ -1,5 +1,4 @@
 <?php
-use SNS\Models\Registration;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,7 +10,7 @@ use SNS\Models\Registration;
 |
 */
 Route::get('test', function() {
-	dd(Registration::where('user_id', auth()->id())->with(array('user'))->get());
+	
 });
 Route::get('update_notif', function() {
 	$notif = Notification::withTrashed()->get();
