@@ -625,6 +625,11 @@ ul.fr-btns li {
   border-top: 0;
 }
 
+.petfoundation-mid a {
+  color: #E74C3C;
+  font-size: 15px;
+}
+
 
 /*============SHOP PAGE============*/
 .ads-panel:hover{
