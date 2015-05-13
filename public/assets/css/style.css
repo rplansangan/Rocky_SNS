@@ -135,7 +135,7 @@ a:hover {
   outline: 4px solid #F9CDC5;
 }
 
-.landing-content span.glyphicon {
+.landing-content .glyphicon-hand-right, .landing-content .glyphicon-hand-left {
   -webkit-animation-name: blinker;
   -webkit-animation-duration: 0.3s;
   -webkit-animation-timing-function: linear;
@@ -226,6 +226,17 @@ button.btn_found, button.btn_missing {
   background-color: #FAD6D6;
   text-decoration: none;
   border-bottom: 4px solid #F29F96;
+}
+
+.land-missing .foundpets-page, .land-found .foundpets-page {
+  background: #fff;
+  border-left: 2px solid #F9BBB5;
+  border-right: 2px solid #F9BBB5;
+  text-align: left;
+}
+
+.land-missing button.btn.btn_found, .land-found button.btn.btn_found {
+  margin-bottom: 10px;
 }
 
 
@@ -860,6 +871,11 @@ ul.comments .media-left {
   padding: 5px;
 }
 
+.likecom-container {
+  margin-top: 10px;
+}
+
+
 /*============LEFT SIDEBAR============*/
 .bg-rocky{
  background: rgba(242, 197, 181, 0.5);
@@ -1088,6 +1104,11 @@ a.list-group-item.petfo {
   background-color: #E74C3C;
   content: "";
   transition: width 0.2s;
+}
+
+.friends-img {
+  margin: auto;
+  display: table;
 }
 
 
