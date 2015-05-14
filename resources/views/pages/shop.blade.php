@@ -1,7 +1,7 @@
 @extends('master')
 @section('content')
 <div class="adshop-content col-sm-12 col-xs-12 col-lg-12 col-md-12">
-	<legend><h1>SHOP</h1></legend>
+	<legend><h1>SHOP - Still under construction</h1></legend>
 
 	<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 adshop-search">
 		<form action="{{ route('shop') }}" method="GET" class="form-horizontal">

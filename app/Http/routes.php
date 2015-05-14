@@ -308,6 +308,12 @@ Route::get('pfoundationtemp', array(
 	'uses' => 'PetfoundationController@pfoundationTemp'
 ));
 
+//Vet
+Route::get('vettemp', array(
+	'as' => 'vet_temp',
+	'uses' => 'HomeController@vetTemp'
+));
+
 
 
 Route::controllers([

@@ -64,6 +64,7 @@
 			<a href="{{ route('videos') }}" class="list-group-item videos">Videos</a>
 			<a href="{{ route('rockyranger') }}" class="list-group-item rockyra hidden">Rocky Ranger</a>
 			<a href="{{ route('petfoundation') }}" class="list-group-item petfo">Pet Foundation</a>
+			<a href="{{ route('vet_temp') }}" class="list-group-item vete">Veterinaries</a>
 		</div>
 	</div>
 </div>

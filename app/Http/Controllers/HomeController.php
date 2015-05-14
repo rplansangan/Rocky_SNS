@@ -157,4 +157,8 @@ class HomeController extends Controller {
 		return view('pages.missingpet');
 	}
 
+	public function vetTemp(){
+		return view('pages.veterinary');
+	}
+
 }
