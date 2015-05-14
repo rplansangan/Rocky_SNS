@@ -28,7 +28,7 @@
 		<p>{!! $message->post_message !!}</p>
 		@if(isset($image))
 			@if(strstr($image->image_mime, 'image/'))
-				<img src="{{ route('files.get.image', array($message->user_id, $image->image_id)) }}">
+				<img class="img-responsive" src="{{ route('files.get.image', array($message->user_id, $image->image_id)) }}">
 			@elseif(strstr($image->image_mime, 'video/'))
 				<video  width="100%" height="240" controls>
 				  <source src="{{ route('files.get.image', array($message->user_id, $image->image_id)) }}" type="{{ $image->image_mime }}">

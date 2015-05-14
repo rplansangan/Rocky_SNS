@@ -136,9 +136,6 @@ Route::post('profile/change/process', array(
 'as' => 'profile.get.dispatch',
 'uses' => 'ProfileController@getSettingsDispatcher'
 ));
-
-
-
 Route::get('petlist/{id}', array(
 	'as' => 'profile.petlist',
 	'uses' => 'ProfileController@petlist'
