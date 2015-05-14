@@ -63,7 +63,7 @@ class PostsController extends Controller {
 	}
 
 	public function getVideo($id , $file_id){
-		$data['image'] = Images::find($file_id); 
+		$data['image'] = Images::with(array('post'))->find($file_id); 
 		$data['image']->load('register');
 		$data['video'] = Images::with(array('post' , 'register'))
 							->where('image_mime' , 'like' , '%video%')

@@ -31,6 +31,7 @@
 					</video>
 					<div class="col-sm-12">
 						<p>Uploaded by : {{ $user->first_name.' '.$user->last_name}}</p>
+						<p>{!! $image->post->post_message !!}</p>
 					</div>
 				</div>
 				<div class="col-sm-5 col-md-5 col-xs-5 col-lg-5" style="background-color:white">
