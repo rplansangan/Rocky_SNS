@@ -46,7 +46,7 @@
 							<img src="{{ URL::asset('assets/images/AdHere.png') }}" width="250px">
 							@endif
 						</a>
-						<a href="#"><h3>{{ $adver->title}}</h3></a>
+						<a href="{{ Route('merch_adview', array($adver->user_id, $adver->id)) }}"><h3>{{ $adver->title}}</h3></a>
 						<p>{{ $adver->created_at }} {{ $adver->type }}</p>
 					</div>			
 				@endforeach

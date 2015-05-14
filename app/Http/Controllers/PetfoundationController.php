@@ -76,4 +76,8 @@ class PetfoundationController extends Controller {
 		return redirect()->route('petfoundation');
 	}
 
+	public function pfoundationTemp(){
+		return view('pages.pfpageprof');
+	}
+
 }

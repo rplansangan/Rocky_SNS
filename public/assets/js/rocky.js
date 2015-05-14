@@ -328,6 +328,12 @@ $(document).ready(function(){
 		$('.land-found').hide();
 	});
 
+	//image carousel
+	$("#ftpetsCarousel").carousel({
+         interval : 6000,
+         pause: false
+     });
+
 });
 
 

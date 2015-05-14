@@ -306,6 +306,10 @@ Route::get('mising_pets', array(
 	'as' => 'missing_pets',
 	'uses' => 'HomeController@missingPets'
 ));
+Route::get('pfoundationtemp', array(
+	'as' => 'pfoundationtemp',
+	'uses' => 'PetfoundationController@pfoundationTemp'
+));
 
 
 

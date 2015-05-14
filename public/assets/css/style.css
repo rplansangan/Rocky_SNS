@@ -648,6 +648,25 @@ ul.fr-btns li {
   font-size: 15px;
 }
 
+.our-proj {
+  border-top: 1px solid #DADADA;
+  margin: 20px 0;
+}
+
+.op {
+  margin: 10px 0;
+}
+
+.carousel-caption {
+  background: rgba(119, 119, 119, 0.45);
+  border-radius: 5px;
+  border: 1px solid rgba(81, 80, 80, 0.45);
+}
+
+.carousel-caption h3 {
+  margin: 5px 0;
+}
+
 
 /*============SHOP PAGE============*/
 .ads-panel:hover{
