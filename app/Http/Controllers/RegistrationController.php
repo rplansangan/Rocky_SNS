@@ -122,6 +122,7 @@ class RegistrationController extends Controller {
 		Auth::loginUsingId($reg->registration_id);
 		
 		
+		
 		return redirect()->route('home');
 		
 	}

@@ -15,7 +15,7 @@ Route::get('test', function() {
 Route::get('update_notif', function() {
 	$notif = Notification::withTrashed()->get();
 	
-	foreach($notif as $n) {
+	foreach($notif as $n) { 
 		$params = json_decode($n->params, true);
 		$n->notif_type = $params['notif_type'];
 		$n->save();

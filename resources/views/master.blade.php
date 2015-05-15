@@ -44,7 +44,11 @@
     @yield('content')
 
     @include('forms.ads_form_modal')
-
+    @if(Auth::check())
+	    <div id="chat-dummy" style="display:none;position:fixed;bottom:0;right:0;">
+			<iframe width="300" height="300" src="http://192.168.1.149/chat/global"></iframe>
+		</div>
+	@endif
     @include('footer')
   </body>
 </html>
