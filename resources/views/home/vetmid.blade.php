@@ -5,7 +5,7 @@
 			<form action="" method="GET" class="form-horizontal">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="form-group">
-					<label class="col-sm-2 control-label">Specialist in:</label>
+					<label class="col-sm-3 control-label">Specialist in:</label>
 					<div class="col-sm-3">
 						<select name="type" class="form-control">
 							<option value="">- Select type -</option>
@@ -16,7 +16,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">Country:</label>
+					<label class="col-sm-3 control-label">Country:</label>
 					<div class='col-sm-3'>
 						{{ country_form() }}
 					</div>

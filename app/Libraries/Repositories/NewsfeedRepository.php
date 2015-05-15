@@ -32,7 +32,9 @@ class NewsfeedRepository {
 		))->where('created_at' , '>' , $date)->where('post_user_id' , '!=' , $id)->latest()->get();
 	}
 	public function checkNewPost($id , $date){
-		return $this->nf->ofUser($id)->where('created_at' , '>' , $date)->where('post_user_id' , '!=' , $id)->count();
+		$q = $this->nf->ofUser($id)->where('created_at' , '>' , $date)->where('post_user_id' , '!=' , $id)->get();
+
+		return ($q->isEmpty()) ? 0 : $q->count(); 
 	}
 	public function initial($id, $post_uid, $take = null) {
 		if($post_uid != null) {	
