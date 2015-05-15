@@ -40,32 +40,40 @@
 			<h2>Veterinaries near you</h2>
 		</div>
 		<div class="vet-details col-sm-4" style="margin:10px 0;">
-			<img width="100%"src="{{ URL::asset('assets/images/vet1.jpg') }}">
-			<p>Dr. Veterinary One</p>
-			<p>Dog Specialist</p>
-			<p>Address 123 Bldg. 4F-3, <br> Angeles City, PH</p>
-			<p>Contact #: 000 000 000</p>
+			<a href="{{ Route('vetprof') }}"><img width="100%"src="{{ URL::asset('assets/images/vet1.jpg') }}"></a>
+			<div class="vet-info">
+				<h4><a href="{{ Route('vetprof') }}">Dr. Veterinary One</a></h4>
+				<p>Dog Specialist</p>
+				<p>Address 123 Bldg. 4F-3, <br> Angeles City, PH</p>
+				<p>Contact #: 000 000 000</p>
+			</div>
 		</div>
 		<div class="vet-details col-sm-4" style="margin:10px 0;">
-			<img width="100%"src="{{ URL::asset('assets/images/vet2.jpg') }}">
-			<p>Dr. Veterinary One</p>
-			<p>Dog Specialist</p>
-			<p>Address 123 Bldg. 4F-3, <br> Angeles City, PH</p>
-			<p>Contact #: 000 000 000</p>
+			<a href="{{ Route('vetprof') }}"><img width="100%"src="{{ URL::asset('assets/images/vet2.jpg') }}"></a>
+			<div class="vet-info">
+				<h4><a href="{{ Route('vetprof') }}">Dr. Veterinary One</a></h4>
+				<p>Dog Specialist</p>
+				<p>Address 123 Bldg. 4F-3, <br> Angeles City, PH</p>
+				<p>Contact #: 000 000 000</p>
+			</div>
 		</div>
 		<div class="vet-details col-sm-4" style="margin:10px 0;">
-			<img width="100%"src="{{ URL::asset('assets/images/vet3.jpg') }}">
-			<p>Dr. Veterinary One</p>
-			<p>Dog Specialist</p>
-			<p>Address 123 Bldg. 4F-3, <br> Angeles City, PH</p>
-			<p>Contact #: 000 000 000</p>
+			<a href="{{ Route('vetprof') }}"><img width="100%"src="{{ URL::asset('assets/images/vet3.jpg') }}"></a>
+			<div class="vet-info">
+				<h4><a href="{{ Route('vetprof') }}">Dr. Veterinary One</a></h4>
+				<p>Dog Specialist</p>
+				<p>Address 123 Bldg. 4F-3, <br> Angeles City, PH</p>
+				<p>Contact #: 000 000 000</p>
+			</div>
 		</div>
 		<div class="vet-details col-sm-4" style="margin:10px 0;">
-			<img width="100%"src="{{ URL::asset('assets/images/vet4.jpg') }}">
-			<p>Dr. Veterinary One</p>
-			<p>Dog Specialist</p>
-			<p>Address 123 Bldg. 4F-3, <br> Angeles City, PH</p>
-			<p>Contact #: 000 000 000</p>
+			<a href="{{ Route('vetprof') }}"><img width="100%"src="{{ URL::asset('assets/images/vet4.jpg') }}"></a>
+			<div class="vet-info">
+				<h4><a href="{{ Route('vetprof') }}">Dr. Veterinary One</a></h4>
+				<p>Dog Specialist</p>
+				<p>Address 123 Bldg. 4F-3, <br> Angeles City, PH</p>
+				<p>Contact #: 000 000 000</p>
+			</div>
 		</div>
 	</div>
 </div>

@@ -161,4 +161,8 @@ class HomeController extends Controller {
 		return view('pages.veterinary');
 	}
 
+	public function vetProfile(){
+		return view('pages.vetprof');
+	}
+
 }

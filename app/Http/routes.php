@@ -314,6 +314,11 @@ Route::get('vettemp', array(
 	'uses' => 'HomeController@vetTemp'
 ));
 
+Route::get('vetprofile', array(
+	'as' => 'vetprof',
+	'uses' => 'HomeController@vetProfile'
+));
+
 
 
 Route::controllers([

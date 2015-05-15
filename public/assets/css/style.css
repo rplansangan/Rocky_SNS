@@ -678,6 +678,42 @@ ul.fr-btns li {
   margin: 0 2px;
 }
 
+.vet-info {
+  margin: auto;
+  display: table;
+}
+
+.vet-info h4 a {
+  color: #8B1408;
+}
+
+.vet-booking-right {
+  margin: 30px 0;
+  padding: 15px;
+  border: 2px solid #F59E95;
+  border-radius: 6px;
+  -webkit-box-shadow: 6px 6px 8px 0px rgba(50, 50, 50, 0.45);
+  -moz-box-shadow: 6px 6px 8px 0px rgba(50, 50, 50, 0.45);
+  box-shadow: 6px 6px 8px 0px rgba(50, 50, 50, 0.45);
+}
+
+.vet-booking-right label.pay {
+  text-align: left !important;
+}
+
+.vet-booking-right h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.vetprof-left-info {
+  margin: 30px 0;
+}
+
+.vetprof-left-info img {
+  border: 2px dashed #F9BBB5;
+}
+
 
 /*============SHOP PAGE============*/
 .ads-panel:hover{
