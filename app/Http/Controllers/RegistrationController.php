@@ -49,6 +49,9 @@ class RegistrationController extends Controller {
 		if(isset($input['user_type']) && (($input['user_type']) == 3)) {
 			$user->is_foundation = 1;
 		}
+		if(isset($input['user_type']) && (($input['user_type']) == 4)) {
+			$user->is_vet = 1;
+		}
 		$user->is_deactivated = 0;
 		$user->is_validated = 0;
 		$user->save();

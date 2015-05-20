@@ -18,8 +18,17 @@
           @if (Request::url() == route('profile.showProfile', auth()->id()))
             <li role="presentation"><a href="{{ route('profile.petlist', Auth::user()->user_id) }}">Pets</a></li>
           @else
-            <li role="presentation"><a href="{{ route('profile.showProfile', Auth::id()) }}">{{ auth()->user()->registration->first_name }} {{ Auth::user()->registration->last_name }}</a></li>
+            <li role="presentation"><a href="{{ route('profile.showProfile', Auth::id()) }}">
+              @if(Auth::user()->is_foundation === 1 || Auth::user()->is_vet === 1)
+                Profile
+              @else
+                {{ auth()->user()->registration->first_name }} {{ Auth::user()->registration->last_name }}
+              @endif
+            </a></li>
           @endif
+        @if(Auth::user()->is_vet === 1)
+          <li role="presentation"><a href="#">Management</a></li>
+        @endif
         <li role="presentation"><a href="{{  route('search') }}">Search</a></li>
         <li role="presentation">
           <a href=""><span class="glyphicon glyphicon-envelope"></span></a>

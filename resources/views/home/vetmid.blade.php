@@ -1,6 +1,6 @@
 <div class="col-xs-12 vet-mid">
 	<div class="row">
-		<legend><h3>VETERINARIES - Still under construction</h3></legend>
+		<legend><h3>VETERINARIANS - Still under construction</h3></legend>
 		<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 vet-search">
 			<form action="" method="GET" class="form-horizontal">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">

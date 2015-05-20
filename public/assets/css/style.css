@@ -179,7 +179,7 @@ a:hover {
 }
 
 .land-right-missing img, .land-left-found img {
-  border: 10px dotted #FFB2AB;
+  border: 8px dotted #FFB2AB;
   margin: 10px;
 }
 
