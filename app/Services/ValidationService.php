@@ -12,13 +12,13 @@ class ValidationService {
 	 * 
 	 * @var Registration;
 	 */
-	protected $registration;
+	private $registration;
 	
 	/**
 	 * 
 	 * @var string
 	 */
-	protected $hash;
+	private $hash;
 	
 	/**
 	 * 
@@ -30,7 +30,7 @@ class ValidationService {
 	 * 
 	 * @var string
 	 */
-	protected $is_validated;
+	public $is_validated;
 	
 	/**
 	 * 
@@ -114,11 +114,8 @@ class ValidationService {
 		return $this->query['registration'] = $query;;
 	}
 	
-	protected function confirmRegistration() {
-		$query = Registration::find($this->id)->get();
-		$is_validated = $query->fetch('is_validated');
-		
-		if($is_validated[0] == 1) {
+	protected function confirmRegistration() {		
+		if($this->registration->is_validated == 1) {
 			$this->errors['validated'] = Lang::get('emailvalidation.message_validation_validated');
 			$this->is_validated = true;
 			return true;

@@ -100,7 +100,7 @@ class RegistrationController extends Controller {
 			}
 			$reg->save();
 		}	
-
+		
 		if($request->file('userfile') != null) {
 			$file = $request->file('userfile');
 			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
@@ -119,13 +119,10 @@ class RegistrationController extends Controller {
 			
 			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
 // 			StorageHelper::store($dir, $filename, $file);
-		}
-		
+		}		
 
-		Auth::loginUsingId($reg->registration_id);
-		
-		
-		
+		Auth::loginUsingId($reg->user->user_id);
+				
 		return redirect()->route('home');
 		
 	}

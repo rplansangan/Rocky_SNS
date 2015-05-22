@@ -31,7 +31,7 @@ class Comments extends Model {
 	
 	// RELATIONSHIPS
 	public function user() {
-		return $this->belongsTo('SNS\Models\Registration', 'comment_user_id');
+		return $this->hasOne('SNS\Models\Registration', 'user_id', 'comment_user_id');
 	}
 	
 	public function post() {

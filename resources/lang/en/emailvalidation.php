@@ -1,5 +1,6 @@
 <?php
 return array(
+		'login.not_validated' => 'Account not yet validated.',
 		'message_header' => 'Confirm Your Rocky The Superdog Account',
 		'message_body_0' => 'Hi :name, thank you for joining our community.
 Please Verify this email address to complete your Rocky The Superdog account by clicking the link below:

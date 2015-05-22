@@ -18,10 +18,12 @@ class LoginController extends Controller {
 		$this->middleware('guest');
 		
 		$input = array_except($request->all(), array('_token'));
-		$input = array_merge($input, array('is_validated' => 1));
 		
 		if (Auth::attempt($input)) {
-			return redirect()->intended('home');
+			if(!Auth::user()->is_validated) {
+				$id = Auth::user()->registration->registration_id; Auth::logout();
+				return view('pages.message', ['id' => $id])->withErrors(['message' => [trans('emailvalidation.login.not_validated')]]);
+			}
 		} else {
 			return redirect()->route('login.attempt')->with('message' , ' Wrong Email / Password');
 		}
