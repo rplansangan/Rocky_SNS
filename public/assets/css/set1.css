@@ -957,7 +957,7 @@
 	display: block;
 	overflow: hidden;
 	margin: 8px 0;
-  	background: #FDD0CC;
+  	background: #F27C70;
 }
 
 .input__field--kaede {
@@ -967,7 +967,7 @@
 	width: 60%;
 	height: 100%;
 	background: #fff;
-	color: #9DABBA;
+	color: #333;
 	-webkit-transition: -webkit-transform 0.5s;
 	transition: transform 0.5s;
 	-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
@@ -991,6 +991,7 @@
 
 .input__label-content--kaede {
 	padding: 5px 0;
+	 color: #000;
 }
 
 .input__field--kaede:focus,
