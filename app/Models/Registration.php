@@ -36,7 +36,6 @@ class Registration extends Model {
 			'email_address' => 'required|confirmed|unique:registrations',
 			'first_name' => 'required',
 			'last_name' => 'required',
-			'birth_date' => 'required',
 			'gender' => 'required',
 			'password' => 'required|confirmed|min:6|max:24',
 	);

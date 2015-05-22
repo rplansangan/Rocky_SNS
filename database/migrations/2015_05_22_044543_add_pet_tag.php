@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIsVet extends Migration {
+class AddPetTag extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,8 +12,8 @@ class CreateIsVet extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('users', function(Blueprint $t) {
-			$t->boolean('is_vet')->default(0);
+		Schema::table('pets', function(Blueprint $t) {
+			$t->string('rocky_tag_no', 50);
 		});
 	}
 
@@ -24,8 +24,8 @@ class CreateIsVet extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('user', function(Blueprint $t) {
-			$t->dropColumn(['is_vet']);
+		Schema::table('pets', function(Blueprint $t) {
+			$t->dropColumn(['rocky_tag_no']);
 		});
 	}
 
