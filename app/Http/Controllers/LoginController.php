@@ -23,6 +23,8 @@ class LoginController extends Controller {
 			if(!Auth::user()->is_validated) {
 				$id = Auth::user()->registration->registration_id; Auth::logout();
 				return view('pages.message', ['id' => $id])->withErrors(['message' => [trans('emailvalidation.login.not_validated')]]);
+			} else {
+				return redirect()->intended('home');
 			}
 		} else {
 			return redirect()->route('login.attempt')->with('message' , ' Wrong Email / Password');
