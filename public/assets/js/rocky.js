@@ -144,7 +144,7 @@ $(document).ready(function(){
 	});
 
 	$('[data-toggle="tooltip"]').tooltip({
-		placement : 'top'
+		placement : 'left'
 	});
 
 	$('#shopModal').on('show.bs.modal', function (event) {

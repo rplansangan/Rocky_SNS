@@ -305,6 +305,12 @@ Route::get('vetprofile', array(
 	'uses' => 'HomeController@vetProfile'
 ));
 
+//test
+Route::get('layoutone', array(
+	'as' => 'layoutone',
+	'uses' => 'WelcomeController@layoutOne'
+));
+
 
 
 Route::controllers([

@@ -85,12 +85,6 @@ Welcome to Rocky The Superdog
 								</label>
 							</span>
 							<div class="form-group col-sm-12">
-								<label class="col-sm-5 control-label">Birthdate:</label>
-								<div class="col-sm-7">
-									<input class=" datepicker form-control" type="text" name="birth_date"  required />
-								</div>
-							</div>
-							<div class="form-group col-sm-12">
 								<label class="col-sm-4 col-sm-offset-1 control-label">Gender:</label>
 								<div class="radio col-sm-2">
 									<label>
@@ -153,12 +147,6 @@ Welcome to Rocky The Superdog
 									<span class="input__label-content input__label-content--kaede">Last Name</span>
 								</label>
 							</span>
-							<div class="form-group col-sm-12">
-								<label class="col-sm-5 control-label">Birthdate:</label>
-								<div class="col-sm-7">
-									<input class=" datepicker form-control" type="text" name="birth_date"  required />
-								</div>
-							</div>
 							<div class="form-group col-sm-12">
 								<label class="col-sm-4 col-sm-offset-1 control-label">Gender:</label>
 								<div class="radio col-sm-2">
@@ -223,12 +211,6 @@ Welcome to Rocky The Superdog
 								</label>
 							</span>
 							<div class="form-group col-sm-12">
-								<label class="col-sm-5 control-label">Birthdate:</label>
-								<div class="col-sm-7">
-									<input class=" datepicker form-control" type="text" name="birth_date"  required />
-								</div>
-							</div>
-							<div class="form-group col-sm-12">
 								<label class="col-sm-4 col-sm-offset-1 control-label">Gender:</label>
 								<div class="radio col-sm-2">
 									<label>
@@ -291,12 +273,6 @@ Welcome to Rocky The Superdog
 									<span class="input__label-content input__label-content--kaede">Last Name</span>
 								</label>
 							</span>
-							<div class="form-group col-sm-12">
-								<label class="col-sm-5 control-label">Birthdate:</label>
-								<div class="col-sm-7">
-									<input class=" datepicker form-control" type="text" name="birth_date"  required />
-								</div>
-							</div>
 							<div class="form-group col-sm-12">
 								<label class="col-sm-4 col-sm-offset-1 control-label">Gender:</label>
 								<div class="radio col-sm-2">

@@ -73,6 +73,87 @@ a:hover {
   background-color: #FCD0CC;
 }
 
+.formtag .glyphicon {
+  color: #FFF;
+}
+
+.tagnum {
+  margin-top: 30px;
+  padding: 15px;
+  text-align: center;
+}
+
+.missfounbtn {
+  margin: 20px 0;
+}
+
+.missfounbtn a {
+  padding: 5px;
+  margin: 0 5px;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.missfounbtn a:hover {
+  background: #fff;
+  color: #333;
+  border: 1px solid #fff;
+}
+
+input.tagbtn {
+  background: #F9BBB5;
+  border: 1px solid #CCC;
+  border-radius: 2px;
+  padding: 2px;
+  color: #6F6B6B;
+}
+
+input.inputag {
+  border-top: 2px solid #9A9A9A;
+  border-bottom: 2px solid #EEE;
+  background: #F7E5E3;
+}
+
+/*layoutone*/
+.tagnumone {
+  padding: 10px;
+  padding-left: 0;
+}
+
+.tagnumone a {
+  padding: 6px;
+  color: #fff;
+  background: #E74C3C;
+  border-radius: 4px;
+  margin: 0 5px;
+  margin-left: 0;
+}
+
+.tagnumone a:hover {
+  color: #333;
+  border: 1px solid #E74C3C;
+  background: transparent;
+}
+
+input.tagbtnone {
+  background: #E74C3C;
+  border: 1px solid #CCC;
+  border-radius: 2px;
+  padding: 3px;
+  color: #fff;
+}
+
+.btn-separator:after {
+  content: ' ';
+  display: inline-block;
+  float: none;
+  background: #A0A0A0;
+  margin: -10px 0;
+  height: 29px;
+  width: 1px;
+}
+
+
 /*============SUBHeader============*/
 .subhead-content {
   background: #F9BBB5;
@@ -201,7 +282,7 @@ button.btn_found, button.btn_missing {
 }
 
 .land-vid {
-  margin-top: 60px;
+  margin-top: 40px;
   margin-bottom: 30px;
 }
 
@@ -255,6 +336,16 @@ button.btn_found, button.btn_missing {
   background-color: #FAD6D6;
   text-decoration: none;
   border-bottom: 4px solid #F29F96;
+}
+
+.wording {
+  margin: 25px 0;
+  padding: 10px;
+  background: #F9EDEC;
+}
+
+.headabout {
+  margin: 25px 20px;
 }
 
 

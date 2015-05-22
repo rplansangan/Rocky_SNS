@@ -39,4 +39,8 @@ class WelcomeController extends Controller {
 		return view('pages.mainpage');
 	}
 
+	public function layoutOne()
+	{
+		return view('pages.loland');
+	}
 }

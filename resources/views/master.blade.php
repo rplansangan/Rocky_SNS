@@ -31,7 +31,11 @@
     <script src="{{ URL::asset('assets/js/component.js') }}"></script>
   </head>
   <body>
-    @include('top')
+    @if(Request::url() == route('layoutone'))
+        @include('pages.toplayoutone')
+    @else
+        @include('top')
+    @endif
     
     @if($errors->any())
     	<ul>

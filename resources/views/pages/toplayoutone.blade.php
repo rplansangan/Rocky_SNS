@@ -1,22 +1,10 @@
  <div class="header-container">
-  <div class="container">
-    <div class="col-md-4 col-lg-4 logo">
+  <div class="container one">
+    <div class="col-md-6 col-lg-6 logo">
       <img src="{{ URL::asset('assets/images/rocky-logo.png') }}">
     </div>
-    <div class="col-md-4 col-lg-4 tagnum">
-      <div class="formtag">
-        <form>
-          <div class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="left" title="If you found a pet that has a tag number, please enter it in the input text and hit enter then proceed to the next step."></div>
-          <input type="text" class="inputag" placeholder="Input pet tag number">
-          <input type="submit" class="tagbtn" value="ENTER">
-        </form>
-      </div>
-      <div class="missfounbtn">
-        <a href="#" data-toggle="tooltip" data-placement="left" title="If you've lost your pet, please login and click the 'Rocky, find my pet' button and fillup the form.">Rocky, find my pet</a>
-        <a href="#" data-toggle="tooltip" data-placement="left" title="If you found a pet but doesn't have a tag number, click the 'I found a pet!' button and fillup the form.">I found a pet!</a>
-      </div>
-    </div>
-    <div class="col-md-4 col-lg-4 pt-links text-right">
+   
+    <div class="col-md-6 col-lg-6 pt-links text-right">
        <a class="about"  href="#">About</a>
        <a class="privacy"  href="#">Privacy</a>
        <a class="terms" href="#">Terms</a>
@@ -75,6 +63,16 @@
   <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 subhead-content">
    <div class="container">
      <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 slogan">
+       <div class="col-md-12 col-lg-12 tagnumone">
+          <form>
+            <a href="#" data-toggle="tooltip" data-placement="left" title="If you've lost your pet, please login and click the 'Rocky, find my pet' button and fillup the form.">Rocky, find my pet</a>
+            <a href="#" data-toggle="tooltip" data-placement="left" title="If you found a pet but doesn't have a tag number, click the 'I found a pet!' button and fillup the form.">I found a pet!</a>
+            <span class="btn-separator"></span> &nbsp;
+            <div class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="left" title="If you found a pet that has a tag number, please enter it in the input text and hit enter then proceed to the next step."></div>
+            <input type="text" class="inputag" placeholder="Input pet tag number">
+            <input type="submit" class="tagbtnone" value="Enter">
+          </form>
+      </div>
       <h1>The Newest Community For Pet Lovers</h1>
     </div>
 

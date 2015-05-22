@@ -1,29 +1,19 @@
 @extends('master')
-@section('site_title')
-Welcome to Rocky The Superdog
-@stop
-
 @section('content')
 <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 landing-content text-center">
-	<div class="aboutsum col-sm-12 col-xs-12 col-md-3 col-lg-3 text-left">
-		<div class="headabout">
-			<h4>Pet lovers? Pet walkers? Pet shops? Pet Groomers? Veterinarians?</h4>
-			<h3>You can find them all here!</h3>
-		</div>
+	<div class="foud-missing col-sm-12 col-xs-12 col-md-3 col-lg-3">
+		ABOUT
 	</div>
 	<div class="land-mid-vid-btn col-sm-12 col-xs-12 col-md-6 col-lg-6">
-		<div class="wording">
-			<h2>Join Rocky Superdog for FREE</h2>
-			<h4>and showoff your lovely pets with other pet lovers!</h4>
-		</div>
-		<div class="land-btn col-sm-12 col-xs-12 col-md-12 col-lg-12 text-center">
-			<a class="redi-btn" href="{{ route('signup') }}">
-				Signup Here
-			</a>
-			&nbsp; now.
-		</div>
 		<div class="land-vid col-sm-12 col-xs-12 col-md-12 col-lg-12">
 			<iframe width="100%" height="385" src="https://www.youtube.com/embed/V4BFzpAcYc4?autoplay=1" frameborder="0" allowfullscreen></iframe>
+		</div>
+
+		<div class="land-btn col-sm-12 col-xs-12 col-md-12 col-lg-12 text-center">
+			Want to join our awesome community? &nbsp;
+			<a class="redi-btn" href="{{ route('signup') }}">
+				Signup Here!
+			</a>
 		</div>
 	</div>
 
