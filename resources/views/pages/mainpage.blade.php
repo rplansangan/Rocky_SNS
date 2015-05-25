@@ -4,6 +4,7 @@ Welcome to Rocky The Superdog
 @stop
 
 @section('content')
+<input type="hidden" id="checkemail" value="{{ Route('checkemail') }}" token="{{ csrf_token() }}">
 <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 land-content">
 	<div class="container">
 		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 land-main-cont">
@@ -36,10 +37,10 @@ Welcome to Rocky The Superdog
 
 				  <!-- Nav tabs -->
 				  <ul class="nav nav-tabs" role="tablist">
-				    <li role="presentation" class="active"><a href="#mem" aria-controls="mem" role="tab" data-toggle="tab">Member</a></li>
-				    <li role="presentation"><a href="#merch" aria-controls="merch" role="tab" data-toggle="tab">Merchant</a></li>
-				    <li role="presentation"><a href="#foundation" aria-controls="foundation" role="tab" data-toggle="tab">Pet Foundation</a></li>
-				    <li role="presentation"><a href="#vet" aria-controls="vet" role="tab" data-toggle="tab">Veterinarian</a></li>
+				    <li role="presentation" class="active"><a href="#mem" class="tabclick" aria-controls="mem" role="tab" data-toggle="tab">Member</a></li>
+				    <li role="presentation"><a href="#merch" class="tabclick" aria-controls="merch" role="tab" data-toggle="tab">Merchant</a></li>
+				    <li role="presentation"><a href="#foundation" class="tabclick" aria-controls="foundation" role="tab" data-toggle="tab">Pet Foundation</a></li>
+				    <li role="presentation"><a href="#vet" class="tabclick" aria-controls="vet" role="tab" data-toggle="tab">Veterinarian</a></li>
 				  </ul>
 
 				  <!-- Tab panes -->
@@ -49,11 +50,12 @@ Welcome to Rocky The Superdog
 				    	<form action="{{ route('register') }}" method="POST" class="form-horizontal">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}"><input type="hidden" name="user_type" value="1">
 							<span class="input input--kaede">
-								<input class="input__field input__field--kaede" type="email" name="email_address" id="input-35" required />
+								<input class="input__field input__field--kaede regemail1" token="{{ csrf_token() }}" type="email" name="email_address" id="input-35" required />
 								<label class="input__label input__label--kaede" for="input-35">
 									<span class="input__label-content input__label-content--kaede">Email Address</span>
 								</label>
 							</span>
+							<div class="divCheckEmail"></div>
 							<span class="input input--kaede">
 								<input class="input__field input__field--kaede" type="email" name="email_address_confirmation" id="input-36" required />
 								<label class="input__label input__label--kaede" for="input-36">
@@ -61,17 +63,19 @@ Welcome to Rocky The Superdog
 								</label>
 							</span>
 							<span class="input input--kaede">
-								<input class="input__field input__field--kaede" type="password" name="password" id="input-37" required />
+								<input class="input__field input__field--kaede txtNewPassword passlen" type="password" name="password" id="input-37" data-placement="left" title="Minimum of 6 characters" required />
 								<label class="input__label input__label--kaede" for="input-37">
 									<span class="input__label-content input__label-content--kaede">Password</span>
 								</label>
 							</span>
+							<div class="divCheckPasswordLen"></div>
 							<span class="input input--kaede">
-								<input class="input__field input__field--kaede" type="password" name="password_confirmation" id="input-38" required />
+								<input class="input__field input__field--kaede txtConfirmPassword" onChange="checkPasswordMatch();" type="password" name="password_confirmation" id="input-38" required />
 								<label class="input__label input__label--kaede" for="input-38">
 									<span class="input__label-content input__label-content--kaede">Confirm Password</span>
 								</label>
 							</span>
+							<div class="divCheckPasswordMatch" id="registrationFormAlert"></div>
 							<span class="input input--kaede">
 								<input class="input__field input__field--kaede" type="text" name="first_name" id="input-39" required />
 								<label class="input__label input__label--kaede" for="input-39">
@@ -102,7 +106,7 @@ Welcome to Rocky The Superdog
 							<p class="col-sm-12 text-center">By clicking the Sign Up button, you agree to our <a href="#">Terms</a> and that you have read our <a href="#">Privacy policy</a>.</p>
 							<div class="form-group text-right">
 								<div class="col-sm-offset-2 col-sm-10">
-									<input type="submit" value="Sign Up" class="btn btn-default">
+									<input type="submit" value="Sign Up" class="btn btn-default" id="submit">
 								</div>
 							</div>
 						</form>
@@ -112,11 +116,12 @@ Welcome to Rocky The Superdog
 				    	<form action="{{ route('register') }}" method="POST" class="form-horizontal">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}"><input type="hidden" name="user_type" value="2">
 							<span class="input input--kaede">
-								<input class="input__field input__field--kaede" type="email" name="email_address" id="input-55" required />
+								<input class="input__field input__field--kaede regemail1" token="{{ csrf_token() }}" type="email" name="email_address" id="input-55" required />
 								<label class="input__label input__label--kaede" for="input-55">
 									<span class="input__label-content input__label-content--kaede">Email Address</span>
 								</label>
 							</span>
+							<div class="divCheckEmail"></div>
 							<span class="input input--kaede">
 								<input class="input__field input__field--kaede" type="email" name="email_address_confirmation" id="input-56" required />
 								<label class="input__label input__label--kaede" for="input-56">
@@ -124,17 +129,20 @@ Welcome to Rocky The Superdog
 								</label>
 							</span>
 							<span class="input input--kaede">
-								<input class="input__field input__field--kaede" type="password" name="password" id="input-57" required />
+								<input class="input__field input__field--kaede txtNewPasswordtwo passlen" type="password" name="password" id="input-57" required />
 								<label class="input__label input__label--kaede" for="input-57">
 									<span class="input__label-content input__label-content--kaede">Password</span>
 								</label>
 							</span>
+							<div class="divCheckPasswordLen"></div>
 							<span class="input input--kaede">
-								<input class="input__field input__field--kaede" type="password" name="password_confirmation" id="input-58" required />
+								<input class="input__field input__field--kaede txtConfirmPasswordtwo" onChange="checkPasswordMatch();" type="password" name="password_confirmation" id="input-58" required />
 								<label class="input__label input__label--kaede" for="input-58">
 									<span class="input__label-content input__label-content--kaede">Confirm Password</span>
 								</label>
 							</span>
+							<div class="divCheckPasswordMatch" id="registrationFormAlert"></div>
+							
 							<span class="input input--kaede">
 								<input class="input__field input__field--kaede" type="text" name="first_name" id="input-59" required />
 								<label class="input__label input__label--kaede" for="input-59">
@@ -175,11 +183,12 @@ Welcome to Rocky The Superdog
 				    	<form action="{{ route('register') }}" method="POST" class="form-horizontal">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}"><input type="hidden" name="user_type" value="3">
 							<span class="input input--kaede">
-								<input class="input__field input__field--kaede" type="email" name="email_address" id="input-61" required />
+								<input class="input__field input__field--kaede regemail1" token="{{ csrf_token() }}" type="email" name="email_address" id="input-61" required />
 								<label class="input__label input__label--kaede" for="input-61">
 									<span class="input__label-content input__label-content--kaede">Email Address</span>
 								</label>
 							</span>
+							<div class="divCheckEmail"></div>
 							<span class="input input--kaede">
 								<input class="input__field input__field--kaede" type="email" name="email_address_confirmation" id="input-62" required />
 								<label class="input__label input__label--kaede" for="input-62">
@@ -187,17 +196,19 @@ Welcome to Rocky The Superdog
 								</label>
 							</span>
 							<span class="input input--kaede">
-								<input class="input__field input__field--kaede" type="password" name="password" id="input-63" required />
+								<input class="input__field input__field--kaede txtNewPasswordthr passlen" type="password" name="password" id="input-63" required />
 								<label class="input__label input__label--kaede" for="input-63">
 									<span class="input__label-content input__label-content--kaede">Password</span>
 								</label>
 							</span>
+							<div class="divCheckPasswordLen"></div>
 							<span class="input input--kaede">
-								<input class="input__field input__field--kaede" type="password" name="password_confirmation" id="input-64" required />
+								<input class="input__field input__field--kaede txtConfirmPasswordthr" onChange="checkPasswordMatch();" type="password" name="password_confirmation" id="input-64" required />
 								<label class="input__label input__label--kaede" for="input-64">
 									<span class="input__label-content input__label-content--kaede">Confirm Password</span>
 								</label>
 							</span>
+							<div class="divCheckPasswordMatch" id="registrationFormAlert"></div>
 							<span class="input input--kaede">
 								<input class="input__field input__field--kaede" type="text" name="first_name" id="input-65" required />
 								<label class="input__label input__label--kaede" for="input-65">
@@ -238,11 +249,12 @@ Welcome to Rocky The Superdog
 				    	<form action="{{ route('register') }}" method="POST" class="form-horizontal">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}"><input type="hidden" name="user_type" value="4">
 							<span class="input input--kaede">
-								<input class="input__field input__field--kaede" type="email" name="email_address" id="input-72" required />
+								<input class="input__field input__field--kaede regemail1" token="{{ csrf_token() }}" type="email" name="email_address" id="input-72" required />
 								<label class="input__label input__label--kaede" for="input-72">
 									<span class="input__label-content input__label-content--kaede">Email Address</span>
 								</label>
 							</span>
+							<div class="divCheckEmail"></div>
 							<span class="input input--kaede">
 								<input class="input__field input__field--kaede" type="email" name="email_address_confirmation" id="input-67" required />
 								<label class="input__label input__label--kaede" for="input-67">
@@ -250,17 +262,19 @@ Welcome to Rocky The Superdog
 								</label>
 							</span>
 							<span class="input input--kaede">
-								<input class="input__field input__field--kaede" type="password" name="password" id="input-68" required />
+								<input class="input__field input__field--kaede txtNewPasswordfor passlen" type="password" name="password" id="input-68" required title="minimum of 6 characters" />
 								<label class="input__label input__label--kaede" for="input-68">
 									<span class="input__label-content input__label-content--kaede">Password</span>
 								</label>
 							</span>
+							<div class="divCheckPasswordLen"></div>
 							<span class="input input--kaede">
-								<input class="input__field input__field--kaede" type="password" name="password_confirmation" id="input-69" required />
+								<input class="input__field input__field--kaede txtConfirmPasswordfor" onChange="checkPasswordMatch();" type="password" name="password_confirmation" id="input-69" required />
 								<label class="input__label input__label--kaede" for="input-69">
 									<span class="input__label-content input__label-content--kaede">Confirm Password</span>
 								</label>
 							</span>
+							<div class="divCheckPasswordMatch" id="registrationFormAlert"></div>
 							<span class="input input--kaede">
 								<input class="input__field input__field--kaede" type="text" name="first_name" id="input-70" required />
 								<label class="input__label input__label--kaede" for="input-70">

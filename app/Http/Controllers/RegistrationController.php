@@ -227,4 +227,9 @@ class RegistrationController extends Controller {
 		$q->setFormName('brand');
 		return $q->formatAsSelect();
 	}
+
+	public function checkemail(Request $request){
+		$input = array_except($request->all(), array('_token'));
+		echo Registration::where('email_address' , $input['email'])->count();
+	}
 }

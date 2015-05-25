@@ -15,6 +15,11 @@ a:hover {
 	display: block !important;
 }
 
+#registrationFormAlert, .divCheckEmail {
+  background: #CBC9C9;
+  font-weight: bolder;
+}
+
 /*============Header============*/
 .header-container {
   background-color: #e74c3c;
@@ -282,7 +287,7 @@ button.btn_found, button.btn_missing {
 }
 
 .land-vid {
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 30px;
 }
 
@@ -346,6 +351,12 @@ button.btn_found, button.btn_missing {
 
 .headabout {
   margin: 25px 20px;
+}
+
+#pwdtxt:after {
+    content: attr(data-lenchk);
+    color:red;
+    font-weight: bold;
 }
 
 

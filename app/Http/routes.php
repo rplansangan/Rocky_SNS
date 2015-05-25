@@ -313,6 +313,14 @@ Route::get('layoutone', array(
 
 
 
+//email
+
+Route::post('checkemail', array(
+	'as' => 'checkemail',
+	'uses' => 'RegistrationController@checkemail'
+));
+
+
 Route::controllers([
 // 	'auth' => 'Auth\AuthController',
 // 	'password' => 'Auth\PasswordController',

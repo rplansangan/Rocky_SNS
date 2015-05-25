@@ -4,3 +4,5 @@
 
 public/assets/images/Thumbs.db
 public/assets/images/Thumbs.db
+resources/views/forms/ads_form_modal.blade.php
+resources/views/pages/landing.blade.php
