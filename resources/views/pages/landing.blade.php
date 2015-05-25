@@ -5,10 +5,36 @@ Welcome to Rocky The Superdog
 
 @section('content')
 <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 landing-content text-center">
-	<div class="aboutsum col-sm-12 col-xs-12 col-md-3 col-lg-3 text-left">
+	<div class="aboutsum col-sm-12 col-xs-12 col-md-3 col-lg-3 text-center">
 		<div class="headabout">
-			<h4>Pet lovers? Pet walkers? Pet shops? Pet Groomers? Veterinarians?</h4>
+			<h4>Pet lovers? Pet walkers? Pet shops? Pet Groomers? Pet Foundations? Veterinarians?</h4>
 			<h3>You can find them all here!</h3>
+		</div>
+		<div class="otherabt col-md-12 col-lg-12 text-left">
+			<div class="iconsabout col-md-4 col-lg-4">
+				<img src="{{ URL::asset('assets/images/what.png') }}">
+			</div>
+			<div class="iconsabout col-md-8 col-lg-8">
+				<p>You can create an account as a member, pet foundation, merchant or even veterinarian.</p>
+			</div>
+			<div class="iconsabout col-md-4 col-lg-4">
+				<img src="{{ URL::asset('assets/images/share.png') }}">
+			</div>
+			<div class="iconsabout col-md-8 col-lg-8">
+				<p>Share news, photos and videos of your pets with other pet lovers.</p>
+			</div>
+			<div class="iconsabout col-md-4 col-lg-4">
+				<img src="{{ URL::asset('assets/images/help.png') }}">
+			</div>
+			<div class="iconsabout col-md-8 col-lg-8">
+				<p>Help pet foundations by adopting or donating and help other pet owners that lost their pets.</p>
+			</div>
+			<div class="iconsabout col-md-4 col-lg-4">
+				<img src="{{ URL::asset('assets/images/conn.png') }}">
+			</div>
+			<div class="iconsabout col-md-8 col-lg-8">
+				<p>Connect with other pet lovers, pet groomers, pet walkers, pet shops, pet foundations and veterinarians near you.</p>
+			</div>
 		</div>
 	</div>
 	<div class="land-mid-vid-btn col-sm-12 col-xs-12 col-md-6 col-lg-6">

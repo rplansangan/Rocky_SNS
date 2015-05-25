@@ -350,13 +350,20 @@ button.btn_found, button.btn_missing {
 }
 
 .headabout {
-  margin: 25px 20px;
+  margin: 25px 0;
+  padding: 0 10px;
+  text-align: center;
 }
 
 #pwdtxt:after {
     content: attr(data-lenchk);
     color:red;
     font-weight: bold;
+}
+
+.iconsabout {
+  margin: 10px 0;
+  min-height: 90px;
 }
 
 
