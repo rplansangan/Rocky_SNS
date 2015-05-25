@@ -60,7 +60,7 @@ class RegistrationController extends Controller {
 		$reg->email_address = $input['email_address'];
 		$reg->last_name = $input['last_name'];
 		$reg->first_name = $input['first_name'];
-		$reg->birth_date = $input['birth_date'];
+// 		$reg->birth_date = $input['birth_date'];
 		$reg->gender = $input['gender'];
 		$reg->user_id = $user->user_id;
 		$reg->is_deactivated = 0;
