@@ -105,11 +105,11 @@ a:hover {
   border: 1px solid #fff;
 }
 
-input.tagbtn {
+a.tagbtn {
   background: #F9BBB5;
   border: 1px solid #CCC;
   border-radius: 2px;
-  padding: 2px;
+  padding: 3px;
   color: #6F6B6B;
 }
 
@@ -272,6 +272,7 @@ input.tagbtnone {
 .land-left-found a, .land-right-missing a {
   color: #E74C3C;
   text-transform: uppercase;
+  font-size: 22px;
 }
 
 .land-left-found a:hover, .land-right-missing a:hover {
@@ -364,6 +365,16 @@ button.btn_found, button.btn_missing {
 .iconsabout {
   margin: 10px 0;
   min-height: 90px;
+}
+
+
+/*============Found Pets============*/
+#foundwtag .modal-body{
+  padding: 0;
+}
+
+.foundpettag_details, .findertag_details {
+  margin: 15px 0;
 }
 
 

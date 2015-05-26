@@ -8,12 +8,12 @@
         <form>
           <div class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="left" title="If you found a pet that has a tag number, please enter it in the input text and hit enter then proceed to the next step."></div>
           <input type="text" class="inputag" placeholder="Input pet tag number">
-          <input type="submit" class="tagbtn" value="ENTER">
+          <a href="javascript:void(0)" class="tagbtn" data-toggle="modal" data-target="#foundwtag" data-recipient="">ENTER</a>
         </form>
       </div>
       <div class="missfounbtn">
         <a href="#" data-toggle="tooltip" data-placement="left" title="If you've lost your pet, please login and click the 'Rocky, find my pet' button and fillup the form.">Rocky, find my pet</a>
-        <a href="#" data-toggle="tooltip" data-placement="left" title="If you found a pet but doesn't have a tag number, click the 'I found a pet!' button and fillup the form.">I found a pet!</a>
+        <a href="#" class="foundpet" data-toggle="tooltip" data-placement="left" title="If you found a pet but doesn't have a tag number, click the 'I found a pet!' button and fillup the form.">I found a pet!</a>
       </div>
     </div>
     <div class="col-md-4 col-lg-4 pt-links text-right">

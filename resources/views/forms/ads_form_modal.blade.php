@@ -58,33 +58,295 @@
 </div>
 
 
-<!-- I FOUND A PET & FIND MY PET FORM -->
-<div class="modal fade" id="misfo" tabindex="-1" role="dialog" aria-labelledby="misfoLabel" aria-hidden="true">
+<!-- I FOUND A PET WITH TAG NUMBER -->
+<div class="modal fade" id="foundwtag" tabindex="-1" role="dialog" aria-labelledby="foundwtagLabel" aria-hidden="true">
 	<form method="post" id="form-modal">
 		<input type="hidden" name="id" id="modal-form-id">
 		<input type="hidden" name="type" id="modal-form-type">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="misfoLabel"></h4>
+					<h4 class="modal-title" id="foundwtagLabel"></h4>
 				</div>
 				<div class="modal-body">
-					<div class="form-group">
-						<label for="type-inquire" class="control-label">Sender:</label>
-						<input type="text">
-						<p class="form-control-static modal-type-form"></p>
-					</div>
-					<div class="form-group">
-						<label for="message-inquire" class="control-label">Message:</label>
-						<textarea class="form-control primary-textarea" id="message-inquire"></textarea>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="foundpettag_details col-sm-12 col-md-6 col-lg-6">
+								<h4>Pet's Details</h4>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Pet Tag Number:</label>
+									<div class="col-sm-8">
+										<input type="text" name="pet_name" class="form-control" required>
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Pet Name:</label>
+									<div class="col-sm-8">
+										<input type="text" name="pet_name" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">How to call this pet:</label>
+									<div class="col-sm-8">
+										<input type="text" name="pet_call_attn" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Pet Type:</label>
+									<div class="col-sm-8">
+										<input type="text" name="pet_type" class="form-control" required>
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Breed:</label>
+									<div class="col-sm-8">
+										<input type="text" name="breed" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Gender:</label>
+									<div class="col-sm-8">
+										<input type="text" name="pet_gender" class="form-control" required>
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Weight in lb:</label>
+									<div class="col-sm-8">
+										<input type="text" name="weight" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Height in cm:</label>
+									<div class="col-sm-8">
+										<input type="text" name="height" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Food Style:</label>
+									<div class="col-sm-8">
+										<input type="text" name="food_style" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Food Brand:</label>
+									<div class="col-sm-8">
+										<input type="text" name="brand" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Food:</label>
+									<div class="col-sm-8">
+										<input type="text" name="food" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Feeding Interval:</label>
+									<div class="col-sm-8">
+										<input type="text" name="feeding_interval" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Feeding Time:</label>
+									<div class="col-sm-8">
+										<input type="text" name="feeding_time" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Owner:</label>
+									<div class="col-sm-8">
+										<input type="text" name="pet_owner" class="form-control">
+									</div>
+								</div>
+							</div>
+							<div class="findertag_details col-sm-12 col-md-6 col-lg-6">
+								<h4>Finder's Details</h4>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Found at:</label>
+									<div class="col-sm-8">
+										<input type="text" name="pet_foundat" class="form-control" required>
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Name:</label>
+									<div class="col-sm-8">
+										<input type="text" name="finder_name" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Email Address:</label>
+									<div class="col-sm-8">
+										<input type="text" name="finder_email" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Contact Number:</label>
+									<div class="col-sm-8">
+										<input type="text" name="finder_contact" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-6 control-label">Upload Photos of the found pet:</label>
+									<div class="col-sm-6">
+										<button type="button" class="btn btn-file" id="foundfile"><i class="fa fa-file-image-o"></i> Upload</button>
+										<input type="file" id="filephotouploader" class="hidden" required>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-file" id="sendmsgfile">Upload a Photo</button>
-					<input type="file" id="filephotouploader" class="hidden">
-					<input type="submit" class="btn btn-cancel" data-dismiss="modal" value="Send Message">
+					<input type="submit" class="btn btn-submit btn-primary" value="Send">
+					<button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<!-- I FOUND A PET -->
+<div class="modal fade" id="foundpet" tabindex="-1" role="dialog" aria-labelledby="foundpetLabel" aria-hidden="true">
+	<form method="post" id="form-modal">
+		<input type="hidden" name="id" id="modal-form-id">
+		<input type="hidden" name="type" id="modal-form-type">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="foundpetLabel"></h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="foundpettag_details col-sm-12 col-md-6 col-lg-6">
+								<h4>Pet's Details</h4>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Pet Tag Number:</label>
+									<div class="col-sm-8">
+										<input type="text" name="pet_name" class="form-control" required>
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Pet Name:</label>
+									<div class="col-sm-8">
+										<input type="text" name="pet_name" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">How to call this pet:</label>
+									<div class="col-sm-8">
+										<input type="text" name="pet_call_attn" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Pet Type:</label>
+									<div class="col-sm-8">
+										<input type="text" name="pet_type" class="form-control" required>
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Breed:</label>
+									<div class="col-sm-8">
+										<input type="text" name="breed" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Gender:</label>
+									<div class="col-sm-8">
+										<input type="text" name="pet_gender" class="form-control" required>
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Weight in lb:</label>
+									<div class="col-sm-8">
+										<input type="text" name="weight" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Height in cm:</label>
+									<div class="col-sm-8">
+										<input type="text" name="height" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Food Style:</label>
+									<div class="col-sm-8">
+										<input type="text" name="food_style" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Food Brand:</label>
+									<div class="col-sm-8">
+										<input type="text" name="brand" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Food:</label>
+									<div class="col-sm-8">
+										<input type="text" name="food" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Feeding Interval:</label>
+									<div class="col-sm-8">
+										<input type="text" name="feeding_interval" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Feeding Time:</label>
+									<div class="col-sm-8">
+										<input type="text" name="feeding_time" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Owner:</label>
+									<div class="col-sm-8">
+										<input type="text" name="pet_owner" class="form-control">
+									</div>
+								</div>
+							</div>
+							<div class="findertag_details col-sm-12 col-md-6 col-lg-6">
+								<h4>Finder's Details</h4>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Found at:</label>
+									<div class="col-sm-8">
+										<input type="text" name="pet_foundat" class="form-control" required>
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Name:</label>
+									<div class="col-sm-8">
+										<input type="text" name="finder_name" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Email Address:</label>
+									<div class="col-sm-8">
+										<input type="text" name="finder_email" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Contact Number:</label>
+									<div class="col-sm-8">
+										<input type="text" name="finder_contact" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-6 control-label">Upload Photos of the found pet:</label>
+									<div class="col-sm-6">
+										<button type="button" class="btn btn-file" id="foundfile"><i class="fa fa-file-image-o"></i> Upload</button>
+										<input type="file" id="filephotouploader" class="hidden" required>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" class="btn btn-submit btn-primary" value="Send">
 					<button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
 				</div>
 			</div>

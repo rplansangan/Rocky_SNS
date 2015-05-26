@@ -48,9 +48,15 @@ $(document).ready(function() {
 					<div class="col-sm-3 col-sm-offset-2 view-image-here"></div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">Name:</label>
+					<label class="col-sm-2 control-label">Pet Name:</label>
 					<div class="col-sm-8">
 						<input type="text" name="pet_name" class="form-control" placeholder="Name">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">How to call this pet:</label>
+					<div class="col-sm-8">
+						<input type="text" name="pet_call_attn" class="form-control" placeholder="Name">
 					</div>
 				</div>
 				<div class="form-group">
@@ -98,14 +104,12 @@ $(document).ready(function() {
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">Weight:</label>
-					<div class="col-sm-8">
+					<label class="col-sm-2 control-label">Weight in lb:</label>
+					<div class="col-sm-3">
 						<input type="text" name="weight" class="form-control" placeholder="Weight">
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Height:</label>
-					<div class="col-sm-8">
+					<label class="col-sm-2 control-label">Height in cm:</label>
+					<div class="col-sm-3">
 						<input type="text" name="height" class="form-control" placeholder="Height">
 					</div>
 				</div>

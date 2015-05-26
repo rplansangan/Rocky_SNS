@@ -322,6 +322,22 @@ $(document).ready(function(){
 		$('.land-missing').hide();
 	});
 
+	//found pets with tag number modal
+	$('#foundwtag').on('show.bs.modal', function (event) {
+		var button = $(event.relatedTarget)
+
+		var modal = $(this)
+		modal.find('.modal-title').text('I found a pet with tag number')
+	});
+
+	//found pets without tag modal
+	$('.foundpet').on('click' , function(){
+		$('#foundpet').modal('show');
+
+		var modal = $('#foundpet')
+		modal.find('.modal-title').text('I found a pet!')
+	});
+
 	//Missingpets
 	$(".land-missing" ).elastic();
 	$('.land-missing').hide();
