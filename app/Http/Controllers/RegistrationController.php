@@ -4,7 +4,7 @@ use SNS\Models\Registration;
 use SNS\Models\Pets;
 use SNS\Models\User;
 use SNS\Models\Business;
-use SNS\Services\ValidationService;
+use SNS\Libraries\Services\ValidationService as EmailValidationService;
 use SNS\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -22,7 +22,6 @@ class RegistrationController extends Controller {
 	
 	public function __construct() {
 		parent::__construct();
-		$this->service = new ValidationService();
 // 		$this->middleware('guest');
 	}
 	
@@ -60,26 +59,28 @@ class RegistrationController extends Controller {
 		$reg->email_address = $input['email_address'];
 		$reg->last_name = $input['last_name'];
 		$reg->first_name = $input['first_name'];
-// 		$reg->birth_date = $input['birth_date'];
 		$reg->gender = $input['gender'];
 		$reg->user_id = $user->user_id;
 		$reg->is_deactivated = 0;
 		$reg->is_validated = 0;
 		$reg->save();	
 		
-		$this->service->send($reg);
+		$service = new EmailValidationService();
+		$service->id($reg->registration_id)->createEmailToken();
 		
 		return view('pages.message')->with('id', $reg->registration_id)->with('validation_errors', null);
 	}
 	
 	public function validateRegistration($id, $hash) {	
-		$service = $this->service->confirm($id, $hash);
-				
-		if($service->check()) {
-			$this->service->deleteHash($id, $hash);
-			return redirect()->route('register.details', $id);
+		$service = new EmailValidationService();
+		$service->id($id)->hash($hash)->validateEmailToken();
+		
+		if($service->errors()) {		
+			return redirect()->route('pages.message')->withErrors(['message' => $service->errors()]);
 		} else {
-			return view('pages.message')->with('validation_errors', $service->errors)->with('id', $id);
+			$service->activateRegistration();
+			$service->deleteHash();
+			return redirect()->route('register.details', $id);
 		}
 	}
 	
@@ -128,13 +129,10 @@ class RegistrationController extends Controller {
 	}
 	
 	public function resend($id) {
-		$service = $this->service->resend($id);
-		
-		if($service->check()) {		
-			return view('pages.message')->with('id', $id)->with('validation_errors', null);
-		} else {
-			return redirect('/');
-		}		
+		$service = new EmailValidationService();
+		$service->id($id)->resendEmailToken();
+			
+		return view('pages.message')->with('id', $id)->with('validation_errors', null);
 	}
 
 

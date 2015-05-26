@@ -68,8 +68,7 @@ class ValidationService {
 	 * Get User's Registration details given $params['current']['id']
 	 */
 	private function getUserReg() {
-		$col = Registration::find($this->params['id'])->get();
-		return $this->reg = $col[0];
+		return $this->reg = Registration::find($this->params['id']);
 	}
 	
 	/**
@@ -83,6 +82,12 @@ class ValidationService {
 				$params['route'] = 'login.forgot.validate';
 				$params['subj_header'] = 'emailvalidation.forgot.message_header';
 				break;
+				
+			case 'registration':
+				$params['view'] = 'emails.validation';
+				$params['route'] = 'register.validateHash';
+				$params['subj_header'] = 'emailvalidation.message_header';
+				break;
 		}
 		
 		return $params;
@@ -90,7 +95,7 @@ class ValidationService {
 	
 	private function sendMail() {
 		$reg = $this->getUserReg();
-	
+		
 		$params = $this->setMailParams();
 		
 		Mail::send($params['view'], [
@@ -137,17 +142,31 @@ class ValidationService {
 		return $this;
 	}
 	
+	private function create() {
+		$this->createHash(true);
+		
+		$this->sendMail();
+		
+		$this->model->create(['registration_id' => $this->params['id'], 'type' => $this->params['type'], 'hash' => $this->hash]);
+	}
+	
 	/**
 	 * set id() before using this method.
 	 */
 	public function createPasswordToken() {
 		$this->params['type'] = 'password';
 		
-		$this->createHash(true);
+		$this->create();
 		
-		$this->sendMail();
+		return $this;
+	}
+	
+	public function createEmailToken() {
+		$this->params['type'] = 'registration';
 		
-		return $this->model->create(['registration_id' => $this->params['id'], 'type' => $this->params['type'], 'hash' => $this->hash]);
+		$this->create();
+		
+		return $this;
 	}
 	
 	/**
@@ -188,17 +207,36 @@ class ValidationService {
 		}
 	}
 	
-	
-	public function resendPasswordToken() {
-		$this->params['type'] = 'password';
-		
+	private function resend() {
 		if($this->checkPrevious() != true) {
 			return $this;
 		}
 		
 		$this->last_validation->delete();
 		
-		$this->createPasswordToken();
+		switch($this->params['type']) {
+			case 'password':
+				$this->createPasswordToken();
+				break;
+			case 'registration':
+				$this->createEmailToken();
+				break;
+		}
+		
+	}
+	
+	public function resendPasswordToken() {
+		$this->params['type'] = 'password';
+		
+		$this->resend();
+		
+		return $this;
+	}
+	
+	public function resendEmailToken() {
+		$this->params['type'] = 'registration';
+		
+		$this->resend();
 		
 		return $this;
 	}
@@ -211,9 +249,7 @@ class ValidationService {
 		}	
 	}
 	
-	public function validatePasswordToken() {
-		$this->params['type'] = 'password';
-		
+	private function validate() {
 		$this->getLastValidation();
 		
 		if($this->last_validation->hash != $this->params['hash']) {
@@ -224,6 +260,20 @@ class ValidationService {
 		if(!$this->checkTimeOut() == true) {
 			return $this;
 		}
+	}
+	
+	public function validatePasswordToken() {
+		$this->params['type'] = 'password';
+		
+		$this->validate();
+		
+		return $this;
+	}
+	
+	public function validateEmailToken() {
+		$this->params['type'] = 'registration';
+		
+		$this->validate();
 		
 		return $this;
 	}
@@ -237,6 +287,15 @@ class ValidationService {
 						->where('type', $this->params['type'])
 						->where('hash', $this->params['hash'])
 						->delete();
+	}
+	
+	public function activateRegistration() {
+		$reg = Registration::find($this->params['id']);
+		$reg->is_validated = 1;
+		$reg->save();
+		
+		$reg->load('user');
+		$reg->user->update(['is_validated' => 1]);
 	}
 	
 	public function errors() {
