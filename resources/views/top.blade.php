@@ -96,6 +96,7 @@
         <span class="col-md-2 col-lg-2">
           <button type="submit" class="btn btn-default">Login</button>
         </span>
+        <a href="{{ route('login.forgot') }}">Forgot password</a>
       </form>
     </div>
   </div>

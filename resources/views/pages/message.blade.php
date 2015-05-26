@@ -14,11 +14,8 @@ Confirm Rocky The Superdog Account
 					@endforeach
 				</ul>
 			@endif
-		
-			<h1>Final Step...</h1>
-
-			<p>Please check the email we sent you to verify your account.</p>
-			<p>Didn't receive the email? <a href="{{ route('register.validateRehash', array($id)) }}">click here</a> to resend.</p>
+			
+			{!! trans('emailvalidation.validation.message', ['route' => route('register.validateRehash', [$id])]) !!}
 		</div>
 	</div>
 </div>

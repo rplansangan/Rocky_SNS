@@ -231,7 +231,7 @@ class ProfileController extends Controller {
 		}
 	}
 	
-	protected function changePassword($params) {
+	private function changePassword($params) {
 		$validate = Validator::make(array(
 						'password' => $params['password'],
 						'new_pass' => $params['new_password'],

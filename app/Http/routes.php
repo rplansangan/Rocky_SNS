@@ -66,7 +66,30 @@ Route::get('login/attempt', array(
 	'as' => 'login.attempt',
 	'uses' => 'LoginController@attempted'
 ));
-
+Route::get('login/forgot', [
+	'as' => 'login.forgot',
+	'uses' => 'LoginController@forgotView'
+]);
+Route::get('login/forgot/msg', [
+	'as' => 'login.forgot.message',
+	'uses' => 'LoginController@forgotMessage'
+]);
+Route::post('login/forgot/process', [
+	'as' => 'login.forgot.process',
+	'uses' => 'LoginController@forgotProcess'
+]);
+Route::get('login/forgot/from/{id}/{hash}', [
+	'as' => 'login.forgot.validate',
+	'uses' => 'LoginController@validatePass'
+]);
+Route::get('login/forgot/resend/{id}', [
+	'as' => 'login.forgot.resend',
+	'uses' => 'LoginController@resendToken'
+]);
+Route::post('login/forgot/process_pass', [
+	'as' => 'login.forgot.process_pass',
+	'uses' => 'LoginController@processPass'
+]);
 Route::get('logout', array(
 	'as' => 'logout',
 	'uses' => 'LoginController@logout'
@@ -311,7 +334,11 @@ Route::get('layoutone', array(
 	'uses' => 'WelcomeController@layoutOne'
 ));
 
-
+// Upgrades
+Route::get('upgrade/{action}', [
+	'as' => 'upgrade.main',
+	'uses' => 'UpgradesController@main'
+]);
 
 //email
 

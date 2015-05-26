@@ -45,6 +45,7 @@ class ValidationService {
 	protected function createHash() {
 		$model = new EmailValidation();
 		$model->registration_id = $this->registration->registration_id;
+		$model->type = 'registration';
 		$model->hash = $this->hash;
 		return $model->save();
 	}
@@ -87,6 +88,7 @@ class ValidationService {
 	protected function performSearch() {
 		return $this->query['validation'] =  EmailValidation::where('registration_id', $this->id)
 												->where('hash', $this->hash)
+												->where('type', 'registration')
 												->orderBy('created_at', 'desc')
 												->take(1)->get();	
 	}
@@ -164,7 +166,7 @@ class ValidationService {
 	}
 	
 	public function deleteHash($id, $hash) {
-		EmailValidation::where('registration_id', $id)->where('hash', $hash)->delete();
+		EmailValidation::where('registration_id', $id)->where('hash', $hash)->where('type', 'registration')->delete();
 	}
 	
 	public function check() {

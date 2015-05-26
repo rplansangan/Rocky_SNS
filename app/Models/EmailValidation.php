@@ -19,7 +19,7 @@ class EmailValidation extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array('registration_id', 'hash');
+	protected $fillable = ['registration_id', 'hash', 'type'];
 	
 	// RELATIONSHIPS
 	public function registration() {
