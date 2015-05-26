@@ -191,8 +191,11 @@ input.tagbtnone {
   padding: 2px 5px;
 }
 
-.login form span.col-md-5 {
-  margin-top: 23px;
+.login form span.col-md-5 a {
+  font-size: 13px;
+  font-family: 'Montserrat', sans-serif important;
+  color: #E74C3C;
+  margin-top: 10px;
 }
 
 .login .btn {
@@ -375,6 +378,44 @@ button.btn_found, button.btn_missing {
 
 .foundpettag_details, .findertag_details {
   margin: 15px 0;
+}
+
+
+/*============Forgot Password============*/
+.fp-cont {
+  padding: 20px;
+  margin: 30px 0;
+}
+
+.fp-cont form {
+  border: 1px solid #BEBEBE;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.fp-cont form h3 {
+  margin: 10px 0 20px 0;
+}
+
+
+/*============Error Login============*/
+.errorlogin p {
+  visibility: hidden;
+}
+
+form.form-signin p {
+  visibility: visible;
+}
+
+form.form-signin .btn {
+  background-color: #E74C3C;
+  border: 1px solid #808080;
+  margin-bottom: 5px;
+}
+
+form.form-signin a {
+  color: #E74C3C;
+  font-size: 16px;
 }
 
 
@@ -1402,6 +1443,9 @@ a.list-group-item.vete {
   -moz-box-shadow: 0px -5px 8px 0px rgba(50, 50, 50, 0.3);
   box-shadow: 0px -5px 8px 0px rgba(50, 50, 50, 0.3);
   z-index: 999;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .footer p {

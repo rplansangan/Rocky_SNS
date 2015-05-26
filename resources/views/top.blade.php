@@ -77,30 +77,35 @@
      <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 slogan">
       <h1>The Newest Community For Pet Lovers</h1>
     </div>
-
-    <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 login">
-      <form action="{{ route('login') }}" method="POST" class="form-inline">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <span class="col-md-5 col-lg-5">
-          <input type="email" name="email_address" id="input-10" required />
-          <label for="input-10">
-            <span placeholder="Email Address">Email</span>
-          </label>
-        </span>
-        <span class="col-md-5 col-lg-5">
-          <input type="password" name="password" id="input-11" required />
-          <label for="input-11">
-            <span placeholder="Password">Password</span>
-          </label>
-        </span>
-        <span class="col-md-2 col-lg-2">
-          <button type="submit" class="btn btn-default">Login</button>
-        </span>
-        <a href="{{ route('login.forgot') }}">Forgot password</a>
-      </form>
+    @if (Request::url() == route('login.attempt'))
+      <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 login">
+        <input type="hidden">
+      </div>
+    @else
+      <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 login">
+        <form action="{{ route('login') }}" method="POST" class="form-inline">
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+          <span class="col-md-5 col-lg-5">
+            <label for="input-10">
+              <span placeholder="Email Address">Email</span>
+            </label>
+            <input type="email" name="email_address" id="input-10" required />
+          </span>
+          <span class="col-md-5 col-lg-5">
+            <label for="input-11">
+              <span placeholder="Password">Password</span>
+            </label>
+            <input type="password" name="password" id="input-11" required />
+            <a href="{{ route('login.forgot') }}">Forgot password</a>
+          </span>
+          <span class="col-md-2 col-lg-2">
+            <button type="submit" class="btn btn-default">Login</button>
+          </span>
+        </form>
+      </div>
+    @endif
     </div>
   </div>
-</div>
 
 <script src="{{ URL::asset('assets/js/classie.js') }}"></script>
     <script>

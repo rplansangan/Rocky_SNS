@@ -44,9 +44,8 @@ Welcome to Rocky The Superdog
 		</div>
 		<div class="land-btn col-sm-12 col-xs-12 col-md-12 col-lg-12 text-center">
 			<a class="redi-btn" href="{{ route('signup') }}">
-				Signup Here
+				Sign Up Here
 			</a>
-			&nbsp; now.
 		</div>
 		<div class="land-vid col-sm-12 col-xs-12 col-md-12 col-lg-12">
 			<iframe width="100%" height="385" src="https://www.youtube.com/embed/V4BFzpAcYc4?autoplay=1" frameborder="0" allowfullscreen></iframe>
@@ -63,7 +62,7 @@ Welcome to Rocky The Superdog
 				</div>
 				<div class="col-xs-12 col-sm-12 col-m-5 col-lg-5">
 					<a class="redi-btn" href="{{ route('signup') }}">
-						Signup Here!
+						Sign Up Here!
 					</a>
 				</div>
 			</div>
@@ -266,7 +265,7 @@ Welcome to Rocky The Superdog
 				</div>
 				<div class="col-xs-12 col-sm-12 col-m-5 col-lg-5">
 					<a class="redi-btn" href="{{ route('signup') }}">
-						Signup Here!
+						Sign Up Here!
 					</a>
 				</div>
 			</div>
