@@ -7,8 +7,8 @@
       <div class="formtag">
         <form>
           <div class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="left" title="If you found a pet that has a tag number, please enter it in the input text and hit enter then proceed to the next step."></div>
-          <input type="text" class="inputag" placeholder="Input pet tag number">
-          <a href="javascript:void(0)" class="tagbtn" data-toggle="modal" data-target="#foundwtag" data-recipient="">ENTER</a>
+          <input type="text" class="inputag foundpettag"  placeholder="Input pet tag number">
+          <a href="{{ Route('getpetinfo') }}" token="{{ csrf_token() }}" class="tagbtn">ENTER</a>
         </form>
       </div>
       <div class="missfounbtn">

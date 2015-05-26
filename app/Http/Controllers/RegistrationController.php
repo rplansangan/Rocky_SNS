@@ -230,4 +230,12 @@ class RegistrationController extends Controller {
 		$input = array_except($request->all(), array('_token'));
 		echo Registration::where('email_address' , $input['email'])->count();
 	}
+
+	public function getpetinfo(Request $request){
+		$input = array_except($request->all(), array('_token'));
+		$data['pet_info'] = Pets::where('rocky_tag_no' ,  $input['id'])->get();
+		$data['user_info'] = (Auth::check()) ? Registration::where('registration_id' , Auth::id())->get() : array();
+		return view('ajax.foundpet' , $data);
+	}
+		
 }

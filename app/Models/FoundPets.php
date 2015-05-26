@@ -25,8 +25,12 @@ class FoundPets extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['rocky_tag_no', 'is_guest', 'user_id', 'found_in_remark', 'finder_address1', 'finder_address2', 'finder_city', 'finder_country_code', 'finder_area_code', 'finder_tel_no'];
+	protected $fillable = ['rocky_tag_no', 'is_guest', 'user_id', 'found_in_remark',  'finder_name', 'finder_address1', 'finder_address2', 'finder_city', 'finder_country_code', 'finder_area_code', 'finder_tel_no'];
 	
 	protected $dates = ['deleted_at'];
 
+
+	public function image() {
+		return $this->hasMany('SNS\Models\LostFoundPetImages', 'found_id' , 'found_id');
+	}
 }

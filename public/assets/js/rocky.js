@@ -393,6 +393,25 @@ $(document).ready(function(){
     		}
     	});
 	 });
+
+
+	 $('.tagbtn').on('click' , function(e){
+	 	var id = $('.foundpettag').val();
+	 	$.ajax({
+    		url: $(this).attr('href'),
+    		data: { 
+    				id:id,
+    				_token:$(this).attr('token')
+    		},
+    		type: 'post',
+    		success:function(r){ 
+    			$('.loadmodalhere').html(r);
+    			$('#foundwtag').modal('show');
+    		}
+    	});
+    	e.preventDefault();
+	 }); 
+
 });
 
 	

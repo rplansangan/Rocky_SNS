@@ -347,7 +347,14 @@ Route::post('checkemail', array(
 	'uses' => 'RegistrationController@checkemail'
 ));
 
-
+Route::post('getpetinfo', array(
+	'as' => 'getpetinfo',
+	'uses' => 'RegistrationController@getpetinfo'
+));
+Route::post('addmissingpet', array(
+	'as' => 'addmissingpet',
+	'uses' => 'WelcomeController@addmissingpet'
+));
 Route::controllers([
 // 	'auth' => 'Auth\AuthController',
 // 	'password' => 'Auth\PasswordController',
