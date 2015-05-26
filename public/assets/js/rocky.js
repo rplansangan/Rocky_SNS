@@ -338,6 +338,8 @@ $(document).ready(function(){
 		modal.find('.modal-title').text('I found a pet!')
 	});
 
+	$('#foundfile').click(function(){ $('#filephotouploader').trigger('click'); });
+
 	//Missingpets
 	$(".land-missing" ).elastic();
 	$('.land-missing').hide();

@@ -154,6 +154,12 @@
 									</div>
 								</div>
 								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Pet Behaviour:</label>
+									<div class="col-sm-8">
+										<input type="text" name="feeding_time" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
 									<label class="col-sm-4 control-label">Owner:</label>
 									<div class="col-sm-8">
 										<input type="text" name="pet_owner" class="form-control">
@@ -297,6 +303,12 @@
 								</div>
 								<div class="form-group col-sm-12">
 									<label class="col-sm-4 control-label">Feeding Time:</label>
+									<div class="col-sm-8">
+										<input type="text" name="feeding_time" class="form-control">
+									</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label class="col-sm-4 control-label">Pet Behaviour:</label>
 									<div class="col-sm-8">
 										<input type="text" name="feeding_time" class="form-control">
 									</div>
