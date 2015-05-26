@@ -37,7 +37,7 @@ class LoginController extends Controller {
 	}
 
 	public function attempted(){
-		$this->middleware['guest'];
+		#$this->middleware['guest'];
 		$data['message'] = "Wrong Email / Password";
 		return view('pages.login' , $data);
 	}
@@ -48,12 +48,12 @@ class LoginController extends Controller {
 	}
 	
 	public function forgotView() {
-		$this->middleware['guest'];
+		#$this->middleware['guest'];
 		return view('pages.forgotpass.main');
 	}
 	
 	public function forgotProcess(Request $request) {
-		$this->middleware['guest'];
+		#$this->middleware['guest'];
 		$reg = Registration::where('email_address', $request->get('email'))->get();
 		
 		if($reg->isEmpty()) {
@@ -67,7 +67,7 @@ class LoginController extends Controller {
 	}
 	
 	public function resendToken($id) {
-		$this->middleware['guest'];
+		#$this->middleware['guest'];
 		$service = new ValidationService();
 		$service->id($id)->resendPasswordToken();
 		
@@ -75,7 +75,7 @@ class LoginController extends Controller {
 	}
 	
 	public function validatePass($id, $hash) {
-		$this->middleware['guest'];
+		#$this->middleware['guest'];
 		$service = new ValidationService(); 
 		$service->id($id)->hash($hash)->validatePasswordToken();
 		
@@ -87,7 +87,7 @@ class LoginController extends Controller {
 	}
 	
 	public function processPass(Request $request) {
-		$this->middleware['guest'];
+		#$this->middleware['guest'];
 		$params = array_except($request->all(), ['_token']);
 		$validate = Validator::make(array(
 						'password' => $params['password'],
