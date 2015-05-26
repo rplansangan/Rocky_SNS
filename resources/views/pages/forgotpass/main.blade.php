@@ -19,4 +19,12 @@ Welcome to Rocky The Superdog
 	</div>
 </div>
 
+<style>
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+</style>
+
 @stop
