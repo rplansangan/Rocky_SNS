@@ -99,6 +99,12 @@ Route::post('register', array(
 	'as' => 'register',
 	'uses' => 'RegistrationController@register'
 ));
+
+Route::get('register/add_pet', [
+	'as' => 'register.add_pet',
+	'uses' => 'RegistrationController@registerPetOpt'
+]);
+
 Route::get('register/validate/{id}/{hash}', array(
 	'middleware' => 'verified',
 	'as' => 'register.validateHash',

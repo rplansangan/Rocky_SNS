@@ -65,22 +65,29 @@ class RegistrationController extends Controller {
 		$reg->is_validated = 0;
 		$reg->save();	
 		
-		$service = new EmailValidationService();
-		$service->id($reg->registration_id)->createEmailToken();
-		
-		return view('pages.message')->with('id', $reg->registration_id)->with('validation_errors', null);
+		//disabled until ?
+		//$service = new EmailValidationService();
+		//$service->id($reg->registration_id)->createEmailToken();
+		Auth::loginUsingId($user->user_id);
+		//return view('pages.message')->with('id', $reg->registration_id)->with('validation_errors', null);
+		return redirect()->route('register.add_pet');
 	}
 	
 	public function validateRegistration($id, $hash) {	
 		$service = new EmailValidationService();
 		$service->id($id)->hash($hash)->validateEmailToken();
 		
-		if($service->errors()) {		
-			return redirect()->route('pages.message')->withErrors(['message' => $service->errors()]);
+// 		if($service->errors()) {		
+// 			return redirect()->route('pages.message')->withErrors(['message' => $service->errors()]);
+// 		} else {
+// 			$service->activateRegistration();
+// 			$service->deleteHash();
+// 			return redirect()->route('register.details', $id);
+// 		}
+		if(Auth::check()) {
+			return redirect()->route('home');
 		} else {
-			$service->activateRegistration();
-			$service->deleteHash();
-			return redirect()->route('register.details', $id);
+			return redirect()->route('index');
 		}
 	}
 	
@@ -236,6 +243,10 @@ class RegistrationController extends Controller {
 		$data['pet_info'] = Pets::where('rocky_tag_no' ,  $input['id'])->get();
 		$data['user_info'] = (Auth::check()) ? Registration::where('registration_id' , Auth::id())->get() : array();
 		return view('ajax.foundpet' , $data);
+	}
+	
+	public function registerPetOpt() {
+		return view('pages.registration.pet');
 	}
 		
 }
