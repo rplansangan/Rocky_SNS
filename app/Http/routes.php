@@ -370,6 +370,10 @@ Route::post('pets/found/add', array(
 	'as' => 'pets.found.add',
 	'uses' => 'PetsController@addmissingpet'
 ));
+Route::post('foundpetinfo', array(
+	'as' => 'foundpetinfo',
+	'uses' => 'PetsController@getpetselectedinfo'
+));
 Route::controllers([
 // 	'auth' => 'Auth\AuthController',
 // 	'password' => 'Auth\PasswordController',

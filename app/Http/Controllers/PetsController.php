@@ -42,6 +42,11 @@ class PetsController extends Controller {
 		->header('Content-Type', $entry->image_mime);
 	}
 	
+	public function getpetselectedinfo(Request $request){
+		$input = array_except($request->all(), array('_token'));
+		$data['info'] = Pets::find($input['id']);
+		return view('ajax.foundmodal' , $data);
+	}
 	
 	public function getpetinfo(Request $request){
 		$input = array_except($request->all(), array('_token'));
