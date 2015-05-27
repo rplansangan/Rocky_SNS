@@ -30,6 +30,10 @@ class FoundPets extends Model {
 	protected $dates = ['deleted_at'];
 
 
+	public function profile() {
+		return $this->hasOne('SNS\Models\Pets', 'rocky_tag_no', 'rocky_tag_no');
+	}
+	
 	public function image() {
 		return $this->hasMany('SNS\Models\LostFoundPetImages', 'found_id' , 'found_id');
 	}

@@ -353,13 +353,22 @@ Route::post('checkemail', array(
 	'uses' => 'RegistrationController@checkemail'
 ));
 
-Route::post('getpetinfo', array(
-	'as' => 'getpetinfo',
-	'uses' => 'RegistrationController@getpetinfo'
+// Lost and Found Pets routes
+Route::get('pets/found/list', [
+	'as' => 'pets.found.list',
+	'uses' => 'PetsController@foundPets'
+]);
+Route::get('pets/image/get/{id}', [
+	'as' => 'pets.image.get',
+	'uses' => 'PetsController@getImage'
+]);
+Route::post('pets/getinfo', array(
+	'as' => 'pets.get.info',
+	'uses' => 'PetsController@getpetinfo'
 ));
-Route::post('addmissingpet', array(
-	'as' => 'addmissingpet',
-	'uses' => 'WelcomeController@addmissingpet'
+Route::post('pets/found/add', array(
+	'as' => 'pets.found.add',
+	'uses' => 'PetsController@addmissingpet'
 ));
 Route::controllers([
 // 	'auth' => 'Auth\AuthController',

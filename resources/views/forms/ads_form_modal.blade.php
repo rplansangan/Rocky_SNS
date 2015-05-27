@@ -60,7 +60,7 @@
 
 <!-- I FOUND A PET WITH TAG NUMBER -->
 <div class="modal fade" id="foundwtag" tabindex="-1" role="dialog" aria-labelledby="foundwtagLabel" aria-hidden="true">
-	<form method="post" action="{{ Route('addmissingpet') }}"  enctype="multipart/form-data">
+	<form method="post" action="{{ Route('pets.found.add') }}"  enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
