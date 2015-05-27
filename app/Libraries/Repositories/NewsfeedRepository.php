@@ -50,7 +50,8 @@ class NewsfeedRepository {
 					},
 					'user.prof_pic' => function ($q) {
 						$q->addSelect(array('image_id', 'user_id'));
-						$q->whereIsProfilePicture(1);
+						$q->where('is_profile_picture', 1);
+						$q->where('pet_id', 0);
 					},
 					'like' => function ($q) {
 						$q->addSelect(array('like_id', 'post_id' , 'like_user_id'));
@@ -60,7 +61,8 @@ class NewsfeedRepository {
 					},
 					'comment.user.prof_pic' => function($q){
 						$q->addSelect(array('image_id', 'user_id'));
-						$q->whereIsProfilePicture(1);
+						$q->where('is_profile_picture', 1);
+						$q->where('pet_id', 0);
 					},
 					'comment.user' => function ($q) {
 						$q->addSelect(array('registration_id', 'first_name', 'last_name', 'user_id'));
@@ -80,7 +82,8 @@ class NewsfeedRepository {
 				},
 				'user.prof_pic' => function ($q) {
 					$q->addSelect(array('image_id', 'user_id'));
-					$q->whereIsProfilePicture(1);
+					$q->where('is_profile_picture', 1);
+					$q->where('pet_id', 0);
 				},
 				'like' => function ($q) {
 					$q->addSelect(array('like_id', 'post_id' , 'like_user_id'));
@@ -90,7 +93,8 @@ class NewsfeedRepository {
 				},
 				'comment.user.prof_pic' => function($q){
 					$q->addSelect(array('image_id', 'user_id'));
-					$q->whereIsProfilePicture(1);
+					$q->where('is_profile_picture', 1);
+					$q->where('pet_id', 0);
 				},
 				'comment.user' => function ($q) {
 					$q->addSelect(array('registration_id', 'first_name', 'last_name', 'user_id'));
@@ -112,7 +116,8 @@ class NewsfeedRepository {
 					},
 					'user.prof_pic' => function ($q) {
 						$q->addSelect(array('image_id', 'user_id'));
-						$q->whereIsProfilePicture(1);
+						$q->where('is_profile_picture', 1);
+						$q->where('pet_id', 0);
 					},
 					'like' => function ($q) {
 						$q->addSelect(array('like_id', 'post_id' , 'like_user_id'));
@@ -122,7 +127,8 @@ class NewsfeedRepository {
 					},
 					'comment.user.prof_pic' => function($q){
 						$q->addSelect(array('image_id', 'user_id'));
-						$q->whereIsProfilePicture(1);
+						$q->where('is_profile_picture', 1);
+						$q->where('pet_id', 0);
 					},
 					'comment.user' => function ($q) {
 						$q->addSelect(array('registration_id', 'first_name', 'last_name', 'user_id'));
@@ -141,7 +147,8 @@ class NewsfeedRepository {
 				},
 				'user.prof_pic' => function ($q) {
 					$q->addSelect(array('image_id', 'user_id'));
-					$q->whereIsProfilePicture(1);
+					$q->where('is_profile_picture', 1);
+					$q->where('pet_id', 0);
 				},
 				'like' => function ($q) {
 					$q->addSelect(array('like_id', 'post_id' , 'like_user_id'));
@@ -151,7 +158,8 @@ class NewsfeedRepository {
 				},
 				'comment.user.prof_pic' => function($q){
 					$q->addSelect(array('image_id', 'user_id'));
-					$q->whereIsProfilePicture(1);
+					$q->where('is_profile_picture', 1);
+					$q->where('pet_id', 0);
 				},
 				'comment.user' => function ($q) {
 					$q->addSelect(array('registration_id', 'first_name', 'last_name', 'user_id'));

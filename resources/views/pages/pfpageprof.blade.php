@@ -3,13 +3,13 @@
 <div class="container">
 	<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 petfounda-cont">
 		<div class="petfounda-cont col-sm-12 col-xs-12 col-lg-7 col-md-7">
-			<h2>Foundation One</h2>
-			<p class="pfoundationaddress">Address 1234 Bldg 4F-4 Place <br/> Angeles City, Pamapanga, Philippines</p>
-			<p class="pfoundationbg">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-			Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
-			took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-			but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-			<p>Contact No.<a href="tel:000 000 000"> 000 000 000</a></p>
+			<h2>{{ $profile->foundation->petfoundation_name }}</h2>
+			<p class="pfoundationaddress">Address 
+				{{ $profile->foundation->address_line1 }} {{ $profile->foundation->address_line2 }} <br/> 
+				{{ $profile->foundation->city }}, {{ $profile->foundation->state }}, {{ $profile->foundation->country }}. {{ $profile->foundation->zip }}
+			</p>
+			<p class="pfoundationbg">{{ $profile->foundation->petfoundation_background }}</p>
+			<p>Contact No.<a href="tel:{{ $profile->foundation->phone_country_code }} {{ $profile->foundation->phone_area_code }} {{ $profile->foundation->phone_number }}"> {{ $profile->foundation->phone_country_code }} {{ $profile->foundation->phone_area_code }} {{ $profile->foundation->phone_number }}</a></p>
 		</div>
 		<div class="col-sm-12 col-xs-12 col-lg-5 col-md-5 merch-condetails">
 			<button class="btn btnpf" type="button">Make a Donation</button>
@@ -63,17 +63,7 @@
 		</div>
 		<div class="our-mission col-xs-12 col-sm-12 col-m-5 col-lg-5 text-justify">
 			<h3>Our Mission</h3>
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-			Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-			when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-			It has survived not only five centuries, but also the leap into electronic typesetting,
-			remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-			sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-			Aldus PageMaker including versions of Lorem Ipsum.</p>
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-			Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-			when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-			It has survived not only five centuries.</p>
+			<p>{{ $profile->foundation->mission_statement }}</p>
 		</div>
 	</div>
 

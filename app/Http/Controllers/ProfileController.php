@@ -31,38 +31,28 @@ class ProfileController extends Controller {
 	public function showProfile($id){ 
 		$profile = User::find($id);
 		
-		$profile->load(array('registration' => function($q) {
+		if($profile->is_foundation) {
+			$profile->load(['foundation']);
+			
+			return view('pages.pfpageprof')->with('profile', $profile);
+		} else {
+			$profile->load(array('registration' => function($q) {
 				$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
 			}, 'prof_pic' => function($q) {
-				$q->whereIsProfilePicture(1);
+				$q->where('is_profile_picture', 1);
+				$q->where('pet_id', 0);
 				$q->addSelect(array('image_id', 'user_id'));
 			}
-		));
-		
-		$collection = PostService::initialNewsFeed(Auth::id(), $id);
-		
-		$data['friend_flags'] = FriendService::check($id);
-		$data['include_scripts'] = true;
-		return view('profile.profile', $data)
-				->with('profile', $profile)
-				->with('posts', $collection);
-		
-		if($profile->is_foundation){
-
-		}else{
-				$profile->load(array('registration', 'prof_pic' => function($q) {
-				$q->whereIsProfilePicture(1);
-				$q->addSelect(array('image_id', 'user_id'));
-				}));
-				
+				));
+			
 				$collection = PostService::initialNewsFeed(Auth::id(), $id);
-				
+			
 				$data['friend_flags'] = FriendService::check($id);
 				$data['include_scripts'] = true;
 				return view('profile.profile', $data)
-						->with('profile', $profile)
-						->with('posts', $collection);
-		}
+				->with('profile', $profile)
+				->with('posts', $collection);
+		}		
 	}
 
 	public function petlist($id){
