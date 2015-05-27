@@ -240,8 +240,20 @@ class RegistrationController extends Controller {
 
 	public function getpetinfo(Request $request){
 		$input = array_except($request->all(), array('_token'));
-		$data['pet_info'] = Pets::where('rocky_tag_no' ,  $input['id'])->get();
-		$data['user_info'] = (Auth::check()) ? Registration::where('registration_id' , Auth::id())->get() : array();
+		$pet = Pets::where('rocky_tag_no' ,  $input['id'])->get();
+		$data['pet_info'] = $pet[0];
+		$data['pet_info']->load(['pet_behavior' => function($q) {
+									$q->addSelect(['id', 'animal_type_id', 'behavior']);
+								},
+								'pet_food' => function($q) {
+									$q->addSelect(['id', 'brand_name', 'animal_type_id']);
+								},
+								'user.registration' => function($q) {
+									$q->addSelect(['registration_id', 'first_name', 'last_name', 'user_id']);
+								}
+							]);
+		
+		$data['user_info'] = (Auth::check()) ? Auth::user()->registration : array();
 		return view('ajax.foundpet' , $data);
 	}
 	
