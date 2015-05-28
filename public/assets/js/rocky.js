@@ -427,6 +427,24 @@ $(document).ready(function(){
     	e.preventDefault();
 	 }); 
 
+
+	 $(document).on('click' , '.foundmodal',function(){
+	 	var id = $(this).attr('tag-id');
+	 	var token = $(this).attr('token');
+	 	var route = $(this).attr('route');
+	 	$.ajax({
+    		url: route,
+    		data: { 
+    				id:id,
+    				_token:token
+    		},
+    		type: 'post',
+    		success:function(r){ 
+    			$('.loadmodalhere').html(r);
+    			$('#foundModal').modal('show');
+    		}
+    	});
+	 });
 });
 
 	

@@ -1,185 +1,23 @@
 <div class="foundpets-page col-sm-12 col-xs-12 col-lg-12 col-md-12">
 	<legend><h2>FOUND PETS</h2></legend>
 
-	<div class="found-imgs-mainp col-sx-12 col-sm-12 col-m-4 col-lg-4">
-		<div class="borderpet">
-			<img data-toggle="modal" data-target="#foundModal" src="{{ URL::asset('assets/images/found1.jpg') }}" width="210px" height="145px">
-			<div class="ownerinfos">
-				<p><span class="glyphicon glyphicon-phone"></span><a href="tel:000 000 000">000 000 000<a/></p>
-				<p><span class="glyphicon glyphicon-tag"></span>Tag 12345</p>
-				<p><span class="glyphicon glyphicon-eye-open"></span>Found at this location</p>
-				<p><span class="glyphicon glyphicon-user"></span>Owner Corner</p>
+	@if(!is_null($found_pets))
+		@foreach($found_pets as $pet)
+			<div class="found-imgs-mainp col-sx-12 col-sm-12 col-m-4 col-lg-4">
+				<div class="borderpet">
+					<img class="foundmodal" route="{{ Route('foundpetinfo') }}" token="{{ csrf_token() }}" tag-id="{{{ $pet->profile->pet_id }}}" src="{{ route('files.get.image', [$pet->profile->profile_pic->user_id, $pet->profile->profile_pic->image_id]) }}" width="210px" height="145px">
+					<div class="ownerinfos">
+						<p><span class="glyphicon glyphicon-phone"></span><a href="tel:{{ $pet->finder_country_code }} {{ $pet->finder_area_code }} {{ $pet->finder_tel_no }}">{{ $pet->finder_country_code }} {{ $pet->finder_area_code }} {{ $pet->finder_tel_no }}<a/></p>
+						<p><span class="glyphicon glyphicon-tag"></span>Tag {{ $pet->rocky_tag_no }}</p>
+						<p><span class="glyphicon glyphicon-eye-open"></span>{{ $pet->found_in_remark }}</p>
+						<p><span class="glyphicon glyphicon-user"></span>{{ $pet->profile->user->registration->first_name }} {{ $pet->profile->user->registration->last_name }}</p>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-
-	<div class="found-imgs-mainp col-sx-12 col-sm-12 col-m-4 col-lg-4">
-		<div class="borderpet">
-			<img data-toggle="modal" data-target="#foundModal" src="{{ URL::asset('assets/images/found2.jpg') }}" width="210px" height="145px">
-			<div class="ownerinfos">
-				<p><span class="glyphicon glyphicon-phone"></span><a href="tel:000 000 000">000 000 000<a/></p>
-				<p><span class="glyphicon glyphicon-tag"></span>Tag 12345</p>
-				<p><span class="glyphicon glyphicon-eye-open"></span>Found at this location</p>
-				<p><span class="glyphicon glyphicon-user"></span>Owner Corner</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="found-imgs-mainp col-sx-12 col-sm-12 col-m-4 col-lg-4">
-		<div class="borderpet">
-			<img data-toggle="modal" data-target="#foundModal" src="{{ URL::asset('assets/images/found3.jpg') }}" width="210px" height="145px">
-			<div class="ownerinfos">
-				<p><span class="glyphicon glyphicon-phone"></span><a href="tel:000 000 000">000 000 000<a/></p>
-				<p><span class="glyphicon glyphicon-tag"></span>Tag 12345</p>
-				<p><span class="glyphicon glyphicon-eye-open"></span>Found at this location</p>
-				<p><span class="glyphicon glyphicon-user"></span>Owner Corner</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="found-imgs-mainp col-sx-12 col-sm-12 col-m-4 col-lg-4">
-		<div class="borderpet">
-			<img data-toggle="modal" data-target="#foundModal" src="{{ URL::asset('assets/images/found4.jpg') }}" width="210px" height="145px">
-			<div class="ownerinfos">
-				<p><span class="glyphicon glyphicon-phone"></span><a href="tel:000 000 000">000 000 000<a/></p>
-				<p><span class="glyphicon glyphicon-tag"></span>Tag 12345</p>
-				<p><span class="glyphicon glyphicon-eye-open"></span>Found at this location</p>
-				<p><span class="glyphicon glyphicon-user"></span>Owner Corner</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="found-imgs-mainp col-sx-12 col-sm-12 col-m-4 col-lg-4">
-		<div class="borderpet">
-			<img data-toggle="modal" data-target="#foundModal" src="{{ URL::asset('assets/images/found5.jpg') }}" width="210px" height="145px">
-			<div class="ownerinfos">
-				<p><span class="glyphicon glyphicon-phone"></span><a href="tel:000 000 000">000 000 000<a/></p>
-				<p><span class="glyphicon glyphicon-tag"></span>Tag 12345</p>
-				<p><span class="glyphicon glyphicon-eye-open"></span>Found at this location</p>
-				<p><span class="glyphicon glyphicon-user"></span>Owner Corner</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="found-imgs-mainp col-sx-12 col-sm-12 col-m-4 col-lg-4">
-		<div class="borderpet">
-			<img data-toggle="modal" data-target="#foundModal" src="{{ URL::asset('assets/images/found6.jpg') }}" width="210px" height="145px">
-			<div class="ownerinfos">
-				<p><span class="glyphicon glyphicon-phone"></span><a href="tel:000 000 000">000 000 000<a/></p>
-				<p><span class="glyphicon glyphicon-tag"></span>Tag 12345</p>
-				<p><span class="glyphicon glyphicon-eye-open"></span>Found at this location</p>
-				<p><span class="glyphicon glyphicon-user"></span>Owner Corner</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="found-imgs-mainp col-sx-12 col-sm-12 col-m-4 col-lg-4">
-		<div class="borderpet">
-			<img data-toggle="modal" data-target="#foundModal" src="{{ URL::asset('assets/images/found7.jpg') }}" width="210px" height="145px">
-			<div class="ownerinfos">
-				<p><span class="glyphicon glyphicon-phone"></span><a href="tel:000 000 000">000 000 000<a/></p>
-				<p><span class="glyphicon glyphicon-tag"></span>Tag 12345</p>
-				<p><span class="glyphicon glyphicon-eye-open"></span>Found at this location</p>
-				<p><span class="glyphicon glyphicon-user"></span>Owner Corner</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="found-imgs-mainp col-sx-12 col-sm-12 col-m-4 col-lg-4">
-		<div class="borderpet">
-			<img data-toggle="modal" data-target="#foundModal" src="{{ URL::asset('assets/images/found8.jpg') }}" width="210px" height="145px">
-			<div class="ownerinfos">
-				<p><span class="glyphicon glyphicon-phone"></span><a href="tel:000 000 000">000 000 000<a/></p>
-				<p><span class="glyphicon glyphicon-tag"></span>Tag 12345</p>
-				<p><span class="glyphicon glyphicon-eye-open"></span>Found at this location</p>
-				<p><span class="glyphicon glyphicon-user"></span>Owner Corner</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="found-imgs-mainp col-sx-12 col-sm-12 col-m-4 col-lg-4">
-		<div class="borderpet">
-			<img data-toggle="modal" data-target="#foundModal" src="{{ URL::asset('assets/images/found9.jpg') }}" width="210px" height="145px">
-			<div class="ownerinfos">
-				<p><span class="glyphicon glyphicon-phone"></span><a href="tel:000 000 000">000 000 000<a/></p>
-				<p><span class="glyphicon glyphicon-tag"></span>Tag 12345</p>
-				<p><span class="glyphicon glyphicon-eye-open"></span>Found at this location</p>
-				<p><span class="glyphicon glyphicon-user"></span>Owner Corner</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="found-imgs-mainp col-sx-12 col-sm-12 col-m-4 col-lg-4">
-		<div class="borderpet">
-			<img data-toggle="modal" data-target="#foundModal" src="{{ URL::asset('assets/images/found1.jpg') }}" width="210px" height="145px">
-			<div class="ownerinfos">
-				<p><span class="glyphicon glyphicon-phone"></span><a href="tel:000 000 000">000 000 000<a/></p>
-				<p><span class="glyphicon glyphicon-tag"></span>Tag 12345</p>
-				<p><span class="glyphicon glyphicon-eye-open"></span>Found at this location</p>
-				<p><span class="glyphicon glyphicon-user"></span>Owner Corner</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="found-imgs-mainp col-sx-12 col-sm-12 col-m-4 col-lg-4">
-		<div class="borderpet">
-			<img data-toggle="modal" data-target="#foundModal" src="{{ URL::asset('assets/images/found4.jpg') }}" width="210px" height="145px">
-			<div class="ownerinfos">
-				<p><span class="glyphicon glyphicon-phone"></span><a href="tel:000 000 000">000 000 000<a/></p>
-				<p><span class="glyphicon glyphicon-tag"></span>Tag 12345</p>
-				<p><span class="glyphicon glyphicon-eye-open"></span>Found at this location</p>
-				<p><span class="glyphicon glyphicon-user"></span>Owner Corner</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="found-imgs-mainp col-sx-12 col-sm-12 col-m-4 col-lg-4">
-		<div class="borderpet">
-			<img data-toggle="modal" data-target="#foundModal" src="{{ URL::asset('assets/images/found6.jpg') }}" width="210px" height="145px">
-			<div class="ownerinfos">
-				<p><span class="glyphicon glyphicon-phone"></span><a href="tel:000 000 000">000 000 000<a/></p>
-				<p><span class="glyphicon glyphicon-tag"></span>Tag 12345</p>
-				<p><span class="glyphicon glyphicon-eye-open"></span>Found at this location</p>
-				<p><span class="glyphicon glyphicon-user"></span>Owner Corner</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="found-imgs-mainp col-sx-12 col-sm-12 col-m-4 col-lg-4">
-		<div class="borderpet">
-			<img data-toggle="modal" data-target="#foundModal" src="{{ URL::asset('assets/images/found3.jpg') }}" width="210px" height="145px">
-			<div class="ownerinfos">
-				<p><span class="glyphicon glyphicon-phone"></span><a href="tel:000 000 000">000 000 000<a/></p>
-				<p><span class="glyphicon glyphicon-tag"></span>Tag 12345</p>
-				<p><span class="glyphicon glyphicon-eye-open"></span>Found at this location</p>
-				<p><span class="glyphicon glyphicon-user"></span>Owner Corner</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="found-imgs-mainp col-sx-12 col-sm-12 col-m-4 col-lg-4">
-		<div class="borderpet">
-			<img data-toggle="modal" data-target="#foundModal" src="{{ URL::asset('assets/images/found2.jpg') }}" width="210px" height="145px">
-			<div class="ownerinfos">
-				<p><span class="glyphicon glyphicon-phone"></span><a href="tel:000 000 000">000 000 000<a/></p>
-				<p><span class="glyphicon glyphicon-tag"></span>Tag 12345</p>
-				<p><span class="glyphicon glyphicon-eye-open"></span>Found at this location</p>
-				<p><span class="glyphicon glyphicon-user"></span>Owner Corner</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="found-imgs-mainp col-sx-12 col-sm-12 col-m-4 col-lg-4">
-		<div class="borderpet">
-			<img data-toggle="modal" data-target="#foundModal" src="{{ URL::asset('assets/images/found7.jpg') }}" width="210px" height="145px">
-			<div class="ownerinfos">
-				<p><span class="glyphicon glyphicon-phone"></span><a href="tel:000 000 000">000 000 000<a/></p>
-				<p><span class="glyphicon glyphicon-tag"></span>Tag 12345</p>
-				<p><span class="glyphicon glyphicon-eye-open"></span>Found at this location</p>
-				<p><span class="glyphicon glyphicon-user"></span>Owner Corner</p>
-			</div>
-		</div>
-	</div>
+		@endforeach
+	@else
+	
+	@endif
 
 	<div class="col-xs-12 btninf">
 		<p>If you found a pet, kindly click the button below and fillup the form.</p>

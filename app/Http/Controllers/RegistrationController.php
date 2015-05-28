@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use SNS\Libraries\Facades\StorageHelper;
 use SNS\Models\Images;
-use Carbon\Carbon;
 use SNS\Libraries\Services\PetService;
 
 class RegistrationController extends Controller {
@@ -236,13 +235,6 @@ class RegistrationController extends Controller {
 	public function checkemail(Request $request){
 		$input = array_except($request->all(), array('_token'));
 		echo Registration::where('email_address' , $input['email'])->count();
-	}
-
-	public function getpetinfo(Request $request){
-		$input = array_except($request->all(), array('_token'));
-		$data['pet_info'] = Pets::where('rocky_tag_no' ,  $input['id'])->get();
-		$data['user_info'] = (Auth::check()) ? Registration::where('registration_id' , Auth::id())->get() : array();
-		return view('ajax.foundpet' , $data);
 	}
 	
 	public function registerPetOpt() {
