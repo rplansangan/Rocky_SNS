@@ -418,7 +418,23 @@ $(document).ready(function(){
     	});
 	 });
 
-
+	 $(document).on('click' , '.foundmodal' ,function(){
+	 	var route = $(this).attr('route');
+	 	var token = $(this).attr('token');
+	 	var id = $(this).attr('tag-id');	    		
+	    		$.ajax({
+	    		url:route,
+	    		data: { 
+	    				id:id,
+	    				_token:token
+	    		},
+	    		type: 'post',
+	    		success:function(r){ 
+	    			$('.loadmodalhere').html(r);
+	    			$('#foundwtag').modal('show');
+	    		}
+	    	});
+	 });
 	 $('.tagbtn').on('click' , function(e){
 	 	var id = $('.foundpettag').val();
 	 	if(id.length != 0){
