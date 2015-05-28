@@ -9,7 +9,7 @@
         <form>
           <div class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="left" title="If you found a pet that has a tag number, please enter it in the input text and hit enter then proceed to the next step."></div>
           <input type="text" class="inputag foundpettag"  placeholder="Input pet tag number">
-          <button zia="{{ Route('getpetinfo') }}" token="{{ csrf_token() }}" class="tagbtn">ENTER</button>
+          <button zia="{{ Route('pets.get.info') }}" token="{{ csrf_token() }}" class="tagbtn">ENTER</button>
         </form>
       </div>
       <div class="missfounbtn">

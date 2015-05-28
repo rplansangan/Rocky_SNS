@@ -27,21 +27,24 @@ class PetFoundation extends Model {
 	 * @var array
 	 */
 	protected $fillable = array(
-		'petfoundation_id' , 
-		'petfoundation_name', 
-		'address_line1',
-		'address_line2',
-		'city',
-		'zip',
-		'state',
-		'country',
-		'phone_country_code',
-		'phone_area_code',
-		'phone_number',
-		'email_address',
-		'contact_person',
-		'petfoundation_background',
-		'banner_image_id',
+			'petfoundation_id' , 
+			'petfoundation_name', 
+			'address_line1',
+			'address_line2',
+			'city',
+			'zip',
+			'state',
+			'country',
+			'phone_country_code',
+			'phone_area_code',
+			'phone_number',
+			'email_address',
+			'contact_person',
+			'petfoundation_background',
+			'banner_image_id',
+			'mission_statement',
+			'vision_statement',
+			'goal_statement'
 		);
 	
 	protected $dates = array('deleted_at');
@@ -53,7 +56,7 @@ class PetFoundation extends Model {
 	);
 
 	public function image() {
-		return $this->hasOne('SNS\Models\Images', 'petfoundation_id');
+		return $this->hasOne('SNS\Models\Images', 'pfa_id', 'petfoundation_id');
 	}
 
 }

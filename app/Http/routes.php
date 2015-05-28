@@ -248,7 +248,7 @@ Route::get('rockyranger', array(
 ));
 Route::get('petfoundation', array(
 	'as' => 'petfoundation',
-	'uses' => 'HomeController@petfoundation'
+	'uses' => 'PetfoundationController@petfoundation'
 ));
 
 /* ADVERTISE */
@@ -306,10 +306,18 @@ Route::get('getnewfeeds', array(
 	));
 
 //Pet Foundation
-Route::post('register_petfoundation', array(
-	'as' => 'register_petfoundation',
+Route::get('foundation/register', [
+	'as' => 'foundation.profile.register',
+	'uses' => 'PetfoundationController@registerView'
+]);
+Route::post('foundation/register/process', array(
+	'as' => 'foundation.profile.register_process',
 	'uses' => 'PetfoundationController@activate_petfoundation'
 ));
+Route::post('foundation/edit', [
+	'as' => 'foundation.profile.edit',
+	'uses' => 'PetfoundationController@editFoundation'
+]);
 Route::get('found_pets', array(
 	'as' => 'found_pets',
 	'uses' => 'HomeController@foundPets'

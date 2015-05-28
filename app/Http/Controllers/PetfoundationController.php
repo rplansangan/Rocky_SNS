@@ -17,13 +17,29 @@ use Illuminate\Support\Facades\Redirect;
 use SNS\Models\PetFoundation;
 
 use Illuminate\Http\Request;
+use SNS\Libraries\Traits\ProfPicTrait;
 
 class PetfoundationController extends Controller {
 
+	use ProfPicTrait;
+	
 	public function __construct()
 	{
 		parent::__construct();
 		$this->middleware('auth');
+	}
+	
+	public function petfoundation(){
+		if(Auth::user()->is_foundation == 1) {
+			$foundation = Auth::user()->foundation;
+			return view('pages.pet_foundation.edit', ['details' => $foundation]);
+		} else {
+			return view('pages.petfoundation');
+		}		
+	}
+	
+	public function registerView() {
+		return view('pages.pet_foundation.register');
 	}
 
 	public function activate_petfoundation(Request $request){
@@ -51,6 +67,9 @@ class PetfoundationController extends Controller {
 		$foundation->email_address = $input['email_address'];
 		$foundation->contact_person = $input['contact_person'];
 		$foundation->petfoundation_background = $input['petfoundation_background'];
+		$foundation->mission_statement = $input['mission_statement'];
+		$foundation->vision_statement = $input['vision_statement'];
+		$foundation->goal_statement = $input['goal_statement'];
 		$foundation->save();
 	
 		User::where('user_id' , '=' , Auth::id())->update(['is_merchant' => 1]);
@@ -71,6 +90,51 @@ class PetfoundationController extends Controller {
 	
 			$foundation->image()->save($img_data);
 	
+			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
+		}
+		return redirect()->route('petfoundation');
+	}
+	
+	public function editFoundation(Request $request) {
+		$input = array_except($request->all(), ['_token']);
+		
+		$foundation = Auth::user()->foundation;
+		$foundation->petfoundation_name = $input['petfoundation_name'];
+		$foundation->email_address = $input['email_address'];
+		$foundation->contact_person = $input['contact_person'];
+		$foundation->address_line1 = $input['address_line1'];
+		$foundation->address_line2 = $input['address_line2'];
+		$foundation->city = $input['city'];
+		$foundation->zip = $input['zip'];
+		$foundation->state = $input['state'];
+		$foundation->country = $input['country'];
+		$foundation->phone_area_code = $input['phone_area_code'];
+		$foundation->phone_country_code = $input['phone_country_code'];
+		$foundation->phone_number = $input['phone_number'];
+		$foundation->petfoundation_background = $input['petfoundation_background'];
+		$foundation->mission_statement = $input['mission_statement'];
+		$foundation->vision_statement = $input['vision_statement'];
+		$foundation->goal_statement = $input['goal_statement'];
+		$foundation->save();
+		
+		if(isset($input['myfile'])) {
+			$file = $input['myfile'];
+			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
+			$dir = StorageHelper::create(Auth::id());
+		
+			$img_data = new Images(array(
+					'user_id' => Auth::id(),
+					'image_path' => $dir,
+					'image_name' => $filename,
+					'image_mime' => $file->getMimeType(),
+					'image_ext' => $file->getClientOriginalExtension(),
+					'is_profile_picture' => 1
+			));
+		
+			$this->removePreviousFoundation($foundation->petfoundation_id);
+			
+			$foundation->image()->save($img_data);
+		
 			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
 		}
 		return redirect()->route('petfoundation');

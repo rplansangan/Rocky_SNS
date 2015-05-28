@@ -34,7 +34,11 @@ class ProfileController extends Controller {
 		if($profile->is_foundation) {
 			$profile->load(['foundation']);
 			
-			return view('pages.pfpageprof')->with('profile', $profile);
+			if(is_null($profile->foundation)) {
+				return redirect()->route('foundation.profile.register');
+			} else {
+				return view('pages.pfpageprof')->with('profile', $profile);
+			}
 		} else {
 			$profile->load(array('registration' => function($q) {
 				$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
