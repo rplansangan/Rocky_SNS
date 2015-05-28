@@ -150,7 +150,7 @@ class ProfileController extends Controller {
 	}
 	
 	public function userFriends($user_id) {
-		$friends = FriendService::collect($user_id);
+		$friends = FriendService::collect($user_id);		
 		return view('pages.friends_listing')
 				->with('friends', $friends);
 	}

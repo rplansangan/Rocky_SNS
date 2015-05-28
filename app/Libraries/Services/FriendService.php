@@ -278,21 +278,24 @@ class FriendService {
 		}
 		
 		if(!$user_select) {
-			return $this->list->select(array('user_id', 'friend_user_id'))->where('user_id', $user_id)
+			return $this->list->select(['user_id', 'friend_user_id'])->where('user_id', $user_id)
 			->with(array(
 					'profile' => function($q) {
-						$q->addSelect(array('registration_id', 'last_name', 'first_name', 'user_id'));
+						$q->addSelect(['registration_id', 'last_name', 'first_name', 'user_id']);
 					},
 					'profile.prof_pic' => function($q) {
-						$q->addSelect(array('image_id', 'image_mime', 'user_id'));
+						$q->addSelect(['image_id', 'image_mime', 'user_id']);
 						$q->where('is_profile_picture', 1);
+						$q->where('project_id', 0);
+						$q->where('pfa_id', 0);
+						$q->where('pet_id', 0);
 					}
 				))->get();
 		}
 		
 		return $this->list->select($user_select)->where('user_id', $user_id)
-				->with(array('images','profile' => function($q) {
-					$q->addSelect(array('registration_id', 'last_name', 'first_name'));
-				}))->get();
+				->with(['images','profile' => function($q) {
+					$q->addSelect(['registration_id', 'last_name', 'first_name']);
+				}])->get();
 	}
 }
