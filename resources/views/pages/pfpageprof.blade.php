@@ -12,7 +12,7 @@
 			<p>Contact No.<a href="tel:{{ $profile->foundation->phone_country_code }} {{ $profile->foundation->phone_area_code }} {{ $profile->foundation->phone_number }}"> {{ $profile->foundation->phone_country_code }} {{ $profile->foundation->phone_area_code }} {{ $profile->foundation->phone_number }}</a><br/>
 			E-mail Address<a href="mailto:{{ $profile->foundation->email_address}}"> {{ $profile->foundation->email_address}}</a></p>
 		</div>
-		<div class="col-sm-12 col-xs-12 col-lg-5 col-md-5 merch-condetails">
+		<div class="col-sm-12 col-xs-12 col-lg-5 col-md-5 petfo-btns">
 			<button class="btn btnpf" type="button">Make a Donation</button>
 			<a href="{{ route('foundation.adoption') }}" class="adoptbtn">Adopt a Pet</a>
 			<button class="btn btnpf" type="button">Volunteer</button>

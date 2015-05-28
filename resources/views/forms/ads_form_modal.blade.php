@@ -482,7 +482,7 @@
 	      	<div class="form-group col-sm-12">
 	      		<label class="col-sm-4 control-label">Background:</label>
 	      		<div class="col-sm-8">
-	      			<input type="text" name="background" class="form-control" required>
+	      			<textarea name="background" class="form-control" maxlength="90" required></textarea>
 	      		</div>
 	      	</div>
 	      	<div class="form-group col-sm-12">

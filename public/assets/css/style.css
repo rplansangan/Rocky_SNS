@@ -855,6 +855,18 @@ button.addadoptpet, .adoptthis {
   cursor: pointer;
 }
 
+.petfo-btns {
+  margin: 20px 0;
+}
+
+.petfo-btns a {
+  background-color: #E74C3C;
+  color: #fff;
+  padding: 10px;
+  border: 2px solid #F9BBB5;
+  border-radius: 6px;
+}
+
 
 /*============VETS PAGE============*/
 .vet-search {
