@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" style="margin:10px;">
 	<div class="col-sm-6">
 		<img class="img-responsive" src="{{ route('files.get.image', array($info->image[0]->user_id, $info->image[0]->image_id)) }}">
 	</div>
