@@ -13,7 +13,7 @@
 			<a href="{{ route('shop') }}" class="list-group-item shop">Shop</a>
 			<a href="{{ route('profile.friends', Auth::id()) }}" class="list-group-item friends">Friends</a>
 			<a href="{{ route('videos') }}" class="list-group-item videos">Videos</a>
-			<a href="{{ route('petfoundation') }}" class="list-group-item petfo">Pet Foundation</a>
+			<a href="{{ route('foundation.list.all') }}" class="list-group-item petfo">Pet Foundation</a>
 			<a href="{{ route('vet_temp') }}" class="list-group-item vete">Veterinarians</a>
 		</div>
 	</div>

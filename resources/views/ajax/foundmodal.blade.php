@@ -1,30 +1,31 @@
-<div role="tabpanel">
-	<!-- Nav tabs -->
-	<ul class="nav nav-tabs" role="tablist">
-		<li role="presentation" class="active"><a href="#aboutpet" aria-controls="aboutpet" role="tab" data-toggle="tab">About This Pet</a></li>
-		<li role="presentation"><a href="#marksdetails" aria-controls="marksdetails" role="tab" data-toggle="tab">Pet Marks</a></li>
-	</ul>
-	<div class="tab-content">
-		<div role="tabpanel" class="tab-pane active" id="aboutpet">
-			<div class="largeimg text-center">
-				<img src="{{ URL::asset('assets/images/found1.jpg') }}" width="550px">
+<div class="row" style="margin:10px;">
+	<div class="col-sm-6">
+		<img class="img-responsive" src="{{ route('files.get.image', array($info->image[0]->user_id, $info->image[0]->image_id)) }}">
+	</div>
+	<div class="col-sm-6">
+		<dl>
+		  <dt>Name:</dt>
+		  <dd>{{ $info['pet_name'] }}</dd>
+		  <dt>Anime Type</dt>
+		  <dd>{{ @$info->pet_type['animal'] }}</dd>
+		  <dt>Gender</dt>
+		  <dd>{{ $info['pet_gender'] }}</dd>
+		  <dt>Weight & Height</dt>
+		  <dd>{{ $info['weight'].' '.$info['height'].' ' }}</dd>
+		  <dt>Behavior</dt>
+		  <dd>{{ $info->pet_behavior['behavior']}}</dd>
+		  <dt>Foods</dt>
+		  <dd>{{ $info->pet_food['brand_name']}}</dd>
+		  <dt></dt>
+		  <dd>{{ $info['food_style'] }} | {{ $info['feeding_interval'] }} | {{ $info['feeding_time'] }}</dd>
+		</dl>
+	</div>
+	<div class="col-sm-12">
+		<legend>Pet marks</legend>
+		@foreach($info->foundpets[0]->image as $row)
+			<div class="col-sm-4">
+				<img class="img-responsive" src="{{ route('pets.image.get', array($row->image_id)) }}">
 			</div>
-			<div class="col-xs-12 col-sm-12 col-m-5 col-lg-5 petotherinfos">
-				<p>{{ $info['pet_name'] }}</p>
-				<p>{{ $info['pet_type'] }}</p>
-				<p>{{ $info['pet_bdy'] }}</p>
-				<p>{{ $info['pet_gender'] }}</p>
-				<p>{{ $info['weight'].' '.$info['height'].' ' }}</p>
-				<p>Happy go lucky</p>
-				<p>Chop House T-Bone Steak Flavor | Alpo</p>
-				<p>{{ $info['food_style'] }} | {{ $info['feeding_interval'] }} | {{ $info['feeding_time'] }} </p>
-			</div>
-		</div>
-		<div role="tabpanel" class="tab-pane" id="marksdetails">
-			<div class="col-xs-12 col-sm-12 col-m-7 col-lg-7 marks text-center">
-				<img src="{{ URL::asset('assets/images/ret-paw.jpg') }}" width="250px">
-				<p>paws</p>
-			</div>
-		</div>
+		@endforeach
 	</div>
 </div>

@@ -235,162 +235,17 @@
 
 <!-- Rocky, Find My Pet -->
 <div class="modal fade" id="misspet" tabindex="-1" role="dialog" aria-labelledby="misspetLabel" aria-hidden="true">
-	<form method="post" id="form-modal">
-		<input type="hidden" name="id" id="modal-form-id">
-		<input type="hidden" name="type" id="modal-form-type">
-		<input type="hidden" name="_token" value="{{ csrf_token() }}">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="misspetLabel"></h4>
-				</div>
-				<div class="modal-body">
-					<div class="row">
-						<div class="col-sm-12">
-							<div role="tabpanel">
-					      		<!-- Nav tabs -->
-					      		<ul class="nav nav-tabs" role="tablist">
-					      			<li role="presentation" class="active"><a href="#petslist" aria-controls="petslist" role="tab" data-toggle="tab">Which pet?</a></li>
-					      			<li role="presentation"><a href="#notlisted" aria-controls="notlisted" role="tab" data-toggle="tab">Not Listed</a></li>
-					      		</ul>
-						      	<div class="tab-content">
-							      	<div role="tabpanel" class="tab-pane active" id="petslist">
-								      	<h3>Which of your pets have you lost?</h3>
-										<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center">
-											@if(isset($pet->profile_pic))	
-												<img src="{{ route('files.get.image', array($pet->user_id, $pet->image[0]->image_id)) }}" width="120px">
-											@else
-												<img src="{{ URL::asset('assets/images/pet-default.png') }}" width="120px">
-											@endif
-											<p>Pet Name</p>
-										</div>
-										<div class="moreinfo col-xs-12 col-sm-12 col-md-12 col-lg-12">
-											<div class="form-group col-sm-12">
-												<label class="col-sm-3 control-label">Lost in:</label>
-												<div class="col-sm-8">
-													<input type="text" name="pet_foundat" class="form-control" required>
-												</div>
-											</div>
-											<div class="form-group col-sm-12">
-												<label class="col-sm-3 control-label">When:</label>
-												<div class="col-sm-8">
-													<input type="text" name="pet_foundat" class="form-control" required>
-												</div>
-											</div>
-										</div>
-							        </div>
-							        <div role="tabpanel" class="tab-pane" id="notlisted">
-								        <h3>Lost pet not yet registered?</h3>
-								        <div class="form-group col-sm-12">
-											<label class="col-sm-4 control-label">Pet Tag Number:</label>
-											<div class="col-sm-8">
-												<input type="text" name="pet_name" class="form-control" required>
-											</div>
-										</div>
-										<div class="form-group col-sm-12">
-											<label class="col-sm-4 control-label">Pet Name:</label>
-											<div class="col-sm-8">
-												<input type="text" name="pet_name" class="form-control">
-											</div>
-										</div>
-										<div class="form-group col-sm-12">
-											<label class="col-sm-4 control-label">How to call this pet:</label>
-											<div class="col-sm-8">
-												<input type="text" name="pet_call_attn" class="form-control">
-											</div>
-										</div>
-										<div class="form-group col-sm-12">
-											<label class="col-sm-4 control-label">Pet Type:</label>
-											<div class="col-sm-8">
-												<input type="text" name="pet_type" class="form-control" required>
-											</div>
-										</div>
-										<div class="form-group col-sm-12">
-											<label class="col-sm-4 control-label">Breed:</label>
-											<div class="col-sm-8">
-												<input type="text" name="breed" class="form-control">
-											</div>
-										</div>
-										<div class="form-group col-sm-12">
-											<label class="col-sm-4 control-label">Gender:</label>
-											<div class="col-sm-8">
-												<input type="text" name="pet_gender" class="form-control" required>
-											</div>
-										</div>
-										<div class="form-group col-sm-12">
-											<label class="col-sm-4 control-label">Weight in lb:</label>
-											<div class="col-sm-8">
-												<input type="text" name="weight" class="form-control">
-											</div>
-										</div>
-										<div class="form-group col-sm-12">
-											<label class="col-sm-4 control-label">Height in cm:</label>
-											<div class="col-sm-8">
-												<input type="text" name="height" class="form-control">
-											</div>
-										</div>
-										<div class="form-group col-sm-12">
-											<label class="col-sm-4 control-label">Food Style:</label>
-											<div class="col-sm-8">
-												<input type="text" name="food_style" class="form-control">
-											</div>
-										</div>
-										<div class="form-group col-sm-12">
-											<label class="col-sm-4 control-label">Food Brand:</label>
-											<div class="col-sm-8">
-												<input type="text" name="brand" class="form-control">
-											</div>
-										</div>
-										<div class="form-group col-sm-12">
-											<label class="col-sm-4 control-label">Food:</label>
-											<div class="col-sm-8">
-												<input type="text" name="food" class="form-control">
-											</div>
-										</div>
-										<div class="form-group col-sm-12">
-											<label class="col-sm-4 control-label">Feeding Interval:</label>
-											<div class="col-sm-8">
-												<input type="text" name="feeding_interval" class="form-control">
-											</div>
-										</div>
-										<div class="form-group col-sm-12">
-											<label class="col-sm-4 control-label">Feeding Time:</label>
-											<div class="col-sm-8">
-												<input type="text" name="feeding_time" class="form-control">
-											</div>
-										</div>
-										<div class="form-group col-sm-12">
-											<label class="col-sm-4 control-label">Pet Behaviour:</label>
-											<div class="col-sm-8">
-												<input type="text" name="feeding_time" class="form-control">
-											</div>
-										</div>
-										<div class="form-group col-sm-12">
-											<label class="col-sm-4 control-label">Lost in:</label>
-											<div class="col-sm-8">
-												<input type="text" name="pet_foundat" class="form-control" required>
-											</div>
-										</div>
-										<div class="form-group col-sm-12">
-											<label class="col-sm-4 control-label">When:</label>
-											<div class="col-sm-8">
-												<input type="text" name="pet_foundat" class="form-control" required>
-											</div>
-										</div>
-							        </div>
-							    </div>
-						    </div>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<input type="submit" class="btn btn-submit btn-primary" value="Send">
-					<button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
-				</div>
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="misspetLabel"></h4>
+			</div>
+			<div class="modal-body loadhere">
+				
 			</div>
 		</div>
-	</form>
+	</div>
 </div>
 
 <!-- Missing Pets -->
@@ -435,7 +290,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="foundModalLabel">FOUND PET</h4>
       </div>
-      <div class="modal-body loadmodalhere row">
+      <div class="modal-body loadmodalhere">
       	
       </div>
       <div class="modal-footer">

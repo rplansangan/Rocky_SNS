@@ -26,8 +26,7 @@ class PetFoundation extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array(
-			'petfoundation_id' , 
+	protected $fillable = array( 
 			'petfoundation_name', 
 			'address_line1',
 			'address_line2',
@@ -55,6 +54,10 @@ class PetFoundation extends Model {
 			'petfoundation_background' => 'required'			
 	);
 
+	public function prof_pic() {
+		return $this->hasOne('SNS\Models\Images', 'pfa_id', 'petfoundation_id');
+	}
+	
 	public function image() {
 		return $this->hasOne('SNS\Models\Images', 'pfa_id', 'petfoundation_id');
 	}

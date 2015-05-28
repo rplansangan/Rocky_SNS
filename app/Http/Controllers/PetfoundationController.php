@@ -140,6 +140,18 @@ class PetfoundationController extends Controller {
 		return redirect()->route('petfoundation');
 	}
 
+	public function showAll() {
+		$col = PetFoundation::select(['petfoundation_id', 'petfoundation_name', 'user_id'])->get();
+		$col->load([
+				'prof_pic' => function($q) {
+					$q->addSelect(['image_id', 'pfa_id']);
+					$q->where('is_profile_picture', 1);
+					$q->where('pet_id', 0);
+				}
+		]);
+		return view('pages.pet_foundation.list', ['list' => $col]);
+	}
+	
 	public function pfoundationTemp(){
 		return view('pages.pfpageprof');
 	}

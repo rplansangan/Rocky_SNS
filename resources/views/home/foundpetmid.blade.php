@@ -5,7 +5,7 @@
 		@foreach($found_pets as $pet)
 			<div class="found-imgs-mainp col-sx-12 col-sm-12 col-m-4 col-lg-4">
 				<div class="borderpet">
-					<img class="foundmodal" route="{{ Route('foundpetinfo') }}" token="{{ csrf_token() }}" tag-id="{{{ $pet->profile->pet_id }}}" src="{{ route('files.get.image', [$pet->profile->profile_pic->user_id, $pet->profile->profile_pic->image_id]) }}" width="210px" height="145px">
+					<img class="foundmodal" route="{{ Route('foundpetinfo') }}" token="{{ csrf_token() }}" tag-id="{{{ $pet->profile->rocky_tag_no }}}" src="{{ route('files.get.image', [$pet->profile->profile_pic->user_id, $pet->profile->profile_pic->image_id]) }}" width="210px" height="145px">
 					<div class="ownerinfos">
 						<p><span class="glyphicon glyphicon-phone"></span><a href="tel:{{ $pet->finder_country_code }} {{ $pet->finder_area_code }} {{ $pet->finder_tel_no }}">{{ $pet->finder_country_code }} {{ $pet->finder_area_code }} {{ $pet->finder_tel_no }}<a/></p>
 						<p><span class="glyphicon glyphicon-tag"></span>Tag {{ $pet->rocky_tag_no }}</p>

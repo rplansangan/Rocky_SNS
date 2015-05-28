@@ -28,6 +28,7 @@ class Pets extends Model {
 	 */
 	protected $fillable = array(
 			'user_id',
+			'rocky_tag_no',
 			'pet_name',
 			'pet_type',
 			'breed',
@@ -79,13 +80,19 @@ class Pets extends Model {
 	public function pet_food() {
 		return $this->hasOne('SNS\Models\FoodBrands', 'id', 'brand');
 	}
-	
+	public function pet_type() {
+		return $this->hasOne('SNS\Models\AnimalType', 'id', 'pet_type');
+	}
 	public function pet_behavior() {
 		return $this->hasOne('SNS\Models\PetBehavior', 'id', 'behavior');
 	}
 	
 	public function getPetBdayAttribute($date) {
 		return Carbon::createFromFormat($this->dbDateFormat, $date)->format($this->bdayFormat);
+	}
+
+	public function foundpets() {
+		return $this->hasMany('SNS\Models\FoundPets', 'rocky_tag_no' , 'rocky_tag_no');
 	}
 
 }

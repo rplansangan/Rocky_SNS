@@ -334,6 +334,10 @@ Route::get('foundation/adoption', array(
 	'as' => 'foundation.adoption',
 	'uses' => 'PetfoundationController@adoptList'
 ));
+Route::get('foundation/list', [
+	'as' => 'foundation.list.all',
+	'uses' => 'PetfoundationController@showAll'
+]);
 
 //Vet
 Route::get('vettemp', array(
@@ -374,6 +378,10 @@ Route::get('pets/image/get/{id}', [
 	'as' => 'pets.image.get',
 	'uses' => 'PetsController@getImage'
 ]);
+Route::post('findpets', [
+	'as' => 'findpets',
+	'uses' => 'PetsController@findpets'
+]);
 Route::post('pets/getinfo', array(
 	'as' => 'pets.get.info',
 	'uses' => 'PetsController@getpetinfo'
@@ -381,6 +389,10 @@ Route::post('pets/getinfo', array(
 Route::post('pets/found/add', array(
 	'as' => 'pets.found.add',
 	'uses' => 'PetsController@addmissingpet'
+));
+Route::post('pets/lost/add', array(
+	'as' => 'pets.lost.add',
+	'uses' => 'PetsController@addlostpet'
 ));
 Route::post('foundpetinfo', array(
 	'as' => 'foundpetinfo',
