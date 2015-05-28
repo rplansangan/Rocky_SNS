@@ -4,6 +4,7 @@ use SNS\Http\Requests;
 use SNS\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use SNS\Models\Pets;
 use SNS\Models\FoundPets;
 use SNS\Models\LostFoundPetImages;
@@ -44,7 +45,8 @@ class PetsController extends Controller {
 	
 	public function getpetselectedinfo(Request $request){
 		$input = array_except($request->all(), array('_token'));
-		$data['info'] = Pets::find($input['id']);
+		$data['info'] = Pets::where('rocky_tag_no' , $input['id'])->with(['foundpets','image', 'foundpets.image' , 'pet_food' , 'pet_behavior' , 'pet_type'])->get();
+		$data['info'] = $data['info'][0];
 		return view('ajax.foundmodal' , $data);
 	}
 	
