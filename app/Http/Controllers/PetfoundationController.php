@@ -141,7 +141,7 @@ class PetfoundationController extends Controller {
 	}
 
 	public function showAll() {
-		$col = PetFoundation::select(['petfoundation_id', 'petfoundation_name', 'user_id'])->get();
+		$col = PetFoundation::select(['petfoundation_id', 'petfoundation_name', 'user_id'])->latest()->get();
 		$col->load([
 				'prof_pic' => function($q) {
 					$q->addSelect(['image_id', 'pfa_id']);
