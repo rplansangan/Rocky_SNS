@@ -350,13 +350,17 @@ $(document).ready(function(){
 	});
 
 	//rocky, find mypet modal
-	$('.misspet').on('click' , function(){
-	var url = $('#user-check').val();
+	$('.misspet').on('click' , function(e){
+	var url = $('#user-check').val()+"/";
 	var current = window.location.href;
-		if( current != url){
-			alert(url+" "+current);
-		}else {
-			alert(current+" "+url);
+		if(current == url){
+			alert('Please log in first.');
+		}
+		else if(current != url) {
+			$('#misspet').modal('show');
+
+			var modal = $('#misspet')
+			modal.find('.modal-title').text('Let\'s Find Your Pet')
 		}
 	});
 
@@ -427,24 +431,6 @@ $(document).ready(function(){
     	e.preventDefault();
 	 }); 
 
-
-	 $(document).on('click' , '.foundmodal',function(){
-	 	var id = $(this).attr('tag-id');
-	 	var token = $(this).attr('token');
-	 	var route = $(this).attr('route');
-	 	$.ajax({
-    		url: route,
-    		data: { 
-    				id:id,
-    				_token:token
-    		},
-    		type: 'post',
-    		success:function(r){ 
-    			$('.loadmodalhere').html(r);
-    			$('#foundModal').modal('show');
-    		}
-    	});
-	 });
 });
 
 	
