@@ -349,6 +349,17 @@ $(document).ready(function(){
 		$('.land-found').hide();
 	});
 
+	//rocky, find mypet modal
+	$('.misspet').on('click' , function(){
+	var url = $('#user-check').val();
+	var current = window.location.href;
+		if( current != url){
+			alert(url+" "+current);
+		}else {
+			alert(current+" "+url);
+		}
+	});
+
 	//image carousel
 	$("#ftpetsCarousel").carousel({
          interval : 6000,
@@ -397,18 +408,22 @@ $(document).ready(function(){
 
 	 $('.tagbtn').on('click' , function(e){
 	 	var id = $('.foundpettag').val();
-	 	$.ajax({
-    		url: $(this).attr('href'),
-    		data: { 
-    				id:id,
-    				_token:$(this).attr('token')
-    		},
-    		type: 'post',
-    		success:function(r){ 
-    			$('.loadmodalhere').html(r);
-    			$('#foundwtag').modal('show');
-    		}
-    	});
+	 	if(id.length != 0){
+	 		$.ajax({
+	    		url: $(this).attr('zia'),
+	    		data: { 
+	    				id:id,
+	    				_token:$(this).attr('token')
+	    		},
+	    		type: 'post',
+	    		success:function(r){ 
+	    			$('.loadmodalhere').html(r);
+	    			$('#foundwtag').modal('show');
+	    		}
+	    	});
+	 	}else{
+	 		alert('Please input pet tag number.');
+	 	}
     	e.preventDefault();
 	 }); 
 
