@@ -330,6 +330,10 @@ Route::get('pfoundationtemp', array(
 	'as' => 'pfoundationtemp',
 	'uses' => 'PetfoundationController@pfoundationTemp'
 ));
+Route::get('foundation/adoption', array(
+	'as' => 'foundation.adoption',
+	'uses' => 'PetfoundationController@adoptList'
+));
 
 //Vet
 Route::get('vettemp', array(

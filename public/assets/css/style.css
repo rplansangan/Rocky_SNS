@@ -809,7 +809,7 @@ ul.fr-btns li {
   font-size: 15px;
 }
 
-.our-proj {
+.our-proj, .mission-vision {
   border-top: 1px solid #DADADA;
   margin: 20px 0;
 }
@@ -826,6 +826,33 @@ ul.fr-btns li {
 
 .carousel-caption h3 {
   margin: 5px 0;
+}
+
+.adtitle-btn {
+  margin: 15px 0;
+  padding: 10px 15px;
+  border-bottom: 1px solid #C2C2C2;
+}
+
+.adp-cont {
+  margin: 10px 0;
+}
+
+.apetdetails p {
+  min-height: 62px;
+}
+
+.apetdetails h4 {
+  margin-top: 0;
+}
+
+button.addadoptpet, .adoptthis {
+  background-color: #E74C3C;
+  color: #fff;
+}
+
+.apetimg img:hover, .apetdetails h4:hover {
+  cursor: pointer;
 }
 
 

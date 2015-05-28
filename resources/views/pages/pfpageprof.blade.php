@@ -9,11 +9,12 @@
 				{{ $profile->foundation->city }}, {{ $profile->foundation->state }}, {{ $profile->foundation->country }}. {{ $profile->foundation->zip }}
 			</p>
 			<p class="pfoundationbg">{{ $profile->foundation->petfoundation_background }}</p>
-			<p>Contact No.<a href="tel:{{ $profile->foundation->phone_country_code }} {{ $profile->foundation->phone_area_code }} {{ $profile->foundation->phone_number }}"> {{ $profile->foundation->phone_country_code }} {{ $profile->foundation->phone_area_code }} {{ $profile->foundation->phone_number }}</a></p>
+			<p>Contact No.<a href="tel:{{ $profile->foundation->phone_country_code }} {{ $profile->foundation->phone_area_code }} {{ $profile->foundation->phone_number }}"> {{ $profile->foundation->phone_country_code }} {{ $profile->foundation->phone_area_code }} {{ $profile->foundation->phone_number }}</a><br/>
+			E-mail Address<a href="mailto:{{ $profile->foundation->email_address}}"> {{ $profile->foundation->email_address}}</a></p>
 		</div>
 		<div class="col-sm-12 col-xs-12 col-lg-5 col-md-5 merch-condetails">
 			<button class="btn btnpf" type="button">Make a Donation</button>
-			<button class="btn btnpf" type="button">Adopt a Pet</button>
+			<a href="{{ route('foundation.adoption') }}" class="adoptbtn">Adopt a Pet</a>
 			<button class="btn btnpf" type="button">Volunteer</button>
 		</div>
 	</div>
@@ -62,8 +63,19 @@
 			</div>
 		</div>
 		<div class="our-mission col-xs-12 col-sm-12 col-m-5 col-lg-5 text-justify">
+			<h3>Our Goal</h3>
+			<p>{{ $profile->foundation->goal_statement }}</p>
+		</div>
+	</div>
+
+	<div class="mission-vision col-xs-12 col-sm-12 col-m-12 col-lg-12 text-justify">
+		<div class="our-mission col-xs-12 col-sm-12 col-m-6 col-lg-6">
 			<h3>Our Mission</h3>
 			<p>{{ $profile->foundation->mission_statement }}</p>
+		</div>
+		<div class="our-vision col-xs-12 col-sm-12 col-m-6 col-lg-6">
+			<h3>Our Vision</h3>
+			<p>{{ $profile->foundation->vision_statement }}</p>
 		</div>
 	</div>
 

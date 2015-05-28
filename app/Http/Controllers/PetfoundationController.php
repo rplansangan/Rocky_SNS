@@ -92,7 +92,7 @@ class PetfoundationController extends Controller {
 	
 			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
 		}
-		return redirect()->route('petfoundation');
+		return redirect()->route('profile.showProfile', [Auth::id()]);
 	}
 	
 	public function editFoundation(Request $request) {
@@ -142,6 +142,10 @@ class PetfoundationController extends Controller {
 
 	public function pfoundationTemp(){
 		return view('pages.pfpageprof');
+	}
+
+	public function adoptList(){
+		return view('pages.pet_foundation.adoptpetlist');
 	}
 
 }

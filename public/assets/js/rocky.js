@@ -364,6 +364,29 @@ $(document).ready(function(){
 		}
 	});
 
+	//adoptpetdetails
+	$('.adpetdet').on('click' , function(e){
+		$('#adoptapet').modal('show');
+	});
+
+	//adopt this pet
+	$('.adoptthis').on('click' , function(e){
+		$('#adoptThisPet').modal('show');
+	});
+
+	//add pet for adoption
+	$('.addadoptpet').on('click' , function(e){
+		$('#addpetsAdopt').modal('show');
+	});
+
+	$(document).on('change', '.other_img', function(){
+		var count = $('.other-imgs').find('input').length;
+		if(count < 3){
+			$('.other-imgs').append("<input type='file' name='other_img[]' class='other_img col-sm-6' >");
+		}
+		
+	});
+
 	//image carousel
 	$("#ftpetsCarousel").carousel({
          interval : 6000,
