@@ -289,7 +289,7 @@ $(document).ready(function(){
 			$('#video-title').attr("value" , '');
         }
     });
-
+    
      $('#video-post').ajaxForm({
     	beforeSubmit: function(arr , $form , option){
     		arr.push({name:'message', value: tinyMCE.activeEditor.getContent() })
@@ -357,10 +357,19 @@ $(document).ready(function(){
 			alert('Please log in first.');
 		}
 		else if(current != url) {
-			$('#misspet').modal('show');
-
-			var modal = $('#misspet')
-			modal.find('.modal-title').text('Let\'s Find Your Pet')
+			$.ajax({
+	    		url: $(this).attr('route'),
+	    		data: { 
+	    				_token:$(this).attr('token')
+	    		},
+	    		type: 'post',
+	    		success:function(r){ 
+	    			$('.loadhere').html(r);
+	    			$('#misspet').modal('show');
+	    			var modal = $('#misspet');
+					modal.find('.modal-title').text('Let\'s Find Your Pet');
+	    		}
+	    	});
 		}
 	});
 
@@ -430,6 +439,22 @@ $(document).ready(function(){
 	 	}
     	e.preventDefault();
 	 }); 
+
+	 $(document).on('submit' , '.lostpet' ,function(e){
+	 	var data = $(this).serialize();
+	 	var route = $(this).attr('action');
+	 	var method = $(this).attr('method');
+	 	$.ajax({
+	 		url:route,
+	 		data:data,
+	 		type: method,
+	 		success:function(r){ 
+	 			alert(r);
+	 		}
+	 	});
+	 	e.preventDefault();
+	 });
+
 
 });
 

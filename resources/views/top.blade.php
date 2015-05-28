@@ -13,7 +13,7 @@
         </form>
       </div>
       <div class="missfounbtn">
-        <a href="javascript:void(0)" class="misspet" data-toggle="tooltip" data-placement="left" title="If you've lost your pet, please login and click the 'Rocky, find my pet' button and fillup the form.">Rocky, find my pet</a>
+        <a href="javascript:void(0)" class="misspet" route="{{ Route('findpets') }}" token="{{ csrf_token() }}" data-toggle="tooltip" data-placement="left" title="If you've lost your pet, please login and click the 'Rocky, find my pet' button and fillup the form.">Rocky, find my pet</a>
         <a href="javascript:void(0)" class="foundpet" data-toggle="tooltip" data-placement="left" title="If you found a pet but doesn't have a tag number, click the 'I found a pet!' button and fillup the form.">I found a pet!</a>
       </div>
     </div>

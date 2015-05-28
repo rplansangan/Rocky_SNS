@@ -120,4 +120,13 @@ class PetsController extends Controller {
 	
 		return redirect()->back()->withErrors(['message' => 'Thank you for reporting a missing pet']);
 	}
+
+	public function findpets(){
+		$data['pets'] = Pets::where('user_id' , Auth::id())->with(array('image'))->get();
+		return view('ajax.missingpet' , $data);
+	}
+
+	public function addlostpet(Request $request){
+		custom_print_r($request->all());
+	}
 }
