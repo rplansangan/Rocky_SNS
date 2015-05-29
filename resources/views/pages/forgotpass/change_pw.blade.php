@@ -14,7 +14,6 @@ Rocky the Superdog
 					<input type="hidden" name="id" value="{{{ $id }}}">
 					<input type="hidden" name="hash" value="{{{ $hash }}}">
 					
-					<input type="password" name="password" required>
 					<input type="password" name="new_password" required>
 					<input type="password" name="new_password_confirmation" required>
 					

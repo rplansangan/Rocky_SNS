@@ -24,7 +24,7 @@ class ValidationService {
 	 * 
 	 * @var \SNS\Models\Registration
 	 */
-	private $reg;
+	public $reg;
 	
 	/**
 	 * 
@@ -186,13 +186,23 @@ class ValidationService {
 	
 	private function getLastValidation() {
 		$q = EmailValidation::where('registration_id', $this->params['id'])
-		->where('type', $this->params['type'])->get();
+		->where('type', $this->params['type'])->latest()->get();
 		
-		if($q->isEmpty()) {
-			return null;
+		if($q->count() == 1) {
+			return $this->last_validation = $q->first();
 		} else {
-			return $this->last_validation = $q[0];
-		}		
+			$this->last_validation = $q->first();
+			
+			$q = $q->except($q->max('id'));
+			
+			foreach($q as $single) {
+				$single->delete();
+			}
+			
+			return $this->last_validation;
+		}
+		
+		return null;
 	}
 	
 	/**

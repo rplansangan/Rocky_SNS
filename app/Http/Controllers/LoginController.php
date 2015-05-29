@@ -59,9 +59,9 @@ class LoginController extends Controller {
 		if($reg->isEmpty()) {
 			return redirect()->back()->withErrors(['message' => [trans('emailvalidation.not_found.email')]]);
 		}
-		
+		$id = $reg[0];
 		$service = new ValidationService();
-		$service->id($reg[0]->registration_id)->createPasswordToken();
+		$service->id($id->registration_id)->createPasswordToken();
 		
 		return view('pages.forgotpass.message', ['id' => $service->reg->registration_id]);
 	}
@@ -90,16 +90,11 @@ class LoginController extends Controller {
 		#$this->middleware['guest'];
 		$params = array_except($request->all(), ['_token']);
 		$validate = Validator::make(array(
-						'password' => $params['password'],
 						'new_pass' => $params['new_password'],
 						'new_pass_confirmation' => $params['new_password_confirmation']
 				), array(
-						'password' => 'required|min:6|max:24',
 						'new_pass' => 'required|confirmed|min:6|max:24'
 				), array(
-						'password.required' => trans('profile.validation.password.required'),
-						'password.min' => trans('profile.validation.password.min'),
-						'password.max' => trans('profile.validation.password.max'),
 						'new_pass.required' => trans('profile.validation.password.required'),
 						'new_pass.min' => trans('profile.validation.password.min'),
 						'new_pass.max' => trans('profile.validation.password.max'),
@@ -109,18 +104,13 @@ class LoginController extends Controller {
 		if($validate->passes()) {
 			$reg = Registration::find($params['id']); 
 			$reg->load('user'); 
-			$hash = Hash::check($params['password'], $reg->user->password);
 			
-			if($hash == true) {
-				User::find($reg->user->user_id)->update(array('password' => Hash::make($params['new_password'])));
+			User::find($reg->user->user_id)->update(array('password' => Hash::make($params['new_password'])));
 				
-				$service = new ValidationService();
-				$service->id($params['id'])->hash($params['hash'])->type('password')->deleteHash();
+			$service = new ValidationService();
+			$service->id($params['id'])->hash($params['hash'])->type('password')->deleteHash();
 				
-				return redirect()->route('home')->withErrors(array('message' => trans('profile.settings.password.changed')));
-			} else {
-				return redirect()->back()->withErrors(array('message' => trans('profile.settings.password.invalid')));
-			}
+			return redirect()->route('home')->withErrors(array('message' => trans('profile.settings.password.changed')));
 		} else {
 			return redirect()->back()->withErrors($validate->errors()->all());
 		}
