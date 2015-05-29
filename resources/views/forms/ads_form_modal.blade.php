@@ -488,7 +488,7 @@
 	      	<div class="form-group col-sm-12">
 	      		<label class="col-sm-6 control-label">Featured Image:</label>
 	      		<div class="col-sm-6">
-	      			<button type="button" class="btn btn-file" id="foundfile"><i class="fa fa-file-image-o"></i> Upload</button>
+	      			<button type="button" class="btn btn-file" id="adoptftimgs"><i class="fa fa-file-image-o"></i> Upload</button>
 	      			<input type="file" id="filephotouploader" class="hidden" required>
 	      		</div>
 	      	</div>

@@ -388,6 +388,8 @@ $(document).ready(function(){
 		$('#addpetsAdopt').modal('show');
 	});
 
+	$('#adoptftimgs').click(function(){ $('#filephotouploader').trigger('click'); });
+
 	$(document).on('change', '.other_img', function(){
 		var count = $('.other-imgs').find('input').length;
 		if(count < 3){
