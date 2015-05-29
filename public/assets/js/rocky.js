@@ -491,6 +491,7 @@ $(document).ready(function(){
 	 		type: method,
 	 		success:function(r){ 
 	 			alert(r);
+	 			$('#misspet').modal('hide');
 	 		}
 	 	});
 	 	e.preventDefault();
