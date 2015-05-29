@@ -11,7 +11,7 @@ class PetAdoption extends Model {
 	 * 
 	 * @var string
 	 */
-	protected $primaryKey = 'adoption_id';
+	protected $primaryKey = 'pa_id';
 	
 	/**
 	 * The database table used by the model.
@@ -31,6 +31,14 @@ class PetAdoption extends Model {
 	
 	public function foundation() {
 		return $this->belongsTo('SNS\Models\PetFoundation', 'foundation_id', 'foundation_id');
+	}
+	
+	public function prof_pic() {
+		return $this->hasOne('SNS\Models\PetFoundationImages', 'adoption_id', 'pa_id');
+	}
+	
+	public function images() {
+		return $this->hasMany('SNS\Models\PetFoundationImages', 'adoption_id', 'pa_id');
 	}
 
 }

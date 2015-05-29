@@ -490,8 +490,8 @@
 		      	<div class="form-group col-sm-12">
 		      		<label class="col-sm-6 control-label">Featured Image:</label>
 		      		<div class="col-sm-6">
-		      			<button type="button" class="btn btn-file" id="foundfile"><i class="fa fa-file-image-o"></i> Upload</button>
-		      			<input type="file" id="filephotouploader" class="hidden">
+		      			<button type="button" class="btn btn-file" name="ft_img" id="adoptftimgs"><i class="fa fa-file-image-o"></i> Upload</button>
+		      			<input type="file" id="in_ft_img" name="ft_img" class="hidden">
 		      		</div>
 		      	</div>
 		      	<div class="form-group col-sm-12">

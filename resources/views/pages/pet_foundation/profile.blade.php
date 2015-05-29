@@ -14,7 +14,7 @@
 		</div>
 		<div class="col-sm-12 col-xs-12 col-lg-5 col-md-5 petfo-btns">
 			<button class="btn btnpf" type="button">Make a Donation</button>
-			<a href="{{ route('foundation.adoption') }}" class="adoptbtn">Adopt a Pet</a>
+			<a href="{{ route('foundation.adoption', $profile->foundation->petfoundation_id) }}" class="adoptbtn">Adopt a Pet</a>
 			<button class="btn btnpf" type="button">Volunteer</button>
 		</div>
 	</div>
