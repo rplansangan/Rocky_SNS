@@ -61,5 +61,9 @@ class PetFoundation extends Model {
 	public function image() {
 		return $this->hasOne('SNS\Models\Images', 'pfa_id', 'petfoundation_id');
 	}
+	
+	public function adoptions() {
+		return $this->hasMany('SNS\Models\PetAdoption', 'foundation_id', 'petfoundation_id');
+	}
 
 }

@@ -441,69 +441,72 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4>Add pets for adoption</h4>
       </div>
-      <div class="modal-body col-xs-12 col-sm-12 col-m-12 col-lg-12">
-      	<div class="col-xs-12 col-sm-12 col-m-12 col-lg-12 perinfo">
-	      	<div class="form-group col-sm-12">
-	      		<label class="col-sm-4 control-label">Pet Name:</label>
-	      		<div class="col-sm-8">
-	      			<input type="text" name="pet_name" class="form-control" required>
-	      		</div>
-	      	</div>
-	      	<div class="form-group col-sm-12">
-	      		<label class="col-sm-4 control-label">Pet Type:</label>
-	      		<div class="col-sm-8">
-	      			<input type="text" name="pet_type" class="form-control" required>
-	      		</div>
-	      	</div>
-	      	<div class="form-group col-sm-12">
-	      		<label class="col-sm-4 control-label">Breed:</label>
-	      		<div class="col-sm-8">
-	      			<input type="text" name="breed" class="form-control" required>
-	      		</div>
-	      	</div>
-	      	<div class="form-group col-sm-12">
-	      		<label class="col-sm-4 control-label">Gender:</label>
-	      		<div class="col-sm-8">
-	      			<input type="text" name="gender" class="form-control" required>
-	      		</div>
-	      	</div>
-	      	<div class="form-group col-sm-12">
-	      		<label class="col-sm-4 control-label">Weight in lb:</label>
-	      		<div class="col-sm-8">
-	      			<input type="text" name="weight" class="form-control" required>
-	      		</div>
-	      	</div>
-	      	<div class="form-group col-sm-12">
-	      		<label class="col-sm-4 control-label">Height in cm:</label>
-	      		<div class="col-sm-8">
-	      			<input type="text" name="height" class="form-control" required>
-	      		</div>
-	      	</div>
-	      	<div class="form-group col-sm-12">
-	      		<label class="col-sm-4 control-label">Background:</label>
-	      		<div class="col-sm-8">
-	      			<textarea name="background" class="form-control" maxlength="90" required></textarea>
-	      		</div>
-	      	</div>
-	      	<div class="form-group col-sm-12">
-	      		<label class="col-sm-6 control-label">Featured Image:</label>
-	      		<div class="col-sm-6">
-	      			<button type="button" class="btn btn-file" id="foundfile"><i class="fa fa-file-image-o"></i> Upload</button>
-	      			<input type="file" id="filephotouploader" class="hidden" required>
-	      		</div>
-	      	</div>
-	      	<div class="form-group col-sm-12">
+      <form action="{{ route('foundation.adopt.add') }}" method="post" enctype="multipart/form-data">
+      	<input type="hidden" name="_token" value="{{{ csrf_token() }}}">
+     	 <div class="modal-body col-xs-12 col-sm-12 col-m-12 col-lg-12">
+      		<div class="col-xs-12 col-sm-12 col-m-12 col-lg-12 perinfo">
+		      	<div class="form-group col-sm-12">
+		      		<label class="col-sm-4 control-label">Pet Name:</label>
+		      		<div class="col-sm-8">
+		      			<input type="text" name="pet_name" class="form-control" required>
+		      		</div>
+		      	</div>
+		      	<div class="form-group col-sm-12">
+		      		<label class="col-sm-4 control-label">Pet Type:</label>
+		      		<div class="col-sm-8">
+		      			<input type="text" name="pet_type" class="form-control" required>
+		      		</div>
+		      	</div>
+		      	<div class="form-group col-sm-12">
+		      		<label class="col-sm-4 control-label">Breed:</label>
+		      		<div class="col-sm-8">
+		      			<input type="text" name="breed" class="form-control" required>
+		      		</div>
+		      	</div>
+		      	<div class="form-group col-sm-12">
+		      		<label class="col-sm-4 control-label">Gender:</label>
+		      		<div class="col-sm-8">
+		      			<input type="text" name="gender" class="form-control" required>
+		      		</div>
+		      	</div>
+		      	<div class="form-group col-sm-12">
+		      		<label class="col-sm-4 control-label">Weight in lb:</label>
+		      		<div class="col-sm-8">
+		      			<input type="text" name="weight" class="form-control" required>
+		      		</div>
+		      	</div>
+		      	<div class="form-group col-sm-12">
+		      		<label class="col-sm-4 control-label">Height in cm:</label>
+		      		<div class="col-sm-8">
+		      			<input type="text" name="height" class="form-control" required>
+		      		</div>
+		      	</div>
+		      	<div class="form-group col-sm-12">
+		      		<label class="col-sm-4 control-label">Background:</label>
+		      		<div class="col-sm-8">
+		      			<textarea name="background" class="form-control" maxlength="90" required></textarea>
+		      		</div>
+		      	</div>
+		      	<div class="form-group col-sm-12">
+		      		<label class="col-sm-6 control-label">Featured Image:</label>
+		      		<div class="col-sm-6">
+		      			<button type="button" class="btn btn-file" id="foundfile"><i class="fa fa-file-image-o"></i> Upload</button>
+		      			<input type="file" id="filephotouploader" class="hidden">
+		      		</div>
+		      	</div>
+		      	<div class="form-group col-sm-12">
 					<label class="col-sm-2 control-label">Other Images:</label>
 					<div class='col-sm-8 other-imgs'>
 						<input type='file' name="other_img[]" class="other_img col-sm-6" />
 					</div>
 				</div>
-      	</div>
-      </div>
-      <div class="modal-footer">
-      	<input type="submit" class="btn btn-submit btn-primary" value="Add">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+	      	</div>
+	      </div>
+	      <div class="modal-footer">
+	      	<input type="submit" class="btn btn-submit btn-primary" value="Add">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+      </form>
     </div>
   </div>
 </div>

@@ -159,5 +159,9 @@ class PetfoundationController extends Controller {
 	public function adoptList(){
 		return view('pages.pet_foundation.adoptpetlist');
 	}
+	
+	public function addAdoption(Request $request) {
+		dd($request->all());
+	}
 
 }
