@@ -84,8 +84,8 @@
 			<h3>Our Projects</h3>
 		</div>
 		<div class="op col-xs-12 col-sm-12 col-m-4 col-lg-4">
-			<img src="{{ URL::asset('assets/images/proj1.jpg') }}" width="250px">
-			<h4>Project one</h4>
+			<a href="{{ route('foundation.projects')}} "><img src="{{ URL::asset('assets/images/proj1.jpg') }}" width="250px"></a>
+			<h4><a href="{{ route('foundation.projects') }}">Project one</a></h4>
 			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 		</div>
 		<div class="op col-xs-12 col-sm-12 col-m-4 col-lg-4">

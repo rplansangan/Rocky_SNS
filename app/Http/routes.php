@@ -338,6 +338,10 @@ Route::get('foundation/list', [
 	'as' => 'foundation.list.all',
 	'uses' => 'PetfoundationController@showAll'
 ]);
+Route::get('foundation/projects', array(
+	'as' => 'foundation.projects',
+	'uses' => 'PetfoundationController@foundProjects'
+));
 
 //Vet
 Route::get('vettemp', array(

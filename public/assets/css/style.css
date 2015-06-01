@@ -22,7 +22,19 @@ a:hover {
 
 /*============Header============*/
 .header-container {
-  background-color: #e74c3c;
+  background: #ff3019; /* Old browsers */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmMzAxOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjZjA0MDQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top,  #ff3019 0%, #cf0404 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff3019), color-stop(100%,#cf0404)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #ff3019 0%,#cf0404 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#cf0404',GradientType=0 ); /* IE6-8 */
+  -webkit-box-shadow: 0px 5px 8px 0px rgba(50, 50, 50, 0.30);
+  -moz-box-shadow: 0px 5px 8px 0px rgba(50, 50, 50, 0.30);
+  box-shadow: 0px 5px 8px 0px rgba(50, 50, 50, 0.30);
   border-bottom: 2px solid #86170B;
 }
 
@@ -39,11 +51,6 @@ a:hover {
 .pt-links {
   margin-top: 50px;
   text-align: right;
-}
-
-.header-container {
-  background-color: #e74c3c;
-  border-color: #c0392b;
 }
 
 #nav-notif:hover #notif-main {
@@ -168,6 +175,7 @@ input.tagbtnone {
   -moz-box-shadow: 0px 5px 8px 0px rgba(50, 50, 50, 0.30);
   box-shadow: 0px 5px 8px 0px rgba(50, 50, 50, 0.30);
   z-index: 999;
+  display: none;
 }
 
 .slogan h1 {
@@ -208,7 +216,7 @@ input.tagbtnone {
 
 /*============Landing Page============*/
 .landing-content {
-  background-color: #F9EDEC;
+  background-color: #FFF;
 }
 
 .landing-content h2 {
@@ -216,12 +224,11 @@ input.tagbtnone {
 }
 
 .land-mid-vid-btn {
-  background-image: url('../images/paw-bg.png');
+  background-color: #FFE6BE;
   background-position: center;
   padding: 0;
-  border-left: 4px solid #FFADAD;
-  border-right: 4px solid #FFADAD;
-  outline: 4px solid #F9CDC5;
+  border-left: 4px solid #F99B02;
+  border-right: 4px solid #F99B02;
 }
 
 .landing-content .glyphicon-hand-right, .landing-content .glyphicon-hand-left {
@@ -268,7 +275,7 @@ input.tagbtnone {
 }
 
 .land-right-missing img, .land-left-found img {
-  border: 8px dotted #FFB2AB;
+  border: 8px dotted #DF130B;
   margin: 10px;
 }
 
@@ -302,11 +309,11 @@ button.btn_found, button.btn_missing {
 }
 
 .land-btn a {
-  background: #F79187;
+  background: #E6190E;
   padding: 6px;
   font-size: 20px;
   color: #6B0F06;
-  border-bottom: 4px solid #D26F65;
+  border-bottom: 4px solid #E24A3B;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
 }
@@ -350,7 +357,16 @@ button.btn_found, button.btn_missing {
 .wording {
   margin: 25px 0;
   padding: 10px;
-  background: #F9EDEC;
+  background: #f9c667; /* Old browsers */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y5YzY2NyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZjllMDIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top,  #f9c667 0%, #ff9e02 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9c667), color-stop(100%,#ff9e02)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #f9c667 0%,#ff9e02 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #f9c667 0%,#ff9e02 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #f9c667 0%,#ff9e02 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #f9c667 0%,#ff9e02 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9c667', endColorstr='#ff9e02',GradientType=0 ); /* IE6-8 */
 }
 
 .headabout {
@@ -865,6 +881,12 @@ button.addadoptpet, .adoptthis {
   padding: 10px;
   border: 2px solid #F9BBB5;
   border-radius: 6px;
+}
+
+.proj-container {
+  margin: 10px 0 30px 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #B0B0B0;
 }
 
 
@@ -1476,7 +1498,15 @@ a.list-group-item.vete {
 
 /*============Footer============*/
 .footer {
-  background: #E74C3C;
+  background: #ff3019;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, #ff3019 0%, #cf0404 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff3019), color-stop(100%,#cf0404));
+  background: -webkit-linear-gradient(top, #ff3019 0%,#cf0404 100%);
+  background: -o-linear-gradient(top, #ff3019 0%,#cf0404 100%);
+  background: -ms-linear-gradient(top, #ff3019 0%,#cf0404 100%);
+  background: linear-gradient(to bottom, #ff3019 0%,#cf0404 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#cf0404',GradientType=0 );
   padding: 15px;
   -webkit-box-shadow: 0px -5px 8px 0px rgba(50, 50, 50, 0.3);
   -moz-box-shadow: 0px -5px 8px 0px rgba(50, 50, 50, 0.3);

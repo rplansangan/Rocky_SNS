@@ -160,4 +160,8 @@ class PetfoundationController extends Controller {
 		return view('pages.pet_foundation.adoptpetlist');
 	}
 
+	public function foundProjects(){
+		return view('pages.pet_foundation.projects');
+	}
+
 }
