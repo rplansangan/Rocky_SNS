@@ -1,10 +1,10 @@
  <input type="hidden" id="user-check" value="{{ route('index') }}">
  <div class="header-container">
   <div class="container">
-    <div class="col-md-4 col-lg-4 logo">
+    <div class="col-md-6 col-lg-6 logo">
       <img src="{{ URL::asset('assets/images/rocky-logo.png') }}">
     </div>
-    <div class="col-md-4 col-lg-4 tagnum">
+    <div class="col-md-6 col-lg-6 tagnum text-right">
       <div class="formtag">
         <form>
           <div class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="left" title="If you found a pet that has a tag number, please enter it in the input text and hit enter then proceed to the next step."></div>
@@ -17,11 +17,6 @@
         <a href="javascript:void(0)" class="foundpet" data-toggle="tooltip" data-placement="left" title="If you found a pet but doesn't have a tag number, click the 'I found a pet!' button and fillup the form.">I found a pet!</a>
       </div>
     </div>
-    <div class="col-md-4 col-lg-4 pt-links text-right">
-       <a class="about"  href="#">About</a>
-       <a class="privacy"  href="#">Privacy</a>
-       <a class="terms" href="#">Terms</a>
-     </div>
   </div>
 </div>
 @if(auth()->check())
