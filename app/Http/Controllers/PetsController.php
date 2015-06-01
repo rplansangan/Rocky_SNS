@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use SNS\Models\Pets;
 use SNS\Models\FoundPets;
+use SNS\Models\MissingPets;
 use SNS\Models\LostFoundPetImages;
 use SNS\Libraries\Facades\StorageHelper;
 use Illuminate\Support\Facades\Auth;
@@ -127,6 +128,45 @@ class PetsController extends Controller {
 	}
 
 	public function addlostpet(Request $request){
-		custom_print_r($request->all());
+		$input = array_except($request->all(), array('_token'));
+
+		$missing = new MissingPets;
+		if($input['with-tag'] == 'true'){
+			$pets = Pets::find($input['select-pet'])->get();
+			$missing->owner = Auth::id();
+			$missing->rocky_tag_no = $pets[0]->rocky_tag_no;
+			$missing->pet_name = $pets[0]->pet_name;
+			$missing->pet_type = $pets[0]->pet_type;
+			$missing->breed = $pets[0]->breed;
+			$missing->gender = $pets[0]->pet_gender;
+			$missing->weight = $pets[0]->weight;
+			$missing->height = $pets[0]->height;
+			$missing->brand = $pets[0]->brand;
+			$missing->food = $pets[0]->food;
+			$missing->feed_interval = $pets[0]->feeding_interval;
+			$missing->feed_time = $pets[0]->feeding_time;
+			$missing->behavior = $pets[0]->pet_behavior;
+			$missing->lost_in = $input['pet_foundat'];
+			$missing->pet_when = $input['pet_when'];
+			$missing->save();
+		}else{
+			$missing->owner = Auth::id();
+			$missing->pet_name = $input['pet_name'];
+			$missing->pet_type = $input['pet_type'];
+			$missing->breed = $input['breed'];
+			$missing->gender = $input['pet_gender'];
+			$missing->weight = $input['weight'];
+			$missing->height = $input['height'];
+			$missing->brand = $input['brand'];
+			$missing->food = $input['food'];
+			$missing->feed_interval = $input['feeding_interval'];
+			$missing->feed_time = $input['feeding_time'];
+			$missing->behavior = $input['bahavior'];
+			$missing->lost_in = $input['pet_foundat'];
+			$missing->pet_when = $input['pet_when'];
+			$missing->save();
+		}
+
+		echo 'Lost dog has been Reported';
 	}
 }

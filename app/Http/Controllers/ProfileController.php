@@ -37,7 +37,7 @@ class ProfileController extends Controller {
 			if(is_null($profile->foundation)) {
 				return redirect()->route('foundation.profile.register');
 			} else {
-				return view('pages.pfpageprof')->with('profile', $profile);
+				return view('pages.pet_foundation.profile', ['foundation_id', $profile->foundation->foundation_id])->with('profile', $profile);
 			}
 		} else {
 			$profile->load(array('registration' => function($q) {

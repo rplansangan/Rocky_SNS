@@ -14,7 +14,7 @@
 						@if($list != null)
 							@foreach($list as $single)
 								<div class="col-sm-4 text-center" style="margin-top:10px">
-									<a href="{{ route('profile.showProfile', $single->user_id) }}"><img width="100%"src="{{ route('files.get.image', [$single->user_id, $single->prof_pic->image_id]) }}"></a>
+									<a href="{{ route('profile.showProfile', $single->user_id) }}"><img width="100%"src="{{ route('foundation.get.image', [$single->user_id, $single->prof_pic->image_id]) }}"></a>
 									<a href="{{ route('profile.showProfile', $single->user_id) }}">{{ $single->petfoundation_name }}</a>
 								</div>
 							@endforeach

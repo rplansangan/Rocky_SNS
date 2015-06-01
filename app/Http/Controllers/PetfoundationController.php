@@ -18,6 +18,10 @@ use SNS\Models\PetFoundation;
 
 use Illuminate\Http\Request;
 use SNS\Libraries\Traits\ProfPicTrait;
+use SNS\Models\PetAdoption;
+use SNS\Models\PetFoundationImages;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Response;
 
 class PetfoundationController extends Controller {
 
@@ -144,9 +148,9 @@ class PetfoundationController extends Controller {
 		$col = PetFoundation::select(['petfoundation_id', 'petfoundation_name', 'user_id'])->latest()->get();
 		$col->load([
 				'prof_pic' => function($q) {
-					$q->addSelect(['image_id', 'pfa_id']);
+					$q->addSelect(['image_id', 'foundation_id']);
 					$q->where('is_profile_picture', 1);
-					$q->where('pet_id', 0);
+					$q->where('adoption_id', 0);
 				}
 		]);
 		return view('pages.pet_foundation.list', ['list' => $col]);
@@ -156,8 +160,99 @@ class PetfoundationController extends Controller {
 		return view('pages.pfpageprof');
 	}
 
-	public function adoptList(){
-		return view('pages.pet_foundation.adoptpetlist');
+	public function adoptList($foundation_id){
+		$collection = PetAdoption::select(['pa_id', 'pet_name', 'background', 'foundation_id'])
+						->with([
+							'prof_pic' => function($q) {
+								$q->where('is_profile_picture', 1);
+								$q->addSelect(['image_id', 'user_id', 'adoption_id']);
+							},
+						])
+						->where('foundation_id', $foundation_id)
+						->get();
+		
+		$foundation = Auth::user()->foundation;
+		
+		if($foundation == null) {
+			$adopt_btn = false;
+		} elseif($foundation->petfoundation_id != $foundation_id) {
+			$adopt_btn = false;
+		} else {
+			$adopt_btn = true;
+		}
+		
+		
+		return view('pages.pet_foundation.adoptpetlist', ['list' => $collection, 'adopt_btn' => $adopt_btn]);
+	}
+	
+	public function addAdoption(Request $request) {
+		$input = $request->except(['_token']); 
+		$model = new PetAdoption();
+		$model->pet_name = $input['pet_name'];
+		$model->pet_type = $input['pet_type'];
+		$model->breed = $input['breed'];
+		$model->gender = $input['gender'];
+		$model->weight = $input['weight'];
+		$model->height = $input['height'];
+		$model->background = $input['background'];
+		
+		$foundation = Auth::user()->foundation; dd($foundation);
+		$foundation->adoptions()->save($model);
+		
+		if(isset($input['ft_img']) AND (!is_null($input['ft_img']))) {
+			$filename = md5($input['ft_img']->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
+			$dir = StorageHelper::create(Auth::id());
+						
+			$img = new PetFoundationImages();
+			$img->user_id = Auth::id();
+			$img->foundation_id = $foundation->petfoundation_id;
+			$img->adoption_id = $model->pa_id;
+			$img->image_path = $dir;
+			$img->image_name = $filename;
+			$img->image_mime = $input['ft_img']->getClientMimeType();
+			$img->image_ext = $input['ft_img']->getClientOriginalExtension();
+			$img->is_profile_picture = 1;
+			$img->save();
+			
+			$input['ft_img']->move(storage_path('app') . '/' . $dir, $filename . '.' . $img->image_ext);
+		}
+		
+		
+		if(isset($input['other_img'])) {
+			foreach($input['other_img'] as $single) {
+				if(!is_null($single)) {
+					$filename = md5($single->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
+					
+					$img = new PetFoundationImages();
+					$img->user_id = Auth::id();
+					$img->foundation_id = $foundation->petfoundation_id;
+					$img->adoption_id = $model->pa_id;
+					$img->image_path = $dir;
+					$img->image_name = $filename;
+					$img->image_mime = $single->getClientMimeType();
+					$img->image_ext = $single->getClientOriginalExtension();
+					$img->is_profile_picture = 0;
+					$img->save();
+						
+					$single->move(storage_path('app') . '/' . $dir, $filename . '.' . $img->image_ext);
+				}
+			}
+		}		
+		
+		return redirect()->back();
+	}
+	
+	public function getImage($user_id, $image_id) {
+		$img = PetFoundationImages::find($image_id);
+		
+		if($img->user_id != $user_id) {
+			return false;
+		}
+		
+		$file = Storage::get($img->image_path . '/' . $img->image_name . '.' . $img->image_ext);
+		
+		return (new Response($file, 200))->header('Content-Type', $img->image_mime);
+		
 	}
 
 	public function foundProjects(){

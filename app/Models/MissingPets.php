@@ -25,7 +25,7 @@ class MissingPets extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['rocky_tag_no', 'pet_name', 'pet_type', 'breed', 'gender', 'weight', 'height', 'background', 'pet_nickname', 'pet_donts', 'pet_behavior'];
+	protected $fillable = ['rocky_tag_no', 'brand' ,'lost_in' , 'owner' ,'pet_when' , 'feed_interval' , 'feed_time' , 'food' ,'pet_name', 'pet_type', 'breed', 'gender', 'weight', 'height', 'background', 'pet_nickname', 'pet_donts', 'pet_behavior'];
 	
 	protected $dates = ['deleted_at'];
 

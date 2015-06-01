@@ -330,7 +330,7 @@ Route::get('pfoundationtemp', array(
 	'as' => 'pfoundationtemp',
 	'uses' => 'PetfoundationController@pfoundationTemp'
 ));
-Route::get('foundation/adoption', array(
+Route::get('foundation/{id}/adoption', array(
 	'as' => 'foundation.adoption',
 	'uses' => 'PetfoundationController@adoptList'
 ));
@@ -342,6 +342,14 @@ Route::get('foundation/projects', array(
 	'as' => 'foundation.projects',
 	'uses' => 'PetfoundationController@foundProjects'
 ));
+Route::post('foundation/adopt', [
+	'as' => 'foundation.adopt.add',
+	'uses' => 'PetfoundationController@addAdoption'
+]);
+Route::get('foundation/images/{id}/{i_id}', [
+	'as' => 'foundation.get.image',
+	'uses' => 'PetfoundationController@getImage'
+]);
 
 //Vet
 Route::get('vettemp', array(

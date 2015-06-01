@@ -388,7 +388,7 @@ $(document).ready(function(){
 		$('#addpetsAdopt').modal('show');
 	});
 
-	$('#adoptftimgs').click(function(){ $('#filephotouploader').trigger('click'); });
+	$('#adoptftimgs').click(function(){ $('#in_ft_img').trigger('click'); });
 
 	$(document).on('change', '.other_img', function(){
 		var count = $('.other-imgs').find('input').length;
@@ -491,6 +491,7 @@ $(document).ready(function(){
 	 		type: method,
 	 		success:function(r){ 
 	 			alert(r);
+	 			$('#misspet').modal('hide');
 	 		}
 	 	});
 	 	e.preventDefault();

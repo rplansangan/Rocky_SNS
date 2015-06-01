@@ -1,4 +1,4 @@
-<?php namespace SNS;
+<?php namespace SNS\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -11,7 +11,7 @@ class PetAdoption extends Model {
 	 * 
 	 * @var string
 	 */
-	protected $primaryKey = 'adoption_id';
+	protected $primaryKey = 'pa_id';
 	
 	/**
 	 * The database table used by the model.
@@ -25,8 +25,20 @@ class PetAdoption extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['pet_name', 'pet_type', 'breed', 'gender', 'height', 'weight', 'background'];
+	protected $fillable = ['pet_name', 'pet_type', 'breed', 'gender', 'height', 'weight', 'background', 'foundation_id'];
 	
 	protected $dates = ['deleted_at'];
+	
+	public function foundation() {
+		return $this->belongsTo('SNS\Models\PetFoundation', 'foundation_id', 'foundation_id');
+	}
+	
+	public function prof_pic() {
+		return $this->hasOne('SNS\Models\PetFoundationImages', 'adoption_id', 'pa_id');
+	}
+	
+	public function images() {
+		return $this->hasMany('SNS\Models\PetFoundationImages', 'adoption_id', 'pa_id');
+	}
 
 }

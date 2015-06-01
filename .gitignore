@@ -8,3 +8,4 @@ resources/views/forms/ads_form_modal.blade.php
 resources/views/pages/landing.blade.php
 resources/views/forms/ads_form_modal.blade.php
 app/Http/routes.php
+app/Http/routes.php
