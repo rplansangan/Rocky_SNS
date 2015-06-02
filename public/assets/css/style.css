@@ -313,7 +313,7 @@ input.tagbtnone {
 }
 
 .land-right-missing img, .land-left-found img {
-  border: 8px solid #FDAB24;
+  border: 8px solid #C61804;
   margin: 10px;
   -webkit-box-shadow: 7px 7px 7px 0px rgba(50, 50, 50, 0.45);
   -moz-box-shadow: 7px 7px 7px 0px rgba(50, 50, 50, 0.45);

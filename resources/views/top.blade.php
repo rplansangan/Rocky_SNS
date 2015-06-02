@@ -1,4 +1,5 @@
  <input type="hidden" id="user-check" value="{{ route('index') }}">
+ <input type="hidden" id="user-chtwo" value="{{ route('signup') }}">
  <div class="header-container">
   <div class="container">
     <div class="col-md-6 col-lg-6 logo">

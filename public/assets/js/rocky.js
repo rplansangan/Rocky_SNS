@@ -352,11 +352,12 @@ $(document).ready(function(){
 	//rocky, find mypet modal
 	$('.misspet').on('click' , function(e){
 	var url = $('#user-check').val()+"/";
+	var securl = $('#user-chtwo').val();
 	var current = window.location.href;
-		if(current == url){
+		if(current == url || current == securl){
 			alert('Please log in first.');
 		}
-		else if(current != url) {
+		else if(current != url || current != securl) {
 			$.ajax({
 	    		url: $(this).attr('route'),
 	    		data: { 
