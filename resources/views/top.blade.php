@@ -2,7 +2,7 @@
  <div class="header-container">
   <div class="container">
     <div class="col-md-6 col-lg-6 logo">
-      <img src="{{ URL::asset('assets/images/rocky-logo.png') }}">
+      <a href="{{ route('index') }}"><img src="{{ URL::asset('assets/images/rocky-logo.png') }}"></a>
     </div>
     <div class="col-md-6 col-lg-6 tagnum text-right">
       <div class="formtag">

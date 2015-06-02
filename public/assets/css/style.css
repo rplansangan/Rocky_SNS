@@ -194,7 +194,8 @@ input.tagbtnone {
 
 .slogan h1 {
   font-size: 25px !important;
-  font-family: 'Montserrat', sans-serif important;
+  font-family: 'Vollkorn', serif;
+  font-weight: bold;
   margin-top: 23px;
 }
 
@@ -247,14 +248,25 @@ input.tagbtnone {
 
 .landing-content h2 {
   margin-top: 10px;
+  font-family: 'Vollkorn', serif;
+  font-weight: bold;
+  color: #412007;
+}
+
+.wording h4 {
+  color: #412007;
 }
 
 .land-mid-vid-btn {
-  background-color: #FFE6BE;
   background-position: center;
   padding: 0;
-  border-left: 4px solid #F99B02;
-  border-right: 4px solid #F99B02;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 0;
+  border-bottom: 0;
+  -webkit-border-image: url(../images/border.png) 20 stretch; /* Safari 3.1-5 */
+  -o-border-image: url(../images/border.png) 20 stretch; /* Opera 11-12.1 */
+  border-image: url(../images/border.png) 20 stretch;
 }
 
 .landing-content .glyphicon-hand-right, .landing-content .glyphicon-hand-left {
@@ -301,14 +313,20 @@ input.tagbtnone {
 }
 
 .land-right-missing img, .land-left-found img {
-  border: 8px dotted #FDAB24;
+  border: 8px solid #FDAB24;
   margin: 10px;
+  -webkit-box-shadow: 7px 7px 7px 0px rgba(50, 50, 50, 0.45);
+  -moz-box-shadow: 7px 7px 7px 0px rgba(50, 50, 50, 0.45);
+  box-shadow: 7px 7px 7px 0px rgba(50, 50, 50, 0.45);
 }
 
 .land-left-found a, .land-right-missing a {
   color: #6E4301;
   text-transform: uppercase;
   font-size: 22px;
+  font-family: 'Vollkorn', serif;
+  font-weight: bold;
+  text-shadow: 4px 2px 7px rgba(150, 150, 150, 1);
 }
 
 .land-left-found a:hover, .land-right-missing a:hover {
@@ -329,9 +347,14 @@ button.btn_found, button.btn_missing {
 }
 
 .land-btn {
-  margin-bottom: 30px;
+  margin-bottom: 0;
   font-size: 20px;
   color: #960F06;
+  padding: 40px 15px;
+  background-image: url('../images/animals.png');
+  background-position-x: initial;
+  background-position: bottom center;
+  background-repeat: repeat-x;
 }
 
 .land-btn a {
@@ -406,23 +429,26 @@ button.btn_found, button.btn_missing {
   border-bottom: 3px solid #E5CBA4;
   padding: 5px 0;
   text-transform: uppercase;
-  color: #623D1A;
-    margin-top: 25px;
+  color: #412007;
+  margin-top: 25px;
+  font-family: 'Vollkorn', serif;
 }
 
 .otherabt {
-  margin-top: 25px;
+  margin-top: 5px;
 }
 
 .iconsabout {
   margin: 10px 0;
-  min-height: 70px;
+  min-height: 60px;
 }
 
 .iconsabout h4 {
   font-size: 25px;
   font-weight: bold;
-  color: #6E4301;
+  color: #412007;
+  font-family: 'Vollkorn', serif;
+  text-shadow: 2px 0 0 #FFF, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 }
 
 
