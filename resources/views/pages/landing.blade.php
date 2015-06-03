@@ -18,43 +18,43 @@ Welcome to Rocky The Superdog
 				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
 			</div>
 			<div class="iconsabout col-md-8 col-lg-8">
-				<a href=""><h4>Pet Lovers</h4></a>
+				<a href="#"><h4>Pet Lovers</h4></a>
 			</div>
 			<div class="iconsabout col-md-3 col-lg-3">
 				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
 			</div>
 			<div class="iconsabout col-md-8 col-lg-8">
-				<a href=""><h4>Pet Shops</h4></a>
+				<a href="#"><h4>Pet Shops</h4></a>
 			</div>
 			<div class="iconsabout col-md-3 col-lg-3">
 				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
 			</div>
 			<div class="iconsabout col-md-8 col-lg-8">
-				<a href=""><h4>Pet Foundations</h4></a>
+				<a href="#"><h4>Pet Foundations</h4></a>
 			</div>
 			<div class="iconsabout col-md-3 col-lg-3">
 				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
 			</div>
 			<div class="iconsabout col-md-8 col-lg-8">
-				<a href=""><a href=""><h4>Pet Videos</h4></a>
+				<a href="#"><a href=""><h4>Pet Videos</h4></a>
 			</div>
 			<div class="iconsabout col-md-3 col-lg-3">
 				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
 			</div>
 			<div class="iconsabout col-md-8 col-lg-8">
-				<a href=""><h4>Pet Groomers & Pet Walkers</h4></a>
+				<a href="#"><h4>Pet Groomers & Pet Walkers</h4></a>
 			</div>
 			<div class="iconsabout col-md-3 col-lg-3">
 				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
 			</div>
 			<div class="iconsabout col-md-8 col-lg-8">
-				<a href=""><h4>Veterinarians</h4></a>
+				<a href="#"><h4>Veterinarians</h4></a>
 			</div>
 			<div class="iconsabout col-md-3 col-lg-3">
 				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
 			</div>
 			<div class="iconsabout col-md-8 col-lg-8">
-				<a href=""><h4>Rocky Rangers</h4></a>
+				<a href="#"><h4>Rocky Rangers</h4></a>
 			</div>
 		</div>
 	</div>
@@ -498,6 +498,10 @@ Welcome to Rocky The Superdog
 				<img src="{{ URL::asset('assets/images/found1.jpg') }}" width="250px" height="185px">
 			</div>
 			<!--<button type="button" class="btn btn_found" data-toggle="modal" data-target="#misfo" data-type="Found" data-advertisetype="I Found A Pet"  data-title="I Found A Pet" data-id="" data-action="" >I Found A Pet</button>-->
+		</div>
+
+		<div class="rockygif col-sm-12 col-xs-12 col-md-12 col-lg-12">
+			<img src="{{ URL::asset('assets/images/rocky-superdog.gif') }}">
 		</div>
 	</div>
 </div>
