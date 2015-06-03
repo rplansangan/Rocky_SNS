@@ -60,6 +60,12 @@ $(document).ready(function() {
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="col-sm-2 control-label">Rocky Tag Number:</label>
+					<div class="col-sm-8">
+						<input type="text" name="rocky_tag_no" class="form-control" placeholder="Rocky Tag Number">
+					</div>
+				</div>
+				<div class="form-group">
 					<label class="col-sm-2 control-label">Animal Type:</label>
 					<div class='col-sm-8'>
 						<select id="sel-ani-type" name="pet_type" class="form-control">

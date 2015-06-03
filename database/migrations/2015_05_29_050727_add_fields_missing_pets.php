@@ -30,7 +30,9 @@ class AddFieldsMissingPets extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::table('missing_pets', function(Blueprint $t) {
+			$t->dropColumn(['brand', 'owner', 'food', 'feed_interval', 'feed_time', 'lost_in', 'pet_when']);
+		});
 	}
 
 }

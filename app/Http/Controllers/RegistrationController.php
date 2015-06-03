@@ -1,5 +1,6 @@
 <?php namespace SNS\Http\Controllers;
 
+use Carbon\Carbon;
 use SNS\Models\Registration;
 use SNS\Models\Pets;
 use SNS\Models\User;
@@ -162,6 +163,7 @@ class RegistrationController extends Controller {
 		
 		$pet = new Pets();
 		$pet->user_id = Auth::id();
+		$pet->rocky_tag_no = $input['rocky_tag_no'];
 		$pet->pet_name = $input['pet_name'];
 		$pet->pet_type = $input['pet_type'];
 		$pet->breed = $input['breed'];

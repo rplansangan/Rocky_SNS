@@ -110,12 +110,34 @@
 			<div class="form-group col-sm-12">
 				<label class="col-sm-4 control-label">Address:</label>
 				<div class="col-sm-8">
-					<textarea name="finder_address1" class="form-control">{{ @$user_info->address_line1 }}</textarea>
+					<textarea name="finder_address1" class="form-control" placeholder="Address Line 1"></textarea>
+					<textarea name="finder_address2" class="form-control" placeholder="Address Line 2"></textarea>
+				</div>
+			</div>
+			<div class="form-group col-sm-12">
+				<label class="col-sm-4 control-label">City:</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" name="found_in_city" placeholder="City">
+				</div>
+			</div>
+			<div class="form-group col-sm-12">
+				<label class="col-sm-4 control-label">State:</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" name="found_in_state" placeholder="State">
+					<input type="text" class="form-control" name="found_in_zip" placeholder="Zip Code">
+				</div>
+			</div>
+			<div class="form-group col-sm-12">
+				<label class="col-sm-4 control-label">Country:</label>
+				<div class="col-sm-8">
+					{!! country_form() !!}
 				</div>
 			</div>
 			<div class="form-group col-sm-12">
 				<label class="col-sm-4 control-label">Contact Number:</label>
 				<div class="col-sm-8">
+					<input type="text" name="finder_country_code" class="form-control" value="{{ $user_info->phone_country_code }}">
+					<input type="text" name="finder_area_code" class="form-control" value="{{ $user_info->phone_area_code }}">
 					<input type="text" name="finder_tel_no" class="form-control" value="{{ @$user_info->phone_number }}">
 				</div>
 			</div>

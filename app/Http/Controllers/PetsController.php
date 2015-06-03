@@ -72,7 +72,7 @@ class PetsController extends Controller {
 	
 	public function addmissingpet(Request $request){
 		$input = array_except($request->all(), array('_token'));
-
+		
 		$fp = new FoundPets;
 		if(Auth::check()){
 			$fp->is_guest = 0;
@@ -85,41 +85,47 @@ class PetsController extends Controller {
 		$fp->found_in_remark = $input['found_in_remark'];
 		$fp->finder_name = $input['finder_name'];
 		$fp->rocky_tag_no = $input['rocky_tag_no'];
-		$fp->finder_address1 = $input['finder_address1'];
+		$fp->found_in_address1 = $input['finder_address1'];
+		$fp->found_in_address2 = $input['finder_address2'];
+		$fp->finder_country_code = $input['finder_country_code'];
+		$fp->finder_area_code = $input['finder_area_code'];
 		$fp->finder_tel_no = $input['finder_tel_no'];
+		$fp->found_in_city = $input['found_in_city'];
+		$fp->found_in_state = $input['found_in_state'];
+		$fp->found_in_zip = $input['found_in_zip'];
+		$fp->found_in_country = $input['country'];
 		$fp->save();
 	
-		$file = $request->file('myfile');
-	
-		if(Auth::check()){
-			foreach($file as $single) {
-				$dir = StorageHelper::create(Auth::id());
-				$filename = md5($single->getClientOriginalName() . Carbon::now());
-				$image = new LostFoundPetImages([
-						'image_path' => $dir,
-						'image_name' => $filename,
-						'image_mime' => $single->getMimeType(),
-						'image_ext' => $single->getClientOriginalExtension()
-						]);
-				$fp->image()->save($image);
-				$single->move(storage_path('app') . '/' . $dir, $filename . '.' . $image->image_ext);
-			}
-		}else{
-			foreach($file as $single) {
-				$dir = StorageHelper::create(0);
-				$filename = md5($single->getClientOriginalName() . Carbon::now());
-				$image = new LostFoundPetImages([
-						'image_path' => $dir,
-						'image_name' => $filename,
-						'image_mime' => $single->getMimeType(),
-						'image_ext' => $single->getClientOriginalExtension()
-						]);
-				$fp->image()->save($image);
-				$single->move(storage_path('app') . '/' . $dir, $filename . '.' . $image->image_ext);
+		if($request->hasFile('myfile')) {
+			foreach($request->file('myfile') as $single) {
+				$this->upload($fp, $single);
 			}
 		}
 	
 		return redirect()->back()->withErrors(['message' => 'Thank you for reporting a missing pet']);
+	}
+	
+	/**
+	 * 
+	 * @param mixed $parent
+	 * @param Request $file
+	 */
+	private function upload($parent, $file) {
+		if(Auth::check()) {
+			$dir = StorageHelper::create(Auth::id());
+		} else {
+			$dir = StorageHelper::create(0);
+		}		
+		
+		$filename = md5($file->getClientOriginalName() . Carbon::now());
+		$image = new LostFoundPetImages([
+				'image_path' => $dir,
+				'image_name' => $filename,
+				'image_mime' => $file->getMimeType(),
+				'image_ext' => $file->getClientOriginalExtension()
+				]);
+		$parent->image()->save($image);
+		$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $image->image_ext);
 	}
 
 	public function findpets(){
