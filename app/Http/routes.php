@@ -350,6 +350,10 @@ Route::get('foundation/images/{id}/{i_id}', [
 	'as' => 'foundation.get.image',
 	'uses' => 'PetfoundationController@getImage'
 ]);
+Route::get('foundation/search', [
+	'as' => 'foundation.search',
+	'uses' => 'PetfoundationController@search'
+]);
 
 //Vet
 Route::get('vettemp', array(

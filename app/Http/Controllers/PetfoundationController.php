@@ -258,5 +258,22 @@ class PetfoundationController extends Controller {
 	public function foundProjects(){
 		return view('pages.pet_foundation.projects');
 	}
+	
+	public function search(Request $request) {
+		$col = PetFoundation::where('country', $request->get('country'))
+					->whereNotNull('user_id')
+					->orWhere('petfoundation_name', $request->get('name'))
+					->orWhere('city', $request->get('city'))
+					->orWhere('zip', $request->get('zip'))
+					->with([
+							'prof_pic' => function($q) {
+								$q->addSelect(['image_id', 'foundation_id']);
+								$q->where('is_profile_picture', 1);
+								$q->where('adoption_id', 0);
+							}
+					])
+					->paginate(1);
+		return view('pages.pet_foundation.list', ['list' => $col]);
+	}
 
 }
