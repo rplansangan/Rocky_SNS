@@ -22,15 +22,40 @@
 						</div>
 						<div class="row" style="margin-top:10px;">
 							<div class="form-group">
-								<label class="col-sm-2 control-label">Lost in:</label>
-								<div class="col-sm-10">
-									<input type="text" name="pet_foundat" class="form-control" required>
-								</div>
-							</div>
-							<div class="form-group">
 								<label class="col-sm-2 control-label">When:</label>
 								<div class="col-sm-10">
 									<input type="text" name="pet_when" class="form-control" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Address:</label>
+								<div class="col-sm-10">
+									<textarea name="address1" class="form-control" placeholder="Address Line 1"></textarea>
+									<textarea name="address2" class="form-control" placeholder="Address Line 2"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">City:</label>
+								<div class="col-sm-10">
+									<input type="text" name="city" class="form-control" placeholder="City">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">State:</label>
+								<div class="col-sm-10">
+									<input type="text" name="state" class="form-control" placeholder="State">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Country:</label>
+								<div class="col-sm-10">
+									{!! country_form() !!}
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Remarks:</label>
+								<div class="col-sm-10">
+									<input type="text" name="remarks" class="form-control" placeholder="Remarks">
 								</div>
 							</div>
 						</div>
@@ -117,17 +142,42 @@
 							</div>
 						</div>
 						<div class="form-group col-sm-12">
-							<label class="col-sm-4 control-label">Lost in:</label>
+							<label class="col-sm-4 control-label">When:</label>
 							<div class="col-sm-8">
-								<input type="text" name="pet_foundat" class="form-control" required>
+								<input type="text" name="pet_when" class="form-control" required>
 							</div>
 						</div>
-						<div class="form-group">
-								<label class="col-sm-4 control-label">When:</label>
-								<div class="col-sm-8">
-									<input type="text" name="pet_when" class="form-control" required>
-								</div>
+						<div class="form-group col-sm-12">
+							<label class="col-sm-4 control-label">Address:</label>
+							<div class="col-sm-8">
+								<textarea name="address1" class="form-control" placeholder="Address Line 1"></textarea>
+								<textarea name="address2" class="form-control" placeholder="Address Line 2"></textarea>
 							</div>
+						</div>
+						<div class="form-group col-sm-12">
+							<label class="col-sm-4 control-label">City:</label>
+							<div class="col-sm-8">
+								<input type="text" name="city" class="form-control" placeholder="City">
+							</div>
+						</div>
+						<div class="form-group col-sm-12">
+							<label class="col-sm-4 control-label">State:</label>
+							<div class="col-sm-8">
+								<input type="text" name="state" class="form-control" placeholder="State">
+							</div>
+						</div>
+						<div class="form-group col-sm-12">
+							<label class="col-sm-4 control-label">Country:</label>
+							<div class="col-sm-8">
+								{!! country_form() !!}
+							</div>
+						</div>
+						<div class="form-group col-sm-12">
+							<label class="col-sm-4 control-label">Remarks:</label>
+							<div class="col-sm-8">
+								<input type="text" name="remarks" class="form-control" placeholder="Remarks">
+							</div>
+						</div>
 						<div class="form-group">
 							<input type="submit" value="Submit" class="btn btn-primary">
 						</div>

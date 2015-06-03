@@ -272,7 +272,7 @@ class PetfoundationController extends Controller {
 								$q->where('adoption_id', 0);
 							}
 					])
-					->paginate(1);
+					->paginate(20);
 		return view('pages.pet_foundation.list', ['list' => $col]);
 	}
 

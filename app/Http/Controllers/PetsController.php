@@ -163,10 +163,8 @@ class PetsController extends Controller {
 			$missing->food = $pets[0]->food;
 			$missing->feed_interval = $pets[0]->feeding_interval;
 			$missing->feed_time = $pets[0]->feeding_time;
-			$missing->behavior = $pets[0]->pet_behavior;
-			$missing->lost_in = $input['pet_foundat'];
+			$missing->pet_behavior = $pets[0]->pet_behavior;
 			$missing->pet_when = $input['pet_when'];
-			$missing->save();
 		}else{
 			$missing->owner = Auth::id();
 			$missing->pet_name = $input['pet_name'];
@@ -179,12 +177,17 @@ class PetsController extends Controller {
 			$missing->food = $input['food'];
 			$missing->feed_interval = $input['feeding_interval'];
 			$missing->feed_time = $input['feeding_time'];
-			$missing->behavior = $input['bahavior'];
-			$missing->lost_in = $input['pet_foundat'];
-			$missing->pet_when = $input['pet_when'];
-			$missing->save();
+			$missing->pet_behavior = $input['bahavior'];
+			$missing->pet_when = $input['pet_when'];	
 		}
+		$missing->lost_in_address1 = $input['address1'];
+		$missing->lost_in_address2 = $input['address2'];
+		$missing->lost_in_city = $input['city'];
+		$missing->lost_in_state = $input['state'];
+		$missing->lost_in_country = $input['country'];
+		$missing->lost_in_remarks = $input['remarks'];
+		$missing->save();
 
-		echo 'Lost dog has been Reported';
+		echo 'Lost dog has been reported';
 	}
 }
