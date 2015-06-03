@@ -182,7 +182,6 @@ input.tagbtnone {
 
 /*============SUBHeader============*/
 .subhead-content {
-  background: #FFDF8B;
   border-top: 1px solid #931507;
   padding: 15px;
   -webkit-box-shadow: 0px 5px 8px 0px rgba(50, 50, 50, 0.30);
@@ -190,6 +189,17 @@ input.tagbtnone {
   box-shadow: 0px 5px 8px 0px rgba(50, 50, 50, 0.30);
   z-index: 999;
   padding: 10px;
+  font-weight: bold;
+  border-radius: 0px;
+  background: #ffc877;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, #ffc877 0%, #ff9e02 50%, #ff9e02 51%, #ffbe5e 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffc877), color-stop(50%,#ff9e02), color-stop(51%,#ff9e02), color-stop(100%,#ffbe5e));
+  background: -webkit-linear-gradient(top, #ffc877 0%,#ff9e02 50%,#ff9e02 51%,#ffbe5e 100%);
+  background: -o-linear-gradient(top, #ffc877 0%,#ff9e02 50%,#ff9e02 51%,#ffbe5e 100%);
+  background: -ms-linear-gradient(top, #ffc877 0%,#ff9e02 50%,#ff9e02 51%,#ffbe5e 100%);
+  background: linear-gradient(to bottom, #ffc877 0%,#ff9e02 50%,#ff9e02 51%,#ffbe5e 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc877', endColorstr='#ffbe5e',GradientType=0 );
 }
 
 .slogan h1 {
@@ -236,7 +246,7 @@ input.tagbtnone {
   background: -ms-linear-gradient(top, #ffc877 0%,#ff9e02 50%,#ff9e02 51%,#ffbe5e 100%);
   background: linear-gradient(to bottom, #ffc877 0%,#ff9e02 50%,#ff9e02 51%,#ffbe5e 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc877', endColorstr='#ffbe5e',GradientType=0 );
-  border: 1px solid #FDAC2A;
+  border: 2px solid #C37800;
 }
 
 
@@ -376,8 +386,8 @@ button.btn_found, button.btn_missing {
 
 .land-missing .foundpets-page, .land-found .foundpets-page {
   background: #fff;
-  border-left: 2px solid #F9BBB5;
-  border-right: 2px solid #F9BBB5;
+  border-left: 2px solid #C61804;
+  border-right: 2px solid #C61804;
   text-align: left;
 }
 
@@ -386,14 +396,13 @@ button.btn_found, button.btn_missing {
 }
 
 .foundpets-page a.redi-btn {
-  background: #F79187;
-  padding: 6px;
+  background: #E6190E;
+  padding: 3px 5px;
   font-size: 20px;
-  color: #6B0F06;
-  border-bottom: 4px solid #D26F65;
+  color: #fff;
+  border-bottom: 4px solid #E24A3B;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
-  float: right;
 }
 
 .foundpets-page a.redi-btn:hover {
@@ -401,6 +410,7 @@ button.btn_found, button.btn_missing {
   background-color: #FAD6D6;
   text-decoration: none;
   border-bottom: 4px solid #F29F96;
+  color: #6E4301;
 }
 
 .wording {
@@ -625,7 +635,7 @@ label.col-sm-12.control-label.user-type {
 
 /*============Newsfeed Sub Header============*/
 .navbar-right li a {
-  color: #89342C;
+  color: #472B00;
   font-family: 'Montserrat', sans-serif important;
 }
 
@@ -641,9 +651,17 @@ label.col-sm-12.control-label.user-type {
 .middle .btn {
   margin-top: 0px;
   padding: 3px 20px;
-  background: #E74C3C;
-  color: #fff;
+  color: #3D2501;
   border-radius: 0px;
+  background: #ffc877;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, #ffc877 0%, #ff9e02 50%, #ff9e02 51%, #ffbe5e 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffc877), color-stop(50%,#ff9e02), color-stop(51%,#ff9e02), color-stop(100%,#ffbe5e));
+  background: -webkit-linear-gradient(top, #ffc877 0%,#ff9e02 50%,#ff9e02 51%,#ffbe5e 100%);
+  background: -o-linear-gradient(top, #ffc877 0%,#ff9e02 50%,#ff9e02 51%,#ffbe5e 100%);
+  background: -ms-linear-gradient(top, #ffc877 0%,#ff9e02 50%,#ff9e02 51%,#ffbe5e 100%);
+  background: linear-gradient(to bottom, #ffc877 0%,#ff9e02 50%,#ff9e02 51%,#ffbe5e 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc877', endColorstr='#ffbe5e',GradientType=0 );
 }
 
 .newsfeed-area ul li div a img.media-object {
@@ -673,7 +691,7 @@ ul.nav.nav-tabs li a {
 }
 
 ul#home-newsfeed li a, ul#home-newsfeed i, ul#home-newsfeed span.like-counter, span.comment-counter {
-  color: #E74C3C;
+  color: #D90D08;
 }
 
 .comment-form {
@@ -1176,13 +1194,18 @@ p.bnbg {
   padding-right: 6px;
 }
 
+.found-imgs {
+  padding-left: 0;
+}
+
 .found-imgs-mainp img {
-  margin-bottom: 10px;
+  margin: 15px 0;
 }
 
 .ownerinfos {
-  margin: auto;
   display: table;
+  margin-top: 35px;
+  padding-right: 0;
 }
 
 .borderpet {
@@ -1200,6 +1223,7 @@ p.bnbg {
 .ownerinfos p, .ownerinfos a {
   margin: 0;
   color: #E74C3C;
+  font-size: 20px;
 }
 
 .petotherinfos, .marks {
@@ -1264,7 +1288,7 @@ ul.comments .media-left {
 
 /*============LEFT SIDEBAR============*/
 .bg-rocky{
- background: rgba(242, 197, 181, 0.5);
+ background: rgba(255, 239, 215, 0.65);
  background-image: url('../images/animals.png');
  background-position: bottom left;
  background-repeat: no-repeat;
@@ -1566,7 +1590,7 @@ a.list-group-item.vete {
   animation-duration: 0.5s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  color: #E74C3C;
+  color: #C61804;
   padding: 5px;
 }
 
