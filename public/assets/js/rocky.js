@@ -498,7 +498,24 @@ $(document).ready(function(){
 	 	e.preventDefault();
 	 });
 
-
+	 var missing = $('#refresh-missing-route').val();
+	 var found = $('#refresh-found-route').val();
+	 setInterval(function(){
+	 	$.ajax({
+	 		url:found,
+	 		type: 'get',
+	 		success:function(r){ 
+	 			$('.found-imgs').html(r);
+	 		}
+	 	});
+	 	$.ajax({
+	 		url:missing,
+	 		type: 'get',
+	 		success:function(r){ 
+	 			$('.missing-imgs').html(r);
+	 		}
+	 	});
+	 },15000);
 });
 
 	

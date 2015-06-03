@@ -16,6 +16,18 @@ use Carbon\Carbon;
 
 class PetsController extends Controller {
 
+	public function get_missingpets(){
+		$data['info'] = MissingPets::with(['profile.image'])->orderByRaw("RAND()")->first();
+		return view('ajax.rightmissing' , $data);
+	}
+	public function get_foundpets(){
+		$data['info'] = FoundPets::with(['image'])->orderByRaw("RAND()")->first();
+		return view('ajax.rightfound' , $data);
+	}
+	public function missingPets(){
+		$data['info'] = MissingPets::where('isfind' , '0')->with(array('profile.image' , 'profile.user'))->get();	
+		return view('pages.missingpet' , $data);
+	}
 	public function foundPets() {
 		$col = FoundPets::with([
 				'profile' => function($q) {

@@ -32,6 +32,8 @@
     <script src="{{ URL::asset('assets/js/component.js') }}"></script>
   </head>
   <body>
+    <input type="hidden" id="refresh-missing-route" value="{{ Route('get_missingpets') }}">
+    <input type="hidden" id="refresh-found-route" value="{{ Route('get_foundpets') }}">
     @if(Request::url() == route('layoutone'))
         @include('pages.toplayoutone')
     @else

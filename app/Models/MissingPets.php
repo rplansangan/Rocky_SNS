@@ -29,4 +29,8 @@ class MissingPets extends Model {
 	
 	protected $dates = ['deleted_at'];
 
+	public function profile() {
+		return $this->hasOne('SNS\Models\Pets', 'rocky_tag_no', 'rocky_tag_no');
+	}
+	
 }

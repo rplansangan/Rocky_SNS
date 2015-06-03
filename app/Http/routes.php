@@ -322,9 +322,9 @@ Route::get('found_pets', array(
 	'as' => 'found_pets',
 	'uses' => 'HomeController@foundPets'
 ));
-Route::get('mising_pets', array(
+Route::get('missing_pets', array(
 	'as' => 'missing_pets',
-	'uses' => 'HomeController@missingPets'
+	'uses' => 'PetsController@missingPets'
 ));
 Route::get('pfoundationtemp', array(
 	'as' => 'pfoundationtemp',
@@ -386,6 +386,14 @@ Route::post('checkemail', array(
 ));
 
 // Lost and Found Pets routes
+Route::get('get_missingpets', [
+	'as' => 'get_missingpets',
+	'uses' => 'PetsController@get_missingpets'
+]);
+Route::get('get_foundpets', [
+	'as' => 'get_foundpets',
+	'uses' => 'PetsController@get_foundpets'
+]);
 Route::get('pets/found/list', [
 	'as' => 'pets.found.list',
 	'uses' => 'PetsController@foundPets'

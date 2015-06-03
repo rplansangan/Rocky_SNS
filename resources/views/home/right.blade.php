@@ -5,7 +5,7 @@
 				<a href="{{ Route('pets.found.list') }}">Found Pets</a>
 			<span class="glyphicon glyphicon-hand-left"></span></h3>
 			<div class="found-imgs">
-				<img src="{{ URL::asset('assets/images/found1.jpg') }}" width="250px" height="185px">
+				<a href="#" pet-id=""><img src="{{ route('pets.image.get', array($found_pets->image[0]->image_id)) }}" width="250px" height="185px"></a>
 			</div>
 		</div>
 
@@ -14,7 +14,7 @@
 				<a href="{{ Route('missing_pets') }}">Missing Pets</a>
 			<span class="glyphicon glyphicon-hand-left"></span></h3>
 			<div class="missing-imgs">
-				<img src="{{ URL::asset('assets/images/missing1.jpg') }}" width="250px" height="185px">
+				<a href="#" pet-id=""><img src="{{ route('pets.image.get', array($missing_pets->profile['image'][0]->image_id)) }}" width="250px" height="185px"></a>
 			</div>
 		</div>
 	</div>
