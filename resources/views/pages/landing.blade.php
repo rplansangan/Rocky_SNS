@@ -10,61 +10,17 @@ Welcome to Rocky The Superdog
 </style>
 
 @section('content')
-<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 landing-content text-center">
-	<div class="aboutsum col-sm-12 col-xs-12 col-md-3 col-lg-3 text-center">
-		<h3>Superdog menu</h3>
-		<div class="otherabt col-md-12 col-lg-12 text-left">
-			<div class="iconsabout col-md-3 col-lg-3">
-				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
-			</div>
-			<div class="iconsabout col-md-8 col-lg-8">
-				<a href="#"><h4>Pet Lovers</h4></a>
-			</div>
-			<div class="iconsabout col-md-3 col-lg-3">
-				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
-			</div>
-			<div class="iconsabout col-md-8 col-lg-8">
-				<a href="#"><h4>Pet Shops</h4></a>
-			</div>
-			<div class="iconsabout col-md-3 col-lg-3">
-				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
-			</div>
-			<div class="iconsabout col-md-8 col-lg-8">
-				<a href="#"><h4>Pet Foundations</h4></a>
-			</div>
-			<div class="iconsabout col-md-3 col-lg-3">
-				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
-			</div>
-			<div class="iconsabout col-md-8 col-lg-8">
-				<a href="#"><a href=""><h4>Pet Videos</h4></a>
-			</div>
-			<div class="iconsabout col-md-3 col-lg-3">
-				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
-			</div>
-			<div class="iconsabout col-md-8 col-lg-8">
-				<a href="#"><h4>Pet Groomers & Pet Walkers</h4></a>
-			</div>
-			<div class="iconsabout col-md-3 col-lg-3">
-				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
-			</div>
-			<div class="iconsabout col-md-8 col-lg-8">
-				<a href="#"><h4>Veterinarians</h4></a>
-			</div>
-			<div class="iconsabout col-md-3 col-lg-3">
-				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
-			</div>
-			<div class="iconsabout col-md-8 col-lg-8">
-				<a href="#"><h4>Rocky Rangers</h4></a>
-			</div>
-		</div>
+<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 landing-content">
+	<div class="aboutsum col-sm-12 col-xs-12 col-md-2 col-lg-2">
+		@include('landing.superdogmenu')
 	</div>
-	<div class="land-mid-vid-btn col-sm-12 col-xs-12 col-md-6 col-lg-6">
+	<div class="land-mid-vid-btn col-sm-12 col-xs-12 col-md-7 col-lg-7 text-center">
 		<div class="wording">
 			<h2>Join Rocky Superdog for FREE</h2>
 			<h4>and showoff your lovely pets with other pet lovers!</h4>
 		</div>
 		<div class="land-btn col-sm-12 col-xs-12 col-md-12 col-lg-12 text-center">
-			<a class="redi-btn" href="{{ route('signup') }}">
+			<a class="redi-btn" href="{{ route('signup') }}" style="visibility: hidden;">
 				Sign Up or Log In here!
 			</a>
 		</div>
@@ -158,7 +114,7 @@ Welcome to Rocky The Superdog
 
 
 	<!-- MISSING PET MID CONTENT -->
-	<div class="land-missing col-sm-12 col-xs-12 col-md-6 col-lg-6">
+	<div class="land-missing col-sm-12 col-xs-12 col-md-7 col-lg-7">
 		<div class="foundpets-page col-sm-12 col-xs-12 col-lg-12 col-md-12">
 			<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">
 				<div class="col-xs-12 col-sm-12 col-m-7 col-lg-7">
@@ -239,25 +195,14 @@ Welcome to Rocky The Superdog
 	</div>
 	<!-- end of missing pet content -->
 
-	<div class="foud-missing col-sm-12 col-xs-12 col-md-3 col-lg-3">
-		<div class="land-right-missing col-sm-12 col-xs-12 col-md-12 col-lg-12">
-			<h3><span class="glyphicon glyphicon-hand-right"></span>
-				<a class="missingbtn" href="javascript:void(0);">Missing Pets</a>
-			<span class="glyphicon glyphicon-hand-left"></span></h3>
-			<div class="missing-imgs">
-				<img src="{{ URL::asset('assets/images/missing1.jpg') }}" width="250px" height="185px">
-			</div>
-			<!--<button type="button" class="btn btn_missing" data-toggle="modal" data-target="#misfo" data-type="Missing" data-advertisetype="Find My Pet"  data-title="Missing Pet" data-id="" data-action="" >Find My Pet</button>-->
+	<div class="funny-videos col-sm-12 col-xs-12 col-md-3 col-lg-3 text-center" style="padding:0px">
+		<h3>FUNNY VIDEOS</h3>
+		<div class="funny-human col-sm-12 col-xs-12 col-md-12 col-lg-12">
+			<iframe width="310" height="225" src="https://www.youtube.com/embed/N9oxmRT2YWw" frameborder="0" allowfullscreen></iframe>
 		</div>
 
-		<div class="land-left-found col-sm-12 col-xs-12 col-md-12 col-lg-12">
-			<h3><span class="glyphicon glyphicon-hand-right"></span>
-				<a class="foundbtn" href="javascript:void(0);">Found Pets</a>
-			<span class="glyphicon glyphicon-hand-left"></span></h3>
-			<div class="found-imgs">
-				<img src="{{ URL::asset('assets/images/found1.jpg') }}" width="250px" height="185px">
-			</div>
-			<!--<button type="button" class="btn btn_found" data-toggle="modal" data-target="#misfo" data-type="Found" data-advertisetype="I Found A Pet"  data-title="I Found A Pet" data-id="" data-action="" >I Found A Pet</button>-->
+		<div class="funny-dog col-sm-12 col-xs-12 col-md-12 col-lg-12">
+			<iframe width="310" height="225" src="https://www.youtube.com/embed/SpkSejI8OQE?autoplay=1" frameborder="0" allowfullscreen></iframe>
 		</div>
 
 		<div class="rockygif col-sm-12 col-xs-12 col-md-12 col-lg-12">

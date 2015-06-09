@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
 	tinymce.init({
 	    selector: ".video-textarea , .primary-textarea",
 	    toolbar: false,
@@ -497,7 +498,7 @@ $(document).ready(function(){
 	 	});
 	 	e.preventDefault();
 	 });
-
+/*
 	 var missing = $('#refresh-missing-route').val();
 	 var found = $('#refresh-found-route').val();
 	 setInterval(function(){
@@ -515,7 +516,7 @@ $(document).ready(function(){
 	 			$('.missing-imgs').html(r);
 	 		}
 	 	});
-	 },15000);
+	 },15000);*/
 });
 
 	
