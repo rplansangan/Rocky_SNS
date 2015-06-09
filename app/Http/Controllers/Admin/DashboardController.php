@@ -54,7 +54,10 @@ class DashboardController extends Controller {
 	}
 	
 	public function userData($uid) {
+		$data = User::find($uid);
+		$data->load(['registration', 'pets' => function($q) { $q->count(); }, 'posts', 'images']);
 		
+		dd($data);
 	}
 
 }

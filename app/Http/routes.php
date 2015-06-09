@@ -440,10 +440,6 @@ Route::get('pet/videos', [
 	'as' => 'public.videos',
 	'uses' => 'WelcomeController@petvideos'
 ]);
-Route::controllers([
-// 	'auth' => 'Auth\AuthController',
-// 	'password' => 'Auth\PasswordController',
-]);
 
 Route::group(['prefix' => 'administration', 'namespace' => 'Admin', 'middleware' => ['auth', 'manage']], function() {
 	Route::get('main', [
