@@ -92,7 +92,7 @@ body {
 }
 
 .tagnum {
-  margin-top: 66px;
+  margin-top: 3%;
   padding: 15px;
 }
 
@@ -106,19 +106,19 @@ body {
   font-size: 11px;
   padding: 5px;
   margin: -1px;
-  color: #fff;
+  color: #B91010;
   font-weight: bold;
   border: 2px solid #F9FF04;
-  background-color:  #B91111;
+  background-color:  #F9FF04;
 }
 button.tagbtn {
   border-radius: 3px;
   padding: 5px 10px;
   font-size: 11px;
   border: 2px solid #F9FF04;
-  color: white;
+ color: #B91010;
   font-weight: bold;
-  background-color:  #B91111;
+   background-color:  #F9FF04;
 }
 
 .missfounbtn a:last-child {
@@ -126,7 +126,7 @@ button.tagbtn {
 }
 
 .missfounbtn a:hover {
-  color: #fff;
+  color: #B91010;
 }
 
 a.tagbtn {
@@ -263,7 +263,6 @@ input.tagbtnone {
 
 /*============Landing Page============*/
 .landing-content {
-  background-color: white;
   padding: 0;
 }
 
@@ -281,17 +280,15 @@ input.tagbtnone {
 .land-mid-vid-btn {
   background-position: center;
   padding: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
+  border-left: 2px solid #C51A1A;
+  border-right: 2px solid #C51A1A;
   border-top: 0;
   border-bottom: 0;
-  -webkit-border-image: url(../images/border.png) 20 stretch; /* Safari 3.1-5 */
-  -o-border-image: url(../images/border.png) 20 stretch; /* Opera 11-12.1 */
-  border-image: url(../images/border.png) 20 stretch;
 }
 
 .top-missing .land-right-missing img, .top-missing .land-left-found img {
   border: 3px solid #F9FF04;
+  margin-top: 11%;
   -webkit-box-shadow: 7px 7px 7px 0px rgba(50, 50, 50, 0.45);
   -moz-box-shadow: 7px 7px 7px 0px rgba(50, 50, 50, 0.45);
   box-shadow: 7px 7px 7px 0px rgba(50, 50, 50, 0.45);
@@ -382,7 +379,7 @@ button.btn_found, button.btn_missing {
   margin-bottom: 0;
   font-size: 20px;
   color: #960F06;
-  padding: 40px 15px;
+  padding: 20px 15px;
   background-image: url('../images/animals.png');
   background-position-x: initial;
   background-position: bottom center;
@@ -459,7 +456,7 @@ button.btn_found, button.btn_missing {
 
 .aboutsum h3 {
   font-weight: bold;
-  border-bottom: 3px solid #E5CBA4;
+  border-bottom: 3px solid #F9FF04;
   padding: 5px 0;
   text-transform: uppercase;
   color: #412007;
@@ -473,7 +470,7 @@ button.btn_found, button.btn_missing {
   margin-top: 5px;
 }
 .iconsabout {
-  margin: 0;
+  margin: 0 -10px;
   padding: 0;
   min-height: 40px;
 }
@@ -502,7 +499,7 @@ button.btn_found, button.btn_missing {
 
 .funny-videos h3 {
   font-weight: bold;
-  border-bottom: 3px solid #E5CBA4;
+  border-bottom: 3px solid #F9FF04;
   padding: 5px 0;
   text-transform: uppercase;
   color: #412007;

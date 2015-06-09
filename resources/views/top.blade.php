@@ -6,22 +6,21 @@
       <div class="col-md-3 col-lg-3 logo">
         <a href="{{ route('index') }}"><img class="img-responsive" src="{{ URL::asset('assets/images/rly.png') }}"></a>
       </div>
-      <div class="col-md-4 col-lg-4 tagnum text-center col-lg-offset-3">
+      <div class="col-md-4 col-lg-4 tagnum col-lg-offset-3">
         <div class="top-mid-btns">
-          <div class="row formtag">
+          <div class="row formtag" style="padding:0px;margin:-1px;">
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:2px;">
-                <div style="position:absolute;padding:2px;margin:7px -25px;color:white">
-                   <div class="glyphicon glyphicon-question-sign" style="color:white" data-toggle="tooltip" data-placement="left" title="If you found a pet that has a tag number, please enter it in the input text and hit enter then proceed to the next step."></div>
-                </div>
+                  <div style="position:absolute;padding:2px;margin:7px -25px;color:white">
+                     <div class="glyphicon glyphicon-question-sign" style="color:white" data-toggle="tooltip" data-placement="left" title="If you found a pet that has a tag number, please enter it in the input text and hit enter then proceed to the next step."></div>
+                  </div>
 
-              <div class="col-lg-8" style="padding:2px;">
-                <!-- <div class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="left" title="If you found a pet that has a tag number, please enter it in the input text and hit enter then proceed to the next step."></div> -->
-                <input type="text" class=" form-control" placeholder="Input pet tag number">
-              </div>
-              <div class="col-lg-4" style="padding:2px;">
-                <button zia="{{ Route('pets.get.info') }}" token="{{ csrf_token() }}" class="tagbtn btn-block">SUBMIT TAG NUMBER</button>
-              </div>
-    
+                <div class="col-lg-8" style="padding:2px;">
+                  <!-- <div class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="left" title="If you found a pet that has a tag number, please enter it in the input text and hit enter then proceed to the next step."></div> -->
+                  <input type="text" class="foundpettag" style="width:100%;height:25px" placeholder="Input pet tag number">
+                </div>
+                <div class="col-lg-4" style="padding:2px;">
+                  <button zia="{{ Route('pets.get.info') }}" token="{{ csrf_token() }}" class="tagbtn btn-block">SUBMIT</button>
+                </div>
               </div>
           </div>
           <div class="row missfounbtn" style="padding:0px">
@@ -49,7 +48,7 @@
         <div class="land-right-missing">
            <div class="missing-imgs" style="position:relative">
             <a  href="javascript:void(0);"><img class="img-responsive" src="{{ URL::asset('assets/images/missing1.jpg') }}"></a>
-            <div style="position:absolute;z-index:9999;width:100%;bottom:0px">
+            <div style="position:absolute;z-index:9999;width:110%;bottom:0px">
               <h4><small><a href="#" class="missingbtn">Missing Pets</a></small></h4>
             </div>
           </div>
