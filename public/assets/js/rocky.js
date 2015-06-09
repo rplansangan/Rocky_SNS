@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
 	tinymce.init({
 	    selector: ".video-textarea , .primary-textarea",
 	    toolbar: false,

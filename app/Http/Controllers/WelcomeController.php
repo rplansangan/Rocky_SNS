@@ -47,5 +47,16 @@ class WelcomeController extends Controller {
 	{
 		return view('pages.loland');
 	}
-		
+	public function petfoundation(){
+		echo 'ok';
+	}
+	public function petvideos(){
+		echo 'ok';
+	}
+	public function petshops(){
+		echo 'ok';
+	}
+	public function petlovers(){
+		echo 'ok';
+	}	
 }

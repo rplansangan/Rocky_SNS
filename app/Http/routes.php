@@ -422,6 +422,23 @@ Route::post('foundpetinfo', array(
 	'as' => 'foundpetinfo',
 	'uses' => 'PetsController@getpetselectedinfo'
 ));
+//front nav
+Route::get('pet/lovers', [
+	'as' => 'public.lovers',
+	'uses' => 'WelcomeController@petlovers'
+]);
+Route::get('pet/shops', [
+	'as' => 'public.shops',
+	'uses' => 'WelcomeController@petshops'
+]);
+Route::get('pet/foundations', [
+	'as' => 'public.foundations',
+	'uses' => 'WelcomeController@petfoundation'
+]);
+Route::get('pet/videos', [
+	'as' => 'public.videos',
+	'uses' => 'WelcomeController@petvideos'
+]);
 Route::controllers([
 // 	'auth' => 'Auth\AuthController',
 // 	'password' => 'Auth\PasswordController',
