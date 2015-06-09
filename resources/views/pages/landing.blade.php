@@ -25,7 +25,7 @@ Welcome to Rocky The Superdog
 			</a>
 		</div>
 		<div class="land-vid col-sm-12 col-xs-12 col-md-12 col-lg-12">
-			<iframe width="100%" height="385" src="https://www.youtube.com/embed/V4BFzpAcYc4?autoplay=1" frameborder="0" allowfullscreen></iframe>
+			<iframe width="100%" height="385" src="https://www.youtube.com/embed/V4BFzpAcYc4" frameborder="0" allowfullscreen></iframe>
 		</div>
 	</div>
 
@@ -202,7 +202,7 @@ Welcome to Rocky The Superdog
 		</div>
 
 		<div class="funny-dog col-sm-12 col-xs-12 col-md-12 col-lg-12">
-			<iframe width="310" height="225" src="https://www.youtube.com/embed/SpkSejI8OQE?autoplay=1" frameborder="0" allowfullscreen></iframe>
+			<iframe width="310" height="225" src="https://www.youtube.com/embed/SpkSejI8OQE" frameborder="0" allowfullscreen></iframe>
 		</div>
 
 		<div class="rockygif col-sm-12 col-xs-12 col-md-12 col-lg-12">
