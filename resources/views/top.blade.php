@@ -3,49 +3,53 @@
  <div class="header-container">
   <div class="container-fluid" style="margin:0 10px;">
     <div class="row">
-      <div class="col-md-2 col-lg-2 logo">
-      <a href="{{ route('index') }}"><img class="img-responsive" src="{{ URL::asset('assets/images/rocky-logo.png') }}"></a>
-    </div>
-    <div class="col-md-4 col-lg-4 tagnum text-center col-lg-offset-4">
-      <div class="top-mid-btns">
-        <div class="row formtag">
-          <form class="form-horizontal text-right" style="padding:0px 5px;" >
-            <div class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="left" title="If you found a pet that has a tag number, please enter it in the input text and hit enter then proceed to the next step."></div>
-            <input type="text" class="inputag foundpettag"  placeholder="Input pet tag number">
-            <button zia="{{ Route('pets.get.info') }}" token="{{ csrf_token() }}" class="tagbtn">SUBMIT TAG NUMBER</button>
-          </form>
-        </div>
-        <div class="row missfounbtn" style="padding:0px 5px">
-          <div class="col-sm-4" style="padding:0px">
-            <a href="javascript:void(0)" class="misspet btn-block" route="{{ Route('findpets') }}" token="{{ csrf_token() }}" data-toggle="tooltip" data-placement="left" title="If you've lost your pet, please login and click the 'Rocky, find my pet' button and fillup the form.">Rocky, find my pet</a>
+      <div class="col-md-3 col-lg-3 logo">
+        <a href="{{ route('index') }}"><img class="img-responsive" src="{{ URL::asset('assets/images/rocky-logo.png') }}"></a>
+      </div>
+      <div class="col-md-4 col-lg-4 tagnum text-center col-lg-offset-3">
+        <div class="top-mid-btns">
+          <div class="row formtag">
+            <form class=" text-right" >
+              <div class="col-lg-8" style="padding:2px;">
+                <!-- <div class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="left" title="If you found a pet that has a tag number, please enter it in the input text and hit enter then proceed to the next step."></div> -->
+                <input type="text" class=" form-control"  placeholder="Input pet tag number">
+              </div>
+              <div class="col-lg-4" style="padding:2px;">
+                <button zia="{{ Route('pets.get.info') }}" token="{{ csrf_token() }}" class="tagbtn btn-block" >SUBMIT TAG NUMBER</button>
+              </div>
+            </form>
           </div>
-          <div class="col-sm-4" style="padding:0px 1px 0px 1px">
-            <a href="javascript:void(0)" class="foundpet btn-block" data-toggle="tooltip" data-placement="left" title="If you found a pet but doesn't have a tag number, click the 'I found a pet!' button and fillup the form.">I found a pet!</a>       
-          </div>
-          <div class="col-sm-4" style="padding:0px">
-            @if(Auth::check())
-            <a class="redi-btn btn-block" href="{{ route('logout') }}">
-              Logout
-            </a>
-            @else
-            <a class="redi-btn btn-block" href="{{ route('signup') }}">
-              Sign Up or Log In here!
-            </a>
-            @endif
+          <div class="row missfounbtn" style="padding:0px">
+            <div class="col-sm-4" style="padding:0px">
+              <a href="javascript:void(0)" class="misspet btn-block" route="{{ Route('findpets') }}" token="{{ csrf_token() }}" data-toggle="tooltip" data-placement="left" title="If you've lost your pet, please login and click the 'Rocky, find my pet' button and fillup the form.">Rocky, find my pet</a>
+            </div>
+            <div class="col-sm-4" style="padding:0px">
+              <a href="javascript:void(0)" class="foundpet btn-block" data-toggle="tooltip" data-placement="left" title="If you found a pet but doesn't have a tag number, click the 'I found a pet!' button and fillup the form.">I found a pet!</a>       
+            </div>
+            <div class="col-sm-4" style="padding:0px">
+              @if(Auth::check())
+              <a class="redi-btn btn-block" href="{{ route('logout') }}">
+                Logout
+              </a>
+              @else
+              <a class="redi-btn btn-block" href="{{ route('signup') }}">
+                Log In here!
+              </a>
+              @endif
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="top-missing col-sm-12 col-xs-12 col-md-2 col-lg-2 text-center">
-      <div class="land-right-missing">
-         <div class="missing-imgs" style="position:relative">
-          <img class="img-responsive" src="{{ URL::asset('assets/images/missing1.jpg') }}">
-          <div style="position:absolute;z-index:9999;width:100%;bottom:0px">
-            <h4><small><a class="missingbtn" href="javascript:void(0);">Missing Pets</a></small></h4>
+      <div class="top-missing col-sm-12 col-xs-12 col-md-2 col-lg-2 text-center">
+        <div class="land-right-missing">
+           <div class="missing-imgs" style="position:relative">
+            <a  href="javascript:void(0);"><img class="img-responsive" src="{{ URL::asset('assets/images/missing1.jpg') }}"></a>
+            <div style="position:absolute;z-index:9999;width:100%;bottom:0px">
+              <h4><small><a href="#" class="missingbtn">Missing Pets</a></small></h4>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   </div>
 </div>
