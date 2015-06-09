@@ -113,6 +113,7 @@ body {
 }
 
 .missfounbtn a {
+  font-size: 13px;
   padding: 5px;
   margin: -1px;
   color: #fff;
@@ -287,7 +288,7 @@ input.tagbtnone {
 
 /*============Landing Page============*/
 .landing-content {
-  background-color: #fff;
+  background-color: white;
   padding: 0;
 }
 
@@ -315,26 +316,25 @@ input.tagbtnone {
 }
 
 .top-missing .land-right-missing img, .top-missing .land-left-found img {
-  border: 8px solid #FF9F04;
-  margin: 10px 23px;;
+  border: 3px solid #FF9F04;
   -webkit-box-shadow: 7px 7px 7px 0px rgba(50, 50, 50, 0.45);
   -moz-box-shadow: 7px 7px 7px 0px rgba(50, 50, 50, 0.45);
   box-shadow: 7px 7px 7px 0px rgba(50, 50, 50, 0.45);
 }
 
-.top-missing .glyphicon-hand-right, .top-missing .glyphicon-hand-left {
+.top-missing h4{
   -webkit-animation-name: blinker;
-  -webkit-animation-duration: 0.3s;
+  -webkit-animation-duration: 0.4s;
   -webkit-animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
 
   -moz-animation-name: blinker;
-  -moz-animation-duration: 0.3s;
+  -moz-animation-duration: 0.4s;
   -moz-animation-timing-function: linear;
   -moz-animation-iteration-count: infinite;
 
   animation-name: blinker;
-  animation-duration: 0.3s;
+  animation-duration: 0.4s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   color: #E74C3C;
@@ -463,16 +463,17 @@ button.btn_found, button.btn_missing {
 .wording {
   margin: 25px 0;
   padding: 10px;
-  background: #f9c667; /* Old browsers */
+  
+  /*background: #f9c667; /* Old browsers */
   /* IE9 SVG, needs conditional override of 'filter' to 'none' */
-  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y5YzY2NyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZjllMDIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  /*background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y5YzY2NyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZjllMDIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
   background: -moz-linear-gradient(top,  #f9c667 0%, #ff9e02 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9c667), color-stop(100%,#ff9e02)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  #f9c667 0%,#ff9e02 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  #f9c667 0%,#ff9e02 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  #f9c667 0%,#ff9e02 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  #f9c667 0%,#ff9e02 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9c667', endColorstr='#ff9e02',GradientType=0 ); /* IE6-8 */
+ /* background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9c667), color-stop(100%,#ff9e02)); /* Chrome,Safari4+ */
+  /*background: -webkit-linear-gradient(top,  #f9c667 0%,#ff9e02 100%); /* Chrome10+,Safari5.1+ */
+ /* background: -o-linear-gradient(top,  #f9c667 0%,#ff9e02 100%); /* Opera 11.10+ */
+ /* background: -ms-linear-gradient(top,  #f9c667 0%,#ff9e02 100%); /* IE10+ */
+ /* background: linear-gradient(to bottom,  #f9c667 0%,#ff9e02 100%); /* W3C */
+ /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9c667', endColorstr='#ff9e02',GradientType=0 );  IE6-8 */
 }
 
 #pwdtxt:after {
@@ -1814,12 +1815,11 @@ video {
   }
 
   .missfounbtn a {
-    padding: 5px;
+    padding: 2px;
     margin: 0 5px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: #fff;
     border: 1px solid #fff;
-    float: left;
   }
 }
 

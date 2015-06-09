@@ -1,47 +1,35 @@
-<div class="aboutsum col-sm-12 col-xs-12 col-md-3 col-lg-3 text-center">
-		<h3>Superdog menu</h3>
-		<div class="otherabt col-md-12 col-lg-12 text-left">
-			<div class="iconsabout col-md-3 col-lg-3">
-				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
-			</div>
-			<div class="iconsabout col-md-8 col-lg-8">
-				<a href="{{ Route('public.lovers') }}"><h4>Pet Lovers</h4></a>
-			</div>
-			<div class="iconsabout col-md-3 col-lg-3">
-				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
-			</div>
-			<div class="iconsabout col-md-8 col-lg-8">
-				<a href="{{ Route('public.shops') }}"><h4>Pet Shops</h4></a>
-			</div>
-			<div class="iconsabout col-md-3 col-lg-3">
-				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
-			</div>
-			<div class="iconsabout col-md-8 col-lg-8">
-				<a href="{{ Route('public.foundations') }}"><h4>Pet Foundations</h4></a>
-			</div>
-			<div class="iconsabout col-md-3 col-lg-3">
-				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
-			</div>
-			<div class="iconsabout col-md-8 col-lg-8">
-				<a href="{{ Route('public.videos') }}"><a href=""><h4>Pet Videos</h4></a>
-			</div>
-			<div class="iconsabout col-md-3 col-lg-3">
-				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
-			</div>
-			<div class="iconsabout col-md-8 col-lg-8">
-				<a href="#"><h4>Pet Groomers & Pet Walkers</h4></a>
-			</div>
-			<div class="iconsabout col-md-3 col-lg-3">
-				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
-			</div>
-			<div class="iconsabout col-md-8 col-lg-8">
-				<a href="#"><h4>Veterinarians</h4></a>
-			</div>
-			<div class="iconsabout col-md-3 col-lg-3">
-				<img src="{{ URL::asset('assets/images/rocky-paw.png') }}">
-			</div>
-			<div class="iconsabout col-md-8 col-lg-8">
-				<a href="#"><h4>Rocky Rangers</h4></a>
-			</div>
-		</div>
+<h3>Superdog menu</h3>
+<div class="otherabt col-md-12 col-lg-12 text-left">
+	<div class="iconsabout col-md-12 col-lg-12">
+		<span><img src="{{ URL::asset('assets/images/rocky-paw.png') }}"></span>
+		<span><a href="{{ Route('public.lovers') }}">Pet Lovers</a></span>
 	</div>
+	<div class="iconsabout col-md-12 col-lg-12">
+		<span><img src="{{ URL::asset('assets/images/rocky-paw.png') }}"></span>
+		<span><a href="{{ Route('public.shops') }}">Pet Shops</a></span>
+	</div>
+	<div class="iconsabout col-md-12 col-lg-12">
+		<span><img src="{{ URL::asset('assets/images/rocky-paw.png') }}"></span>
+		<span><a href="{{ Route('public.videos') }}">Pet Videos</a></span>
+	</div>
+	<div class="iconsabout col-md-12 col-lg-12">
+		<span><img src="{{ URL::asset('assets/images/rocky-paw.png') }}"></span>
+		<span><a href="#">Pet Groomers</a></span>
+	</div>
+	<div class="iconsabout col-md-12 col-lg-12">
+		<span><img src="{{ URL::asset('assets/images/rocky-paw.png') }}"></span>
+		<span><a href="#">Pet Walkers</a></span>
+	</div>
+	<div class="iconsabout col-md-12 col-lg-12">
+		<span><img src="{{ URL::asset('assets/images/rocky-paw.png') }}"></span>
+		<span><a href="{{ Route('public.foundations') }}">Foundations</a></span>
+	</div>
+	<div class="iconsabout col-md-12 col-lg-12">
+		<span><img src="{{ URL::asset('assets/images/rocky-paw.png') }}"></span>
+		<span><a href="#">Veterinarians</a></span>
+	</div>
+	<div class="iconsabout col-md-12 col-lg-12">
+		<span><img src="{{ URL::asset('assets/images/rocky-paw.png') }}"></span>
+		<span><a href="#">Rocky Rangers</a></span>
+	</div>
+</div>

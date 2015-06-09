@@ -12,41 +12,7 @@ Welcome to Rocky The Superdog
 @section('content')
 <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 landing-content">
 	<div class="aboutsum col-sm-12 col-xs-12 col-md-2 col-lg-2">
-		<h3>Superdog menu</h3>
-		<div class="otherabt col-md-12 col-lg-12 text-left">
-			<div class="iconsabout col-md-12 col-lg-12">
-				<span><img src="{{ URL::asset('assets/images/rocky-paw.png') }}"></span>
-				<span><a href="#">Pet Lovers</a></span>
-			</div>
-			<div class="iconsabout col-md-12 col-lg-12">
-				<span><img src="{{ URL::asset('assets/images/rocky-paw.png') }}"></span>
-				<span><a href="#">Pet Shops</a></span>
-			</div>
-			<div class="iconsabout col-md-12 col-lg-12">
-				<span><img src="{{ URL::asset('assets/images/rocky-paw.png') }}"></span>
-				<span><a href="#">Pet Videos</a></span>
-			</div>
-			<div class="iconsabout col-md-12 col-lg-12">
-				<span><img src="{{ URL::asset('assets/images/rocky-paw.png') }}"></span>
-				<span><a href="#">Pet Groomers</a></span>
-			</div>
-			<div class="iconsabout col-md-12 col-lg-12">
-				<span><img src="{{ URL::asset('assets/images/rocky-paw.png') }}"></span>
-				<span><a href="#">Pet Walkers</a></span>
-			</div>
-			<div class="iconsabout col-md-12 col-lg-12">
-				<span><img src="{{ URL::asset('assets/images/rocky-paw.png') }}"></span>
-				<span><a href="#">Foundations</a></span>
-			</div>
-			<div class="iconsabout col-md-12 col-lg-12">
-				<span><img src="{{ URL::asset('assets/images/rocky-paw.png') }}"></span>
-				<span><a href="#">Veterinarians</a></span>
-			</div>
-			<div class="iconsabout col-md-12 col-lg-12">
-				<span><img src="{{ URL::asset('assets/images/rocky-paw.png') }}"></span>
-				<span><a href="#">Rocky Rangers</a></span>
-			</div>
-		</div>
+		@include('landing.superdogmenu')
 	</div>
 	<div class="land-mid-vid-btn col-sm-12 col-xs-12 col-md-7 col-lg-7 text-center">
 		<div class="wording">
