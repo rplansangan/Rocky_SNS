@@ -107,8 +107,18 @@ body {
   padding: 5px;
   margin: -1px;
   color: #fff;
-  border: 2px solid #B81212;
-  background-color:  #2B597B;
+  font-weight: bold;
+  border: 2px solid #F9FF04;
+  background-color:  #B91111;
+}
+button.tagbtn {
+  border-radius: 3px;
+  padding: 5px 10px;
+  font-size: 11px;
+  border: 2px solid #F9FF04;
+  color: white;
+  font-weight: bold;
+  background-color:  #B91111;
 }
 
 .missfounbtn a:last-child {
@@ -116,9 +126,7 @@ body {
 }
 
 .missfounbtn a:hover {
-  background: #fff;
-  color: #333;
-  border: 1px solid #fff;
+  color: #fff;
 }
 
 a.tagbtn {
@@ -137,15 +145,7 @@ input.inputag {
   width: 50%;
 }
 
-button.tagbtn {
-  border-radius: 3px;
-  padding: 5px 10px;
-  font-size: 11px;
-  border: 1px solid #B81212;
-  color: #fff;
-  font-weight: bold;
-  background-color:  #2B597B;
-}
+
 
 /*layoutone*/
 .tagnumone {
@@ -291,7 +291,7 @@ input.tagbtnone {
 }
 
 .top-missing .land-right-missing img, .top-missing .land-left-found img {
-  border: 3px solid #FF9F04;
+  border: 3px solid #F9FF04;
   -webkit-box-shadow: 7px 7px 7px 0px rgba(50, 50, 50, 0.45);
   -moz-box-shadow: 7px 7px 7px 0px rgba(50, 50, 50, 0.45);
   box-shadow: 7px 7px 7px 0px rgba(50, 50, 50, 0.45);
@@ -345,7 +345,7 @@ input.tagbtnone {
 }
 
 .land-right-missing img, .land-left-found img {
-  border: 8px solid #FF9F04;
+  border: 8px solid #F0E50B;
   margin: 10px;
   -webkit-box-shadow: 7px 7px 7px 0px rgba(50, 50, 50, 0.45);
   -moz-box-shadow: 7px 7px 7px 0px rgba(50, 50, 50, 0.45);
@@ -353,7 +353,7 @@ input.tagbtnone {
 }
 
 .land-left-found a, .land-right-missing a {
-  color: #fff;
+  color: #F0E50B;
   text-transform: uppercase;
   font-size: 18px;
   font-family: 'Vollkorn', serif;

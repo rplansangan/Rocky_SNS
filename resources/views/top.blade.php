@@ -4,7 +4,7 @@
   <div class="container-fluid" style="margin:0 10px;">
     <div class="row">
       <div class="col-md-3 col-lg-3 logo">
-        <a href="{{ route('index') }}"><img class="img-responsive" src="{{ URL::asset('assets/images/rocky-logo.png') }}"></a>
+        <a href="{{ route('index') }}"><img class="img-responsive" src="{{ URL::asset('assets/images/rly.png') }}"></a>
       </div>
       <div class="col-md-4 col-lg-4 tagnum text-center col-lg-offset-3">
         <div class="top-mid-btns">
@@ -28,7 +28,7 @@
             <div class="col-sm-12 col-xs-12 col-lg-4" style="padding:0px">
               <a href="javascript:void(0)" class="misspet btn btn-block" route="{{ Route('findpets') }}" token="{{ csrf_token() }}" data-toggle="tooltip" data-placement="left" title="If you've lost your pet, please login and click the 'Rocky, find my pet' button and fillup the form.">Rocky, find my pet</a>
             </div>
-            <div class="col-sm-12 col-xs-12 col-lg-4" style="padding:0px">
+            <div class="col-sm-12 col-xs-12 col-lg-4" style="padding:0px 2px">
               <a href="javascript:void(0)" class="foundpet btn btn-block" data-toggle="tooltip" data-placement="left" title="If you found a pet but doesn't have a tag number, click the 'I found a pet!' button and fillup the form.">I found a pet!</a>       
             </div>
             <div class="col-sm-12 col-xs-12 col-lg-4" style="padding:0px">
