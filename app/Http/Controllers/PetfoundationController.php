@@ -273,6 +273,8 @@ class PetfoundationController extends Controller {
 							}
 					])
 					->paginate(20);
+		// fix for url trailing slash
+		$col->setPath('');
 		return view('pages.pet_foundation.list', ['list' => $col]);
 	}
 

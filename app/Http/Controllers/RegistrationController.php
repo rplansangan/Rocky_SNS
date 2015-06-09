@@ -38,7 +38,7 @@ class RegistrationController extends Controller {
 		$user = new User();
 		$user->email_address = $input['email_address'];
 		$user->password = Hash::make($input['password']);
-		$user->role_id = 1;
+		$user->user_role = 1;
 		if(isset($input['user_type']) && (($input['user_type']) == 1)) {
 			$user->is_member = 1;
 		}

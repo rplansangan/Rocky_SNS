@@ -27,7 +27,8 @@ class Kernel extends HttpKernel {
 		'auth' => 'SNS\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'SNS\Http\Middleware\RedirectIfAuthenticated',
-		'verified' => 'SNS\Http\Middleware\Verified'
+		'verified' => 'SNS\Http\Middleware\Verified',
+		'manage' => 'SNS\Http\Middleware\Manage'
 	];
 
 }

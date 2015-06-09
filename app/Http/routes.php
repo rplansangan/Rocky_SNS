@@ -422,8 +422,22 @@ Route::post('foundpetinfo', array(
 	'as' => 'foundpetinfo',
 	'uses' => 'PetsController@getpetselectedinfo'
 ));
-Route::controllers([
-// 	'auth' => 'Auth\AuthController',
-// 	'password' => 'Auth\PasswordController',
-]);
 
+Route::group(['prefix' => 'administration', 'namespace' => 'Admin', 'middleware' => ['auth', 'manage']], function() {
+	Route::get('main', [
+		'as' => 'admin.main',
+		'uses' => 'DashboardController@main'
+	]);
+	Route::get('overview', [
+		'as' => 'admin.stats.overview',
+		'uses' => 'DashboardController@statsOverview'
+	]);
+	Route::get('list_user', [
+		'as' => 'admin.list.user',
+		'uses' => 'DashboardController@listUsers'
+	]);
+	Route::get('list_user/{id}', [
+		'as' => 'admin.list.user.data',
+		'uses' => 'DashboardController@userData'
+	]);
+});
