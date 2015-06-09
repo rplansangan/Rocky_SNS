@@ -1,21 +1,42 @@
  <input type="hidden" id="user-check" value="{{ route('index') }}">
  <input type="hidden" id="user-chtwo" value="{{ route('signup') }}">
- <div class="header-container">
+<div class="header-container">
   <div class="container">
-    <div class="col-md-6 col-lg-6 logo">
+    <div class="col-md-4 col-lg-4 logo">
       <a href="{{ route('index') }}"><img src="{{ URL::asset('assets/images/rocky-logo.png') }}"></a>
     </div>
-    <div class="col-md-6 col-lg-6 tagnum text-right">
-      <div class="formtag">
-        <form>
-          <div class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="left" title="If you found a pet that has a tag number, please enter it in the input text and hit enter then proceed to the next step."></div>
-          <input type="text" class="inputag foundpettag"  placeholder="Input pet tag number">
-          <button zia="{{ Route('pets.get.info') }}" token="{{ csrf_token() }}" class="tagbtn">ENTER</button>
-        </form>
+    <div class="col-md-4 col-lg-4 tagnum text-center">
+      <div class="top-mid-btns">
+        <div class="formtag">
+          <form>
+            <div class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="left" title="If you found a pet that has a tag number, please enter it in the input text and hit enter then proceed to the next step."></div>
+            <input type="text" class="inputag foundpettag"  placeholder="Input pet tag number">
+            <button zia="{{ Route('pets.get.info') }}" token="{{ csrf_token() }}" class="tagbtn">SUBMIT TAG NUMBER</button>
+          </form>
+        </div>
+        <div class="missfounbtn">
+          <a href="javascript:void(0)" class="misspet" route="{{ Route('findpets') }}" token="{{ csrf_token() }}" data-toggle="tooltip" data-placement="left" title="If you've lost your pet, please login and click the 'Rocky, find my pet' button and fillup the form.">Rocky, find my pet</a>
+          <a href="javascript:void(0)" class="foundpet" data-toggle="tooltip" data-placement="left" title="If you found a pet but doesn't have a tag number, click the 'I found a pet!' button and fillup the form.">I found a pet!</a>
+          @if(Auth::check())
+            <a class="redi-btn" href="{{ route('logout') }}">
+              Logout
+            </a>
+          @else
+            <a class="redi-btn" href="{{ route('signup') }}">
+              Sign Up or Log In here!
+            </a>
+          @endif
+        </div>
       </div>
-      <div class="missfounbtn">
-        <a href="javascript:void(0)" class="misspet" route="{{ Route('findpets') }}" token="{{ csrf_token() }}" data-toggle="tooltip" data-placement="left" title="If you've lost your pet, please login and click the 'Rocky, find my pet' button and fillup the form.">Rocky, find my pet</a>
-        <a href="javascript:void(0)" class="foundpet" data-toggle="tooltip" data-placement="left" title="If you found a pet but doesn't have a tag number, click the 'I found a pet!' button and fillup the form.">I found a pet!</a>
+    </div>
+    <div class="top-missing col-sm-12 col-xs-12 col-md-4 col-lg-4 text-right">
+      <div class="land-right-missing col-sm-12 col-xs-12 col-md-12 col-lg-12 text-right">
+        <h3><span class="glyphicon glyphicon-hand-right"></span>
+          <a class="missingbtn" href="javascript:void(0);">Missing Pets</a>
+        <span class="glyphicon glyphicon-hand-left"></span></h3>
+        <div class="missing-imgs">
+          <img src="{{ URL::asset('assets/images/missing1.jpg') }}" width="150px" height="100px">
+        </div>
       </div>
     </div>
   </div>
