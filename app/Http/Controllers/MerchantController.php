@@ -214,6 +214,8 @@ class MerchantController extends Controller {
 						'image_ext' => $file->getClientOriginalExtension(),
 						'is_profile_picture' => 0
 				));
+				
+				$advertise->post->image()->save($img_data);
 			} catch(ValidationException $e) {
 				DB::rollback();
 				return redirect()->back()
@@ -224,8 +226,7 @@ class MerchantController extends Controller {
 				return redirect()->back()
 					->withInput($request->all())
 					->withErrors(['message' => trans('errors.err_500')]);
-			}
-			$advertise->post->image()->save($img_data);
+			}			
 	
 			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
 		}
