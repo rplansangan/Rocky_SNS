@@ -1,5 +1,6 @@
 <?php namespace SNS\Http\Controllers;
 use SNS\Models\FoundPets;
+use SNS\Models\Images;
 use SNS\Models\LostFoundPetImages;
 use Illuminate\Http\Request;
 use SNS\Libraries\Facades\StorageHelper;
@@ -35,7 +36,10 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{	
-		return view('pages.landing');
+		$data['left'] = 'landing.superdogmenu';
+		$data['right'] = 'landing.right';
+		$data['mid'] = 'landing.front';
+		return view('pages.landing' , $data);
 	}
 
 	public function signup()
@@ -48,15 +52,37 @@ class WelcomeController extends Controller {
 		return view('pages.loland');
 	}
 	public function petfoundation(){
-		echo 'ok';
+		$data['left'] = 'landing.superdogmenu';
+		$data['right'] = 'landing.right';
+		$data['mid'] = 'landing.foundation';
+		return view('pages.landing' , $data);
 	}
 	public function petvideos(){
-		echo 'ok';
+		$data['left'] = 'landing.superdogmenu';
+		$data['right'] = 'landing.right';
+		$data['mid'] = 'landing.video';
+		$data['video'] = Images::select(array('image_id', 'image_mime', 'post_id', 'user_id', 'image_title', 'category'))
+								->with(array(
+									'post' => function($q) {
+										$q->addSelect(array('post_id', 'post_message', 'post_tags'));
+									}, 
+									'register' => function($q) {
+										$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
+									}
+								))->where('image_mime' , 'like' , '%video%')->latest()->get();
+		$data['status'] = "Latest Videos";
+		return view('pages.landing' , $data);
 	}
 	public function petshops(){
-		echo 'ok';
+		$data['left'] = 'landing.superdogmenu';
+		$data['right'] = 'landing.right';
+		$data['mid'] = 'landing.shop';
+		return view('pages.landing' , $data);
 	}
 	public function petlovers(){
-		echo 'ok';
+		$data['left'] = 'landing.superdogmenu';
+		$data['right'] = 'landing.right';
+		$data['mid'] = 'landing.lovers';
+		return view('pages.landing' , $data);
 	}	
 }

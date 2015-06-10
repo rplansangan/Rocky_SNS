@@ -264,6 +264,7 @@ input.tagbtnone {
 /*============Landing Page============*/
 .landing-content {
   padding: 0;
+  background-color: white;
 }
 
 .landing-content h2 {
@@ -279,7 +280,7 @@ input.tagbtnone {
 
 .land-mid-vid-btn {
   background-position: center;
-  padding: 0;
+  padding: 5px;
   border-left: 2px solid #C51A1A;
   border-right: 2px solid #C51A1A;
   border-top: 0;
