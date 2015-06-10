@@ -19,6 +19,7 @@ use Carbon\Carbon;
 use SNS\Libraries\Facades\StorageHelper;
 use SNS\Models\Images;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\Validation\ValidationException;
 
 class MerchantController extends Controller {
 	
