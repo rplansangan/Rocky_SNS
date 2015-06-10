@@ -6,6 +6,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
@@ -29,7 +30,34 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = array('email_address', 'password', 'user_role', 'is_deactivated', 'is_validated', 'is_merchant', 'is_member', 'is_foundation', 'is_vet', 'session_token', 'user_token', 'socket_id');
+	protected $fillable = [
+				'email_address',
+				'password',
+				'user_role',
+				'is_deactivated',
+				'is_validated',
+				'is_merchant',
+				'is_member',
+				'is_foundation',
+				'is_vet',
+				'session_token',
+				'user_token',
+				'socket_id',
+				'attempts',
+				'time_lock'
+			];
+	
+	/**
+	 * Maximum login attempts allowable
+	 * @var integer
+	 */
+	public static $logThreshold = 5;
+	
+	/**
+	 * How long (in minutes) will an account be locked
+	 * @var integer
+	 */
+	public static $timeLock = 15;
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -38,8 +66,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 	
-	protected $dates = array('deleted_at');
+	protected $dates = ['deleted_at'];
 
+	public static $dbDateFormat = 'Y-m-d H:i:s';
+	
+	public static $msgDateFormat = 'h:i a F d, Y';
+	
+	public static $timeLockNull = '0000-00-00 00:00:00';
+	
+	public static $timeLockFallback = '12:00 am November 30, -0001';
 	
 	// RELATIONSHIPS
 	public function notif_user() {
@@ -96,6 +131,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function scopeIsMerc($query, $user_id) {
 		return $query->where('user_id', $user_id)->whereIsMerchant(1);
+	}
+	
+	public function getTimeLockAttribute($date) {
+		return Carbon::createFromFormat(self::$dbDateFormat, $date)->format(self::$msgDateFormat);
 	}
 	
 }
