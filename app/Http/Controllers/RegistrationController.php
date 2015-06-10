@@ -63,6 +63,11 @@ class RegistrationController extends Controller {
 			return redirect()->back()
 					->withInput($request->all())
 					->withErrors($e->errors());
+		} catch (\Exception $e) {
+			DB::rollback();
+			return redirect()->back()
+					->withInput($request->all())
+					->withErrors(['message' => trans('errors.err_500')]);
 		}
 
 		try {
@@ -80,7 +85,13 @@ class RegistrationController extends Controller {
 			return redirect()->back()
 					->withInput($request->all())
 					->withErrors($e->errors());
-		}		
+		} catch (\Exception $e) {
+			DB::rollback();
+			return redirect()->back()
+					->withInput($request->all())
+					->withErrors(['message' => trans('errors.err_500')]);
+		}
+			
 		DB::commit();
 		
 		//disabled until ?
@@ -132,6 +143,11 @@ class RegistrationController extends Controller {
 				return redirect()->back()
 						->withInput($request->all())
 						->withErrors($e->errors());
+			} catch (\Exception $e) {
+			DB::rollback();
+			return redirect()->back()
+					->withInput($request->all())
+					->withErrors(['message' => trans('errors.err_500')]);
 			}
 		}	
 		
@@ -158,6 +174,11 @@ class RegistrationController extends Controller {
 				return redirect()->back()
 						->withInput($request->all())
 						->withErrors($e->errors());
+			} catch (\Exception $e) {
+			DB::rollback();
+			return redirect()->back()
+					->withInput($request->all())
+					->withErrors(['message' => trans('errors.err_500')]);
 			}
 // 			StorageHelper::store($dir, $filename, $file);
 		}		
@@ -220,6 +241,11 @@ class RegistrationController extends Controller {
 			return redirect()->back()
 					->withInput($request->all())
 					->withErrors($e->errors());
+		} catch (\Exception $e) {
+			DB::rollback();
+			return redirect()->back()
+					->withInput($request->all())
+					->withErrors(['message' => trans('errors.err_500')]);
 		}
 		
 		if($request->file('petfile')) {
@@ -245,6 +271,11 @@ class RegistrationController extends Controller {
 				return redirect()->back()
 						->withInput($request->all())
 						->withErrors($e->errors());
+			} catch (\Exception $e) {
+				DB::rollback();
+				return redirect()->back()
+						->withInput($request->all())
+						->withErrors(['message' => trans('errors.err_500')]);
 			}
 		}
 		
