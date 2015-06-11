@@ -23,7 +23,6 @@ use SNS\Models\PetFoundationImages;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Contracts\Validation\ValidationException;
 
 class PetfoundationController extends Controller {
 
@@ -79,15 +78,10 @@ class PetfoundationController extends Controller {
 			$foundation->vision_statement = $input['vision_statement'];
 			$foundation->goal_statement = $input['goal_statement'];
 			$foundation->save();
-		} catch (ValidationException $e) {
-			DB::rollback();
-			return redirect()->back()
-					->withInput($request->all())
-					->withErrors($e->errors());	
 		} catch (\Exception $e) {
 			DB::rollback();
 			return redirect()->back()
-					->withInput($request->all())
+					->withInput($request->except(['_token']))
 					->withErrors(['message' => trans('errors.err_500')]);
 		}
 		
@@ -108,15 +102,10 @@ class PetfoundationController extends Controller {
 				));
 		
 				$foundation->image()->save($img_data);
-			} catch (ValidationException $e) {
-				DB::rollback();
-				return redirect()->back()
-					->withInput($request->all())
-					->withErrors($e->errors());
 			} catch (\Exception $e) {
 				DB::rollback();
 				return redirect()->back()
-					->withInput($request->all())
+					->withInput($request->except(['_token']))
 					->withErrors(['message' => trans('errors.err_500')]);
 			}
 	
@@ -152,15 +141,10 @@ class PetfoundationController extends Controller {
 			$foundation->vision_statement = $input['vision_statement'];
 			$foundation->goal_statement = $input['goal_statement'];
 			$foundation->save();
-		} catch (ValidationException $e) {
-			DB::rollback();
-			return redirect()->back()
-			->withInput($request->all())
-			->withErrors($e->errors());
 		} catch (\Exception $e) {
 			DB::rollback();
 			return redirect()->back()
-			->withInput($request->all())
+			->withInput($request->except(['_token']))
 			->withErrors(['message' => trans('errors.err_500')]);
 		}
 		
@@ -181,15 +165,10 @@ class PetfoundationController extends Controller {
 				$this->removePreviousFoundation($foundation->petfoundation_id);
 				
 				$foundation->image()->save($img_data);
-			} catch (ValidationException $e) {
-				DB::rollback();
-				return redirect()->back()
-					->withInput($request->all())
-					->withErrors($e->errors());
 			} catch (\Exception $e) {
 				DB::rollback();
 				return redirect()->back()
-					->withInput($request->all())
+					->withInput($request->except(['_token']))
 					->withErrors(['message' => trans('errors.err_500')]);
 			}
 			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
@@ -258,15 +237,10 @@ class PetfoundationController extends Controller {
 			
 			$foundation = Auth::user()->foundation; dd($foundation);
 			$foundation->adoptions()->save($model);
-		} catch (ValidationException $e) {
-			DB::rollback();
-			return redirect()->back()
-				->withInput($request->all())
-				->withErrors($e->errors());
 		} catch (\Exception $e) {
 			DB::rollback();
 			return redirect()->back()
-				->withInput($request->all())
+				->withInput($request->except(['_token']))
 				->withErrors(['message' => trans('errors.err_500')]);
 		}
 		
@@ -284,15 +258,10 @@ class PetfoundationController extends Controller {
 				$img->image_ext = $input['ft_img']->getClientOriginalExtension();
 				$img->is_profile_picture = 1;
 				$img->save();
-			} catch (ValidationException $e) {
-				DB::rollback();
-				return redirect()->back()
-					->withInput($request->all())
-					->withErrors($e->errors());
 			} catch (\Exception $e) {
 				DB::rollback();
 				return redirect()->back()
-					->withInput($request->all())
+					->withInput($request->except(['_token']))
 					->withErrors(['message' => trans('errors.err_500')]);
 			}
 			
@@ -315,15 +284,10 @@ class PetfoundationController extends Controller {
 						$img->image_ext = $single->getClientOriginalExtension();
 						$img->is_profile_picture = 0;
 						$img->save();
-					} catch (ValidationException $e) {
-						DB::rollback();
-						return redirect()->back()
-							->withInput($request->all())
-							->withErrors($e->errors());
 					} catch (\Exception $e) {
 						DB::rollback();
 						return redirect()->back()
-							->withInput($request->all())
+							->withInput($request->except(['_token']))
 							->withErrors(['message' => trans('errors.err_500')]);
 					}	
 					$single->move(storage_path('app') . '/' . $dir, $filename . '.' . $img->image_ext);

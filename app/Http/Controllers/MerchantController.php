@@ -19,7 +19,6 @@ use Carbon\Carbon;
 use SNS\Libraries\Facades\StorageHelper;
 use SNS\Models\Images;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Contracts\Validation\ValidationException;
 
 class MerchantController extends Controller {
 	
@@ -107,15 +106,10 @@ class MerchantController extends Controller {
 			$merchant->contact_person = $input['contact_person'];
 			$merchant->company_background = $input['company_background'];
 			$merchant->save();
-		} catch(ValidationException $e) {
-			DB::rollback();
-			return redirect()->back()
-					->withInput($request->all())
-					->withErrors($e->errors());
 		} catch (\Exception $e) {
 			DB::rollback();
 			return redirect()->back()
-					->withInput($request->all())
+					->withInput($request->except(['_token']))
 					->withErrors(['message' => trans('errors.err_500')]);
 		}
 	
@@ -140,15 +134,10 @@ class MerchantController extends Controller {
 		
 				$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
 			}
-		} catch(ValidationException $e) {
-			DB::rollback();
-			return redirect()->back()
-					->withInput($request->all())
-					->withErrors($e->errors());
 		} catch (\Exception $e) {
 			DB::rollback();
 			return redirect()->back()
-					->withInput($request->all())
+					->withInput($request->except(['_token']))
 					->withErrors(['message' => trans('errors.err_500')]);
 		}
 		DB::commit();
@@ -172,15 +161,10 @@ class MerchantController extends Controller {
 			$advertise->type = $input['type'];
 			$advertise->title = $input['title'];
 			$advertise->save();
-		} catch(ValidationException $e) {
-			DB::rollback();
-			return redirect()->back()
-					->withInput($request->all())
-					->withErrors($e->errors());
 		} catch (\Exception $e) {
 			DB::rollback();
 			return redirect()->back()
-					->withInput($request->all())
+					->withInput($request->except(['_token']))
 					->withErrors(['message' => trans('errors.err_500')]);
 		}
 
@@ -189,15 +173,10 @@ class MerchantController extends Controller {
 			$post->post_message = $input['message'];
 			$post->user_id = Auth::id();
 			$advertise->post()->save($post);
-		} catch(ValidationException $e) {
-			DB::rollback();
-			return redirect()->back()
-			->withInput($request->all())
-			->withErrors($e->errors());
 		} catch (\Exception $e) {
 			DB::rollback();
 			return redirect()->back()
-			->withInput($request->all())
+			->withInput($request->except(['_token']))
 			->withErrors(['message' => trans('errors.err_500')]);
 		}
 		
@@ -216,15 +195,10 @@ class MerchantController extends Controller {
 				));
 				
 				$advertise->post->image()->save($img_data);
-			} catch(ValidationException $e) {
-				DB::rollback();
-				return redirect()->back()
-					->withInput($request->all())
-					->withErrors($e->errors());
 			} catch (\Exception $e) {
 				DB::rollback();
 				return redirect()->back()
-					->withInput($request->all())
+					->withInput($request->except(['_token']))
 					->withErrors(['message' => trans('errors.err_500')]);
 			}			
 	

@@ -85,35 +85,51 @@ class PetsController extends Controller {
 	public function addmissingpet(Request $request){
 		$input = array_except($request->all(), array('_token'));
 		
-		$fp = new FoundPets;
-		if(Auth::check()){
-			$fp->is_guest = 0;
-			$fp->user_id = Auth::id();
-		}else{
-			$fp->is_guest = 1;
-			$fp->user_id = 0;
+		DB::beginTransaction();
+		try {
+			$fp = new FoundPets;
+			if(Auth::check()){
+				$fp->is_guest = 0;
+				$fp->user_id = Auth::id();
+			}else{
+				$fp->is_guest = 1;
+				$fp->user_id = 0;
+			}
+			$fp->rocky_tag_no = $input['rocky_tag_no'];
+			$fp->found_in_remark = $input['found_in_remark'];
+			$fp->finder_name = $input['finder_name'];
+			$fp->rocky_tag_no = $input['rocky_tag_no'];
+			$fp->found_in_address1 = $input['finder_address1'];
+			$fp->found_in_address2 = $input['finder_address2'];
+			$fp->finder_country_code = $input['finder_country_code'];
+			$fp->finder_area_code = $input['finder_area_code'];
+			$fp->finder_tel_no = $input['finder_tel_no'];
+			$fp->found_in_city = $input['found_in_city'];
+			$fp->found_in_state = $input['found_in_state'];
+			$fp->found_in_zip = $input['found_in_zip'];
+			$fp->found_in_country = $input['country'];
+			$fp->save();
+		} catch (\Exception $e) {
+			DB::rollback();
+			return redirect()->back()
+					->withInput($request->except(['_token']))
+					->withErrors(['message' => trans('errors.err_500')]);
 		}
-		$fp->rocky_tag_no = $input['rocky_tag_no'];
-		$fp->found_in_remark = $input['found_in_remark'];
-		$fp->finder_name = $input['finder_name'];
-		$fp->rocky_tag_no = $input['rocky_tag_no'];
-		$fp->found_in_address1 = $input['finder_address1'];
-		$fp->found_in_address2 = $input['finder_address2'];
-		$fp->finder_country_code = $input['finder_country_code'];
-		$fp->finder_area_code = $input['finder_area_code'];
-		$fp->finder_tel_no = $input['finder_tel_no'];
-		$fp->found_in_city = $input['found_in_city'];
-		$fp->found_in_state = $input['found_in_state'];
-		$fp->found_in_zip = $input['found_in_zip'];
-		$fp->found_in_country = $input['country'];
-		$fp->save();
-	
 		if($request->hasFile('myfile')) {
 			foreach($request->file('myfile') as $single) {
-				$this->upload($fp, $single);
+				$upload = $this->upload($fp, $single);
+				if($upload == true) {
+					continue;
+				} else {
+					return redirect()->back()
+							->withInput($request->except(['_token']))
+							->withErrors($upload);
+				}
 			}
 		}
 	
+		DB::commit();
+		
 		return redirect()->back()->withErrors(['message' => 'Thank you for reporting a missing pet']);
 	}
 	
@@ -130,14 +146,20 @@ class PetsController extends Controller {
 		}		
 		
 		$filename = md5($file->getClientOriginalName() . Carbon::now());
-		$image = new LostFoundPetImages([
-				'image_path' => $dir,
-				'image_name' => $filename,
-				'image_mime' => $file->getMimeType(),
-				'image_ext' => $file->getClientOriginalExtension()
-				]);
-		$parent->image()->save($image);
-		$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $image->image_ext);
+		try {
+			$image = new LostFoundPetImages([
+					'image_path' => $dir,
+					'image_name' => $filename,
+					'image_mime' => $file->getMimeType(),
+					'image_ext' => $file->getClientOriginalExtension()
+					]);
+			$parent->image()->save($image);
+			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $image->image_ext);
+		} catch (\Exception $e) {
+			DB::rollback();
+			return trans('errors.err_500');
+		}
+		
 	}
 
 	public function findpets(){
@@ -150,20 +172,20 @@ class PetsController extends Controller {
 
 		$missing = new MissingPets;
 		if($input['with-tag'] == 'true'){
-			$pets = Pets::find($input['select-pet'])->get();
+			$pets = Pets::find($input['select-pet']);
 			$missing->owner = Auth::id();
-			$missing->rocky_tag_no = $pets[0]->rocky_tag_no;
-			$missing->pet_name = $pets[0]->pet_name;
-			$missing->pet_type = $pets[0]->pet_type;
-			$missing->breed = $pets[0]->breed;
-			$missing->gender = $pets[0]->pet_gender;
-			$missing->weight = $pets[0]->weight;
-			$missing->height = $pets[0]->height;
-			$missing->brand = $pets[0]->brand;
-			$missing->food = $pets[0]->food;
-			$missing->feed_interval = $pets[0]->feeding_interval;
-			$missing->feed_time = $pets[0]->feeding_time;
-			$missing->pet_behavior = $pets[0]->pet_behavior;
+			$missing->rocky_tag_no = $pets->rocky_tag_no;
+			$missing->pet_name = $pets->pet_name;
+			$missing->pet_type = $pets->pet_type;
+			$missing->breed = $pets->breed;
+			$missing->gender = $pets->pet_gender;
+			$missing->weight = $pets->weight;
+			$missing->height = $pets->height;
+			$missing->brand = $pets->brand;
+			$missing->food = $pets->food;
+			$missing->feed_interval = $pets->feeding_interval;
+			$missing->feed_time = $pets->feeding_time;
+			$missing->pet_behavior = $pets->pet_behavior;
 			$missing->pet_when = $input['pet_when'];
 		}else{
 			$missing->owner = Auth::id();
