@@ -1,23 +1,23 @@
 <?php namespace SNS\Http\Controllers;
 
+use Carbon\Carbon;
 use SNS\Http\Requests;
 use SNS\Http\Controllers\Controller;
-
-use Carbon\Carbon;
-use Illuminate\Http\Request;
+use SNS\Libraries\Facades\PostService;
+use SNS\Libraries\Facades\FriendService;
+use SNS\Libraries\Facades\StorageHelper;
+use SNS\Libraries\Traits\ProfPicTrait;
 use SNS\Models\Pets;
 use SNS\Models\Business;
 use SNS\Models\Images;
 use SNS\Models\User;
 use SNS\Models\Registration;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
-use SNS\Libraries\Facades\PostService;
-use SNS\Libraries\Facades\FriendService;
-use SNS\Libraries\Facades\StorageHelper;
-use SNS\Libraries\Traits\ProfPicTrait;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Cache;
 
 class ProfileController extends Controller {
 	
@@ -40,20 +40,28 @@ class ProfileController extends Controller {
 				return view('pages.pet_foundation.profile', ['foundation_id', $profile->foundation->foundation_id])->with('profile', $profile);
 			}
 		} else {
-			$profile->load(array('registration' => function($q) {
-				$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
-			}, 'prof_pic' => function($q) {
-				$q->where('is_profile_picture', 1);
-				$q->where('pet_id', 0);
-				$q->addSelect(array('image_id', 'user_id'));
-			}
+			if(Cache::has('user.profile.collection' . Auth::id())) {
+				$params = Cache::get('user.profile.collection' . Auth::id());
+				
+				$data['friend_flags'] = $params['friend_flags'];
+				$profile = $params['profile'];
+				$collection = $params['collection'];
+			} else {
+				$profile->load(array('registration' => function($q) {
+						$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
+					}, 'prof_pic' => function($q) {
+						$q->where('is_profile_picture', 1);
+						$q->where('pet_id', 0);
+						$q->addSelect(array('image_id', 'user_id'));
+					}
 				));
-			
-				$collection = PostService::initialNewsFeed(Auth::id(), $id);
-			
-				$data['friend_flags'] = FriendService::check($id);
-				$data['include_scripts'] = true;
-				return view('profile.profile', $data)
+				$params['profile'] = $profile;
+				$params['collection'] = $collection = PostService::initialNewsFeed(Auth::id(), $id);		
+				$params['friend_flags'] = $data['friend_flags'] = FriendService::check($id);
+				Cache::put('user.profile.collection' . Auth::id(), $params, 10);
+			}			
+				
+			return view('profile.profile', $data)
 				->with('profile', $profile)
 				->with('posts', $collection);
 		}		

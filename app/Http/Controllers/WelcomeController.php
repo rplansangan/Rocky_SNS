@@ -1,10 +1,12 @@
 <?php namespace SNS\Http\Controllers;
+
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use SNS\Models\FoundPets;
 use SNS\Models\Images;
 use SNS\Models\LostFoundPetImages;
-use Illuminate\Http\Request;
 use SNS\Libraries\Facades\StorageHelper;
-use Carbon\Carbon;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -35,11 +37,12 @@ class WelcomeController extends Controller {
 	 * @return Response
 	 */
 	public function index()
-	{	
+	{
 		$data['left'] = 'landing.superdogmenu';
 		$data['right'] = 'landing.right';
 		$data['mid'] = 'landing.front';
-		return view('pages.landing' , $data);
+		
+		return view('pages.landing', $data);	
 	}
 
 	public function signup()

@@ -13,7 +13,9 @@ abstract class Controller extends BaseController {
 	}
 	
 	private function init() {
-		view()->share('user_name', Auth::user()->registration->first_name . ' ' . Auth::user()->registration->last_name);
+		if(Auth::check()) {
+			view()->share('user_name', Auth::user()->registration->first_name . ' ' . Auth::user()->registration->last_name);
+		}
 	}
 	
 }
