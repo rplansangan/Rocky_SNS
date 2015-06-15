@@ -5,6 +5,7 @@ use SNS\Models\Posts;
 use SNS\Models\Images;
 use Illuminate\Support\Facades\Auth;
 use SNS\Libraries\Facades\StorageHelper;
+use Illuminate\Support\Facades\DB;
 
 class PostRepository { 
 	
