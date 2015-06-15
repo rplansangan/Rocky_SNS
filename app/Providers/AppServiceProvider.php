@@ -38,14 +38,6 @@ class AppServiceProvider extends ServiceProvider {
 			return new \SNS\Libraries\Helpers\StorageHelper;
 		});
 		
-		$this->app->bind('likerepository', function() {
-			return new \SNS\Libraries\Repositories\LikeRepository;
-		});
-		
-		$this->app->bind('commentsrepository', function() {
-			return new \SNS\Libraries\Repositories\CommentsRepository;
-		});
-		
 		$this->app->bind('friendservice', function() {
 			return new \SNS\Libraries\Services\FriendService;
 		});

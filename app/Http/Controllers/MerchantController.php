@@ -18,7 +18,7 @@ use SNS\Libraries\Facades\FriendService;
 use Carbon\Carbon;
 use SNS\Libraries\Facades\StorageHelper;
 use SNS\Models\Images;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 
 class MerchantController extends Controller {
 	
@@ -42,7 +42,7 @@ class MerchantController extends Controller {
 	    $user = User::find(Auth::id());
 	    $user->load('business');
 		if(isset($user->business->business_id)){
-			return Redirect::route('merchant.profile', Auth::id());
+			return redirect()->route('merchant.profile', Auth::id());
 		}else{
 			return view('pages.mercharegister');
 		}
@@ -88,43 +88,59 @@ class MerchantController extends Controller {
 				->withErrors($validate->errors()->all());
 		}
 	
-		$merchant = new Business();
-		$merchant->user_id = Auth::id();
-		$merchant->business_name = $input['business_name'];
-		$merchant->address_line1 = $input['address_line1'];
-		$merchant->address_line2 = $input['address_line2'];
-		$merchant->city = $input['city'];
-		$merchant->zip = $input['zip'];
-		$merchant->state = $input['state'];
-		$merchant->country = $input['country'];
-		$merchant->phone_country_code = $input['phone_country_code'];
-		$merchant->phone_area_code = $input['phone_area_code'];
-		$merchant->phone_number = $input['phone_number'];
-		$merchant->email_address = $input['email_address'];
-		$merchant->contact_person = $input['contact_person'];
-		$merchant->company_background = $input['company_background'];
-		$merchant->save();
+		DB::beginTransaction();
+		try {
+			$merchant = new Business();
+			$merchant->user_id = Auth::id();
+			$merchant->business_name = $input['business_name'];
+			$merchant->address_line1 = $input['address_line1'];
+			$merchant->address_line2 = $input['address_line2'];
+			$merchant->city = $input['city'];
+			$merchant->zip = $input['zip'];
+			$merchant->state = $input['state'];
+			$merchant->country = $input['country'];
+			$merchant->phone_country_code = $input['phone_country_code'];
+			$merchant->phone_area_code = $input['phone_area_code'];
+			$merchant->phone_number = $input['phone_number'];
+			$merchant->email_address = $input['email_address'];
+			$merchant->contact_person = $input['contact_person'];
+			$merchant->company_background = $input['company_background'];
+			$merchant->save();
+		} catch (\Exception $e) {
+			DB::rollback();
+			return redirect()->back()
+					->withInput($request->except(['_token']))
+					->withErrors(['message' => trans('errors.err_500')]);
+		}
 	
 		User::where('user_id' , '=' , Auth::id())->update(['is_merchant' => 1]);
 	
-		if(isset($input['myfile'])) {
-			$file = $input['myfile'];
-			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
-			$dir = StorageHelper::create(Auth::id());
-	
-			$img_data = new Images(array(
-					'user_id' => Auth::id(),
-					'image_path' => $dir,
-					'image_name' => $filename,
-					'image_mime' => $file->getMimeType(),
-					'image_ext' => $file->getClientOriginalExtension(),
-					'is_profile_picture' => 0
-			));
-	
-			$merchant->image()->save($img_data);
-	
-			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
+		try {
+			if(isset($input['myfile'])) {
+				$file = $input['myfile'];
+				$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
+				$dir = StorageHelper::create(Auth::id());
+		
+				$img_data = new Images(array(
+						'user_id' => Auth::id(),
+						'image_path' => $dir,
+						'image_name' => $filename,
+						'image_mime' => $file->getMimeType(),
+						'image_ext' => $file->getClientOriginalExtension(),
+						'is_profile_picture' => 0
+				));
+		
+				$merchant->image()->save($img_data);
+		
+				$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
+			}
+		} catch (\Exception $e) {
+			DB::rollback();
+			return redirect()->back()
+					->withInput($request->except(['_token']))
+					->withErrors(['message' => trans('errors.err_500')]);
 		}
+		DB::commit();
 		return redirect()->route('addadvertise');
 	}
 
@@ -137,36 +153,60 @@ class MerchantController extends Controller {
 				->withInput($request->all())
 				->withErrors($validate->errors()->all());
 		}
+		
+		DB::beginTransaction();
+		try {
+			$advertise = new Advertise();
+			$advertise->user_id = Auth::id();
+			$advertise->type = $input['type'];
+			$advertise->title = $input['title'];
+			$advertise->save();
+		} catch (\Exception $e) {
+			DB::rollback();
+			return redirect()->back()
+					->withInput($request->except(['_token']))
+					->withErrors(['message' => trans('errors.err_500')]);
+		}
 
-		$advertise = new Advertise();
-		$advertise->user_id = Auth::id();
-		$advertise->type = $input['type'];
-		$advertise->title = $input['title'];
-		$advertise->save();
-
-		$post = new Posts();
-		$post->post_message = $input['message'];
-		$post->user_id = Auth::id();
-		$advertise->post()->save($post);
-
+		try {
+			$post = new Posts();
+			$post->post_message = $input['message'];
+			$post->user_id = Auth::id();
+			$advertise->post()->save($post);
+		} catch (\Exception $e) {
+			DB::rollback();
+			return redirect()->back()
+			->withInput($request->except(['_token']))
+			->withErrors(['message' => trans('errors.err_500')]);
+		}
+		
 		if(isset($input['userfile'])) {
 			$file = $input['userfile'];
 			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
 			$dir = StorageHelper::create(Auth::id());
-	
-			$img_data = new Images(array(
-					'user_id' => Auth::id(),
-					'image_path' => $dir,
-					'image_name' => $filename,
-					'image_mime' => $file->getMimeType(),
-					'image_ext' => $file->getClientOriginalExtension(),
-					'is_profile_picture' => 0
-			));
-	
-			$advertise->post->image()->save($img_data);
+			try {
+				$img_data = new Images(array(
+						'user_id' => Auth::id(),
+						'image_path' => $dir,
+						'image_name' => $filename,
+						'image_mime' => $file->getMimeType(),
+						'image_ext' => $file->getClientOriginalExtension(),
+						'is_profile_picture' => 0
+				));
+				
+				$advertise->post->image()->save($img_data);
+			} catch (\Exception $e) {
+				DB::rollback();
+				return redirect()->back()
+					->withInput($request->except(['_token']))
+					->withErrors(['message' => trans('errors.err_500')]);
+			}			
 	
 			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
 		}
+		
+		DB::commit();
+		
 		if(User::find(Auth::id())->is_merchant == 1){
 			return redirect()->route('merchant.profile', array(Auth::id()));
 		}

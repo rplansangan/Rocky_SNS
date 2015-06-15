@@ -125,7 +125,7 @@ Route::get('register/{id}', array(
 	'as' => 'register.details',
 	'uses' => 'RegistrationController@details'
 ));
-Route::post('register/update/{id}', array(
+Route::post('register/update', array(
 	'as' => 'register.detailsUpdate',
 	'uses' => 'RegistrationController@updateDetails'
 ));

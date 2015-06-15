@@ -18,26 +18,38 @@ class PostRepository {
 		$this->post  = new Posts();
 	}
 	
-	public function setPost($data, $file) {	
-		$post = $this->post->create(array(
-				'user_id' => Auth::id(),
-				'post_message' => $data['message']
-		));
+	public function setPost($data, $file) {
+		DB::beginTransaction();
+		
+		try {	
+			$post = $this->post->create(array(
+					'user_id' => Auth::id(),
+					'post_message' => $data['message']
+			));
+		} catch (\Exception $e) {
+			DB::rollback();
+			return trans('errors.err_500');
+		}
 		
 		if(isset($file)) {
 			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
 			$dir = StorageHelper::create(Auth::id());
 			$mime = $file->getMimeType();
-			$post->image()->save(new Images(array(
-					'user_id' => Auth::id(),
-					'image_path' => $dir,
-					'image_name' => $filename,
-					'image_mime' => $file->getMimeType(),
-					'image_ext' => $file->getClientOriginalExtension(),
-					'image_title' => $data['image_title'],
-					'category' => $data['category']
-			)));
 			
+			try {
+				$post->image()->save(new Images(array(
+						'user_id' => Auth::id(),
+						'image_path' => $dir,
+						'image_name' => $filename,
+						'image_mime' => $file->getMimeType(),
+						'image_ext' => $file->getClientOriginalExtension(),
+						'image_title' => $data['image_title'],
+						'category' => $data['category']
+				)));
+			} catch (\Exception $e) {
+				DB::rollback();
+				return trans('errors.err_500');
+			}
 			// file visibility issue
 // 			StorageHelper::store($dir, $filename . '.' . $file->getClientOriginalExtension());
 
@@ -56,6 +68,8 @@ class PostRepository {
 				'user.prof_pic' => function($q) {
 					$q->addSelect(array('image_id', 'user_id', 'image_mime', 'is_profile_picture'));
 					$q->where('is_profile_picture', 1);
+					$q->where('pet_id', 0);
+					$q->where('business_id', 0);
 				},
 				'image' => function($q) {
 					$q->addSelect(array('image_id', 'post_id', 'image_mime' , 'image_title' , 'category'));
@@ -67,6 +81,8 @@ class PostRepository {
 					$q->addSelect(array('comment_id', 'post_id'));
 				}
 		));
+		
+		DB::commit();
 		
 		return $post;
 	}

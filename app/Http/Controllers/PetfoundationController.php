@@ -22,6 +22,7 @@ use SNS\Models\PetAdoption;
 use SNS\Models\PetFoundationImages;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class PetfoundationController extends Controller {
 
@@ -56,91 +57,125 @@ class PetfoundationController extends Controller {
 				->withErrors($validate->errors()->all());
 		}
 	
-		$foundation = new PetFoundation();
-		$foundation->user_id = Auth::id();
-		$foundation->petfoundation_name = $input['petfoundation_name'];
-		$foundation->address_line1 = $input['address_line1'];
-		$foundation->address_line2 = $input['address_line2'];
-		$foundation->city = $input['city'];
-		$foundation->zip = $input['zip'];
-		$foundation->state = $input['state'];
-		$foundation->country = $input['country'];
-		$foundation->phone_country_code = $input['phone_country_code'];
-		$foundation->phone_area_code = $input['phone_area_code'];
-		$foundation->phone_number = $input['phone_number'];
-		$foundation->email_address = $input['email_address'];
-		$foundation->contact_person = $input['contact_person'];
-		$foundation->petfoundation_background = $input['petfoundation_background'];
-		$foundation->mission_statement = $input['mission_statement'];
-		$foundation->vision_statement = $input['vision_statement'];
-		$foundation->goal_statement = $input['goal_statement'];
-		$foundation->save();
-	
+		DB::beginTransaction();
+		try {
+			$foundation = new PetFoundation();
+			$foundation->user_id = Auth::id();
+			$foundation->petfoundation_name = $input['petfoundation_name'];
+			$foundation->address_line1 = $input['address_line1'];
+			$foundation->address_line2 = $input['address_line2'];
+			$foundation->city = $input['city'];
+			$foundation->zip = $input['zip'];
+			$foundation->state = $input['state'];
+			$foundation->country = $input['country'];
+			$foundation->phone_country_code = $input['phone_country_code'];
+			$foundation->phone_area_code = $input['phone_area_code'];
+			$foundation->phone_number = $input['phone_number'];
+			$foundation->email_address = $input['email_address'];
+			$foundation->contact_person = $input['contact_person'];
+			$foundation->petfoundation_background = $input['petfoundation_background'];
+			$foundation->mission_statement = $input['mission_statement'];
+			$foundation->vision_statement = $input['vision_statement'];
+			$foundation->goal_statement = $input['goal_statement'];
+			$foundation->save();
+		} catch (\Exception $e) {
+			DB::rollback();
+			return redirect()->back()
+					->withInput($request->except(['_token']))
+					->withErrors(['message' => trans('errors.err_500')]);
+		}
+		
 		User::where('user_id' , '=' , Auth::id())->update(['is_merchant' => 1]);
 	
 		if(isset($input['myfile'])) {
 			$file = $input['myfile'];
 			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
 			$dir = StorageHelper::create(Auth::id());
-	
-			$img_data = new Images(array(
-					'user_id' => Auth::id(),
-					'image_path' => $dir,
-					'image_name' => $filename,
-					'image_mime' => $file->getMimeType(),
-					'image_ext' => $file->getClientOriginalExtension(),
-					'is_profile_picture' => 0
-			));
-	
-			$foundation->image()->save($img_data);
+			try {
+				$img_data = new Images(array(
+						'user_id' => Auth::id(),
+						'image_path' => $dir,
+						'image_name' => $filename,
+						'image_mime' => $file->getMimeType(),
+						'image_ext' => $file->getClientOriginalExtension(),
+						'is_profile_picture' => 0
+				));
+		
+				$foundation->image()->save($img_data);
+			} catch (\Exception $e) {
+				DB::rollback();
+				return redirect()->back()
+					->withInput($request->except(['_token']))
+					->withErrors(['message' => trans('errors.err_500')]);
+			}
 	
 			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
 		}
+		
+		DB::commit();
+		
 		return redirect()->route('profile.showProfile', [Auth::id()]);
 	}
 	
 	public function editFoundation(Request $request) {
 		$input = array_except($request->all(), ['_token']);
 		
-		$foundation = Auth::user()->foundation;
-		$foundation->petfoundation_name = $input['petfoundation_name'];
-		$foundation->email_address = $input['email_address'];
-		$foundation->contact_person = $input['contact_person'];
-		$foundation->address_line1 = $input['address_line1'];
-		$foundation->address_line2 = $input['address_line2'];
-		$foundation->city = $input['city'];
-		$foundation->zip = $input['zip'];
-		$foundation->state = $input['state'];
-		$foundation->country = $input['country'];
-		$foundation->phone_area_code = $input['phone_area_code'];
-		$foundation->phone_country_code = $input['phone_country_code'];
-		$foundation->phone_number = $input['phone_number'];
-		$foundation->petfoundation_background = $input['petfoundation_background'];
-		$foundation->mission_statement = $input['mission_statement'];
-		$foundation->vision_statement = $input['vision_statement'];
-		$foundation->goal_statement = $input['goal_statement'];
-		$foundation->save();
+		DB::beginTransaction();
+		
+		try {
+			$foundation = Auth::user()->foundation;
+			$foundation->petfoundation_name = $input['petfoundation_name'];
+			$foundation->email_address = $input['email_address'];
+			$foundation->contact_person = $input['contact_person'];
+			$foundation->address_line1 = $input['address_line1'];
+			$foundation->address_line2 = $input['address_line2'];
+			$foundation->city = $input['city'];
+			$foundation->zip = $input['zip'];
+			$foundation->state = $input['state'];
+			$foundation->country = $input['country'];
+			$foundation->phone_area_code = $input['phone_area_code'];
+			$foundation->phone_country_code = $input['phone_country_code'];
+			$foundation->phone_number = $input['phone_number'];
+			$foundation->petfoundation_background = $input['petfoundation_background'];
+			$foundation->mission_statement = $input['mission_statement'];
+			$foundation->vision_statement = $input['vision_statement'];
+			$foundation->goal_statement = $input['goal_statement'];
+			$foundation->save();
+		} catch (\Exception $e) {
+			DB::rollback();
+			return redirect()->back()
+			->withInput($request->except(['_token']))
+			->withErrors(['message' => trans('errors.err_500')]);
+		}
 		
 		if(isset($input['myfile'])) {
 			$file = $input['myfile'];
 			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
 			$dir = StorageHelper::create(Auth::id());
-		
-			$img_data = new Images(array(
-					'user_id' => Auth::id(),
-					'image_path' => $dir,
-					'image_name' => $filename,
-					'image_mime' => $file->getMimeType(),
-					'image_ext' => $file->getClientOriginalExtension(),
-					'is_profile_picture' => 1
-			));
-		
-			$this->removePreviousFoundation($foundation->petfoundation_id);
+			try {
+				$img_data = new Images(array(
+						'user_id' => Auth::id(),
+						'image_path' => $dir,
+						'image_name' => $filename,
+						'image_mime' => $file->getMimeType(),
+						'image_ext' => $file->getClientOriginalExtension(),
+						'is_profile_picture' => 1
+				));
 			
-			$foundation->image()->save($img_data);
-		
+				$this->removePreviousFoundation($foundation->petfoundation_id);
+				
+				$foundation->image()->save($img_data);
+			} catch (\Exception $e) {
+				DB::rollback();
+				return redirect()->back()
+					->withInput($request->except(['_token']))
+					->withErrors(['message' => trans('errors.err_500')]);
+			}
 			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
 		}
+		
+		DB::commit();
+		
 		return redirect()->route('petfoundation');
 	}
 
@@ -187,32 +222,48 @@ class PetfoundationController extends Controller {
 	
 	public function addAdoption(Request $request) {
 		$input = $request->except(['_token']); 
-		$model = new PetAdoption();
-		$model->pet_name = $input['pet_name'];
-		$model->pet_type = $input['pet_type'];
-		$model->breed = $input['breed'];
-		$model->gender = $input['gender'];
-		$model->weight = $input['weight'];
-		$model->height = $input['height'];
-		$model->background = $input['background'];
 		
-		$foundation = Auth::user()->foundation; dd($foundation);
-		$foundation->adoptions()->save($model);
+		DB::beginTransaction();
+		
+		try {
+			$model = new PetAdoption();
+			$model->pet_name = $input['pet_name'];
+			$model->pet_type = $input['pet_type'];
+			$model->breed = $input['breed'];
+			$model->gender = $input['gender'];
+			$model->weight = $input['weight'];
+			$model->height = $input['height'];
+			$model->background = $input['background'];
+			
+			$foundation = Auth::user()->foundation; dd($foundation);
+			$foundation->adoptions()->save($model);
+		} catch (\Exception $e) {
+			DB::rollback();
+			return redirect()->back()
+				->withInput($request->except(['_token']))
+				->withErrors(['message' => trans('errors.err_500')]);
+		}
 		
 		if(isset($input['ft_img']) AND (!is_null($input['ft_img']))) {
 			$filename = md5($input['ft_img']->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
 			$dir = StorageHelper::create(Auth::id());
-						
-			$img = new PetFoundationImages();
-			$img->user_id = Auth::id();
-			$img->foundation_id = $foundation->petfoundation_id;
-			$img->adoption_id = $model->pa_id;
-			$img->image_path = $dir;
-			$img->image_name = $filename;
-			$img->image_mime = $input['ft_img']->getClientMimeType();
-			$img->image_ext = $input['ft_img']->getClientOriginalExtension();
-			$img->is_profile_picture = 1;
-			$img->save();
+			try {
+				$img = new PetFoundationImages();
+				$img->user_id = Auth::id();
+				$img->foundation_id = $foundation->petfoundation_id;
+				$img->adoption_id = $model->pa_id;
+				$img->image_path = $dir;
+				$img->image_name = $filename;
+				$img->image_mime = $input['ft_img']->getClientMimeType();
+				$img->image_ext = $input['ft_img']->getClientOriginalExtension();
+				$img->is_profile_picture = 1;
+				$img->save();
+			} catch (\Exception $e) {
+				DB::rollback();
+				return redirect()->back()
+					->withInput($request->except(['_token']))
+					->withErrors(['message' => trans('errors.err_500')]);
+			}
 			
 			$input['ft_img']->move(storage_path('app') . '/' . $dir, $filename . '.' . $img->image_ext);
 		}
@@ -222,22 +273,29 @@ class PetfoundationController extends Controller {
 			foreach($input['other_img'] as $single) {
 				if(!is_null($single)) {
 					$filename = md5($single->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
-					
-					$img = new PetFoundationImages();
-					$img->user_id = Auth::id();
-					$img->foundation_id = $foundation->petfoundation_id;
-					$img->adoption_id = $model->pa_id;
-					$img->image_path = $dir;
-					$img->image_name = $filename;
-					$img->image_mime = $single->getClientMimeType();
-					$img->image_ext = $single->getClientOriginalExtension();
-					$img->is_profile_picture = 0;
-					$img->save();
-						
+					try {
+						$img = new PetFoundationImages();
+						$img->user_id = Auth::id();
+						$img->foundation_id = $foundation->petfoundation_id;
+						$img->adoption_id = $model->pa_id;
+						$img->image_path = $dir;
+						$img->image_name = $filename;
+						$img->image_mime = $single->getClientMimeType();
+						$img->image_ext = $single->getClientOriginalExtension();
+						$img->is_profile_picture = 0;
+						$img->save();
+					} catch (\Exception $e) {
+						DB::rollback();
+						return redirect()->back()
+							->withInput($request->except(['_token']))
+							->withErrors(['message' => trans('errors.err_500')]);
+					}	
 					$single->move(storage_path('app') . '/' . $dir, $filename . '.' . $img->image_ext);
 				}
 			}
 		}		
+		
+		DB::commit();
 		
 		return redirect()->back();
 	}

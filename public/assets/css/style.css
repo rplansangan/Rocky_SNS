@@ -271,9 +271,9 @@ input.tagbtnone {
 
 .land-mid-vid-btn {
   background-position: center;
-  padding: 0;
-  border-left: 3px solid #C51A1A;
-  border-right: 3px solid #C51A1A;
+  padding: 5px;
+  border-left: 2px solid #C51A1A;
+  border-right: 2px solid #C51A1A;
   border-top: 0;
   border-bottom: 0;
 }

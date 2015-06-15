@@ -1,12 +1,14 @@
 <?php namespace SNS\Libraries\Services;
 
-use SNS\Libraries\Repositories\ImageRepository;
-use SNS\Libraries\Repositories\PostRepository;
 use SNS\Models\User;
 use SNS\Libraries\Facades\Likes;
 use SNS\Libraries\Facades\Comments;
-use Illuminate\Support\Facades\Auth;
+use SNS\Libraries\Repositories\ImageRepository;
+use SNS\Libraries\Repositories\PostRepository;
 use SNS\Libraries\Repositories\NewsfeedRepository;
+use SNS\Libraries\Repositories\LikeRepository;
+use SNS\Libraries\Repositories\CommentsRepository;
+use Illuminate\Support\Facades\Auth;
 
 class PostService {
 	
@@ -14,17 +16,37 @@ class PostService {
 	 * 
 	 * @var SNS\Libraries\Repositories\ImageRepository
 	 */
-	public $image;
+	private $image;
 	
 	/**
 	 * 
 	 * @var SNS\Libraries\Repositories\PostRepository
 	 */
-	public $post;
+	private $post;
+	
+	/**
+	 * 
+	 * @var SNS\Libraries\Repositories\NewsfeedRepository
+	 */
+	private $newsfeed;
+	
+	/**
+	 * 
+	 * @var SNS\Libraries\Repositories\LikeRepository
+	 */
+	private $like;
+	
+	/**
+	 * 
+	 * @var SNS\Libraries\Repositories\CommentsRepository
+	 */
+	private $comment;
 	
 	public function __construct() {
 		$this->image = new ImageRepository();
 		$this->post = new PostRepository();
+		$this->like = new LikeRepository();
+		$this->comment = new CommentsRepository();
 		$this->newsfeed = new NewsfeedRepository();
 	}
 	
@@ -58,12 +80,12 @@ class PostService {
 	 * 
 	 * @param integer $take
 	 */
-	public function initialNewsFeed($id, $post_uid= null,  $take = null) {
+	public function initialNewsFeed($id = null, $post_uid = null,  $take = null) {
 		if(!$take) {
 			$take = 5;
 		}
-		
-		return $this->newsfeed->initial($id, $post_uid, $take);
+
+		return $this->newsfeed->initial($id , $post_uid, $take);
 	}
 
 	
@@ -81,15 +103,15 @@ class PostService {
 	}
 	
 	public function like($post_id, $destination) {
-		return Likes::set($post_id, $destination);
+		return $this->like->set($post_id, $destination);
 	}
 	
 	public function createComment($postId, $postUId, $message) {
-		return Comments::set($postId, $postUId, $message);
+		return $this->comment->set($postId, $postUId, $message);
 	}
 	
 	public function deleteComment($postId, $postUId, $commentId) {
-		return Comments::delete($postId, $postUId, $commentId);
+		return $this->comment->delete($postId, $postUId, $commentId);
 	}
 
 	public function checkNewPost(){
