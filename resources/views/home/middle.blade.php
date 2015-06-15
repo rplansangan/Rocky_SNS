@@ -12,6 +12,6 @@ ul.nav.nav-tabs li a {
 			<a href="javascript:void(0);" id="refresh-btn" class="hidden" value="{{ Route('get.newfeeds') }}" ><img style="width:30px" src="{{ URL::asset('assets/images/Refresh2.png') }}"></a>
 		</span>
 	</div>
-	@include('iterators.posts', array('newsfeed' => $newsfeed))
+	@include('iterators.posts', array('newsfeed' => $newsfeed , 'public' => false))
 </div>
 

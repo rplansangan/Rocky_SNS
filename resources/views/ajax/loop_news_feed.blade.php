@@ -4,7 +4,8 @@
 		'message' => $single->post, 
 		'image' => $single->image, 
 		'like' => $single->like, 
-		'comments' => $single->comment
+		'comments' => $single->comment,
+		'public' => $single->public
 	))
 @endforeach
 @include('scripts.nf_pagination')

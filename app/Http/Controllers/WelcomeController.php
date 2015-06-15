@@ -5,6 +5,8 @@ use SNS\Models\LostFoundPetImages;
 use Illuminate\Http\Request;
 use SNS\Libraries\Facades\StorageHelper;
 use Carbon\Carbon;
+use SNS\Libraries\Facades\PostService;
+use Illuminate\Support\Facades\Auth;
 class WelcomeController extends Controller {
 
 	/*
@@ -83,6 +85,7 @@ class WelcomeController extends Controller {
 		$data['left'] = 'landing.superdogmenu';
 		$data['right'] = 'landing.right';
 		$data['mid'] = 'landing.lovers';
+		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
 		return view('pages.landing' , $data);
 	}	
 }

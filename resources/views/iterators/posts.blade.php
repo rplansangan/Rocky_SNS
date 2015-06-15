@@ -10,6 +10,7 @@
 					'image' => $single->image, 
 					'like' => $single->like, 
 					'comments' => $single->comment,
+					'public' => $public
 				))
 			@endforeach
 		</li>
