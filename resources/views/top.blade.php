@@ -9,28 +9,28 @@
       <div class="col-md-4 col-lg-4 tagnum col-lg-offset-3">
         <div class="top-mid-btns">
           <div class="row formtag" style="padding:0px;margin:-1px;">
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:2px;">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:2px 4px;">
                   <div style="position:absolute;padding:2px;margin:7px -25px;color:white">
                      <div class="glyphicon glyphicon-question-sign" style="color:white" data-toggle="tooltip" data-placement="left" title="If you found a pet that has a tag number, please enter it in the input text and hit enter then proceed to the next step."></div>
                   </div>
 
-                <div class="col-lg-8" style="padding:2px;">
+                <div class="col-lg-8" style="padding:2px 0;">
                   <!-- <div class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="left" title="If you found a pet that has a tag number, please enter it in the input text and hit enter then proceed to the next step."></div> -->
-                  <input type="text" class="foundpettag" style="width:100%;height:25px" placeholder="Input pet tag number">
+                  <input type="text" class="foundpettag" style="width:99%;height:25px" placeholder="Input pet tag number">
                 </div>
-                <div class="col-lg-4" style="padding:2px;">
+                <div class="col-lg-4" style="padding:2px 0; padding-right: 1px;">
                   <button zia="{{ Route('pets.get.info') }}" token="{{ csrf_token() }}" class="tagbtn btn-block">SUBMIT</button>
                 </div>
               </div>
           </div>
           <div class="row missfounbtn" style="padding:0px">
-            <div class="col-sm-12 col-xs-12 col-lg-4" style="padding:0px">
+            <div class="col-sm-12 col-xs-12 col-lg-4" style="padding:0px 1px">
               <a href="javascript:void(0)" class="misspet btn btn-block" route="{{ Route('findpets') }}" token="{{ csrf_token() }}" data-toggle="tooltip" data-placement="left" title="If you've lost your pet, please login and click the 'Rocky, find my pet' button and fillup the form.">Rocky, find my pet</a>
             </div>
             <div class="col-sm-12 col-xs-12 col-lg-4" style="padding:0px 2px">
               <a href="javascript:void(0)" class="foundpet btn btn-block" data-toggle="tooltip" data-placement="left" title="If you found a pet but doesn't have a tag number, click the 'I found a pet!' button and fillup the form.">I found a pet!</a>       
             </div>
-            <div class="col-sm-12 col-xs-12 col-lg-4" style="padding:0px">
+            <div class="col-sm-12 col-xs-12 col-lg-4" style="padding:0px 1px">
               @if(Auth::check())
               <a class="redi-btn btn btn-block" href="{{ route('logout') }}">
                 Logout
