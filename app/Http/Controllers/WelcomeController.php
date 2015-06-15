@@ -1,6 +1,7 @@
 <?php namespace SNS\Http\Controllers;
 use SNS\Models\FoundPets;
 use SNS\Models\Images;
+use SNS\Models\Business;
 use SNS\Models\LostFoundPetImages;
 use Illuminate\Http\Request;
 use SNS\Libraries\Facades\StorageHelper;
@@ -79,6 +80,7 @@ class WelcomeController extends Controller {
 		$data['left'] = 'landing.superdogmenu';
 		$data['right'] = 'landing.right';
 		$data['mid'] = 'landing.shop';
+		$data['info'] = Business::with(array('advertise' ,'advertise.post' , 'advertise.post.image'))->latest()->get();
 		return view('pages.landing' , $data);
 	}
 	public function petlovers(){
