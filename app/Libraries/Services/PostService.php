@@ -80,12 +80,12 @@ class PostService {
 	 * 
 	 * @param integer $take
 	 */
-	public function initialNewsFeed($id, $post_uid= null,  $take = null) {
+	public function initialNewsFeed($id = null, $post_uid = null,  $take = null) {
 		if(!$take) {
 			$take = 5;
 		}
-		
-		return $this->newsfeed->initial($id, $post_uid, $take);
+
+		return $this->newsfeed->initial($id , $post_uid, $take);
 	}
 
 	

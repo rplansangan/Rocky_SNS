@@ -4,8 +4,12 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use SNS\Models\FoundPets;
 use SNS\Models\Images;
+use SNS\Models\Business;
 use SNS\Models\LostFoundPetImages;
 use SNS\Libraries\Facades\StorageHelper;
+
+use SNS\Libraries\Facades\PostService;
+use Illuminate\Support\Facades\Auth;
 
 class WelcomeController extends Controller {
 
@@ -80,12 +84,14 @@ class WelcomeController extends Controller {
 		$data['left'] = 'landing.superdogmenu';
 		$data['right'] = 'landing.right';
 		$data['mid'] = 'landing.shop';
+		$data['info'] = Business::with(array('advertise' ,'advertise.post' , 'advertise.post.image'))->latest()->get();
 		return view('pages.landing' , $data);
 	}
 	public function petlovers(){
 		$data['left'] = 'landing.superdogmenu';
 		$data['right'] = 'landing.right';
 		$data['mid'] = 'landing.lovers';
+		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
 		return view('pages.landing' , $data);
 	}	
 }
