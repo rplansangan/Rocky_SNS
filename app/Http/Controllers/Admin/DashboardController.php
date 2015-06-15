@@ -11,6 +11,7 @@ use SNS\Models\Likes;
 use SNS\Models\Images;
 use SNS\Models\PetFoundation;
 use SNS\Models\Pets;
+use SNS\Models\Admin\ErrorLogs;
 
 class DashboardController extends Controller {
 
@@ -51,6 +52,18 @@ class DashboardController extends Controller {
 		// fix for trailing slash
 		$col->setPath('');		
 		return view('admin.listing.user', ['list' => $col]);
+	}
+	
+	public function listErrors() {
+	    $col = ErrorLogs::select(['id', 'from_user', 'route_name', 'error_msg', 'created_at'])->orderBy('id', 'desc')->paginate(25);
+	    $col->setPath('');
+	    return view('admin.listing.errors', ['list' => $col]);
+	}
+	
+	public function displaySingleError($id) {
+	    $err = ErrorLogs::find($id);
+	    
+	    return view('admin.single.error_stack_trace', ['error' => $err]);
 	}
 	
 	public function userData($uid) {

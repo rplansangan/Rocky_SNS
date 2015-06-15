@@ -32,6 +32,9 @@
 	  				<li class="list-group-item">
 	  					<a href="{{ route('admin.list.user') }}">User List</a>
 	  				</li>
+	  				<li class="list-group-item">
+	  				 <a href="{{ route('admin.list.errors') }}">Errors</a>
+	  				</li>
 	  			</ul>
 	  		</div>
 	  		<div id="admin-mid-content" class="col-md-9">

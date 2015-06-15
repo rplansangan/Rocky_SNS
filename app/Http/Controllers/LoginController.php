@@ -95,12 +95,7 @@ class LoginController extends Controller {
 		$this->middleware('guest');
 		$service = new ValidationService(); 
 		
-		try {
-			$service->id($id)->hash($hash)->validatePasswordToken();
-		} catch (\Exception $e) {
-			return redirect()->route('index')
-					->withErrors(['message' => trans('errors.err_500')]);
-		}
+		$service->id($id)->hash($hash)->validatePasswordToken();
 		
 		if($service->errors()) {
 			return view('pages.forgotpass.timeout', ['id' => $id])->withErrors(['message' => $service->errors()]);

@@ -458,4 +458,12 @@ Route::group(['prefix' => 'administration', 'namespace' => 'Admin', 'middleware'
 		'as' => 'admin.list.user.data',
 		'uses' => 'DashboardController@userData'
 	]);
+	Route::get('list_errors', [
+		'as' => 'admin.list.errors',
+		'uses' => 'DashboardController@listErrors'
+	]);
+	Route:;get('list_errors/{id}', [
+        'as' => 'admin.single.error',
+        'uses' => 'DashboardController@displaySingleError'
+	]);
 });

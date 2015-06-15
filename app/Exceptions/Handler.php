@@ -2,6 +2,8 @@
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use SNS\Models\Admin\ErrorLogs;
+use Illuminate\Support\Facades\Auth;
 
 class Handler extends ExceptionHandler {
 
@@ -36,12 +38,20 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
-// 		switch($e->getStatusCode()) {
-// 			case '404':
-				
-// 				break;
-// 		}
-		return parent::render($request, $e);
+	    
+    	$err = new ErrorLogs();
+    	if(Auth::check()) {
+    		$err->from_user = Auth::id();
+    	} else {
+    		$err->from_user = 0;
+    	}
+    	$err->route_name = $request->route()->getName();
+    	$err->error_msg = $e->getMessage();
+    	$err->stack_trace = $e->getTraceAsString();
+    	$err->save();
+    	
+		return redirect()->route('index')
+				->withErrors(['message' => trans('errors.err_500')]);
 	}
 
 }
