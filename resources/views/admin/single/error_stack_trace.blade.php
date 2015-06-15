@@ -13,6 +13,10 @@
 			 <td>from user</td>
 			 <td>{{ $error->from_user }}</td>
 			</tr>
+			<tr>
+		      <td>error code</td>
+		      <td>@if($error->error_code != (0 OR NULL)) {{ $error->error_code }} @else NULL @endif</td>
+			</tr>
             <tr>
 		      <td>error message</td>
 		      <td>{{ $error->error_msg }}</td>

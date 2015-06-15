@@ -55,7 +55,7 @@ class DashboardController extends Controller {
 	}
 	
 	public function listErrors() {
-	    $col = ErrorLogs::select(['id', 'from_user', 'route_name', 'error_msg', 'created_at'])->orderBy('id', 'desc')->paginate(25);
+	    $col = ErrorLogs::select(['id', 'from_user', 'route_name', 'error_code', 'error_msg', 'created_at'])->orderBy('id', 'desc')->paginate(25);
 	    $col->setPath('');
 	    return view('admin.listing.errors', ['list' => $col]);
 	}

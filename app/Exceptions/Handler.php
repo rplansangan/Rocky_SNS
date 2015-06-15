@@ -38,7 +38,6 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
-	    
     	$err = new ErrorLogs();
     	if(Auth::check()) {
     		$err->from_user = Auth::id();
@@ -46,6 +45,7 @@ class Handler extends ExceptionHandler {
     		$err->from_user = 0;
     	}
     	$err->route_name = $request->route()->getName();
+    	$err->error_code = $e->getCode();
     	$err->error_msg = $e->getMessage();
     	$err->stack_trace = $e->getTraceAsString();
     	$err->save();

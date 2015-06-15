@@ -7,7 +7,7 @@ class ErrorLogs extends Model {
 
 	protected $table = 'error_logs';
 
-	protected $fillable = ['from_user', 'route_name', 'error_msg', 'stack_trace'];
+	protected $fillable = ['from_user', 'route_name', 'error_code', 'error_msg', 'stack_trace'];
 	
 	public static $dbDateFormat = 'Y-m-d H:i:s';
 	

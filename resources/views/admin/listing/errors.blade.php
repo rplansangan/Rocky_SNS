@@ -7,6 +7,7 @@
 			<tr>
 				<th>id</th>
 				<th>from user</th>
+				<th>error code</th>
 				<th>error message</th>
 				<th>route name</th>
 				<th>created at</th>
@@ -16,8 +17,9 @@
 		<tbody>
 		@foreach($list as $single)
 			<tr>
-				<td>{{ $single->id }}</td>
+				<td>{{ $single->id }}</td>				
 				<td>{{ $single->from_user }}</td>
+				<td>@if($single->error_code != (0 OR NULL)) {{ $single->error_code }} @else NULL @endif</td>
 				<td>{{ $single->error_msg }}</td>
 				<td>{{ $single->route_name }}</td>
 				<td>{{ $single->created_at }}</td>
