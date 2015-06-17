@@ -281,9 +281,12 @@ class FriendService {
 			return $this->list->select(['user_id', 'friend_user_id'])->where('user_id', $user_id)
 			->with(array(
 					'profile' => function($q) {
-						$q->addSelect(['registration_id', 'last_name', 'first_name', 'user_id']);
+						$q->addSelect(['user_id']);
 					},
-					'profile.prof_pic' => function($q) {
+					'profile.registration' => function($q) {
+					    $q->addSelect(['user_id', 'last_name', 'first_name', 'user_id']);
+					},
+					'profile.registration.prof_pic' => function($q) {
 						$q->addSelect(['image_id', 'image_mime', 'user_id']);
 						$q->where('is_profile_picture', 1);
 						$q->where('project_id', 0);
@@ -295,7 +298,7 @@ class FriendService {
 		
 		return $this->list->select($user_select)->where('user_id', $user_id)
 				->with(['images','profile' => function($q) {
-					$q->addSelect(['registration_id', 'last_name', 'first_name']);
+					$q->addSelect(['user_id', 'last_name', 'first_name']);
 				}])->get();
 	}
 }
