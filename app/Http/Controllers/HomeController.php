@@ -4,6 +4,7 @@ use SNS\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use SNS\Models\User;
 use SNS\Models\Images;
+use SNS\Models\Registration;
 use SNS\Models\Business;
 use SNS\Models\Advertise;
 use SNS\Services\ValidationService;
@@ -81,8 +82,30 @@ class HomeController extends Controller {
 	public function trackers(){
 		return view('pages.trackers');
 	}
-	public function search(){
-		return view('pages.search');
+	public function search(Request $request){
+		$input = array_except($request->all(), array('_token'));
+
+		if(!@$input['search']){
+			$data['search'] = true;
+			return view('pages.search' , $data);
+		}else{
+			$name = $input['name'];
+			$email = $input['email'];
+			$country = $input['country'];
+			$city = $input['city'];
+			$zip = $input['zip'];
+			
+			$data['info'] = Registration::with(array('prof_pic'))->
+			where('country' , $country)
+			->orWhere('email_address' , $email)
+			->where('city' , $city)
+			->where('zip' , $zip)
+			->orWhere('first_name' , 'LIKE' , '%'.$name.'%')->orWhere('last_name' , 'LIKE' , '%'.$name.'%')->get();
+
+			$data['search'] = false;
+			return view('pages.search' , $data);
+		}
+		
 	}
 
 	public function addadvertise(){
