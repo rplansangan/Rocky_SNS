@@ -210,7 +210,7 @@ class NotificationService {
 	protected function formatLike($notif) {
 		$origin_user = $this->getOriginUserDetails($notif);
 		$params = json_decode($notif->params);
-		$post_route = route('profile.showProfile', array($notif->destination_user_id)) . '/#post-' . $params->post_id;
+		$post_route = route('profile.showProfile', array($notif->destination_user_id)) . '#post-' . $params->post_id;
 		
 		return view('notifications.post_like')
 				->with('active', $this->isActive($notif->is_read))
@@ -221,7 +221,7 @@ class NotificationService {
 	protected function formatComment($notif) {
 		$origin_user = $this->getOriginUserDetails($notif);
 		$params = json_decode($notif->params);
-		$post_route = route('profile.showProfile', array($notif->destination_user_id)) . '/#post-' . $params->post_id;
+		$post_route = route('profile.showProfile', array($notif->destination_user_id)) . '#post-' . $params->post_id;
 		
 		return view('notifications.post_comment')
 			->with('active', $this->isActive($notif->is_read))
