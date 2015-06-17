@@ -31,6 +31,10 @@ class ProfileController extends Controller {
 	public function showProfile($id){ 
 		$profile = User::find($id);
 		
+		if(is_null($profile)) {
+		    return redirect()->back();
+		}
+		
 		if($profile->is_foundation) {
 			$profile->load(['foundation']);
 			
@@ -40,13 +44,13 @@ class ProfileController extends Controller {
 				return view('pages.pet_foundation.profile', ['foundation_id', $profile->foundation->foundation_id])->with('profile', $profile);
 			}
 		} else {
-			if(Cache::has('user.profile.collection' . Auth::id())) {
-				$params = Cache::get('user.profile.collection' . Auth::id());
+// 			if(Cache::has('user.profile.collection' . $id)) {
+// 				$params = Cache::get('user.profile.collection' . $id);
 				
-				$data['friend_flags'] = $params['friend_flags'];
-				$profile = $params['profile'];
-				$collection = $params['collection'];
-			} else {
+// 				$data['friend_flags'] = $params['friend_flags'];
+// 				$profile = $params['profile'];
+// 				$collection = $params['collection'];
+// 			} else {
 				$profile->load(array('registration' => function($q) {
 						$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
 					}, 'prof_pic' => function($q) {
@@ -55,11 +59,11 @@ class ProfileController extends Controller {
 						$q->addSelect(array('image_id', 'user_id'));
 					}
 				));
-				$params['profile'] = $profile;
+// 				$params['profile'] = $profile;
 				$params['collection'] = $collection = PostService::initialNewsFeed(Auth::id(), $id);		
 				$params['friend_flags'] = $data['friend_flags'] = FriendService::check($id);
-				Cache::put('user.profile.collection' . Auth::id(), $params, 10);
-			}			
+// 				Cache::put('user.profile.collection' . Auth::id(), $params, 10);
+// 			}			
 				
 			return view('profile.profile', $data)
 				->with('profile', $profile)

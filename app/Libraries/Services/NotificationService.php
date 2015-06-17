@@ -164,8 +164,8 @@ class NotificationService {
 	
 	protected function getOriginUserDetails($notif) {
 		$data['name'] = $notif->origin_object->registration->first_name . ' ' . $notif->origin_object->registration->last_name;
-		$data['profile_route'] = route('profile.showProfile', array($notif->origin_object->registration->registration_id));
-		$data['id'] = $notif->origin_object->registration->registration_id;
+		$data['profile_route'] = route('profile.showProfile', array($notif->origin_object->user_id));
+		$data['id'] = $notif->origin_object->user_id;
 		return $data;
 	}
 	

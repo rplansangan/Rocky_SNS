@@ -37,7 +37,7 @@ class LoginController extends Controller {
 							->withErrors(['message' => [trans('emailvalidation.login.not_validated')]])
 							->withInput();
 				} else {
-					$this->nullifyFlags(Auth::user());
+					$this->releaseAccount(Auth::user());
 					return redirect()->intended('home');
 				}
 			} else {

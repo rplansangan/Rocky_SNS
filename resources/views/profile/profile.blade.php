@@ -15,7 +15,7 @@ Rocky the Superdog
 				))
 			</div>
 			<div class="col-lg-6 col-lg-6 col-md-3 col-sm-12 col-xs-12 middle">
-			<input type="hidden" id="profile_id" value="{{{ $profile->registration->registration_id }}}">
+			<input type="hidden" id="profile_id" value="{{{ $profile->user_id }}}">
 				@include('home.profile')
 			</div>
 			<div class="col-lg-3 col-lg-6 col-md-3 col-sm-12 col-xs-12 right">

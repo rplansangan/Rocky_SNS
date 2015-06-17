@@ -33,7 +33,7 @@ trait LoginTrait {
 		$this->attempts = $this->lastAttempted->attempts;
 	}
 	
-	public function nullifyFlags(User $user) {
+	public function releaseAccount(User $user) {
 		$this->lastAttempted = $user;
 		$this->lastAttempted->update(['attempts' => 0, 'time_lock' => User::$timeLockNull]);
 	}

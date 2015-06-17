@@ -33,7 +33,7 @@ class Registration extends Model {
 	protected $dates = array('deleted_at');
 	
 	public static $initialRules = array(
-			'email_address' => 'required|confirmed|unique:registrations',
+			'email_address' => 'required|confirmed|unique:registrations|email',
 			'first_name' => 'required',
 			'last_name' => 'required',
 			'gender' => 'required',

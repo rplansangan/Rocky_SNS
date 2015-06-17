@@ -1,7 +1,7 @@
 <li id="post-{{{ $message->post_id }}}" class="nf-post media">
 	<input type="hidden" id="del-route" value="{{{ route('posts.del.dispatcher') }}}">
 	<div class="media-left">
-		<a href="{{ route('profile.showProfile', $user->registration_id) }}">
+		<a href="{{ route('profile.showProfile', $user->user_id) }}">
 			@if($user->prof_pic)	
 				<img src="{{ route('files.get.image', array($user->prof_pic->user_id, $user->prof_pic->image_id)) }}" width="64px" height="64px" alt="profile picture">
 			@else
@@ -16,7 +16,7 @@
 		</button>
 		@endif
 		<h4 class="media-heading">
-			<a href="{{{ route('profile.showProfile', $user->registration_id) }}}">
+			<a href="{{{ route('profile.showProfile', $user->user_id) }}}">
 				{{ $user->first_name }} {{ $user->last_name }}
 			</a>
 		</h4>
