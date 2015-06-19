@@ -11,7 +11,7 @@ class ErrorLogs extends Model {
 	
 	public static $dbDateFormat = 'Y-m-d H:i:s';
 	
-	public static $adminFormat = 'F n @ g:i a';
+	public static $adminFormat = 'F d @ g:i a';
 	
 	public function getCreatedAtAttribute($date) {
 	    return Carbon::createFromFormat(self::$dbDateFormat, $date)->format(self::$adminFormat);
