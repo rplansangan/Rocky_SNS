@@ -72,7 +72,6 @@ a:hover {
 }
 .land-nav-menu > ul > li:hover ul {
   visibility: visible;
-  
 }
 .land-nav-menu > ul > li > ul > li > a {
   padding: 10px;
