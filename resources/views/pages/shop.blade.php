@@ -70,7 +70,7 @@
 							</div>
 
 							<div class="btn_adshop">
-								<a href="{{ Route('merch_adview' , array( 'id' => Auth::id() , 'advertise_id' => $row->id) ) }}" class="btn btn_view btn-sm">VIEW</a>
+								<a href="{{ Route('merch_adview' , array( 'id' => $row->user_id , 'advertise_id' => $row->id) ) }}" class="btn btn_view btn-sm">VIEW</a>
 								<button type="button" class="btn btn_inquire btn-sm" data-toggle="modal" data-target="#shopModal" data-type="Inquire" data-advertisetype="INQ"  data-title="{{ $row->title }}" data-id="{{ $row->id }}" data-action="{{ Route('merchant.inquire') }}" >INQUIRE</button>
 								<button type="button" class="btn btn_order btn-sm" data-toggle="modal" data-target="#shopModal" data-type="Order" data-advertisetype="ORD" data-title="{{ $row->title }}" data-id="{{ $row->id }}" data-action="{{ Route('merchant.inquire') }}">ORDER</button>
 							</div>

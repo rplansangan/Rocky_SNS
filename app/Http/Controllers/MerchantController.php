@@ -253,7 +253,7 @@ class MerchantController extends Controller {
 
 	}
 
-	public function merchadview($id, $advertise_id){
+	public function merch_adview($id, $advertise_id){
 		$user = User::select(array('user_id'))->find($id);
 		$user->load(array(
 			'adverts' => function($q) use($advertise_id) {
@@ -274,15 +274,11 @@ class MerchantController extends Controller {
 			}
 		));
 				
-		if($user->adverts->isEmpty()) {		
-			return redirect()->route('addadvertise');
-		}
-				
 		$data['details'] = $user->adverts[0];
 		$data['otherads'] = $user->otheradd;
 		$data['info'] = $user->bsns_reg;
 
-		#custom_print_r($user->adverts);
+
 		return view('pages.merchantprofile', $data);
 	}
 

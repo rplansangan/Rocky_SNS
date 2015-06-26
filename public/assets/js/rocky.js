@@ -401,8 +401,8 @@ $(document).ready(function(){
 	});
 
 	//image carousel
-	$("#ftpetsCarousel").carousel({
-         interval : 6000,
+	$("#landCarousel").carousel({
+         interval : 10000,
          pause: false
      });
 

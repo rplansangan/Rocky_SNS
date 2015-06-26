@@ -22,7 +22,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>   
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="{{ URL::asset('assets/js/rocky.js') }}"></script>
     <script src="{{ URL::asset('assets/js/elastic.js') }}"></script>
@@ -30,6 +30,7 @@
     <script src="{{ URL::asset('assets/js/jquery-form.js') }}"></script>
     <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
     <script src="{{ URL::asset('assets/js/component.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/jquery.bxSlider.min.js') }}"></script>
   </head>
   <body>
     <input type="hidden" id="refresh-missing-route" value="{{ Route('get_missingpets') }}">
