@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/component.css') }}">
-    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Comfortaa:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Vollkorn:400,700' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" type="image/png" href="{{ URL::asset('assets/images/favicon.png') }}"/>
