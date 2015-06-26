@@ -31,22 +31,56 @@ a:hover {
 /*============Header============*/
 .land-menus {
   z-index: 99999;
+  position: absolute;
+  top: 0px;
 }
 
 .land-nav-menu {
-  margin: 25px 0;
+  margin: 5px 0;
 }
-
-.land-nav-menu ul {
-  list-style: none;
+.has-sub{
+  border-radius: 5px 5px 0px 0px;
+}
+.land-nav-menu  ul{
+  list-style-type: none;
+  display: inline;
   float: right;
 }
-
-.land-nav-menu ul li {
-  float: left;
+.land-nav-menu > ul > li{
+  display: inline-block;
+  padding: 5px 11px 5px 5px;
 }
-
-.land-nav-menu a {
+.land-nav-menu > ul > li > ul{
+  position: absolute;
+  top: 38px;
+  padding: 0px 2px 9px 2px;
+  margin-left: -5px;
+  border-radius: 0px 0px 5px 5px;
+  visibility: hidden;
+}
+.land-nav-menu > ul > li > ul > li{
+  display: block;
+  padding:6px;
+  padding-right: 22%;
+}
+.land-nav-menu > ul > li:hover > a {
+  color: red;
+}
+.land-nav-menu > ul > .has-sub:hover , .land-nav-menu > ul > .has-sub:hover > ul{
+  background-color: rgba(255,255,255,0.8);
+  width: 150px;
+}
+.land-nav-menu > ul > li:hover ul {
+  visibility: visible;
+  
+}
+.land-nav-menu > ul > li > ul > li > a {
+  padding: 10px;
+  font-size: 15px;
+  font-family: 'Century_Gothic', Arial;
+  color: black;
+}
+.land-nav-menu > ul > li > a {
   padding: 10px;
   font-size: 20px;
   font-family: 'Century_Gothic', Arial;
@@ -55,7 +89,6 @@ a:hover {
 
 .land-slider {
   padding: 0;
-  margin-top: -112px;
   z-index: 1;
 }
 
