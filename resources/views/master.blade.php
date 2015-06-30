@@ -32,6 +32,9 @@
     <script src="{{ URL::asset('assets/js/component.js') }}"></script>
     <script src="{{ URL::asset('assets/js/jquery.bxSlider.min.js') }}"></script>
   </head>
+	@if(Auth::check())
+		@include('chat.chat_composer')
+	@endif
   <body>
     <input type="hidden" id="refresh-missing-route" value="{{ Route('get_missingpets') }}">
     <input type="hidden" id="refresh-found-route" value="{{ Route('get_foundpets') }}">
@@ -54,4 +57,7 @@
     @include('forms.ads_form_modal')
     @include('footer')
   </body>
+	@if(Auth::check())
+		@include('chat.main_js')
+	@endif
 </html>

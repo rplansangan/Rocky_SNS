@@ -9,6 +9,10 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/', array(
+'as' => 'index',
+'uses' => 'WelcomeController@index'
+));
 Route::get('testupload/{uid}/{fid}', array(
 	'uses' => 'UploadsController@getImage'
 ));
@@ -48,10 +52,6 @@ Route::post('video/upload', array(
 Route::get('video/myvideo', array(
 	'as' => 'video.myvideo',
 	'uses' => 'HomeController@myvideo'
-));
-Route::get('/', array(
-	'as' => 'index',
-	'uses' => 'WelcomeController@index'
 ));
 Route::get('signup', array(
 	'as' => 'signup',
@@ -467,3 +467,6 @@ Route::group(['prefix' => 'administration', 'namespace' => 'Admin', 'middleware'
         'uses' => 'DashboardController@displaySingleError'
 	]);
 });
+// Route::get('test', function() {
+//     echo round((microtime(true) - LARAVEL_START)*1000, 3) . ' ms';
+// });

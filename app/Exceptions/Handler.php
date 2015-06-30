@@ -44,7 +44,7 @@ class Handler extends ExceptionHandler {
     	} else {
     		$err->from_user = 0;
     	}
-    	$err->route_name = $request->route()->getName();
+    	//$err->route_name = $request->route()->getName();
     	$err->error_code = $e->getCode();
     	$err->error_msg = $e->getMessage();
     	$err->stack_trace = $e->getTraceAsString();
