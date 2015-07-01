@@ -1,11 +1,21 @@
 <div class="container-fluid">
-	<div class="row text-left newsfeed-area">
-		<div class="newsfeed-title col-sm-12 col-xs-12 col-lg-12 col-md-12">
-			<span class="col-sm-12 col-xs-12 col-lg-6 col-md-6"><legend>News feed</legend></span>
-			<span class="text-right col-sm-12 col-xs-12 col-lg-6 col-md-6">
-				<a href="javascript:void(0);" id="refresh-btn" class="hidden" value="{{ Route('get.newfeeds') }}" ><img style="width:30px" src="{{ URL::asset('assets/images/Refresh2.png') }}"></a>
-			</span>
+	<div class="row post-area">
+		<div class="col-lg-1 nopad img-arrow">
+			<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
 		</div>
-		@include('iterators.posts', array('newsfeed' => $newsfeed , 'public' => true))
+		<div class="col-lg-11">
+			<div class="row">
+				<textarea class="form-control" rows="3" placeholder="Share your thoughts"></textarea>
+			</div>
+			<div class="row">
+				<div class="push-left">
+					<a href="#"><img src="{{ URL::asset('assets/images/new/addphotos.png') }}"> <span>Add photos/video</span> </a>
+					<a href="#"><img src="{{ URL::asset('assets/images/new/tagfriends.png') }}"> <span>Tag friends in your post</span> </a>
+				</div>
+				<div class="push-right">
+					<a href="#" class="btn new-btn">Post</a>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

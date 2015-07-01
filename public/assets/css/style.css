@@ -2044,3 +2044,54 @@ video {
     margin-bottom: 5px;
   }
 }
+
+
+/* LOVERS MID */
+
+.post-area{
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: white;
+}
+.post-area textarea{
+  border: 1px solid black;
+}
+.nopad{
+  padding: 0px 5px 5px 5px;
+}
+.post-area > div > img{
+  border: 1px solid black;
+}
+.post-area > div > div{
+  padding-bottom: 10px;
+}
+.post-area > div > div > div > a{
+  padding-right: 10px;
+  color:gray;
+}
+.push-left{
+  float: left;
+}
+.push-right{
+  float: right;
+}
+.post-area .btn{
+  background: red !important;
+  color:white;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.arrow-right {
+  width: 0; 
+  height: 0; 
+  border-bottom: 5px solid transparent;  
+  border-top: 5px solid transparent; 
+  border-left: 5px solid #2f2f2f; 
+  font-size: 0;
+  line-height: 0;
+  position: absolute;
+  top: 15px;
+}
+
+/* END LOVER MID*/
