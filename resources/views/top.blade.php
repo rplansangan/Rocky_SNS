@@ -46,7 +46,7 @@
         <div class="col-md-8 col-lg-8 in-menus text-right">
             <a href="#"><img src="{{ URL::asset('assets/images/new/prof-icon.png') }}" width="38px" style=" margin-right: 10px;">Rocky</a>
             <span class="line" style="margin-left: 5px;">&nbsp;</span>
-            <a href="#" style="margin-right: 5px;">Home</a>
+            <a href="{{ route('index') }}" style="margin-right: 5px;">Home</a>
             <a href="#"><img src="{{ URL::asset('assets/images/new/friends-icon.png') }}" width="38px"></a>
             <a href="#"><img src="{{ URL::asset('assets/images/new/msg-icon.png') }}" width="38px"></a>
             <a href="#"><img src="{{ URL::asset('assets/images/new/notif-icon.png') }}" width="38px" style="margin-right: 5px;"></a>
