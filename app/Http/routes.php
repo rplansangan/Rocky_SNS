@@ -232,7 +232,7 @@ Route::get('trackers', array(
 	));
 Route::get('search', array(
 	'as' => 'search',
-	'uses' => 'HomeController@search'
+	'uses' => 'WelcomeController@search'
 	));
 Route::get('compete', array(
 	'as' => 'compete',

@@ -512,7 +512,7 @@
 </div>
 
 <!-- FOUND PET MID CONTENT -->
-	<div class="land-found col-sm-12 col-xs-12 col-md-6 col-lg-6">
+	<div class="land-found col-sm-12 col-xs-12 col-md-6 col-lg-6 hidden">
 		<div class="foundpets-page col-sm-12 col-xs-12 col-lg-12 col-md-12">
 			<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">
 				<div class="col-xs-12 col-sm-12 col-m-7 col-lg-7">
@@ -595,7 +595,7 @@
 
 
 	<!-- MISSING PET MID CONTENT -->
-	<div class="land-missing col-sm-12 col-xs-12 col-md-7 col-lg-7">
+	<div class="land-missing col-sm-12 col-xs-12 col-md-7 col-lg-7 hidden">
 		<div class="foundpets-page col-sm-12 col-xs-12 col-lg-12 col-md-12">
 			<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">
 				<div class="col-xs-12 col-sm-12 col-m-7 col-lg-7">
