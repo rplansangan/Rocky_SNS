@@ -1,6 +1,6 @@
 <div class="right-cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	<div class="loc-map col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<img class="locimg" src="{{ URL::asset('assets/images/new/location.png') }}" width="335px">
+		<img class="locimg" src="{{ URL::asset('assets/images/new/location.png') }}">
 	</div>
 	<div class="location col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<a href="#" class="loc-btn"><img src="{{ URL::asset('assets/images/new/prof-icon.png') }}" width="38px"></a>
@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="trackapp col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<img class="locimg" src="{{ URL::asset('assets/images/new/trackerapp.png') }}" width="335px">
+		<img class="locimg" src="{{ URL::asset('assets/images/new/trackerapp.png') }}">
 		<div class="track-btn text-center">
 			<a class="learn" href="#">LEARN MORE</a>
 			<a class="buy" href="#">BUY NOW</a>
@@ -21,7 +21,7 @@
 	<div class="missing-right col-xs-12 col-sm-12 col-m-12 col-lg-12 text-center">
 		<div class="missing-cont col-xs-12 col-sm-6 col-m-12 col-lg-12 text-center">
 			<div class="missing-infos">
-				<img src="{{ URL::asset('assets/images/new/dolly.jpg') }}" width="274px">
+				<img src="{{ URL::asset('assets/images/new/dolly.jpg') }}">
 				<h2>DOLLY</h2>
 				<p></p>
 				<h3>MISSING <br/> 02 DAYS</h3>
@@ -30,7 +30,7 @@
 		</div>
 		<div class="missing-cont col-xs-12 col-sm-6 col-m-12 col-lg-12 text-center">
 			<div class="missing-infos">
-				<img src="{{ URL::asset('assets/images/new/john.jpg') }}" width="274px">
+				<img src="{{ URL::asset('assets/images/new/john.jpg') }}">
 				<h2>JOHN</h2>
 				<p></p>
 				<h3>MISSING <br/> 02 DAYS</h3>
