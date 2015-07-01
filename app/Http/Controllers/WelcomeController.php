@@ -92,6 +92,6 @@ class WelcomeController extends Controller {
 		$data['right'] = 'landing.right';
 		$data['mid'] = 'landing.lovers';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
-		return view('pages.landing' , $data);
+		return view('pages.insiderocky' , $data);
 	}	
 }

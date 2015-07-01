@@ -36,7 +36,8 @@ a:hover {
 }
 
 .land-nav-menu {
-  margin: 5px 0;
+  margin: 20px 0;
+  padding: 0;
 }
 .has-sub{
   border-radius: 5px 5px 0px 0px;
@@ -45,6 +46,7 @@ a:hover {
   list-style-type: none;
   display: inline;
   float: right;
+  padding: 0;
 }
 .land-nav-menu > ul > li{
   display: inline-block;
@@ -54,7 +56,7 @@ a:hover {
   position: absolute;
   top: 38px;
   padding: 0px 2px 9px 2px;
-  margin-left: -5px;
+  margin-left: -130px;
   border-radius: 0px 0px 5px 5px;
   visibility: hidden;
 }
@@ -87,13 +89,15 @@ a:hover {
   color: #fff;
 }
 
+a.parent.active {
+  background-color: firebrick;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
 .land-slider {
   padding: 0;
   z-index: 1;
-}
-
-.header-container {
-  
 }
 
 .pt-links a {
@@ -213,38 +217,146 @@ input.inputag {
   margin-top: 10px;
 }
 
+/*===INSIDE HEADER===*/
+.inside-top {
+  background: rgb(247,247,247);
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, rgba(247,247,247,1) 0%, rgba(160,160,160,1) 50%, rgba(148,148,148,1) 52%, rgba(119,119,119,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(247,247,247,1)), color-stop(50%,rgba(160,160,160,1)), color-stop(52%,rgba(148,148,148,1)), color-stop(100%,rgba(119,119,119,1)));
+  background: -webkit-linear-gradient(top, rgba(247,247,247,1) 0%,rgba(160,160,160,1) 50%,rgba(148,148,148,1) 52%,rgba(119,119,119,1) 100%);
+  background: -o-linear-gradient(top, rgba(247,247,247,1) 0%,rgba(160,160,160,1) 50%,rgba(148,148,148,1) 52%,rgba(119,119,119,1) 100%);
+  background: -ms-linear-gradient(top, rgba(247,247,247,1) 0%,rgba(160,160,160,1) 50%,rgba(148,148,148,1) 52%,rgba(119,119,119,1) 100%);
+  background: linear-gradient(to bottom, rgba(247,247,247,1) 0%,rgba(160,160,160,1) 50%,rgba(148,148,148,1) 52%,rgba(119,119,119,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#777777',GradientType=0 );
+}
+
+.inside-logo {
+  margin-top: 4px;
+}
+
+.in-menus {
+  margin: 10px 0;
+  padding: 0;
+}
+
+.in-menus a {
+  padding: 0 5px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
+}
+
+span.line {
+  border-left: 2px solid #252525;
+  padding: 12px 0;
+}
+
+#tfnewsearch{
+  padding-top:10px;
+}
+
+.tftextinput4{
+  margin: 0;
+  padding: 10px 47px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:14px;
+  color:#666;
+  border-radius: 8px;
+  -webkit-box-shadow: inset 8px 6px 10px 0px rgba(50, 50, 50, 0.25);
+  -moz-box-shadow:    inset 8px 6px 10px 0px rgba(50, 50, 50, 0.25);
+  box-shadow:         inset 8px 6px 10px 0px rgba(50, 50, 50, 0.25);
+}
+
+.tfbutton4 {
+  margin: 0;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 8px;
+  background-image: url('../images/new/searchsub-btn.png');
+  background-size: 100%;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: 0;
+  position: absolute;
+  right: 105px;
+  top: 18px;
+}
+
+/* Fixes submit button height problem in Firefox */
+.tfbutton4::-moz-focus-inner {
+  border: 0;
+}
+
+.tfclear{
+  clear:both;
+}
+
 
 /*============Landing============*/
 .bx-prev {
-    background: transparent url("../images/new/prev_new.png") no-repeat scroll 0 0;
-    float: left;
-    height: 200px;
-    left: 5px;
-    position: absolute;
-    text-indent: -999999px;
-    top: 256px;
-    width: 31px;
-  }
-  .bx-next {
-    background: transparent url("../images/new/next_new.png") no-repeat scroll 0 0;
-    float: right;
-    height: 200px;
-    position: absolute;
-    right: 0;
-    text-indent: -999999px;
-    top: 255px;
-    width: 35px;
-  }
+  background: transparent url("../images/new/prev_new.png") no-repeat scroll 0 0;
+  float: left;
+  height: 200px;
+  left: 5px;
+  position: absolute;
+  text-indent: -999999px;
+  top: 256px;
+  width: 31px;
+}
+
+.bx-next {
+  background: transparent url("../images/new/next_new.png") no-repeat scroll 0 0;
+  float: right;
+  height: 200px;
+  position: absolute;
+  right: 0;
+  text-indent: -999999px;
+  top: 255px;
+  width: 35px;
+}
   
-  #sliderdiv1{
-    width: 100%; display: block; visibility: visible; overflow: hidden;
-  }
-  #sliderdiv2{
-    width: 960px; display: block; visibility: visible; margin: 0 auto;
-  }
-  #container{
-    text-align:center;
-  }
+#sliderdiv1{
+  width: 100%; display: block; visibility: visible; overflow: hidden;
+}
+
+#sliderdiv2{
+  width: 1160px; display: block; visibility: visible; margin: 0 auto;
+}
+
+#container{
+  text-align:center;
+}
+
+#slider1 .item {
+  position: absolute;
+  top: 250px;
+  margin-left: 80px;
+  z-index: 9999;
+  color: #fff;
+  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
+}
+
+#slider1 .item p {
+  font-size: 22px;
+}
+
+#slider1 .item h1 {
+  margin-bottom: 40px;
+}
+
+#slider1 .item a {
+  color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+}
 
 .landing-content {
   padding: 0;
@@ -425,12 +537,12 @@ h1.missing-bottom {
   font-weight: bold;
 }
 
-a.learn {
+a.learn, a.slilearn {
   background-color: #EE9B00;
   margin-right: 10px;
 }
 
-a.buy {
+a.buy, a.join {
   background-color: #b7062b;
 }
 
@@ -1596,213 +1708,39 @@ ul.comments .media-left {
 
 /*============LEFT SIDEBAR============*/
 .bg-rocky{
- background: rgba(252, 247, 239, 0.5);
- background-image: url('../images/animals.png');
- background-position: bottom left;
- background-repeat: no-repeat;
+ background: #ececec;
 }
 
 .middle{
-  background-color: white;
   padding: 15px;
 }
 
-.left-nav {
-  padding: 20px;
-  font-family: 'Montserrat', sans-serif important;
-  text-indent: 50px;
-  text-align: left;
+.left-cont div ul {
+  padding-left: 15px;
+  list-style: none;
+  margin: 20px 0 10px 0;
 }
 
-.left-nav .list-group {
-  margin-bottom: 0;
+.left-cont, .left-cont div {
+  padding: 0;
 }
 
-.left-nav a:hover {
-  background-color: #F9BBB5;
-  background-image: url();
-  background-position: left;
-  background-repeat: no-repeat;
-  color: #300D03;
-  padding: 10px 20px 10px 20px;
+.left-cont div h6 {
+  padding: 0 15px;
+  color: #a2a2a2;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
 }
 
-a.list-group-item.loc {
-  background-image: url('../images/Locate_my_petBG2.png');
-  background-position: left;
-  background-repeat: no-repeat;
+.left-cont div ul li a {
+  color: #252525;
+  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
+  font-size: 13px;
 }
 
-.left-nav a.loc:hover {
-  background-image: url('../images/Locate_my_petBG.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-a.list-group-item.petday {
-  background-image: url('../images/pet_of_the_dayBG2.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-.left-nav a.petday:hover {
-  background-image: url('../images/pet_of_the_dayBG.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-a.list-group-item.trend {
-  background-image: url('../images/TrendingBG2.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-.left-nav a.trend:hover {
-  background-image: url('../images/TrendingBG.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-a.list-group-item.ads {
-  background-image: url('../images/AdvertiseBG2.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-.left-nav a.ads:hover {
-  background-image: url('../images/AdvertiseBG.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-a.list-group-item.shop {
-  background-image: url('../images/ShopBG2.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-.left-nav a.shop:hover {
-  background-image: url('../images/ShopBG.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-a.list-group-item.track {
-  background-image: url('../images/TrackersBG2.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-.left-nav a.track:hover {
-  background-image: url('../images/TrackersBG.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-a.list-group-item.friends {
-  background-image: url('../images/FriendsBG2.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-.left-nav a.friends:hover {
-  background-image: url('../images/FriendsBG.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-a.list-group-item.compete {
-  background-image: url('../images/CompeteBG2.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-.left-nav a.compete:hover {
-  background-image: url('../images/CompeteBG.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-a.list-group-item.videos {
-  background-image: url('../images/VideoBG2.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-.left-nav a.videos:hover {
-  background-image: url('../images/VideoBG.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-a.list-group-item.rockyra {
-  background-image: url('../images/RangerBG2.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-.left-nav a.rockyra:hover {
-  background-image: url('../images/RangerBG.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-a.list-group-item.petfo {
-  background-image: url('../images/FoundationBG2.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-.left-nav a.petfo:hover {
-  background-image: url('../images/FoundationBG.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-a.list-group-item.vete {
-  background-image: url('../images/VetBG2.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-.left-nav a.vete:hover {
-  background-image: url('../images/VetBG.png');
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-.left-addpet {
-  padding: 10px 20px;
-}
-
-.add-my-pet {
-  background-image: url('../images/plusBG.png');
-  background-position: left;
-  background-repeat: no-repeat;
-  padding: 8px 15px;
-  background-color: #fff;
-  width: 100%;
-  text-indent: 25px;
-  border-left: 3px solid #C0C0C0;
-  border-bottom: 3px solid #C0C0C0;
-}
-
-.add-my-pet a {
-  width: 100%;
-  display: inline-block;
-  color: #555;
-  font-family: 'Montserrat', sans-serif important;
-  font-size: 18px;
-}
-
-.add-my-pet a:hover {
-  text-decoration: none !important;
-  color: #E74C3C;
-}
-
-.add-friend-btn a p {
-  text-indent: 115px;
-  color: #E74C3C;
+.left-cont div ul li a img {
+  margin: 5px 10px 8px 0;
 }
 
 
@@ -1843,63 +1781,37 @@ a.list-group-item.vete {
 
 
 /*============RIGHT SIDEBAR============*/
-
-.right {
-  text-align: center;
-  padding: 0 20px;
-}
-
-.right-nav div:last-child {
-  margin-bottom: 20px;
-}
-
-.right-nav div {
-  background: #fff;
-  margin: 20px 0 10px 0;
-  padding: 10px;
-  border-radius: 3px;
-  border: 1px solid #DEDDDC;
-  font-style: normal;
-}
-
-.right nav ul {
+.loc-map {
   padding: 0;
-  list-style: none;
-  display: table;
-  margin: 0 auto !important;
+  margin-top: 25px;
 }
 
-.right nav ul li {
-  margin-bottom: 5px;
+.location {
+  padding: 0 0 30px 0;
+  text-align: center;
+  border-bottom: 3px solid #c3c3c3;
 }
 
-.right nav ul li a img {
-  margin-right: 5px;
+.location a {
+  padding: 0 8px;
 }
 
-.right-nav {
-  font-family: 'Montserrat', sans-serif important;
+.trackapp {
+  padding: 30px 0 0 0;
 }
 
-.right-nav .land-right-missing {
-  margin-top: 5px;
+.missing-right {
+  margin: 40px 0;
 }
 
-.right-nav .land-left-found .glyphicon, .right-nav .land-right-missing .glyphicon {
-  -webkit-animation-name: blinker;
-  -webkit-animation-duration: 0.5s;
-  -webkit-animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-  -moz-animation-name: blinker;
-  -moz-animation-duration: 0.5s;
-  -moz-animation-timing-function: linear;
-  -moz-animation-iteration-count: infinite;
-  animation-name: blinker;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  color: #C61804;
-  padding: 5px;
+.missing-right .missing-cont {
+  max-height: 450px;
+}
+
+.missing-right div .missing-infos {
+  box-shadow: none;
+  border: 1px solid #B3B3B3;
+  min-height: 405px;
 }
 
 

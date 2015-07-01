@@ -137,11 +137,11 @@ $(document).ready(function(){
 		$(this).addClass('active');
 	});
 
-	//merchant
-	$('.merchform').hide();
-	$('.btn_merch').on('click', function(){
-		$('.useraddform').hide();
-		$('.merchform').show();
+	//location right
+	$('.locimg').show();
+	$('.loc-btn').on('click', function(){
+		//$('.locimg').hide();
+		$('.locimg').show();
 	});
 
 	$('[data-toggle="tooltip"]').tooltip({
@@ -400,11 +400,19 @@ $(document).ready(function(){
 		
 	});
 
-	//image carousel
-	$("#landCarousel").carousel({
-         interval : 10000,
-         pause: false
-     });
+	//search button
+	window.onload = function(){ 
+		//Get submit button
+		var submitbutton = document.getElementById("tfq");
+		//Add listener to submit button
+		if(submitbutton.addEventListener){
+			submitbutton.addEventListener("click", function() {
+				if (submitbutton.value == 'Search our website'){//Customize this text string to whatever you want
+					submitbutton.value = '';
+				}
+			});
+		}
+	}
 
 	$(document).on('keydown' , '.passlen' , function(){
 		var count = $(this).val();
@@ -517,6 +525,12 @@ $(document).ready(function(){
 	 		}
 	 	});
 	 },15000);*/
+	
+	//landing menus
+	$('.parent').on('click', function(){
+		$('.parent').removeClass('active');
+		$(this).addClass('active');
+	});
 });
 
 	

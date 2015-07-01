@@ -20,8 +20,9 @@ Welcome to Rocky The Superdog
 			auto: true,
 			autoControls: true,
 			autoControlsSelector: '#my-start-stop',
-			slideWidth: 960,
-			speed: 700
+			slideWidth: 1160,
+			speed: 700,
+			autoStart: false
 		});
 
 		$('.bx-next').click(function() {
@@ -41,9 +42,33 @@ Welcome to Rocky The Superdog
 		<div id="sliderdiv1">
 	        <div id="sliderdiv2">
 	            <div id="slider1">
-	                <div><a href="#" target="_parent"><img src="{{ URL::asset('assets/images/new/slider1.jpg') }}" alt="b01" width="960px" height="540px" /></a></div>
-					<div><a href="#" target="_parent"><img src="{{ URL::asset('assets/images/new/slider1.jpg') }}" alt="b02" width="960px" height="540px" /></a></div>
-					<div><a href="#" target="_parent"><img src="{{ URL::asset('assets/images/new/slider1.jpg') }}" alt="b03" width="960px" height="540px" /></a></div>
+	                <div>
+	                	<img src="{{ URL::asset('assets/images/new/slider1.jpg') }}" alt="b01" width="1260px" height="740px" />
+	                	<div class="item">
+	                		<p>WHO WOULD YOU TURN TO</p>
+	                		<h1>IF YOU LOST <br/> YOUR BEST FRIEND?</h1>
+	                		<a href="#" class="learn" target="_parent">LEARN MORE</a>
+	                		<a href="#" class="join" target="_parent">JOIN NOW</a>
+	                	</div>
+	                </div>
+					<div>
+						<img src="{{ URL::asset('assets/images/new/slider2.jpg') }}" alt="b02" width="1260px" height="740px" />
+						<div class="item">
+	                		<p>WHO WOULD YOU TURN TO</p>
+	                		<h1>IF YOU LOST <br/> YOUR BEST FRIEND?</h1>
+	                		<a href="#" class="learn" target="_parent">LEARN MORE</a>
+	                		<a href="#" class="join" target="_parent">JOIN NOW</a>
+	                	</div>
+					</div>
+					<div>
+						<img src="{{ URL::asset('assets/images/new/slider3.jpg') }}" alt="b03" width="1260px" height="740px" />
+						<div class="item">
+	                		<p>WHO WOULD YOU TURN TO</p>
+	                		<h1>IF YOU LOST <br/> YOUR BEST FRIEND?</h1>
+	                		<a href="#" class="learn" target="_parent">LEARN MORE</a>
+	                		<a href="#" class="join" target="_parent">JOIN NOW</a>
+	                	</div>
+					</div>
 	            </div>
 	        </div>
 	    </div>
@@ -78,11 +103,11 @@ Welcome to Rocky The Superdog
     		<a href="#">ENTER</a>
     	</div>
 	</div>
-	<div class="land-missing-pets col-xs-12 col-sm-12 col-m-12 col-lg-12 text-center">
+	<div class="land-missing-pets col-xs-12 col-sm-6 col-m-12 col-lg-12 text-center">
 		<h1 class="missing-intro">IF YOU FOUND ME, <br/>
 			YOU MUST REPORT ME</h1>
 		<div class="container">
-			<div class="missing-cont col-xs-12 col-sm-12 col-m-3 col-lg-3 text-center">
+			<div class="missing-cont col-xs-12 col-sm-6 col-m-3 col-lg-3 text-center">
 				<div class="missing-infos">
 					<img src="{{ URL::asset('assets/images/new/dolly.jpg') }}">
 					<h2>DOLLY</h2>
@@ -91,7 +116,7 @@ Welcome to Rocky The Superdog
 					<a href="#">VIEW</a>
 				</div>
 			</div>
-			<div class="missing-cont col-xs-12 col-sm-12 col-m-3 col-lg-3 text-center">
+			<div class="missing-cont col-xs-12 col-sm-6 col-m-3 col-lg-3 text-center">
 				<div class="missing-infos">
 					<img src="{{ URL::asset('assets/images/new/john.jpg') }}">
 					<h2>JOHN</h2>
@@ -100,7 +125,7 @@ Welcome to Rocky The Superdog
 					<a href="#">VIEW</a>
 				</div>
 			</div>
-			<div class="missing-cont col-xs-12 col-sm-12 col-m-3 col-lg-3 text-center">
+			<div class="missing-cont col-xs-12 col-sm-6 col-m-3 col-lg-3 text-center">
 				<div class="missing-infos">
 					<img src="{{ URL::asset('assets/images/new/hello.jpg') }}">
 					<h2>HELLO</h2>
@@ -109,7 +134,7 @@ Welcome to Rocky The Superdog
 					<a href="#">VIEW</a>
 				</div>
 			</div>
-			<div class="missing-cont col-xs-12 col-sm-12 col-m-3 col-lg-3 text-center">
+			<div class="missing-cont col-xs-12 col-sm-6 col-m-3 col-lg-3 text-center">
 				<div class="missing-infos">
 					<img src="{{ URL::asset('assets/images/new/scooby.jpg') }}">
 					<h2>SCOOBY</h2>
