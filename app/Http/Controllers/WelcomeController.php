@@ -93,5 +93,11 @@ class WelcomeController extends Controller {
 		$data['mid'] = 'landing.lovers';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
 		return view('pages.insiderocky' , $data);
-	}	
+	}
+	public function dogsWeek(){
+		$data['left'] = 'landing.superdogmenu';
+		$data['mid'] = 'landing.dogsofweek';
+		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
+		return view('pages.dogsweek' , $data);
+	}
 }

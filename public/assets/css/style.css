@@ -1745,38 +1745,28 @@ ul.comments .media-left {
 
 
 
-/*============Friends List============*/
-.friends-list {
-  margin: 15px 0;
+/*============Dogs of the Week============*/
+.dow-cont, .upload-video {
+  padding: 0;
 }
 
-.friends-list a {
-  color: #C53C0A;
+#tfuploadvid{
+  width: 80%;
 }
 
-.friends-list a:hover:after {
-  width: 100%;
+.tftextinput{
+  margin: 0;
+  padding: 5px 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #666;
+  border: 4px solid #AEAEAE;
+  border-radius: 8px;
+  min-width: 100%;   
 }
 
-.friends-list a:hover {
-  color: #89342C;
-}
-
-.friends-list a:after {
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: -10px;
-  width: 0;
-  height: 4px;
-  background-color: #E74C3C;
-  content: "";
-  transition: width 0.2s;
-}
-
-.friends-img {
-  margin: auto;
-  display: table;
+.tfclear{
+  clear:both;
 }
 
 

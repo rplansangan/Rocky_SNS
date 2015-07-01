@@ -19,7 +19,7 @@
 		<h6>WHAT TO WATCH</h6>
 		<ul>
 			<li><a href="#"><img src="{{ URL::asset('assets/images/new/uploads.png') }}" width="38px">My Uploads</a></li>
-			<li><a href="#"><img src="{{ URL::asset('assets/images/new/dogsweek.png') }}" width="38px">Dogs of the week</a></li>
+			<li><a href="{{ route('public.dogsoftheweek') }}"><img src="{{ URL::asset('assets/images/new/dogsweek.png') }}" width="38px">Dogs of the week</a></li>
 			<li><a href="#"><img src="{{ URL::asset('assets/images/new/history.png') }}" width="38px">History</a></li>
 			<li><a href="#"><img src="{{ URL::asset('assets/images/new/ranger.png') }}" width="38px">Rocky Ranger</a></li>
 		</ul>

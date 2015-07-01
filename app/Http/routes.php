@@ -441,6 +441,12 @@ Route::get('pet/videos', [
 	'uses' => 'WelcomeController@petvideos'
 ]);
 
+//inside sns
+Route::get('pet/lovers/dogsoftheweek', [
+	'as' => 'public.dogsoftheweek',
+	'uses' => 'WelcomeController@dogsWeek'
+]);
+
 Route::group(['prefix' => 'administration', 'namespace' => 'Admin', 'middleware' => ['auth', 'manage']], function() {
 	Route::get('main', [
 		'as' => 'admin.main',
