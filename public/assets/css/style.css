@@ -402,34 +402,109 @@ span.line {
   color: #fff;
 }
 
+.find:hover {
+  background: url('../images/new/missingpetsHV.jpg') no-repeat scroll center;
+  background-size: 100%;
+  padding: 9% 0;
+  color: #000;
+  -webkit-transition: all 0.6s ease-in-out;
+  -moz-transition: all 0.6s ease-in-out;
+  -o-transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
+}
+
+.find:hover a {
+  color: #000;
+  -webkit-transition: all 0.6s ease-in-out;
+  -moz-transition: all 0.6s ease-in-out;
+  -o-transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
+}
+
+
 .community {
   background: url('../images/new/petlovers.jpg') no-repeat scroll center;
-  background-size: 100%;
+  background-size: 100% 100%;
   padding: 9% 0;
   color: #fff;
 }
+
+.community:hover {
+  background: url('../images/new/petloversHV.jpg') no-repeat scroll center;
+  background-size: 100% 100%;
+  padding: 9% 0;
+  color: #000;
+  -webkit-transition: all 0.6s ease-in-out;
+  -moz-transition: all 0.6s ease-in-out;
+  -o-transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
+}
+
+.community:hover a {
+  color: #000;
+  -webkit-transition: all 0.6s ease-in-out;
+  -moz-transition: all 0.6s ease-in-out;
+  -o-transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
+}
+
 
 .all {
   background: url('../images/new/petgrommers.jpg') no-repeat scroll center;
-  background-size: 100%;
+  background-size: 100% 100%;
   padding: 9% 0;
-  color: #000;
+  color: #fff;
 }
 
-.all a{
+.all:hover {
+  background: url('../images/new/petgrommersHov.jpg') no-repeat scroll center;
+  background-size: 100% 100%;
+  padding: 9% 0;
   color: #000;
+  -webkit-transition: all 0.6s ease-in-out;
+  -moz-transition: all 0.6s ease-in-out;
+  -o-transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
+
+.all:hover a {
+  color: #000;
+  -webkit-transition: all 0.6s ease-in-out;
+  -moz-transition: all 0.6s ease-in-out;
+  -o-transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
+}
+
 
 .watch {
   background: url('../images/new/funnyvideos.jpg') no-repeat scroll center;
-  background-size: 100%;
+  background-size: 100% 100%;
   padding: 9% 0;
   color: #fff;
+}
+
+.watch:hover {
+  background: url('../images/new/funnyvideosHV.jpg') no-repeat scroll center;
+  background-size: 100% 100%;
+  padding: 9% 0;
+  color: #000;
+  -webkit-transition: all 0.6s ease-in-out;
+  -moz-transition: all 0.6s ease-in-out;
+  -o-transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
+}
+
+.watch:hover a {
+  color: #000;
+  -webkit-transition: all 0.6s ease-in-out;
+  -moz-transition: all 0.6s ease-in-out;
+  -o-transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
 
 .wc-cont {
   background: url('../images/new/vet.jpg') no-repeat scroll center;
-  background-size: 100%;
+  background-size: 100% 100%;
   padding: 10% 0;
   color: #fff;
   font-weight: bold;
