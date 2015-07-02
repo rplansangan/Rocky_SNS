@@ -115,11 +115,11 @@ class PostService {
 	}
 
 	public function checkNewPost(){
-		return $this->newsfeed->checkNewPost(Auth::id() , User::where('user_id' , Auth::id())->get()[0]->last_post);
+		return $this->newsfeed->checkNewPost(Auth::id(),Auth::user()->last_post);
 	}
 
 	public function get_newfeeds(){
-		return $this->newsfeed->getnewfeeds(Auth::id() , User::where('user_id' , Auth::id())->get()[0]->last_post );
+		return $this->newsfeed->getnewfeeds(Auth::id(), Auth::user()->last_post);
 	}
 	public function lastpostupdate(){
 		User::where('user_id' , Auth::id())->update(['last_post' => Carbon::now()]);

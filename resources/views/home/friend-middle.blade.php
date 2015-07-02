@@ -7,8 +7,8 @@
 		@foreach($friends as $friend)
 			<div class="col-sm-12 col-xs-12 col-lg-4 col-md-4 friends-list text-center">
 				<div class="friends-img">
-					@if(isset($friend->profile->registration->prof_pic))
-						<img src="{{ route('files.get.image', array($friend->profile->registration->user_id , $friend->profile->registration->prof_pic->image_id)) }}" class="img-responsive" alt="profile picture" width="150px">
+					@if(!is_null($friend->profile->registration->prof_pic))
+						<img src="{{ mediaSrc($friend->profile->registration->prof_pic->image_path, $friend->profile->registration->prof_pic->image_name, $friend->profile->registration->prof_pic->image_ext) }}" class="img-responsive" width="150px">
 					@else
 						<img src="{{ URL::asset('assets/images/owner-default.png') }}" width="150px">
 					@endif

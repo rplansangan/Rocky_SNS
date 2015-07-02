@@ -2,7 +2,7 @@
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 prof-photo">
 		<a  href="{{ route('profile.showProfile', Auth::id()) }}">
 			@if(isset($profile->prof_pic))	
-				<img class="img-responsive" src="{{ route('files.get.image', array($profile->prof_pic->user_id, $profile->prof_pic->image_id)) }}">
+				<img class="img-responsive" src="{{ mediaSrc($profile->prof_pic->image_path, $profile->prof_pic->image_name, $profile->prof_pic->image_ext) }}">
 			@else
 				<img src="{{ URL::asset('assets/images/owner-default.png') }}">
 			@endif

@@ -10,27 +10,12 @@
 |
 */
 Route::get('/', array(
-'as' => 'index',
-'uses' => 'WelcomeController@index'
-));
-Route::get('testupload/{uid}/{fid}', array(
-	'uses' => 'UploadsController@getImage'
-));
-Route::post('test/upload', array(
-	'as' => 'test.upload',
-	'uses' => 'UploadsController@testUpload'
+    'as' => 'index',
+    'uses' => 'WelcomeController@index',
 ));
 Route::post('files/newsfeed', array(
 	'as' => 'files.newsfeed',
 	'uses' => 'UploadsController@newsfeed'
-));
-Route::get('files/get/image/{user_id}/{file_id}', array(
-	'as' => 'files.get.image',
-	'uses' => 'UploadsController@getImage'
-));
-Route::get('files/get/thumb/{user_id}/{file_id}', array(
-	'as' => 'files.get.thumb',
-	'uses' => 'UploadsController@getThumb'
 ));
 
 Route::get('video', array(
@@ -202,7 +187,8 @@ Route::post('profile/edit', array(
 
 Route::get('profile/{id}', array(
 	'as' => 'profile.showProfile',
-	'uses' => 'ProfileController@showProfile'
+	'uses' => 'ProfileController@showProfile',
+	'after' => 'cache:5'    
 ));
 
 

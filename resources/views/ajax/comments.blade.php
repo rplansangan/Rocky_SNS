@@ -2,7 +2,7 @@
     <div class="media-left">
       <a href="{{ route('profile.showProfile', $comment->user->registration_id) }}">
         @if(isset($comment->user->prof_pic->image_id))
-          <img class="media-object" width="30px" height="30px" src="{{ route('files.get.image', array($comment->user->prof_pic->user_id, $comment->user->prof_pic->image_id)) }}">
+          <img class="media-boject" width="30px" height="30px" src="{{ mediaSrc($comment->user->prof_pic->image_path, $comment->user->prof_pic->image_name, $comment->user->prof_pic->image_ext) }}">
         @else
            <img class="media-object"  width="30px" height="30px" src="{{ URL::asset('assets/images/jon.jpg') }}" alt="...">
         @endif

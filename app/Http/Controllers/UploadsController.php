@@ -17,43 +17,27 @@ class UploadsController extends Controller {
 	}
 	
 	public function newsfeed(Request $request) {
-		$post = PostService::create($request->except(array('file')), $request->file('file'));
-		$params['user'] = $post->user;
-		$params['message'] = $post;
-		$params['image'] = $post->image;
-		$params['like'] = $post->like;
-		$params['comments'] = $post->comment;
-		return view('ajax.post' , $params)->with('include_script' , true);
+		$post = PostService::create($request->except(['file']), $request->file('file'));
+		
+		if($post instanceof \SNS\Models\Posts) {	
+    		$params['user'] = $post->user;
+    		$params['message'] = $post;
+    		$params['image'] = $post->image;
+    		$params['like'] = $post->like;
+    		$params['comments'] = $post->comment;
+    		return view('ajax.post' , $params)->with('include_script' , true);
+	   }
+	   
+	   return $post;
 	}
 	
 	public function video(Request $request){
-		$data['video'] = PostService::create($request->except(array('file')), $request->file('file'));
+		$data['video'] = PostService::create($request->except(['file']), $request->file('file'));
 		return view('ajax.video' , $data);
 	}
-	public function getImage($user_id, $file_id){
-		ini_set('memory_limit','1G');
-		$entry = Images::find($file_id);
-		$file = Storage::get($entry->image_path . '/' . $entry->image_name . '.' . $entry->image_ext);
-
-		return (new Response($file, 200))
-		->header('Content-Type', $entry->image_mime);
-	}
-
-	public function getThumb($user_id, $file_id){
-		ini_set('memory_limit','1G');
-		
-		$entry = Images::find($file_id);
-		$file = Storage::get($entry->image_path . '/' . $entry->image_name . '_thumb.jpg');
-
-		return (new Response($file, 200))
-		->header('Content-Type', 'image/jpeg');
-	}
+	
 	public function uploadView(){
-		$data['video'] = Images::with(array('post' , 'register'))->where('image_mime' , 'like' , '%video%')->where('user_id' , Auth::id())->latest()->get();
+		$data['video'] = Images::with(['post' , 'register'])->where('image_mime' , 'like' , '%video%')->where('user_id' , Auth::id())->latest()->get();
 		return view('pages.viewupload' , $data);
-	}
-	public function testUpload(Request $request){
-		custom_print_r($request->all());
-		#return view('ajax.post' , PostService::create($request->all()))->with('include_script' , true);
 	}
 }

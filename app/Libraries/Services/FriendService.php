@@ -36,7 +36,7 @@ class FriendService {
 	 * 
 	 * @var array
 	 */
-	protected $ids = array();
+	protected $ids = [];
 	
 	public function __construct() {
 		$this->list = new UserFriends();
@@ -67,7 +67,7 @@ class FriendService {
 		$q = $this->request
 				->select(array('requesting_user_id', 'requested_user_id'))
 				->ofUserWithReq($this->ids['current'], $this->ids['requested'])
-				->whereNotIn('status', array(2, 9))->latest()->take(1)->get();
+				->whereNotIn('status', [2, 9])->latest()->take(1)->get();
 		return !$q->isEmpty();	
 			
 	}
@@ -122,7 +122,7 @@ class FriendService {
 	protected function previousRequest() {
 		$q = $this->request
 				->ofUserWithReq($this->ids['current'], $this->ids['requested'])
-				->whereNotIn('status', array(9))->get();
+				->whereNotIn('status', [9])->get();
 		
 		if(!$q->isEmpty()) {
 			foreach($q as $single) {
@@ -145,14 +145,14 @@ class FriendService {
 			
 			Notification_Service::origin('Registration', $this->ids['current'])
 				->destinationId($this->ids['requested'])
-				->params(array('notif_type' => 'friend_request'))
+				->params(['notif_type' => 'friend_request'])
 				->send();
 			
-			$this->request->create(array(
+			$this->request->create([
 					'requesting_user_id' => $this->ids['current'],
 					'requested_user_id'	=> $this->ids['requested'],
 					'status' => 0
-			));
+			]);
 			return true;
 		}		
 		return false;
@@ -161,79 +161,77 @@ class FriendService {
 	public function ignore($requested_id) {
 		$this->ids['requested'] = $requested_id;
 		
-		$this->updateRequest(array(
+		$this->updateRequest([
 				'requesting_id' => $this->ids['requested'],
 				'requested_id' => $this->ids['current']
-		), 1);
+		], 1);
 		
 		Notification_Service::setIsRead(
 			'SNS\Models\User',
 			$this->ids['current'],
 			$this->ids['requested'],
-			array('friend_ignore' => true)
+			['friend_ignore' => true]
 		);
 	}
 	
 	public function cancel($requested_id) {
 		$this->ids['requested'] = $requested_id;
 	
-		$this->updateRequest(array(
+		$this->updateRequest([
 				'requesting_id' => $this->ids['current'],
 				'requested_id' => $this->ids['requested']
-		), 2);
+		], 2);
 		
 		Notification_Service::origin('User', $this->ids['current'])
 			->destinationId($this->ids['requested'])
 			->notifType('friend_request')
 			->delete();
-			
-// 		Notification_Service::deleteNotification('SNS\Models\User', $this->ids['current'], $this->ids['requested']);
 	}
 	
 	public function accept($requested_id) {
 		$this->ids['requested'] = $requested_id;
 		
-		$this->updateRequest(array(
+		$this->updateRequest([
 				'requesting_id' => $this->ids['requested'],
 				'requested_id' => $this->ids['current']
-		), 9);
+		], 9);
 		
 		$this->addFriendRecords();
 		
 		Notification_Service::originId($this->ids['requested'])
 			->destinationId($this->ids['current'])
-			->params(array('notif_type' => 'friend_request'))
-			->updateParams(array('friend_accept' => true));
+			->params(['notif_type' => 'friend_request'])
+			->updateParams(['friend_accept' => true]);
 		
 		Notification_Service::origin('User', $this->ids['current'])
 			->destinationId($this->ids['requested'])
-			->params(array('notif_type' => 'friend_request', 'friend_accept_for_req' => true))
+			->params(['notif_type' => 'friend_request', 'friend_accept_for_req' => true])
 			->send();	
 	}
 	
 	public function delete($requested_id) {
 		$this->ids['requested'] = $requested_id;
 		
-		$this->updateRequest(array(
+		$this->updateRequest([
 				'requesting_id' => $this->ids['current'],
 				'requested_id' => $this->ids['requested']
-		), 3);
+		], 3);
 		
 		$this->deletedFriendRecords();
 		
 		Notification_Service::originId($this->ids['current'])
 			->destinationId($this->ids['requested'])
-			->params(array('notif_type' => 'friend_request'))
+			->params(['notif_type' => 'friend_request'])
 			->delete();
 		
 		Notification_Service::origin('User', $this->ids['requested'])
 			->destinationId($this->ids['current'])
-			->params(array('notif_type' => 'friend_request', 'friend_accept_for_req' => true))
+			->params(['notif_type' => 'friend_request', 'friend_accept_for_req' => true])
 			->delete();
 	}
 	
 	protected function updateRequest($ids, $status) {
-		$this->request->ofRequestedUser($ids['requested_id'], $ids['requesting_id'])->update(array('status' => $status));
+		$this->request->ofRequestedUser($ids['requested_id'], $ids['requesting_id'])->update(['status' => $status]);
 		
 		$this->request->ofRequestedUser($ids['requested_id'], $ids['requesting_id'])->delete();
 	}
@@ -252,15 +250,15 @@ class FriendService {
 	 * Adds friend records for both users
 	 */
 	protected function addFriendRecords() {
-		UserFriends::create(array(
+		UserFriends::create([
 			'user_id' => $this->ids['current'],
 			'friend_user_id' => $this->ids['requested']
-		));
+		]);
 	
-		UserFriends::create(array(
+		UserFriends::create([
 			'user_id' => $this->ids['requested'],
 			'friend_user_id' => $this->ids['current']
-		));
+		]);
 	}
 	
 	/**
@@ -279,7 +277,7 @@ class FriendService {
 		
 		if(!$user_select) {
 			return $this->list->select(['user_id', 'friend_user_id'])->where('user_id', $user_id)
-			->with(array(
+			->with([
 					'profile' => function($q) {
 						$q->addSelect(['user_id']);
 					},
@@ -287,13 +285,13 @@ class FriendService {
 					    $q->addSelect(['user_id', 'last_name', 'first_name', 'user_id']);
 					},
 					'profile.registration.prof_pic' => function($q) {
-						$q->addSelect(['image_id', 'image_mime', 'user_id']);
+						$q->addSelect(['image_id', 'user_id', 'image_path', 'image_name', 'image_ext']);
 						$q->where('is_profile_picture', 1);
 						$q->where('project_id', 0);
 						$q->where('pfa_id', 0);
 						$q->where('pet_id', 0);
 					}
-				))->get();
+				])->get();
 		}
 		
 		return $this->list->select($user_select)->where('user_id', $user_id)

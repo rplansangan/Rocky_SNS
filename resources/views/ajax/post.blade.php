@@ -3,7 +3,7 @@
 	<div class="media-left">
 		<a href="{{ route('profile.showProfile', $user->user_id) }}">
 			@if($user->prof_pic)	
-				<img src="{{ route('files.get.image', array($user->prof_pic->user_id, $user->prof_pic->image_id)) }}" width="64px" height="64px" alt="profile picture">
+				<img src="{{ mediaSrc($user->prof_pic->image_path, $user->prof_pic->image_name, $user->prof_pic->image_ext) }}" width="64px" height="64px">
 			@else
 				<img src="{{ URL::asset('assets/images/owner-default.png') }}" width="64px" height="64px" alt="profile picture">
 			@endif
@@ -28,16 +28,16 @@
 		<p>{!! $message->post_message !!}</p>
 		@if(isset($image))
 			@if(strstr($image->image_mime, 'image/'))
-				<img class="img-responsive" src="{{ route('files.get.image', array($message->user_id, $image->image_id)) }}">
+				<img class="img-responsive" src="{{ mediaSrc($image->image_path, $image->image_name, $image->image_ext) }}">
 			@elseif(strstr($image->image_mime, 'video/'))
 				<video  width="100%" height="240" controls>
-				  <source src="{{ route('files.get.image', array($message->user_id, $image->image_id)) }}" type="{{ $image->image_mime }}">
+					<source src="{{ mediaSrc($image->image_path, $image->image_name, $image->image_ext) }}" type="{{ $image->image_mime }}">
 				</video>
 			@endif
 		@endif
 		<div class="likecom-container col-xs-12 col-sm-12 col-m-12 col-lg-12">
-			<i class="fa fa-thumbs-up"></i>&nbsp;<span class="like-counter">{{{ ($like === 0) ? 0 : $like->count() }}}</span> 
-			<i class="fa fa-comment"></i>&nbsp;<span class="comment-counter">{{{ ($comments === 0) ? 0 : $comments->count() }}}</span>&nbsp; 
+			<i class="fa fa-thumbs-up"></i>&nbsp;<span class="like-counter">{{{ ($like === 0) ? 0 : count($like) }}}</span> 
+			<i class="fa fa-comment"></i>&nbsp;<span class="comment-counter">{{{ ($comments === 0) ? 0 : count($comments) }}}</span>&nbsp; 
 			@if(!@$public)
 				<a class="nf-like comment-like" href="#" puid="{{{ $message->user_id }}}" value="{{{ $message->post_id }}}" value2="{{{ route('likes.set', array($message->post_id)) }}}" value3="{{{ csrf_token() }}}">{{ isLike($like) }} &#8226;</a>
 			@endif
@@ -48,7 +48,7 @@
 					<textarea max="500" name="post_message" class="comment-box" puid="{{{ $message->user_id }}}" post_id="{{{ $message->post_id }}}" href="{{{ route('comments.set', $message->post_id) }}}" _token="{{{ csrf_token() }}}" placeholder=" Say Something..."></textarea>
 				@endif
 				<ul class="comments">
-					@if($comments)
+					@if(!is_null($comments))
 						@foreach($comments as $comment)
 							@include('ajax.comments', array('comment' => $comment, 'pid' => $message->post_id, 'puid' => $message->user_id))
 						@endforeach
