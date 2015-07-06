@@ -38,11 +38,7 @@
   <body>
     <input type="hidden" id="refresh-missing-route" value="{{ Route('get_missingpets') }}">
     <input type="hidden" id="refresh-found-route" value="{{ Route('get_foundpets') }}">
-    @if(Request::url() == route('layoutone'))
-        @include('pages.toplayoutone')
-    @else
-        @include('top')
-    @endif
+    @include('top')
     
     @if($errors->any())
     	<ul>
@@ -54,7 +50,6 @@
     
     @yield('content')
 
-    @include('forms.ads_form_modal')
     @include('footer')
   </body>
 	@if(Auth::check())
