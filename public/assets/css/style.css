@@ -168,7 +168,8 @@ span.line {
 
 .tftextinput4{
   margin: 0;
-  padding: 10px 47px;
+  padding: 10px;
+  width: 300px;
   font-family: Arial, Helvetica, sans-serif;
   font-size:14px;
   color:#666;
@@ -179,7 +180,7 @@ span.line {
 }
 
 .tfbutton4 {
-  margin: 0;
+  margin-left: -40px;
   padding: 0;
   width: 30px;
   height: 30px;
@@ -194,9 +195,6 @@ span.line {
   background-color: transparent;
   background-repeat: no-repeat;
   border: 0;
-  position: absolute;
-  left: 255px;
-  top: 18px;
 }
 
 /* Fixes submit button height problem in Firefox */

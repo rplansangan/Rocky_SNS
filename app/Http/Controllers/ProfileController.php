@@ -28,7 +28,7 @@ class ProfileController extends Controller {
 		$this->middleware('auth');
 	}
 	
-	public function showProfile($id){ 
+	public function showProfile($id){ 	   
 		$profile = User::find($id);
 		
 		if(is_null($profile)) {
@@ -44,27 +44,27 @@ class ProfileController extends Controller {
 				return view('pages.pet_foundation.profile', ['foundation_id', $profile->foundation->foundation_id])->with('profile', $profile);
 			}
 		} else {
-// 			if(Cache::has('user.profile.collection' . $id)) {
-// 				$params = Cache::get('user.profile.collection' . $id);
+			if(Cache::has('user.profile.collection' . $id)) {
+				$params = Cache::get('user.profile.collection' . $id);
 				
-// 				$data['friend_flags'] = $params['friend_flags'];
-// 				$profile = $params['profile'];
-// 				$collection = $params['collection'];
-// 			} else {
-				$profile->load(array('registration' => function($q) {
-						$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
+				$data['friend_flags'] = $params['friend_flags'];
+				$profile = $params['profile'];
+				$collection = $params['collection'];
+			} else {
+				$profile->load(['registration' => function($q) {
+						$q->addSelect(['registration_id', 'user_id', 'first_name', 'last_name']);
 					}, 'prof_pic' => function($q) {
 						$q->where('is_profile_picture', 1);
 						$q->where('pet_id', 0);
-						$q->addSelect(array('image_id', 'user_id'));
+						$q->addSelect(['image_id', 'user_id', 'image_path', 'image_name', 'image_ext']);
 					}
-				));
-// 				$params['profile'] = $profile;
+				]);
+				$params['profile'] = $profile;
 				$params['collection'] = $collection = PostService::initialNewsFeed(Auth::id(), $id);		
 				$params['friend_flags'] = $data['friend_flags'] = FriendService::check($id);
-// 				Cache::put('user.profile.collection' . Auth::id(), $params, 10);
-// 			}			
-				
+				Cache::add('user.profile.collection' . $id, $params, 10);
+			}			
+			
 			return view('profile.profile', $data)
 				->with('profile', $profile)
 				->with('posts', $collection);

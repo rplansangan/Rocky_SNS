@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Auth;
 use SNS\Libraries\Facades\StorageHelper;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * 
+ * @author Rap
+ *
+ */
 class PostRepository { 
 	
 	/**
@@ -23,10 +28,10 @@ class PostRepository {
 		DB::beginTransaction();
 		
 		try {	
-			$post = $this->post->create(array(
+			$post = $this->post->create([
 					'user_id' => Auth::id(),
 					'post_message' => $data['message']
-			));
+			]);
 		} catch (\Exception $e) {
 			DB::rollback();
 			return trans('errors.err_500');
@@ -38,52 +43,60 @@ class PostRepository {
 			$mime = $file->getMimeType();
 			
 			try {
-				$post->image()->save(new Images(array(
+				$post->image()->save(new Images([
 						'user_id' => Auth::id(),
-						'image_path' => $dir,
+						'image_path' => $dir['front'],
 						'image_name' => $filename,
-						'image_mime' => $file->getMimeType(),
+						'image_mime' => $mime,
 						'image_ext' => $file->getClientOriginalExtension(),
 						'image_title' => $data['image_title'],
 						'category' => $data['category']
-				)));
+				]));
 			} catch (\Exception $e) {
 				DB::rollback();
 				return trans('errors.err_500');
 			}
+			
 			// file visibility issue
-// 			StorageHelper::store($dir, $filename . '.' . $file->getClientOriginalExtension());
-
-			$file->move(storage_path('app') . '/' . $dir , $filename . '.' . $file->getClientOriginalExtension());
-			$filePath = storage_path('app') . '/' . $dir .'/'. $filename . '.' . $file->getClientOriginalExtension() ;
-
-			if(strstr($mime, 'video/')){
-				createThumbnail($filePath , storage_path('app') . '/' . $dir , $filename);
+// 			StorageHelper::store($dir, $filename . '.' . $file->getClientOriginalExtension());			
+			
+			// should be changed for cdn support
+			try {
+    			$file->move(public_path() . $dir['root'] , $filename . '.' . $file->getClientOriginalExtension());
+    			$filePath = public_path() . $dir['root'] .'/'. $filename . '.' . $file->getClientOriginalExtension() ;
+                
+//     			if(strstr($mime, 'video/')){
+//     				createThumbnail($filePath , public_path() . '/' . $dir , $filename);
+//     			}
+			} catch (\Exception $e) {
+			    DB::rollback();
+			    return trans('errors.err_500');
 			}
 		}
 		
-		$post->load(array(
+		DB::commit();
+		
+		$post->load([
 				'user' => function($q) {
-					$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
+					$q->addSelect(['registration_id', 'user_id', 'first_name', 'last_name']);
 				},
 				'user.prof_pic' => function($q) {
-					$q->addSelect(array('image_id', 'user_id', 'image_mime', 'is_profile_picture'));
+					$q->addSelect(['image_id', 'user_id', 'image_path', 'image_name', 'image_ext']);
 					$q->where('is_profile_picture', 1);
 					$q->where('pet_id', 0);
+					$q->where('pfa_id', 0);
 					$q->where('business_id', 0);
 				},
 				'image' => function($q) {
-					$q->addSelect(array('image_id', 'post_id', 'image_mime' , 'image_title' , 'category'));
+					$q->addSelect(['image_id', 'post_id', 'image_mime' , 'category', 'image_path', 'image_name', 'image_ext']);
 				},
 				'like' => function($q) {
-					$q->addSelect(array('like_id', 'post_id'));
+					$q->addSelect(['like_id', 'post_id']);
 				},
 				'comment' => function($q) {
-					$q->addSelect(array('comment_id', 'post_id'));
+					$q->addSelect(['comment_id', 'post_id']);
 				}
-		));
-		
-		DB::commit();
+		]);	
 		
 		return $post;
 	}
@@ -93,7 +106,7 @@ class PostRepository {
 	 * @param integer $id
 	 */
 	public function getPost($id) {
-		return $this->post->select(array('post_id', 'post_message', 'created_at', 'user_id'))->find($id);
+		return $this->post->select(['post_id', 'post_message', 'created_at', 'user_id'])->find($id);
 	}
 	
 	public function delete($id) {

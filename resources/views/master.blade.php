@@ -52,7 +52,4 @@
 
     @include('footer')
   </body>
-	@if(Auth::check())
-		@include('chat.main_js')
-	@endif
 </html>

@@ -35,15 +35,17 @@
         <div class="col-md-1 col-lg-1 inside-logo">
           <a href="{{ route('index') }}"><img class="img-responsive" src="{{ URL::asset('assets/images/rlysmall2.png') }}"></a>
         </div>
-        <div class="col-md-3 col-lg-3 search">
+        <div class="col-md-4 col-lg-4 search">
             <div id="tfheader">
-              <form id="tfnewsearch" method="get" action="http://www.google.com">
-                      <input type="text" id="tfq" class="tftextinput4" name="q" size="21" maxlength="120"><input type="submit" value=" " class="tfbutton4">
+              <form id="tfnewsearch" method="get" action="{{ Route('search') }}">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="text" id="tfq" class="tftextinput4" name="name" size="21" maxlength="120">
+                    <input type="submit" value=" " class="tfbutton4">
               </form>
               <div class="tfclear"></div>
             </div>
         </div>
-        <div class="col-md-8 col-lg-8 in-menus text-right">
+        <div class="col-md-7 col-lg-7 in-menus text-right">
             <a href="#"><img src="{{ URL::asset('assets/images/new/prof-icon.png') }}" width="38px" style=" margin-right: 10px;">Rocky</a>
             <span class="line" style="margin-left: 5px;">&nbsp;</span>
             <a href="{{ route('public.lovers') }}" style="margin-right: 5px;">Home</a>

@@ -3,6 +3,7 @@
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use SNS\Models\FoundPets;
+use SNS\Models\Registration;
 use SNS\Models\Images;
 use SNS\Models\Business;
 use SNS\Models\LostFoundPetImages;
@@ -69,14 +70,14 @@ class WelcomeController extends Controller {
 		$data['right'] = 'landing.right';
 		$data['mid'] = 'landing.video';
 		$data['video'] = Images::select(array('image_id', 'image_mime', 'post_id', 'user_id', 'image_title', 'category'))
-								->with(array(
-									'post' => function($q) {
-										$q->addSelect(array('post_id', 'post_message', 'post_tags'));
-									}, 
-									'register' => function($q) {
-										$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
-									}
-								))->where('image_mime' , 'like' , '%video%')->latest()->get();
+		->with(array(
+			'post' => function($q) {
+				$q->addSelect(array('post_id', 'post_message', 'post_tags'));
+			}, 
+			'register' => function($q) {
+				$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
+			}
+			))->where('image_mime' , 'like' , '%video%')->latest()->get();
 		$data['status'] = "Latest Videos";
 		return view('pages.landing' , $data);
 	}
