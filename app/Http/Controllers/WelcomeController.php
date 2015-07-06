@@ -100,4 +100,11 @@ class WelcomeController extends Controller {
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
 		return view('pages.dogsweek' , $data);
 	}
+	public function nearestPS(){
+		$data['left'] = 'landing.superdogmenu';
+		$data['right'] = 'landing.right';
+		$data['mid'] = 'landing.nearestps';
+		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
+		return view('pages.nearestpshop' , $data);
+	}
 }

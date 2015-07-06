@@ -447,6 +447,11 @@ Route::get('pet/lovers/dogsoftheweek', [
 	'uses' => 'WelcomeController@dogsWeek'
 ]);
 
+Route::get('pet/lovers/nearestpetshop', [
+	'as' => 'public.nearestpetshop',
+	'uses' => 'WelcomeController@nearestPS'
+]);
+
 Route::group(['prefix' => 'administration', 'namespace' => 'Admin', 'middleware' => ['auth', 'manage']], function() {
 	Route::get('main', [
 		'as' => 'admin.main',

@@ -7,7 +7,7 @@
 }
 
 a:hover {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 @font-face{
@@ -591,30 +591,213 @@ a.buy, a.join {
 }
 
 
+/*============Nearest Pet Shop============*/
+.nearest-ps {
+  margin: 10px 0;
+  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
+}
 
-/*============Dogs of the Week============*/
-.dow-cont, .upload-video {
+.nearest-map, .recom-ps, .cities {
   padding: 0;
 }
 
-#tfuploadvid{
-  width: 80%;
+.cities, .recom-ps h5 {
+  margin: 20px 0 10px 0;
 }
 
-.tftextinput{
+.cities a {
+  font-family: arial;
+  font-weight: 700;
+  font-size: 13px;
+  color: #b7062b;
+  padding: 0 5px;
+}
+
+.recom-ps h5 {
+  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
+  font-size: 18px !important;
+}
+
+.nps-loc {
+  padding: 25px;
+  margin: 10px 0;
+  background-color: #fff;
+  border: 1px solid #949494;
+  border-radius: 8px;
+}
+
+.nearestps-loc {
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.nearestps-loc .col-lg-5 {
+  padding-left: 0;
+}
+
+.nearestps-loc .col-lg-7 {
+  padding: 0;
+}
+
+.nearestps-loc div img {
+  width: 100%;
+}
+
+.nearestps-loc div p {
+  margin: 10px 0;
+}
+
+
+/*============Dogs of the Week============*/
+.dow-cont {
+  padding: 0 40px 0 0;
+  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
+}
+
+.star {
+  text-align: center;
+}
+
+.star img {
+  width: 53px;
+}
+
+.upload-video, .nearest-ps {
+  border: 1px solid #949494;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.searchvids, .searchpetshop {
+  padding: 0;
+}
+
+.tftextinput5 {
   margin: 0;
-  padding: 5px 15px;
+  padding: 10px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   color: #666;
-  border: 4px solid #AEAEAE;
+  border: 3px solid;
   border-radius: 8px;
-  min-width: 100%;   
+  width: 100%;
 }
 
-.tfclear{
-  clear:both;
+.tfbutton5 {
+  margin: 0;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 8px;
+  background-image: url('../images/new/searchsub-btn.png');
+  background-size: 100%;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: 0;
+  position: absolute;
+  right: 17px;
+  top: 18px;
 }
+
+/* Fixes submit button height problem in Firefox */
+.tfbutton5::-moz-focus-inner {
+  border: 0;
+}
+
+button.upvid_btn {
+  padding: 13px 25px;
+  margin-top: 9px;
+  border-radius: 8px;
+  border: 0;
+  background-color: #b7062b;
+  color: #fff;
+  width: 100%;
+}
+
+.videos {
+  padding: 0;
+  border: 1px solid #949494;
+  border-radius: 8px;
+  margin: 20px 0;
+  background-color: #fff;
+}
+
+.title {
+  margin: 10px 0;
+  padding: 0;
+  border-bottom: 1px solid #000;
+  padding: 0 20px;
+}
+
+.title-left {
+  margin-bottom: 10px;
+}
+
+.title-left img {
+  width: 35px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.title-right {
+  margin-top: 10px;
+}
+
+.title-right a {
+  padding: 0 10px;
+  color: #252525;
+}
+
+.title-right a:hover {
+  border-bottom: 4px solid #b7062b;
+}
+
+.videos-cont {
+  margin: 10px 0;
+  border-bottom: 1px solid #000;
+}
+
+.vidthumb {
+  margin: 10px 0;
+}
+
+.vidthumb img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.vdetails p a, .vdetails a {
+  margin-bottom: 0;
+  color: #B7062B;
+  font-size: 16px;
+}
+
+.vdetails span {
+  color: #242424;
+}
+
+p.viewsdate {
+  font-size: 11px;
+  margin-top: 5px;
+  color: #242424;
+}
+
+.videos-cont h6 {
+  padding: 0 15px;
+  font-weight: 700;
+  font-family: arial;
+}
+
+.recom {
+  border-bottom: 0;
+}
+
 
 /*======== LOVERS MID ========*/
 .post-area{
@@ -622,6 +805,7 @@ a.buy, a.join {
   border-radius: 8px;
   padding: 10px;
   background-color: white;
+  margin-bottom: 15px;
 }
 .post-area textarea{
   border: 1px solid #c3c3c3;
@@ -697,15 +881,28 @@ img.vidphoto {
   width: 100%;
 }
 
+.like-com-sec {
+  padding-left: 0;
+}
+
 .like-comm {
   margin: 10px 0;
   padding-bottom: 0px !important;
 }
 
+.like-comm.nps a span {
+  position: absolute;
+  bottom: 76px;
+  left: 12px;
+  color: #262626;
+  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
+  font-size: 11px;
+}
+
 .like-comm a span {
   position: absolute;
-  bottom: 89px;
-  left: 16px;
+  bottom: 90px;
+  left: 12px;
   color: #262626;
   font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
   font-size: 11px;
