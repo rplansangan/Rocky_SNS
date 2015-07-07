@@ -48,7 +48,7 @@
 					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 panel ads-panel">
 						<div class="col-sm-12 col-xs-12 col-lg-6 col-md-6 adshop-img">
 							@if(isset($row->post->image))
-							<img class="col-sm-12 thumbnail" src="{{ route('files.get.image', array($row->user_id, $row->post->image->image_id)) }}" width="400px">
+							<img class="col-sm-12 thumbnail" src="{{ mediaSrc($row->post->image->image_path, $row->post->image->image_name, $row->post->image->image_ext) }}" width="400px">
 							@else
 							<img src="{{ URL::asset('assets/images/AdHere.png') }}" width="400px">
 							@endif

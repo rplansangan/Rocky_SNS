@@ -18,7 +18,7 @@
 	<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12 merch-feat-ad">
 		<div class="col-sm-12 col-xs-12 col-lg-7 col-md-7 mf-adimg">
 			@if(isset($details->post->image))
-				<img class="col-sm-12 thumbnail" src="{{ route('files.get.image', array($details->user_id, $details->post->image->image_id)) }}" width="500px">
+				<img class="col-sm-12 thumbnail" src="{{ mediaSrc($details->post->image->image_path, $details->post->image->image_name, $details->post->image->image_ext) }}" width="500px">
 			@else
 				<img src="{{ URL::asset('assets/images/AdHere.png') }}">
 			@endif
@@ -41,7 +41,7 @@
 					<div class="col-sm-12 col-xs-12 col-lg-4 col-md-4">
 						<a href="{{ Route('merch_adview', array($adver->user_id, $adver->id)) }}">
 							@if(isset($adver->post->image))
-							<img class="col-sm-12 thumbnail" src="{{ route('files.get.image', array($details->user_id, $adver->post->image->image_id)) }}" width="250px">
+							<img class="col-sm-12 thumbnail" src="{{ mediaSrc($details->post->image->image_path, $details->post->image->image_name, $details->post->image->image_ext) }}" width="250px">
 							@else
 							<img src="{{ URL::asset('assets/images/AdHere.png') }}" width="250px">
 							@endif
