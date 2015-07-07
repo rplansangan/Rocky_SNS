@@ -11,7 +11,7 @@
 	                <input type="text" id="tfq" class="tftextinput5" name="q" size="21" maxlength="120"><input type="submit" value=" " class="tfbutton5">
 	            </form>
 	        </div>
-            <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
+            <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3" style="padding: 0 5px;">
             	<button class="upvid_btn">Upload a Video</button>
             </div>
 		</div>
