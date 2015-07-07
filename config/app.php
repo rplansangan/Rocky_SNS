@@ -145,7 +145,7 @@ return [
 		'SNS\Providers\EventServiceProvider',
 		'SNS\Providers\RouteServiceProvider',
 		
-		'Barryvdh\HttpCache\ServiceProvider',
+// 		'Barryvdh\HttpCache\ServiceProvider',
 			
 		'Barryvdh\Debugbar\ServiceProvider',
 

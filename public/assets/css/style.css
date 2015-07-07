@@ -12,10 +12,10 @@ a:hover {
 
 @font-face{
   font-family: 'CenturyGothic';
-  src: url(/public/fonts/Century_Gothic.ttf) format("ttf"),
-       url(/public/fonts/Century_Gothic.otf) format("otf"),
-       url(/public/fonts/Century_Gothic.woff) format("woff"),
-       url(/public/fonts/Century_Gothic.svg) format("svg");
+  src: url(../fonts/Century_Gothic.ttf) format("ttf"),
+       url(../fonts/Century_Gothic.otf) format("otf"),
+       url(../fonts/Century_Gothic.woff) format("woff"),
+       url(../fonts/Century_Gothic.svg) format("svg");
 }
 
 /*=============GENERAL=============*/

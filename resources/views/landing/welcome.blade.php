@@ -73,9 +73,9 @@
                 <div>
                     <img src="{{ URL::asset('assets/images/landing/a.gif') }}" alt="b02" width="1260px" height="740px" />
                     <div class="item text-center">    
-                        <img src="{{ URL::asset('assets/images/landing/layer.png') }}" class="img-responsive" id="layer1">
-                        <img src="{{ URL::asset('assets/images/landing/rs.png') }}" class="img-responsive" id="layer2">
-                        <div class="text-center" >
+                        <div class="text-center" id="sl">
+                            <img src="{{ URL::asset('assets/images/landing/layer.png') }}" class="img-responsive" id="layer1">
+                            <img src="{{ URL::asset('assets/images/landing/rs.png') }}" class="img-responsive" id="layer2"> 
                             <h2>The community for your furry buddy</h2>
                             <div class="button-group">
                                 <a href="#" id="btn1">Learn More</a>
@@ -113,7 +113,7 @@
     <!-- END SLIDER -->
     <!-- SECTION -->
     <section class="text-right nopad">
-        <div style="width:85%;margin:0 auto;">
+        <div style="width:50%;margin:0 auto;">
             <div class="col-lg-6">
                 <img src="{{ URL::asset('assets/images/landing/layer.png') }}" class="img-responsive" id="layer1">
                 <img src="{{ URL::asset('assets/images/landing/dog3.png') }}" class="img-responsive" id="layer2" style="top: 50px;">
@@ -133,7 +133,7 @@
         </div>
     </section>
     <section class="text-left nopad landing-bg-section-2">
-        <div style="width:80%;margin:0 auto;">
+        <div style="width:50%;margin:0 auto;">
             <div class="col-lg-6 ">
                 <h1>ALL YOUR PET NEEDS</h1>
                 <p>Bring your dog to Doggy Daycare and go<br>
@@ -148,7 +148,7 @@
         </div>
     </section>
     <section class="text-right nopad">
-        <div style="width:85%;margin:0 auto;">
+        <div style="width:50%;margin:0 auto;">
             <div class="col-lg-6">
                 <img src="{{ URL::asset('assets/images/landing/layer.png') }}" class="img-responsive" id="layer1">
                 <img src="{{ URL::asset('assets/images/landing/dog5.png') }}" class="img-responsive" id="layer2" style="top: 70px;">

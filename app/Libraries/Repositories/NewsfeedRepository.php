@@ -106,7 +106,7 @@ class NewsfeedRepository {
 					'comment' => function ($q) {
 					    $q->count();
 					}
-			))->latest()->take($take)->get();
+			))->latest()->get();
 		}
 		
 		return $this->nf->ofUser($id)->with(array(

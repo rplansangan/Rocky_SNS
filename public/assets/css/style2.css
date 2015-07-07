@@ -98,11 +98,11 @@ html , body{
   
 #sliderdiv1{
   width: 100%; display: block; visibility: visible; overflow: hidden;
-  height: 700px;
+  height: 600px;
 }
 
 #sliderdiv2{
-  width: 80%; display: block; visibility: visible; 
+  width: 75%; display: block; visibility: visible; 
   margin: 0px auto;
   z-index: 5;
 }
@@ -119,22 +119,17 @@ html , body{
   margin-bottom: 500px;
   margin-left: 80px;
 }
-#slider1 .item > img{
+#sl{
+  text-align: center;
+  width: 550px;
+  margin: 0px auto;
+}
+#sl #layer1 ,#sl #layer2{
   position: absolute;
   width: 400px;
 }
-
-#slider1 .item > #layer1{
-  margin-left: 330px;
-  margin-top: -330px;
-  z-index: 1;
-}
-#slider1 .item > #layer2{
-  margin-left: 330px;
-  margin-top: -280px;
-}
 #slider1 .item > div > h2{
-  margin-top: 150px;
+  margin-top: 0px;
 }
 #slider1 > div > img{
   width: 100%;
@@ -143,7 +138,7 @@ html , body{
   margin-left: 80px;
 }
 #landing section{
-  height: 300px;
+  height: 350px;
 }
 #landing .text-left .button-group{
   margin-top: 15px;
