@@ -3,11 +3,15 @@
 .env
 
 public/assets/images/Thumbs.db
-public/assets/images/Thumbs.db
 public/uploads/
+lic/*
+public/assets/js/jquery.bxSlider.min.js
 resources/views/forms/ads_form_modal.blade.php
 resources/views/pages/landing.blade.php
 resources/views/forms/ads_form_modal.blade.php
 app/Http/routes.php
 app/Http/routes.php
 storage/httpcache
+resources/views/ajax/post.blade.php
+resources/views/ajax/post.blade.php
+lic/assets/js/jquery.bxSlider.min.js

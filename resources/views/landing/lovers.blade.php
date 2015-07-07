@@ -50,16 +50,18 @@
 		</div>
 		<div class="postcont col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<p>What Vaccinations Should My Pet Get?</p>
-			<div class="like-comm">
-				<a href="#"><img src="{{ URL::asset('assets/images/new/wheart.png') }}"><span>12</span></a>
-				<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
-			</div>
-			<div class="col-lg-1 nopad img-arrow">
-				<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
-			</div>
-			<div class="comminput col-lg-11" style="padding-right:0;">
-				<div class="row">
-					<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
+			<div class="like-com-sec col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="like-comm">
+					<a href="#"><img src="{{ URL::asset('assets/images/new/wheart.png') }}"><span>12</span></a>
+					<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
+				</div>
+				<div class="col-lg-1 nopad img-arrow">
+					<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
+				</div>
+				<div class="comminput col-lg-11" style="padding-right:0;">
+					<div class="row">
+						<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -73,16 +75,18 @@
 		</div>
 		<div class="postcont col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<p>How are you feeling today?</p>
-			<div class="like-comm">
-				<a href="#"><img src="{{ URL::asset('assets/images/new/wheart.png') }}"><span>15</span></a>
-				<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
-			</div>
-			<div class="col-lg-1 nopad img-arrow">
-				<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
-			</div>
-			<div class="comminput col-lg-11" style="padding-right:0;">
-				<div class="row">
-					<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
+			<div class="like-com-sec col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="like-comm">
+					<a href="#"><img src="{{ URL::asset('assets/images/new/wheart.png') }}"><span>15</span></a>
+					<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
+				</div>
+				<div class="col-lg-1 nopad img-arrow">
+					<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
+				</div>
+				<div class="comminput col-lg-11" style="padding-right:0;">
+					<div class="row">
+						<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -97,16 +101,18 @@
 		</div>
 		<div class="postcont col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<img class="vidphoto" src="{{ URL::asset('assets/images/new/smilevid.png') }}"></a>
-			<div class="like-comm">
-				<a href="#"><img src="{{ URL::asset('assets/images/new/rheart.png') }}"><span>132</span></a>
-				<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
-			</div>
-			<div class="col-lg-1 nopad img-arrow">
-				<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
-			</div>
-			<div class="comminput col-lg-11" style="padding-right:0;">
-				<div class="row">
-					<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
+			<div class="like-com-sec col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="like-comm">
+					<a href="#"><img src="{{ URL::asset('assets/images/new/rheart.png') }}"><span>132</span></a>
+					<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
+				</div>
+				<div class="col-lg-1 nopad img-arrow">
+					<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
+				</div>
+				<div class="comminput col-lg-11" style="padding-right:0;">
+					<div class="row">
+						<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -120,16 +126,18 @@
 		</div>
 		<div class="postcont col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<p>I am feeling grumpy today. What makes husky happy?</p>
-			<div class="like-comm">
-				<a href="#"><img src="{{ URL::asset('assets/images/new/wheart.png') }}"><span>15</span></a>
-				<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
-			</div>
-			<div class="col-lg-1 nopad img-arrow">
-				<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
-			</div>
-			<div class="comminput col-lg-11" style="padding-right:0;">
-				<div class="row">
-					<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
+			<div class="like-com-sec col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="like-comm">
+					<a href="#"><img src="{{ URL::asset('assets/images/new/wheart.png') }}"><span>15</span></a>
+					<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
+				</div>
+				<div class="col-lg-1 nopad img-arrow">
+					<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
+				</div>
+				<div class="comminput col-lg-11" style="padding-right:0;">
+					<div class="row">
+						<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -144,16 +152,18 @@
 		</div>
 		<div class="postcont col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<img class="vidphoto" src="{{ URL::asset('assets/images/new/dogsvid.png') }}"></a>
-			<div class="like-comm">
-				<a href="#"><img src="{{ URL::asset('assets/images/new/rheart.png') }}"><span>80</span></a>
-				<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
-			</div>
-			<div class="col-lg-1 nopad img-arrow">
-				<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
-			</div>
-			<div class="comminput col-lg-11" style="padding-right:0;">
-				<div class="row">
-					<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
+			<div class="like-com-sec col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="like-comm">
+					<a href="#"><img src="{{ URL::asset('assets/images/new/rheart.png') }}"><span>80</span></a>
+					<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
+				</div>
+				<div class="col-lg-1 nopad img-arrow">
+					<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
+				</div>
+				<div class="comminput col-lg-11" style="padding-right:0;">
+					<div class="row">
+						<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
+					</div>
 				</div>
 			</div>
 		</div>
