@@ -43,11 +43,7 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		$data['left'] = 'landing.superdogmenu';
-		$data['right'] = 'landing.right';
-		$data['mid'] = 'landing.front';
-		
-		return view('pages.landing', $data);	
+		return view('landing.welcome');	
 	}
 
 	public function signup()
