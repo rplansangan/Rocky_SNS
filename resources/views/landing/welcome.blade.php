@@ -114,7 +114,7 @@
     <section class="text-right nopad">
         <div style="width:50%;margin:0 auto;">
             <div class="col-lg-6">
-                <img src="{{ URL::asset('assets/images/landing/dog3.png') }}" class="img-responsive" id="layer2" style="top: 50px;">
+                <img src="{{ URL::asset('assets/images/landing/dog3.png') }}" class="img-responsive" id="layer2" style="top: 123px;">
             </div>
             <div class="col-lg-6 ">
                 <h1>WHY JOIN<br> ROCKY SUPERDOG</h1>
@@ -148,7 +148,7 @@
     <section class="text-right nopad">
         <div style="width:50%;margin:0 auto;">
             <div class="col-lg-6">
-                <img src="{{ URL::asset('assets/images/landing/dog5.png') }}" class="img-responsive" id="layer2" style="top: 70px;">
+                <img src="{{ URL::asset('assets/images/landing/dog5.png') }}" class="img-responsive" id="layer2" style="margin-top: 131px;">
             </div>
             <div class="col-lg-6 ">
                 <h1>FIND MISSING PETS</h1>
