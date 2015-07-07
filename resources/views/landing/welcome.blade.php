@@ -81,7 +81,7 @@
                                 <a href="#" id="btn2">Join Now</a>
                                 <br>
                                 <label>
-                                    <a href="#">Already a member? LOGIN</a>
+                                    <a class="login_btn" data-toggle="modal" data-target="#loginModal" href="javascript:void(0)">Already a member? LOGIN</a>
                                 </label>
                             </div>
                         </div>
@@ -114,7 +114,6 @@
     <section class="text-right nopad">
         <div style="width:50%;margin:0 auto;">
             <div class="col-lg-6">
-                <img src="{{ URL::asset('assets/images/landing/layer.png') }}" class="img-responsive" id="layer1">
                 <img src="{{ URL::asset('assets/images/landing/dog3.png') }}" class="img-responsive" id="layer2" style="top: 50px;">
             </div>
             <div class="col-lg-6 ">
@@ -149,7 +148,6 @@
     <section class="text-right nopad">
         <div style="width:50%;margin:0 auto;">
             <div class="col-lg-6">
-                <img src="{{ URL::asset('assets/images/landing/layer.png') }}" class="img-responsive" id="layer1">
                 <img src="{{ URL::asset('assets/images/landing/dog5.png') }}" class="img-responsive" id="layer2" style="top: 70px;">
             </div>
             <div class="col-lg-6 ">
