@@ -1,0 +1,1 @@
+<a href="#" pet-id=""><img src="{{ route('pets.image.get', array($info->image[0]->image_id)) }}" width="250px" height="185px"></a>

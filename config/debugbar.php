@@ -71,7 +71,7 @@ return array(
      */
 
     'collectors' => array(
-        'phpinfo'         => true,  // Php version
+        'phpinfo'         => false,  // Php version
         'messages'        => true,  // Messages
         'time'            => true,  // Time Datalogger
         'memory'          => true,  // Memory usage
@@ -84,11 +84,11 @@ return array(
         'events'          => false, // All events fired
         'default_request' => false, // Regular or special Symfony request logger
         'symfony_request' => true,  // Only one can be enabled..
-        'mail'            => true,  // Catch mail messages
-        'logs'            => true, // Add the latest log messages
-        'files'           => true, // Show the included files
+        'mail'            => false,  // Catch mail messages
+        'logs'            => false, // Add the latest log messages
+        'files'           => false, // Show the included files
         'config'          => true, // Display config settings
-        'auth'            => true, // Display Laravel authentication status
+        'auth'            => false, // Display Laravel authentication status
         'session'         => true,  // Display session data
     ),
 

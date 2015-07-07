@@ -1,14 +1,18 @@
 <?php
 
 function createThumbnail($file , $dir , $name){
-	ini_set('max_execution_time', 120);
-	$name = $name.'_thumb.jpg';
-	$size = "120x90";
-	$getFromSecond = 5;
-	$ffmpeg = storage_path('app').'/ffmpeg/bin/ffmpeg';
-	$dir .= '/'.$name;
-	$cmd = "$ffmpeg -i $file -an -ss $getFromSecond -s $size $dir";
-	shell_exec($cmd);
+    try {
+    	ini_set('max_execution_time', 120);
+    	$name = $name.'_thumb.jpg';
+    	$size = "120x90";
+    	$getFromSecond = 5;
+    	$ffmpeg = storage_path('app').'/ffmpeg/bin/ffmpeg';
+    	$dir .= '/'.$name;
+    	$cmd = "$ffmpeg -i $file -an -ss $getFromSecond -s $size $dir";
+    	shell_exec($cmd);
+    } catch (Exception $e) {
+        return trans('errors.err_500');
+    }
 }
 function custom_print_r($array){
 	echo '<pre>';
@@ -19,7 +23,7 @@ function isLike($like){
 	$bool = false;
 	if($like) {
 		foreach($like->fetch('like_user_id') as $likes){
-			if($likes == Auth::user()->registration->registration_id){
+			if($likes == Auth::user()->user_id){
 				$bool = true;
 				break;
 			}
@@ -281,4 +285,22 @@ function country_form(){
 		<option value='zw' data-title="Zimbabwe">Zimbabwe</option>
 	</select>
 	<?php
+}
+
+function mediaSrc($path, $filename, $ext, $size = null) {
+
+    switch(config('filesystems.default')) {
+        case 'local':
+            $dir = config('local_disk_path') . '/';
+            break;
+            
+        default:
+            $dir = null;
+            break;
+    }
+    
+    
+    $dir .= $path . '/' . $filename . '.' . $ext;
+    
+    return url($dir);
 }

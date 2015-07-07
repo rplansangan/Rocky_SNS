@@ -97,19 +97,11 @@ class WelcomeController extends Controller {
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
 		return view('pages.dogsweek' , $data);
 	}
-	public function search(Request $request){
-		$input = array_except($request->all(), array('_token'));
+	public function nearestPS(){
 		$data['left'] = 'landing.superdogmenu';
 		$data['right'] = 'landing.right';
-		$data['mid'] = 'landing.search';
-		
-		$name = $input['name'];
-
-		$data['info'] = Registration::with(array('prof_pic'))
-		->where('email_address' , $name)
-		->orWhere('first_name' , 'LIKE' , '%'.$name.'%')->orWhere('last_name' , 'LIKE' , '%'.$name.'%')
-		->get();
-		return view('pages.insiderocky' , $data);
-		
+		$data['mid'] = 'landing.nearestps';
+		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
+		return view('pages.nearestpshop' , $data);
 	}
 }

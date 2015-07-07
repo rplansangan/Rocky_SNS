@@ -16,7 +16,9 @@ class CommentsRepository {
 		$temp = Comments::where('post_id', $postId)->with(array(
 					'user', 
 					'user.prof_pic' => function($q) {
-						$q->addSelect('image_id', 'user_id');
+						$q->addSelect(['image_id', 'user_id', 'image_path', 'image_name', 'image_ext']);
+						$q->where('pet_id', 0);
+						$q->where('pfa_id', 0);
 						$q->where('is_profile_picture', 1);
 				}))->get();
 		
