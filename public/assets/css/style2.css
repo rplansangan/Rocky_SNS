@@ -127,11 +127,11 @@ html , body{
 #sl #layer1 ,#sl #layer2{
   position: absolute;
   width: 400px;
-  top: 0px;
+  top: 40px;
   margin-left: 80px;
 }
 #slider1 .item > div > h2{
-  margin-top: 0px;
+  margin-top: 50px;
 }
 #slider1 > div > img{
   width: 100%;

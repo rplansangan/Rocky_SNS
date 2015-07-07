@@ -74,8 +74,7 @@
                     <img src="{{ URL::asset('assets/images/landing/a.gif') }}" alt="b02" width="1260px" height="740px" />
                     <div class="item text-center">    
                         <div class="text-center" id="sl">
-                            <img src="{{ URL::asset('assets/images/landing/layer.png') }}" class="img-responsive" id="layer1">
-                            <img src="{{ URL::asset('assets/images/landing/rs.png') }}" class="img-responsive" id="layer2"> 
+                            <img src="{{ URL::asset('assets/images/landing/logo.png') }}" class="img-responsive" id="layer1">
                             <h2>The community for your furry buddy</h2>
                             <div class="button-group">
                                 <a href="#" id="btn1">Learn More</a>
