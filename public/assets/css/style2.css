@@ -56,7 +56,7 @@ html , body{
   width: 100%;
   padding: 10px;
   margin-top: 30px;
-  z-index: 4;
+  z-index: 999;
 }
 .button-group > label{
   margin-top: 20px;
