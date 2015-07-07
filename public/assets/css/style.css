@@ -635,6 +635,7 @@ a.buy, a.join {
 
 .nearestps-loc .col-lg-7 {
   padding: 0;
+  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
 }
 
 .nearestps-loc div img {
@@ -643,6 +644,33 @@ a.buy, a.join {
 
 .nearestps-loc div p {
   margin: 10px 0;
+}
+
+.cont-det ul {
+  padding: 0;
+}
+
+.cont-det ul li.pn {
+  background: url('../images/new/phone-num.png') no-repeat left center;
+  list-style: none;
+  padding: 1px 28px;
+}
+
+.cont-det ul li.em {
+  background: url('../images/new/email.png') no-repeat left center;
+  list-style: none;
+  padding: 1px 28px;
+}
+
+.view_btn {
+  margin-top: 15px;
+}
+
+.view_btn a {
+  padding: 12px 45px;
+  color: #252525;
+  background-color: #D1D1D1;
+  border-radius: 8px;
 }
 
 

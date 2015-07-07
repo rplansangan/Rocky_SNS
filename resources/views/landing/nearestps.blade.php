@@ -40,6 +40,132 @@
 					<br/>58000 Kuala Lumpur
 					<br/>Malaysia</p>
 					<p style="color: #b7062b">Get Directions</p>
+					<div class="cont-det col-lg-7 col-md-7 col-sm-12 col-xs-12">
+						<ul>
+							<li class="pn">+603-2287 8928</li>
+							<li class="em">caring2u.com</li>
+						</ul>
+					</div>
+					<div class="view_btn col-lg-5 col-md-5 col-sm-12 col-xs-12 text-right">
+						<a href="#">View</a>
+					</div>
+				</div>
+			</div>
+			<div class="like-com-sec col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="like-comm nps">
+					<a href="#"><img src="{{ URL::asset('assets/images/new/wheart.png') }}"><span>12</span></a>
+					<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
+				</div>
+				<div class="col-lg-1 nopad img-arrow">
+					<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
+				</div>
+				<div class="comminput col-lg-11" style="padding-right:0;">
+					<div class="row">
+						<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="nps-loc col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="nearestps-loc col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+					<img src="{{ URL::asset('assets/images/new/map2.jpg') }}">
+				</div>
+				<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+					<img src="{{ URL::asset('assets/images/new/loc.jpg') }}">
+					<p>Lot T-015A, Mid Valley Megamall
+					<br/>Lingkaran Syed Putra
+					<br/>58000 Kuala Lumpur
+					<br/>Malaysia</p>
+					<p style="color: #b7062b">Get Directions</p>
+					<div class="cont-det col-lg-7 col-md-7 col-sm-12 col-xs-12">
+						<ul>
+							<li class="pn">+603-2287 8928</li>
+							<li class="em">caring2u.com</li>
+						</ul>
+					</div>
+					<div class="view_btn col-lg-5 col-md-5 col-sm-12 col-xs-12 text-right">
+						<a href="#">View</a>
+					</div>
+				</div>
+			</div>
+			<div class="like-com-sec col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="like-comm nps">
+					<a href="#"><img src="{{ URL::asset('assets/images/new/wheart.png') }}"><span>12</span></a>
+					<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
+				</div>
+				<div class="col-lg-1 nopad img-arrow">
+					<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
+				</div>
+				<div class="comminput col-lg-11" style="padding-right:0;">
+					<div class="row">
+						<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="nps-loc col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="nearestps-loc col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+					<img src="{{ URL::asset('assets/images/new/map3.jpg') }}">
+				</div>
+				<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+					<img src="{{ URL::asset('assets/images/new/loc.jpg') }}">
+					<p>Lot T-015A, Mid Valley Megamall
+					<br/>Lingkaran Syed Putra
+					<br/>58000 Kuala Lumpur
+					<br/>Malaysia</p>
+					<p style="color: #b7062b">Get Directions</p>
+					<div class="cont-det col-lg-7 col-md-7 col-sm-12 col-xs-12">
+						<ul>
+							<li class="pn">+603-2287 8928</li>
+							<li class="em">caring2u.com</li>
+						</ul>
+					</div>
+					<div class="view_btn col-lg-5 col-md-5 col-sm-12 col-xs-12 text-right">
+						<a href="#">View</a>
+					</div>
+				</div>
+			</div>
+			<div class="like-com-sec col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="like-comm nps">
+					<a href="#"><img src="{{ URL::asset('assets/images/new/wheart.png') }}"><span>12</span></a>
+					<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
+				</div>
+				<div class="col-lg-1 nopad img-arrow">
+					<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
+				</div>
+				<div class="comminput col-lg-11" style="padding-right:0;">
+					<div class="row">
+						<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="nps-loc col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="nearestps-loc col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+					<img src="{{ URL::asset('assets/images/new/map4.jpg') }}">
+				</div>
+				<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+					<img src="{{ URL::asset('assets/images/new/loc.jpg') }}">
+					<p>Lot T-015A, Mid Valley Megamall
+					<br/>Lingkaran Syed Putra
+					<br/>58000 Kuala Lumpur
+					<br/>Malaysia</p>
+					<p style="color: #b7062b">Get Directions</p>
+					<div class="cont-det col-lg-7 col-md-7 col-sm-12 col-xs-12">
+						<ul>
+							<li class="pn">+603-2287 8928</li>
+							<li class="em">caring2u.com</li>
+						</ul>
+					</div>
+					<div class="view_btn col-lg-5 col-md-5 col-sm-12 col-xs-12 text-right">
+						<a href="#">View</a>
+					</div>
 				</div>
 			</div>
 			<div class="like-com-sec col-lg-12 col-md-12 col-sm-12 col-xs-12">
