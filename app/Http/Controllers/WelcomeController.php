@@ -102,6 +102,6 @@ class WelcomeController extends Controller {
 		$data['right'] = 'landing.right';
 		$data['mid'] = 'landing.nearestps';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
-		return view('pages.nearestpshop' , $data);
+		return view('pages.insiderocky' , $data);
 	}
 }

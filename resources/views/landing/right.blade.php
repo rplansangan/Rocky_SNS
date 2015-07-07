@@ -19,7 +19,7 @@
 	</div>
 
 	<div class="missing-right col-xs-12 col-sm-12 col-m-12 col-lg-12 text-center">
-		<div class="missing-cont col-xs-12 col-sm-6 col-m-12 col-lg-12 text-center">
+		<div class="missing-cont col-xs-12 col-sm-12 col-m-12 col-lg-12 text-center">
 			<div class="missing-infos">
 				<img src="{{ URL::asset('assets/images/new/dolly.jpg') }}">
 				<h2>DOLLY</h2>
@@ -28,7 +28,7 @@
 				<a href="#">VIEW</a>
 			</div>
 		</div>
-		<div class="missing-cont col-xs-12 col-sm-6 col-m-12 col-lg-12 text-center">
+		<div class="missing-cont col-xs-12 col-sm-12 col-m-12 col-lg-12 text-center">
 			<div class="missing-infos">
 				<img src="{{ URL::asset('assets/images/new/john.jpg') }}">
 				<h2>JOHN</h2>

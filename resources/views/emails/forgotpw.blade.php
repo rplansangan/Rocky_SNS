@@ -1,1 +1,0 @@
-{!! trans('emailvalidation.forgot.message_body_0', ['route' => $route, 'name' => $name]) !!}

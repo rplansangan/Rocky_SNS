@@ -8,10 +8,8 @@
     <title>Rocky the Superdog</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/jquery-ui.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/component.css') }}">
     <link href='http://fonts.googleapis.com/css?family=Comfortaa:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Vollkorn:400,700' rel='stylesheet' type='text/css'>
@@ -22,24 +20,14 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>   
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="{{ URL::asset('assets/js/jquery.js') }}"></script>  
+    <script src="{{ URL::asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/rocky.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/elastic.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/jquery-ui.js') }}"></script>
     <script src="{{ URL::asset('assets/js/jquery-form.js') }}"></script>
-    <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
-    <script src="{{ URL::asset('assets/js/component.js') }}"></script>
     <script src="{{ URL::asset('assets/js/jquery.bxSlider.min.js') }}"></script>
   </head>
-	@if(Auth::check())
-		@include('chat.chat_composer')
-	@endif
   <body>
-    <input type="hidden" id="refresh-missing-route" value="{{ Route('get_missingpets') }}">
-    <input type="hidden" id="refresh-found-route" value="{{ Route('get_foundpets') }}">
     @include('top')
-    
     @if($errors->any())
     	<ul>
     		@foreach($errors->all() as $error)
@@ -47,9 +35,7 @@
 			@endforeach
     	</ul>
     @endif
-    
     @yield('content')
-
     @include('footer')
   </body>
 </html>
