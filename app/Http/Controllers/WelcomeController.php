@@ -93,6 +93,7 @@ class WelcomeController extends Controller {
 	}
 	public function dogsWeek(){
 		$data['left'] = 'landing.superdogmenu';
+		$data['right'] = 'landing.right';
 		$data['mid'] = 'landing.dogsofweek';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
 		return view('pages.dogsweek' , $data);
