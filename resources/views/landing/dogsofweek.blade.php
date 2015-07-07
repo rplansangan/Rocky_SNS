@@ -3,8 +3,8 @@
 		<div class="star col-sm-12 col-xs-12 col-md-1 col-lg-1" style="padding:0;">
 			<img src="{{ URL::asset('assets/images/new/dogsweek.png') }}">
 		</div>
-		<div class="col-sm-12 col-xs-12 col-md-11 col-lg-11" style="padding:0;">
-			<p style="font-size: 20px; margin-bottom: 3px">Dogs of the week</p>
+		<div class="col-sm-12 col-xs-12 col-md-11 col-lg-11" style="padding:0 0 0 15px;">
+			<p style="font-size: 18px; margin-bottom: 0px; margin-top: 5px;">Dogs of the week</p>
 			<p style="color: #7d7d7d; font-weight: 700; margin-bottom: 0px">Share your funny videos and vote to be the dogs of the week</p>
 			<div class="searchvids col-sm-12 col-xs-12 col-md-9 col-lg-9">
 	            <form id="tfnewsearch" method="get" action="http://www.google.com">

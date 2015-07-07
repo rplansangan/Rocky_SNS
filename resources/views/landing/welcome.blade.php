@@ -58,7 +58,7 @@
               <ul>
                 <li><a href="#">ABOUT</a></li>
                 <li><a href="#">PET NEEDS</a></li>
-                <li><a href="#">DOGS OF THE WEEK</a></li>
+                <li><a href="{{ route('public.dogsoftheweek') }}">DOGS OF THE WEEK</a></li>
                 <li><a class="active" href="#">ROCKY RANGER</a></li>
               </ul>
             </nav>

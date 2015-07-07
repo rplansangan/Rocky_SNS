@@ -599,6 +599,10 @@ a.buy, a.join {
   padding: 0;
 }
 
+.bowl img {
+  width: 100%;
+}
+
 .cities, .recom-ps h5 {
   margin: 20px 0 10px 0;
 }
@@ -606,9 +610,9 @@ a.buy, a.join {
 .cities a {
   font-family: arial;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 12px;
   color: #b7062b;
-  padding: 0 5px;
+  padding: 0px 1px;
 }
 
 .recom-ps h5 {
@@ -676,7 +680,7 @@ a.buy, a.join {
 
 /*============Dogs of the Week============*/
 .dow-cont {
-  padding: 0 40px 0 0;
+  padding: 0;
   font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
 }
 
@@ -737,7 +741,7 @@ a.buy, a.join {
 }
 
 button.upvid_btn {
-  padding: 13px 25px;
+  padding: 13px 0px;
   margin-top: 9px;
   border-radius: 8px;
   border: 0;
@@ -859,6 +863,7 @@ p.viewsdate {
 }
 .push-right{
   float: right;
+  padding-right: 15px;
 }
 .post-area .btn{
   background: #b7062b !important;
@@ -985,6 +990,7 @@ img.locimg {
 
 .missing-right div img {
   width: 100%;
+  border-radius: 5px;
 }
 
 
@@ -1015,3 +1021,48 @@ img.locimg {
 
 
 /*============Responsive============*/
+@media only screen and (max-width: 1440px) {
+  .like-comm.nps a span {
+    position: absolute;
+    bottom: 73px;
+    left: 8px;
+    color: #262626;
+    font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
+    font-size: 11px;
+  }
+
+  .like-comm a span {
+    position: absolute;
+    bottom: 85px;
+    left: 12px;
+    color: #262626;
+    font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
+    font-size: 11px;
+  }
+
+  .missing-right div .missing-infos {
+    box-shadow: none;
+    border: 1px solid #B3B3B3;
+    min-height: 376px;
+  }
+
+  .location a {
+    padding: 0 5px;
+  }
+}
+
+@media only screen and (max-width: 1340px) {
+  .missing-right div .missing-infos {
+    box-shadow: none;
+    border: 1px solid #B3B3B3;
+    min-height: 360px;
+  }
+
+  .location a {
+    padding: 0 3px;
+  }
+}
+
+@media only screen and (max-width: 1230px) {
+  
+}

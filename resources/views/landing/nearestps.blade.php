@@ -3,8 +3,8 @@
 		<div class="bowl col-sm-12 col-xs-12 col-md-1 col-lg-1" style="padding:0;">
 			<img src="{{ URL::asset('assets/images/new/npet-icon.png') }}">
 		</div>
-		<div class="col-sm-12 col-xs-12 col-md-11 col-lg-11" style="padding:0;">
-			<p style="font-size: 20px; margin-bottom: 3px">Nearest Petshop</p>
+		<div class="col-sm-12 col-xs-12 col-md-11 col-lg-11" style="padding:0 0 0 15px;">
+			<p style="font-size: 18px; margin-bottom: 0">Nearest Petshop</p>
 			<p style="color: #7d7d7d; font-weight: 700; margin-bottom: 0px">Find your nearest petshop or own a petshop with us.</p>
 			<div class="searchpetshop col-sm-12 col-xs-12 col-md-9 col-lg-9">
 	            <form id="tfnewsearch" method="get" action="http://www.google.com">
