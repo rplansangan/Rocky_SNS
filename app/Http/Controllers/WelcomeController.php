@@ -79,8 +79,8 @@ class WelcomeController extends Controller {
 		return view('pages.landing' , $data);
 	}
 	public function petshops(){
-		$data['left'] = 'landing.superdogmenu';
-		$data['right'] = 'landing.right';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
 		$data['mid'] = 'landing.shop';
 		$data['info'] = Business::with(array('advertise' ,'advertise.post' , 'advertise.post.image'))->latest()->get();
 		return view('pages.landing' , $data);
@@ -107,8 +107,8 @@ class WelcomeController extends Controller {
 		return view('pages.insiderocky' , $data);
 	}
 	public function missingPets(){
-		$data['left'] = 'landing.superdogmenu';
-		$data['right'] = 'landing.right';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
 		$data['mid'] = 'landing.missingpets';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
 		return view('pages.insiderocky' , $data);
