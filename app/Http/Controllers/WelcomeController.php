@@ -78,13 +78,6 @@ class WelcomeController extends Controller {
 		$data['status'] = "Latest Videos";
 		return view('pages.landing' , $data);
 	}
-	public function petshops(){
-		$data['left'] = 'include.superdogmenu';
-		$data['right'] = 'include.right';
-		$data['mid'] = 'landing.shop';
-		$data['info'] = Business::with(array('advertise' ,'advertise.post' , 'advertise.post.image'))->latest()->get();
-		return view('pages.landing' , $data);
-	}
 	public function petlovers(){
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';

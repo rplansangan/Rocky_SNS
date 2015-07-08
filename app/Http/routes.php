@@ -394,6 +394,7 @@ Route::get('pet/lovers/nearestpetshop', [
 Route::get('pet/missingpets', [
 	'as' => 'public.missingpets',
 	'uses' => 'WelcomeController@missingPets'
+]);
 
 Route::get('underconstruction', [
 	'as' => 'uc',
