@@ -1,6 +1,5 @@
 <div class="container-fluid">
 	@include('include.formPost')
-
 	@if(!empty($newsfeed))
 		@foreach($newsfeed as $row)
 			<div class="row post-area">

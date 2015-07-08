@@ -13,8 +13,8 @@
 	<div class="trackapp col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<img class="locimg" src="{{ URL::asset('assets/images/new/trackerapp.png') }}">
 		<div class="track-btn text-center">
-			<a class="learn" href="#">LEARN MORE</a>
-			<a class="buy" href="#">BUY NOW</a>
+			<a class="learn" href="{{ route('uc') }}">LEARN MORE</a>
+			<a class="buy" href="{{ route('uc') }}">BUY NOW</a>
 		</div>
 	</div>
 	<div class="missing-right col-xs-12 col-sm-12 col-m-12 col-lg-12 text-center">
@@ -27,7 +27,7 @@
 							<h2><?php echo $row->pet_name ?></h2>
 							<p></p>
 							<h3 class="text-uppercase">MISSING <br/> <?php echo _ago(strtotime($row->created_at))?></h3>
-							<a href="#">VIEW</a>
+							<a href="{{ route('uc') }}">VIEW</a>
 						</div>
 					</div>
 				<?php

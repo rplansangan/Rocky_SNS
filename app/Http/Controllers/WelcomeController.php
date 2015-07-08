@@ -86,28 +86,32 @@ class WelcomeController extends Controller {
 		return view('pages.landing' , $data);
 	}
 	public function petlovers(){
-		$data['left'] = 'landing.superdogmenu';
-		$data['right'] = 'landing.right';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
 		$data['mid'] = 'landing.lovers';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
 		return view('pages.insiderocky' , $data);
 	}
 	public function dogsWeek(){
-		$data['left'] = 'landing.superdogmenu';
-		$data['right'] = 'landing.right';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
 		$data['mid'] = 'landing.dogsofweek';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
 		return view('pages.insiderocky' , $data);
 	}
 	public function nearestPS(){
-		$data['left'] = 'landing.superdogmenu';
-		$data['right'] = 'landing.right';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
 		$data['mid'] = 'landing.nearestps';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
 		return view('pages.insiderocky' , $data);
 	}
 
-	public function test(Request $request){
-		custom_print_r($request->all());
+	public function uc(){
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'errors.uc';
+		$data['title'] = 'Under Construction';
+		return view('pages.insiderocky' , $data);
 	}
 }
