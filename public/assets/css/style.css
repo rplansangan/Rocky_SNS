@@ -1069,3 +1069,18 @@ img.locimg {
 @media only screen and (max-width: 1230px) {
   
 }
+
+
+/* OTHER*/
+#play-button  img{
+  width: 150px;
+}
+#play-button{
+  border: 1px solid black;
+  width: 100%;
+  text-align: center;
+  margin: 0px auto;
+  margin-top: -50%;
+  margin-bottom: 30%;
+}
+/*END OTHER*/

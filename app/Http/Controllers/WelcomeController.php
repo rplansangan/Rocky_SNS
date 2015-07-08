@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use SNS\Models\FoundPets;
 use SNS\Models\Registration;
 use SNS\Models\Images;
+use SNS\Models\MissingPets;
 use SNS\Models\Business;
 use SNS\Models\LostFoundPetImages;
 use SNS\Libraries\Facades\StorageHelper;
@@ -85,22 +86,22 @@ class WelcomeController extends Controller {
 		return view('pages.landing' , $data);
 	}
 	public function petlovers(){
-		$data['left'] = 'landing.superdogmenu';
-		$data['right'] = 'landing.right';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
 		$data['mid'] = 'landing.lovers';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
 		return view('pages.insiderocky' , $data);
 	}
 	public function dogsWeek(){
-		$data['left'] = 'landing.superdogmenu';
-		$data['right'] = 'landing.right';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
 		$data['mid'] = 'landing.dogsofweek';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
 		return view('pages.insiderocky' , $data);
 	}
 	public function nearestPS(){
-		$data['left'] = 'landing.superdogmenu';
-		$data['right'] = 'landing.right';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
 		$data['mid'] = 'landing.nearestps';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
 		return view('pages.insiderocky' , $data);
@@ -110,6 +111,13 @@ class WelcomeController extends Controller {
 		$data['right'] = 'landing.right';
 		$data['mid'] = 'landing.missingpets';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
+		return view('pages.insiderocky' , $data);
+	}
+	public function uc(){
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'errors.uc';
+		$data['title'] = 'Under Construction';
 		return view('pages.insiderocky' , $data);
 	}
 }

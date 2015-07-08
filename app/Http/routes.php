@@ -9,9 +9,10 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('test', function() {
-    dd($_SERVER);
-});
+Route::get('test', array(
+    'as' => 'test',
+    'uses' => 'WelcomeController@test',
+));
 Route::get('/', array(
     'as' => 'index',
     'uses' => 'WelcomeController@index',
@@ -240,59 +241,7 @@ Route::get('petfoundation', array(
 	'uses' => 'PetfoundationController@petfoundation'
 ));
 
-/* ADVERTISE */
-Route::get('merchant/{id}', array(
-	'as' => 'merchant.profile',
-	'uses' => 'MerchantController@merchantProf'
-));
-Route::get('merchant_activation', array(
-	'as' => 'advertised',
-	'uses' => 'MerchantController@show_advertise_view'
-));
-Route::get('add_advertise', array(
-	'as' => 'addadvertise',
-	'uses' => 'HomeController@addadvertise'
-	));
-Route::get('activate_merchant', array(
-	'as' => 'activate_merchant',
-	'uses' => 'MerchantController@merchant_activation'
-	));
-Route::post('add_advertisement', array(
-	'as' => 'ads.add_advertisement',
-	'uses' => 'MerchantController@add_advertisement'
-));
-Route::post('register_activate_merchant', array(
-	'as' => 'register_activate_merchant',
-	'uses' => 'MerchantController@activate_merchant'
-	));
-Route::post('merchant/post', array(
-	'as' => 'merchant.post',
-	'uses' => 'MerchantController@add_advertisement'
-	));
-Route::get('profile/{id}/{advertised_id}', array(
-	'as' => 'profile.advertised',
-	'uses' => 'MerchantController@showAdvertised'
-));
-Route::get('add_advertisment', array(
-	'as' => 'add_advertisement',
-	'uses' => 'MerchantController@viewAdform'
-));
-Route::post('merchant/inquire', array(
-	'as' => 'merchant.inquire',
-	'uses' => 'MerchantController@addOrderInquire'
-	));
-Route::get('merchants/{id}/{advertise_id}', array(
-	'as' => 'merch_adview',
-	'uses' => 'MerchantController@merch_adview'
-	));
-Route::get('checknewpost', array(
-	'as' => 'post.check',
-	'uses' => 'PostsController@checknewpost'
-	));
-Route::get('getnewfeeds', array(
-	'as' => 'get.newfeeds',
-	'uses' => 'PostsController@getnewfeeds'
-	));
+
 
 //Pet Foundation
 Route::get('foundation/register', [
@@ -445,6 +394,11 @@ Route::get('pet/lovers/nearestpetshop', [
 Route::get('pet/missingpets', [
 	'as' => 'public.missingpets',
 	'uses' => 'WelcomeController@missingPets'
+
+Route::get('underconstruction', [
+	'as' => 'uc',
+	'uses' => 'WelcomeController@uc'
+
 ]);
 
 Route::group(['prefix' => 'administration', 'namespace' => 'Admin', 'middleware' => ['auth', 'manage']], function() {

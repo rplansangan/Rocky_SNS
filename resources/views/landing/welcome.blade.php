@@ -67,7 +67,8 @@
         <!-- END HEADER -->
 
  <!-- SLIDER -->
-    <div id="sliderdiv1">
+    <div style="height:550px;">
+      <div id="sliderdiv1">
         <div id="sliderdiv2">
             <div id="slider1">
                 <div>
@@ -109,10 +110,11 @@
             </div>
         </div>
     </div>
+    </div>
     <!-- END SLIDER -->
     <!-- SECTION -->
     <section class="text-right nopad">
-        <div style="width:50%;margin:0 auto;">
+        <div style="width:71%;margin:0 auto;">
             <div class="col-lg-6">
                 <img src="{{ URL::asset('assets/images/landing/dog3.png') }}" class="img-responsive" id="layer2" style="top: 123px;">
             </div>
@@ -131,7 +133,7 @@
         </div>
     </section>
     <section class="text-left nopad landing-bg-section-2">
-        <div style="width:50%;margin:0 auto;">
+        <div style="width:69.2%;margin:0 auto;">
             <div class="col-lg-6 ">
                 <h1>ALL YOUR PET NEEDS</h1>
                 <p>Bring your dog to Doggy Daycare and go<br>
@@ -146,7 +148,7 @@
         </div>
     </section>
     <section class="text-right nopad">
-        <div style="width:50%;margin:0 auto;">
+        <div style="width:71%;margin:0 auto;">
             <div class="col-lg-6">
                 <img src="{{ URL::asset('assets/images/landing/dog5.png') }}" class="img-responsive" id="layer2" style="margin-top: 131px;">
             </div>
@@ -164,7 +166,7 @@
             </div>
         </section>
         <section class="map ">
-            <div style="width:70%;margin:0 auto;">
+            <div style="width:74%;margin:0 auto;">
                 <div class="col-lg-6">
                     <img src="{{ URL::asset('assets/images/landing/phone2.png') }}" class="img-responsive">
                 </div>
@@ -194,8 +196,8 @@
                     </span>
                   </div><!-- /input-group -->
                   <div style="padding-top:20px;">
-                  	<a href="#" style="padding-top:20px;"><i class="fa fa-facebook-square fa-2x"></i></a>
-                  	<a href="#" style="padding-top:20px;"><i class="fa fa-instagram fa-2x"></i></a>
+                    <a href="#" style="padding-top:20px;"><i class="fa fa-facebook-square fa-2x"></i></a>
+                    <a href="#" style="padding-top:20px;"><i class="fa fa-instagram fa-2x"></i></a>
                   </div>
                 </div>
                 <nav class="col-lg-12">

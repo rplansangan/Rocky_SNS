@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 $( document ).ready(function() {
 	//login
 	$('.login_btn').on('click' , function(){
@@ -7,6 +8,24 @@ $( document ).ready(function() {
 	//signup
 	$('.signup_btn').on('click' , function(){
 		$('#signupModal').modal('show');
+	});
+
+	//post
+	$.ajaxSetup({
+	  data: { "_token": $('#token').val() },
+	  type: "POST"
+	});
+
+	$(document).on('click' , '#send' , function(e){
+		$.ajax({
+			type: "GET",
+			url: $(this).attr('href'),
+			data: {'other' : 'ok'},
+			success: function(a){
+				alert(a);
+			}
+		});
+		e.preventDefault();
 	});
 
 	//signup form validation

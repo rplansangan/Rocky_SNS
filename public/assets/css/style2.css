@@ -46,8 +46,9 @@ html , body{
 #landing section > div > div:last-child{
   margin-top: 30px;
 }
-#landing .landing-bg-section-2{
-  color: white;
+#landing .landing-bg-section-2 > div{
+  height: 100%;
+  color:white;
   background-image: url('../images/landing/bg.png');
   background-size: cover;
   background-position: top center;
@@ -98,12 +99,12 @@ html , body{
   
 #sliderdiv1{
   width: 100%; display: block; visibility: visible; overflow: hidden;
-  height: 600px;
+  height: 100%;
 }
 
 #sliderdiv2{
-  width: 75%; display: block; visibility: visible; 
-  margin: 0px auto;
+  width: 70%; display: block; visibility: visible; 
+  margin-left:14%;
   z-index: 5;
 }
 #slider1 h1{
@@ -124,14 +125,14 @@ html , body{
   width: 550px;
   margin: 0px auto;
 }
-#sl #layer1 ,#sl #layer2{
+#sl #layer1{
   position: absolute;
   width: 400px;
-  top: 40px;
+  top: 80px;
   margin-left: 80px;
 }
 #slider1 .item > div > h2{
-  margin-top: 50px;
+  margin-top: 85px;
 }
 #slider1 > div > img{
   width: 100%;

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Rocky the Superdog</title>
+    <title><?php echo $title; ?></title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap/css/bootstrap.min.css') }}">
@@ -21,9 +21,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>   
-    <script src="{{ URL::asset('assets/js/elastic.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/jquery-ui.js') }}"></script>
     <script src="{{ URL::asset('assets/js/jquery.js') }}"></script>  
     <script src="{{ URL::asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/rocky.js') }}"></script>
@@ -31,6 +28,7 @@
     <script src="{{ URL::asset('assets/js/bxslider.js') }}"></script>
   </head>
   <body>
+    <input type="hidden" id="token" value="{{ csrf_token() }}">
     @include('top')
     @if($errors->any())
     	<ul>
