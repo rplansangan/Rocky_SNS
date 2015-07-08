@@ -55,7 +55,5 @@
 		@endforeach
 	@else
 		<p>No Post</p>
-	@end
-	
-
+	@endif
 </div>

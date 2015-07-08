@@ -32,7 +32,6 @@
   </head>
   <body>
     <input type="hidden" id="token" value="{{ csrf_token() }}">
-    <a href="{{ Route('test') }}" id="send">Send</a>
     @include('top')
     @if($errors->any())
     	<ul>
