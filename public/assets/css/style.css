@@ -210,308 +210,6 @@ span.line {
 }
 
 
-/*============Landing============*/
-.bx-prev {
-  background: transparent url("../images/new/prev_new.png") no-repeat scroll 0 0;
-  float: left;
-  height: 200px;
-  left: 5px;
-  position: absolute;
-  text-indent: -999999px;
-  top: 256px;
-  width: 31px;
-}
-
-.bx-next {
-  background: transparent url("../images/new/next_new.png") no-repeat scroll 0 0;
-  float: right;
-  height: 200px;
-  position: absolute;
-  right: 0;
-  text-indent: -999999px;
-  top: 255px;
-  width: 35px;
-}
-  
-#sliderdiv1{
-  width: 100%; display: block; visibility: visible; overflow: hidden;
-}
-
-#sliderdiv2{
-  width: 1160px; display: block; visibility: visible; margin: 0 auto;
-}
-
-#container{
-  text-align:center;
-}
-
-#slider1 .item {
-  position: absolute;
-  top: 250px;
-  margin-left: 80px;
-  z-index: 9999;
-  color: #fff;
-  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
-}
-
-#slider1 .item p {
-  font-size: 22px;
-}
-
-#slider1 .item h1 {
-  margin-bottom: 40px;
-}
-
-#slider1 .item a {
-  color: #fff;
-  padding: 15px;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
-.landing-content {
-  padding: 0;
-  background-color: #E6E7E8;
-  text-align: center;
-}
-
-.why-join {
-  padding: 35px;
-  background-color: #E6E7E8;
-  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
-  font-weight: bold;
-  font-size: 40px;
-}
-
-.why-join h1 {
-  font-size: 40px;
-}
-
-.why-join p {
-  font-size: 16px;
-  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
-  font-weight: normal;
-}
-
-.photo-menu, .first-row, .sec-row {
-  padding: 0;
-  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
-}
-
-.first-row a, .sec-row a {
-  color: #fff;
-  padding: 10px 15px;
-  border: 3px solid;
-}
-
-.first-row h1, .sec-row h1 {
-  margin-bottom: 30px;
-}
-
-.find {
-  background: url('../images/new/missingpets.jpg') no-repeat scroll center;
-  background-size: 100%;
-  padding: 9% 0;
-  color: #fff;
-}
-
-.find:hover {
-  background: url('../images/new/missingpetsHV.jpg') no-repeat scroll center;
-  background-size: 100%;
-  padding: 9% 0;
-  color: #000;
-  -webkit-transition: all 0.6s ease-in-out;
-  -moz-transition: all 0.6s ease-in-out;
-  -o-transition: all 0.6s ease-in-out;
-  transition: all 0.6s ease-in-out;
-}
-
-.find:hover a {
-  color: #000;
-  -webkit-transition: all 0.6s ease-in-out;
-  -moz-transition: all 0.6s ease-in-out;
-  -o-transition: all 0.6s ease-in-out;
-  transition: all 0.6s ease-in-out;
-}
-
-
-.community {
-  background: url('../images/new/petlovers.jpg') no-repeat scroll center;
-  background-size: 100% 100%;
-  padding: 9% 0;
-  color: #fff;
-}
-
-.community:hover {
-  background: url('../images/new/petloversHV.jpg') no-repeat scroll center;
-  background-size: 100% 100%;
-  padding: 9% 0;
-  color: #000;
-  -webkit-transition: all 0.6s ease-in-out;
-  -moz-transition: all 0.6s ease-in-out;
-  -o-transition: all 0.6s ease-in-out;
-  transition: all 0.6s ease-in-out;
-}
-
-.community:hover a {
-  color: #000;
-  -webkit-transition: all 0.6s ease-in-out;
-  -moz-transition: all 0.6s ease-in-out;
-  -o-transition: all 0.6s ease-in-out;
-  transition: all 0.6s ease-in-out;
-}
-
-
-.all {
-  background: url('../images/new/petgrommers.jpg') no-repeat scroll center;
-  background-size: 100% 100%;
-  padding: 9% 0;
-  color: #fff;
-}
-
-.all:hover {
-  background: url('../images/new/petgrommersHov.jpg') no-repeat scroll center;
-  background-size: 100% 100%;
-  padding: 9% 0;
-  color: #000;
-  -webkit-transition: all 0.6s ease-in-out;
-  -moz-transition: all 0.6s ease-in-out;
-  -o-transition: all 0.6s ease-in-out;
-  transition: all 0.6s ease-in-out;
-}
-
-.all:hover a {
-  color: #000;
-  -webkit-transition: all 0.6s ease-in-out;
-  -moz-transition: all 0.6s ease-in-out;
-  -o-transition: all 0.6s ease-in-out;
-  transition: all 0.6s ease-in-out;
-}
-
-
-.watch {
-  background: url('../images/new/funnyvideos.jpg') no-repeat scroll center;
-  background-size: 100% 100%;
-  padding: 9% 0;
-  color: #fff;
-}
-
-.watch:hover {
-  background: url('../images/new/funnyvideosHV.jpg') no-repeat scroll center;
-  background-size: 100% 100%;
-  padding: 9% 0;
-  color: #000;
-  -webkit-transition: all 0.6s ease-in-out;
-  -moz-transition: all 0.6s ease-in-out;
-  -o-transition: all 0.6s ease-in-out;
-  transition: all 0.6s ease-in-out;
-}
-
-.watch:hover a {
-  color: #000;
-  -webkit-transition: all 0.6s ease-in-out;
-  -moz-transition: all 0.6s ease-in-out;
-  -o-transition: all 0.6s ease-in-out;
-  transition: all 0.6s ease-in-out;
-}
-
-.wc-cont {
-  background: url('../images/new/vet.jpg') no-repeat scroll center;
-  background-size: 100% 100%;
-  padding: 10% 0;
-  color: #fff;
-  font-weight: bold;
-  text-shadow: 4px 4px 8px rgba(76, 76, 76, 1);
-  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
-}
-
-.wc-cont h1 {
-  font-weight: bold;
-}
-
-.wc-cont h4 {
-  margin-bottom: 30px;
-  font-weight: bold;
-}
-
-.wc-cont a {
-  color: #fff;
-  padding: 10px 15px;
-  border: 3px solid;
-  font-weight: bold;
-}
-
-.land-missing-pets {
-  padding: 25px;
-  background-color: #E6E7E8;
-  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
-}
-
-h1.missing-intro {
-  margin: 45px 0 60px 0;
-}
-
-h1.missing-bottom {
-  margin: 15px;
-}
-
-.missing-infos {
-  -webkit-box-shadow: 10px 11px 8px 0px rgba(50, 50, 50, 0.55);
-  -moz-box-shadow: 10px 11px 8px 0px rgba(50, 50, 50, 0.55);
-  box-shadow: 10px 11px 8px 0px rgba(50, 50, 50, 0.55);
-  border-radius: 5px;
-  min-height: 380px;
-  margin-bottom: 50%;
-}
-
-.missing-infos p {
-  border-top: 1px solid;
-  width: 50%;
-  display: table;
-  margin: 0 auto;
-}
-
-.missing-infos h3 {
-  margin-bottom: 30px;
-  font-weight: bold;
-}
-
-.missing-infos a {
-  padding: 10px 10px 31px 10px;
-  margin-top: 10px;
-  color: #fff;
-  background: rgb(250,47,47); /* Old browsers */
-  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
-  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZhMmYyZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2ZDAyMDIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-  background: -moz-linear-gradient(top,  rgba(250,47,47,1) 0%, rgba(109,2,2,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(250,47,47,1)), color-stop(100%,rgba(109,2,2,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(250,47,47,1) 0%,rgba(109,2,2,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(250,47,47,1) 0%,rgba(109,2,2,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(250,47,47,1) 0%,rgba(109,2,2,1) 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  rgba(250,47,47,1) 0%,rgba(109,2,2,1) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fa2f2f', endColorstr='#6d0202',GradientType=0 ); /* IE6-8 */
-}
-
-.land-map {
-  background: url('../images/new/map.jpg') no-repeat fixed center;
-  margin-bottom: 10%;
-}
-
-.map-phone {
-  margin: 5% 0;
-}
-
-.map-details {
-  color: #fff;
-  margin: 15% 0;
-  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
-}
-
-.map-details h1 {
-  font-size: 50px;
-  font-weight: bold;
-}
-
 .track-btn {
   margin: 20px 0;
 }
@@ -523,36 +221,9 @@ h1.missing-bottom {
   font-weight: bold;
 }
 
-a.learn, a.slilearn {
-  background-color: #EE9B00;
-  margin-right: 10px;
-}
-
 a.buy, a.join {
   background-color: #b7062b;
 }
-
-.we-care {
-  padding: 0;
-  background-color: #E6E7E8;
-}
-
-.we-care img {
-  margin-top: 10%;
-  width: 100%;
-}
-
-.social {
-  margin: 15px 0;
-  font-weight: bold;
-  color: #454545;
-  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
-}
-
-.social p {
-  font-size: 20px;
-}
-
 
 /*============LEFT SIDEBAR============*/
 .bg-rocky{
@@ -678,6 +349,23 @@ a.buy, a.join {
   color: #252525;
   background-color: #D1D1D1;
   border-radius: 8px;
+}
+
+
+/*============Missing Pets============*/
+.misdetails {
+  text-align: center;
+}
+
+.misdetails a {
+  color: #B7062B;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.misdetails p, .misdetails h4 {
+  margin: 0 !important;
+  font-weight: bold;
 }
 
 

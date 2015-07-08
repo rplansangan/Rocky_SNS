@@ -27,7 +27,7 @@
 							<h2><?php echo $row->pet_name ?></h2>
 							<p></p>
 							<h3 class="text-uppercase">MISSING <br/> <?php echo _ago(strtotime($row->created_at))?></h3>
-							<a href="{{ route('uc') }}">VIEW</a>
+							<a href="{{ route('public.missingpets') }}">VIEW</a>
 						</div>
 					</div>
 				<?php
