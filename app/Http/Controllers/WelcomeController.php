@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use SNS\Models\FoundPets;
 use SNS\Models\Registration;
 use SNS\Models\Images;
+use SNS\Models\MissingPets;
 use SNS\Models\Business;
 use SNS\Models\LostFoundPetImages;
 use SNS\Libraries\Facades\StorageHelper;
@@ -104,5 +105,9 @@ class WelcomeController extends Controller {
 		$data['mid'] = 'landing.nearestps';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
 		return view('pages.insiderocky' , $data);
+	}
+
+	public function test(Request $request){
+		custom_print_r($request->all());
 	}
 }

@@ -9,9 +9,10 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('test', function() {
-    dd($_SERVER);
-});
+Route::get('test', array(
+    'as' => 'test',
+    'uses' => 'WelcomeController@test',
+));
 Route::get('/', array(
     'as' => 'index',
     'uses' => 'WelcomeController@index',

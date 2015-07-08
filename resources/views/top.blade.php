@@ -37,7 +37,7 @@
         </div>
         <div class="col-md-4 col-lg-4 search">
             <div id="tfheader">
-              <form id="tfnewsearch" method="get" action="{{ Route('search') }}">
+              <form id="tfnewsearch" method="get" action="#">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="text" id="tfq" class="tftextinput4" name="name" size="21" maxlength="120">
                     <input type="submit" value=" " class="tfbutton4">

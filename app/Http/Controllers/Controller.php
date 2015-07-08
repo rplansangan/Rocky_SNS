@@ -19,11 +19,21 @@ abstract class Controller extends BaseController {
 	}
 	
 	protected function initialize() {
+		$this->setPubGlobals();
+
 		if(auth()->check()) {
 // 			if(!Request::ajax()) {
 				$this->setGlobals();
 // 			}
 		}	
+	}
+
+	private function setPubGlobals() {
+		$list['missing'] = $missingPets = MissingPets::with(['profile.image'])->orderByRaw("RAND()")->limit(2)->get();
+		Cache::add('shared.lists.lnfpets', $list, 5);
+
+		view()->share(['missing_pets' => $missingPets]);
+
 	}
 	
 	protected function setGlobals() {
@@ -33,22 +43,11 @@ abstract class Controller extends BaseController {
 			$foundPets = $list['found'];
 			$missingPets = $list['missing'];
 		} else {
-			$list['found'] = $foundPets = FoundPets::with(['image'])->orderByRaw("RAND()")->first();
-			$list['missing'] = $missingPets = MissingPets::with(['profile.image'])->orderByRaw("RAND()")->first();
-			Cache::add('shared.lists.lnfpets', $list, 5);
+			
 		}		
 
-		// Notifications
-// 		if (Cache::has('user.notifs.' . Auth::id())) {
-// 			$notifs = Cache::get('user.notifs.' . Auth::id());
-// 		} else {
-// 			$notifs = Notification::collectInitial(auth()->id());
-// 			Cache::put('user.notifs.' . Auth::id(), $notifs, 1);
-// 		}
-
 		$notifs = null;
-		
-		view()->share(['user_notifs' =>  $notifs,'found_pets' => $foundPets, 'missing_pets' => $missingPets]);
+		view()->share(['user_notifs' =>  $notifs]);
 	}
 
 }

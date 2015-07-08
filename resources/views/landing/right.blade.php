@@ -17,25 +17,21 @@
 			<a class="buy" href="#">BUY NOW</a>
 		</div>
 	</div>
-
 	<div class="missing-right col-xs-12 col-sm-12 col-m-12 col-lg-12 text-center">
-		<div class="missing-cont col-xs-12 col-sm-12 col-m-12 col-lg-12 text-center">
-			<div class="missing-infos">
-				<img src="{{ URL::asset('assets/images/new/dolly.jpg') }}">
-				<h2>DOLLY</h2>
-				<p></p>
-				<h3>MISSING <br/> 02 DAYS</h3>
-				<a href="#">VIEW</a>
-			</div>
-		</div>
-		<div class="missing-cont col-xs-12 col-sm-12 col-m-12 col-lg-12 text-center">
-			<div class="missing-infos">
-				<img src="{{ URL::asset('assets/images/new/john.jpg') }}">
-				<h2>JOHN</h2>
-				<p></p>
-				<h3>MISSING <br/> 02 DAYS</h3>
-				<a href="#">VIEW</a>
-			</div>
-		</div>
-	</div>
+		<?php 
+			foreach($missing_pets as $row){
+				?>
+					<div class="missing-cont col-xs-12 col-sm-12 col-m-12 col-lg-12 text-center">
+						<div class="missing-infos">
+							<img src="<?php echo mediaSrc($row->profile->image[0]->image_path , $row->profile->image[0]->image_name , $row->profile->image[0]->image_ext ); ?>">
+							<h2><?php echo $row->pet_name ?></h2>
+							<p></p>
+							<h3 class="text-uppercase">MISSING <br/> <?php echo _ago(strtotime($row->created_at))?></h3>
+							<a href="#">VIEW</a>
+						</div>
+					</div>
+				<?php
+			}
+		?>
+	</div>	
 </div>

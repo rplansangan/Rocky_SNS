@@ -1,200 +1,61 @@
 <div class="container-fluid">
 	@include('include.formPost')
 
-	@foreach($newsfeed as $row)
-		<div class="row post-area">
-			<div class="userinf col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<a href="#"><img style="width:40px" src="<?php echo mediaSrc($row->user->prof_pic->image_path, $row->user->prof_pic->image_name , $row->user->prof_pic->image_ext) ?>"></a>
-				<a href="#">{{ $row->user->first_name.' '.$row->user->last_name}}</a>
-				<span>
-				<?php 
-					if(isset($row->image)){
-						if(stristr($row->image->image_mime, 'image/')){
-							echo 'posted a Image<br/>';
-						}else{
-							echo 'posted a video<br/>';
+	@if(!empty($newsfeed))
+		@foreach($newsfeed as $row)
+			<div class="row post-area">
+				<div class="userinf col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<a href="#"><img style="width:40px" src="<?php echo mediaSrc($row->user->prof_pic->image_path, $row->user->prof_pic->image_name , $row->user->prof_pic->image_ext) ?>"></a>
+					<a href="#">{{ $row->user->first_name.' '.$row->user->last_name}}</a>
+					<span>
+					<?php 
+						if(isset($row->image)){
+							if(stristr($row->image->image_mime, 'image/')){
+								echo 'posted a Image';
+							}else{
+								echo 'posted a video';
+							}
 						}
-					}
-				?>
-				</span>
-				<span class="date"><?php echo _ago(strtotime($row->created_at)) ?> ago</span>
-			</div>
-			<div class="postcont col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<img class="vidphoto" src="{{ URL::asset('assets/images/new/vidpug.png') }}"></a>
-				<div class="like-comm">
-					<a href="#"><img src="{{ URL::asset('assets/images/new/rheart.png') }}"><span>28</span></a>
-					<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
+					?>
+					</span>
+					<span class="date" ><?php echo _ago(strtotime($row->created_at)) ?> ago</span><br>
 				</div>
-				<div class="col-lg-1 nopad img-arrow">
-					<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
-				</div>
-				<div class="comminput col-lg-11" style="padding-right:0;">
-					<div class="row">
-						<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
+				<div class="postcont col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<p><?php echo $row->post->post_message ?></p>
+					<?php 
+						if(isset($row->image)){
+							if(stristr($row->image->image_mime, 'image/')){
+								?>
+									<a href="#"><img class="vidphoto img-responsive img-thumbnail" src="<?php echo mediaSrc($row->image->image_path, $row->image->image_name , $row->image->image_ext) ?>"></a>
+								<?php
+							}else{
+								?>
+									<img class="vidphoto img-responsive img-thumbnail" src="<?php echo mediaSrc($row->image->image_path, $row->image->image_name.'_thumb' , 'jpg' ) ?>">
+									<div id="play-button"><a href="#"><img src="{{ URL::asset('assets/images/landing/play.png') }}" > </a></div>
+								<?php
+							}
+						}
+					?>
+					<div class="like-comm">
+						<a href="#"><img src="{{ URL::asset('assets/images/new/rheart.png') }}"><span style="color:white">28</span></a>
+						<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
+					</div>
+					<div class='row'>
+						<div class="col-lg-1 nopad img-arrow">
+							<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
+						</div>
+						<div class="comminput col-lg-11" style="padding-right:0;">
+							<div class="row">
+								<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	@endforeach
+		@endforeach
+	@else
+		<p>No Post</p>
+	@end
+	
 
-	<div class="row post-area">
-		<div class="userinf col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<a href="#"><img class="" src="{{ URL::asset('assets/images/new/bull.png') }}"></a>
-			<a href="#">{{ $row->user->first_name.' '.$row->user->last_name}}</a>
-			<span>
-			<?php 
-				if(isset($row->image)){
-					if(stristr($row->image->image_mime, 'image/')){
-						echo 'posted a Image<br/>';
-					}else{
-						echo 'posted a video<br/>';
-					}
-				}
-			?>
-			</span>
-			<span class="date"><?php echo _ago(strtotime($row->created_at)) ?> ago</span>
-		</div>
-		<div class="postcont col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<img class="vidphoto" src="{{ URL::asset('assets/images/new/vidpug.png') }}"></a>
-			<div class="like-comm">
-				<a href="#"><img src="{{ URL::asset('assets/images/new/rheart.png') }}"><span>28</span></a>
-				<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
-			</div>
-			<div class="col-lg-1 nopad img-arrow">
-				<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
-			</div>
-			<div class="comminput col-lg-11" style="padding-right:0;">
-				<div class="row">
-					<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row post-area">
-		<div class="userinf col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<a href="#"><img class="" src="{{ URL::asset('assets/images/new/twins.png') }}"></a>
-			<a href="#">Twins</a>
-			<span class="date">29 mins ago</span>
-		</div>
-		<div class="postcont col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<p>What Vaccinations Should My Pet Get?</p>
-			<div class="like-com-sec col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="like-comm">
-					<a href="#"><img src="{{ URL::asset('assets/images/new/wheart.png') }}"><span>12</span></a>
-					<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
-				</div>
-				<div class="col-lg-1 nopad img-arrow">
-					<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
-				</div>
-				<div class="comminput col-lg-11" style="padding-right:0;">
-					<div class="row">
-						<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row post-area">
-		<div class="userinf col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<a href="#"><img class="" src="{{ URL::asset('assets/images/new/boby.png') }}"></a>
-			<a href="#">Bobby</a>
-			<span class="date">30 mins ago</span>
-		</div>
-		<div class="postcont col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<p>How are you feeling today?</p>
-			<div class="like-com-sec col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="like-comm">
-					<a href="#"><img src="{{ URL::asset('assets/images/new/wheart.png') }}"><span>15</span></a>
-					<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
-				</div>
-				<div class="col-lg-1 nopad img-arrow">
-					<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
-				</div>
-				<div class="comminput col-lg-11" style="padding-right:0;">
-					<div class="row">
-						<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row post-area">
-		<div class="userinf col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<a href="#"><img class="" src="{{ URL::asset('assets/images/new/brownie.png') }}"></a>
-			<a href="#">Brownie</a>
-			<span>posted a video</span>
-			<span class="date">32 mins ago</span>
-		</div>
-		<div class="postcont col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<img class="vidphoto" src="{{ URL::asset('assets/images/new/smilevid.png') }}"></a>
-			<div class="like-com-sec col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="like-comm">
-					<a href="#"><img src="{{ URL::asset('assets/images/new/rheart.png') }}"><span>132</span></a>
-					<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
-				</div>
-				<div class="col-lg-1 nopad img-arrow">
-					<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
-				</div>
-				<div class="comminput col-lg-11" style="padding-right:0;">
-					<div class="row">
-						<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row post-area">
-		<div class="userinf col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<a href="#"><img class="" src="{{ URL::asset('assets/images/new/husky.png') }}"></a>
-			<a href="#">Husky33</a>
-			<span class="date">40 mins ago</span>
-		</div>
-		<div class="postcont col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<p>I am feeling grumpy today. What makes husky happy?</p>
-			<div class="like-com-sec col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="like-comm">
-					<a href="#"><img src="{{ URL::asset('assets/images/new/wheart.png') }}"><span>15</span></a>
-					<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
-				</div>
-				<div class="col-lg-1 nopad img-arrow">
-					<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
-				</div>
-				<div class="comminput col-lg-11" style="padding-right:0;">
-					<div class="row">
-						<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row post-area">
-		<div class="userinf col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<a href="#"><img class="" src="{{ URL::asset('assets/images/new/rosey.png') }}"></a>
-			<a href="#">Rosey</a>
-			<span>posted a video</span>
-			<span class="date">41 mins ago</span>
-		</div>
-		<div class="postcont col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<img class="vidphoto" src="{{ URL::asset('assets/images/new/dogsvid.png') }}"></a>
-			<div class="like-com-sec col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="like-comm">
-					<a href="#"><img src="{{ URL::asset('assets/images/new/rheart.png') }}"><span>80</span></a>
-					<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
-				</div>
-				<div class="col-lg-1 nopad img-arrow">
-					<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
-				</div>
-				<div class="comminput col-lg-11" style="padding-right:0;">
-					<div class="row">
-						<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 </div>
