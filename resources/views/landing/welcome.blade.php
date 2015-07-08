@@ -78,7 +78,7 @@
                             <h2>The community for your furry buddy</h2>
                             <div class="button-group">
                                 <a href="#" id="btn1">Learn More</a>
-                                <a href="#" id="btn2">Join Now</a>
+                                <a class="signup_btn" data-toggle="modal" data-target="#signupModal" href="javascript:void(0)" id="btn2">Join Now</a>
                                 <br>
                                 <label>
                                     <a class="login_btn" data-toggle="modal" data-target="#loginModal" href="javascript:void(0)">Already a member? LOGIN</a>
@@ -125,7 +125,7 @@
                     provide the best for your furry friend
                 </p>
                 <div class="button-group">
-                    <a href="#" id="btn2">Join Now</a>
+                    <a class="signup_btn" data-toggle="modal" data-target="#signupModal" href="javascript:void(0)" id="btn2">Join Now</a>
                 </div>
             </div>
         </div>
@@ -218,5 +218,7 @@
               </footer>
               <!-- END FOOTER -->
             </div>
+                @include('include.formlogin')
+                @include('include.formsignup')
           </body>
           </html>

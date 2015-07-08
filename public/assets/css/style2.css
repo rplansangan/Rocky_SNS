@@ -50,7 +50,7 @@ html , body{
   color: white;
   background-image: url('../images/landing/bg.png');
   background-size: cover;
-  background-position: 0px -50px;
+  background-position: top center;
 }
 .button-group{
   width: 100%;
@@ -163,6 +163,10 @@ html , body{
 }
 #landing > .map p , #landing > .map h1{
   color:white;
+}
+button.login {
+  background-color: #b7042c;
+  color: #fff;
 }
 footer{
   padding: 20px 10px;

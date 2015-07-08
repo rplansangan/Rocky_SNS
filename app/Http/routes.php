@@ -413,10 +413,6 @@ Route::post('foundpetinfo', array(
 ));
 
 //front nav
-Route::get('pet/lovers', [
-	'as' => 'public.lovers',
-	'uses' => 'WelcomeController@petlovers'
-]);
 Route::get('pet/shops', [
 	'as' => 'public.shops',
 	'uses' => 'WelcomeController@petshops'
@@ -431,6 +427,11 @@ Route::get('pet/videos', [
 ]);
 
 //inside sns
+Route::get('pet/lovers', [
+	'as' => 'public.lovers',
+	'uses' => 'WelcomeController@petlovers'
+]);
+
 Route::get('pet/lovers/dogsoftheweek', [
 	'as' => 'public.dogsoftheweek',
 	'uses' => 'WelcomeController@dogsWeek'
@@ -439,6 +440,11 @@ Route::get('pet/lovers/dogsoftheweek', [
 Route::get('pet/lovers/nearestpetshop', [
 	'as' => 'public.nearestpetshop',
 	'uses' => 'WelcomeController@nearestPS'
+]);
+
+Route::get('pet/missingpets', [
+	'as' => 'public.missingpets',
+	'uses' => 'WelcomeController@missingPets'
 ]);
 
 Route::group(['prefix' => 'administration', 'namespace' => 'Admin', 'middleware' => ['auth', 'manage']], function() {
