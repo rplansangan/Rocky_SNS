@@ -142,7 +142,7 @@
                     your location and read reviews.
                 </p>
                 <div class="button-group">
-                    <a href="{{ route('public.missingpets') }}" id="btn2">Browse</a>
+                    <a href="{{ route('public.nearestpetshop') }}" id="btn2">Browse</a>
                 </div>
             </div>
         </div>
@@ -160,7 +160,7 @@
                     your pet in no time
                     .</p>
                     <div class="button-group">
-                        <a href="#" id="btn2">Browse</a>
+                        <a href="{{ route('public.missingpets') }}" id="btn2">Browse</a>
                     </div>
                 </div>
             </div>
