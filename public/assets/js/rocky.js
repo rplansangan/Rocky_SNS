@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 $( document ).ready(function() {
 	//login
 	$('.login_btn').on('click' , function(){
@@ -10,23 +9,6 @@ $( document ).ready(function() {
 		$('#signupModal').modal('show');
 	});
 
-	//post
-	$.ajaxSetup({
-	  data: { "_token": $('#token').val() },
-	  type: "POST"
-	});
-
-	$(document).on('click' , '#send' , function(e){
-		$.ajax({
-			type: "GET",
-			url: $(this).attr('href'),
-			data: {'other' : 'ok'},
-			success: function(a){
-				alert(a);
-			}
-		});
-		e.preventDefault();
-	});
 
 	//signup form validation
 	$(document).on('keydown' , '.passlen' , function(){
@@ -55,7 +37,6 @@ $( document ).ready(function() {
     		url: $('#checkemail').val(),
     		data: { 
     				email:$(this).val(),
-    				_token:$(this).attr('token')
     		},
     		type: 'post',
     		success:function(r){ 

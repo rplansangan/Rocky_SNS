@@ -20,6 +20,7 @@
       <script src="{{ URL::asset('assets/js/jquery.js') }}"></script>
       <script src="{{ URL::asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
       <script src="{{ URL::asset('assets/js/bxslider.js') }}"></script>
+      <script src="{{ URL::asset('assets/js/rocky2.js') }}"></script>
       <script type="text/javascript">
       $(document).ready(function() {
         var sliderBx;
@@ -47,6 +48,7 @@
       </script>
     </head>
     <body>
+       <input type="hidden" id="token" value="{{ csrf_token() }}">
       <div class="container-fluid nopad" id="landing">
         <!-- HEADER -->
         <header class="container-fluid">

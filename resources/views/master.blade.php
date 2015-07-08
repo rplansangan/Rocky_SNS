@@ -23,6 +23,7 @@
 
     <script src="{{ URL::asset('assets/js/jquery.js') }}"></script>  
     <script src="{{ URL::asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/rocky2.js') }}"></script>
     <script src="{{ URL::asset('assets/js/rocky.js') }}"></script>
     <script src="{{ URL::asset('assets/js/jquery-form.js') }}"></script>
     <script src="{{ URL::asset('assets/js/bxslider.js') }}"></script>

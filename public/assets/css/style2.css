@@ -1,5 +1,6 @@
 html , body{
   background-color: #f5f5f5;
+  font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
 }
 .nopad{
   padding: 0px;
