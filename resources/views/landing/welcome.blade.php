@@ -111,7 +111,7 @@
       <section class="text-right nopad">
         <div style="width:71%;margin:0 auto;">
           <div class="col-lg-6">
-            <img src="{{ URL::asset('assets/images/landing/dog5.png') }}" class="img-responsive" id="layer2" style="margin-top: 131px;">
+            <img src="{{ URL::asset('assets/images/landing/dog5.png') }}" class="img-responsive" id="layer2" style="margin-top: 132px;">
           </div>
           <div class="col-lg-6 ">
             <h1>FIND MISSING PETS</h1>
@@ -127,7 +127,7 @@
           </div>
         </section>
         <section class="map">
-            <div style="width:71%;margin:0 auto;height:100%;">
+            <div style="width:69%;margin:0 auto;height:100%;">
                 <div class="col-lg-4 col-lg-offset-1">
                     <img src="{{ URL::asset('assets/images/landing/phone2.png') }}" style="width:250px"  >
                 </div>
