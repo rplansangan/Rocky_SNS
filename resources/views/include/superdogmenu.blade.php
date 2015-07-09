@@ -1,7 +1,17 @@
 <div class="left-cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	<div class="first-left-menu col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<ul>
-			<li><a href="{{ route('uc') }}"><img src="{{ mediaSrc($profile->prof_pic->image_path , $profile->prof_pic->image_name , $profile->prof_pic->image_ext) }}" width="38px"><?php echo $profile->first_name.' '.$profile->last_name?></a></li>
+			<?php 
+				if(Auth::check()){
+					?>
+						<li><a href="{{ route('uc') }}"><img src="{{ mediaSrc($profile->prof_pic->image_path , $profile->prof_pic->image_name , $profile->prof_pic->image_ext) }}" width="38px"><?php echo $profile->first_name.' '.$profile->last_name?></a></li>
+					<?php
+				}else{
+					?>
+						<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/puggy.png') }}" width="38px">Guest</a></li>
+					<?php
+				}
+			?>
 			<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/edit-prof-icon.png') }}" width="38px">Edit Profile</a></li>
 			<li><a href="{{ route('public.nearestpetshop') }}"><img src="{{ URL::asset('assets/images/new/npet-icon.png') }}" width="38px">Nearest Petshop</a></li>
 			<li><a href="{{ route('public.nearestvet') }}"><img src="{{ URL::asset('assets/images/new/nvet-icon.png') }}" width="38px">Nearest Vet</a></li>
@@ -9,16 +19,18 @@
 	</div>
 	<div class="sec-left-menu col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<h6>VIEW AS</h6>
-			@if(!$my_pets->isEmpty())
-			<ul>
-				@foreach($my_pets as $row)
-					<li><a href="#"><img src="{{ mediaSrc($row->profile_pic->image_path , $row->profile_pic->image_name , $row->profile_pic->image_ext) }}" width="38px">{{ $row->pet_name }}</a></li>
-				@endforeach
-			</ul>
-			@else
-				<div class="text-center">
-					<p>No Pets</p>
-				</div>
+			@if(isset($my_pets))
+				@if(!$my_pets->isEmpty())
+				<ul>
+					@foreach($my_pets as $row)
+						<li><a href="#"><img src="{{ mediaSrc($row->profile_pic->image_path , $row->profile_pic->image_name , $row->profile_pic->image_ext) }}" width="38px">{{ $row->pet_name }}</a></li>
+					@endforeach
+				</ul>
+				@else
+					<div class="text-center">
+						<p>No Pets</p>
+					</div>
+				@endif
 			@endif
 		<div class="text-center">
 			<a href="#" class="add-pets-btn"><i class="fa fa-plus"></i> Add Pets</a>
