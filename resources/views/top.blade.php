@@ -23,7 +23,7 @@
                 <?php
               }else{
                 ?>
-                  <li><a href="#">Guest</a></li>
+                  <li><a href="javascript:void(0)"><img src="{{ URL::asset('assets/images/default-pic.png') }}" width="38px" style="border-radius: 6px;">&nbsp; Guest</a></li>
                 <?php
               }
             ?>

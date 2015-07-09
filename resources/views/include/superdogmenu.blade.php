@@ -8,7 +8,7 @@
 					<?php
 				}else{
 					?>
-						<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/puggy.png') }}" width="38px">Guest</a></li>
+						<li><img src="{{ URL::asset('assets/images/default-pic.png') }}" width="38px" style="border-radius: 6px;">&nbsp; Guest</li>
 					<?php
 				}
 			?>
@@ -39,8 +39,8 @@
 					</div>
 				@endif
 			@endif
-		<div class="text-left">
-			<a href="#" class="add-pets-btn" style="color: #b7062b; padding: 0 15px; */"><i class="fa fa-plus"></i> Add Pets</a>
+		<div class="text-left" style="margin: 10px 0;">
+			<a href="#" class="add-pets-btn" style="color: #b7062b; padding: 0 15px;"><i class="fa fa-plus"></i> Add Pets</a>
 		</div>
 	</div>
 	<div class="third-left-menu col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -80,8 +80,8 @@
 			<?php
 		}else{
 			?>
-				<div class="text-center">
-					<a href="#">Login to see Neigbors</a>
+				<div class="text-left">
+					<a href="#" style="color: #b7062b; padding: 0 15px;">Login to see Neigbors</a>
 				</div>
 			<?php
 		}
