@@ -16,7 +16,17 @@
         </div>
         <div class="col-md-7 col-lg-7 in-menus text-right">
           <ul>
-            <li><a href="{{ route('uc') }}"><img src="{{ mediaSrc($profile->prof_pic->image_path , $profile->prof_pic->image_name , $profile->prof_pic->image_ext) }}" width="38px" style=" margin-right: 10px;"><?php echo $profile->first_name.' '.$profile->last_name?></a></li>
+            <?php 
+              if(Auth::check()){
+                ?>
+                  <li><a href="{{ route('uc') }}"><img src="{{ mediaSrc($profile->prof_pic->image_path , $profile->prof_pic->image_name , $profile->prof_pic->image_ext) }}" width="38px" style=" margin-right: 10px;"><?php echo $profile->first_name.' '.$profile->last_name?></a></li>
+                <?php
+              }else{
+                ?>
+                  <li><a href="#">Guest</a></li>
+                <?php
+              }
+            ?>
             <li style=" margin-top: 8px;"><span class="line" style="margin-left: 5px;">&nbsp;</span>
             <li><a href="{{ route('home') }}" style="margin-right: 5px;">Home</a></li>
             <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/friends-icon.png') }}" width="38px"></a></li>
