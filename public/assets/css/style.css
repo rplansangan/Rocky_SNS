@@ -713,6 +713,10 @@ p.viewsdate {
   border-right: 0;
 }
 
+.logupload {
+  margin-top: 20px;
+}
+
 
 /*======== LOVERS MID ========*/
 .post-area{
@@ -933,6 +937,12 @@ img.locimg {
 
   .location a {
     padding: 0 5px;
+  }
+}
+
+@media only screen and (max-width: 1350px) {
+  .logupload {
+    margin-top: 10px;
   }
 }
 

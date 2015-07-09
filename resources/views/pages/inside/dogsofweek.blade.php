@@ -25,8 +25,8 @@
 				                <input type="text" id="tfq" class="tftextinput5" name="q" size="21" maxlength="120"><input type="submit" value=" " class="tfbutton5">
 				            </form>
 				        </div>
-			            <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3" style="padding: 0 5px; margin-top: 20px;">
-			            	<a href="#" style="color: #b7062b; padding: 0 15px;">Login to upload videos</a>
+			            <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3 logupload" style="padding: 0 5px;">
+			            	<a href="#" style="color: #b7062b;">Login to upload videos</a>
 			            </div>
 					<?php
 				}
