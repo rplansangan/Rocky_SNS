@@ -39,9 +39,22 @@
 					</div>
 				@endif
 			@endif
-		<div class="text-left" style="margin: 10px 0;">
-			<a href="#" class="add-pets-btn" style="color: #b7062b; padding: 0 15px;"><i class="fa fa-plus"></i> Add Pets</a>
-		</div>
+
+			<?php 
+				if(Auth::check()){
+					?>
+						<div class="text-left" style="margin: 10px 0;">
+							<a href="#" class="add-pets-btn" style="color: #b7062b; padding: 0 15px;"><i class="fa fa-plus"></i> Add Pets</a>
+						</div>
+					<?php
+				}else{
+					?>
+						<div class="text-left" style="margin-bottom: 10px;">
+							<a href="#" style="color: #b7062b; padding: 0 15px;">Login to add pets</a>
+						</div>
+					<?php
+				}
+			?>
 	</div>
 	<div class="third-left-menu col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<h6>WHAT TO WATCH</h6>
