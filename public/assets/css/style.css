@@ -152,6 +152,17 @@ a.parent.active {
   padding: 0;
 }
 
+.in-menus ul {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+  float: right;
+}
+
+.in-menus ul li {
+  float: left;
+}
+
 .in-menus a {
   padding: 0 5px;
   color: #fff;
@@ -412,6 +423,13 @@ a.buy, a.join {
   padding: 0 15px;
   color: #a2a2a2;
   font-weight: 700;
+  font-size: 14px;
+  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
+}
+
+.left-cont div p {
+  padding: 0 15px;
+  color: #2C2B2B;
   font-size: 14px;
   font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
 }

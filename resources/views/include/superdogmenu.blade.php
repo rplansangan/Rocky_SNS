@@ -16,12 +16,12 @@
 				@endforeach
 			</ul>
 			@else
-				<div class="text-center">
+				<div class="text-left">
 					<p>No Pets</p>
 				</div>
 			@endif
-		<div class="text-center">
-			<a href="#" class="add-pets-btn"><i class="fa fa-plus"></i> Add Pets</a>
+		<div class="text-left">
+			<a href="#" class="add-pets-btn" style="color: #b7062b; padding: 0 15px; */"><i class="fa fa-plus"></i> Add Pets</a>
 		</div>
 	</div>
 	<div class="third-left-menu col-xs-12 col-sm-12 col-md-12 col-lg-12">

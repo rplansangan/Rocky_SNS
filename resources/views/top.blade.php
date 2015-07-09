@@ -15,17 +15,19 @@
             </div>
         </div>
         <div class="col-md-7 col-lg-7 in-menus text-right">
-            <a href="{{ route('uc') }}"><img src="{{ mediaSrc($profile->prof_pic->image_path , $profile->prof_pic->image_name , $profile->prof_pic->image_ext) }}" width="38px" style=" margin-right: 10px;"><?php echo $profile->first_name.' '.$profile->last_name?></a>
-            <span class="line" style="margin-left: 5px;">&nbsp;</span>
-            <a href="{{ route('home') }}" style="margin-right: 5px;">Home</a>
-            <a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/friends-icon.png') }}" width="38px"></a>
-            <a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/msg-icon.png') }}" width="38px"></a>
-            <a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/notif-icon.png') }}" width="38px" style="margin-right: 5px;"></a>
-            <span class="line">&nbsp;</span>
-            <a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/find-icon.png') }}" width="38px"></a>
-            <a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/locate-icon.png') }}" width="28px"></a>
-            <span class="line" style="margin-left: 5px;">&nbsp;</span>
-            <a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/dd-icon.png') }}" width="38px"></a>
+          <ul>
+            <li><a href="{{ route('uc') }}"><img src="{{ mediaSrc($profile->prof_pic->image_path , $profile->prof_pic->image_name , $profile->prof_pic->image_ext) }}" width="38px" style=" margin-right: 10px;"><?php echo $profile->first_name.' '.$profile->last_name?></a></li>
+            <li style=" margin-top: 8px;"><span class="line" style="margin-left: 5px;">&nbsp;</span>
+            <li><a href="{{ route('home') }}" style="margin-right: 5px;">Home</a></li>
+            <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/friends-icon.png') }}" width="38px"></a></li>
+            <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/msg-icon.png') }}" width="38px"></a></li>
+            <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/notif-icon.png') }}" width="38px" style="margin-right: 5px;"></a></li>
+            <li style=" margin-top: 8px;"><span class="line">&nbsp;</span></li>
+            <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/find-icon.png') }}" width="38px"></a></li>
+            <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/locate-icon.png') }}" width="28px"></a></li>
+            <li style=" margin-top: 8px;"><span class="line" style="margin-left: 5px;">&nbsp;</span></li>
+            <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/dd-icon.png') }}" width="38px"></a></li>
+          </ul>
         </div>
       </div>
   </div>
