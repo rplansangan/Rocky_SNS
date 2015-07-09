@@ -4,7 +4,7 @@
 			<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/prof-icon.png') }}" width="38px">Rocky</a></li>
 			<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/edit-prof-icon.png') }}" width="38px">Edit Profile</a></li>
 			<li><a href="{{ route('public.nearestpetshop') }}"><img src="{{ URL::asset('assets/images/new/npet-icon.png') }}" width="38px">Nearest Petshop</a></li>
-			<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/nvet-icon.png') }}" width="38px">Nearest Vet</a></li>
+			<li><a href="{{ route('public.nearestvet') }}"><img src="{{ URL::asset('assets/images/new/nvet-icon.png') }}" width="38px">Nearest Vet</a></li>
 		</ul>
 	</div>
 	<div class="sec-left-menu col-xs-12 col-sm-12 col-md-12 col-lg-12">

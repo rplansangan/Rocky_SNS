@@ -78,7 +78,6 @@
                     <div class="item text-center">    
                         <div class="text-center" id="sl">
                             <img src="{{ URL::asset('assets/images/landing/logo.png') }}" class="img-responsive" id="layer1">
-                            <h2>The community for your furry buddy</h2>
                             <div class="button-group">
                                 <a href="#" id="btn1">Learn More</a>
                                 <a class="signup_btn" data-toggle="modal" data-target="#signupModal" href="javascript:void(0)" id="btn2">Join Now</a>
