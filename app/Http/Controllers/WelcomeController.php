@@ -34,7 +34,6 @@ class WelcomeController extends Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->middleware('guest');
 	}
 
 	/**
@@ -78,39 +77,33 @@ class WelcomeController extends Controller {
 		$data['status'] = "Latest Videos";
 		return view('pages.landing' , $data);
 	}
-	public function petlovers(){
-		$data['left'] = 'include.superdogmenu';
-		$data['right'] = 'include.right';
-		$data['mid'] = 'landing.lovers';
-		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
-		return view('pages.insiderocky' , $data);
-	}
+	
 	public function dogsWeek(){
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
-		$data['mid'] = 'landing.dogsofweek';
-		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
-		return view('pages.insiderocky' , $data);
+		$data['mid'] = 'pages.inside.dogsofweek';
+		return view('pages.master' , $data);
 	}
 	public function nearestPS(){
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
-		$data['mid'] = 'landing.nearestps';
-		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
-		return view('pages.insiderocky' , $data);
+		$data['mid'] = 'pages.inside.nearestps';
+		return view('pages.master' , $data);
 	}
 	public function missingPets(){
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
-		$data['mid'] = 'landing.missingpets';
-		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
-		return view('pages.insiderocky' , $data);
+		$data['mid'] = 'pages.inside.missingpets';
+		return view('pages.master' , $data);
 	}
 	public function uc(){
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
 		$data['mid'] = 'errors.uc';
 		$data['title'] = 'Under Construction';
-		return view('pages.insiderocky' , $data);
+		return view('pages.master' , $data);
+	}
+	public function test(Request $request){
+		custom_print_r($request->all());
 	}
 }

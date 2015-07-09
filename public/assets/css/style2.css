@@ -117,9 +117,9 @@ html , body{
   color:white;
 }
 #slider1 > div > .item{
-  margin-top: -500px;
+  margin-top: -550px;
   margin-bottom: 500px;
-  margin-left: 80px;
+  margin-left: 26px;
 }
 #sl{
   text-align: center;
@@ -156,12 +156,11 @@ html , body{
 #landing > .map > div > div{
   margin-top: 30px;
 }
-#landing > .map > div > div:last-child{
-  margin-top: 150px;
+#landing > .map > div{
+  background-image: url('../images/landing/map.jpg');
 }
 #landing > .map{
-  height: 650px;
-  background-image: url('../images/landing/map.jpg');
+  height: 350px;
 }
 #landing > .map p , #landing > .map h1{
   color:white;

@@ -21,7 +21,17 @@ class LoginController extends Controller {
 	}
 	
 	public function signin(Request $request){
-		custom_print_r($request->all());
+		$this->middleware('auth');
+		
+		$input = array_except($request->all(), array('_token'));
+		
+		$auth = Auth::attempt($input);
+		
+		if($auth){
+			echo 'success';
+		}else{
+			echo 'Invalid Username / Password';
+		}
 	}
 
 	public function attempted() {

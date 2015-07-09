@@ -1,8 +1,4 @@
 $( document ).ready(function() {
-	//login
-	$('.login_btn').on('click' , function(){
-		$('#loginModal').modal('show');
-	});
 
 	//signup
 	$('.signup_btn').on('click' , function(){

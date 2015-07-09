@@ -23,9 +23,7 @@ abstract class Controller extends BaseController {
 		$this->setPubGlobals();
 
 		if(auth()->check()) {
-// 			if(!Request::ajax()) {
-				$this->setGlobals();
-// 			}
+			#$this->setGlobals();
 		}	
 	}
 
