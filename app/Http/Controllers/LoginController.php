@@ -114,4 +114,19 @@ class LoginController extends Controller {
 			return redirect()->back()->withErrors($validate->errors()->all());
 		}
 	}
+
+
+	/*CHECK EMAIL*/
+
+	public function check_email(Request $request){
+		$input = array_except($request->all(), array('_token'));
+
+		$email = User::where('email_address' , $input['email'])->count();
+
+		if(!$email){
+			echo 'ok';
+		}else{
+			echo 'not';
+		}
+	}
 }

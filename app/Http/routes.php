@@ -17,6 +17,10 @@ Route::get('/', array(
     'as' => 'index',
     'uses' => 'WelcomeController@index',
 ));
+Route::post('check_email', array(
+	'as' => 'check.email',
+	'uses' => 'LoginController@check_email'
+));
 Route::post('files/newsfeed', array(
 	'as' => 'files.newsfeed',
 	'uses' => 'UploadsController@newsfeed'
@@ -177,20 +181,6 @@ Route::get('home', array(
 	'uses' => 'HomeController@index'
 	));
 
-
-//front nav
-Route::get('pet/shops', [
-	'as' => 'public.shops',
-	'uses' => 'WelcomeController@petshops'
-]);
-Route::get('pet/foundations', [
-	'as' => 'public.foundations',
-	'uses' => 'WelcomeController@petfoundation'
-]);
-Route::get('pet/videos', [
-	'as' => 'public.videos',
-	'uses' => 'WelcomeController@petvideos'
-]);
 
 //inside sns
 Route::get('pet/lovers', [
