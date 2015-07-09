@@ -43,41 +43,13 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('landing.welcome');	
+		if(Auth::check()){
+			return redirect('home');
+		}else{
+			return view('landing.welcome');	
+		}
 	}
 
-	public function signup()
-	{
-		return view('pages.mainpage');
-	}
-
-	public function layoutOne()
-	{
-		return view('pages.loland');
-	}
-	public function petfoundation(){
-		$data['left'] = 'landing.superdogmenu';
-		$data['right'] = 'landing.right';
-		$data['mid'] = 'landing.foundation';
-		return view('pages.landing' , $data);
-	}
-	public function petvideos(){
-		$data['left'] = 'landing.superdogmenu';
-		$data['right'] = 'landing.right';
-		$data['mid'] = 'landing.video';
-		$data['video'] = Images::select(array('image_id', 'image_mime', 'post_id', 'user_id', 'image_title', 'category'))
-		->with(array(
-			'post' => function($q) {
-				$q->addSelect(array('post_id', 'post_message', 'post_tags'));
-			}, 
-			'register' => function($q) {
-				$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
-			}
-			))->where('image_mime' , 'like' , '%video%')->latest()->get();
-		$data['status'] = "Latest Videos";
-		return view('pages.landing' , $data);
-	}
-	
 	public function dogsWeek(){
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';

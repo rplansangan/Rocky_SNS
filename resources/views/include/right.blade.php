@@ -19,18 +19,20 @@
 	</div>
 	<div class="missing-right col-xs-12 col-sm-12 col-m-12 col-lg-12 text-center">
 		<?php 
-			foreach($missing_pets as $row){
-				?>
-					<div class="missing-cont col-xs-12 col-sm-12 col-m-12 col-lg-12 text-center">
-						<div class="missing-infos">
-							<img src="<?php echo mediaSrc($row->profile->image[0]->image_path , $row->profile->image[0]->image_name , $row->profile->image[0]->image_ext ); ?>">
-							<h2><?php echo $row->pet_name ?></h2>
-							<p></p>
-							<h3 class="text-uppercase">MISSING <br/> <?php echo _ago(strtotime($row->created_at))?></h3>
-							<a href="{{ route('public.missingpets') }}">VIEW</a>
+		if(!$missing_pets->isEmpty()){
+				foreach($missing_pets as $row){
+					?>
+						<div class="missing-cont col-xs-12 col-sm-12 col-m-12 col-lg-12 text-center">
+							<div class="missing-infos">
+								<img src="<?php echo mediaSrc($row->profile->image[0]->image_path , $row->profile->image[0]->image_name , $row->profile->image[0]->image_ext ); ?>">
+								<h2><?php echo $row->pet_name ?></h2>
+								<p></p>
+								<h3 class="text-uppercase">MISSING <br/> <?php echo _ago(strtotime($row->created_at))?></h3>
+								<a href="{{ route('public.missingpets') }}">VIEW</a>
+							</div>
 						</div>
-					</div>
-				<?php
+					<?php
+				}
 			}
 		?>
 	</div>	

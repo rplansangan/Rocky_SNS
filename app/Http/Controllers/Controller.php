@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use SNS\Models\FoundPets;
 use SNS\Models\Pets;
+use SNS\Models\Registration;
 use SNS\Models\MissingPets;
 use SNS\Libraries\Facades\Notification;
 
@@ -20,36 +21,27 @@ abstract class Controller extends BaseController {
 	}
 	
 	protected function initialize() {
-		$this->setPubGlobals();
+		
+		$data = $this->setPubGlobals();
 
 		if(auth()->check()) {
-			#$this->setGlobals();
-		}	
+			$data += $this->setGlobals();
+		}
+
+		view()->share($data);	
 	}
 
 	private function setPubGlobals() {
 		$missingPets = MissingPets::with(['profile.image'])->orderByRaw("RAND()")->limit(2)->get();
-		$list['missing'] = $missingPets;
-
-		Cache::add('shared.lists.lnfpets', $list, 5);
 		$data['missing_pets'] = $missingPets;
-		
 		$data['title'] = 'Rocky Superdog';
-		view()->share($data);
-
+		return $data;
 	}
 	
-	protected function setGlobals() {
-		if(Cache::has('shared.lists.lnfpets')) {
-			$list = Cache::get('shared.lists.lnfpets');
-			
-			$foundPets = $list['found'];
-			$missingPets = $list['missing'];
-		} else {
-			
-		}		
-		$data['my_pets'] = Pets::with('profile_pic')->where('user_id' , '=' , Auth::id())->get();
-		view()->share($data);
+	protected function setGlobals() {	
+		$data['my_pets'] = Pets::with('profile_pic')->where('user_id', Auth::id())->get();
+		$data['profile'] = Registration::with(array('prof_pic'))->find(Auth::id());
+		return $data;
 	}
 
 }
