@@ -44,7 +44,7 @@
                       <a class="signup_btn" data-toggle="modal" data-target="#signupModal" href="#" id="btn2">Join Now</a>
                       <br>
                       <label>
-                        <a class="login_btn" data-toggle="modal" data-target="#loginModal" href="#)">Already a member? LOGIN</a>
+                        <a class="login_btn" data-toggle="modal" data-target="#loginModal" href="#">Already a member? LOGIN</a>
                       </label>
                     </div>
                   </div>

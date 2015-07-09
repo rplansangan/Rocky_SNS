@@ -62,6 +62,13 @@ class WelcomeController extends Controller {
 		$data['mid'] = 'pages.inside.nearestps';
 		return view('pages.master' , $data);
 	}
+	public function nearestVet(){
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'landing.nearestvet';
+		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
+		return view('pages.insiderocky' , $data);
+	}
 	public function missingPets(){
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';

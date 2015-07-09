@@ -208,6 +208,11 @@ Route::get('pet/lovers/nearestpetshop', [
 	'uses' => 'WelcomeController@nearestPS'
 ]);
 
+Route::get('pet/lovers/nearestvet', [
+	'as' => 'public.nearestvet',
+	'uses' => 'WelcomeController@nearestVet'
+]);
+
 Route::get('pet/missingpets', [
 	'as' => 'public.missingpets',
 	'uses' => 'WelcomeController@missingPets'
