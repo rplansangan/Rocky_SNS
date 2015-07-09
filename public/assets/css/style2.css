@@ -211,3 +211,6 @@ section > div > div > #layer2{
   position: absolute;
   z-index: 2;
 }
+#merch{
+  margin-top: 20px;
+}

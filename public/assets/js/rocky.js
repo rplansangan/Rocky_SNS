@@ -1,11 +1,5 @@
 $( document ).ready(function() {
 
-	//signup
-	$('.signup_btn').on('click' , function(){
-		$('#signupModal').modal('show');
-	});
-
-
 	//signup form validation
 	$(document).on('keydown' , '.passlen' , function(){
 		var count = $(this).val();
