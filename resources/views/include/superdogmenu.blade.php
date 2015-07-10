@@ -34,7 +34,7 @@
 					@endforeach
 				</ul>
 				@else
-					<div class="text-center">
+					<div class="text-left">
 						<p>No Pets</p>
 					</div>
 				@endif
@@ -43,7 +43,7 @@
 			<?php 
 				if(Auth::check()){
 					?>
-						<div class="text-left" style="margin: 10px 0;">
+						<div class="text-left" style="margin-bottom: 10px;">
 							<a href="javascript:void(0)" class="add-pets-btn" data-toggle="modal" data-target="#addpetModal" style="color: #b7062b; padding: 0 15px;"><i class="fa fa-plus"></i> Add Pets</a>
 						</div>
 					<?php
