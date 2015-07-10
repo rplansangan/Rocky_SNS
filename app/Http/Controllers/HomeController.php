@@ -34,7 +34,7 @@ class HomeController extends Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->middleware('auth');
+		
 	}
 
 
@@ -45,138 +45,12 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		User::where('user_id' , Auth::id())->update(['last_post' => Carbon::now()]);
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.lovers';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
-		return view('pages.homepage', $data);
+		return view('pages.master' , $data);
 	}
 
-	public function map(){
-		return view('pages.mypet');
-	}
-
-	public function pet_of_the_day(){
-		return view('pages.petoftheday');
-	}
-	public function trending(){
-		return view('pages.trending');
-	}
-	public function shop(Request $request){
-		$country = $request->input('country');
-		$type = $request->input('type');
-		$state = $request->input('state_ads');
-		$zip = $request->input('zip_ads');
-		if($request->input('search') == 'SEARCH'){
-			$data['info'] = Business::with(array('advertise.post' , 'advertise.post.image',
-				'advertise' => function($q) use($type){
-						if($type){
-							$q->where('type' , $type);
-						}
-					}
-				))->where('state'  , 'LIKE' , '%'.$state.'%')->where('country' , $country)->where('zip' , 'LIKE' , '%'.$zip.'%')->get();
-			return view('pages.shop' , $data);
-		}else{
-			$data['info'] = Business::with(array('advertise' ,'advertise.post' , 'advertise.post.image'))->latest()->get();
-			return view('pages.shop' , $data);	
-		}
-	}
-	public function trackers(){
-		return view('pages.trackers');
-	}
-	public function search(Request $request){
-		$input = array_except($request->all(), array('_token'));
-
-		if(!@$input['search']){
-			$data['search'] = true;
-			return view('pages.search' , $data);
-		}else{
-			$name = $input['name'];
-			$email = $input['email'];
-			$country = $input['country'];
-			$city = $input['city'];
-			$zip = $input['zip'];
-			
-			$data['info'] = Registration::with(array('prof_pic'))->
-			where('country' , $country)
-			->orWhere('email_address' , $email)
-			->where('city' , $city)
-			->where('zip' , $zip)
-			->orWhere('first_name' , 'LIKE' , '%'.$name.'%')->orWhere('last_name' , 'LIKE' , '%'.$name.'%')->get();
-
-			$data['search'] = false;
-			return view('pages.search' , $data);
-		}
-		
-	}
-
-	public function addadvertise(){
-		return view('pages.addadvertise');
-	}
-
-	public function compete(){
 	
-		return view('pages.compete');
-	}
-	public function videos(Request $request){
-		if($request->input('search') == null){
-			$data['video'] = Images::select(array('image_id', 'image_mime', 'post_id', 'user_id', 'image_title', 'category'))
-								->with(array(
-									'post' => function($q) {
-										$q->addSelect(array('post_id', 'post_message', 'post_tags'));
-									}, 
-									'register' => function($q) {
-										$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
-									}
-								))->where('image_mime' , 'like' , '%video%')->latest()->get();
-			
-			$data['status'] = "Latest Videos";
-			return view('pages.videos' , $data);
-		}else{
-			$data['status'] = "Latest Videos";
-			$data['video'] = Images::select(array('image_id', 'image_mime', 'post_id', 'user_id', 'image_title', 'category'))
-								->with(array(
-									'post' => function($q) {
-										$q->addSelect(array('post_id', 'post_message', 'post_tags'));
-									}, 
-									'register' => function($q) {
-										$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
-									}
-								))
-								->where('image_title' , 'like' , '%'.$request->input('search').'%')
-								->orWhere('category' , 'like' , '%'.$request->input('search').'%')
-								->having('image_mime' , 'like' , '%video%')
-								->latest()->get();
-			return view('pages.videos' , $data);
-		}
-	}
-	public function myvideo(){
-		$data['status'] = "My Videos";
-		$data['video'] = Images::select(array('image_id', 'image_mime', 'post_id', 'user_id', 'image_title', 'category'))
-								->with(array(
-									'post' => function($q) {
-										$q->addSelect(array('post_id', 'post_message', 'post_tags'));
-									}, 
-									'register' => function($q) {
-										$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
-									}
-								))
-								->where('image_mime' , 'like' , '%video%')
-								->where('user_id' , Auth::id())
-								->latest()->get();
-		return view('pages.videos' , $data);
-	}
-	public function rockyranger(){
-		return view('pages.rockyranger');
-	}
-
-	public function foundPets(){
-		return view('pages.foundpet');
-	}
-
-	public function vetTemp(){
-		return view('pages.veterinary');
-	}
-
-	public function vetProfile(){
-		return view('pages.vetprof');
-	}
 }

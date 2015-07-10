@@ -21,35 +21,14 @@ class LoginController extends Controller {
 	}
 	
 	public function signin(Request $request){
-		$this->middleware('auth');
-		
 		$input = array_except($request->all(), array('_token'));
 		
 		$auth = Auth::attempt($input);
 		
-		if(!$this->checkLock(Auth::getLastAttempted())->isLocked()) {
-			if($auth) {
-// 				if(!Auth::user()->is_validated) {
-// 					$id = User::where('email_address', $request->get('email_address'))->get();
-// 					$id = $id[0]->load('registration');
-// 					Auth::logout();
-// 					return view('pages.message', ['id' => $id->registration->registration_id])
-// 							->withErrors(['message' => [trans('emailvalidation.login.not_validated')]])
-// 							->withInput($request->except(['_token']));
-// 				} else {
-					$this->releaseAccount(Auth::user());
-					return redirect()->intended('home');
-// 				}
-			} else {
-				$this->asses(Auth::getLastAttempted());
-				return redirect()->route('login.attempt')
-						->withErrors(['message' => $this->messages()])
-						->withInput();
-			}
-		} else {
-			return redirect()->route('login.attempt')
-					->withErrors(['message' => $this->messages()])
-					->withInput();
+		if($auth){
+			echo 'success';
+		}else{
+			echo 'Invalid Username / Password';
 		}
 	}
 
@@ -131,6 +110,21 @@ class LoginController extends Controller {
 			return redirect()->route('home')->withErrors(array('message' => trans('profile.settings.password.changed')));
 		} else {
 			return redirect()->back()->withErrors($validate->errors()->all());
+		}
+	}
+
+
+	/*CHECK EMAIL*/
+
+	public function check_email(Request $request){
+		$input = array_except($request->all(), array('_token'));
+
+		$email = User::where('email_address' , $input['email'])->count();
+
+		if(!$email){
+			echo 'ok';
+		}else{
+			echo 'not';
 		}
 	}
 }

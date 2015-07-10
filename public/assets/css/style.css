@@ -1,3 +1,6 @@
+ body , html{
+  font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+ }
  /*============Default============*/
  .page-header {
   padding-bottom: 9px;
@@ -149,6 +152,17 @@ a.parent.active {
   padding: 0;
 }
 
+.in-menus ul {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+  float: right;
+}
+
+.in-menus ul li {
+  float: left;
+}
+
 .in-menus a {
   padding: 0 5px;
   color: #fff;
@@ -208,64 +222,6 @@ span.line {
 
 
 /*============Landing============*/
-.bx-prev {
-  background: transparent url("../images/new/prev_new.png") no-repeat scroll 0 0;
-  float: left;
-  height: 200px;
-  left: 5px;
-  position: absolute;
-  text-indent: -999999px;
-  top: 256px;
-  width: 31px;
-}
-
-.bx-next {
-  background: transparent url("../images/new/next_new.png") no-repeat scroll 0 0;
-  float: right;
-  height: 200px;
-  position: absolute;
-  right: 0;
-  text-indent: -999999px;
-  top: 255px;
-  width: 35px;
-}
-  
-#sliderdiv1{
-  width: 100%; display: block; visibility: visible; overflow: hidden;
-}
-
-#sliderdiv2{
-  width: 1160px; display: block; visibility: visible; margin: 0 auto;
-}
-
-#container{
-  text-align:center;
-}
-
-#slider1 .item {
-  position: absolute;
-  top: 250px;
-  margin-left: 80px;
-  z-index: 9999;
-  color: #fff;
-  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
-}
-
-#slider1 .item p {
-  font-size: 22px;
-}
-
-#slider1 .item h1 {
-  margin-bottom: 40px;
-}
-
-#slider1 .item a {
-  color: #fff;
-  padding: 15px;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
 .landing-content {
   padding: 0;
   background-color: #E6E7E8;
@@ -303,113 +259,6 @@ span.line {
 
 .first-row h1, .sec-row h1 {
   margin-bottom: 30px;
-}
-
-.find {
-  background: url('../images/new/missingpets.jpg') no-repeat scroll center;
-  background-size: 100%;
-  padding: 9% 0;
-  color: #fff;
-}
-
-.find:hover {
-  background: url('../images/new/missingpetsHV.jpg') no-repeat scroll center;
-  background-size: 100%;
-  padding: 9% 0;
-  color: #000;
-  -webkit-transition: all 0.6s ease-in-out;
-  -moz-transition: all 0.6s ease-in-out;
-  -o-transition: all 0.6s ease-in-out;
-  transition: all 0.6s ease-in-out;
-}
-
-.find:hover a {
-  color: #000;
-  -webkit-transition: all 0.6s ease-in-out;
-  -moz-transition: all 0.6s ease-in-out;
-  -o-transition: all 0.6s ease-in-out;
-  transition: all 0.6s ease-in-out;
-}
-
-
-.community {
-  background: url('../images/new/petlovers.jpg') no-repeat scroll center;
-  background-size: 100% 100%;
-  padding: 9% 0;
-  color: #fff;
-}
-
-.community:hover {
-  background: url('../images/new/petloversHV.jpg') no-repeat scroll center;
-  background-size: 100% 100%;
-  padding: 9% 0;
-  color: #000;
-  -webkit-transition: all 0.6s ease-in-out;
-  -moz-transition: all 0.6s ease-in-out;
-  -o-transition: all 0.6s ease-in-out;
-  transition: all 0.6s ease-in-out;
-}
-
-.community:hover a {
-  color: #000;
-  -webkit-transition: all 0.6s ease-in-out;
-  -moz-transition: all 0.6s ease-in-out;
-  -o-transition: all 0.6s ease-in-out;
-  transition: all 0.6s ease-in-out;
-}
-
-
-.all {
-  background: url('../images/new/petgrommers.jpg') no-repeat scroll center;
-  background-size: 100% 100%;
-  padding: 9% 0;
-  color: #fff;
-}
-
-.all:hover {
-  background: url('../images/new/petgrommersHov.jpg') no-repeat scroll center;
-  background-size: 100% 100%;
-  padding: 9% 0;
-  color: #000;
-  -webkit-transition: all 0.6s ease-in-out;
-  -moz-transition: all 0.6s ease-in-out;
-  -o-transition: all 0.6s ease-in-out;
-  transition: all 0.6s ease-in-out;
-}
-
-.all:hover a {
-  color: #000;
-  -webkit-transition: all 0.6s ease-in-out;
-  -moz-transition: all 0.6s ease-in-out;
-  -o-transition: all 0.6s ease-in-out;
-  transition: all 0.6s ease-in-out;
-}
-
-
-.watch {
-  background: url('../images/new/funnyvideos.jpg') no-repeat scroll center;
-  background-size: 100% 100%;
-  padding: 9% 0;
-  color: #fff;
-}
-
-.watch:hover {
-  background: url('../images/new/funnyvideosHV.jpg') no-repeat scroll center;
-  background-size: 100% 100%;
-  padding: 9% 0;
-  color: #000;
-  -webkit-transition: all 0.6s ease-in-out;
-  -moz-transition: all 0.6s ease-in-out;
-  -o-transition: all 0.6s ease-in-out;
-  transition: all 0.6s ease-in-out;
-}
-
-.watch:hover a {
-  color: #000;
-  -webkit-transition: all 0.6s ease-in-out;
-  -moz-transition: all 0.6s ease-in-out;
-  -o-transition: all 0.6s ease-in-out;
-  transition: all 0.6s ease-in-out;
 }
 
 .wc-cont {
@@ -574,6 +423,13 @@ a.buy, a.join {
   padding: 0 15px;
   color: #a2a2a2;
   font-weight: 700;
+  font-size: 14px;
+  font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
+}
+
+.left-cont div p {
+  padding: 0 15px;
+  color: #2C2B2B;
   font-size: 14px;
   font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
 }
@@ -828,6 +684,54 @@ p.viewsdate {
   border-bottom: 0;
 }
 
+.nav-tabs {
+  border-bottom: 0;
+  float: right;
+}
+
+.nav>li>a {
+  padding: 0px 10px;
+}
+
+.nav-tabs>li>a {
+  border: 0;
+}
+
+.nav-tabs>li>a:hover {
+  border-color: transparent;
+  background-color: transparent;
+  border-bottom: 4px solid #b7062b;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+  color: #555;
+  cursor: default;
+  background-color: transparent;
+  border-bottom: 4px solid #b7062b;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+.logupload {
+  margin-top: 20px;
+}
+
+
+/*======== NEIGHBORS ========*/
+.neigh-details a {
+  color: #B7062B;
+}
+
+.neigh-details a h4 {
+  margin-bottom: 5px;
+  font-weight: 900;
+}
+
+.videos.neighbors img {
+  border-radius: 6px;
+}
+
 
 /*======== LOVERS MID ========*/
 .post-area{
@@ -1051,6 +955,12 @@ img.locimg {
   }
 }
 
+@media only screen and (max-width: 1350px) {
+  .logupload {
+    margin-top: 10px;
+  }
+}
+
 @media only screen and (max-width: 1340px) {
   .missing-right div .missing-infos {
     box-shadow: none;
@@ -1066,3 +976,22 @@ img.locimg {
 @media only screen and (max-width: 1230px) {
   
 }
+
+
+/* OTHER*/
+#play-button  img{
+  width: 150px;
+}
+#play-button{
+  border: 1px solid black;
+  width: 100%;
+  text-align: center;
+  margin: 0px auto;
+  margin-top: -50%;
+  margin-bottom: 30%;
+}
+button.login {
+  background-color: #b7042c;
+  color: #fff;
+}
+/*END OTHER*/
