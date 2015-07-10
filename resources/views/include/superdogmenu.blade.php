@@ -94,7 +94,7 @@
 		}else{
 			?>
 				<div class="text-left">
-					<a href="#" style="color: #b7062b; padding: 0 15px;">Login to see Neigbors</a>
+					<a href="#" style="color: #b7062b; padding: 0 15px;">Login to see Neighbors</a>
 				</div>
 			<?php
 		}

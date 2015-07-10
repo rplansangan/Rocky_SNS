@@ -718,6 +718,21 @@ p.viewsdate {
 }
 
 
+/*======== NEIGHBORS ========*/
+.neigh-details a {
+  color: #B7062B;
+}
+
+.neigh-details a h4 {
+  margin-bottom: 5px;
+  font-weight: 900;
+}
+
+.videos.neighbors img {
+  border-radius: 6px;
+}
+
+
 /*======== LOVERS MID ========*/
 .post-area{
   border: 1px solid #c3c3c3;
