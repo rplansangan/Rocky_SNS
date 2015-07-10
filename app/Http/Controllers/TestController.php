@@ -8,8 +8,13 @@ use SNS\Libraries\Cache\Initialize;
 
 class TestController extends Controller {
 
-	public function index(Initialize $init) {
-	    dd($init->initAuth());
+	public function index() {
+// 	    $init->initAuth();
+echo true;
+	}
+	
+	public function profile() {
+		return view('dummy');
 	}
 
 }

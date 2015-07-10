@@ -38,20 +38,20 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
-    	$err = new ErrorLogs();
-    	if(Auth::check()) {
-    		$err->from_user = Auth::id();
-    	} else {
-    		$err->from_user = 0;
-    	}
-    	//$err->route_name = $request->route()->getName();
-    	$err->error_code = $e->getCode();
-    	$err->error_msg = $e->getMessage();
-    	$err->stack_trace = $e->getTraceAsString();
-    	$err->save();
-    	
-		return redirect()->route('index')
-				->withErrors(['message' => trans('errors.err_500')]);
+//     	$err = new ErrorLogs();
+//     	if(Auth::check()) {
+//     		$err->from_user = Auth::id();
+//     	} else {
+//     		$err->from_user = 0;
+//     	}
+//     	//$err->route_name = $request->route()->getName();
+//     	$err->error_code = $e->getCode();
+//     	$err->error_msg = $e->getMessage();
+//     	$err->stack_trace = $e->getTraceAsString();
+//     	$err->save();
+    	dd($e);
+// 		return redirect()->route('index')
+// 				->withErrors(['message' => trans('errors.err_500')]);
 	}
 
 }

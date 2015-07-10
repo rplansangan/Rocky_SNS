@@ -180,7 +180,7 @@ Route::get('profile/{id}', array(
 Route::get('home', array(
 	'as' => 'home',
 	'uses' => 'HomeController@index'
-	));
+));
 
 
 //inside sns
