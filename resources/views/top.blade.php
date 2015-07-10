@@ -7,7 +7,6 @@
         <div class="col-md-4 col-lg-4 search">
             <div id="tfheader">
               <form id="tfnewsearch" method="get" action="#">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="text" id="tfq" class="tftextinput4" name="name" size="21" maxlength="120">
                     <input type="submit" value=" " class="tfbutton4">
               </form>
@@ -27,20 +26,24 @@
                 <?php
               }else{
                 ?>
-                  <li><a href="javascript:void(0)"><img src="{{ URL::asset('assets/images/default-pic.png') }}" width="38px" style="border-radius: 6px;">&nbsp; Guest</a></li>
+                  <li><a href="javascript:void(0)"><img src="{{ URL::asset('assets/images/default-pic.png') }}" width="38px" style="border-radius: 6px;">&nbsp; Public</a></li>
+                <?php
+              }
+              if(Auth::check()){
+                ?>
+                  <li style=" margin-top: 8px;"><span class="line" style="margin-left: 5px;">&nbsp;</span>
+                  <li><a href="{{ route('home') }}" style="margin-right: 5px;line-height:33px">Home</a></li>
+                  <li><a href="{{ route('public.neighbors') }}"><img src="{{ URL::asset('assets/images/new/friends-icon.png') }}" width="38px"></a></li>
+                  <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/msg-icon.png') }}" width="38px"></a></li>
+                  <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/notif-icon.png') }}" width="38px" style="margin-right: 5px;"></a></li>
+                  <li style=" margin-top: 8px;"><span class="line">&nbsp;</span></li>
+                  <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/find-icon.png') }}" width="38px"></a></li>
+                  <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/locate-icon.png') }}" width="28px"></a></li>
+                  <li style=" margin-top: 8px;"><span class="line" style="margin-left: 5px;">&nbsp;</span></li>
+                  <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/dd-icon.png') }}" width="38px"></a></li>
                 <?php
               }
             ?>
-            <li style=" margin-top: 8px;"><span class="line" style="margin-left: 5px;">&nbsp;</span>
-            <li><a href="{{ route('home') }}" style="margin-right: 5px;line-height:33px">Home</a></li>
-            <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/friends-icon.png') }}" width="38px"></a></li>
-            <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/msg-icon.png') }}" width="38px"></a></li>
-            <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/notif-icon.png') }}" width="38px" style="margin-right: 5px;"></a></li>
-            <li style=" margin-top: 8px;"><span class="line">&nbsp;</span></li>
-            <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/find-icon.png') }}" width="38px"></a></li>
-            <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/locate-icon.png') }}" width="28px"></a></li>
-            <li style=" margin-top: 8px;"><span class="line" style="margin-left: 5px;">&nbsp;</span></li>
-            <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/dd-icon.png') }}" width="38px"></a></li>
           </ul>
         </div>
       </div>

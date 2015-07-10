@@ -118,54 +118,33 @@
 
 
 <!-- ADD PETS -->
-<script>
-$(document).ready(function() {
-    $(document).on('change', '#sel-ani-type', function() {
-         $.ajax({
-            url: '{{ route("register.pet.refreshField") }}',
-            type: 'post',
-            data:{ id:$('#sel-ani-type').val(), _token:'{{ csrf_token() }}', action:'behavior' },
-            success: function(r){
-                $('#fld-pet-behavior').replaceWith(r);
-            }
-         });
-         $.ajax({
-             url: '{{ route("register.pet.refreshField") }}',
-            type: 'post',
-            data:{ id:$('#sel-ani-type').val(), _token:'{{ csrf_token() }}', action:'food' },
-            success: function(r){
-                $('#fld-food-brand').replaceWith(r);
-            }
-         });
-    });
-});
-</script>
-
 <div class="modal fade" id="addpetModal" tabindex="-1" role="dialog" aria-labelledby="addpetModalLabel">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog  modal-lg" role="document">
         <div class="modal-content">
+
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="addpetModalLabel">Add Your Pets</h4>
+                <div class="text-center">
+                    <h2>Add Your Pet <br><small>Please complete the form to add your pet</small></h2>
+                </div>
             </div>
+
             <div class="modal-body">
                 <div class="register-page">
                     <div class="register-main">
-                        <div class="page-header" style="padding-left: 10px;">
-                            <h2 style="margin-top: 0;">Add Your Pet</h2>
-                            <small class="help-block">Please complete the form to add your pet</small>
-                        </div>
-                        <div>
+                       
+
+                        <div style="margin-top:30px;">
                             <form method="POST" action="{{ route('register.petRegister', Auth::id()) }}" class="form-horizontal reg " role="form" enctype="multipart/form-data">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Profile Picture</label>
-                                    <div class='col-sm-8'>
+                                    <div class='col-sm-9'>
                                         <input type='file' name="petfile" class="custom-file-input" />
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-sm-3 col-sm-offset-2 view-image-here"></div>
+                                <div class="form-group hidden view-image-here">
+                                    <div class="col-sm-3 col-sm-offset-2"></div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Pet Name:</label>
@@ -215,7 +194,7 @@ $(document).ready(function() {
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Gender:</label>
+                                    <label class="col-sm-3 control-label">Gender:</label>
                                     <div class="radio col-sm-2">
                                         <label>
                                             <input type="radio" name="pet_gender" value="M">
@@ -300,14 +279,17 @@ $(document).ready(function() {
                                 </div>
                                 <div class="form-group">
                                     <div class='col-sm-8 col-sm-offset-3 Tracker123 text-right'>
-                                        <input type='submit' class="btn" value="Add"/>
+                                        <input type='submit' class="btn btn-color" value="Add"/>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
+
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

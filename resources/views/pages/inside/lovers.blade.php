@@ -11,7 +11,7 @@
 							<?php
 						}else{
 							?>
-								<a href="#"><img style="width:40px" src="#"></a>
+								<a href="#"><img style="width:40px" src="{{ URL::asset('assets/images/default-pic.png') }}"></a>
 							<?php
 						}
 					?>
@@ -49,26 +49,32 @@
 						<a href="#"><img src="{{ URL::asset('assets/images/new/rheart.png') }}"><span style="color:white">28</span></a>
 						<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
 					</div>
-					<div class='row'>
-						<div class="col-lg-1 nopad img-arrow">
-							<?php 
-								if(isset($row->user->prof_pic)){
-									?>
-										<img class="img-responsive img-thumbnail" src="<?php echo mediaSrc($row->user->prof_pic->image_path, $row->user->prof_pic->image_name , $row->user->prof_pic->image_ext) ?>"><span class="arrow-right"></span></img>
-									<?php
-								}else{
-									?>
-										<img class="img-responsive img-thumbnail" src="#"><span class="arrow-right"></span></img>
-									<?php
-								}
+					<?php 
+						if(Auth::check()){
 							?>
-						</div>
-						<div class="comminput col-lg-11" style="padding-right:0;">
-							<div class="row">
-								<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
-							</div>
-						</div>
-					</div>
+								<div class='row'>
+									<div class="col-lg-1 nopad img-arrow">
+										<?php 
+											if(isset($profile->prof_pic)){
+												?>
+													<img class="img-responsive img-thumbnail" src="<?php echo mediaSrc($profile->prof_pic->image_path, $profile->prof_pic->image_name , $profile->prof_pic->image_ext) ?>"><span class="arrow-right"></span></img>
+												<?php
+											}else{
+												?>
+													<img class="img-responsive img-thumbnail" src="#"><span class="arrow-right"></span></img>
+												<?php
+											}
+										?>
+									</div>
+									<div class="comminput col-lg-11" style="padding-right:0;">
+										<div class="row">
+											<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
+										</div>
+									</div>
+								</div>	
+							<?php
+						}
+					?>
 				</div>
 			</div>
 		@endforeach

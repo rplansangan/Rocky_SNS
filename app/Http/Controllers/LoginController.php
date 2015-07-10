@@ -22,31 +22,19 @@ class LoginController extends Controller {
 	
 	public function signin(Request $request){
 		$input = array_except($request->all(), array('_token'));
-		
-		$auth = Auth::attempt($input);
-		
-		if($auth){
+		if(Auth::attempt($input)){
 			echo 'success';
 		}else{
 			echo 'Invalid Username / Password';
 		}
 	}
 
-	public function attempted() {
-		$this->middleware('guest');
-		$data['message'] = "Wrong Email / Password";
-		return view('pages.login' , $data);
-	}
 	
 	public function logout(){
 		Auth::logout();
 		return redirect('/');
 	}
 	
-	public function forgotView() {
-		$this->middleware('guest');
-		return view('pages.forgotpass.main');
-	}
 	
 	public function forgotProcess(Request $request) {
 		$this->middleware('guest');

@@ -10,17 +10,13 @@
 					?>
 						<li><a href="{{ route('uc') }}"><img src="{{ mediaSrc($profile->prof_pic->image_path , $profile->prof_pic->image_name , $profile->prof_pic->image_ext) }}" width="38px"><?php echo $profile->first_name.' '.$profile->last_name?></a></li>
 					<?php
-				}else{
-					?>
-						<li><img src="{{ URL::asset('assets/images/default-pic.png') }}" width="38px" style="border-radius: 6px;">&nbsp; Guest</li>
-					<?php
 				}
 			?>
 
 			<?php 
 				if(Auth::check()){
 					?>
-						<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/edit-prof-icon.png') }}" width="38px">Edit Profile</a></li>
+						<li><a href="{{ route('profile.edit') }}"><img src="{{ URL::asset('assets/images/new/edit-prof-icon.png') }}" width="38px">Edit Profile</a></li>
 					<?php
 				}
 			?>
@@ -31,10 +27,15 @@
 	<div class="sec-left-menu col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<h6>VIEW AS</h6>
 			@if(isset($my_pets))
+
 				@if(!$my_pets->isEmpty())
 				<ul>
 					@foreach($my_pets as $row)
-						<li><a href="#"><img src="{{ mediaSrc($row->profile_pic->image_path , $row->profile_pic->image_name , $row->profile_pic->image_ext) }}" width="38px">{{ $row->pet_name }}</a></li>
+						@if(isset($row->profile_pic))
+							<li><a href="#"><img src="{{ mediaSrc($row->profile_pic->image_path , $row->profile_pic->image_name , $row->profile_pic->image_ext) }}" width="38px">{{ $row->pet_name }}</a></li>
+						@else
+							<li><a href="#"><img src="{{ URL::asset('assets/images/default-pic.png') }}" width="38px">{{ $row->pet_name }}</a></li>
+						@endif
 					@endforeach
 				</ul>
 				@else
@@ -42,6 +43,7 @@
 						<p>No Pets</p>
 					</div>
 				@endif
+
 			@endif
 		<div class="text-left" style="margin: 10px 0;">
 			<a href="#" class="add-pets-btn" style="color: #b7062b; padding: 0 15px;"><i class="fa fa-plus"></i> Add Pets</a>
@@ -75,9 +77,15 @@
 			if(!$neighbors->isEmpty()){
 				echo '<ul>';
 				foreach($neighbors as $row){
-					?>
-						<li><a href="#"><img src="<?php echo mediaSrc($row->profile->registration->prof_pic->image_path , $row->profile->registration->prof_pic->image_name , $row->profile->registration->prof_pic->image_ext) ?>" width="38px"><?php echo $row->profile->registration->first_name.' '.$row->profile->registration->last_name?></a></li>
-					<?php
+					if(isset($row->profile->registration->prof_pic)){
+						?>
+							<li><a href="#"><img src="<?php echo mediaSrc($row->profile->registration->prof_pic->image_path , $row->profile->registration->prof_pic->image_name , $row->profile->registration->prof_pic->image_ext) ?>" width="38px"><?php echo $row->profile->registration->first_name.' '.$row->profile->registration->last_name?></a></li>
+						<?php
+					}else{
+						?>
+							<li><a href="#"><img src="{{ URL::asset('assets/images/default-pic.png') }}" width="38px"><?php echo $row->profile->registration->first_name.' '.$row->profile->registration->last_name?></a></li>
+						<?php
+					}
 				}
 				echo '</ul>';
 			}else{

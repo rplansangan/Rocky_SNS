@@ -834,10 +834,10 @@ img.vidphoto {
   font-size: 11px;
 }
 
-.like-comm a span {
+.like-comm span {
   position: absolute;
-  bottom: 90px;
-  left: 12px;
+  top:44px;
+  left: 17px;
   color: #262626;
   font-family: 'CenturyGothic', 'Comfortaa', cursive, arial;
   font-size: 11px;
@@ -990,7 +990,7 @@ img.locimg {
   margin-top: -50%;
   margin-bottom: 30%;
 }
-button.login {
+button.login , input.btn-color{
   background-color: #b7042c;
   color: #fff;
 }

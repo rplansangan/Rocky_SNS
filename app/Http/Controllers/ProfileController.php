@@ -176,7 +176,7 @@ class ProfileController extends Controller {
 	
 	public function editProfile(Request $request) {
 		$input = array_except($request->all(), array('_token', 'userfile'));
-		
+
 		$uid = User::find(Auth::id());
 		$uid->load('registration');
 		
@@ -187,55 +187,17 @@ class ProfileController extends Controller {
 			next($input);
 		}
 		$reg->save();
-		
-		if($request->file('userfile') != null) {
-			// sets is_profile_pic field via ProfPicTrait
-			$this->removePrevious(Auth::id());
-			
-			$file = $request->file('userfile');
-			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
-			$dir = StorageHelper::create(Auth::id());
-				
-			$img_data = new Images(array(
-					'user_id' => $uid->user_id,
-					'image_path' => $dir,
-					'image_name' => $filename,
-					'image_mime' => $file->getMimeType(),
-					'image_ext' => $file->getClientOriginalExtension(),
-					'is_profile_picture' => 1
-			));
-		
-			$img_data->save();
-		
-			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
-		}
-		
-		return redirect()->back()->withInput($input);
-	}
-
-	public function profile_merchant($business_id ){
-		$details = Business::find($business_id);
-		
-		return view('pages/merchantprofile')
-				->with('details', $details);
 	}
 
 	
 	public function getSettingsView() {
-		return view('profile.user_settings');
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.profilesettings';
+		$data['title'] = 'Update Profile';
+		return view('pages.master' , $data);
 	}
 	
-	public function getSettingsDispatcher(Request $request) {
-		switch($request->get('action')) {
-			case 'pw':
-				return $this->changePassword(array_except($request->all(), array('_token', 'action')));
-				break;
-				
-			default:
-				return redirect()->back();
-				break;
-		}
-	}
 	
 	private function changePassword($params) {
 		$validate = Validator::make(array(
