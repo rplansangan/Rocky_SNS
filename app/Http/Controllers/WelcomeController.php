@@ -74,6 +74,12 @@ class WelcomeController extends Controller {
 		$data['mid'] = 'pages.inside.missingpets';
 		return view('pages.master' , $data);
 	}
+	public function rockyNeighbors(){
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.neighbors';
+		return view('pages.master' , $data);
+	}
 	public function uc(){
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';

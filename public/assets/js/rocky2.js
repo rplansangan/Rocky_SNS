@@ -84,6 +84,11 @@ $(document).on('ready' , function(){
 		e.preventDefault();
 	});
 
+	//add pets
+	$(".add-pets-btn").on("click", function() {
+	    $('#addpetModal').modal('show');
+	});
+
 	$(document).on('focusout' , '#email_address' , function(){
 		var route = $(this).attr('route');
 		var email = $(this).val();
