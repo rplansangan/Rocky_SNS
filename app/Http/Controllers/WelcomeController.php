@@ -1,10 +1,30 @@
 <?php namespace SNS\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use SNS\Models\FoundPets;
+use SNS\Models\Registration;
+use SNS\Models\Images;
+use SNS\Models\MissingPets;
+use SNS\Models\Business;
+use SNS\Models\LostFoundPetImages;
+use SNS\Libraries\Facades\StorageHelper;
+
+use SNS\Libraries\Facades\PostService;
 use Illuminate\Support\Facades\Auth;
 
-
 class WelcomeController extends Controller {
+
+	/*
+	|--------------------------------------------------------------------------
+	| Welcome Controller
+	|--------------------------------------------------------------------------
+	|
+	| This controller renders the "marketing page" for the application and
+	| is configured to only allow guests. Like most of the other sample
+	| controllers, you are free to modify or remove it as you desire.
+	|
+	*/
 
 	/**
 	 * Create a new controller instance.

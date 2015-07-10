@@ -59,7 +59,7 @@ Route::post('profile/update', array(
 Route::get('home', array(
 	'as' => 'home',
 	'uses' => 'HomeController@index'
-));
+	));
 
 
 //inside sns
