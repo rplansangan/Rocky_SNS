@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Support\Facades\Redis;
+// use SNS\Models\UserFriends;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -9,9 +11,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('test', function() {
-    dd($_SERVER);
-});
 Route::get('/', array(
     'as' => 'index',
     'uses' => 'WelcomeController@index',
@@ -467,6 +466,4 @@ Route::group(['prefix' => 'administration', 'namespace' => 'Admin', 'middleware'
         'uses' => 'DashboardController@displaySingleError'
 	]);
 });
-// Route::get('test', function() {
-//     echo round((microtime(true) - LARAVEL_START)*1000, 3) . ' ms';
-// });
+Route::get('test', ['uses' => 'TestController@index']);
