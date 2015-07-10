@@ -1,10 +1,20 @@
 <div class="container-fluid">
 	@include('include.formPost')
-	@if(!empty($newsfeed))
+	@if(!$newsfeed->isEmpty())
 		@foreach($newsfeed as $row)
 			<div class="row post-area">
 				<div class="userinf col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<a href="#"><img style="width:40px" src="<?php echo mediaSrc($row->user->prof_pic->image_path, $row->user->prof_pic->image_name , $row->user->prof_pic->image_ext) ?>"></a>
+					<?php 
+						if(isset($row->user->prof_pic)){
+							?>
+								<a href="#"><img style="width:40px" src="<?php echo mediaSrc($row->user->prof_pic->image_path, $row->user->prof_pic->image_name , $row->user->prof_pic->image_ext) ?>"></a>
+							<?php
+						}else{
+							?>
+								<a href="#"><img style="width:40px" src="#"></a>
+							<?php
+						}
+					?>
 					<a href="#">{{ $row->user->first_name.' '.$row->user->last_name}}</a>
 					<span>
 					<?php 
@@ -41,7 +51,17 @@
 					</div>
 					<div class='row'>
 						<div class="col-lg-1 nopad img-arrow">
-							<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
+							<?php 
+								if(isset($row->user->prof_pic)){
+									?>
+										<img class="img-responsive img-thumbnail" src="<?php echo mediaSrc($row->user->prof_pic->image_path, $row->user->prof_pic->image_name , $row->user->prof_pic->image_ext) ?>"><span class="arrow-right"></span></img>
+									<?php
+								}else{
+									?>
+										<img class="img-responsive img-thumbnail" src="#"><span class="arrow-right"></span></img>
+									<?php
+								}
+							?>
 						</div>
 						<div class="comminput col-lg-11" style="padding-right:0;">
 							<div class="row">

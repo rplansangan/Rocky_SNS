@@ -29,77 +29,33 @@ class RegistrationController extends Controller {
 	
 	public function register(Request $request) {
 		$input = array_except($request->all(), array('_token'));
-		$validate = Validator::make($input, Registration::$initialRules);
 		
-		if($validate->fails()) {
-			return redirect()->back()
-				->withInput($request->all())
-				->withErrors($validate->errors()->all());
-		}
+		$count = Registration::where('email_address' , $input['email_address'])->count();
 		
-		DB::beginTransaction();
-		try {
+		if($count){
+			echo 'not';
+		}else{
 			$user = new User();
 			$user->email_address = $input['email_address'];
 			$user->password = Hash::make($input['password']);
 			$user->user_role = 1;
-			if(isset($input['user_type']) && (($input['user_type']) == 1)) {
-				$user->is_member = 1;
-			}
-			if(isset($input['user_type']) && (($input['user_type']) == 2)) {
-				$user->is_merchant = 1;
-			}
-			if(isset($input['user_type']) && (($input['user_type']) == 3)) {
-				$user->is_foundation = 1;
-			}
-			if(isset($input['user_type']) && (($input['user_type']) == 4)) {
-				$user->is_vet = 1;
-			}
+			$user->user_type = $input['user_type'];
 			$user->is_deactivated = 0;
-			$user->is_validated = 0;
+			$user->is_validated = 1;
 			$user->save();
-		} catch (ValidationException $e) {
-			DB::rollback();
-			return redirect()->back()
-					->withInput($request->all())
-					->withErrors($e->errors());
-		} catch (\Exception $e) {
-			DB::rollback();
-			return redirect()->back()
-					->withInput($request->all())
-					->withErrors(['message' => trans('errors.err_500')]);
-		}
 
-		try {
 			$reg = new Registration();
-			$reg->email_address = $input['email_address'];
-			$reg->last_name = $input['last_name'];
-			$reg->first_name = $input['first_name'];
-			$reg->gender = $input['gender'];
 			$reg->user_id = $user->user_id;
-			$reg->is_deactivated = 0;
-			$reg->is_validated = 0;
+			$reg->is_validated = 1;
+			$reg->first_name = $input['first_name'];
+			$reg->last_name = $input['last_name'];
+			$reg->gender = $input['gender'];
+			$reg->email_address = $input['email_address'];
 			$reg->save();
-		} catch(ValidationException $e) {
-			DB::rollback();
-			return redirect()->back()
-					->withInput($request->all())
-					->withErrors($e->errors());
-		} catch (\Exception $e) {
-			DB::rollback();
-			return redirect()->back()
-					->withInput($request->all())
-					->withErrors(['message' => trans('errors.err_500')]);
+
+			echo 'ok';
+			Auth::loginUsingId($user->user_id);
 		}
-			
-		DB::commit();
-		
-		//disabled until ?
-		//$service = new EmailValidationService();
-		//$service->id($reg->registration_id)->createEmailToken();
-		Auth::loginUsingId($user->user_id);
-		//return view('pages.message')->with('id', $reg->registration_id)->with('validation_errors', null);
-		return redirect()->route('register.add_pet');
 	}
 	
 	public function validateRegistration($id, $hash) {	

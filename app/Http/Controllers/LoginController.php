@@ -21,8 +21,6 @@ class LoginController extends Controller {
 	}
 	
 	public function signin(Request $request){
-		$this->middleware('auth');
-		
 		$input = array_except($request->all(), array('_token'));
 		
 		$auth = Auth::attempt($input);

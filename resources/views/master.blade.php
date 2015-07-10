@@ -39,6 +39,7 @@
     	</ul>
     @endif
     @yield('content')
+    @include('include.formlogin')
     @include('footer')
   </body>
 </html>

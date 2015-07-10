@@ -2,7 +2,11 @@
 	<div class="first-left-menu col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<ul>
 			<?php 
-				if(Auth::check()){
+				if(!isset($profile->prof_pic) AND Auth::check()){
+					?>
+						<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" width="38px" style="border-radius: 6px;"><?php echo $profile->first_name.' '.$profile->last_name?></a></li>
+					<?php
+				}else if(Auth::check()){
 					?>
 						<li><a href="{{ route('uc') }}"><img src="{{ mediaSrc($profile->prof_pic->image_path , $profile->prof_pic->image_name , $profile->prof_pic->image_ext) }}" width="38px"><?php echo $profile->first_name.' '.$profile->last_name?></a></li>
 					<?php
@@ -68,20 +72,30 @@
 		<h6>MY NEIGHBORS</h6>
 		<?php 
 		if(Auth::check()){
+			if(!$neighbors->isEmpty()){
+				echo '<ul>';
+				foreach($neighbors as $row){
+					?>
+						<li><a href="#"><img src="<?php echo mediaSrc($row->profile->registration->prof_pic->image_path , $row->profile->registration->prof_pic->image_name , $row->profile->registration->prof_pic->image_ext) ?>" width="38px"><?php echo $row->profile->registration->first_name.' '.$row->profile->registration->last_name?></a></li>
+					<?php
+				}
+				echo '</ul>';
+			}else{
+				?>
+					<div class="text-left" style="padding:5px 0px 10px 0px">
+						<p>You have no Neighbors</p>
+					</div>
+				<?php
+			}
 			?>
-				<ul>
-					<li><a href="#"><img src="{{ URL::asset('assets/images/new/husky.png') }}" width="38px">Husky33</a></li>
-					<li><a href="#"><img src="{{ URL::asset('assets/images/new/bull.png') }}" width="38px">Bull</a></li>
-					<li><a href="#"><img src="{{ URL::asset('assets/images/new/twins.png') }}" width="38px">Twins</a></li>
-					<li><a href="#"><img src="{{ URL::asset('assets/images/new/boby.png') }}" width="38px">Bobby</a></li>
-					<li><a href="#"><img src="{{ URL::asset('assets/images/new/rosey.png') }}" width="38px">Rosey</a></li>
-					<li><a href="#"><img src="{{ URL::asset('assets/images/new/brownie.png') }}" width="38px">Brownie</a></li>
-				</ul>
+			<div class="text-left">
+				<a href="#" style="color: #b7062b; padding: 0 15px;"><i class="fa fa-plus"></i> Add Neighbors</a>
+			</div>
 			<?php
 		}else{
 			?>
 				<div class="text-left">
-					<a href="#" style="color: #b7062b; padding: 0 15px;">Login to see Neigbors</a>
+					<a href="#" style="color: #b7062b; padding: 0 15px;" data-toggle="modal" data-target="#loginModal">Login to see Neighbors</a>
 				</div>
 			<?php
 		}

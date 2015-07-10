@@ -11,6 +11,7 @@ use SNS\Models\Pets;
 use SNS\Models\Registration;
 use SNS\Models\MissingPets;
 use SNS\Libraries\Facades\Notification;
+use SNS\Libraries\Services\FriendService;
 
 abstract class Controller extends BaseController {
 
@@ -39,8 +40,10 @@ abstract class Controller extends BaseController {
 	}
 	
 	protected function setGlobals() {	
+		$t = new FriendService;
 		$data['my_pets'] = Pets::with('profile_pic')->where('user_id', Auth::id())->get();
 		$data['profile'] = Registration::with(array('prof_pic'))->find(Auth::id());
+		$data['neighbors'] = $t->collect(Auth::id());
 		return $data;
 	}
 

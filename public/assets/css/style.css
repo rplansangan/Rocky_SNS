@@ -975,5 +975,8 @@ img.locimg {
   margin-top: -50%;
   margin-bottom: 30%;
 }
-
+button.login {
+  background-color: #b7042c;
+  color: #fff;
+}
 /*END OTHER*/

@@ -75,7 +75,8 @@ $(document).on('ready' , function(){
 					if(a != 'ok'){
 						$('.loader').hide().text('Your email address is already Taken').fadeIn();
 					}else{
-
+						$('#signupModal').modal('hide');
+						window.location.href = url+"home";
 					}
 				}
 			});

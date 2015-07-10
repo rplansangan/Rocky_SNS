@@ -26,7 +26,7 @@
 				            </form>
 				        </div>
 			            <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3 logupload" style="padding: 0 5px;">
-			            	<a href="#" style="color: #b7062b;">Login to upload videos</a>
+			            	<a href="#" style="color: #b7062b;" data-toggle="modal" data-target="#loginModal">Login to upload videos</a>
 			            </div>
 					<?php
 				}
@@ -331,7 +331,7 @@
 			            <!-- My Uploads -->
 						<div role="tabpanel" class="tab-pane active" id="uploads">
 							<div class="videos-cont col-sm-12 col-xs-12 col-md-12 col-lg-12 text-center" style="border-bottom: 0;">
-								<a href="#" style="color: #b7062b; padding: 0 15px; font-size: 20px;">Login to upload videos</a>
+								<a href="#" style="color: #b7062b; padding: 0 15px; font-size: 20px;" data-toggle="modal" data-target="#loginModal">Login to upload videos</a>
 							</div>
 						</div>
 					<?php
