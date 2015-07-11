@@ -23,5 +23,9 @@ $(document).ready(function(){
             status.html(xhr.responseText);
         }
     });
+
+    $(document).on('click' , '#comment-down' , function(){
+        $(this).parent().parent().parent().next().slideDown( "slow" );
+    });
 });
 

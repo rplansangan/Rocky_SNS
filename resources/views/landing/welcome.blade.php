@@ -22,6 +22,31 @@
       <script src="{{ URL::asset('assets/js/bxslider.js') }}"></script>
       <script src="{{ URL::asset('assets/js/jquery-form.js') }}"></script>
       <script src="{{ URL::asset('assets/js/rocky2.js') }}"></script>
+      <script type="text/javascript">
+        $(document).ready(function(){
+          var sliderBx;
+          window.onedir = 'next';
+
+          sliderBx = $('#slider1').bxSlider({
+            auto: true,
+            autoControls: true,
+            autoControlsSelector: '#my-start-stop',
+            slideWidth: 1160,
+            speed: 700,
+            autoStart: false
+          });
+
+          $('.bx-next').click(function() {
+            window.onedir = 'next';
+            sliderBx.startShow();           
+          });
+
+          $('.bx-prev').click(function() {
+            window.onedir = 'prev';
+            sliderBx.startShow();     
+          });
+        });
+      </script>
     </head>
     <body>
      <input type="hidden" id="token" value="{{ csrf_token() }}">

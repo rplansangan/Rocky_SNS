@@ -1,187 +1,110 @@
-<div class="container-fluid">
-	<div class="nearest-ps col-sm-12 col-xs-12 col-md-12 col-lg-12">
-		<div class="bowl col-sm-12 col-xs-12 col-md-1 col-lg-1" style="padding:0;">
-			<img src="{{ URL::asset('assets/images/new/nvet-icon.png') }}">
+<div>
+	<div class="text-center">
+		<img src="{{ URL::asset('assets/img/vet.png') }}">
+		<h3>Nearest Veterinarian <br><small class="text-muted">Find your nearest petshop or own a petshop with us</small></h3>
+		<div class="col-lg-6 col-lg-offset-3 search-input-petshop">
+			<span>
+				<a href="#">Kuala Lumpur</a>
+				<a href="#">Selangor</a>
+				<a href="#">Penang</a>
+				<a href="#">More Cities..</a>
+			</span>
+			<input type="text" class="form-control input-lg " placeholder="Search for...">
+			<a href="#"><img src="{{ URL::asset('assets/img/search.png') }}"></a>
 		</div>
-		<div class="col-sm-12 col-xs-12 col-md-11 col-lg-11" style="padding:0 0 0 15px;">
-			<p style="font-size: 18px; margin-bottom: 0">Nearest Vet</p>
-			<p style="color: #7d7d7d; font-weight: 700; margin-bottom: 0px">Is your pet sick? Go to the nearest vet now.</p>
-			<div class="searchpetshop col-sm-12 col-xs-12 col-md-9 col-lg-9">
-	            <form id="tfnewsearch" method="get" action="http://www.google.com">
-	                <input type="text" id="tfq" class="tftextinput5" name="q" size="21" maxlength="120"><input type="submit" value=" " class="tfbutton5">
-	            </form>
-	        </div>
-            <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3" style="padding: 0 5px;">
-            	<button class="upvid_btn">Register Now</button>
-            </div>
+		<br clear="all">
+	</div>
+</div>
+
+<!-- NEWSFEED AREA-->
+<div class="newsfeed">
+	<!-- NEWSFEED CONTENT -->
+	<div class="row petshop-content">
+		<div class="col-lg-4">
+			<img src="{{ URL::asset('assets/images/new/map1.jpg') }}" class="img-responsive">
+		</div>
+		<div class="col-lg-8">
+			<img src="{{ URL::asset('assets/images/new/loc.jpg') }}" class="img-responsive">
+			<div>
+				<div class="col-lg-7 nopad">
+					<p>Lot T-015A, Mid Valley Megamall<br>
+						Lingkaran Syed Putra<br>
+						58000 Kuala Lumpur<br>
+						Malaysia</p>	
+				</div>
+				<div class="col-lg-5">
+					<a href="#"><i class="fa fa-phone"></i> <span>+63915 123 4567</span></a>
+					<br>
+					<a href="#"><i class="fa fa-envelope"></i> <span>rocky@rocky.com</span></a>
+				</div>
+			</div>
 		</div>
 	</div>
-	<div class="nearest-map col-sm-12 col-xs-12 col-md-12 col-lg-12">
-		<div class="recom-ps col-sm-12 col-xs-12 col-md-6 col-lg-6 text-left">
-			<h5>Recommended Vets</h5>
+	<!-- END NEWSFEED CONTENT -->
+	<!-- COMMENT SECTION -->
+	<div class="row newsfeed-bottom">
+		<div>
+			<a href="#"><img src="{{ URL::asset('assets/img/like.png') }}"><span class="like">26</span></a>
 		</div>
-		<div class="cities col-sm-12 col-xs-12 col-md-6 col-lg-6 text-right">
-			<a href="#">Kuala Lumpur</a>
-			<a href="#">George Town</a>
-			<a href="#">Penang</a>
-			<a href="#">Ipoh</a>
-			<a href="#">More Cities</a>
+		<div>
+			<a href="javascript:void(0);" id="comment-down"><img src="{{ URL::asset('assets/img/comment.png') }}"></a>
 		</div>
-
-		<div class="nps-loc col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<div class="nearestps-loc col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-					<img src="{{ URL::asset('assets/images/new/vet1.jpg') }}">
+	</div>
+	<!-- END COMMENT SECTION -->
+</div>
+<div class="comment-area">
+	<div class="text-left loading-dots">
+		<a href="#"><span>...</span></a>
+	</div>
+	<div class="comment-container">
+		<div class="col-lg-1">
+			<a href="#"><img src="{{ URL::asset('assets/img/puggy.png') }}" class="profile-pic"></a>
+		</div>
+		<div class="col-lg-11">
+			<div class="row">
+				<div class="col-lg-6 text-left nopad">
+					<a href="#"><span>Bull</span></a>
 				</div>
-				<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-					<img src="{{ URL::asset('assets/images/new/loc.jpg') }}">
-					<p>Lot T-116B, Mid Valley Megamall
-					<br/>Lingkaran Syed Putra
-					<br/>58000 Kuala Lumpur
-					<br/>Malaysia</p>
-					<p style="color: #b7062b">Get Directions</p>
-					<div class="cont-det col-lg-7 col-md-7 col-sm-12 col-xs-12">
-						<ul>
-							<li class="pn">+603-2287 7817</li>
-							<li class="em">vets@urservice.com</li>
-						</ul>
-					</div>
-					<div class="view_btn col-lg-5 col-md-5 col-sm-12 col-xs-12 text-right">
-						<a href="#">View</a>
-					</div>
+				<div class="col-lg-6 text-right nopad">
+					<h6><small>26 Minutes ago</small></h6>
 				</div>
 			</div>
-			<div class="like-com-sec col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="like-comm nps">
-					<a href="#"><img src="{{ URL::asset('assets/images/new/wheart.png') }}"><span>12</span></a>
-					<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
-				</div>
-				<div class="col-lg-1 nopad img-arrow">
-					<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
-				</div>
-				<div class="comminput col-lg-11" style="padding-right:0;">
-					<div class="row">
-						<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
-					</div>
+			<div class="row">
+				<div class="comment-message">
+					<p>I feel good so good</p>
 				</div>
 			</div>
 		</div>
-
-		<div class="nps-loc col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<div class="nearestps-loc col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-					<img src="{{ URL::asset('assets/images/new/vet2.jpg') }}">
+		<br clear="all">
+	</div>
+	<div class="comment-container">
+		<div class="col-lg-1">
+			<a href="#"><img src="{{ URL::asset('assets/img/puggy.png') }}" class="profile-pic"></a>
+		</div>
+		<div class="col-lg-11">
+			<div class="row">
+				<div class="col-lg-6 text-left nopad">
+					<a href="#"><span>Bull</span></a>
 				</div>
-				<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-					<img src="{{ URL::asset('assets/images/new/loc.jpg') }}">
-					<p>Lot T-116B, Mid Valley Megamall
-					<br/>Lingkaran Syed Putra
-					<br/>58000 Kuala Lumpur
-					<br/>Malaysia</p>
-					<p style="color: #b7062b">Get Directions</p>
-					<div class="cont-det col-lg-7 col-md-7 col-sm-12 col-xs-12">
-						<ul>
-							<li class="pn">+603-2287 7817</li>
-							<li class="em">vets@urservice.com</li>
-						</ul>
-					</div>
-					<div class="view_btn col-lg-5 col-md-5 col-sm-12 col-xs-12 text-right">
-						<a href="#">View</a>
-					</div>
+				<div class="col-lg-6 text-right nopad">
+					<h6><small>26 Minutes ago</small></h6>
 				</div>
 			</div>
-			<div class="like-com-sec col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="like-comm nps">
-					<a href="#"><img src="{{ URL::asset('assets/images/new/wheart.png') }}"><span>12</span></a>
-					<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
-				</div>
-				<div class="col-lg-1 nopad img-arrow">
-					<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
-				</div>
-				<div class="comminput col-lg-11" style="padding-right:0;">
-					<div class="row">
-						<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
-					</div>
+			<div class="row">
+				<div class="comment-message">
+					<p>I feel good so good</p>
 				</div>
 			</div>
 		</div>
-
-		<div class="nps-loc col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<div class="nearestps-loc col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-					<img src="{{ URL::asset('assets/images/new/vet3.jpg') }}">
-				</div>
-				<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-					<img src="{{ URL::asset('assets/images/new/loc.jpg') }}">
-					<p>Lot T-116B, Mid Valley Megamall
-					<br/>Lingkaran Syed Putra
-					<br/>58000 Kuala Lumpur
-					<br/>Malaysia</p>
-					<p style="color: #b7062b">Get Directions</p>
-					<div class="cont-det col-lg-7 col-md-7 col-sm-12 col-xs-12">
-						<ul>
-							<li class="pn">+603-2287 7817</li>
-							<li class="em">vets@urservice.com</li>
-						</ul>
-					</div>
-					<div class="view_btn col-lg-5 col-md-5 col-sm-12 col-xs-12 text-right">
-						<a href="#">View</a>
-					</div>
-				</div>
-			</div>
-			<div class="like-com-sec col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="like-comm nps">
-					<a href="#"><img src="{{ URL::asset('assets/images/new/wheart.png') }}"><span>12</span></a>
-					<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
-				</div>
-				<div class="col-lg-1 nopad img-arrow">
-					<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
-				</div>
-				<div class="comminput col-lg-11" style="padding-right:0;">
-					<div class="row">
-						<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
-					</div>
-				</div>
-			</div>
+		<br clear="all">
+	</div>
+	<div class="reply-textarea">
+		<div class="col-lg-1 nopad">
+			<a href="#" class="arrow_right"><img src="{{ URL::asset('assets/img/prof.png') }}" class="img-thumbnail profile-pic"></a>
 		</div>
-
-		<div class="nps-loc col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<div class="nearestps-loc col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-					<img src="{{ URL::asset('assets/images/new/vet4.jpg') }}">
-				</div>
-				<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-					<img src="{{ URL::asset('assets/images/new/loc.jpg') }}">
-					<p>Lot T-116B, Mid Valley Megamall
-					<br/>Lingkaran Syed Putra
-					<br/>58000 Kuala Lumpur
-					<br/>Malaysia</p>
-					<p style="color: #b7062b">Get Directions</p>
-					<div class="cont-det col-lg-7 col-md-7 col-sm-12 col-xs-12">
-						<ul>
-							<li class="pn">+603-2287 7817</li>
-							<li class="em">vets@urservice.com</li>
-						</ul>
-					</div>
-					<div class="view_btn col-lg-5 col-md-5 col-sm-12 col-xs-12 text-right">
-						<a href="#">View</a>
-					</div>
-				</div>
-			</div>
-			<div class="like-com-sec col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="like-comm nps">
-					<a href="#"><img src="{{ URL::asset('assets/images/new/wheart.png') }}"><span>12</span></a>
-					<a href="#"><img src="{{ URL::asset('assets/images/new/comment-icon.png') }}"></a>
-				</div>
-				<div class="col-lg-1 nopad img-arrow">
-					<img class="img-responsive img-thumbnail" src="{{ URL::asset('assets/images/new/prof-icon.png') }}"><span class="arrow-right"></span></img>
-				</div>
-				<div class="comminput col-lg-11" style="padding-right:0;">
-					<div class="row">
-						<textarea class="form-control" rows="3" placeholder="Comment..."></textarea>
-					</div>
-				</div>
-			</div>
+		<div class="col-lg-11 nopad">
+			<textarea class="form-control"></textarea>
 		</div>
+		<br clear="all">
 	</div>
 </div>
