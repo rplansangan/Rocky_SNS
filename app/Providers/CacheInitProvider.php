@@ -5,6 +5,7 @@ use Illuminate\Support\ServiceProvider;
 use SNS\Libraries\Cache\Initialize;
 use Illuminate\Redis\Database;
 use Predis\Client;
+use SNS\Libraries\Cache\Get;
 
 class CacheInitProvider extends ServiceProvider {
     
@@ -20,10 +21,12 @@ class CacheInitProvider extends ServiceProvider {
      */
     private $redisParams;
     
-    public function register() {
-       # $this->redisParams = config('database.redis.default');
+    public function register(Guard $auth) {
+        $this->redisParams = config('database.redis.default');
         
-      #  $cache = new Client($this->redisParams);
-       # $this->app->bind(new Initialize($auth, $cache));
+        $cache = new Client($this->redisParams);
+        $this->app->singleton(new Initialize($auth, $cache));
+        
+        $this->app->singleton(new Get($auth, $cache));
     }
 }
