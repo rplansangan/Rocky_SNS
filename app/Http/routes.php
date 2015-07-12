@@ -51,6 +51,10 @@ Route::get('profile/edit_settings', array(
 	'as' => 'profile.edit',
 	'uses' => 'ProfileController@getSettingsView'
 	));
+Route::get('profile/{id}', array(
+	'as' => 'profile.view',
+	'uses' => 'ProfileController@showProfile'
+	));
 Route::post('profile/update', array(
 	'as' => 'profile.doUpdate',
 	'uses' => 'ProfileController@editProfile'

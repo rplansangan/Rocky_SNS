@@ -25,50 +25,15 @@ class ProfileController extends Controller {
 	
 	public function __construct() {
 		parent::__construct();
-		$this->middleware('auth');
 	}
 	
 	public function showProfile($id){ 	   
 		$profile = User::find($id);
-		
-		if(is_null($profile)) {
-		    return redirect()->back();
-		}
-		
-		if($profile->is_foundation) {
-			$profile->load(['foundation']);
-			
-			if(is_null($profile->foundation)) {
-				return redirect()->route('foundation.profile.register');
-			} else {
-				return view('pages.pet_foundation.profile', ['foundation_id', $profile->foundation->foundation_id])->with('profile', $profile);
-			}
-		} else {
-			if(Cache::has('user.profile.collection' . $id)) {
-				$params = Cache::get('user.profile.collection' . $id);
-				
-				$data['friend_flags'] = $params['friend_flags'];
-				$profile = $params['profile'];
-				$collection = $params['collection'];
-			} else {
-				$profile->load(['registration' => function($q) {
-						$q->addSelect(['registration_id', 'user_id', 'first_name', 'last_name']);
-					}, 'prof_pic' => function($q) {
-						$q->where('is_profile_picture', 1);
-						$q->where('pet_id', 0);
-						$q->addSelect(['image_id', 'user_id', 'image_path', 'image_name', 'image_ext']);
-					}
-				]);
-				$params['profile'] = $profile;
-				$params['collection'] = $collection = PostService::initialNewsFeed(Auth::id(), $id);		
-				$params['friend_flags'] = $data['friend_flags'] = FriendService::check($id);
-				Cache::add('user.profile.collection' . $id, $params, 10);
-			}			
-			
-			return view('profile.profile', $data)
-				->with('profile', $profile)
-				->with('posts', $collection);
-		}		
+
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.lovers';
+		return view('pages.master', $data);		
 	}
 
 	public function petlist($id){
@@ -187,6 +152,16 @@ class ProfileController extends Controller {
 			next($input);
 		}
 		$reg->save();
+
+		
+		if($request->file('userfile') != null) {
+			$file = $request->file('userfile');
+			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
+			$dir = StorageHelper::create(Auth::id());
+			echo $dir;
+		}
+
+		#custom_print_r($request->all()); 
 	}
 
 	

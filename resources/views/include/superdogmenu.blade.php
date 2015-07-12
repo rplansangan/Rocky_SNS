@@ -2,9 +2,9 @@
 	<nav>
 		<ul>
 			@if(!isset($profile->prof_pic) AND Auth::check())
-			<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic" ><span><?php echo $profile->first_name.' '.$profile->last_name?></span></a></li>
+			<li><a href="{{ Route('profile.view' , ['id' => Auth::check()] ) }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic" ><span>{{ $profile->first_name.' '.$profile->last_name }}</span></a></li>
 			@elseif(Auth::check())
-			<li><a href="{{ route('uc') }}"><img src="{{ mediaSrc($profile->prof_pic->image_path , $profile->prof_pic->image_name , $profile->prof_pic->image_ext) }}" class="profile-pic"><span><?php echo $profile->first_name.' '.$profile->last_name?></span></a></li>
+			<li><a href="{{ Route('profile.view' , ['id' => Auth::check()] ) }}"><img src="{{ mediaSrc($profile->prof_pic->image_path , $profile->prof_pic->image_name , $profile->prof_pic->image_ext) }}" class="profile-pic"><span>{{ $profile->first_name.' '.$profile->last_name }}</span></a></li>
 			@else
 			<li><a href="{{ route('home') }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic"><span>Public</span></a></li>
 			@endif
@@ -70,9 +70,9 @@
 			<ul>
 				@foreach($neighbors as $row)
 					@if(isset($row->profile->registration->prof_pic))
-						<li><a href="#"><img src="{{ mediaSrc($row->profile->registration->prof_pic->image_path , $row->profile->registration->prof_pic->image_name , $row->profile->registration->prof_pic->image_ext)  }}" class="profile-pic"><span>{{ $row->profile->registration->first_name.' '.$row->profile->registration->last_name }}</span></a></li>
+						<li><a href="{{ Route('profile.view' , ['id' => $row->profile->registration->user_id] ) }}"><img src="{{ mediaSrc($row->profile->registration->prof_pic->image_path , $row->profile->registration->prof_pic->image_name , $row->profile->registration->prof_pic->image_ext)  }}" class="profile-pic"><span>{{ $row->profile->registration->first_name.' '.$row->profile->registration->last_name }}</span></a></li>
 					@else
-						<li><a href="#"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic"><span>{{ $row->profile->registration->first_name.' '.$row->profile->registration->last_name }}</span></a></li>
+						<li><a href="{{ Route('profile.view' , ['id' => $row->profile->registration->user_id] ) }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic"><span>{{ $row->profile->registration->first_name.' '.$row->profile->registration->last_name }}</span></a></li>
 					@endif
 				@endforeach
 			</ul>
@@ -82,7 +82,7 @@
 			</div>
 			@endif
 			<div class="text-left">
-				<a href="#" style="color: #b7062b; padding: 0 15px;"><i class="fa fa-plus"></i> Add Neighbors</a>
+				<a href="{{ Route('public.neighbors') }}" style="color: #b7062b; padding: 0 15px;"><i class="fa fa-plus"></i> Add Neighbors</a>
 			</div>	
 		@else
 		<div class="text-left">

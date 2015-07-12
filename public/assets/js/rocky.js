@@ -7,7 +7,7 @@ $(document).ready(function(){
     var percent = $('.percent');
     var status = $('#status');
 
-    $('form').ajaxForm({
+    $('#form12').ajaxForm({
         beforeSend: function() {
             status.empty();
             var percentVal = '0%';
@@ -20,7 +20,7 @@ $(document).ready(function(){
             percent.html(percentVal);
         },
         complete: function(xhr) {
-            status.html(xhr.responseText);
+            alert(xhr.responseText);
         }
     });
 

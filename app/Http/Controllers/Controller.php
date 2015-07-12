@@ -36,6 +36,7 @@ abstract class Controller extends BaseController {
 		$missingPets = MissingPets::with(['profile.image'])->orderByRaw("RAND()")->limit(2)->get();
 		$data['missing_pets'] = $missingPets;
 		$data['title'] = 'Rocky Superdog';
+		$data['sub_title'] = '';
 		return $data;
 	}
 	

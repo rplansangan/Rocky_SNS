@@ -11,9 +11,13 @@
       @if(Auth::check())
       <nav>
         <ul>
-          <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/prof.png') }}"><span>Rocky</span></a></li>
+          @if(!isset($profile->prof_pic) AND Auth::check())
+          <li><a href="{{ Route('profile.view' , ['id' => Auth::check()] ) }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}"><span>{{ $profile->first_name.' '.$profile->last_name }}</span></a></li>
+          @elseif(Auth::check())
+          <li><a href="{{ Route('profile.view' , ['id' => Auth::check()] ) }}"><img src="{{ mediaSrc($profile->prof_pic->image_path , $profile->prof_pic->image_name , $profile->prof_pic->image_ext) }}"><span>{{ $profile->first_name.' '.$profile->last_name }}</span></a></li>
+          @endif
           <li><a href="{{ Route('home') }}"><span>Home</span></a></li>
-          <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/neighbors.png') }}"></a></li>
+          <li><a href="{{ route('public.neighbors') }}"><img src="{{ URL::asset('assets/img/neighbors.png') }}"></a></li>
           <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/message.png') }}"></a></li>
           <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/notification.png') }}"></a></li>
           <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/find.png') }}"></a></li>
