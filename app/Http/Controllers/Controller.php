@@ -20,21 +20,23 @@ abstract class Controller extends BaseController {
 	
 
 // 	public function __construct(Initialize $init, Get $cacheGet) {
-// 		$this->initialize($init, $cacheGet);
-// 	}
+	public function __construct() {
+		$this->initialize();
+	}
 // public function __construct() {
 // 	dd(app()->make('Initialize'));
 // }
 	
-	protected function initialize($init, $cacheGet) {
+	protected function initialize() {
+// 		$init = new Initialize();
 		$data = $this->setPubGlobals();
 
 		if(Auth::check()) {
 			$data += $this->setGlobals();
-			//$init->initAuth();
+// 			$init->initAuth();
 			//$data['user_data'] = $cacheGet->userData();
 		}
-
+		
 		view()->share($data);	
 	}
 
@@ -52,6 +54,7 @@ abstract class Controller extends BaseController {
 		$data['profile'] = Auth::user()->registration;
 		$data['profile']->load(['prof_pic']);
 		$data['neighbors'] = $t->collect(Auth::id());
+		
 		return $data;
 	}
 

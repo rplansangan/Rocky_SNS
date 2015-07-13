@@ -11,7 +11,8 @@ use SNS\Services\ValidationService;
 use Illuminate\Support\Facades\Auth;
 use SNS\Libraries\Facades\PostService;
 use Carbon\Carbon;
-
+use SNS\Libraries\Cache\Initialize;
+use SNS\Libraries\Cache\Get;
 
 class HomeController extends Controller {
 
@@ -33,7 +34,7 @@ class HomeController extends Controller {
 	 */
 	public function __construct()
 	{
-// 		parent::__construct();
+		parent::__construct();
 		
 	}
 
