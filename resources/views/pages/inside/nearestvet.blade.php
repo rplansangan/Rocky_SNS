@@ -1,6 +1,6 @@
 <div>
 	<div class="text-center">
-		<img src="{{ URL::asset('assets/img/vet.png') }}">
+		<img src="{{ URL::asset('assets/img/vet-large.jpg') }}">
 		<h3>Nearest Veterinarian <br><small class="text-muted">Find your nearest petshop or own a petshop with us</small></h3>
 		<div class="col-lg-6 col-lg-offset-3 search-input-petshop">
 			<span>
