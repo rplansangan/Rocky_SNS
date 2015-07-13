@@ -7,6 +7,11 @@ use Predis\Client;
 use SNS\Libraries\Cache\Traits\Keys;
 use SNS\Libraries\Cache\Traits\Expirations;
 
+/**
+ * 
+ * @author Rap
+ *
+ */
 class Initialize {
     
 	use Keys, Expirations;
@@ -22,7 +27,7 @@ class Initialize {
      */
     protected $cache;
     
-    public function __construct(Guard $auth, Client $cache) {
+    public function __construct($auth, Client $cache) {
         $this->auth = $auth;
         $this->cache = $cache;
     }

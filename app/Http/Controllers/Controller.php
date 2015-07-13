@@ -18,12 +18,14 @@ abstract class Controller extends BaseController {
 
 	use DispatchesCommands, ValidatesRequests;
 	
-	public function __construct(Initialize $init, Get $cacheGet) {
-		$this->initialize($init, $cacheGet);
-	}
+// 	public function __construct(Initialize $init, Get $cacheGet) {
+// 		$this->initialize($init, $cacheGet);
+// 	}
+// public function __construct() {
+// 	dd(app()->make('Initialize'));
+// }
 	
 	protected function initialize($init, $cacheGet) {
-		
 		$data = $this->setPubGlobals();
 
 		if(Auth::check()) {
@@ -44,7 +46,7 @@ abstract class Controller extends BaseController {
 	}
 	
 	protected function setGlobals() {	
-		$t = new FriendService; $data = array();
+		$t = new FriendService; 
 		$data['my_pets'] = Pets::with('profile_pic')->where('user_id', Auth::id())->get();
 		$data['profile'] = Registration::with(array('prof_pic'))->find(Auth::id());
 		$data['neighbors'] = $t->collect(Auth::id());
