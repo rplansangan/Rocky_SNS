@@ -33,7 +33,7 @@
             ?>
             <li style=" margin-top: 8px;"><span class="line" style="margin-left: 5px;">&nbsp;</span>
             <li><a href="{{ route('home') }}" style="margin-right: 5px;line-height:33px">Home</a></li>
-            <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/friends-icon.png') }}" width="38px"></a></li>
+            <li><a href="{{ route('public.neighbors') }}"><img src="{{ URL::asset('assets/images/new/friends-icon.png') }}" width="38px"></a></li>
             <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/msg-icon.png') }}" width="38px"></a></li>
             <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/notif-icon.png') }}" width="38px" style="margin-right: 5px;"></a></li>
             <li style=" margin-top: 8px;"><span class="line">&nbsp;</span></li>
