@@ -33,8 +33,8 @@
 				@endforeach
 			</ul>
 			@else
-			<div class="text-center">
-				<p>No Pets</p>
+			<div class="text-left">
+				<p style="padding: 0 15px;">No Pets</p>
 			</div>
 			@endif
 		@endif
@@ -78,7 +78,7 @@
 			</ul>
 			@else
 			<div class="text-left" style="padding:5px 0px 10px 0px">
-				<p>You have no Neighbors</p>
+				<p style="padding: 0 15px;">You have no Neighbors</p>
 			</div>
 			@endif
 			<div class="text-left">

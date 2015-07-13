@@ -82,6 +82,10 @@ header > div nav > ul > li > ul > li {
 }
 header > div nav > ul > li > ul > li > a{
 	padding: 5px 10px;
+	color: #B7042C;
+}
+header > div nav > ul > li > ul > li > a:hover{
+	color: #000;
 }
 .arrow_box:after, .arrow_box:before {
 	bottom: 100%;

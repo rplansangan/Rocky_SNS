@@ -32,7 +32,7 @@ class ProfileController extends Controller {
 
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
-		$data['mid'] = 'pages.inside.lovers';
+		$data['mid'] = 'pages.inside.profile';
 		return view('pages.master', $data);		
 	}
 
