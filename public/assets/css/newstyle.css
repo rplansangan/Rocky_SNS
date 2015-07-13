@@ -176,7 +176,7 @@ header > div nav > ul > li > ul > li > a:hover{
 .left > div > label{
 	padding: 10px 25px 0px 25px;
 }
-.loading-dots > a {
+.loading-dots > a , .loading-dots span{
 	font-size: 50px;
 	padding-bottom: 20px;
 	padding-top: 0px;
@@ -192,7 +192,7 @@ header > div nav > ul > li > ul > li > a:hover{
 	background-color: white;
 	box-shadow: -1px 9px 28px #888888;
 	margin-bottom: 35px;
-	padding: 20px 30px;
+	padding: 20px 25px;
 	border-radius: 8px;
 }
 .mid .post-area > div > a > img{

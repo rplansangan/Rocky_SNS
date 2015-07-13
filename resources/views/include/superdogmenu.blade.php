@@ -81,13 +81,11 @@
 				<p style="padding: 0 15px;">You have no Neighbors</p>
 			</div>
 			@endif
-			<div class="text-left">
-				<a href="{{ Route('public.neighbors') }}" style="color: #b7062b; padding: 0 15px;"><i class="fa fa-plus"></i> Add Neighbors</a>
-			</div>	
+
 		@else
-		<div class="text-left">
-			<a href="#" style="color: #b7062b; padding: 10px 20px;" data-toggle="modal" data-target="#loginModal">Login to see Neighbors</a>
-		</div>	
+		<ul>
+			<li><a href="{{ route('public.neighbors') }}"><img src="{{ URL::asset('assets/img/neighbors.png') }}"><span>Neighbors</span></a></li>
+		</ul>
 		@endif
 	</nav>
 	<div class="text-center loading-dots">

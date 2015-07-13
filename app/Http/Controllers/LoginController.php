@@ -22,6 +22,7 @@ class LoginController extends Controller {
 	
 	public function signin(Request $request){
 		$input = array_except($request->all(), array('_token'));
+		
 		if(Auth::attempt($input)){
 			echo 'success';
 		}else{
