@@ -99,7 +99,7 @@
       <!-- END SLIDER -->
       <!-- SECTION -->
       <section class="text-right nopad">
-        <div style="width:71%;margin:0 auto;">
+        <div>
           <div class="col-lg-6">
             <img src="{{ URL::asset('assets/images/landing/dog3.png') }}" class="img-responsive" id="layer2" style="top: 123px;">
           </div>
@@ -118,7 +118,7 @@
         </div>
       </section>
       <section class="text-left nopad landing-bg-section-2">
-        <div style="width:69.2%;margin:0 auto;">
+        <div>
           <div class="col-lg-6 ">
             <h1>ALL YOUR PET NEEDS</h1>
             <p>Bring your dog to Doggy Daycare and go<br>
@@ -133,7 +133,7 @@
         </div>
       </section>
       <section class="text-right nopad">
-        <div style="width:71%;margin:0 auto;">
+        <div>
           <div class="col-lg-6">
             <img src="{{ URL::asset('assets/images/landing/dog5.png') }}" class="img-responsive" id="layer2" style="margin-top: 132px;">
           </div>
@@ -151,7 +151,7 @@
           </div>
         </section>
         <section class="map">
-            <div style="width:69%;margin:0 auto;height:100%;">
+            <div>
                 <div class="col-lg-4 col-lg-offset-1">
                     <img src="{{ URL::asset('assets/images/landing/phone2.png') }}" style="width:250px"  >
                 </div>

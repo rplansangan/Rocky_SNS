@@ -24,7 +24,8 @@ class LoginController extends Controller {
 		$input = array_except($request->all(), array('_token'));
 		
 		if(Auth::attempt($input)){
-			echo 'success';
+			Auth::loginUsingId(Auth::id());
+			return 'success';
 		}else{
 			echo 'Invalid Username / Password';
 		}

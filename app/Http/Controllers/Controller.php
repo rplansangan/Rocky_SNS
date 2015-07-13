@@ -49,7 +49,8 @@ abstract class Controller extends BaseController {
 	protected function setGlobals() {	
 		$t = new FriendService; 
 		$data['my_pets'] = Pets::with('profile_pic')->where('user_id', Auth::id())->get();
-		$data['profile'] = Registration::with(array('prof_pic'))->find(Auth::id());
+		$data['profile'] = Auth::user()->registration;
+		$data['profile']->load(['prof_pic']);
 		$data['neighbors'] = $t->collect(Auth::id());
 		return $data;
 	}
