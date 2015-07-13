@@ -414,3 +414,12 @@ header > div nav > ul > li > ul > li > a:hover{
 }
 
 /* END DOGS OF THE WEEK */
+
+/*===PROFILE===*/
+a.send-msg {
+  color: #B7042C;
+  text-decoration: none;
+}
+a.send-msg:hover {
+  color: #000;
+}
