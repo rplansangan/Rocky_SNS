@@ -158,7 +158,7 @@ class ProfileController extends Controller {
 			$file = $request->file('userfile');
 			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
 			$dir = StorageHelper::create(Auth::id());
-			echo $dir;
+	
 		}
 
 		#custom_print_r($request->all()); 
