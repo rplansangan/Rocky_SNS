@@ -1,26 +1,6 @@
 $(document).on('ready' , function(){
 	var url = "http://localhost:8000/";
-	var sliderBx;
-	window.onedir = 'next';
-
-	sliderBx = $('#slider1').bxSlider({
-		auto: true,
-		autoControls: true,
-		autoControlsSelector: '#my-start-stop',
-		slideWidth: 1160,
-		speed: 700,
-		autoStart: false
-	});
-
-	$('.bx-next').click(function() {
-		window.onedir = 'next';
-		sliderBx.startShow();           
-	});
-
-	$('.bx-prev').click(function() {
-		window.onedir = 'prev';
-		sliderBx.startShow();     
-	});
+	
 
 	$.ajaxSetup({
 		data: { "_token": $('#token').val() },

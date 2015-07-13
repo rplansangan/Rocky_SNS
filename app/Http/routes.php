@@ -13,6 +13,7 @@ Route::get('test', array(
     'as' => 'test',
     'uses' => 'WelcomeController@test',
 ));
+
 Route::get('/', array(
     'as' => 'index',
     'uses' => 'WelcomeController@index',
@@ -31,34 +32,6 @@ Route::post('login', array(
 	'as' => 'login',
 	'uses' => 'LoginController@signin'
 ));
-Route::get('login/attempt', array(
-	'as' => 'login.attempt',
-	'uses' => 'LoginController@attempted'
-));
-Route::get('login/forgot', [
-	'as' => 'login.forgot',
-	'uses' => 'LoginController@forgotView'
-]);
-Route::get('login/forgot/msg', [
-	'as' => 'login.forgot.message',
-	'uses' => 'LoginController@forgotMessage'
-]);
-Route::post('login/forgot/process', [
-	'as' => 'login.forgot.process',
-	'uses' => 'LoginController@forgotProcess'
-]);
-Route::get('login/forgot/from/{id}/{hash}', [
-	'as' => 'login.forgot.validate',
-	'uses' => 'LoginController@validatePass'
-]);
-Route::get('login/forgot/resend/{id}', [
-	'as' => 'login.forgot.resend',
-	'uses' => 'LoginController@resendToken'
-]);
-Route::post('login/forgot/process_pass', [
-	'as' => 'login.forgot.process_pass',
-	'uses' => 'LoginController@processPass'
-]);
 Route::get('logout', array(
 	'as' => 'logout',
 	'uses' => 'LoginController@logout'
@@ -68,114 +41,25 @@ Route::post('register', array(
 	'as' => 'register',
 	'uses' => 'RegistrationController@register'
 ));
-
-Route::get('register/add_pet', [
-	'as' => 'register.add_pet',
-	'uses' => 'RegistrationController@registerPetOpt'
-]);
-
-Route::get('register/validate/{id}/{hash}', array(
-	'middleware' => 'verified',
-	'as' => 'register.validateHash',
-	'uses' => 'RegistrationController@validateRegistration'
-));
-Route::get('register/resend/{id}', array(
-	'middleware' => 'verified',
-	'as' => 'register.validateRehash',
-	'uses' => 'RegistrationController@resend'
-));
-Route::get('message', array(
-	'middleware' => 'verified',
-	'as' => 'validate',
-	'uses' => 'RegistrationController@validateMessage'
-));
-Route::get('register/{id}', array(
-	'middleware' => 'verified',
-	'as' => 'register.details',
-	'uses' => 'RegistrationController@details'
-));
-Route::post('register/update', array(
-	'as' => 'register.detailsUpdate',
-	'uses' => 'RegistrationController@updateDetails'
-));
-Route::get('register/{id}/pet', array(
-	'as' => 'register.petdetails',
-	'uses' => 'RegistrationController@registerpet',
-));
 Route::post('register/{id}/register_pet', array(
 	'as' => 'register.petRegister',
 	'uses' => 'RegistrationController@petRegister'
 ));
-Route::post('register/pet/field', array(
-	'as' => 'register.pet.refreshField',
-	'uses' => 'RegistrationController@refreshPetFields'
-));
 
-/*Profile route*/
-Route::get('profile/change', array(
-'as' => 'profile.get.view',
-'uses' => 'ProfileController@getSettingsView'
-));
-Route::post('profile/change/process', array(
-'as' => 'profile.get.dispatch',
-'uses' => 'ProfileController@getSettingsDispatcher'
-));
-Route::get('petlist/{id}', array(
-	'as' => 'profile.petlist',
-	'uses' => 'ProfileController@petlist'
-));
-Route::get('profile/{id}/pet/{pet_id}', array(
-	'as' => 'profile.showPetProfile',
-	'uses' => 'ProfileController@showPetProfile'
-));
-Route::post('likes/set/{post_id}', array(
-	'as' => 'likes.set',
-	'uses' => 'PostsController@setLike'
-));
-Route::post('comment/set/{post_id}', array(
-	'as' => 'comments.set',
-	'uses' => 'PostsController@createComment'
-));
-Route::post('posts/del', array(
-	'as' => 'posts.del.dispatcher',
-	'uses' => 'PostsController@deleteDispatch'
-));
-Route::post('newsfeed/refresh', array(
-	'as' => 'newsfeed.refresh',
-	'uses' => 'PostsController@getNextNewsFeed'
-));
-Route::post('profile/req/friend', array(
-	'as' => 'profile.request.friend',
-	'uses' => 'ProfileController@dispatchFriendRequest'
-));
-Route::post('profile/req/friend_ignore', array(
-	'as' => 'profile.request.friend_ignore',
-	'uses' => 'ProfileController@ignoreFriendReq'
-));
-Route::post('profile/req/accept/', array(
-	'as' => 'profile.request.add_friend',
-	'uses' => 'ProfileController@acceptFriendRequest'
-));
-Route::get('profile/friends/{id}', array(
-	'as' => 'profile.friends',
-	'uses' => 'ProfileController@userFriends'
-));
-Route::get('profile/edit', array(
-	'as' => 'profile.settings',
-	'uses' => 'ProfileController@settings'
-));
-Route::post('profile/edit', array(
-	'as' => 'profile.setings.patch',
+//profile
+Route::get('profile/edit_settings', array(
+	'as' => 'profile.edit',
+	'uses' => 'ProfileController@getSettingsView'
+	));
+Route::get('profile/{id}', array(
+	'as' => 'profile.view',
+	'uses' => 'ProfileController@showProfile'
+	));
+Route::post('profile/update', array(
+	'as' => 'profile.doUpdate',
 	'uses' => 'ProfileController@editProfile'
 ));
-
-Route::get('profile/{id}', array(
-	'as' => 'profile.showProfile',
-	'uses' => 'ProfileController@showProfile',
-	'after' => 'cache:5'    
-));
-
-
+//home
 Route::get('home', array(
 	'as' => 'home',
 	'uses' => 'HomeController@index'
@@ -183,34 +67,29 @@ Route::get('home', array(
 
 
 //inside sns
-Route::get('pet/lovers', [
-	'as' => 'public.lovers',
-	'uses' => 'WelcomeController@petlovers'
-]);
-
-Route::get('pet/lovers/dogsoftheweek', [
+Route::get('home/dogsoftheweek', [
 	'as' => 'public.dogsoftheweek',
-	'uses' => 'WelcomeController@dogsWeek'
+	'uses' => 'HomeController@dogsWeek'
 ]);
 
-Route::get('pet/lovers/nearestpetshop', [
+Route::get('home/petshop', [
 	'as' => 'public.nearestpetshop',
-	'uses' => 'WelcomeController@nearestPS'
+	'uses' => 'HomeController@nearestPS'
 ]);
 
-Route::get('pet/lovers/nearestvet', [
+Route::get('home/veterinarian', [
 	'as' => 'public.nearestvet',
-	'uses' => 'WelcomeController@nearestVet'
+	'uses' => 'HomeController@nearestVet'
 ]);
 
-Route::get('pet/lovers/neighbors', [
+Route::get('neighbors', [
 	'as' => 'public.neighbors',
-	'uses' => 'WelcomeController@rockyNeighbors'
+	'uses' => 'HomeController@rockyNeighbors'
 ]);
 
 Route::get('pet/missingpets', [
 	'as' => 'public.missingpets',
-	'uses' => 'WelcomeController@missingPets'
+	'uses' => 'HomeController@missingPets'
 ]);
 
 Route::get('underconstruction', [
@@ -245,6 +124,4 @@ Route::group(['prefix' => 'administration', 'namespace' => 'Admin', 'middleware'
         'uses' => 'DashboardController@displaySingleError'
 	]);
 });
-// Route::get('test', function() {
-//     echo round((microtime(true) - LARAVEL_START)*1000, 3) . ' ms';
-// });
+Route::get('test2', ['uses' => 'TestController@index']);
