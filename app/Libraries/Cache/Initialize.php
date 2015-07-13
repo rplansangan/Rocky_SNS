@@ -1,6 +1,5 @@
 <?php namespace SNS\Libraries\Cache;
 
-use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Redis;
 use Predis\Client;
 
@@ -27,8 +26,8 @@ class Initialize {
      */
     protected $cache;
     
-    public function __construct($auth, Client $cache) {
-        $this->auth = $auth;
+    public function __construct(Client $cache) {
+        $this->auth = auth();
         $this->cache = $cache;
     }
     

@@ -24,11 +24,11 @@ class CacheLayerProvider extends ServiceProvider {
         $cache = new Client($this->redisParams);
         
         $this->app->bind('Initialize', function($app) use ($cache) { 
-        	return new \SNS\Libraries\Cache\Initialize(auth(), $cache);
+        	return new \SNS\Libraries\Cache\Initialize($cache);
         });
         
         $this->app->bind('Get', function() use ($cache) {
-			return new \SNS\Libraries\Cache\Get(auth(), $cache);
+			return new \SNS\Libraries\Cache\Get($cache);
         });
     }
 }

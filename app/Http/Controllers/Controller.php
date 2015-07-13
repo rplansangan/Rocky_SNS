@@ -19,21 +19,16 @@ abstract class Controller extends BaseController {
 	use DispatchesCommands, ValidatesRequests;
 	
 
-// 	public function __construct(Initialize $init, Get $cacheGet) {
-	public function __construct() {
-		$this->initialize();
+	public function __construct(Initialize $init, Get $cacheGet) {
+		$this->initialize($init, $cacheGet);
 	}
-// public function __construct() {
-// 	dd(app()->make('Initialize'));
-// }
 	
-	protected function initialize() {
-// 		$init = new Initialize();
+	protected function initialize($init, $cacheGet) {
 		$data = $this->setPubGlobals();
 
 		if(Auth::check()) {
 			$data += $this->setGlobals();
-// 			$init->initAuth();
+			//$init->initAuth();
 			//$data['user_data'] = $cacheGet->userData();
 		}
 		

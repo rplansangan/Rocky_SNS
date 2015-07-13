@@ -11,13 +11,16 @@ use SNS\Models\User;
 use SNS\Models\Registration;
 use SNS\Libraries\Services\ValidationService;
 use SNS\Libraries\Traits\LoginTrait;
+use SNS\Libraries\Cache\Initialize;
+use SNS\Libraries\Cache\Get;
 
 class LoginController extends Controller {
 	
 	use LoginTrait;
 	
-	public function __construct() {
-		parent::__construct();
+	public function __construct(Initialize $init, Get $cacheGet) {
+		parent::__construct($init, $cacheGet);
+		
 	}
 	
 	public function signin(Request $request){

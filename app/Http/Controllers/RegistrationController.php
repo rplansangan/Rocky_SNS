@@ -17,13 +17,15 @@ use SNS\Models\Images;
 use SNS\Libraries\Services\PetService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Validation\ValidationException;
+use SNS\Libraries\Cache\Initialize;
+use SNS\Libraries\Cache\Get;
 
 class RegistrationController extends Controller {
 	
 	protected $service;
 	
-	public function __construct() {
-		parent::__construct();
+	public function __construct(Initialize $init, Get $cacheGet) {
+		parent::__construct($init, $cacheGet);	
 // 		$this->middleware('guest');
 	}
 	

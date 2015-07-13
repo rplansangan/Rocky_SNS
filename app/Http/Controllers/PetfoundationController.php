@@ -20,17 +20,18 @@ use Illuminate\Http\Request;
 use SNS\Libraries\Traits\ProfPicTrait;
 use SNS\Models\PetAdoption;
 use SNS\Models\PetFoundationImages;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+
+use SNS\Libraries\Cache\Initialize;
+use SNS\Libraries\Cache\Get;
 
 class PetfoundationController extends Controller {
 
 	use ProfPicTrait;
 	
-	public function __construct()
-	{
-		parent::__construct();
+	public function __construct(Initialize $init, Get $cacheGet) {
+		parent::__construct($init, $cacheGet);
 		$this->middleware('auth');
 	}
 	

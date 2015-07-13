@@ -13,18 +13,19 @@ use SNS\Models\Images;
 use SNS\Models\User;
 use SNS\Models\Registration;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Cache;
+use SNS\Libraries\Cache\Initialize;
+use SNS\Libraries\Cache\Get;
 
 class ProfileController extends Controller {
 	
 	use ProfPicTrait;
 	
-	public function __construct() {
-		parent::__construct();
+	public function __construct(Initialize $init, Get $cacheGet) {
+		parent::__construct($init, $cacheGet);
+		
 	}
 	
 	public function showProfile($id){ 	   

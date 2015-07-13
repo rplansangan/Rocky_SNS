@@ -32,10 +32,8 @@ class HomeController extends Controller {
 	 *
 	 * @return void
 	 */
-	public function __construct()
-	{
-		parent::__construct();
-		
+	public function __construct(Initialize $init, Get $cacheGet) {
+		parent::__construct($init, $cacheGet);		
 	}
 
 

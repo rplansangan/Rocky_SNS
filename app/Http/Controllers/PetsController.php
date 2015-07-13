@@ -13,8 +13,15 @@ use SNS\Libraries\Facades\StorageHelper;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use SNS\Libraries\Cache\Initialize;
+use SNS\Libraries\Cache\Get;
 
 class PetsController extends Controller {
+	
+	public function __construct(Initialize $init, Get $cacheGet) {
+		parent::__construct($init, $cacheGet);
+	
+	}
 
 	public function get_missingpets(){
 		$data['info'] = MissingPets::with(['profile.image'])->orderByRaw("RAND()")->first();

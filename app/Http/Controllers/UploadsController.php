@@ -8,9 +8,14 @@ use SNS\Libraries\Facades\PostService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use SNS\Libraries\Cache\Initialize;
+use SNS\Libraries\Cache\Get;
 
 class UploadsController extends Controller {
+	
+	public function __construct(Initialize $init, Get $cacheGet) {
+		parent::__construct($init, $cacheGet);
+	}
 	
 	public function upload(Request $request) {
 		PostService::create($request->all());	

@@ -10,8 +10,6 @@ use SNS\Models\Posts;
 use SNS\Models\AdvertiseOrder;
 use SNS\Services\ValidationService;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use SNS\Libraries\Facades\PostService;
 use SNS\Libraries\Facades\FriendService;
@@ -19,6 +17,8 @@ use Carbon\Carbon;
 use SNS\Libraries\Facades\StorageHelper;
 use SNS\Models\Images;
 use Illuminate\Support\Facades\DB;
+use SNS\Libraries\Cache\Initialize;
+use SNS\Libraries\Cache\Get;
 
 class MerchantController extends Controller {
 	
@@ -27,9 +27,8 @@ class MerchantController extends Controller {
 	 *
 	 * @return void
 	 */
-	public function __construct()
-	{
-		parent::__construct();
+	public function __construct(Initialize $init, Get $cacheGet) {
+		parent::__construct($init, $cacheGet);
 		$this->middleware('auth');
 	}
 
