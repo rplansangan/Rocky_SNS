@@ -25,50 +25,16 @@ class ProfileController extends Controller {
 	
 	public function __construct() {
 		parent::__construct();
-		$this->middleware('auth');
 	}
 	
 	public function showProfile($id){ 	   
 		$profile = User::find($id);
-		
-		if(is_null($profile)) {
-		    return redirect()->back();
-		}
-		
-		if($profile->is_foundation) {
-			$profile->load(['foundation']);
-			
-			if(is_null($profile->foundation)) {
-				return redirect()->route('foundation.profile.register');
-			} else {
-				return view('pages.pet_foundation.profile', ['foundation_id', $profile->foundation->foundation_id])->with('profile', $profile);
-			}
-		} else {
-			if(Cache::has('user.profile.collection' . $id)) {
-				$params = Cache::get('user.profile.collection' . $id);
-				
-				$data['friend_flags'] = $params['friend_flags'];
-				$profile = $params['profile'];
-				$collection = $params['collection'];
-			} else {
-				$profile->load(['registration' => function($q) {
-						$q->addSelect(['registration_id', 'user_id', 'first_name', 'last_name']);
-					}, 'prof_pic' => function($q) {
-						$q->where('is_profile_picture', 1);
-						$q->where('pet_id', 0);
-						$q->addSelect(['image_id', 'user_id', 'image_path', 'image_name', 'image_ext']);
-					}
-				]);
-				$params['profile'] = $profile;
-				$params['collection'] = $collection = PostService::initialNewsFeed(Auth::id(), $id);		
-				$params['friend_flags'] = $data['friend_flags'] = FriendService::check($id);
-				Cache::add('user.profile.collection' . $id, $params, 10);
-			}			
-			
-			return view('profile.profile', $data)
-				->with('profile', $profile)
-				->with('posts', $collection);
-		}		
+
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.profile';
+		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
+		return view('pages.master', $data);		
 	}
 
 	public function petlist($id){
@@ -176,7 +142,7 @@ class ProfileController extends Controller {
 	
 	public function editProfile(Request $request) {
 		$input = array_except($request->all(), array('_token', 'userfile'));
-		
+
 		$uid = User::find(Auth::id());
 		$uid->load('registration');
 		
@@ -187,55 +153,27 @@ class ProfileController extends Controller {
 			next($input);
 		}
 		$reg->save();
+
 		
 		if($request->file('userfile') != null) {
-			// sets is_profile_pic field via ProfPicTrait
-			$this->removePrevious(Auth::id());
-			
 			$file = $request->file('userfile');
 			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
 			$dir = StorageHelper::create(Auth::id());
-				
-			$img_data = new Images(array(
-					'user_id' => $uid->user_id,
-					'image_path' => $dir,
-					'image_name' => $filename,
-					'image_mime' => $file->getMimeType(),
-					'image_ext' => $file->getClientOriginalExtension(),
-					'is_profile_picture' => 1
-			));
-		
-			$img_data->save();
-		
-			$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
+	
 		}
-		
-		return redirect()->back()->withInput($input);
-	}
 
-	public function profile_merchant($business_id ){
-		$details = Business::find($business_id);
-		
-		return view('pages/merchantprofile')
-				->with('details', $details);
+		#custom_print_r($request->all()); 
 	}
 
 	
 	public function getSettingsView() {
-		return view('profile.user_settings');
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.profilesettings';
+		$data['title'] = 'Update Profile';
+		return view('pages.master' , $data);
 	}
 	
-	public function getSettingsDispatcher(Request $request) {
-		switch($request->get('action')) {
-			case 'pw':
-				return $this->changePassword(array_except($request->all(), array('_token', 'action')));
-				break;
-				
-			default:
-				return redirect()->back();
-				break;
-		}
-	}
 	
 	private function changePassword($params) {
 		$validate = Validator::make(array(

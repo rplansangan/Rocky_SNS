@@ -45,6 +45,7 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
+		$data['sub_title'] = '- Home';
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
 		$data['mid'] = 'pages.inside.lovers';
@@ -52,5 +53,40 @@ class HomeController extends Controller {
 		return view('pages.master' , $data);
 	}
 
+	public function dogsWeek(){
+		$data['sub_title'] = '- Dog of the week';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.dogsofweek';
+		return view('pages.master' , $data);
+	}
+	public function nearestPS(){
+		$data['sub_title'] = '- Pet Shops';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.nearestps';
+		return view('pages.master' , $data);
+	}
+	public function nearestVet(){
+		$data['sub_title'] = '- Veterinarian';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.nearestvet';
+		return view('pages.master' , $data);
+	}
+	public function missingPets(){
+		$data['sub_title'] = '- Missing Pets';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.missingpets';
+		return view('pages.master' , $data);
+	}
+	public function rockyNeighbors(){
+		$data['sub_title'] = '- Neighbors';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.neighbors';
+		return view('pages.master' , $data);
+	}
 	
 }

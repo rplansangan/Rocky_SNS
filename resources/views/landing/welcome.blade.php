@@ -22,6 +22,31 @@
       <script src="{{ URL::asset('assets/js/bxslider.js') }}"></script>
       <script src="{{ URL::asset('assets/js/jquery-form.js') }}"></script>
       <script src="{{ URL::asset('assets/js/rocky2.js') }}"></script>
+      <script type="text/javascript">
+        $(document).ready(function(){
+          var sliderBx;
+          window.onedir = 'next';
+
+          sliderBx = $('#slider1').bxSlider({
+            auto: true,
+            autoControls: true,
+            autoControlsSelector: '#my-start-stop',
+            slideWidth: 1160,
+            speed: 700,
+            autoStart: false
+          });
+
+          $('.bx-next').click(function() {
+            window.onedir = 'next';
+            sliderBx.startShow();           
+          });
+
+          $('.bx-prev').click(function() {
+            window.onedir = 'prev';
+            sliderBx.startShow();     
+          });
+        });
+      </script>
     </head>
     <body>
      <input type="hidden" id="token" value="{{ csrf_token() }}">
@@ -74,7 +99,7 @@
       <!-- END SLIDER -->
       <!-- SECTION -->
       <section class="text-right nopad">
-        <div style="width:71%;margin:0 auto;">
+        <div>
           <div class="col-lg-6">
             <img src="{{ URL::asset('assets/images/landing/dog3.png') }}" class="img-responsive" id="layer2" style="top: 123px;">
           </div>
@@ -87,13 +112,13 @@
               provide the best for your furry friend
             </p>
             <div class="button-group">
-              <a class="signup_btn" data-toggle="modal" data-target="#signupModal" href="javascript:void(0)" id="btn2">Join Now</a>
+              <a class="signup_btn" data-toggle="modal" data-target="#signupModal" href="#" id="btn2">Join Now</a>
             </div>
           </div>
         </div>
       </section>
       <section class="text-left nopad landing-bg-section-2">
-        <div style="width:69.2%;margin:0 auto;">
+        <div>
           <div class="col-lg-6 ">
             <h1>ALL YOUR PET NEEDS</h1>
             <p>Bring your dog to Doggy Daycare and go<br>
@@ -108,7 +133,7 @@
         </div>
       </section>
       <section class="text-right nopad">
-        <div style="width:71%;margin:0 auto;">
+        <div>
           <div class="col-lg-6">
             <img src="{{ URL::asset('assets/images/landing/dog5.png') }}" class="img-responsive" id="layer2" style="margin-top: 132px;">
           </div>
@@ -126,7 +151,7 @@
           </div>
         </section>
         <section class="map">
-            <div style="width:69%;margin:0 auto;height:100%;">
+            <div>
                 <div class="col-lg-4 col-lg-offset-1">
                     <img src="{{ URL::asset('assets/images/landing/phone2.png') }}" style="width:250px"  >
                 </div>

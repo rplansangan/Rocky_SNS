@@ -211,3 +211,8 @@ section > div > div > #layer2{
   position: absolute;
   z-index: 2;
 }
+#landing section > div{
+  width: 1000px;
+  margin: 0px auto;
+  height: 350px;
+}

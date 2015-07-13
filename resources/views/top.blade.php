@@ -1,48 +1,44 @@
-<div class="header-container">
-  <div class="content">
-      <div class="inside-top col-xs-12 col-sm-12 col-m-12 col-lg-12">
-        <div class="col-md-1 col-lg-1 inside-logo">
-          <a href="{{ route('index') }}"><img class="img-responsive" src="{{ URL::asset('assets/images/rlysmall2.png') }}"></a>
-        </div>
-        <div class="col-md-4 col-lg-4 search">
-            <div id="tfheader">
-              <form id="tfnewsearch" method="get" action="#">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="text" id="tfq" class="tftextinput4" name="name" size="21" maxlength="120">
-                    <input type="submit" value=" " class="tfbutton4">
-              </form>
-              <div class="tfclear"></div>
-            </div>
-        </div>
-        <div class="col-md-7 col-lg-7 in-menus text-right">
-          <ul>
-            <?php 
-              if(!isset($profile->prof_pic) AND Auth::check()){
-                ?>
-                  <li><a href="javascript:void(0)"><img src="{{ URL::asset('assets/images/default-pic.png') }}" width="38px" style="border-radius: 6px;">&nbsp; <?php echo $profile->first_name.' '.$profile->last_name?></a></li>
-                <?php
-              }else if(Auth::check()){
-                ?>
-                  <li><a href="{{ route('uc') }}"><img src="{{ mediaSrc($profile->prof_pic->image_path , $profile->prof_pic->image_name , $profile->prof_pic->image_ext) }}" width="38px" style=" margin-right: 10px;"><?php echo $profile->first_name.' '.$profile->last_name?></a></li>
-                <?php
-              }else{
-                ?>
-                  <li><a href="javascript:void(0)"><img src="{{ URL::asset('assets/images/default-pic.png') }}" width="38px" style="border-radius: 6px;">&nbsp; Guest</a></li>
-                <?php
-              }
-            ?>
-            <li style=" margin-top: 8px;"><span class="line" style="margin-left: 5px;">&nbsp;</span>
-            <li><a href="{{ route('home') }}" style="margin-right: 5px;line-height:33px">Home</a></li>
-            <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/friends-icon.png') }}" width="38px"></a></li>
-            <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/msg-icon.png') }}" width="38px"></a></li>
-            <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/notif-icon.png') }}" width="38px" style="margin-right: 5px;"></a></li>
-            <li style=" margin-top: 8px;"><span class="line">&nbsp;</span></li>
-            <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/find-icon.png') }}" width="38px"></a></li>
-            <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/locate-icon.png') }}" width="28px"></a></li>
-            <li style=" margin-top: 8px;"><span class="line" style="margin-left: 5px;">&nbsp;</span></li>
-            <li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/dd-icon.png') }}" width="38px"></a></li>
-          </ul>
-        </div>
-      </div>
+<header>
+  <div class="container-fluid">
+    <div class="col-lg-2 ">
+      <a href="{{ Route('index')}}"><img src="{{ URL::asset('assets/img/logo.png') }}" class="img-responsive logo"></a>
+    </div>
+    <div class="col-lg-3 hidden-sm hidden-xs">
+      <input type="text" name="search" class="form-control">
+      <a href="#"><img src="{{ URL::asset('assets/img/search.png') }}" id="search"></a>
+    </div>
+    <div class="col-lg-7 hidden-sm hidden-xs">
+      @if(Auth::check())
+      <nav>
+        <ul>
+          @if(!isset($profile->prof_pic) AND Auth::check())
+          <li><a href="{{ Route('profile.view' , ['id' => Auth::check()] ) }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}"><span>{{ $profile->first_name.' '.$profile->last_name }}</span></a></li>
+          @elseif(Auth::check())
+          <li><a href="{{ Route('profile.view' , ['id' => Auth::check()] ) }}"><img src="{{ mediaSrc($profile->prof_pic->image_path , $profile->prof_pic->image_name , $profile->prof_pic->image_ext) }}"><span>{{ $profile->first_name.' '.$profile->last_name }}</span></a></li>
+          @endif
+          <li><a href="{{ Route('home') }}"><span>Home</span></a></li>
+          <li><a href="{{ route('public.neighbors') }}"><img src="{{ URL::asset('assets/img/neighbors.png') }}"></a></li>
+          <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/message.png') }}"></a></li>
+          <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/notification.png') }}"></a></li>
+          <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/find.png') }}"></a></li>
+          <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/track.png') }}"></a>
+            <ul class="arrow_box">
+              <li><a href="#">option1</a></li>
+              <li><a href="#">option2</a></li>
+            </ul>
+          </li>
+          <li><a href="javascript:void(0);"><img src="{{ URL::asset('assets/img/settings.png') }}"></a>
+            <ul class="arrow_box">
+              <li><a href="{{ Route('uc') }}">Settings</a></li>
+              <li><a href="{{ Route('logout') }}">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      @endif
+    </div>
   </div>
-</div>
+</header>
+
+
+

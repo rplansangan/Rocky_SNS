@@ -18,6 +18,7 @@ abstract class Controller extends BaseController {
 
 	use DispatchesCommands, ValidatesRequests;
 	
+
 // 	public function __construct(Initialize $init, Get $cacheGet) {
 // 		$this->initialize($init, $cacheGet);
 // 	}
@@ -30,11 +31,10 @@ abstract class Controller extends BaseController {
 
 		if(Auth::check()) {
 			$data += $this->setGlobals();
-			$init->initAuth();
-			
-			$data['user_data'] = $cacheGet->userData();
+			//$init->initAuth();
+			//$data['user_data'] = $cacheGet->userData();
 		}
-		
+
 		view()->share($data);	
 	}
 
@@ -42,13 +42,15 @@ abstract class Controller extends BaseController {
 		$missingPets = MissingPets::with(['profile.image'])->orderByRaw("RAND()")->limit(2)->get();
 		$data['missing_pets'] = $missingPets;
 		$data['title'] = 'Rocky Superdog';
+		$data['sub_title'] = '';
 		return $data;
 	}
 	
 	protected function setGlobals() {	
 		$t = new FriendService; 
 		$data['my_pets'] = Pets::with('profile_pic')->where('user_id', Auth::id())->get();
-		$data['profile'] = Registration::with(array('prof_pic'))->find(Auth::id());
+		$data['profile'] = Auth::user()->registration;
+		$data['profile']->load(['prof_pic']);
 		$data['neighbors'] = $t->collect(Auth::id());
 		return $data;
 	}

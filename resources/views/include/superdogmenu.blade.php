@@ -1,104 +1,107 @@
-<div class="left-cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	<div class="first-left-menu col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div>
+	<nav>
 		<ul>
-			<?php 
-				if(!isset($profile->prof_pic) AND Auth::check()){
-					?>
-						<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" width="38px" style="border-radius: 6px;"><?php echo $profile->first_name.' '.$profile->last_name?></a></li>
-					<?php
-				}else if(Auth::check()){
-					?>
-						<li><a href="{{ route('uc') }}"><img src="{{ mediaSrc($profile->prof_pic->image_path , $profile->prof_pic->image_name , $profile->prof_pic->image_ext) }}" width="38px"><?php echo $profile->first_name.' '.$profile->last_name?></a></li>
-					<?php
-				}else{
-					?>
-						<li><img src="{{ URL::asset('assets/images/default-pic.png') }}" width="38px" style="border-radius: 6px;">&nbsp; Guest</li>
-					<?php
-				}
-			?>
-
-			<?php 
-				if(Auth::check()){
-					?>
-						<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/edit-prof-icon.png') }}" width="38px">Edit Profile</a></li>
-					<?php
-				}
-			?>
-			<li><a href="{{ route('public.nearestpetshop') }}"><img src="{{ URL::asset('assets/images/new/npet-icon.png') }}" width="38px">Nearest Petshop</a></li>
-			<li><a href="{{ route('public.nearestvet') }}"><img src="{{ URL::asset('assets/images/new/nvet-icon.png') }}" width="38px">Nearest Vet</a></li>
-		</ul>
-	</div>
-	<div class="sec-left-menu col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<h6>VIEW AS</h6>
-			@if(isset($my_pets))
-				@if(!$my_pets->isEmpty())
-				<ul>
-					@foreach($my_pets as $row)
-						<li><a href="#"><img src="{{ mediaSrc($row->profile_pic->image_path , $row->profile_pic->image_name , $row->profile_pic->image_ext) }}" width="38px">{{ $row->pet_name }}</a></li>
-					@endforeach
-				</ul>
-				@else
-					<div class="text-center">
-						<p>No Pets</p>
-					</div>
-				@endif
+			@if(!isset($profile->prof_pic) AND Auth::check())
+			<li><a href="{{ Route('profile.view' , ['id' => Auth::check()] ) }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic" ><span>{{ $profile->first_name.' '.$profile->last_name }}</span></a></li>
+			@elseif(Auth::check())
+			<li><a href="{{ Route('profile.view' , ['id' => Auth::check()] ) }}"><img src="{{ mediaSrc($profile->prof_pic->image_path , $profile->prof_pic->image_name , $profile->prof_pic->image_ext) }}" class="profile-pic"><span>{{ $profile->first_name.' '.$profile->last_name }}</span></a></li>
+			@else
+			<li><a href="{{ route('home') }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic"><span>Public</span></a></li>
 			@endif
+			@if(Auth::check())
+			<li><a href="{{ route('profile.edit') }}"><img src="{{ URL::asset('assets/img/edit-profile.png') }}"><span>Edit Profile</span></a></li>
+			@endif
+			<li><a href="{{ route('public.nearestpetshop') }}"><img src="{{ URL::asset('assets/img/cart.png') }}"><span>Nearest Petshop</span></a></li>
+			<li><a href="{{ route('public.nearestvet') }}"><img src="{{ URL::asset('assets/img/vet.png') }}"><span>Nearest Vet</span></a></li>
+		</ul>
+	</nav>
+</div>
+
+@if(Auth::check())
+<div>
+	<label class="text-muted">VIEW AS</label>
+	<nav>
+		@if(isset($my_pets))
+			@if(!$my_pets->isEmpty())
+			<ul>
+				@foreach($my_pets as $row)
+					@if(isset($row->profile_pic))
+						<li><a href="#"><img src="{{ mediaSrc($row->profile_pic->image_path , $row->profile_pic->image_name , $row->profile_pic->image_ext) }}" class="profile-pic"><span>{{ $row->pet_name }}</span></a></li>
+					@else
+						<li><a href="#"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic"><span>{{ $row->pet_name }}</span></a></li>
+					@endif
+				@endforeach
+			</ul>
+			@else
+			<div class="text-left">
+				<p style="padding: 0 15px;">No Pets</p>
+			</div>
+			@endif
+		@endif
 		<div class="text-left" style="margin: 10px 0;">
 			<a href="#" class="add-pets-btn" style="color: #b7062b; padding: 0 15px;"><i class="fa fa-plus"></i> Add Pets</a>
 		</div>
-	</div>
-	<div class="third-left-menu col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<h6>WHAT TO WATCH</h6>
+	</nav>
+</div>
+
+@endif
+
+<div>
+	<label class="text-muted">WHAT TO WATCH</label>
+	<nav>
 		<ul>
-			<?php 
-				if(Auth::check()){
-					?>
-						<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/uploads.png') }}" width="38px">My Uploads</a></li>
-					<?php
-				}
-			?>
-			<li><a href="{{ route('public.dogsoftheweek') }}"><img src="{{ URL::asset('assets/images/new/dogsweek.png') }}" width="38px">Dogs of the week</a></li>
-			<?php 
-				if(Auth::check()){
-					?>
-						<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/history.png') }}" width="38px">History</a></li>
-					<?php
-				}
-			?>
-			<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/images/new/ranger.png') }}" width="38px">Rocky Ranger</a></li>
+			@if(Auth::check())
+			<li><a href="#"><img src="{{ URL::asset('assets/img/upload.png') }}" ><span>My Uploads</span></a></li>
+			@endif
+			<li><a href="{{ route('public.dogsoftheweek') }}"><img src="{{ URL::asset('assets/img/trophy.png') }}" ><span>Dogs of the week</span></a></li>
+			@if(Auth::check())
+			<li><a href="#"><img src="{{ URL::asset('assets/img/history.png') }}" ><span>History</span></a></li>
+			@endif
+			<li><a href="#"><img src="{{ URL::asset('assets/img/ranger.png') }}" ><span>Rocky Ranger</span></a></li>
 		</ul>
-	</div>
-	<div class="four-left-menu col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<h6>MY NEIGHBORS</h6>
-		<?php 
-		if(Auth::check()){
-			if(!$neighbors->isEmpty()){
-				echo '<ul>';
-				foreach($neighbors as $row){
-					?>
-						<li><a href="#"><img src="<?php echo mediaSrc($row->profile->registration->prof_pic->image_path , $row->profile->registration->prof_pic->image_name , $row->profile->registration->prof_pic->image_ext) ?>" width="38px"><?php echo $row->profile->registration->first_name.' '.$row->profile->registration->last_name?></a></li>
-					<?php
-				}
-				echo '</ul>';
-			}else{
-				?>
-					<div class="text-left" style="padding:5px 0px 10px 0px">
-						<p>You have no Neighbors</p>
-					</div>
-				<?php
-			}
-			?>
-			<div class="text-left">
-				<a href="#" style="color: #b7062b; padding: 0 15px;"><i class="fa fa-plus"></i> Add Neighbors</a>
+	</nav>
+</div>
+
+<div>
+	<label class="text-muted">MY NEIGHBORS</label>
+	<nav>
+		@if(Auth::check())
+			@if(!$neighbors->isEmpty())
+			<ul>
+				@foreach($neighbors as $row)
+					@if(isset($row->profile->registration->prof_pic))
+						<li><a href="{{ Route('profile.view' , ['id' => $row->profile->registration->user_id] ) }}"><img src="{{ mediaSrc($row->profile->registration->prof_pic->image_path , $row->profile->registration->prof_pic->image_name , $row->profile->registration->prof_pic->image_ext)  }}" class="profile-pic"><span>{{ $row->profile->registration->first_name.' '.$row->profile->registration->last_name }}</span></a></li>
+					@else
+						<li><a href="{{ Route('profile.view' , ['id' => $row->profile->registration->user_id] ) }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic"><span>{{ $row->profile->registration->first_name.' '.$row->profile->registration->last_name }}</span></a></li>
+					@endif
+				@endforeach
+			</ul>
+			@else
+			<div class="text-left" style="padding:5px 0px 10px 0px">
+				<p style="padding: 0 15px;">You have no Neighbors</p>
 			</div>
-			<?php
-		}else{
-			?>
-				<div class="text-left">
-					<a href="#" style="color: #b7062b; padding: 0 15px;" data-toggle="modal" data-target="#loginModal">Login to see Neighbors</a>
-				</div>
-			<?php
-		}
-		?>
+			@endif
+
+		@else
+		<ul>
+			<li><a href="{{ route('public.neighbors') }}"><img src="{{ URL::asset('assets/img/neighbors.png') }}"><span>Neighbors</span></a></li>
+		</ul>
+		@endif
+	</nav>
+	<div class="text-center loading-dots">
+		<a href="#"><span>...</span></a>
 	</div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
