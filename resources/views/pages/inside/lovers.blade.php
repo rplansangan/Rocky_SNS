@@ -29,7 +29,7 @@
 
 				<!-- NEWSFEED CONTENT -->
 				<div class="row newsfeed-content">
-					<p>{{ $row->post->post_message }}</p>
+					{!! $row->post->post_message !!}
 
 					@if(isset($row->image))
 						@if(stristr($row->image->image_mime, 'image/'))
