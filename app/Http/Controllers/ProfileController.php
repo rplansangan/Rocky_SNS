@@ -33,7 +33,7 @@ class ProfileController extends Controller {
 
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
-		$data['mid'] = 'pages.inside.profile';
+		$data['mid'] = 'pages.inside.profile.profile';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
 		return view('pages.master', $data);		
 	}
@@ -170,7 +170,7 @@ class ProfileController extends Controller {
 	public function getSettingsView() {
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
-		$data['mid'] = 'pages.inside.profilesettings';
+		$data['mid'] = 'pages.inside.profile.profilesettings';
 		$data['title'] = 'Update Profile';
 		return view('pages.master' , $data);
 	}

@@ -5,6 +5,7 @@ body , html{
 	background-color: #EBECED;
 	z-index: -5;
 }
+
 header{
 	border-bottom: 1px solid rgba(0,0,0,0.5);
 	height:90px;
@@ -13,6 +14,10 @@ header{
 }
 .nopad{
 	padding: 0px;
+}
+header form{
+	margin-top: 23px;
+	text-align: center;
 }
 header > div > div .logo{
 	padding: 10px 20px;
@@ -44,7 +49,11 @@ header > div nav > ul > li{
 a:hover , a{
 	text-decoration: none;
 }
-
+header > div nav > ul > li > a > i{
+	position: absolute;
+	margin-left: -4px;
+	color:red;
+}
 header > div nav > ul > li img{
 	width: 45px;
 }
@@ -178,6 +187,7 @@ header > div nav > ul > li > ul > li > a:hover{
 }
 .loading-dots > a , .loading-dots span{
 	font-size: 50px;
+	line-height: 0px;
 	padding-bottom: 20px;
 	padding-top: 0px;
 	color: #2C3539;
@@ -196,9 +206,13 @@ header > div nav > ul > li > ul > li > a:hover{
 	border-radius: 8px;
 }
 .mid .post-area > div > a > img{
-	width: 40px;
+	width: 50px;
+	height: 50px;
 }
-.mid textarea {
+.mid .post-area{
+	padding: 20px 5px !important;
+}
+.mid .post-area textarea {
 	margin-bottom: 10px;
 	border: 2px solid rgba(0,0,0,0.5);
 }
@@ -266,7 +280,7 @@ header > div nav > ul > li > ul > li > a:hover{
 	display: none;
 	padding: 30px;
 	position: relative;
-	top: -80px;
+	top: -45px;
 }
 .mid .comment-area > .comment-container{
 	margin-top: 20px;
@@ -281,11 +295,30 @@ header > div nav > ul > li > ul > li > a:hover{
 .mid .comment-area .comment-message{
 	margin-top: 15px;
 }
+.mid .comment-area .reply-textarea textarea{
+	padding-left: 55px;
+	border: none;
+    overflow: auto;
+    outline: none;
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+.mid .comment-area .reply-textarea a{
+	margin-left: 10px;
+	margin-top: 5px;
+}
 .mid .comment-area .reply-textarea{
 	padding: 10px 0px;
 }
 .mid .petshop-content{
 	padding: 10px;
+}
+.mid .petshop-content #map-canvas{
+	width: 100%;
+	height: 200px;
+	margin-top: 0px;
 }
 .mid .petshop-content > div > div{
 	margin-top: 20px;
@@ -304,17 +337,21 @@ header > div nav > ul > li > ul > li > a:hover{
 	background-position: top center;
 	background-repeat: no-repeat;
 }
+.right > div:first-child{
+	margin-top: 80px !important;
+}
 .right > div{
 	border:1px solid rgba(0,0,0,0.2);
 	background-color: white;
 	box-shadow: -1px 9px 28px #888888;
-	margin: 80px 0px 20px 0px;
+	margin: 20px 0px 20px 0px;
 	padding: 25px 5px 0px 5px;
 	border-radius: 8px;
 }
-.right > div > .rocky-last-location{
+.right > div > #rocky-last-location{
 	margin: 5px auto;
 	width: 90%;
+	height: 200px;
 }
 .right > div > .pet-list > ul{
 	list-style-type: none;
@@ -416,10 +453,10 @@ header > div nav > ul > li > ul > li > a:hover{
 /* END DOGS OF THE WEEK */
 
 /*===PROFILE===*/
-a.send-msg {
+.mid .send-msg {
   color: #B7042C;
   text-decoration: none;
 }
-a.send-msg:hover {
+.mid .send-msg:hover {
   color: #000;
 }

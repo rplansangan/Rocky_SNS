@@ -1,7 +1,4 @@
 $(document).on('ready' , function(){
-	var url = "http://localhost:8000/";
-	
-
 	$.ajaxSetup({
 		data: { "_token": $('#token').val() },
 		type: "POST"
@@ -28,8 +25,7 @@ $(document).on('ready' , function(){
 			success: function(a){
 				if(a == 'success'){
 					$('#loginModal').modal('hide');
-					window.location.href = url+"home";
-
+					location.reload();
 				}else{
 					$('.loader').text(a);
 				}
