@@ -23,7 +23,8 @@ return [
 		realpath(__DIR__.'/../app/Providers/CacheLayerProvider.php'),
 		
 		// Controllers
-// 		realpath(__DIR__.'/../app/Http/Controllers/Controller.php'),		
+ 		realpath(__DIR__.'/../app/Http/Controllers/Controller.php'),
+ 		realpath(__DIR__.'/../app/Http/Controllers/HomeController.php'),		
 // 		realpath(__DIR__.'/../app/Http/Controllers/LoginConttroller.php'),
 // 		realpath(__DIR__.'/../app/Http/Controllers/ProfileController.php'),
 // 		realpath(__DIR__.'/../app/Http/Controllers/RegistrationController.php'),
