@@ -47,7 +47,10 @@ abstract class Controller extends BaseController {
 		$t = new FriendService; 
 		$data['my_pets'] = Pets::with('profile_pic')->where('user_id', Auth::id())->get();
 		$data['profile'] = Auth::user()->registration;
-		$data['profile']->load(['prof_pic']);
+		$data['profile']->load(['prof_pic' => function($q) {
+			$q->where('is_profile_picture', 1);
+			$q->where('pet_id', 0);
+		}]);
 		$data['neighbors'] = $t->collect(Auth::id());
 		
 		return $data;
