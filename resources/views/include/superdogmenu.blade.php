@@ -37,7 +37,8 @@
 			</ul>
 			@else
 			<div class="text-left">
-				<p style="padding: 0 15px;">No Pets</p>
+				<p style="padding-left: 25px;">No Pets</p>
+				<a href="#" style="padding-left: 25px; color: #b7042c;"><i class="fa fa-plus" style="margin-bottom: 20px;"></i> add pets</a>
 			</div>
 			@endif
 		@endif
@@ -77,7 +78,8 @@
 			</ul>
 			@else
 			<div class="text-left" style="padding:5px 0px 10px 0px">
-				<p style="padding: 0 15px;">You have no Neighbors</p>
+				<p style="padding-left: 25px;">You have no Neighbors</p>
+				<a href="#" style="padding-left: 25px; color: #b7042c;"><i class="fa fa-user-plus"></i> add neighbors</a>
 			</div>
 			@endif
 	</nav>
