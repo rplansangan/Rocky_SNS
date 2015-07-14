@@ -13,11 +13,7 @@ Route::get('/', array(
     'as' => 'index',
     'uses' => 'WelcomeController@index',
 ));
-Route::post('check_email', array(
-	'as' => 'check.email',
-	'uses' => 'LoginController@check_email'
-));
-Route::post('files/newsfeed', array(
+Route::any('post/create', array(
 	'as' => 'files.newsfeed',
 	'uses' => 'UploadsController@newsfeed'
 ));
@@ -39,6 +35,10 @@ Route::post('register', array(
 Route::post('register/{id}/register_pet', array(
 	'as' => 'register.petRegister',
 	'uses' => 'RegistrationController@petRegister'
+));
+Route::post('check_email', array(
+	'as' => 'check.email',
+	'uses' => 'LoginController@check_email'
 ));
 
 //profile
@@ -119,7 +119,7 @@ Route::group(['prefix' => 'administration', 'namespace' => 'Admin', 'middleware'
 		'as' => 'admin.list.errors',
 		'uses' => 'DashboardController@listErrors'
 	]);
-	Route:;get('list_errors/{id}', [
+	Route::get('list_errors/{id}', [
         'as' => 'admin.single.error',
         'uses' => 'DashboardController@displaySingleError'
 	]);

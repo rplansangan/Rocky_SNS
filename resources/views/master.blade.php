@@ -18,14 +18,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-    <script src="{{ URL::asset('assets/js/jquery.js') }}"></script>  
-    <script src="{{ URL::asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
-    <script src="{{ URL::asset('assets/js/rocky2.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/rocky.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/jquery-form.js') }}"></script>
-
+    <script src="{{ URL::asset('assets/js/jquery.js') }}"></script>
   </head>
   <body>
     <input type="hidden" id="token" value="{{ csrf_token() }}">
@@ -33,7 +26,7 @@
     @yield('content')
     @include('include.modal')
     <script type="text/javascript">
-        var map;
+      /*  var map;
         function initialize() {
          var mapOptions = {
                 zoom: 11,
@@ -55,7 +48,12 @@
                   icon: image
             });
         }
-        google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+        google.maps.event.addDomListener(window, 'load', initialize);*/
+    </script>  
+    <script src="{{ URL::asset('assets/js/jquery-form.js') }}"></script>
+    <script src="{{ URL::asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script src="{{ URL::asset('assets/js/rocky2.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/rocky.js') }}"></script>    
   </body>
 </html>
