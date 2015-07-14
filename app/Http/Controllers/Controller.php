@@ -25,7 +25,7 @@ abstract class Controller extends BaseController {
 	
 	protected function initialize($init, $cacheGet) {
 		$data = $this->setPubGlobals();
-
+// 		dd(config());
 		if(Auth::check()) {
 			$data += $this->setGlobals();
 			$init->initAuth();

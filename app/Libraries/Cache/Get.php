@@ -5,6 +5,7 @@ use Predis\Client;
 
 use SNS\Libraries\Cache\Traits\Keys;
 use SNS\Libraries\Cache\Traits\Expirations;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * 
@@ -26,18 +27,34 @@ class Get {
      */
     protected $cache;
     
+    private $redis = false;
+    
     public function __construct(Client $cache) {
         $this->auth = auth();
-        $this->cache = $cache;
+   		 if($this->redis !== false) {
+        	$this->cache = $cache;
+        } else {
+        	$this->cache = Cache::driver('file');
+        }
     }
     
     public function userData($id = null) {
-    	if(is_null($id)) {
-    		$id = $this->auth->id();
-    	}
-    	
-    	if($this->cache->exists($this->keysProfile . $id)) {
-    		return json_decode($this->cache->get($this->keysProfile . $id), true);
+    	if($this->redis !== false) {
+	    	if(is_null($id)) {
+	    		$id = $this->auth->id();
+	    	}
+	    	
+	    	if($this->cache->exists($this->keysProfile . $id)) {
+	    		return json_decode($this->cache->get($this->keysProfile . $id), true);
+	    	}
+    	} else {
+    		if(is_null($id)) {
+    			$id = $this->auth->id();
+    		}
+    		
+    		if($this->cache->get($this->keysProfile . $id)) {
+    			return json_decode($this->cache->get($this->keysProfile . $id), true);
+    		}
     	}
     }
 

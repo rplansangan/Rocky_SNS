@@ -116,7 +116,7 @@ return [
 
 		'default' => [
 			'host'     => env('REDIS_HOST'),
-			'port'     => env('REDIS_POST'),
+			'port'     => env('REDIS_PORT'),
 			'database' => 0,
 		],
 
