@@ -29,12 +29,12 @@ class ProfileController extends Controller {
 	}
 	
 	public function showProfile($id){ 	   
-		$data['profile'] = Registration::with('prof_pic')->find($id);
-
+		$data['profileInformation'] = Registration::with('prof_pic')->find($id);
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
 		$data['mid'] = 'pages.inside.profile.profile';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id());
+		$data['id'] = $id;
 		return view('pages.master', $data);		
 	}
 
