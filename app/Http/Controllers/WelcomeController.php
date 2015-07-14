@@ -31,7 +31,8 @@ class WelcomeController extends Controller {
 		$data['title'] = 'Under Construction';
 		return view('pages.master' , $data);
 	}
-	public function test(Request $request){
-		custom_print_r($request->all());
+	public function test(){
+		$locale = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+		echo $locale;
 	}
 }

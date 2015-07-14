@@ -27,5 +27,15 @@ $(document).ready(function(){
     $(document).on('click' , '#comment-down' , function(){
         $(this).parent().parent().parent().next().slideDown( "slow" );
     });
+
+    $(document).on('keyup' , '#search-top' , function(){
+        var text = $(this).val();
+
+        if(text != ''){
+            $('#load-search').removeClass('hidden').fadeIn();
+        }else{
+           $('#load-search').addClass('hidden');
+        }
+    });
 });
 

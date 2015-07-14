@@ -100,10 +100,10 @@
       <!-- SECTION -->
       <section class="text-right nopad">
         <div>
-          <div class="col-lg-6">
+          <div class="col-lg-6 nopad">
             <img src="{{ URL::asset('assets/images/landing/dog3.png') }}" class="img-responsive" id="layer2" style="top: 123px;">
           </div>
-          <div class="col-lg-6 ">
+          <div class="col-lg-6 nopad">
             <h1>WHY JOIN<br> ROCKY SUPERDOG</h1>
             <p>Join us so you can be contacted when<br>
               matching lost and founddogs are added<br>
@@ -119,7 +119,7 @@
       </section>
       <section class="text-left nopad landing-bg-section-2">
         <div>
-          <div class="col-lg-6 ">
+          <div class="col-lg-6">
             <h1>ALL YOUR PET NEEDS</h1>
             <p>Bring your dog to Doggy Daycare and go<br>
               to work guilt-free! From Vets to Groomers<br>
@@ -134,10 +134,10 @@
       </section>
       <section class="text-right nopad">
         <div>
-          <div class="col-lg-6">
+          <div class="col-lg-6 nopad">
             <img src="{{ URL::asset('assets/images/landing/dog5.png') }}" class="img-responsive" id="layer2" style="margin-top: 132px;">
           </div>
-          <div class="col-lg-6 ">
+          <div class="col-lg-6 nopad">
             <h1>FIND MISSING PETS</h1>
             <p>Leverage on our community of pet lovers.<br>
               If your pet goes missing, be sure that our<br>
@@ -173,6 +173,6 @@
         <!-- END SECTION -->
         @include('landing.footer')
       </div>
-      @include('include.formlogin')
+      @include('include.modal')
 </body>
 </html>

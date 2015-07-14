@@ -1,9 +1,7 @@
 <!-- RIGHT BAR -->
 @if(Auth::check())
 <div>
-  <div class="rocky-last-location">
-    <img src="{{ URL::asset('assets/img/map.png') }}" class="img-responsive" width="100%">
-  </div>
+  <div id="rocky-last-location"></div>
   <div class="pet-list">
     <ul>
       <li><a class="active" href="#"><img src="{{ URL::asset('assets/img/prof.png') }}" class="profile-pic"></a></li>

@@ -29,8 +29,7 @@ class UploadsController extends Controller {
     		$params['message'] = $post;
     		$params['image'] = $post->image;
     		$params['like'] = $post->like;
-    		$params['comments'] = $post->comment;
-    		return view('ajax.post' , $params)->with('include_script' , true);
+    		return view('ajax.post' , $params);
 	   }
 	   
 	   return $post;

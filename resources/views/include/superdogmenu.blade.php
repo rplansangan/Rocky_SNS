@@ -6,13 +6,16 @@
 			@elseif(Auth::check())
 			<li><a href="{{ Route('profile.view' , ['id' => Auth::check()] ) }}"><img src="{{ mediaSrc($profile->prof_pic->image_path , $profile->prof_pic->image_name , $profile->prof_pic->image_ext) }}" class="profile-pic"><span>{{ $profile->first_name.' '.$profile->last_name }}</span></a></li>
 			@else
-			<li><a href="{{ route('home') }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic"><span>Public</span></a></li>
+			<li><a href="{{ route('home') }}"><img src="{{ URL::asset('assets/img/notification.png') }}" class="profile-pic"><span>Newsfeed</span></a></li>
 			@endif
 			@if(Auth::check())
 			<li><a href="{{ route('profile.edit') }}"><img src="{{ URL::asset('assets/img/edit-profile.png') }}"><span>Edit Profile</span></a></li>
 			@endif
 			<li><a href="{{ route('public.nearestpetshop') }}"><img src="{{ URL::asset('assets/img/cart.png') }}"><span>Nearest Petshop</span></a></li>
 			<li><a href="{{ route('public.nearestvet') }}"><img src="{{ URL::asset('assets/img/vet.png') }}"><span>Nearest Vet</span></a></li>
+			@if(!Auth::check())
+			<li><a href="{{ route('public.neighbors') }}"><img src="{{ URL::asset('assets/img/neighbors.png') }}"><span>Neighbors</span></a></li>
+			@endif
 		</ul>
 	</nav>
 </div>
@@ -38,9 +41,6 @@
 			</div>
 			@endif
 		@endif
-		<div class="text-left" style="margin: 10px 0;">
-			<a href="#" class="add-pets-btn" style="color: #b7062b; padding: 0 15px;"><i class="fa fa-plus"></i> Add Pets</a>
-		</div>
 	</nav>
 </div>
 
@@ -61,11 +61,10 @@
 		</ul>
 	</nav>
 </div>
-
+@if(Auth::check())
 <div>
 	<label class="text-muted">MY NEIGHBORS</label>
 	<nav>
-		@if(Auth::check())
 			@if(!$neighbors->isEmpty())
 			<ul>
 				@foreach($neighbors as $row)
@@ -81,18 +80,13 @@
 				<p style="padding: 0 15px;">You have no Neighbors</p>
 			</div>
 			@endif
-
-		@else
-		<ul>
-			<li><a href="{{ route('public.neighbors') }}"><img src="{{ URL::asset('assets/img/neighbors.png') }}"><span>Neighbors</span></a></li>
-		</ul>
-		@endif
 	</nav>
 	<div class="text-center loading-dots">
 		<a href="#"><span>...</span></a>
 	</div>
+	<br clear="all">
 </div>
-
+@endif
 
 
 

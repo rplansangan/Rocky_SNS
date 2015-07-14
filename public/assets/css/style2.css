@@ -5,9 +5,7 @@ html , body{
 .nopad{
   padding: 0px;
 }
-#landing img{
-  margin-left: 15px;
-}
+
 #slider1 > div{
   background-image: url('../images/landing/dog4.png');
 }
@@ -24,13 +22,18 @@ html , body{
   color: white;
 }
 #landing > header{
-  padding: 20px 0px;
+  border-bottom: 1px solid rgba(0,0,0,0.5);
+  height:90px;
   background-color: white;
-  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+#landing .logo{
+  padding: 10px 20px;
+  width: 160px;
 }
 #landing > header > div > nav > ul{
   list-style-type: none;
   padding: 10px 35px;
+  margin-top: 25px;
 }
 #landing > header > div > nav > ul > li{
   display: inline-block;
@@ -212,7 +215,7 @@ section > div > div > #layer2{
   z-index: 2;
 }
 #landing section > div{
-  width: 1000px;
+  width: 1100px;
   margin: 0px auto;
   height: 350px;
 }
