@@ -132,4 +132,3 @@ Route::get('test', array(
     'as' => 'test',
     'uses' => 'WelcomeController@test',
 ));
-Route::get('test2', ['uses' => 'TestController@index']);

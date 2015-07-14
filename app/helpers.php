@@ -71,3 +71,21 @@ function mediaSrc($path, $filename, $ext, $size = null) {
     
     return url($dir);
 }
+
+function mediaSrcAlt($path, $ext, $size = null) {
+	
+	switch(config('filesystems.default')) {
+		case 'local':
+			$dir = config('local_disk_path') . '/';
+			break;
+	
+		default:
+			$dir = null;
+			break;
+	}
+	
+	$dir .= $path . '.' . $ext;
+	
+	return url($dir);
+	
+}

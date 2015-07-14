@@ -172,6 +172,9 @@ class ProfileController extends Controller {
 		$data['right'] = 'include.right';
 		$data['mid'] = 'pages.inside.profile.profilesettings';
 		$data['title'] = 'Update Profile';
+		$data['profile'] = Auth::user();
+		$data['profile']->load(['registration']);
+		
 		return view('pages.master' , $data);
 	}
 	

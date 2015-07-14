@@ -37,7 +37,7 @@ class Get {
     	}
     	
     	if($this->cache->exists($this->keysProfile . $id)) {
-    		return $this->cache->get($this->keysProfile . $id);
+    		return json_decode($this->cache->get($this->keysProfile . $id), true);
     	}
     }
 

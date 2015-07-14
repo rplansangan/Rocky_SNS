@@ -2,8 +2,8 @@
 <!-- POST FORM -->
 <div class="post-area">
 	<div class="col-lg-1">
-		@if(isset($profile->prof_pic))
-		<a href="#" class="arrow_right"><img src="{{ mediaSrc($profile->prof_pic->image_path , $profile->prof_pic->image_name , $profile->prof_pic->image_ext) }}" class="img-thumbnail"></a>
+		@if(isset($user_data['profile_picture_path']))
+		<a href="#" class="arrow_right"><img src="<?php echo mediaSrcAlt($user_data['profile_picture_path'], $user_data['profile_picture_ext']); ?>" class="img-thumbnail"></a>
 		@else
 		<a href="#" class="arrow_right"><img src="{{ URL::asset('assets/images/new/prof-icon.png') }}" class="img-thumbnail"></a>
 		@endif

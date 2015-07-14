@@ -15,13 +15,13 @@
 				</div>
 				<div class="form-group  view-image-here">
 					<div class="col-sm-3 col-sm-offset-3">
-						<img src="{{ mediaSrc($profile->prof_pic->image_path , $profile->prof_pic->image_name , $profile->prof_pic->image_ext) }}" class="img-responsive img-thumbnail">
+						<img src="<?php echo mediaSrcAlt($user_data['profile_picture_path'], $user_data['profile_picture_ext']); ?>" class="img-responsive img-thumbnail">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-3 control-label">{{ trans('profile.labels.prof_details.name') }}</label>
 					<div class="col-sm-4">
-						<input type="text" name="first_name" class="form-control" placeholder="{{ trans('profile.placeholders.prof_details.first_name') }}" value="<?php echo $profile->first_name?>">
+						<input type="text" name="first_name" class="form-control" placeholder="{{ trans('profile.placeholders.prof_details.first_name') }}" value="<?php echo $profile->first_name; ?>">
 					</div>
 					<div class="col-sm-4">
 						<input type="text" name="last_name" class="form-control" placeholder="{{ trans('profile.placeholders.prof_details.last_name') }}" value="<?php echo $profile->last_name?>">

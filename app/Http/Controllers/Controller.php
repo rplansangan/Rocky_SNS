@@ -28,8 +28,8 @@ abstract class Controller extends BaseController {
 
 		if(Auth::check()) {
 			$data += $this->setGlobals();
-			//$init->initAuth();
-			//$data['user_data'] = $cacheGet->userData();
+			$init->initAuth();
+			$data['user_data'] = $cacheGet->userData();
 		}
 		
 		view()->share($data);	
@@ -45,13 +45,7 @@ abstract class Controller extends BaseController {
 	protected function setGlobals() {	
 		$t = new FriendService; 
 		$data['my_pets'] = Pets::with('profile_pic')->where('user_id', Auth::id())->get();
-		$data['profile'] = Auth::user()->registration;
-		$data['profile']->load(['prof_pic' => function($q) {
-			$q->where('is_profile_picture', 1);
-			$q->where('pet_id', 0);
-		}]);
-		$data['neighbors'] = $t->collect(Auth::id());
-		
+		$data['neighbors'] = $t->collect(Auth::id());		
 		return $data;
 	}
 
