@@ -9,10 +9,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('test', function(){
-	echo $_SERVER["HTTP_ACCEPT_LANGUAGE"];
-});
-
 Route::get('/', array(
     'as' => 'index',
     'uses' => 'WelcomeController@index',
@@ -123,4 +119,8 @@ Route::group(['prefix' => 'administration', 'namespace' => 'Admin', 'middleware'
         'uses' => 'DashboardController@displaySingleError'
 	]);
 });
+Route::get('test', array(
+    'as' => 'test',
+    'uses' => 'WelcomeController@test',
+));
 Route::get('test2', ['uses' => 'TestController@index']);

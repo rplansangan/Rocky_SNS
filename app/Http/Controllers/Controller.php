@@ -21,6 +21,7 @@ abstract class Controller extends BaseController {
 
 	public function __construct(Initialize $init, Get $cacheGet) {
 		$this->initialize($init, $cacheGet);
+// 		dd($init);
 	}
 	
 	protected function initialize($init, $cacheGet) {
@@ -28,16 +29,15 @@ abstract class Controller extends BaseController {
 
 		if(Auth::check()) {
 			$data += $this->setGlobals();
-			//$init->initAuth();
-			//$data['user_data'] = $cacheGet->userData();
+			$init->initAuth();
+			$data['user_data'] = $cacheGet->userData();
 		}
 		
 		view()->share($data);	
 	}
 
 	private function setPubGlobals() {
-		$missingPets = MissingPets::with(['profile.image'])->orderByRaw("RAND()")->limit(2)->get();
-		$data['missing_pets'] = $missingPets;
+// 		$data['missing_pets'] = MissingPets::with(['profile.image'])->orderByRaw("RAND()")->limit(2)->get();
 		$data['title'] = 'Rocky Superdog';
 		$data['sub_title'] = '';
 		return $data;
