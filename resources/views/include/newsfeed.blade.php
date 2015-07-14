@@ -1,4 +1,6 @@
-<!-- NEWSFEED AREA-->
+@if(!$newsfeed->isEmpty())
+	@foreach($newsfeed as $row)
+	<!-- NEWSFEED AREA-->
 	<div class="newsfeed">
 		<!-- NEWSFEED TOP -->
 		<div class="row newsfeed-top">
@@ -87,10 +89,13 @@
 				@else
 				<a href="#" class="arrow_right"><img src="{{ URL::asset('assets/img/prof.png') }}" class="img-thumbnail profile-pic"></a>
 				@endif
-				<textarea class="form-control"></textarea>
+				<textarea class="form-control" placeholder="Write a comment"></textarea>
 			</div>
 			<br clear="all">
 		</div>
 		@endif
 	</div>
-
+	@endforeach
+@else
+<div class="text-center"><p>No Post</p></div>
+@endif

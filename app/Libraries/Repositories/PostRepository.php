@@ -42,35 +42,20 @@ class PostRepository {
 			$dir = StorageHelper::create(Auth::id());
 			$mime = $file->getMimeType();
 			
-			try {
+			try{
 				$post->image()->save(new Images([
 						'user_id' => Auth::id(),
 						'image_path' => $dir['front'],
 						'image_name' => $filename,
 						'image_mime' => $mime,
-						'image_ext' => $file->getClientOriginalExtension(),
-						'image_title' => $data['image_title'],
-						'category' => $data['category']
+						'image_ext' => $file->getClientOriginalExtension()
 				]));
-			} catch (\Exception $e) {
+			$file->move(public_path() . $dir['root'] , $filename . '.' . $file->getClientOriginalExtension());
+    		$filePath = public_path() . $dir['root'] .'/'. $filename . '.' . $file->getClientOriginalExtension() ;
+
+			}catch (\Exception $e) {
 				DB::rollback();
 				return trans('errors.err_500');
-			}
-			
-			// file visibility issue
-// 			StorageHelper::store($dir, $filename . '.' . $file->getClientOriginalExtension());			
-			
-			// should be changed for cdn support
-			try {
-    			$file->move(public_path() . $dir['root'] , $filename . '.' . $file->getClientOriginalExtension());
-    			$filePath = public_path() . $dir['root'] .'/'. $filename . '.' . $file->getClientOriginalExtension() ;
-                
-//     			if(strstr($mime, 'video/')){
-//     				createThumbnail($filePath , public_path() . '/' . $dir , $filename);
-//     			}
-			} catch (\Exception $e) {
-			    DB::rollback();
-			    return trans('errors.err_500');
 			}
 		}
 		

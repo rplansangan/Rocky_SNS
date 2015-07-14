@@ -17,7 +17,7 @@ Route::post('check_email', array(
 	'as' => 'check.email',
 	'uses' => 'LoginController@check_email'
 ));
-Route::post('files/newsfeed', array(
+Route::any('files/newsfeed', array(
 	'as' => 'files.newsfeed',
 	'uses' => 'UploadsController@newsfeed'
 ));
