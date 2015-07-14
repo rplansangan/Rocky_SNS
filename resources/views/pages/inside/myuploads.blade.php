@@ -1,6 +1,6 @@
 <div>
 	<div class="text-center">
-		<img src="{{ URL::asset('assets/img/upload.png') }}">
+		<img src="{{ URL::asset('assets/img/upload-large.png') }}">
 		<h3>{{ $profile->first_name.' '.$profile->last_name }}'s Videos <br><small class="text-muted">Share your funny videos and vote to be the dogs of the week</small></h3>
 		<div class="col-lg-6 col-lg-offset-3 search-input">
 			<div class="input-group">
