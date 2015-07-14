@@ -65,17 +65,6 @@ return [
 		realpath(__DIR__.'/../app/Models/Admin/ErrorLogs.php'),
 		
 		// Models
-<<<<<<< HEAD
-// 		realpath(__DIR__.'/../app/Models/Comments.php'),
-// 		realpath(__DIR__.'/../app/Models/EmailValidation.php'),
-// 		realpath(__DIR__.'/../app/Models/FriendRequest.php'),
- 		realpath(__DIR__.'/../app/Models/Images.php'),
- 		realpath(__DIR__.'/../app/Models/Likes.php'),
-// 		realpath(__DIR__.'/../app/Models/MissingPets.php'),
- 		realpath(__DIR__.'/../app/Models/Newsfeed_view.php'),
-// 		realpath(__DIR__.'/../app/Models/PetFoundation.php'),
-// 		realpath(__DIR__.'/../app/Models/PetFoundationImages.php'),
-=======
  		realpath(__DIR__.'/../app/Models/Comments.php'),
  		realpath(__DIR__.'/../app/Models/EmailValidation.php'),
  		realpath(__DIR__.'/../app/Models/FriendRequest.php'),
@@ -85,7 +74,6 @@ return [
  		realpath(__DIR__.'/../app/Models/Newsfeed_view.php'),
  		realpath(__DIR__.'/../app/Models/PetFoundation.php'),
  		realpath(__DIR__.'/../app/Models/PetFoundationImages.php'),
->>>>>>> origin/master
  		realpath(__DIR__.'/../app/Models/Pets.php'),
  		realpath(__DIR__.'/../app/Models/Posts.php'),
  		realpath(__DIR__.'/../app/Models/Registration.php'),
