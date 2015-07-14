@@ -47,7 +47,7 @@ return array(
      |
      */
 
-    'include_vendors' => true,
+    'include_vendors' => false,
 
     /*
      |--------------------------------------------------------------------------
@@ -72,24 +72,24 @@ return array(
 
     'collectors' => array(
         'phpinfo'         => false,  // Php version
-        'messages'        => true,  // Messages
+        'messages'        => false,  // Messages
         'time'            => true,  // Time Datalogger
         'memory'          => true,  // Memory usage
-        'exceptions'      => true,  // Exception displayer
-        'log'             => true,  // Logs from Monolog (merged in messages if enabled)
+        'exceptions'      => false,  // Exception displayer
+        'log'             => false,  // Logs from Monolog (merged in messages if enabled)
         'db'              => true,  // Show database (PDO) queries and bindings
         'views'           => true,  // Views with their data
-        'route'           => true,  // Current route information
+        'route'           => false,  // Current route information
         'laravel'         => false, // Laravel version and environment
         'events'          => false, // All events fired
         'default_request' => false, // Regular or special Symfony request logger
-        'symfony_request' => true,  // Only one can be enabled..
+        'symfony_request' => false,  // Only one can be enabled..
         'mail'            => false,  // Catch mail messages
         'logs'            => false, // Add the latest log messages
         'files'           => false, // Show the included files
-        'config'          => true, // Display config settings
+        'config'          => false, // Display config settings
         'auth'            => false, // Display Laravel authentication status
-        'session'         => true,  // Display session data
+        'session'         => false,  // Display session data
     ),
 
     /*
