@@ -32,8 +32,7 @@
             autoControls: true,
             autoControlsSelector: '#my-start-stop',
             slideWidth: 1100,
-            speed: 700,
-            autoStart: false
+            speed: 700
           });
 
           $('.bx-next').click(function() {
@@ -53,10 +52,7 @@
      <input type="hidden" id="route" value="{{ Route('login') }}">
      <div class="container-fluid nopad" id="landing">
       @include('landing.top')
-       <!-- SLIDER -->
-       
-      <!-- END SLIDER -->
-      <!-- NEW -->
+      <!-- SLIDER -->
       <div id="container">
           <div id="sliderdiv1">
               <div id="sliderdiv2">
@@ -103,7 +99,7 @@
               </div>
           </div>   
       </div>
-      <!-- END NEW -->
+      <!-- END SLIDER -->
       <!-- SECTION -->
       <section class="text-right nopad">
         <div>
