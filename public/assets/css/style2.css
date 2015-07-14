@@ -121,15 +121,6 @@ html , body{
 #slider1 .item h1 {
   margin-bottom: 40px;
 }
-#slider1 .item a {
-  border-radius: 5px;
-  font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
-  color: black;
-  text-decoration: none;
-  background-color: #b7042c;
-  padding: 10px 22px;
-  color: #fff;
-}
 #landing section{
   height: 350px;
 }
@@ -153,6 +144,22 @@ html , body{
 }
 #landing > .map p , #landing > .map h1{
   color:white;
+}
+.button-group-new {
+  margin-top: 15px;
+}
+.button-group-new a#btn1 {
+  background-color: #636363;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-right: 10px;
+}
+.button-group-new a#btn2 {
+  background-color: #B7042C;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 5px;
 }
 button.login {
   background-color: #b7042c;

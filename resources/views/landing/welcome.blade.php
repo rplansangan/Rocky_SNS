@@ -73,8 +73,6 @@
                         <div class="item">
                           <p>WHO WOULD YOU TURN TO</p>
                           <h1>IF YOU LOST <br/> YOUR BEST FRIEND?</h1>
-                          <a href="#" class="learn" target="_parent">LEARN MORE</a>
-                          <a href="#" class="join" target="_parent">JOIN NOW</a>
                         </div>
                       </div>
                       <div>
@@ -82,8 +80,6 @@
                         <div class="item">
                           <p>WHO WOULD YOU TURN TO</p>
                           <h1>IF YOU LOST <br/> YOUR BEST FRIEND?</h1>
-                          <a href="#" class="learn" target="_parent">LEARN MORE</a>
-                          <a href="#" class="join" target="_parent">JOIN NOW</a>
                         </div>
                       </div>
                       <div>
@@ -91,8 +87,6 @@
                         <div class="item">
                           <p>WHO WOULD YOU TURN TO</p>
                           <h1>IF YOU LOST <br/> YOUR BEST FRIEND?</h1>
-                          <a href="#" class="learn" target="_parent">LEARN MORE</a>
-                          <a href="#" class="join" target="_parent">JOIN NOW</a>
                         </div>
                       </div>
                   </div>
@@ -166,7 +160,7 @@
                         well-being and so you know your dog is healthy<br>
                         and safe.
                     </p>
-                    <div class="button-group">
+                    <div class="button-group-new">
                         <a href="#" id="btn1">Learn More</a>
                         <a href="#" id="btn2">Buy Now</a>
                     </div>
