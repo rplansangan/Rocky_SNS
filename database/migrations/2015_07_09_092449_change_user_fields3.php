@@ -12,9 +12,9 @@ class ChangeUserFields3 extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('users', function(Blueprint $t) {
-            $t->dropColumn(array('is_merchant' , 'is_foundation' , 'is_member' , 'is_vet'));
-		});
+		//Schema::table('users', function(Blueprint $t) {
+            //$t->dropColumn(array('is_merchant' , 'is_foundation' , 'is_member' , 'is_vet'));
+		//});
 	}
 
 	/**

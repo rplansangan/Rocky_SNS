@@ -31,7 +31,7 @@
             auto: true,
             autoControls: true,
             autoControlsSelector: '#my-start-stop',
-            slideWidth: 1160,
+            slideWidth: 1100,
             speed: 700,
             autoStart: false
           });
@@ -54,49 +54,56 @@
      <div class="container-fluid nopad" id="landing">
       @include('landing.top')
        <!-- SLIDER -->
-       <div style="height:550px;">
-        <div id="sliderdiv1">
-          <div id="sliderdiv2">
-            <div id="slider1">
-              <div>
-                <img src="{{ URL::asset('assets/images/landing/a.gif') }}" alt="b02" width="1260px" height="740px" />
-                <div class="item text-center" style="margin-top:-500px;">    
-                  <div class="text-center" id="sl">
-                    <img src="{{ URL::asset('assets/images/landing/logo.png') }}" class="img-responsive" id="layer1">
-                    <div class="button-group">
-                      <a href="#" id="btn1">Learn More</a>
-                      <a class="signup_btn" data-toggle="modal" data-target="#signupModal" href="#" id="btn2">Join Now</a>
-                      <br>
-                      <label>
-                        <a class="login_btn" data-toggle="modal" data-target="#loginModal" href="#">Already a member? LOGIN</a>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <img src="{{ URL::asset('assets/images/landing/slider1.jpg') }}" alt="b02" width="1260px" height="740px" />
-                <div class="item">
-                  <h1 class="text-center"><small>WHO WOULD YOU TURN TO</small><br/> IF YOU LOST <br/> YOUR BEST FRIEND?</h1>
-                </div>
-              </div>
-              <div>
-                <img src="{{ URL::asset('assets/images/landing/slider2.jpg') }}" alt="b02" width="1260px" height="740px" />
-                <div class="item">
-                  <h1 class="text-center"><small>WHO WOULD YOU TURN TO</small><br/> IF YOU LOST <br/> YOUR BEST FRIEND?</h1>
-                </div>
-              </div>
-              <div>
-                <img src="{{ URL::asset('assets/images/landing/slider3.jpg') }}" alt="b03" width="1260px" height="740px" />
-                <div class="item">
-                  <h1 class="text-center"><small>WHO WOULD YOU TURN TO</small><br/> IF YOU LOST <br/> YOUR BEST FRIEND?</h1>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+       
       <!-- END SLIDER -->
+      <!-- NEW -->
+      <div id="container">
+          <div id="sliderdiv1">
+              <div id="sliderdiv2">
+                  <div id="slider1">
+                      <div>
+                        <img src="{{ URL::asset('assets/images/landing/slider4.png') }}" alt="b01" width="1260px" height="640px" />
+                          <div class="button-group">
+                            <a href="#" id="btn1">Learn More</a>
+                            <a class="signup_btn" data-toggle="modal" data-target="#signupModal" href="#" id="btn2">Join Now</a>
+                            <br>
+                            <label>
+                              <a class="login_btn" data-toggle="modal" data-target="#loginModal" href="#">Already a member? LOGIN</a>
+                            </label>
+                          </div>
+                      </div>
+                      <div>
+                        <img src="{{ URL::asset('assets/images/landing/slider1.jpg') }}" alt="b01" width="1260px" height="640px" />
+                        <div class="item">
+                          <p>WHO WOULD YOU TURN TO</p>
+                          <h1>IF YOU LOST <br/> YOUR BEST FRIEND?</h1>
+                          <a href="#" class="learn" target="_parent">LEARN MORE</a>
+                          <a href="#" class="join" target="_parent">JOIN NOW</a>
+                        </div>
+                      </div>
+                      <div>
+                        <img src="{{ URL::asset('assets/images/landing/slider2.jpg') }}" alt="b01" width="1260px" height="640px" />
+                        <div class="item">
+                          <p>WHO WOULD YOU TURN TO</p>
+                          <h1>IF YOU LOST <br/> YOUR BEST FRIEND?</h1>
+                          <a href="#" class="learn" target="_parent">LEARN MORE</a>
+                          <a href="#" class="join" target="_parent">JOIN NOW</a>
+                        </div>
+                      </div>
+                      <div>
+                        <img src="{{ URL::asset('assets/images/landing/slider3.jpg') }}" alt="b01" width="1260px" height="640px" />
+                        <div class="item">
+                          <p>WHO WOULD YOU TURN TO</p>
+                          <h1>IF YOU LOST <br/> YOUR BEST FRIEND?</h1>
+                          <a href="#" class="learn" target="_parent">LEARN MORE</a>
+                          <a href="#" class="join" target="_parent">JOIN NOW</a>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>   
+      </div>
+      <!-- END NEW -->
       <!-- SECTION -->
       <section class="text-right nopad">
         <div>
