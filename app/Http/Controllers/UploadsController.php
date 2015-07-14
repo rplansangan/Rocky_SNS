@@ -25,13 +25,8 @@ class UploadsController extends Controller {
 		$post = PostService::create($request->except(['file']), $request->file('file'));
 		
 		if($post instanceof \SNS\Models\Posts) {	
-    		$params['user'] = $post->user;
-    		$params['message'] = $post;
-    		$params['image'] = $post->image;
-    		$params['like'] = $post->like;
-    		return view('ajax.post' , $params);
+    		return view('ajax.post' , $post);
 	   }
-	   
 	   return $post;
 	}
 	

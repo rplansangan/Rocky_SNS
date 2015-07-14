@@ -5,11 +5,13 @@ body , html{
 	background-color: #EBECED;
 	z-index: -5;
 }
+.push-down{
+	margin-bottom: 50px;
+}
 header{
 	border-bottom: 1px solid rgba(0,0,0,0.5);
 	height:90px;
 	background-color: white;
-	margin-bottom: 50px;
 }
 .nopad{
 	padding: 0px;

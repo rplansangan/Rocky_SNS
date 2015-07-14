@@ -3,16 +3,15 @@ $(document).ready(function(){
 		$( "#fileMedia" ).trigger( "click" );
 	});
 
-	var bar = $('.progress');
+    var bar = $('.bar');
     var percent = $('.percent');
     var status = $('#status');
 
-    $('#form12').ajaxForm({
+    $('#form').ajaxForm({
         beforeSend: function() {
-            status.empty();
             var percentVal = '0%';
             bar.width(percentVal);
-            percent.html(percentVal);
+            percent.fadeIn().html(percentVal);
         },
         uploadProgress: function(event, position, total, percentComplete) {
             var percentVal = percentComplete + '%';
@@ -20,7 +19,11 @@ $(document).ready(function(){
             percent.html(percentVal);
         },
         complete: function(xhr) {
-            alert(xhr.responseText);
+           $('.post-area').after(xhr.responseText);
+           $("#form").trigger('reset');
+        },
+        success: function(){
+            percent.fadeOut();
         }
     });
 

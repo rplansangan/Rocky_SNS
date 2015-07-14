@@ -1,18 +1,18 @@
 <header>
   <div class="container-fluid">
-    <div class="col-lg-2 ">
+    <div class="col-lg-2 col-sm-4 col-xs-4 col-md-4">
       <a href="{{ Route('index')}}"><img src="{{ URL::asset('assets/img/logo.png') }}" class="img-responsive logo"></a>
     </div>
-    <div class="col-lg-3 hidden-sm hidden-xs">
+    <div class="col-lg-3 hidden-sm hidden-md hidden-xs">
       <input type="text" name="search" id="search-top" class="form-control">
       <a href="#"><img src="{{ URL::asset('assets/img/search.png') }}" id="search"></a>
       <div id="load-search" class="hidden text-center">
           <p>Loading...</p>
       </div>
     </div>
-    <div class="col-lg-7 hidden-sm hidden-xs">
+    <div class="col-lg-7 col-sm-8 col-xs-8 col-md-8 ">
       @if(Auth::check())
-      <nav>
+      <nav class="hidden-sm hidden-xs">
         <ul>
           @if(!isset($profile->prof_pic) AND Auth::check())
           <li><a href="{{ Route('profile.view' , ['id' => Auth::check()] ) }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}"><span>{{ $profile->first_name.' '.$profile->last_name }}</span></a></li>
@@ -63,6 +63,6 @@
     </div>
   </div>
 </header>
-
-
+<progress class="bar percent" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 0%;height:2px;border:1px solid black;position:absolute"></progress>
+<div class="push-down"></div>
 
