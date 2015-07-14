@@ -27,6 +27,7 @@ class UploadsController extends Controller {
 		if($post instanceof \SNS\Models\Posts) {	
     		return view('ajax.post' , $post);
 	   }
+	   
 	   return $post;
 	}
 	

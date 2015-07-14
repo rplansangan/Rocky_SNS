@@ -29,8 +29,8 @@ abstract class Controller extends BaseController {
 
 		if(Auth::check()) {
 			$data += $this->setGlobals();
-			$init->initAuth();
-			$data['user_data'] = $cacheGet->userData();
+			//$init->initAuth();
+			//$data['user_data'] = $cacheGet->userData();
 		}
 		
 		view()->share($data);	
