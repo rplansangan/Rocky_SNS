@@ -82,6 +82,11 @@ Route::get('neighbors', [
 	'uses' => 'HomeController@rockyNeighbors'
 ]);
 
+Route::get('myuploads', [
+	'as' => 'public.myuploads',
+	'uses' => 'HomeController@myUploads'
+]);
+
 Route::get('pet/missingpets', [
 	'as' => 'public.missingpets',
 	'uses' => 'HomeController@missingPets'

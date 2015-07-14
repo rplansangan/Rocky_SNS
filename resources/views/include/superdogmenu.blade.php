@@ -51,7 +51,7 @@
 	<nav>
 		<ul>
 			@if(Auth::check())
-			<li><a href="#"><img src="{{ URL::asset('assets/img/upload.png') }}" ><span>My Uploads</span></a></li>
+			<li><a href="{{ route('public.myuploads') }}"><img src="{{ URL::asset('assets/img/upload.png') }}" ><span>My Uploads</span></a></li>
 			@endif
 			<li><a href="{{ route('public.dogsoftheweek') }}"><img src="{{ URL::asset('assets/img/trophy.png') }}" ><span>Dogs of the week</span></a></li>
 			@if(Auth::check())
