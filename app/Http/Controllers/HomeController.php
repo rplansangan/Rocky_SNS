@@ -87,5 +87,12 @@ class HomeController extends Controller {
 		$data['mid'] = 'pages.inside.neighbors';
 		return view('pages.master' , $data);
 	}
+	public function myUploads(){
+		$data['sub_title'] = '- Videos';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.myuploads';
+		return view('pages.master' , $data);
+	}
 	
 }

@@ -40,6 +40,10 @@ Route::post('register/{id}/register_pet', array(
 	'as' => 'register.petRegister',
 	'uses' => 'RegistrationController@petRegister'
 ));
+Route::post('check_email', array(
+	'as' => 'check.email',
+	'uses' => 'LoginController@check_email'
+));
 
 //profile
 Route::get('profile/edit_settings', array(
@@ -82,6 +86,11 @@ Route::get('neighbors', [
 	'uses' => 'HomeController@rockyNeighbors'
 ]);
 
+Route::get('myuploads', [
+	'as' => 'public.myuploads',
+	'uses' => 'HomeController@myUploads'
+]);
+
 Route::get('pet/missingpets', [
 	'as' => 'public.missingpets',
 	'uses' => 'HomeController@missingPets'
@@ -114,7 +123,7 @@ Route::group(['prefix' => 'administration', 'namespace' => 'Admin', 'middleware'
 		'as' => 'admin.list.errors',
 		'uses' => 'DashboardController@listErrors'
 	]);
-	Route:;get('list_errors/{id}', [
+	Route::get('list_errors/{id}', [
         'as' => 'admin.single.error',
         'uses' => 'DashboardController@displaySingleError'
 	]);

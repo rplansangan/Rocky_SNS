@@ -21,7 +21,6 @@ abstract class Controller extends BaseController {
 
 	public function __construct(Initialize $init, Get $cacheGet) {
 		$this->initialize($init, $cacheGet);
-// 		dd($init);
 	}
 	
 	protected function initialize($init, $cacheGet) {
