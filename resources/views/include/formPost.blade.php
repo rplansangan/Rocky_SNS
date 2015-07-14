@@ -9,9 +9,9 @@
 		@endif
 	</div>
 	<div class="col-lg-11">
-		<form>
+		<form method="POST" action="{{ route('files.newsfeed') }}" id="form-post" role="form" enctype="multipart/form-data">
 			<input type="file" id="fileMedia" class="hidden" name="media[]" accept="video/* , image/*" multiple>
-			<textarea class="form-control" placeholder="Share your Thoughts" rows="4"></textarea>
+			<textarea class="form-control" placeholder="Share your Thoughts" name="message" rows="4"></textarea>
 		</form>
 		<div class="text-left col-lg-9 nopad">
 			<a href="javascript:void(0);" id="addMediaBtn"><img src="{{ URL::asset('assets/img/add_photos.png') }}"> Add Photos/Videos</a>

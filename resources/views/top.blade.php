@@ -4,8 +4,11 @@
       <a href="{{ Route('index')}}"><img src="{{ URL::asset('assets/img/logo.png') }}" class="img-responsive logo"></a>
     </div>
     <div class="col-lg-3 hidden-sm hidden-xs">
-      <input type="text" name="search" class="form-control">
+      <input type="text" name="search" id="search-top" class="form-control">
       <a href="#"><img src="{{ URL::asset('assets/img/search.png') }}" id="search"></a>
+      <div id="load-search" class="hidden text-center">
+          <p>Loading...</p>
+      </div>
     </div>
     <div class="col-lg-7 hidden-sm hidden-xs">
       @if(Auth::check())

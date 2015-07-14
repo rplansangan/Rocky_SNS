@@ -14,6 +14,12 @@ header{
 .nopad{
 	padding: 0px;
 }
+header > div > div > #load-search{
+	border: 1px solid rgba(0,0,0,0.5);
+	margin-top: 5px;
+	background-color: white;
+	padding: 5px;
+}
 header form{
 	margin-top: 23px;
 	text-align: center;
@@ -464,4 +470,7 @@ header > div nav > ul > li > ul > li > a:hover{
 }
 .mid .send-msg:hover {
   color: #000;
+}
+.mid .user-details .profile-pic{
+	width: 250px;
 }

@@ -95,7 +95,7 @@ class PostService {
 	 * @param integer $skip
 	 * @param integer $take
 	 */
-	public function incrementalNewsFeed($id, $skip, $post_uid, $take = null) {
+	public function incrementalNewsFeed($id , $skip, $post_uid, $take = null) {
 		if(!$take) {
 			$take = 5;
 		}

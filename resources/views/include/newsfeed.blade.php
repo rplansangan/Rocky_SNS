@@ -1,6 +1,4 @@
-@if(!$newsfeed->isEmpty())
-	@foreach($newsfeed as $row)
-	<!-- NEWSFEED AREA-->
+<!-- NEWSFEED AREA-->
 	<div class="newsfeed">
 		<!-- NEWSFEED TOP -->
 		<div class="row newsfeed-top">
@@ -81,21 +79,18 @@
 			</div>
 			<br clear="all">
 		</div>
+		@if(Auth::check())
 		<div class="reply-textarea">
 			<div class="col-lg-12 nopad">
-				@if(Auth::check())
 				@if(isset($profile->prof_pic))
 				<a href="#" class="arrow_right"><img src="{{ mediaSrc($profile->prof_pic->image_path, $profile->prof_pic->image_name , $profile->prof_pic->image_ext) }}" class="img-thumbnail profile-pic"></a>
 				@else
 				<a href="#" class="arrow_right"><img src="{{ URL::asset('assets/img/prof.png') }}" class="img-thumbnail profile-pic"></a>
 				@endif
-				@endif
 				<textarea class="form-control"></textarea>
 			</div>
 			<br clear="all">
 		</div>
+		@endif
 	</div>
-	@endforeach
-@else
-<div class="text-center"><p>No Post</p></div>
-@endif
+

@@ -92,9 +92,6 @@ class PostRepository {
 				},
 				'like' => function($q) {
 					$q->addSelect(['like_id', 'post_id']);
-				},
-				'comment' => function($q) {
-					$q->addSelect(['comment_id', 'post_id']);
 				}
 		]);	
 		
