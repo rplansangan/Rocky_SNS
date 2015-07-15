@@ -1,49 +1,42 @@
 <?php namespace SNS\Libraries\Cache;
 
-
-
 use Illuminate\Support\Facades\Redis;
-
 use Predis\Client;
 
-
-
 use SNS\Libraries\Cache\Traits\Keys;
-
 use SNS\Libraries\Cache\Traits\Expirations;
-
 use Illuminate\Support\Facades\Cache;
-
-
 
 /**
  * 
  * @author Rap
  *
  */
-
 class Initialize {
 
 	use Keys, Expirations;
 
-    protected $auth;
-    protected $cache;
+    /**
+	 * Auth instance
+	 * @var Illuminate\Support\Facades\Auth
+	 */
+	protected $auth;
+	/**
+	 * Redis instance
+	 * @var Illuminate\Support\Facades\Redis
+	 */
+	protected $cache;
+	
     private $redis = false;
 
     public function __construct(Client $cache) {
-
         $this->auth = auth();
-
+        
         if($this->redis !== false) {
-
         	$this->cache = $cache;
-
         } else {
-
         	$this->cache = Cache::driver('file');
-
         }
-
     }
 
 
@@ -59,11 +52,14 @@ class Initialize {
     				$q->addSelect(['image_id', 'user_id', 'image_path', 'image_name', 'image_ext']);
     			}
     	]);
+    	
     	$user = [
 	    			'user_id' => $params->user_id,
 	    			'first_name' => $params->registration->first_name,
 	    			'last_name' => $params->registration->last_name
 				];
+    	
+    	// checks if user has profile picture set
     	if(!is_null($params->prof_pic)) {
     		$profile_pic = [
 	    		'profile_picture_path' => $params->prof_pic->image_path . '/' . $params->prof_pic->image_name,
@@ -72,7 +68,10 @@ class Initialize {
     	} else {
     		$profile_pic = null;
     	}
-    	$profile = json_encode(array_merge($user, [$profile_pic]));
+    	
+    	// merges all user data before encoding as json
+    	$profile = json_encode(array_merge($user, $profile_pic));
+    	
     	if($this->redis !== false) {
 
 	    	if(!$this->cache->exists($this->keysProfile . $this->auth->id())) {	
@@ -82,7 +81,7 @@ class Initialize {
 	    	}
     	} else {
     		if(!$this->cache->get($this->keysProfile . $this->auth->id())) {	
-				$this->cache->put($this->keysProfile . $params->user_id, $profile, $this->keysProfile);
+				$this->cache->put($this->keysProfile . $params->user_id, $profile, $this->expSession);
 	    	}
     	}
     }

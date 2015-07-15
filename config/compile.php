@@ -20,7 +20,8 @@ return [
 		realpath(__DIR__.'/../app/Providers/ConfigServiceProvider.php'),
 		//realpath(__DIR__.'/../app/Providers/EventServiceProvider.php'),
 		realpath(__DIR__.'/../app/Providers/RouteServiceProvider.php'),
-		realpath(__DIR__.'/../app/Providers/CacheLayerProvider.php'),
+		realpath(__DIR__.'/../app/Providers/CacheLayerServiceProvider.php'),
+		realpath(__DIR__.'/../app/Providers/CacheSetServiceProvider.php'),
 		
 		realpath(__DIR__.'/../app/Http/Kernel.php'),
 
@@ -40,6 +41,7 @@ return [
 		// Libraries - Cache
 		realpath(__DIR__.'/../app/Libraries/Cache/Initialize.php'),
 		realpath(__DIR__.'/../app/Libraries/Cache/Get.php'),
+		realpath(__DIR__.'/../app/Libraries/Cache/Set.php'),
 
 		realpath(__DIR__.'/../app/Libraries/Traits/Expires.php'),
 		realpath(__DIR__.'/../app/Libraries/Traits/Keys.php'),

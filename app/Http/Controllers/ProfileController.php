@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Hash;
 use SNS\Libraries\Cache\Initialize;
 use SNS\Libraries\Cache\Get;
 use Illuminate\Support\Facades\DB;
+use SNS\Libraries\Cache\Set;
 
 class ProfileController extends Controller {
 	
@@ -135,13 +136,13 @@ class ProfileController extends Controller {
 		->with('friends', $friends);
 	}
 	
-	public function editProfile(Request $request) {
+	public function editProfile(Request $request, Set $cacheSet) {
 		$input = array_except($request->all(), array('_token', 'userfile'));
 
-		$uid = User::find(Auth::id());
-		$uid->load('registration');
+		$user = Auth::user();
+		$user->load('registration');
 		
-		$reg = Registration::find($uid->registration->registration_id);
+		$reg = $user->registration;
 		while(($current = current($input)) !== false) {
 			$key = key($input);
 			$reg->$key = $current;	
@@ -153,20 +154,21 @@ class ProfileController extends Controller {
 
 		if(isset($file)){
 			try{
-				Images::where('user_id' , Auth::id())->where('is_profile_picture' , 1)->update(['is_profile_picture' => 0]);
-				$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
-				$dir = StorageHelper::create(Auth::id());
+				$this->removePrevious($user->user_id);
+				
+				$filename = md5($file->getClientOriginalName() . $user->email_address . Carbon::now());
+				$dir = StorageHelper::create($user->user_id);
 				$mime = $file->getMimeType();
-
+				
 				$img = new Images([
-					'user_id' => Auth::id(),
-					'is_profile_picture' => 1,
-					'image_path' => $dir['front'],
-					'image_name' => $filename,
-					'image_mime' => $mime,
-					'image_ext' => $file->getClientOriginalExtension()
+						'is_profile_picture' => 1,
+						'image_path' => $dir['front'],
+						'image_name' => $filename,
+						'image_mime' => $mime,
+						'image_ext' => $file->getClientOriginalExtension()
 					]);
-				$img->save();
+				
+				$reg->prof_pic()->save($img);
 				
 				$file->move(public_path() . $dir['root'] , $filename . '.' . $file->getClientOriginalExtension());
 				$filePath = public_path() . $dir['root'] .'/'. $filename . '.' . $file->getClientOriginalExtension() ;
@@ -175,6 +177,15 @@ class ProfileController extends Controller {
 				return trans('errors.err_500');
 			}
 		}
+		
+		$user->load([
+				'prof_pic' => function($q) { 
+						$q->where('pet_id', 0);
+				}
+		]);
+		
+		$cacheSet->updateUserData($user);
+		DB::commit();
 		echo 'Updated';
 	}
 
