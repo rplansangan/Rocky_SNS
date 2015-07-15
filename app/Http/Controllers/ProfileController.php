@@ -29,7 +29,12 @@ class ProfileController extends Controller {
 	}
 	
 	public function showProfile($id){ 	   
-		$profileInformation = Registration::with('prof_pic')->where('user_id' , $id)->get();
+		$profileInformation = Registration::with([
+			'prof_pic' => function($q){
+				$q->where('is_profile_picture' , 1);
+				$q->where('pet_id' , 0);
+			}
+		])->where('user_id' , $id)->get();
 		$data['profileInformation'] = $profileInformation[0];
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
@@ -169,7 +174,7 @@ class ProfileController extends Controller {
 					]);
 				
 				$reg->prof_pic()->save($img);
-				
+
 				$file->move(public_path() . $dir['root'] , $filename . '.' . $file->getClientOriginalExtension());
 				$filePath = public_path() . $dir['root'] .'/'. $filename . '.' . $file->getClientOriginalExtension() ;
 			}catch (\Exception $e) {

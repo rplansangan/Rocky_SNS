@@ -71,7 +71,7 @@ class Initialize {
     	
     	// merges all user data before encoding as json
     	$profile = json_encode(array_merge($user, $profile_pic));
-    	
+
     	if($this->redis !== false) {
 
 	    	if(!$this->cache->exists($this->keysProfile . $this->auth->id())) {	
