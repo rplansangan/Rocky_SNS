@@ -1,7 +1,8 @@
 $(document).ready(function(){
-	$(document).on('click' , '#addMediaBtn' , function(){
-		$( "#fileMedia" ).trigger( "click" );
-	});
+
+    $(document).on('click' , '#addMediaBtn' , function(){
+      $( "#fileMedia" ).trigger( "click" );
+    });
 
     var bar = $('.bar');
     var percent = $('.percent');
@@ -21,9 +22,9 @@ $(document).ready(function(){
         complete: function(xhr) {
            $('.post-area').after(xhr.responseText);
            $("#form").trigger('reset');
-        },
-        success: function(){
-            percent.fadeOut();
+       },
+       success: function(){
+        percent.fadeOut();
         }
     });
 
@@ -40,8 +41,8 @@ $(document).ready(function(){
         },
         complete: function(xhr) {
            alert(xhr.responseText);
-        },
-        success: function(){
+       },
+       success: function(){
             percent.fadeOut();
         }
     });
@@ -56,7 +57,7 @@ $(document).ready(function(){
             $('#load-search').removeClass('hidden').fadeIn();
         }else{
            $('#load-search').addClass('hidden');
-        }
-    });
+       }
+   });
 });
 

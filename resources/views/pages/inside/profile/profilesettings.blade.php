@@ -87,7 +87,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">{{ trans('profile.labels.prof_details.country') }}</label>
 				<div class='col-sm-8'>
-					{{ country_form() }}
+					{{ country_form($profile->registration->country) }}
 				</div>
 			</div>
 			<div class="form-group">
