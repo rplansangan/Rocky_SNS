@@ -47,6 +47,7 @@ class RegistrationController extends Controller {
 			$user->save();
 
 			$reg = new Registration();
+			$reg->registration_id = $user->user_id;
 			$reg->user_id = $user->user_id;
 			$reg->is_validated = 1;
 			$reg->first_name = $input['first_name'];
@@ -60,28 +61,7 @@ class RegistrationController extends Controller {
 		}
 	}
 	
-	public function validateRegistration($id, $hash) {	
-		$service = new EmailValidationService();
-		$service->id($id)->hash($hash)->validateEmailToken();
-		
-// 		if($service->errors()) {		
-// 			return redirect()->route('pages.message')->withErrors(['message' => $service->errors()]);
-// 		} else {
-// 			$service->activateRegistration();
-// 			$service->deleteHash();
-// 			return redirect()->route('register.details', $id);
-// 		}
-		if(Auth::check()) {
-			return redirect()->route('home');
-		} else {
-			return redirect()->route('index');
-		}
-	}
-	
-	public function details($id) {
-		Session::put('details', Registration::find($id)->toArray());
-		return view('pages.register');
-	}
+
 	
 	public function updateDetails(Request $request, $id) {
 		Session::forget('details');

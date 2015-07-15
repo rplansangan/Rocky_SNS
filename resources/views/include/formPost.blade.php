@@ -5,7 +5,7 @@
 		@if(isset($user_data['profile_picture_path']))
 		<a href="#" class="arrow_right"><img src="<?php echo mediaSrcAlt($user_data['profile_picture_path'], $user_data['profile_picture_ext']); ?>" class="img-thumbnail"></a>
 		@else
-		<a href="#" class="arrow_right"><img src="{{ URL::asset('assets/images/new/prof-icon.png') }}" class="img-thumbnail"></a>
+		<a href="#" class="arrow_right"><img src="{{ URL::asset('assets/images/default-pic.png')  }}" class="img-thumbnail"></a>
 		@endif
 	</div>
 	<div class="col-lg-11">

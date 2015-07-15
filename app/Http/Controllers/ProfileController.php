@@ -29,12 +29,14 @@ class ProfileController extends Controller {
 	}
 	
 	public function showProfile($id){ 	   
-		$data['profileInformation'] = Registration::with('prof_pic')->find($id);
+		$profileInformation = Registration::with('prof_pic')->where('user_id' , $id)->get();
+		$data['profileInformation'] = $profileInformation[0];
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
 		$data['mid'] = 'pages.inside.profile.profile';
 		$data['newsfeed'] = PostService::incrementalNewsFeed(Auth::id() , 10 , $id);
 		$data['id'] = $id;
+
 		return view('pages.master', $data);		
 	}
 
@@ -133,13 +135,6 @@ class ProfileController extends Controller {
 		return view('pages.friends_listing')
 				->with('friends', $friends);
 	}
-
-	public function settings(){
-		$details = User::find(Auth::id());
-		$details->load('registration');
-				
-		return view('profile.settings')->with('details', $details->registration);
-	}
 	
 	public function editProfile(Request $request) {
 		$input = array_except($request->all(), array('_token', 'userfile'));
@@ -156,12 +151,6 @@ class ProfileController extends Controller {
 		$reg->save();
 
 		
-		if($request->file('userfile') != null) {
-			$file = $request->file('userfile');
-			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
-			$dir = StorageHelper::create(Auth::id());
-	
-		}
 
 		#custom_print_r($request->all()); 
 	}
@@ -174,7 +163,6 @@ class ProfileController extends Controller {
 		$data['title'] = 'Update Profile';
 		$data['profile'] = Auth::user();
 		$data['profile']->load(['registration']);
-		
 		return view('pages.master' , $data);
 	}
 	

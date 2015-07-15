@@ -15,9 +15,9 @@
       <nav class="hidden-sm hidden-xs">
         <ul>
           @if(!isset($user_data['profile_picture_path']) AND Auth::check())
-          <li><a href="{{ Route('profile.view' , ['id' => Auth::check()] ) }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}"><span><?php echo $user_data['first_name'] . ' ' . $user_data['last_name']; ?></span></a></li>
+          <li><a href="{{ Route('profile.view' , ['id' => Auth::id()] ) }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}"><span><?php echo $user_data['first_name'] . ' ' . $user_data['last_name']; ?></span></a></li>
           @elseif(Auth::check())
-          <li><a href="{{ Route('profile.view' , ['id' => Auth::check()] ) }}"><img src="<?php echo mediaSrcAlt($user_data['profile_picture_path'], $user_data['profile_picture_ext']); ?>"><span><?php echo $user_data['first_name'] . ' ' . $user_data['last_name']; ?></span></a></li>
+          <li><a href="{{ Route('profile.view' , ['id' => Auth::id()] ) }}"><img src="<?php echo mediaSrcAlt($user_data['profile_picture_path'], $user_data['profile_picture_ext']); ?>"><span><?php echo $user_data['first_name'] . ' ' . $user_data['last_name']; ?></span></a></li>
           @endif
           <li><a href="{{ Route('home') }}"><span>Home</span></a></li>
           <li><a href="{{ route('public.neighbors') }}"><img src="{{ URL::asset('assets/img/neighbors.png') }}"></a></li>

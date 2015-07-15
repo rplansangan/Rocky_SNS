@@ -1,7 +1,7 @@
 <!-- HEADER -->
 <header class="container-fluid">
   <div class="col-lg-2">
-    <a href="#"><img src="{{ URL::asset('assets/images/landing/rlysmall.png') }}" class="img-responsive logo"></a>
+    <a href="{{ Route('home') }}"><img src="{{ URL::asset('assets/images/landing/rlysmall.png') }}" class="img-responsive logo"></a>
   </div>
   <div class="col-lg-10">
     <nav class="text-right">

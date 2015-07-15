@@ -56,8 +56,9 @@ html , body{
 .button-group{
   width: 100%;
   padding: 10px;
-  margin-top: -250px;
+  margin-top: -200px;
   z-index: 999;
+  margin-left: 22px;
 }
 .button-group > label{
   margin-top: 20px;
@@ -101,7 +102,7 @@ html , body{
   width: 100%; display: block; visibility: visible; overflow: hidden;
 }
 #sliderdiv2{
-  width: 1260px; display: block; visibility: visible; margin: 0 auto;
+  width: 960px; display: block; visibility: visible; margin: 0 auto;
 }
 #container{
   text-align:center;
@@ -209,7 +210,7 @@ section > div > div > #layer2{
   z-index: 2;
 }
 #landing section > div{
-  width: 1100px;
+  width: 960px;
   margin: 0px auto;
   height: 350px;
 }

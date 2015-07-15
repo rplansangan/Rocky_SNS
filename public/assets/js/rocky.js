@@ -27,6 +27,24 @@ $(document).ready(function(){
         }
     });
 
+    $('#updateform').ajaxForm({
+        beforeSend: function() {
+            var percentVal = '0%';
+            bar.width(percentVal);
+            percent.fadeIn().html(percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            bar.width(percentVal);
+            percent.html(percentVal);
+        },
+        complete: function(xhr) {
+           alert(xhr.responseText);
+        },
+        success: function(){
+            percent.fadeOut();
+        }
+    });
     $(document).on('click' , '#comment-down' , function(){
         $(this).parent().parent().parent().next().slideDown( "slow" );
     });

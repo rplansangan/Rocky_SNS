@@ -1,6 +1,7 @@
 $(document).on('ready' , function(){
 	$.ajaxSetup({
-		data: { "_token": $('#token').val() }
+		data: { "_token": $('#token').val() },
+		type: 'POST'
 	});
 	$('[data-toggle="tooltip"]').tooltip();
 
@@ -51,7 +52,7 @@ $(document).on('ready' , function(){
 						$('.loader').hide().text('Your email address is already Taken').fadeIn();
 					}else{
 						$('#signupModal').modal('hide');
-						window.location.href = url+"home";
+						location.reload();
 					}
 				}
 			});
