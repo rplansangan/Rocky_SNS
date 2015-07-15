@@ -72,7 +72,7 @@ class Initialize {
     	} else {
     		$profile_pic = null;
     	}
-    	$profile = json_encode(array_merge($user, [$profile_pic]));
+    	$profile = json_encode(array_merge($user, $profile_pic));
     	if($this->redis !== false) {
 
 	    	if(!$this->cache->exists($this->keysProfile . $this->auth->id())) {	
