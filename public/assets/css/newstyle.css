@@ -256,6 +256,7 @@ header > div nav > ul > li > ul > li > a:hover{
 
 .mid .newsfeed-content , .mid .newsfeed-bottom {
 	margin: 0 auto;
+	margin-top: 5px;
 }
 .mid .newsfeed-content > .video-content , .mid .newsfeed-content > .video-content > div , .mid .newsfeed-bottom > div{
 	display: inline-block;

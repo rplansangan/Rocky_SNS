@@ -51,36 +51,16 @@
 				<a href="#"><img src="{{ URL::asset('assets/img/like.png') }}"><span class="like">26</span></a>
 			</div>
 			<div>
-				<a href="javascript:void(0);" id="comment-down"><img src="{{ URL::asset('assets/img/comment.png') }}"></a>
+				<a href="javascript:void(0);" id="comment-down" post-id="{{ $row->post->post_id }}" route="{{ Route('get.comment') }}" ><img src="{{ URL::asset('assets/img/comment.png') }}"></a>
 			</div>
 		</div>
 		<!-- END COMMENT SECTION -->
 	</div>
 	<div class="comment-area">
-		<div class="text-left loading-dots">
+		<div class="text-left loading-dots comment_loading_area">
 			<a href="#"><span>...</span></a>
 		</div>
-		<div class="comment-container">
-			<div class="col-lg-1">
-				<a href="#"><img src="{{ URL::asset('assets/img/puggy.png') }}" class="profile-pic"></a>
-			</div>
-			<div class="col-lg-11">
-				<div class="row">
-					<div class="col-lg-6 text-left nopad">
-						<a href="#"><span>Bull</span></a>
-					</div>
-					<div class="col-lg-6 text-right nopad">
-						<h6><small>26 Minutes ago</small></h6>
-					</div>
-				</div>
-				<div class="row">
-					<div class="comment-message">
-						<p>I feel good so good</p>
-					</div>
-				</div>
-			</div>
-			<br clear="all">
-		</div>
+		@include('include.comment')
 		@if(Auth::check())
 		<div class="reply-textarea">
 			<div class="col-lg-12 nopad">

@@ -48,6 +48,17 @@ $(document).ready(function(){
     });
     $(document).on('click' , '#comment-down' , function(){
         $(this).parent().parent().parent().next().slideDown( "slow" );
+
+        var id = $(this).attr('post-id');
+        var route = $(this).attr('route');
+
+        $.ajax({
+            url : route,
+            data : {post_id:id},
+            success: function(a){
+                $('.comment_loading_area').after(a);
+            }
+        });
     });
 
     $(document).on('keyup' , '#search-top' , function(){

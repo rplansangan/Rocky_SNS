@@ -17,6 +17,10 @@ class PostsController extends Controller {
 		return json_encode(PostService::like($request->get('id'), $request->get('uid')));
 	}
 	
+	public function getComment(Request $request){
+		$input = array_except($request->all(), array('_token'));
+		custom_print_r($input);
+	}
 
 	public function createComment(Request $request) {
 		$post = PostService::createComment($request->get('id'), $request->get('puid'), $request->get('message'));

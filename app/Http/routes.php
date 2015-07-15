@@ -45,6 +45,13 @@ Route::post('check_email', array(
 	'uses' => 'LoginController@check_email'
 ));
 
+//newsfeed
+
+Route::post('comment', array(
+	'as' => 'get.comment',
+	'uses' => 'PostsController@getComment'
+));
+
 //profile
 Route::get('profile/edit_settings', array(
 	'as' => 'profile.edit',
