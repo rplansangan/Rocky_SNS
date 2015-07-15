@@ -17,7 +17,6 @@ class ConfigServiceProvider extends ServiceProvider {
 	{
 		config([
 			'local_disk_path' => '/uploads',
-					'database.redis.default.host' => '192.168.1.149',
 		]);
 	}
 

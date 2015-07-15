@@ -2,9 +2,9 @@
 	<nav>
 		<ul>
 			@if(!isset($user_data['profile_picture_path']) AND Auth::check())
-			<li><a href="{{ Route('profile.view' , ['id' => Auth::check()] ) }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic" ><span><?php echo $user_data['first_name'] . ' ' . $user_data['last_name']; ?></span></a></li>
+			<li><a href="{{ Route('profile.view' , ['id' => $user_data['user_id']] ) }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic" ><span><?php echo $user_data['first_name'] . ' ' . $user_data['last_name']; ?></span></a></li>
 			@elseif(Auth::check())
-			<li><a href="{{ Route('profile.view' , ['id' => Auth::check()] ) }}"><img src="<?php echo mediaSrcAlt($user_data['profile_picture_path'], $user_data['profile_picture_ext']); ?>" class="profile-pic"><span><?php echo $user_data['first_name'] . ' ' . $user_data['last_name']; ?></span></a></li>
+			<li><a href="{{ Route('profile.view' , ['id' => $user_data['user_id']] ) }}"><img src="<?php echo mediaSrcAlt($user_data['profile_picture_path'], $user_data['profile_picture_ext']); ?>" class="profile-pic"><span><?php echo $user_data['first_name'] . ' ' . $user_data['last_name']; ?></span></a></li>
 			@else
 			<li><a href="{{ route('home') }}"><img src="{{ URL::asset('assets/img/notification.png') }}" class="profile-pic"><span>Newsfeed</span></a></li>
 			@endif
