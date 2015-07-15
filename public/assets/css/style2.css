@@ -58,6 +58,7 @@ html , body{
   padding: 10px;
   margin-top: -250px;
   z-index: 999;
+  margin-left: 22px;
 }
 .button-group > label{
   margin-top: 20px;
@@ -101,7 +102,7 @@ html , body{
   width: 100%; display: block; visibility: visible; overflow: hidden;
 }
 #sliderdiv2{
-  width: 1260px; display: block; visibility: visible; margin: 0 auto;
+  width: 1100px; display: block; visibility: visible; margin: 0 auto;
 }
 #container{
   text-align:center;

@@ -32,7 +32,8 @@
             autoControls: true,
             autoControlsSelector: '#my-start-stop',
             slideWidth: 1100,
-            speed: 700
+            speed: 700,
+            autoStart: false
           });
 
           $('.bx-next').click(function() {
@@ -58,7 +59,7 @@
               <div id="sliderdiv2">
                   <div id="slider1">
                       <div>
-                        <img src="{{ URL::asset('assets/images/landing/slider4.png') }}" alt="b01" width="1260px" height="640px" />
+                        <img src="{{ URL::asset('assets/images/landing/slider4.png') }}" alt="b01" width="1100px" height="640px" />
                           <div class="button-group">
                             <a href="#" id="btn1">Learn More</a>
                             <a class="signup_btn" data-toggle="modal" data-target="#signupModal" href="#" id="btn2">Join Now</a>
@@ -69,21 +70,21 @@
                           </div>
                       </div>
                       <div>
-                        <img src="{{ URL::asset('assets/images/landing/slider1.jpg') }}" alt="b01" width="1260px" height="640px" />
+                        <img src="{{ URL::asset('assets/images/landing/slider1.jpg') }}" alt="b01" width="1100px" height="640px" />
                         <div class="item">
                           <p>WHO WOULD YOU TURN TO</p>
                           <h1>IF YOU LOST <br/> YOUR BEST FRIEND?</h1>
                         </div>
                       </div>
                       <div>
-                        <img src="{{ URL::asset('assets/images/landing/slider2.jpg') }}" alt="b01" width="1260px" height="640px" />
+                        <img src="{{ URL::asset('assets/images/landing/slider2.jpg') }}" alt="b01" width="1100px" height="640px" />
                         <div class="item">
                           <p>WHO WOULD YOU TURN TO</p>
                           <h1>IF YOU LOST <br/> YOUR BEST FRIEND?</h1>
                         </div>
                       </div>
                       <div>
-                        <img src="{{ URL::asset('assets/images/landing/slider3.jpg') }}" alt="b01" width="1260px" height="640px" />
+                        <img src="{{ URL::asset('assets/images/landing/slider3.jpg') }}" alt="b01" width="1100px" height="640px" />
                         <div class="item">
                           <p>WHO WOULD YOU TURN TO</p>
                           <h1>IF YOU LOST <br/> YOUR BEST FRIEND?</h1>
@@ -108,7 +109,7 @@
               by a team of passionate pet lovers - we<br>
               provide the best for your furry friend
             </p>
-            <div class="button-group">
+            <div class="button-group-new">
               <a class="signup_btn" data-toggle="modal" data-target="#signupModal" href="#" id="btn2">Join Now</a>
             </div>
           </div>
@@ -123,7 +124,7 @@
               to Pet walkers - We have it all. Search by<br>
               your location and read reviews.
             </p>
-            <div class="button-group">
+            <div class="button-group-new">
               <a href="{{ route('public.nearestpetshop') }}" id="btn2">Browse</a>
             </div>
           </div>
@@ -141,7 +142,7 @@
               passionate Rocky Rangers would locate<br>
               your pet in no time
               .</p>
-              <div class="button-group">
+              <div class="button-group-new">
                 <a href="{{ route('public.missingpets') }}" id="btn2">Browse</a>
               </div>
             </div>
