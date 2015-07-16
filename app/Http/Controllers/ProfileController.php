@@ -186,6 +186,7 @@ class ProfileController extends Controller {
 		$user->load([
 				'prof_pic' => function($q) { 
 						$q->where('pet_id', 0);
+						$q->where('is_profile_picture', 1);
 				}
 		]);
 		

@@ -27,15 +27,24 @@ class Initialize {
 	 */
 	protected $cache;
 	
-    private $redis = false;
+	/**
+	 * CACHE_DRIVER as defined on .env
+	 * @var string
+	 */
+    private $driver;
 
     public function __construct(Client $cache) {
         $this->auth = auth();
         
-        if($this->redis !== false) {
-        	$this->cache = $cache;
-        } else {
-        	$this->cache = Cache::driver('file');
+        $this->driver = config('cache.default');
+        
+        switch($this->driver) {
+        	case 'file':
+        		$this->cache = $cache;
+        		break;
+        	case 'redis':
+        		$this->cache = Cache::driver('file');
+        		break;
         }
     }
 
@@ -71,18 +80,20 @@ class Initialize {
     	
     	// merges all user data before encoding as json
     	$profile = json_encode(array_merge($user, $profile_pic));
-
-    	if($this->redis !== false) {
-
-	    	if(!$this->cache->exists($this->keysProfile . $this->auth->id())) {	
-				$this->cache->set($this->keysProfile . $params->user_id, $profile);
-				// set expiration
-				$this->cache->expire($this->keysProfile . $params->user_id, $this->expSession);
-	    	}
-    	} else {
-    		if(!$this->cache->has($this->keysProfile . $this->auth->id())) {	
-				$this->cache->put($this->keysProfile . $params->user_id, $profile, $this->expSession);
-	    	}
+    	switch($this->driver) {
+        	case 'file':
+		    	if(!$this->cache->exists($this->keysProfile . $this->auth->id())) {	
+					$this->cache->set($this->keysProfile . $params->user_id, $profile);
+					// set expiration
+					$this->cache->expire($this->keysProfile . $params->user_id, $this->expSession);
+		    	}
+	    	break;
+	    	
+    		case 'redis':
+	    		if(!$this->cache->has($this->keysProfile . $this->auth->id())) {	
+					$this->cache->put($this->keysProfile . $params->user_id, $profile, $this->expSession);
+		    	}
+		    break;
     	}
     }
 }
