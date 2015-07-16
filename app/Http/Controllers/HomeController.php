@@ -115,7 +115,7 @@ class HomeController extends Controller {
 				$q->where('pet_id' , 0);
 				$q->where('is_profile_picture' , 1);
 			}
-		])->where('first_name' , 'LIKE' , '%'.$input['name'].'%')->orWhere('last_name' , 'LIKE' , '%'.$input['name'].'%')->get();
+		])->where('first_name' , 'LIKE' , '%'.$input['name'].'%')->orWhere('last_name' , 'LIKE' , '%'.$input['name'].'%')->limit(10)->get();
 		return view('ajax.result' ,$data);
 	}
 	

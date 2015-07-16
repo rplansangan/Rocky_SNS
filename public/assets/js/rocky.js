@@ -73,8 +73,6 @@ $(document).ready(function(){
         var text = $(this).val();
 
         if(text != ''){
-            $('#load-search').removeClass('hidden').fadeIn();
-
             $.ajax({
                 url : $(this).attr('route'),
                 data: { name:text },
@@ -85,6 +83,7 @@ $(document).ready(function(){
                     $('#load-search').html(response);
                 }
             });
+            $('#load-search').removeClass('hidden').fadeIn();
         }else{
             $('#load-search').addClass('hidden');
         }
