@@ -1,7 +1,11 @@
 $(document).ready(function(){
 
     $(document).on('click' , '#addMediaBtn' , function(){
-      $( "#fileMedia" ).trigger( "click" );
+        $( "#fileMedia" ).trigger( "click" );
+    });
+
+    $(document).on('click' , '.body' , function(){
+        $('#load-search').addClass('hidden');
     });
 
     var bar = $('.bar');
@@ -160,5 +164,7 @@ $(document).ready(function(){
             $('.loadingText').remove();
         });
     });
+
+
 });
 

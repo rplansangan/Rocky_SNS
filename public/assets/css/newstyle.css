@@ -16,11 +16,24 @@ header{
 .nopad{
 	padding: 0px;
 }
+header > div > div > #load-search img{
+	margin: 5px;
+	width: 45px;
+}
+header > div > div > #load-search > div > a{
+	padding: 5px 0px;
+}
+header > div > div > #load-search > div{
+	margin: 3px auto;
+}
 header > div > div > #load-search{
+	position: absolute;
 	border: 1px solid rgba(0,0,0,0.5);
 	margin-top: 5px;
 	background-color: white;
 	padding: 5px;
+	width: 90%;
+	z-index: 10;
 }
 header form{
 	margin-top: 23px;

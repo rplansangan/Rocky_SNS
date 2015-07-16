@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-	<div class="container-fluid">
+	<div class="container-fluid body">
 		<div class="row">
 			<div class="col-lg-2 left">
 				@include($left)
@@ -12,5 +12,6 @@
 				@include($right)
 			</div>
 		</div>
+		<br clear="all">
 	</div>
 @stop
