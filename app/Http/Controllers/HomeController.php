@@ -110,8 +110,13 @@ class HomeController extends Controller {
 
 	public function search(Request $request){
 		$input = array_except($request->all(), array('_token'));
-
-		return view('ajax.result');
+		$data['info'] = Registration::with([
+			'prof_pic' => function($q){
+				$q->where('pet_id' , 0);
+				$q->where('is_profile_picture' , 1);
+			}
+		])->where('first_name' , 'LIKE' , '%'.$input['name'].'%')->orWhere('last_name' , 'LIKE' , '%'.$input['name'].'%')->get();
+		return view('ajax.result' ,$data);
 	}
 	
 }

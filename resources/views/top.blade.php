@@ -6,9 +6,7 @@
     <div class="col-lg-3 hidden-sm hidden-md hidden-xs">
       <input type="text" name="search" id="search-top" route="{{ Route('search') }}" class="form-control">
       <a href="#"><img src="{{ URL::asset('assets/img/search.png') }}" id="search"></a>
-      <div id="load-search" class="text-left">
-        
-      </div>
+      <div id="load-search" class="text-left hidden"></div>
     </div>
     <div class="col-lg-7 col-sm-8 col-xs-8 col-md-8 ">
       @if(Auth::check())

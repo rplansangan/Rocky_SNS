@@ -79,7 +79,7 @@ $(document).ready(function(){
                 url : $(this).attr('route'),
                 data: { name:text },
                 beforeSend:function(){
-
+                    $('#load-search').html('<p class="text-center">Loading....</p>');
                 },
                 success:function(response){
                     $('#load-search').html(response);
