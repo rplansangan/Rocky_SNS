@@ -21,7 +21,10 @@ Route::any('files/newsfeed', array(
 	'as' => 'files.newsfeed',
 	'uses' => 'UploadsController@newsfeed'
 ));
-
+Route::any('search', array(
+	'as' => 'search',
+	'uses' => 'HomeController@search'
+));
 // Login
 Route::post('login', array(
 	'as' => 'login',

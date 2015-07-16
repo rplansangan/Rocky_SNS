@@ -4,7 +4,7 @@
       <a href="{{ Route('index')}}"><img src="{{ URL::asset('assets/img/logo.png') }}" class="img-responsive logo"></a>
     </div>
     <div class="col-lg-3 hidden-sm hidden-md hidden-xs">
-      <input type="text" name="search" id="search-top" class="form-control">
+      <input type="text" name="search" id="search-top" route="{{ Route('search') }}" class="form-control">
       <a href="#"><img src="{{ URL::asset('assets/img/search.png') }}" id="search"></a>
       <div id="load-search" class="text-left">
         

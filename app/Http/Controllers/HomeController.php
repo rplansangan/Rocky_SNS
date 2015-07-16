@@ -107,5 +107,11 @@ class HomeController extends Controller {
 		$input = array_except($request->all(), array('_token'));
 		return view('ajax.video' , $input);
 	}
+
+	public function search(Request $request){
+		$input = array_except($request->all(), array('_token'));
+
+		return view('ajax.result');
+	}
 	
 }

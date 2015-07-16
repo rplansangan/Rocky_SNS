@@ -59,7 +59,7 @@ $(document).ready(function(){
         var ito = $(this);
         $.ajax({
             url : route,
-            data : {post_id:id},
+            data : { post_id:id },
             beforeSend: function(){
                 $(ito).parent().parent().parent().next().find('.comment_loading_area').hide().html('Loading...').fadeIn();
             },
@@ -74,6 +74,17 @@ $(document).ready(function(){
 
         if(text != ''){
             $('#load-search').removeClass('hidden').fadeIn();
+
+            $.ajax({
+                url : $(this).attr('route'),
+                data: { name:text },
+                beforeSend:function(){
+
+                },
+                success:function(response){
+                    $('#load-search').html(response);
+                }
+            });
         }else{
             $('#load-search').addClass('hidden');
         }
