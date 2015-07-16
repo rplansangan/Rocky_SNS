@@ -9,6 +9,7 @@ use SNS\Libraries\Repositories\NewsfeedRepository;
 use SNS\Libraries\Repositories\LikeRepository;
 use SNS\Libraries\Repositories\CommentsRepository;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class PostService {
 	
@@ -62,9 +63,11 @@ class PostService {
 	 * Creates post data
 	 * IMPORTANT NOTE:
 	 * $data should be associative array where 
-	 * keys [file] will be used for file and [message] for the file's description / message
+	 * key [message] for the file's description / message
+	 * 
 	 * 
 	 * @param array $data
+	 * @param UploadedFile use $request->file('key')
 	 */
 	public function create($data, $file) {
 		$data = $this->token($data);
@@ -72,13 +75,19 @@ class PostService {
 		return $this->post->setPost($data, $file);
 	}
 
+	/**
+	 * Deletes post given its id
+	 * @param integer $id post id
+	 */
 	public function deletePost($id) {
 		return $this->post->delete($id);
 	}	
 	
 	/**
 	 * 
-	 * @param integer $take
+	 * @param integer $id current user id
+	 * @param integer $post_uid target user id
+	 * @param integer $take sql limit
 	 */
 	public function initialNewsFeed($id = null, $post_uid = null,  $take = null) {
 		if(!$take) {
@@ -86,14 +95,14 @@ class PostService {
 		}
 
 		return $this->newsfeed->initial($id , $post_uid, $take);
-	}
-
-	
+	}	
 	
 	/**
 	 * 
-	 * @param integer $skip
-	 * @param integer $take
+	 * @param integer $id current user id
+	 * @param integer $skip sql offset
+	 * @param integer $post_uid target user id
+	 * @param integer $take sql limit
 	 */
 	public function incrementalNewsFeed($id , $skip, $post_uid, $take = null) {
 		if(!$take) {
@@ -102,16 +111,41 @@ class PostService {
 		return $this->newsfeed->incremental($id, $skip, $post_uid, $take);
 	}
 	
+	/**
+	 * 
+	 * @param integer $post_id post id
+	 * @param integer $destination user id of given post
+	 */
 	public function like($post_id, $destination) {
 		return $this->like->set($post_id, $destination);
 	}
 	
+	/**
+	 * 
+	 * @param integer $postId post id
+	 * @param integer $postUId user id of given post
+	 * @param string $message message
+	 */
 	public function createComment($postId, $postUId, $message) {
 		return $this->comment->set($postId, $postUId, $message);
 	}
 	
+	/**
+	 * 
+	 * @param integer $postId post id
+	 * @param integer $postUId user id of given post
+	 * @param integer $commentId comment id
+	 */
 	public function deleteComment($postId, $postUId, $commentId) {
 		return $this->comment->delete($postId, $postUId, $commentId);
+	}
+	
+	/**
+	 * 
+	 * @param integer $postId post id
+	 */
+	public function getComment($postId) {
+		return $this->comment->get($postId);
 	}
 
 	public function checkNewPost(){

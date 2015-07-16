@@ -20,14 +20,7 @@ class PostsController extends Controller {
 	}
 	
 	public function getComment(Request $request){
-		$input = array_except($request->all(), array('_token'));
-		$data['comment'] = Comments::with([
-			'post' , 
-			'user.prof_pic' => function($q){
-				$q->where('pet_id' , 0);
-				$q->where('is_profile_picture' , 1);
-			}
-		])->where('post_id' , $input['post_id'])->get();
+		$data['comment'] = PostService::getComment($request->get('post_id'), $request->get('post_uid'));
 		return view('include.comment' , $data);
 	}
 
