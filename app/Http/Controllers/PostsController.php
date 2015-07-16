@@ -50,41 +50,10 @@ class PostsController extends Controller {
 		}
 	}
 	
-	public function getNextNewsFeed(Request $request) {
-		$skip = $request->get('offset');
-		if($request->get('cur_prof') != null) {
-			$post_uid = $request->get('cur_prof');
-		} else {
-			$post_uid = null;
-		}
-		
-		$posts = PostService::incrementalNewsFeed(auth()->id(), $skip - 1, $post_uid);
-		$count = count($posts);
-		if($count){
-			return view('ajax.loop_news_feed')->with('newsfeed', $posts);
-		}
-		return 0;
-	}
-
-	public function checknewpost(){
-		return PostService::checkNewPost();
-	}
-	public function getnewfeeds(){
-		return view('ajax.loop_news_feed')->with('newsfeed', PostService::get_newfeeds());
-		PostService::lastpostupdate();
-	}
-
-	public function getVideo($id , $file_id){
-		$data['image'] = Images::with(array('post'))->find($file_id); 
-		$data['image']->load('register');
-		$data['video'] = Images::with(array('post' , 'register'))
-							->where('image_mime' , 'like' , '%video%')
-							->where('user_id' , Auth::id())
-							->where('image_id' , '!=' , $file_id)
-							->latest()->get();
-		$data['user'] = $data['image']->register;
-
-		return view('pages.playvideo' , $data);
+	public function getnewsfeed(Request $request) {
+		$input = array_except($request->all(), array('_token'));
+		$data['newsfeed'] = PostService::incrementalNewsFeed(Auth::id() , $input['skip'] , null , 10);
+		return view('include.newsfeed' , $data);
 	}
 
 	

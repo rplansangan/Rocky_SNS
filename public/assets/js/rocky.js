@@ -44,6 +44,7 @@ $(document).ready(function(){
         },
         success: function(){
             percent.fadeOut();
+            $('.noPost').remove();
         }
     });
 
@@ -89,6 +90,7 @@ $(document).ready(function(){
                 },
             }).done(function(){
                 $('.insertComment').val('');
+                $(ito).parent().parent().parent().find('.comment_loading_area').find('.noComment').remove();
             });
         }
     });
@@ -136,6 +138,26 @@ $(document).ready(function(){
                     $(ito).find('span').text(--count).addClass('unlike').removeClass('like');
                 }
             }
+        });
+
+    });
+
+    
+    $(document).on('click' , '#loadMore' , function(){
+        var newsfeedCount = $('.newsfeed').length;
+        var route = $(this).attr('route');
+
+        $.ajax({
+            url:route,
+            data:{ skip:newsfeedCount },
+            beforeSend:function(){
+                $('.newsfeed').last().after('<p class="text-center loadingText">Loading</p>');
+            },
+            success:function(response){
+                $('.newsfeed').last().after(response);
+            }
+        }).done(function(){
+            $('.loadingText').remove();
         });
     });
 });

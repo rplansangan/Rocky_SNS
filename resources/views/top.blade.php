@@ -63,6 +63,6 @@
     </div>
   </div>
 </header>
-<progress class="bar percent" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 0%;height:2px;border:1px solid black;position:absolute"></progress>
+<progress class="bar percent" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 0%;height:2px;border:1px solid black;position:absolute;display:none"></progress>
 <div class="push-down"></div>
 

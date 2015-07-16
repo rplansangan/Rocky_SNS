@@ -59,6 +59,10 @@ Route::post('islike', array(
 	'as' => 'is.liked',
 	'uses' => 'PostsController@isLike'
 ));
+Route::post('getnewsfeed', array(
+	'as' => 'get.newsfeed',
+	'uses' => 'PostsController@getnewsfeed'
+));
 Route::post('video', array(
 	'as' => 'get.video',
 	'uses' => 'HomeController@getVideo'

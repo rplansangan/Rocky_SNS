@@ -82,5 +82,5 @@
 	</div>
 	@endforeach
 @else
-<div class="text-center" ><p>No Post</p></div>
+<div class="text-center noPost"><p>No Post</p></div>
 @endif
