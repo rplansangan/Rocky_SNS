@@ -69,7 +69,6 @@ class PostRepository {
 					$q->addSelect(['image_id', 'user_id', 'image_path', 'image_name', 'image_ext']);
 					$q->where('is_profile_picture', 1);
 					$q->where('pet_id', 0);
-					$q->where('pfa_id', 0);
 					$q->where('business_id', 0);
 				},
 				'image' => function($q) {

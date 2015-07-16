@@ -6,7 +6,9 @@
     <div class="col-lg-3 hidden-sm hidden-md hidden-xs">
       <input type="text" name="search" id="search-top" route="{{ Route('do.search') }}" class="form-control">
       <a href="#"><img src="{{ URL::asset('assets/img/search.png') }}" id="search"></a>
-      <div id="load-search" class="text-left hidden"></div>
+      <div id="load-search" class="hidden text-center">
+          <p>Loading...</p>
+      </div>
     </div>
     <div class="col-lg-7 col-sm-8 col-xs-8 col-md-8 ">
       @if(Auth::check())
@@ -53,7 +55,7 @@
           <label class="sr-only" for="exampleInputPassword3">Password</label>
           <input type="password" class="form-control" name="password" placeholder="Password">
           <br>
-          <a href="#"><small>Forgot Password?</small></a>
+          <a href="#"><small style="color: #B7042C;">Forgot Password?</small></a>
         </div>
         <button type="submit" class="btn btn-default" style="margin-top:-20px;">Sign in</button>
       </form>
@@ -61,6 +63,6 @@
     </div>
   </div>
 </header>
-<progress class="bar percent" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 0%;height:2px;border:1px solid black;position:absolute;display:none"></progress>
+<progress class="bar percent" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 0%;height:2px;border:1px solid black;position:absolute"></progress>
 <div class="push-down"></div>
 
