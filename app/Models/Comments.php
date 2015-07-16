@@ -38,4 +38,6 @@ class Comments extends Model {
 		return $this->belongsTo('SNS\Models\Posts', 'post_id');
 	}
 
+	
+
 }

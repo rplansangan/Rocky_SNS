@@ -51,7 +51,10 @@ Route::post('comment', array(
 	'as' => 'get.comment',
 	'uses' => 'PostsController@getComment'
 ));
-
+Route::post('insert/comment', array(
+	'as' => 'insert.comment',
+	'uses' => 'UploadsController@insertComment'
+));
 //profile
 Route::get('profile/edit_settings', array(
 	'as' => 'profile.edit',

@@ -2,6 +2,8 @@
 
 use SNS\Models\User;
 use SNS\Models\Images;
+use SNS\Models\Posts;
+use SNS\Models\Comments;
 use SNS\Models\Registration;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +21,14 @@ class PostsController extends Controller {
 	
 	public function getComment(Request $request){
 		$input = array_except($request->all(), array('_token'));
-		custom_print_r($input);
+		$data['comment'] = Comments::with([
+			'post' , 
+			'user.prof_pic' => function($q){
+				$q->where('pet_id' , 0);
+				$q->where('is_profile_picture' , 1);
+			}
+		])->where('post_id' , $input['post_id'])->get();
+		return view('include.comment' , $data);
 	}
 
 	public function createComment(Request $request) {

@@ -22,13 +22,17 @@ class UploadsController extends Controller {
 	}
 	
 	public function newsfeed(Request $request) {
-		$post = PostService::create($request->except(['file']), $request->file('file'));
-		
+		$post = PostService::create($request->except(['file']), $request->file('file'));		
 		if($post instanceof \SNS\Models\Posts) {	
     		return view('ajax.test' , $post);
-	   }
-	   
+	   	}
 	   return $post;
+	}
+
+	public function insertComment(Request $request){
+		$input = array_except($request->all(), array('_token'));
+		$data['comment'] = PostService::createComment($input['post_id'] , $input['post_user_id'] , $input['message']);
+		return view('ajax.comment' , $data);
 	}
 	
 	public function video(Request $request){

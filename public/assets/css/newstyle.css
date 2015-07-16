@@ -258,6 +258,9 @@ header > div nav > ul > li > ul > li > a:hover{
 	margin: 0 auto;
 	margin-top: 5px;
 }
+.mid .video-content , .mid .image-content{
+	margin: 10px 0px;
+}
 .mid .newsfeed-content > .video-content , .mid .newsfeed-content > .video-content > div , .mid .newsfeed-bottom > div{
 	display: inline-block;
 	position: relative;
@@ -296,18 +299,18 @@ header > div nav > ul > li > ul > li > a:hover{
 	position: relative;
 	top: -45px;
 }
-.mid .comment-area > .comment-container{
-	margin-top: 20px;
+.mid .comment-area > div>  .comment-container{
+	margin: 20px 0px;
 	border-bottom: 1px solid rgba(0,0,0,0.2);
 }
-.mid .comment-area > div > div >div > div > a{
+.mid .comment-area > div>  div > div >div > div > a{
 	color:red;
 }
-.mid .comment-area > div > div >div > div > h6{
+.mid .comment-area > div>  div > div >div > div > h6{
 	margin-top: -3px;
 }
 .mid .comment-area .comment-message{
-	margin-top: 15px;
+	margin: 15px 0px;
 }
 .mid .comment-area .reply-textarea textarea{
 	padding-left: 55px;
