@@ -76,7 +76,10 @@ class Initialize {
 	    		'profile_picture_ext' => $params->prof_pic->image_ext
     		];
     	} else {
-    		$profile_pic = null;
+    		$profile_pic = [
+	    		'profile_picture_path' => null,
+	    		'profile_picture_ext' => null
+    		];
     	}
     	
     	// merges all user data before encoding as json
