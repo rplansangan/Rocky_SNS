@@ -6,8 +6,12 @@
 			@else
 				<img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-dp">
 			@endif
-			<h3>{{ $profileInformation->first_name.' '.$profileInformation->last_name }} <br><small class="text-muted">Have 5 Pets</small></h3>
-			<a href="#" class="send-msg">Send a message</a>
+			<h3>{{ $profileInformation->first_name.' '.$profileInformation->last_name }} <br><small class="text-muted"></small></h3>
+			<div class="prof-btns">
+				<a href="#" class="add-neighbor"><i class="fa fa-user-plus"></i> Add as a neighbor</a>
+				<a href="#" class="send-msg"><i class="fa fa-envelope-o"></i> Send a message</a>
+				<a href="#" class="user-pets"><i class="fa fa-paw"></i> {{ $profileInformation->first_name.' '.$profileInformation->last_name }}'s Pets</a>
+			</div>
 			<br clear="all">
 		</div>
 	</div>

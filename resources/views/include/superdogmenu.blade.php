@@ -56,9 +56,9 @@
 			@endif
 			<li><a href="{{ route('public.dogsoftheweek') }}"><img src="{{ URL::asset('assets/img/trophy.png') }}" ><span>Dogs of the week</span></a></li>
 			@if(Auth::check())
-			<li><a href="#"><img src="{{ URL::asset('assets/img/history.png') }}" ><span>History</span></a></li>
+			<li><a href="{{ route('public.history') }}"><img src="{{ URL::asset('assets/img/history.png') }}" ><span>History</span></a></li>
 			@endif
-			<li><a href="#"><img src="{{ URL::asset('assets/img/ranger.png') }}" ><span>Rocky Ranger</span></a></li>
+			<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/img/ranger.png') }}" ><span>Rocky Ranger</span></a></li>
 		</ul>
 	</nav>
 </div>

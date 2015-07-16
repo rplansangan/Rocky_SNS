@@ -470,11 +470,12 @@ header > div nav > ul > li > ul > li > a:hover{
 /* END DOGS OF THE WEEK */
 
 /*===PROFILE===*/
-.mid .send-msg {
+.prof-btns a {
+  padding: 0 5px;
   color: #B7042C;
   text-decoration: none;
 }
-.mid .send-msg:hover {
+.prof-btns a:hover {
   color: #000;
 }
 .mid .user-details .profile-pic{

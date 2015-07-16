@@ -101,6 +101,11 @@ Route::get('myuploads', [
 	'uses' => 'HomeController@myUploads'
 ]);
 
+Route::get('history', [
+	'as' => 'public.history',
+	'uses' => 'HomeController@history'
+]);
+
 Route::get('pet/missingpets', [
 	'as' => 'public.missingpets',
 	'uses' => 'HomeController@missingPets'

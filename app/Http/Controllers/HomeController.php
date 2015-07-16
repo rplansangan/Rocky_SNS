@@ -94,5 +94,12 @@ class HomeController extends Controller {
 		$data['mid'] = 'pages.inside.myuploads';
 		return view('pages.master' , $data);
 	}
+	public function history(){
+		$data['sub_title'] = '- History';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.history';
+		return view('pages.master' , $data);
+	}
 	
 }

@@ -1,7 +1,8 @@
 <div>
 	<div class="text-center">
-		<img src="{{ URL::asset('assets/images/new/friends-icon.png') }}">
+		<img src="{{ URL::asset('assets/img/neighbors-large.jpg') }}">
 		<h3>Your Neighbors <br><small class="text-muted">Virtually visit your neighbors here</small></h3>
+		<p>you currently have 0 neighbor(s)</p>
 		<div class="col-lg-6 col-lg-offset-3 search-input-petshop">
 			<span>
 				<a href="#">Kuala Lumpur</a>
