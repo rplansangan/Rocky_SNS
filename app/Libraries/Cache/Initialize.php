@@ -80,7 +80,7 @@ class Initialize {
 				$this->cache->expire($this->keysProfile . $params->user_id, $this->expSession);
 	    	}
     	} else {
-    		if(!$this->cache->get($this->keysProfile . $this->auth->id())) {	
+    		if(!$this->cache->has($this->keysProfile . $this->auth->id())) {	
 				$this->cache->put($this->keysProfile . $params->user_id, $profile, $this->expSession);
 	    	}
     	}

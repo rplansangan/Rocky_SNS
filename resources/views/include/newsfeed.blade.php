@@ -30,18 +30,18 @@
 			{!! $row->post->post_message !!}
 
 			@if(isset($row->image))
-			@if(stristr($row->image->image_mime, 'image/'))
-			<div class="image-content">
-				<img src="{{  mediaSrc($row->image->image_path, $row->image->image_name , $row->image->image_ext)  }}" class="img-responsive img-thumbnail">
-			</div>
-			@else
-			<div class="video-content">
-				<div>
-					<img src="{{ mediaSrc($row->image->image_path, $row->image->image_name.'_thumb' , 'jpg') }}" class="img-responsive img-thumbnail">
+				@if(stristr($row->image->image_mime, 'image/'))
+				<div class="image-content">
+					<a href="#"><img src="{{  mediaSrc($row->image->image_path, $row->image->image_name , $row->image->image_ext)  }}" class="img-responsive img-thumbnail"></a>
 				</div>
-				<a href="#" class="play"><img src="{{ URL::asset('assets/img/play.png') }}" class="img-responsive"></a>
-			</div>
-			@endif
+				@else
+				<div class="video-content">
+					<div>
+						<img src="{{ mediaSrc($row->image->image_path, $row->image->image_name.'_thumb' , 'jpg') }}" class="img-responsive img-thumbnail">
+					</div>
+					<a href="#" class="play"><img src="{{ URL::asset('assets/img/play.png') }}" class="img-responsive"></a>
+				</div>
+				@endif
 			@endif
 		</div>
 		<!-- END NEWSFEED CONTENT -->

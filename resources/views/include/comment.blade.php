@@ -5,7 +5,7 @@
 				@if(isset($row->user->prof_pic))
 				<a href="{{ Route('profile.view' , ['id' => $row->user->user_id] ) }}"><img src="{{ mediaSrc($row->user->prof_pic->image_path , $row->user->prof_pic->image_name , $row->user->prof_pic->image_ext) }}" class="profile-pic"></a>
 				@else
-				<a href="{{ Route('profile.view' , ['id' => $row->user->user_id] ) }}"><img src="{{ URL::asset('assets/img/puggy.png') }}" class="profile-pic"></a>
+				<a href="{{ Route('profile.view' , ['id' => $row->user->user_id] ) }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic"></a>
 				@endif
 			</div>
 			<div class="col-lg-11">

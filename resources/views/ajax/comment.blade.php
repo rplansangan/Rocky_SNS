@@ -3,7 +3,7 @@
 		@if(isset($comment->user->prof_pic))
 		<a href="{{ Route('profile.view' , ['id' => $comment->user->user_id] ) }}"><img src="{{ mediaSrc($comment->user->prof_pic->image_path , $comment->user->prof_pic->image_name , $comment->user->prof_pic->image_ext) }}" class="profile-pic"></a>
 		@else
-		<a href="{{ Route('profile.view' , ['id' => $comment->user->user_id] ) }}"><img src="{{ URL::asset('assets/img/puggy.png') }}" class="profile-pic"></a>
+		<a href="{{ Route('profile.view' , ['id' => $comment->user->user_id] ) }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic"></a>
 		@endif
 	</div>
 	<div class="col-lg-11">
