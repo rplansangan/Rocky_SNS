@@ -22,21 +22,32 @@ class Set {
 	 * @var Illuminate\Support\Facades\Auth
 	 */
 	protected $auth;
+	
 	/**
 	 * Redis instance
 	 * @var Illuminate\Support\Facades\Redis
 	 */
 	protected $cache;
 	
-	private $redis = false;
+	/**
+	 * CACHE_DRIVER as defined on .env
+	 * @var string
+	 */
+	private $driver;
 	
 	public function __construct(Client $cache) {
 		$this->auth = auth();
-		if($this->redis !== false) {
-			$this->cache = $cache;
-		} else {
-			$this->cache = Cache::driver('file');
-		}
+		
+		$this->driver = config('cache.default');
+		
+		switch($this->driver) {
+        	case 'file':
+        		$this->cache = $cache;
+        		break;
+        	case 'redis':
+        		$this->cache = Cache::driver('file');
+        		break;
+        }
 	}
 	
 	public function updateUserData(User $user) {
@@ -53,11 +64,15 @@ class Set {
 		
 		$cache = json_encode($cached);
 		
-		if($this->redis !== false) {
-			$this->cache->set($this->keysProfile . $cached['user_id'], $cache);
-			$this->cache->expire($this->keysProfile . $cached['user_id'], $this->expSession);
-		} else {
-			$this->cache->put($this->keysProfile . $cached['user_id'], $cache, $this->expSession);
+		switch($this->driver) {
+        	case 'file':
+				$this->cache->set($this->keysProfile . $cached['user_id'], $cache);
+				$this->cache->expire($this->keysProfile . $cached['user_id'], $this->expSession);
+			break;
+			
+			case 'redis':
+				$this->cache->put($this->keysProfile . $cached['user_id'], $cache, $this->expSession);
+			break;
 		}
 	}
 	
