@@ -16,9 +16,9 @@ return [
 	'files' => [
 
 		realpath(__DIR__.'/../app/Providers/AppServiceProvider.php'),
-		//realpath(__DIR__.'/../app/Providers/BusServiceProvider.php'),
+		realpath(__DIR__.'/../app/Providers/BusServiceProvider.php'),
 		realpath(__DIR__.'/../app/Providers/ConfigServiceProvider.php'),
-		//realpath(__DIR__.'/../app/Providers/EventServiceProvider.php'),
+		realpath(__DIR__.'/../app/Providers/EventServiceProvider.php'),
 		realpath(__DIR__.'/../app/Providers/RouteServiceProvider.php'),
 		realpath(__DIR__.'/../app/Providers/CacheLayerServiceProvider.php'),
 		realpath(__DIR__.'/../app/Providers/CacheSetServiceProvider.php'),
@@ -43,8 +43,8 @@ return [
 		realpath(__DIR__.'/../app/Libraries/Cache/Get.php'),
 		realpath(__DIR__.'/../app/Libraries/Cache/Set.php'),
 
-		realpath(__DIR__.'/../app/Libraries/Traits/Expires.php'),
-		realpath(__DIR__.'/../app/Libraries/Traits/Keys.php'),
+		realpath(__DIR__.'/../app/Libraries/Cache/Traits/Expirations.php'),
+		realpath(__DIR__.'/../app/Libraries/Cache/Traits/Keys.php'),
 
 		// Libraries - Repositories
 		realpath(__DIR__.'/../app/Libraries/Repositories/CommentsRepository.php'),
@@ -61,8 +61,8 @@ return [
 		
 		// Libraries - Traits
 // 		realpath(__DIR__.'/../app/Libraries/Traits/LoginTrait.php'),
-// 		realpath(__DIR__.'/../app/Libraries/Traits/ProfPicTrait.php'),
-		
+ 		realpath(__DIR__.'/../app/Libraries\Traits\ProfPicTrait.php'),
+
 		// Models - Admin
 		realpath(__DIR__.'/../app/Models/Admin/ErrorLogs.php'),
 		

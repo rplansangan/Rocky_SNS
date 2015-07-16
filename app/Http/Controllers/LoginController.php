@@ -24,12 +24,14 @@ class LoginController extends Controller {
 	}
 	
 	public function signin(Request $request){
-		$input = array_except($request->all(), array('_token'));
+		$credentials = array_except($request->all(), ['_token', 'remember_me']);
 		
-		if(Auth::attempt($input)){
+		$remember = ($request->get('remember_me') == 'on') ? true : false;
+		
+		if(Auth::attempt($credentials, $remember)) {
 			Auth::loginUsingId(Auth::id());
 			return 'success';
-		}else{
+		} else {
 			echo 'Invalid Username / Password';
 		}
 	}
