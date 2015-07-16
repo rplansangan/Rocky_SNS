@@ -82,7 +82,7 @@ class Initialize {
     	// merges all user data before encoding as json
     	$profile = json_encode(array_merge($user, $profile_pic));
     	switch($this->driver) {
-        	case 'file':
+        	case 'redis':
 		    	if(!$this->cache->exists($this->keysProfile . $this->auth->id())) {	
 					$this->cache->set($this->keysProfile . $params->user_id, $profile);
 					// set expiration
@@ -90,7 +90,7 @@ class Initialize {
 		    	}
 	    	break;
 	    	
-    		case 'redis':
+    		case 'file':
 	    		if(!$this->cache->has($this->keysProfile . $this->auth->id())) {	
 					$this->cache->put($this->keysProfile . $params->user_id, $profile, $this->expSession);
 		    	}

@@ -65,12 +65,12 @@ class Set {
 		$cache = json_encode($cached);
 		
 		switch($this->driver) {
-        	case 'file':
+        	case 'redis':
 				$this->cache->set($this->keysProfile . $cached['user_id'], $cache);
 				$this->cache->expire($this->keysProfile . $cached['user_id'], $this->expSession);
 			break;
 			
-			case 'redis':
+			case 'file':
 				$this->cache->put($this->keysProfile . $cached['user_id'], $cache, $this->expSession);
 			break;
 		}

@@ -51,7 +51,7 @@ class Get {
     
     public function userData($id = null) {
     	switch($this->driver) {
-        	case 'file':
+        	case 'redis':
 		    	if(is_null($id)) {
 		    		$id = $this->auth->id();
 		    	}
@@ -61,7 +61,7 @@ class Get {
 		    	}
 		    break;
 		    
-    		case 'redis':
+    		case 'file':
 	    		if(is_null($id)) {
 	    			$id = $this->auth->id();
 	    		}
