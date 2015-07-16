@@ -55,7 +55,7 @@
           <label class="sr-only" for="exampleInputPassword3">Password</label>
           <input type="password" class="form-control" name="password" placeholder="Password">
           <br>
-          <a href="#"><small style="color: #B7042C;">>Forgot Password?</small></a>
+          <a href="#"><small style="color: #B7042C;">Forgot Password?</small></a>
         </div>
         <button type="submit" class="btn btn-default" style="margin-top:-20px;">Sign in</button>
       </form>
