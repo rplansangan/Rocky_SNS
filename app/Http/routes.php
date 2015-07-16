@@ -59,6 +59,10 @@ Route::post('islike', array(
 	'as' => 'is.liked',
 	'uses' => 'PostsController@isLike'
 ));
+Route::post('video', array(
+	'as' => 'get.video',
+	'uses' => 'HomeController@getVideo'
+));
 //profile
 Route::get('profile/edit_settings', array(
 	'as' => 'profile.edit',

@@ -39,7 +39,7 @@
 					<div>
 						<img src="{{ mediaSrc($row->image->image_path, $row->image->image_name.'_thumb' , 'jpg') }}" class="img-responsive img-thumbnail">
 					</div>
-					<a href="javascript:void(0);" src="{{ mediaSrc($row->image->image_path, $row->image->image_name , $row->image->image_ext) }}" class="play"><img src="{{ URL::asset('assets/img/play.png') }}" class="img-responsive"></a>
+					<a href="javascript:void(0);" route="{{ Route('get.video') }}" src="{{ mediaSrc($row->image->image_path, $row->image->image_name , $row->image->image_ext) }}" class="play"><img src="{{ URL::asset('assets/img/play.png') }}" class="img-responsive"></a>
 				</div>
 				@endif
 			@endif

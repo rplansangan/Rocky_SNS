@@ -96,8 +96,15 @@ $(document).ready(function(){
 
     $(document).on('click' , '.play' , function(){
         var src = $(this).attr('src');
+        var route = $(this).attr('route');
         $('#videoModal').modal('show');
-        $('.videoloadsrc').attr('src' , src);
+        $.ajax({
+            url:route,
+            data:{ src:src },
+            success:function(response){
+                $('.video-load').html(response);
+            }
+        });
     });
 
     $('.modal').on('hidden.bs.modal', function () {
@@ -115,7 +122,7 @@ $(document).ready(function(){
         var route = $(this).attr('route');
         var ito = $(this);
         var count = $(this).find('span').text();
-        
+
         $.ajax({
             url:route,
             data:{postid:postid,destination:destination},

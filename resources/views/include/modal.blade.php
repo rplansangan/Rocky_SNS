@@ -301,11 +301,7 @@
 <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog nopad modal-lg" role="document">
         <div class="modal-content nopad" style="background-color:black">
-            <div class="modal-body">
-                <video width="100%" controls>
-                  <source src="http://localhost:8000/uploads/2/1/54f297ebc089569574d0ace51b595a1c.mp4" class="videoloadsrc" type="video/mp4">
-                </video>
-            </div>
+            <div class="modal-body video-load"></div>
         </div>
     </div>
 </div>

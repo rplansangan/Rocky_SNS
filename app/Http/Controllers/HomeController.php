@@ -101,5 +101,11 @@ class HomeController extends Controller {
 		$data['mid'] = 'pages.inside.history';
 		return view('pages.master' , $data);
 	}
+
+
+	public function getVideo(Request $request){
+		$input = array_except($request->all(), array('_token'));
+		return view('ajax.video' , $input);
+	}
 	
 }
