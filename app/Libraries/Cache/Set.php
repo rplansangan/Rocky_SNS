@@ -42,10 +42,10 @@ class Set {
 		
 		switch($this->driver) {
         	case 'file':
-        		$this->cache = $cache;
-        		break;
-        	case 'redis':
         		$this->cache = Cache::driver('file');
+        		break;
+        	case 'redis':        		
+        		$this->cache = $cache;
         		break;
         }
 	}

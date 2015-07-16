@@ -21,12 +21,17 @@ class Get {
      * @var Illuminate\Support\Facades\Auth
      */
     protected $auth;
+    
     /**
      * Redis instance
      * @var Illuminate\Support\Facades\Redis
      */
     protected $cache;
     
+    /**
+     * CACHE_DRIVER as defined on .env
+     * @var string
+     */
     private $driver;
     
     public function __construct(Client $cache) {
@@ -34,12 +39,12 @@ class Get {
         
         $this->driver = config('cache.default');
         
-   		switch($this->driver) {
+    switch($this->driver) {
         	case 'file':
-        		$this->cache = $cache;
-        		break;
-        	case 'redis':
         		$this->cache = Cache::driver('file');
+        		break;
+        	case 'redis':        		
+        		$this->cache = $cache;
         		break;
         }
     }

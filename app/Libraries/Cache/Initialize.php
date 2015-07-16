@@ -21,6 +21,7 @@ class Initialize {
 	 * @var Illuminate\Support\Facades\Auth
 	 */
 	protected $auth;
+	
 	/**
 	 * Redis instance
 	 * @var Illuminate\Support\Facades\Redis
@@ -40,10 +41,10 @@ class Initialize {
         
         switch($this->driver) {
         	case 'file':
-        		$this->cache = $cache;
-        		break;
-        	case 'redis':
         		$this->cache = Cache::driver('file');
+        		break;
+        	case 'redis':        		
+        		$this->cache = $cache;
         		break;
         }
     }
