@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     $(document).on('click' , '#addMediaBtn' , function(){
       $( "#fileMedia" ).trigger( "click" );
-  });
+    });
 
     var bar = $('.bar');
     var percent = $('.percent');
@@ -20,13 +20,13 @@ $(document).ready(function(){
             percent.html(percentVal);
         },
         complete: function(xhr) {
-         $('.post-area').after(xhr.responseText);
-         $("#form").trigger('reset');
-     },
-     success: function(){
-        percent.fadeOut();
-    }
-});
+            $('.post-area').after(xhr.responseText);
+            $("#form").trigger('reset');
+        },
+        success: function(){
+            percent.fadeOut();
+        }
+    });
 
     $('#updateform').ajaxForm({
         beforeSend: function() {
@@ -40,15 +40,15 @@ $(document).ready(function(){
             percent.html(percentVal);
         },
         complete: function(xhr) {
-         alert(xhr.responseText);
-     },
-     success: function(){
-        percent.fadeOut();
-    }
-});
+            alert(xhr.responseText);
+        },
+        success: function(){
+            percent.fadeOut();
+        }
+    });
+
     $(document).on('click' , '.comment-down' , function(){
         $(this).parent().parent().parent().next().slideDown( "slow" );
-
         var id = $(this).attr('post-id');
         var route = $(this).attr('route');
         var ito = $(this);
@@ -70,8 +70,8 @@ $(document).ready(function(){
         if(text != ''){
             $('#load-search').removeClass('hidden').fadeIn();
         }else{
-         $('#load-search').addClass('hidden');
-         }
+            $('#load-search').addClass('hidden');
+        }
      });
 
     $(document).on('keypress' , '.insertComment' , function (e) {
@@ -91,6 +91,44 @@ $(document).ready(function(){
                 $('.insertComment').val('');
             });
         }
+    });
+
+
+    $(document).on('click' , '.play' , function(){
+        var src = $(this).attr('src');
+        $('#videoModal').modal('show');
+        $('.videoloadsrc').attr('src' , src);
+    });
+
+    $('.modal').on('hidden.bs.modal', function () {
+      $("video")[0].pause();
+      $("video")[0].currentTime = 0;
+    });
+
+
+    $(document).on('click' , '.clickLike' , function(){
+        var postid = $(this).attr('post-id');
+        var destination = $(this).attr('destination');
+        var route = $(this).attr('route');
+        var likeImage = $(this).attr('like-image');
+        var unlikeImage = $(this).attr('unlike-image');
+        var route = $(this).attr('route');
+        var ito = $(this);
+        var count = $(this).find('span').text();
+        $.ajax({
+            url:route,
+            data:{postid:postid,destination:destination},
+            success:function(response){
+                var data = JSON.parse(response);
+                if(data.liked){
+                    $(ito).find('img').attr('src' , likeImage);
+                    $(ito).find('span').text(++count);
+                }else{
+                    $(ito).find('img').attr('src' , unlikeImage);
+                    $(ito).find('span').text(--count);
+                }
+            }
+        });
     });
 });
 

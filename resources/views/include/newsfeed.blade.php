@@ -39,7 +39,7 @@
 					<div>
 						<img src="{{ mediaSrc($row->image->image_path, $row->image->image_name.'_thumb' , 'jpg') }}" class="img-responsive img-thumbnail">
 					</div>
-					<a href="#" class="play"><img src="{{ URL::asset('assets/img/play.png') }}" class="img-responsive"></a>
+					<a href="javascript:void(0);" src="{{ mediaSrc($row->image->image_path, $row->image->image_name , $row->image->image_ext) }}" class="play"><img src="{{ URL::asset('assets/img/play.png') }}" class="img-responsive"></a>
 				</div>
 				@endif
 			@endif
@@ -48,10 +48,14 @@
 		<!-- COMMENT SECTION -->
 		<div class="row newsfeed-bottom">
 			<div>
-				<a href="#"><img src="{{ URL::asset('assets/img/like.png') }}"><span class="like">26</span></a>
+				@if(isLike($row->like))
+				<a href="javascript:void(0);" route="{{ Route('is.liked') }}" post-id="{{ $row->post_id}}" destination="{{ $row->user_id }}" class="clickLike text-center" like-image="{{ URL::asset('assets/img/like.png') }}" unlike-image="{{ URL::asset('assets/img/unlike.png') }}"><img src="{{ URL::asset('assets/img/like.png') }}"><span class="like">{{ $row->like->count() }}</span></a>
+				@else
+				<a href="javascript:void(0);" route="{{ Route('is.liked') }}" post-id="{{ $row->post_id}}" destination="{{ $row->user_id }}" class="clickLike text-center" like-image="{{ URL::asset('assets/img/like.png') }}" unlike-image="{{ URL::asset('assets/img/unlike.png') }}"><img src="{{ URL::asset('assets/img/unlike.png') }}"><span class="unlike">{{ $row->like->count() }}</span></a>
+				@endif
 			</div>
 			<div>
-				<a href="javascript:void(0);" class="comment-down" post-id="{{ $row->post->post_id }}" route="{{ Route('get.comment') }}" ><img src="{{ URL::asset('assets/img/comment.png') }}"></a>
+				<a href="javascript:void(0);"  class="comment-down" post-id="{{ $row->post->post_id }}" route="{{ Route('get.comment') }}" ><img src="{{ URL::asset('assets/img/comment.png') }}"></a>
 			</div>
 		</div>
 		<!-- END COMMENT SECTION -->

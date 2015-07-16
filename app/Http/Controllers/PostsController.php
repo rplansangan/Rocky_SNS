@@ -19,6 +19,12 @@ class PostsController extends Controller {
 		return json_encode(PostService::like($request->get('id'), $request->get('uid')));
 	}
 	
+	public function isLike(Request $request){
+		$input = array_except($request->all(), array('_token'));
+		$like = PostService::like($input['postid'] , $input['destination']);
+
+		return json_encode($like);
+	}
 	public function getComment(Request $request){
 		$data['comment'] = PostService::getComment($request->get('post_id'), $request->get('post_uid'));
 		return view('include.comment' , $data);

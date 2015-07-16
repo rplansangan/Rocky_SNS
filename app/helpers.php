@@ -31,18 +31,13 @@ function _ago($tm,$rcs = 0) {
    return $x;
 }
 function isLike($like){
-	$bool = false;
-	if($like) {
-		foreach($like->fetch('like_user_id') as $likes){
-			if($likes == Auth::user()->user_id){
-				$bool = true;
-				break;
-			}
+	foreach($like as $row){
+		if(Auth::id() == $row->like_user_id){
+			return true;
+			break;
 		}
-		return ($bool) ? "Unlike" : "Like";
 	}
-	return 'Like';
-	
+	return false;
 }
 
 function country_form($country = false){

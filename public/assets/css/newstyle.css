@@ -282,8 +282,8 @@ header > div nav > ul > li > ul > li > a:hover{
 .mid .newsfeed-bottom span{
 	position: absolute; 
 	z-index: 11; 
-	top: 8px;
-	right: 12px;
+	top: 9px;
+	left: 13px;
 	font-size: 10px;
 }
 .mid .newsfeed-bottom span.like{
@@ -481,3 +481,11 @@ header > div nav > ul > li > ul > li > a:hover{
 .mid .user-details .profile-pic{
 	width: 250px;
 }
+
+/* VIDEO */
+
+video{
+	background-color: black;
+}
+/*END VIDEO */
+

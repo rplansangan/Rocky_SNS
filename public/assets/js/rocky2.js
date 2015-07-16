@@ -6,12 +6,9 @@ $(document).on('ready' , function(){
 	$('[data-toggle="tooltip"]').tooltip();
 
 	$('.modal').on('shown.bs.modal', function () {
-	  $('.loader').text(' ');
+		$('.loader').text(' ');
 	})
-	 function validateEmail($email) {
-	  var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-	  return emailReg.test( $email );
-	}
+	
 	$(document).on('submit' , '.form-signin' , function(e){
 		var route = $(this).attr('action');
 		var data = $(this).serialize();
@@ -61,8 +58,8 @@ $(document).on('ready' , function(){
 	});
 
 	//add pets
-	$(".add-pets-btn").on("click", function() {
-	    $('#addpetModal').modal('show');
+	$(document).on("click", ".add-pets-btn" ,function() {
+		$('#addpetModal').modal('show');
 	});
 
 	$(document).on('focusout' , '#email_address' , function(){
@@ -123,3 +120,8 @@ $(document).on('ready' , function(){
 		}
 	});
 });
+
+function validateEmail($email) {
+	var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+	return emailReg.test( $email );
+}

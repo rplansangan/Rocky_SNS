@@ -55,6 +55,10 @@ Route::post('insert/comment', array(
 	'as' => 'insert.comment',
 	'uses' => 'UploadsController@insertComment'
 ));
+Route::post('islike', array(
+	'as' => 'is.liked',
+	'uses' => 'PostsController@isLike'
+));
 //profile
 Route::get('profile/edit_settings', array(
 	'as' => 'profile.edit',
