@@ -115,6 +115,7 @@ $(document).ready(function(){
         var route = $(this).attr('route');
         var ito = $(this);
         var count = $(this).find('span').text();
+        
         $.ajax({
             url:route,
             data:{postid:postid,destination:destination},
@@ -122,10 +123,10 @@ $(document).ready(function(){
                 var data = JSON.parse(response);
                 if(data.liked){
                     $(ito).find('img').attr('src' , likeImage);
-                    $(ito).find('span').text(++count);
+                    $(ito).find('span').text(++count).addClass('like').removeClass('unlike');
                 }else{
                     $(ito).find('img').attr('src' , unlikeImage);
-                    $(ito).find('span').text(--count);
+                    $(ito).find('span').text(--count).addClass('unlike').removeClass('like');
                 }
             }
         });
