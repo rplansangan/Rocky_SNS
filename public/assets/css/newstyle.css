@@ -23,6 +23,9 @@ header > div > div > #load-search img{
 header > div > div > #load-search > div > a{
 	padding: 5px 0px;
 }
+header > div > div > #load-search > div:hover{
+	background-color: rgba(0,0,0,0.1);
+}
 header > div > div > #load-search > div{
 	margin: 3px auto;
 }
@@ -43,13 +46,13 @@ header > div > div .logo{
 	padding: 10px 20px;
 	width: 160px;
 }
-header > div > div > input[type='text']{
+header > div > div > form >  input[type='text']{
 	margin-top: 25px;
 	border: 2px solid rgba(0,0,0,0.5);
 	border-radius: 10px;
 	height: 40px;
 }
-header > div > div > input[type='text']:focus{
+header > div > div > form > input[type='text']:focus{
 	border: 2px solid rgba(0,0,0,0.5);
 	outline-color: rgba(0,0,0,0.5);
 	overflow: auto;

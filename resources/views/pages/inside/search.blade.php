@@ -1,16 +1,35 @@
-@if(empty($info))
-
-@else
+@if(!$info->isEmpty())
+	<div>
+		<div class="text-center">
+			<img src="{{ URL::asset('assets/img/neighbors-large.jpg') }}">
+			<h3>Your Neighbors <br><small class="text-muted">Virtually visit your neighbors here</small></h3>
+			<br clear="all">
+		</div>
+	</div>
+	<div>
+		<label class="text-center"> {{ $info->count() }} Results...</label>
+	</div>
 	@foreach($info as $row)
 		<div class="row">
-			<div class="col-lg-2">
-				<img src="{{ URL::asset('assets/images/new/boby.png') }}" class="img-responsive">
-			</div>
-			<div class="col-lg-10">
-				<label>Name : </label> {{ $row->first_name.' '.$row->last_name }}<br>
-				<label>Email : </label> {{ $row->email_address }}<br>
-				<a href="{{{ route('profile.showProfile', $row->registration_id) }}}" class="btn btn-primary">Visit</a>
-			</div>
+			<a href="#">
+				<div class="col-lg-2">
+					@if(isset($row->prof_pic))
+							<img src="{{ mediaSrc($row->prof_pic->image_path , $row->prof_pic->image_name , $row->prof_pic->image_ext) }}" class="img-responsive">
+						@else
+							<img src="{{ URL::asset('assets/images/default-pic.png') }}" class="img-responsive">
+						@endif
+				</div>
+				<div class="col-lg-10">
+					 <h5>
+					 	{{ $row->first_name.' '.$row->last_name }}<br>
+					 	<small>{{ $row->country }}</small>
+					 </h5>
+				</div>
+			</a>
 		</div>
 	@endforeach
+@else
+	<div>
+		<p class="text-center">No Results...</p>
+	</div>
 @endif

@@ -15,6 +15,7 @@
 			</a>
 		</div>
 	@endforeach
+	<p class="text-center"><a href="#" id="loadMoreTrigger">Load more...</a></p>
 @else
 	<p class="text-center"> No Results..</p>
 @endif

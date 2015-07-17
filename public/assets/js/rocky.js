@@ -82,8 +82,9 @@ $(document).ready(function(){
                 success:function(response){
                     $('#load-search').html(response);
                 }
+            }).done(function(){
+                $('#load-search').removeClass('hidden').fadeIn();
             });
-            $('#load-search').removeClass('hidden').fadeIn();
         }else{
             $('#load-search').addClass('hidden');
         }
@@ -175,6 +176,9 @@ $(document).ready(function(){
         });
     });
 
+    $(document).on('click' , '#search , #loadMoreTrigger' , function(){
+        $('#searchForm').trigger('submit');
+    });
 
 });
 

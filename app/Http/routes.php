@@ -17,13 +17,17 @@ Route::post('check_email', array(
 	'as' => 'check.email',
 	'uses' => 'LoginController@check_email'
 ));
-Route::any('files/newsfeed', array(
+Route::post('files/newsfeed', array(
 	'as' => 'files.newsfeed',
 	'uses' => 'UploadsController@newsfeed'
 ));
 Route::post('search', array(
 	'as' => 'do.search',
 	'uses' => 'HomeController@search'
+));
+Route::get('search', array(
+	'as' => 'neighbors.search',
+	'uses' => 'HomeController@neighborsSearch'
 ));
 // Login
 Route::post('login', array(
@@ -158,7 +162,7 @@ Route::group(['prefix' => 'administration', 'namespace' => 'Admin', 'middleware'
         'uses' => 'DashboardController@displaySingleError'
 	]);
 });
-Route::get('test', array(
+Route::post('test', array(
     'as' => 'test',
     'uses' => 'WelcomeController@test',
 ));

@@ -115,8 +115,25 @@ class HomeController extends Controller {
 				$q->where('pet_id' , 0);
 				$q->where('is_profile_picture' , 1);
 			}
-		])->where('first_name' , 'LIKE' , '%'.$input['name'].'%')->orWhere('last_name' , 'LIKE' , '%'.$input['name'].'%')->limit(10)->get();
+		])->where('first_name' , 'LIKE' , '%'.$input['name'].'%')->orWhere('last_name' , 'LIKE' , '%'.$input['name'].'%')->limit(5)->get();
 		return view('ajax.result' ,$data);
 	}
 	
+	public function neighborsSearch(Request $request){
+		$input = $request->all();
+
+		$data['sub_title'] = '- Search';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.search';
+
+		$data['info'] = Registration::with([
+			'prof_pic' => function($q){
+				$q->where('pet_id' , 0);
+				$q->where('is_profile_picture' , 1);
+			}
+		])->where('first_name' , 'LIKE' , '%'.$input['neighbors'].'%')->orWhere('last_name' , 'LIKE' , '%'.$input['neighbors'].'%')->get();
+
+		return view('pages.master' , $data);
+	}
 }

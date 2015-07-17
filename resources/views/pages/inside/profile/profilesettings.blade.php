@@ -90,25 +90,7 @@
 					{{ country_form($profile->registration->country) }}
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label">{{ trans('profile.labels.prof_details.area_code') }}</label>
-				<div class='col-sm-2'>
-					<select name="phone_area_code" class="form-control">
-						<option>123</option>
-					</select>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label">{{ trans('profile.labels.prof_details.phone_number') }}</label>
-				<div class='col-sm-2'>
-					<select name="phone_country_code" class="form-control">
-						<option>63</option>
-					</select>
-				</div>
-				<div class='col-sm-6'>
-					<input type='text' name="phone_number" placeholder="Phone Number" value="<?php echo $profile->registration->phone_number ?>" class="form-control" />
-				</div>
-			</div>
+			
 			<div class="form-group">
 				<div class='col-sm-8 col-sm-offset-3 text-right'>
 					<input type='submit' class="btn btn-color" value="{{ trans('profile.buttons.prof_details.update') }}"/>

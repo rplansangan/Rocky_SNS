@@ -32,8 +32,7 @@ class WelcomeController extends Controller {
 		return view('pages.master' , $data);
 	}
 	public function test(){
-// 		$locale = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
-		echo $locale;
+		echo 'ok';
 	}
 
 	

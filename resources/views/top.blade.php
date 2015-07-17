@@ -4,10 +4,12 @@
       <a href="{{ Route('index')}}"><img src="{{ URL::asset('assets/img/logo.png') }}" class="img-responsive logo"></a>
     </div>
     <div class="col-lg-3 hidden-sm hidden-md hidden-xs">
-      <input type="text" name="search" id="search-top" route="{{ Route('do.search') }}" class="form-control">
-      <a href="#"><img src="{{ URL::asset('assets/img/search.png') }}" id="search"></a>
-      <div id="load-search" class="hidden text-center">
-          <p>Loading...</p>
+      <form action="{{ route('neighbors.search') }}" method="GET" id="searchForm">
+         <input type="text" autocomplete="off" name="neighbors" id="search-top" route="{{ Route('do.search') }}" class="form-control">
+         <a href="#"><img src="{{ URL::asset('assets/img/search.png') }}" id="search" ></a>
+      </form>
+      <div id="load-search" class="hidden">
+          <p class="text-center">Loading...</p>
       </div>
     </div>
     <div class="col-lg-7 col-sm-8 col-xs-8 col-md-8 ">
@@ -63,6 +65,6 @@
     </div>
   </div>
 </header>
-<progress class="bar percent" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 0%;height:2px;border:1px solid black;position:absolute"></progress>
+<progress class="bar percent" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 0%;height:2px;border:1px solid rgba(0,0,0,0.2);position:absolute;display:hidden"></progress>
 <div class="push-down"></div>
 
