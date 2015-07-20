@@ -39,7 +39,7 @@ class ProfileController extends Controller {
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
 		$data['mid'] = 'pages.inside.profile.profile';
-		$data['newsfeed'] = PostService::incrementalNewsFeed(Auth::id() , 0 , $id);
+		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id(), $id);
 		$data['id'] = $id;
 
 		return view('pages.master', $data);		

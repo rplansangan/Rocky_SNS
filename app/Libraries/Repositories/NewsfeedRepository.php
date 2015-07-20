@@ -61,8 +61,9 @@ class NewsfeedRepository {
 	    $postSelect = $this->shared['selects']['post'];	  	    
 	    $profPicSelect = $this->shared['selects']['profilePic'];
 	    
-		if($post_uid != null && $id != null) {	
-			return $this->nf->ofUser($id)->ofPostUID($post_uid)->with(array(
+		if(!is_null($post_uid)) {	
+			// used for user profiles
+			return $this->nf->where('friend_user_id', 0)->ofPostUID($post_uid)->with([
 					'post' => function ($q) use ($postSelect) {
 						$q->addSelect($postSelect);
 					},
@@ -83,9 +84,11 @@ class NewsfeedRepository {
 					'comment' => function ($q) {
 					    $q->count();
 					}
-			))->latest()->take($take)->get();
-		}else if($id == null){
-			return $this->nf->with(array(
+			])->latest()->take($take)->get();
+		} else if(is_null($id)) {
+			// used for public access
+			// param used for view is 'sns_newsfeed'.'friend_user_id' = 0
+			return $this->nf->where('friend_user_id', 0)->with([
 					'post' => function ($q) use ($postSelect) {
 						$q->addSelect($postSelect);
 					},
@@ -106,10 +109,10 @@ class NewsfeedRepository {
 					'comment' => function ($q) {
 					    $q->count();
 					}
-			))->latest()->take($take)->get();
+			])->latest()->take($take)->get();
 		}
-		
-		return $this->nf->ofUser($id)->with(array(
+		// for authenticated users. used to display user's newsfeed
+		return $this->nf->ofUser($id)->with([
 				'post' => function ($q) use ($postSelect) {
 					$q->addSelect($postSelect);
 				},
@@ -127,10 +130,7 @@ class NewsfeedRepository {
 				'like' => function ($q) use ($likeSelect) {
 					$q->addSelect($likeSelect);
 				},
-// 				'comment' => function ($q) {
-// 				    $q->addSelect(['comment_id', 'post_id']);
-// 				}
-		))->latest()->take($take)->get();
+		])->latest()->take($take)->get();
 	}
 	
 	public function incremental($id, $skip, $post_uid = null, $take = null) {
@@ -141,7 +141,7 @@ class NewsfeedRepository {
 	    $userSelect = $this->shared['selects']['user'];	    
 	    
 		if($post_uid != null) {
-			return $this->nf->ofUser($id)->ofPostUID($post_uid)->with(array(
+			return $this->nf->ofUser($id)->ofPostUID($post_uid)->with([
 					'post' => function ($q) use ($postSelect) {
 						$q->addSelect($postSelect);
 					},
@@ -162,9 +162,9 @@ class NewsfeedRepository {
 					'comment' => function ($q) {
 					    $q->count();
 					}
-			))->latest()->skip($skip)->take($take)->get();
+			])->latest()->skip($skip)->take($take)->get();
 		}		
-		return $this->nf->ofUser($id)->with(array(
+		return $this->nf->ofUser($id)->with([
 				'post' => function ($q) use ($postSelect) {
 					$q->addSelect($postSelect);
 				},
@@ -185,6 +185,6 @@ class NewsfeedRepository {
 				'comment' => function ($q) {
 				    $q->count();
 				}
-		))->latest()->skip($skip)->take($take)->get();
+		])->latest()->skip($skip)->take($take)->get();
 	}
 }

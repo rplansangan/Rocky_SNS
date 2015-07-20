@@ -1,15 +1,12 @@
 <?php namespace SNS\Libraries\Services;
 
 use SNS\Models\User;
-use SNS\Libraries\Facades\Likes;
-use SNS\Libraries\Facades\Comments;
 use SNS\Libraries\Repositories\ImageRepository;
 use SNS\Libraries\Repositories\PostRepository;
 use SNS\Libraries\Repositories\NewsfeedRepository;
 use SNS\Libraries\Repositories\LikeRepository;
 use SNS\Libraries\Repositories\CommentsRepository;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class PostService {
 	
@@ -89,12 +86,16 @@ class PostService {
 	 * @param integer $post_uid target user id
 	 * @param integer $take sql limit
 	 */
-	public function initialNewsFeed($id = null, $post_uid = null,  $take = null) {
+	public function initialNewsFeed($id, $post_uid = null,  $take = null) {
 		if(!$take) {
 			$take = 5;
 		}
+		
+		if(!$id) {
+			$id = 0;
+		}
 
-		return $this->newsfeed->initial($id , $post_uid, $take);
+		return $this->newsfeed->initial($id, $post_uid, $take);
 	}	
 	
 	/**
@@ -108,6 +109,7 @@ class PostService {
 		if(!$take) {
 			$take = 5;
 		}
+		
 		return $this->newsfeed->incremental($id, $skip, $post_uid, $take);
 	}
 	
