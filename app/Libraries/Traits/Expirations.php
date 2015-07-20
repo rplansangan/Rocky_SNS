@@ -1,4 +1,4 @@
-<?php namespace SNS\Libraries\Cache\Traits;
+<?php namespace SNS\Libraries\Traits;
 
 trait Expirations {
 	

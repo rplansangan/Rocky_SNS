@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Redis;
 use Predis\Client;
 
-use SNS\Libraries\Cache\Traits\Keys;
-use SNS\Libraries\Cache\Traits\Expirations;
+use SNS\Libraries\Traits\Keys;
+use SNS\Libraries\Traits\Expirations;
 use Illuminate\Support\Facades\Cache;
 use SNS\Models\User;
 
