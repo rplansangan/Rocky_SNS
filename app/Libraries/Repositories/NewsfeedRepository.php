@@ -86,9 +86,8 @@ class NewsfeedRepository {
 					}
 			])->latest()->take($take)->get();
 		} else if(is_null($id)) {
-			// used for public access
-			// param used for view is 'sns_newsfeed'.'friend_user_id' = 0
-			return $this->nf->where('friend_user_id', 0)->with([
+			// used for authenticated user newsfeed access
+			return $this->nf->ofUser($id)->where('friend_user_id', 0)->with([
 					'post' => function ($q) use ($postSelect) {
 						$q->addSelect($postSelect);
 					},
@@ -110,7 +109,32 @@ class NewsfeedRepository {
 					    $q->count();
 					}
 			])->latest()->take($take)->get();
+		} else if(is_null($id) or $id === 0) {
+			// used for public newsfeed access
+			return $this->nf->where('friend_user_id', 0)->with([
+					'post' => function ($q) use ($postSelect) {
+						$q->addSelect($postSelect);
+					},
+					'image' => function ($q) use ($imageSelect) {
+						$q->addSelect($imageSelect);
+					},
+					'user' => function ($q) use ($userSelect) {
+						$q->addSelect($userSelect);
+					},
+					'user.prof_pic' => function ($q) use ($profPicSelect) {
+						$q->addSelect($profPicSelect);
+						$q->where('is_profile_picture', 1);
+						$q->where('pet_id', 0);
+					},
+					'like' => function ($q) use ($likeSelect) {
+						$q->addSelect($likeSelect);
+					},
+					'comment' => function ($q) {
+						$q->count();
+					}
+			])->latest()->take($take)->get();
 		}
+		
 		// for authenticated users. used to display user's newsfeed
 		return $this->nf->ofUser($id)->with([
 				'post' => function ($q) use ($postSelect) {
