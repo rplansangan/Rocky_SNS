@@ -38,11 +38,13 @@
 			@else
 			<div class="text-left">
 				<p style="padding-left: 25px;">No Pets</p>
-				<a href="#" style="padding-left: 25px; color: #b7042c;"><i class="fa fa-plus" style="margin-bottom: 20px;"></i> add pets</a>
 			</div>
 			@endif
 		@endif
 	</nav>
+	<div class="text-left">
+		<a href="#" style="padding-left: 25px; color: #b7042c;"  data-toggle="modal" data-target="#addpetModal"><i class="fa fa-plus" style="margin-bottom: 20px;"></i> add pets</a>
+	</div>
 </div>
 
 @endif

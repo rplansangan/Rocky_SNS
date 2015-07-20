@@ -135,7 +135,7 @@
                        
 
                         <div style="margin-top:30px;">
-                            <form method="POST" action="{{ route('register.petRegister', Auth::id()) }}" class="form-horizontal reg " role="form" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('register.petRegister') }}" class="form-horizontal reg " id="updateform" role="form" enctype="multipart/form-data">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Profile Picture</label>

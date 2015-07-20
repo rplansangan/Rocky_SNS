@@ -43,7 +43,7 @@ Route::post('register', array(
 	'as' => 'register',
 	'uses' => 'RegistrationController@register'
 ));
-Route::post('register/{id}/register_pet', array(
+Route::post('register/pet', array(
 	'as' => 'register.petRegister',
 	'uses' => 'RegistrationController@petRegister'
 ));

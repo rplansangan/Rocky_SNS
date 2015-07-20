@@ -127,98 +127,38 @@ class RegistrationController extends Controller {
 		
 	}
 	
-	public function resend($id) {
-		$service = new EmailValidationService();
-		$service->id($id)->resendEmailToken();
-			
-		return view('pages.message')->with('id', $id)->with('validation_errors', null);
-	}
-
-
-	public function validateMessage(){
-		return view('pages.message');
-	}
-
-	public function registerpet() {
-		return view('pages.petregister');
-	}
 	
 	public function petRegister(Request $request) {
 		$input = array_except($request->all(), array('_token'));
-		$validate = Validator::make($input, Pets::$initialRules);
-		
-		if($validate->fails()){
-			return redirect()->back()
-			->withInput($request->all())
-			->withErrors($validate->errors()->all());
-		}
-		
-		DB::beginTransaction();
-		try {		
-			$pet = new Pets();
-			$pet->user_id = Auth::id();
-			$pet->rocky_tag_no = $input['rocky_tag_no'];
-			$pet->pet_name = $input['pet_name'];
-			$pet->pet_type = $input['pet_type'];
-			$pet->breed = $input['breed'];
-			$pet->pet_bday = $input['pet_bday'];
-			$pet->pet_gender = $input['pet_gender'];
-			$pet->food = $input['food'];
-			$pet->food_style = $input['food_style'];
-			$pet->pet_likes = $input['pet_likes'];
-			$pet->pet_dislikes = $input['pet_dislikes'];
-			$pet->brand = $input['brand'];
-			$pet->weight = $input['weight'];
-			$pet->height = $input['height'];
-			$pet->behavior = $input['behavior'];
-			$pet->feeding_interval = $input['feeding_interval'];
-			$pet->feeding_time = $input['feeding_time'];
-			$pet->save();
-		} catch (ValidationException $e) {
-			DB::rollback();
-			return redirect()->back()
-					->withInput($request->all())
-					->withErrors($e->errors());
-		} catch (\Exception $e) {
-			DB::rollback();
-			return redirect()->back()
-					->withInput($request->all())
-					->withErrors(['message' => trans('errors.err_500')]);
-		}
-		
+		$pet = new Pets();
+		$pet->user_id = Auth::id();
+		$pet->rocky_tag_no = $input['rocky_tag_no'];
+		$pet->pet_name = $input['pet_name'];
+		$pet->save();
+
 		if($request->file('petfile')) {
-			try {
-				$file = $request->file('petfile');
-				$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
-				$dir = StorageHelper::create(Auth::id());
-				
-				$img_data = new Images(array(
-						'user_id' => Auth::id(),
-						'image_path' => $dir,
-						'image_name' => $filename,
-						'image_mime' => $file->getMimeType(),
-						'image_ext' => $file->getClientOriginalExtension(),
-						'is_profile_picture' => 1
-				));
-				
-				$pet->profile_pic()->save($img_data);
-			
-				$file->move(storage_path('app') . '/' . $dir, $filename . '.' . $img_data->image_ext);
-			} catch (ValidationException $e) {
-				DB::rollback();
-				return redirect()->back()
-						->withInput($request->all())
-						->withErrors($e->errors());
-			} catch (\Exception $e) {
-				DB::rollback();
-				return redirect()->back()
-						->withInput($request->all())
-						->withErrors(['message' => trans('errors.err_500')]);
-			}
+			$file = $request->file('petfile');
+			$filename = md5($file->getClientOriginalName() . Carbon::now());
+			$dir = StorageHelper::create(Auth::id());
+			$mime = $file->getMimeType();
+
+			$img = new Images([
+				'is_profile_picture' => 1,
+				'pet_id' => $pet->pet_id,
+				'image_path' => $dir['front'],
+				'image_name' => $filename,
+				'image_mime' => $mime,
+				'image_ext' => $file->getClientOriginalExtension()
+				]);
+
+			$img->save();
+
+			$file->move(public_path() . $dir['root'] , $filename . '.' . $file->getClientOriginalExtension());
+			$filePath = public_path() . $dir['root'] .'/'. $filename . '.' . $file->getClientOriginalExtension() ;
 		}
+
+		echo 'New pet Registered';
 		
-		DB::commit();
-		return redirect()->route('profile.petlist', Auth::id());
 	}
 	
 	public function refreshPetFields(Request $r) {

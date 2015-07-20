@@ -26,12 +26,7 @@
           <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/message.png') }}"></a></li>
           <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/notification.png') }}"></a></li>
           <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/find.png') }}"></a></li>
-          <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/track.png') }}"></a>
-            <ul class="arrow_box">
-              <li><a href="#">option1</a></li>
-              <li><a href="#">option2</a></li>
-            </ul>
-          </li>
+          <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/track.png') }}"></a></li>
           <li><a href="javascript:void(0);"><img src="{{ URL::asset('assets/img/settings.png') }}"></a>
             <ul class="arrow_box">
               <li><a href="{{ Route('uc') }}">Settings</a></li>
