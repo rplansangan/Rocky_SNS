@@ -95,6 +95,16 @@ Route::get('home', array(
 
 
 //inside sns
+Route::get('profile/{user_id}/pets/{pet_id}', [
+	'as' => 'profile.showPetProfile',
+	'uses' => 'ProfileController@showPetProfile'
+]);
+
+Route::get('profile/{user_id}/listofpets', [
+	'as' => 'profile.petslist',
+	'uses' => 'ProfileController@petsList'
+]);
+
 Route::get('home/dogsoftheweek', [
 	'as' => 'public.dogsoftheweek',
 	'uses' => 'HomeController@dogsWeek'

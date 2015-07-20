@@ -180,6 +180,10 @@ header > div nav > ul > li > ul > li > a:hover{
 	margin-top: -6px;
 }
 
+#load-search div a, #loadMoreTrigger {
+  color: #B7042C;
+}
+
 /* LEFT */
 .left span{
 	font-size: 12px;
@@ -514,3 +518,10 @@ video{
 }
 /*END VIDEO */
 
+/*PET LIST*/
+.mid .search-input-petlist > a {
+  position: absolute;
+  top: 13px;
+  right: 20px;
+}
+/*END PETLIST*/
