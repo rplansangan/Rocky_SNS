@@ -422,6 +422,13 @@ header > div nav > ul > li > ul > li > a:hover{
 .right > div > div{
 	padding: 10px;
 }
+.right-map {
+  margin-top: 90px !important;
+}
+input.btn {
+  background-color: #b7042c;
+  color: #fff;
+}
 
 /* END RIGHT */
 

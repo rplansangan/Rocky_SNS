@@ -58,7 +58,7 @@ $(document).on('ready' , function(){
 	});
 
 	//add pets
-	$(document).on("click", ".add-pets-btn" ,function() {
+	$(document).on("click", ".addpet_btn" ,function() {
 		$('#addpetModal').modal('show');
 	});
 

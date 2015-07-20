@@ -17,7 +17,7 @@ function initialize2() {
 google.maps.event.addDomListener(window, 'load', initialize2);
 </script>
 @if(Auth::check())
-<div>
+<div class="right-map">
   <div id="rocky-last-location"></div>
   <div class="pet-list">
     <ul>

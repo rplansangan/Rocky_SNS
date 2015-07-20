@@ -1,4 +1,4 @@
-<?php namespace SNS\Providers;
+<?php namespace SNS\Libraries\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Predis\Client;
@@ -9,17 +9,14 @@ use Predis\Client;
  *
  */
 class CacheLayerServiceProvider extends ServiceProvider {
-    
-    /**
-     * 
-     * @var array
-     */
-    private $redisParams;
-    
-    public function register() {
-        $this->redisParams = config('database.redis.default');
-        
-        $cache = new Client($this->redisParams);
+
+	/**
+	 * Register the application services.
+	 *
+	 * @return void
+	 */
+    public function register() {        
+        $cache = new Client(config('database.redis.default'));
         
         $this->app->bind('Initialize', function() use($cache) { 
         	return new \SNS\Libraries\Cache\Initialize($cache);
