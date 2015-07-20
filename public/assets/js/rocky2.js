@@ -1,7 +1,6 @@
 $(document).on('ready' , function(){
 	$.ajaxSetup({
-		data: { "_token": $('#token').val() },
-		type: 'POST'
+		data: { "_token": $('#token').val() }
 	});
 	$('[data-toggle="tooltip"]').tooltip();
 

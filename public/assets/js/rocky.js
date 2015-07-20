@@ -49,8 +49,8 @@ $(document).ready(function(){
         success: function(){
             percent.fadeOut();
             $('.modal').modal('hide');
-            $('.noPost').remove();
             location.reload();
+            $('.noPost').remove();
         }
     });
 
@@ -61,6 +61,7 @@ $(document).ready(function(){
         var ito = $(this);
         $.ajax({
             url : route,
+            type: 'post',
             data : { post_id:id },
             beforeSend: function(){
                 $(ito).parent().parent().parent().next().find('.comment_loading_area').hide().html('Loading...').fadeIn();
@@ -77,6 +78,7 @@ $(document).ready(function(){
         if(text != ''){
             $.ajax({
                 url : $(this).attr('route'),
+                type: 'post',
                 data: { name:text },
                 beforeSend:function(){
                     $('#load-search').html('<p class="text-center">Loading....</p>');
@@ -101,6 +103,7 @@ $(document).ready(function(){
         if (e.which == 13 && message != '') {
             $.ajax({
                 url : route,
+                type: 'post',
                 data : { post_id:id , message:message , post_user_id:userid },
                 success: function(a){
                     $(ito).parent().parent().parent().find('.comment_loading_area').append(a);
@@ -119,6 +122,7 @@ $(document).ready(function(){
         $('#videoModal').modal('show');
         $.ajax({
             url:route,
+            type: 'post',
             data:{ src:src },
             success:function(response){
                 $('.video-load').html(response);
@@ -144,6 +148,7 @@ $(document).ready(function(){
 
         $.ajax({
             url:route,
+            type: 'post',
             data:{postid:postid,destination:destination},
             success:function(response){
                 var data = JSON.parse(response);
@@ -166,6 +171,7 @@ $(document).ready(function(){
 
         $.ajax({
             url:route,
+            type: 'post',
             data:{ skip:newsfeedCount },
             beforeSend:function(){
                 $('.newsfeed').last().after('<p class="text-center loadingText">Loading</p>');
