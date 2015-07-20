@@ -48,7 +48,9 @@ $(document).ready(function(){
         },
         success: function(){
             percent.fadeOut();
+            $('.modal').modal('hide');
             $('.noPost').remove();
+            location.reload();
         }
     });
 

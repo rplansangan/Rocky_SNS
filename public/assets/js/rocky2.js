@@ -57,11 +57,6 @@ $(document).on('ready' , function(){
 		e.preventDefault();
 	});
 
-	//add pets
-	$(document).on("click", ".addpet_btn" ,function() {
-		$('#addpetModal').modal('show');
-	});
-
 	$(document).on('focusout' , '#email_address' , function(){
 		var route = $(this).attr('route');
 		var email = $(this).val();
