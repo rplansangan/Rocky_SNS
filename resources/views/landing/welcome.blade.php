@@ -62,10 +62,10 @@
                         <img src="{{ URL::asset('assets/images/landing/slider4.png') }}" alt="b01" width="960px" height="540px" />
                           <div class="button-group">
                             <a href="#" id="btn1">Learn More</a>
-                            <a class="signup_btn" data-toggle="modal" data-target="#signupModal" href="#" id="btn2">Join Now</a>
+                            <a class="signup_btn" data-toggle="modal" data-target="#signupModal" href="javascript:void(0)" id="btn2">Join Now</a>
                             <br>
                             <label>
-                              <a class="login_btn" data-toggle="modal" data-target="#loginModal" href="#">Already a member? LOGIN</a>
+                              <a class="login_btn" data-toggle="modal" data-target="#loginModal" href="javascript:void(0)">Already a member? LOGIN</a>
                             </label>
                           </div>
                       </div>

@@ -132,8 +132,6 @@
             <div class="modal-body">
                 <div class="register-page">
                     <div class="register-main">
-                       
-
                         <div style="margin-top:30px;">
                             <form method="POST" action="{{ route('register.petRegister', Auth::id()) }}" class="form-horizontal reg " role="form" enctype="multipart/form-data">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -279,8 +277,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class='col-sm-8 col-sm-offset-3 Tracker123 text-right'>
-                                        <input type='submit' class="btn btn-color" value="Add"/>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <input type='submit' class="btn btn-color" value="Add Pet"/>
                                     </div>
                                 </div>
                             </form>

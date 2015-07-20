@@ -38,7 +38,7 @@
 			@else
 			<div class="text-left">
 				<p style="padding-left: 25px;">No Pets</p>
-				<a href="#" style="padding-left: 25px; color: #b7042c;"><i class="fa fa-plus" style="margin-bottom: 20px;"></i> add pets</a>
+				<a class="addpet_btn" data-toggle="modal" data-target="#addpetModal" href="javascript:void(0)" style="padding-left: 25px; color: #b7042c;"><i class="fa fa-plus" style="margin-bottom: 20px;"></i> add pets</a>
 			</div>
 			@endif
 		@endif
@@ -79,7 +79,7 @@
 			@else
 			<div class="text-left" style="padding:5px 0px 10px 0px">
 				<p style="padding-left: 25px;">You have no Neighbors</p>
-				<a href="#" style="padding-left: 25px; color: #b7042c;"><i class="fa fa-user-plus"></i> add neighbors</a>
+				<a href="{{ route('public.neighbors') }}" style="padding-left: 25px; color: #b7042c;"><i class="fa fa-user-plus"></i> add neighbors</a>
 			</div>
 			@endif
 	</nav>
