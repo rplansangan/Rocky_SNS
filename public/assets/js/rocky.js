@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+    $('[data-toggle="popover"]').popover();
     $(document).on('click' , '#addMediaBtn' , function(){
         $( "#fileMedia" ).trigger( "click" );
     });
@@ -187,6 +187,24 @@ $(document).ready(function(){
     $(document).on('click' , '#search , #loadMoreTrigger' , function(){
         $('#searchForm').trigger('submit');
     });
+
+
+    $(document).on('click' , '#add_neighbor' , function(){
+        var id = $(this).attr('user_id');
+        var route = $(this).attr('route');
+        var act = $(this).attr('data-act');
+        var a = $(this);
+        $.ajax({
+            type:'post',
+            url:route,
+            data:{ requested_id:id , act:act },
+            success:function(response){
+                var d = JSON.parse(response);
+                $('#friendStatusText').html(d.message);
+                $(a).attr('data-act' , d.act);
+            }
+        });
+    }); 
 
 });
 

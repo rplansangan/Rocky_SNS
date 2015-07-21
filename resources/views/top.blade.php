@@ -25,11 +25,11 @@
           <li><a href="{{ route('public.neighbors') }}"><img src="{{ URL::asset('assets/img/neighbors.png') }}"></a></li>
           <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/message.png') }}"></a></li>
           <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/notification.png') }}"></a></li>
-          <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/find.png') }}"></a></li>
+          <li><a href="{{ Route('public.missingpets') }}"><img src="{{ URL::asset('assets/img/find.png') }}"></a></li>
           <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/track.png') }}"></a></li>
           <li><a href="javascript:void(0);"><img src="{{ URL::asset('assets/img/settings.png') }}"></a>
             <ul class="arrow_box">
-              <li><a href="{{ Route('uc') }}">Settings</a></li>
+              <li><a href="{{ Route('profile.settings') }}">Settings</a></li>
               <li><a href="{{ Route('logout') }}">Logout</a></li>
             </ul>
           </li>

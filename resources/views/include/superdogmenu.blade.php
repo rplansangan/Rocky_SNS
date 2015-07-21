@@ -37,7 +37,7 @@
 			</ul>
 			@else
 			<div class="text-left">
-				<p style="padding-left: 25px;">NO Pets</p>
+				<p style="padding-left: 25px;">No Pets</p>
 			</div>
 			@endif
 		@endif

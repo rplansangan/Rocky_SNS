@@ -41,6 +41,7 @@ class ProfileController extends Controller {
 		$data['mid'] = 'pages.inside.profile.profile';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id(), $id);
 		$data['id'] = $id;
+		$data['friend_flags'] = FriendService::check($id);
 
 		return view('pages.master', $data);		
 	}
@@ -90,19 +91,18 @@ class ProfileController extends Controller {
 	}
 	
 	public function dispatchFriendRequest(Request $request) {
-		switch($request->get('action')) {
+		switch($request->get('act')) {
 			case 'add':
 			$response['message'] = $this->addFriend($request->get('requested_id'));
-			$response['action'] = 'req';
+			$response['act'] = 'req';
 			break;		
-// 			case 'req':
-// 				$response['message'] = $this->cancelFriendReq($request->get('requested_id'));
-// 				$response['action'] = 'add';
-// 				break;
-
+ 			case 'req':
+ 			$response['message'] = $this->cancelFriendReq($request->get('requested_id'));
+ 			$response['act'] = 'add';
+			break;
 			case 'canc':
 			$response['message'] = $this->deleteFriend($request->get('requested_id'));
-			$response['action'] = 'add';
+			$response['act'] = 'add';
 			break;
 		}
 		
@@ -117,7 +117,7 @@ class ProfileController extends Controller {
 	
 	public function cancelFriendReq(Request $request) {
 		FriendService::cancel($request->get('req_id'));
-// 		return trans('profile.friend.add_friend');
+ 		return trans('profile.friend.add_friend');
 	}
 	
 	protected function ignoreFriendReq(Request $request) {

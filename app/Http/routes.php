@@ -52,6 +52,11 @@ Route::post('check_email', array(
 	'uses' => 'LoginController@check_email'
 ));
 
+//Friends
+Route::post('profile/req/friend', array(
+	'as' => 'profile.request.friend',
+	'uses' => 'ProfileController@dispatchFriendRequest'
+));
 //newsfeed
 
 Route::post('comment', array(
@@ -86,6 +91,10 @@ Route::get('profile/{id}', array(
 Route::post('profile/update', array(
 	'as' => 'profile.doUpdate',
 	'uses' => 'ProfileController@editProfile'
+));
+Route::get('settings', array(
+	'as' => 'profile.settings',
+	'uses' => 'HomeController@settings'
 ));
 //home
 Route::get('home', array(

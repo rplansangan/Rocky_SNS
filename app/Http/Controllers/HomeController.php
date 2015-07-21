@@ -101,7 +101,13 @@ class HomeController extends Controller {
 		$data['mid'] = 'pages.inside.history';
 		return view('pages.master' , $data);
 	}
-
+	public function settings(){
+		$data['sub_title'] = '- Settings';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.settings.settings';
+		return view('pages.master' , $data);
+	}
 
 	public function getVideo(Request $request){
 		$input = array_except($request->all(), array('_token'));
