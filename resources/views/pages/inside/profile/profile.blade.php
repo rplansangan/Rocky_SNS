@@ -18,7 +18,7 @@
 					@endif
 					<a href="#" id="send_msg"><i class="fa fa-envelope-o"></i> Send a message</a>
 				@endif
-				<a href="#" id="user_pets"><i class="fa fa-paw"></i> 
+				<a href="{{ route('profile.petslist' , ['user_id' => $profileInformation->user_id]) }}" id="user_pets"><i class="fa fa-paw"></i> 
 					@if(Auth::id() == $profileInformation->user_id) 
 					My Pets
 					@else
