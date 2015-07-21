@@ -73,6 +73,13 @@ class HomeController extends Controller {
 		$data['mid'] = 'pages.inside.nearestvet';
 		return view('pages.master' , $data);
 	}
+	public function petFoundation(){
+		$data['sub_title'] = '- Pet Foundation';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.petfoundation';
+		return view('pages.master' , $data);
+	}
 	public function missingPets(){
 		$data['sub_title'] = '- Missing Pets';
 		$data['left'] = 'include.superdogmenu';

@@ -72,22 +72,19 @@ class ProfileController extends Controller {
 	}
 	
 	public function showPetProfile($user_id, $pet_id) {
-		$profileDetails = Pets::where('pet_id',$pet_id)->with(array(
-			'profile_pic' => function($query) use($pet_id) {
-				$query->addSelect(array('image_id', 'user_id', 'pet_id'));
-				$query->where('pet_id', $pet_id)->where('is_profile_picture', 1);
-			},
-			'pet_food' => function($q) {
-				$q->addSelect(array('id', 'brand_name'));
-			},
-			'pet_behavior' => function($q) {
-				$q->addSelect(array('id', 'behavior'));
-			}
-			))->get();
+		$data['sub_title'] = '- Neighbors';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.profile.profilepet';
+		return view('pages.master' , $data);
+	}
 
-		$newsfeed = PostService::initialNewsFeed(Auth::id(),$user_id);
-		
-		return view('profile.profilepet')->with('profile', $profileDetails[0])->with('newsfeed' , $newsfeed);
+	public function petsList($user_id) {
+		$data['sub_title'] = '- Neighbors';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.petlist';
+		return view('pages.master' , $data);
 	}
 	
 	public function dispatchFriendRequest(Request $request) {

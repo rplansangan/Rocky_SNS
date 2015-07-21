@@ -5,6 +5,9 @@ body , html{
 	background-color: #EBECED;
 	z-index: -5;
 }
+a#loadMore {
+  color: #B7042C;
+}
 .push-down{
 	margin-bottom: 50px;
 }
@@ -178,6 +181,10 @@ header > div nav > ul > li > ul > li > a:hover{
 	border-left-color: #2C3539;
 	border-width: 8px;
 	margin-top: -6px;
+}
+
+#load-search div a, #loadMoreTrigger {
+  color: #B7042C;
 }
 
 /* LEFT */
@@ -514,3 +521,10 @@ video{
 }
 /*END VIDEO */
 
+/*PET LIST*/
+.mid .search-input-petlist > a {
+  position: absolute;
+  top: 13px;
+  right: 20px;
+}
+/*END PETLIST*/
