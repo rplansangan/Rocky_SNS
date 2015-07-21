@@ -1,12 +1,19 @@
 <div>
 	<div class="text-center user-details">
-		<!--@if(isset($profileInformation->profile_pic))
-			<img src="{{ mediaSrc($row->profile_pic->image_path , $row->profile_pic->image_name , $row->profile_pic->image_ext) }}" class="profile-pic">
-		@else
+		@if(isset($pet[0]->profile_pic))
+			<img src="{{ mediaSrc($pet[0]->profile_pic->image_path , $pet[0]->profile_pic->image_name , $pet[0]->profile_pic->image_ext) }}" class="profile-pic">
+			@else
 			<img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-dp">
-		@endif-->
-		<img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-dp">
-		<h3>Tyrion <br><small class="text-muted">Shih Tzu</small></h3>
+			@endif
+			<h3>{{ $pet[0]->pet_name}} <br>
+				<small class="text-muted">
+				@if(!empty($pet[0]->breed)) 
+					{{ $pet->breed }}
+				@else 
+					no breed 
+				@endif
+				</small>
+			</h3>
 		<br clear="all">
 	</div>
 </div>

@@ -9,6 +9,7 @@ use SNS\Libraries\Facades\StorageHelper;
 use SNS\Libraries\Traits\ProfPicTrait;
 use SNS\Models\Images;
 use SNS\Models\User;
+use SNS\Models\Pets;
 use SNS\Models\Registration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -72,10 +73,16 @@ class ProfileController extends Controller {
 	}
 	
 	public function showPetProfile($user_id, $pet_id) {
-		$data['sub_title'] = '- Pet Profile';
+		$owner = Registration::find($user_id);
+		$data['sub_title'] = '- '.$owner->first_name.' '.$owner->last_name.' Pets';
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
 		$data['mid'] = 'pages.inside.profile.profilepet';
+		$data['pet'] = Pets::with([
+			'profile_pic' => function($q){
+				$q->where('is_profile_picture' , 1);
+			}
+			])->where('pet_id' , $pet_id)->where('user_id' , $user_id)->get();
 		return view('pages.master' , $data);
 	}
 	
