@@ -19,7 +19,7 @@
 	</div>
 	<div class="row">
 		<div class="col-lg-6">
-			<label style="line-height:45px;">Security of your post?</label><a href="#" style="color:black" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> <i class="fa fa-question-circle"></i></a>
+			<label style="line-height:45px;">Privacy?</label><a href="#" style="color:black" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> <i class="fa fa-question-circle"></i></a>
 		</div>
 		<div class="col-lg-6 text-right">
 			<div class="btn-group" data-toggle="buttons">

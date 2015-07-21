@@ -29,10 +29,11 @@
 			@if(!$my_pets->isEmpty())
 			<ul>
 				@foreach($my_pets as $row)
+				
 					@if(isset($row->profile_pic))
-						<li><a href="{{ route('profile.showPetProfile') }}"><img src="{{ mediaSrc($row->profile_pic->image_path , $row->profile_pic->image_name , $row->profile_pic->image_ext) }}" class="profile-pic"><span>{{ $row->pet_name }}</span></a></li>
+						<li><a href="{{ route('profile.showPetProfile' , ['user_id' => Auth::id() , 'pet_id' => $row->pet_id]) }}"><img src="{{ mediaSrc($row->profile_pic->image_path , $row->profile_pic->image_name , $row->profile_pic->image_ext) }}" class="profile-pic"><span>{{ $row->pet_name }}</span></a></li>
 					@else
-						<li><a href="{{ route('profile.showPetProfile') }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic"><span>{{ $row->pet_name }}</span></a></li>
+						<li><a href="{{ route('profile.showPetProfile' , ['user_id' => Auth::id() , 'pet_id' => $row->pet_id]) }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic"><span>{{ $row->pet_name }}</span></a></li>
 					@endif
 				@endforeach
 			</ul>
