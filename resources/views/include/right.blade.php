@@ -36,4 +36,8 @@ google.maps.event.addDomListener(window, 'load', initialize2);
     <a href="#" id="btn2"><span>BUY NOW</span></a>
   </div>
 </div>
+
+<div>
+
+</div>
 <!-- END RIGHT BAR -->
