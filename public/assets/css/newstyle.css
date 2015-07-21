@@ -5,6 +5,9 @@ body , html{
 	background-color: #EBECED;
 	z-index: -5;
 }
+a#loadMore {
+  color: #B7042C;
+}
 .push-down{
 	margin-bottom: 50px;
 }

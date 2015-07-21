@@ -120,6 +120,11 @@ Route::get('home/veterinarian', [
 	'uses' => 'HomeController@nearestVet'
 ]);
 
+Route::get('home/petfoundation', [
+	'as' => 'public.foundation',
+	'uses' => 'HomeController@petFoundation'
+]);
+
 Route::get('neighbors', [
 	'as' => 'public.neighbors',
 	'uses' => 'HomeController@rockyNeighbors'
