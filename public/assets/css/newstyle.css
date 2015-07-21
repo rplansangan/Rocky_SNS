@@ -102,7 +102,7 @@ header span{
 	font-weight: bolder;
 	color: #2C3539;
 }
-header > div nav > ul > li:hover > ul{
+header > div nav > ul > li:hover > ul , header > div nav > ul > li:hover > .notification-area{
 	visibility: visible;
 }
 header > div nav > ul > li > ul{
@@ -528,3 +528,67 @@ video{
   right: 20px;
 }
 /*END PETLIST*/
+
+
+/* MISSING PETS */
+
+.missingpets-area{
+	padding: 5px !important;
+}
+.missingpets-area > img{
+	border-radius: 5px 5px 0px 0px;
+}
+.missingpets-area > a{
+	border-radius: 5px;
+	padding: 15px 7px;
+	border:1px solid rgba(0,0,0,0.2);
+	background-color:  #b7042c;
+	clear: all;
+}
+.missingpets-area > a > span{
+	font-weight: bolder;
+	color:white;
+}
+/* END MISSING PETS */
+
+
+/* NOTIFICATION */
+.notification-area:after {
+	margin-left: 120px;
+}
+.notification-area:before {
+	margin-left: 119px;
+}
+header .notification-area > ul{
+	padding: 0px;
+}
+header .notification-area > ul > li > a > div{
+	margin: 5px 2px;
+	color:#595959;
+}
+header > div nav > ul > li > .notification-area > ul > li:hover:not(.loading-dots){
+	background-color: rgba(0,0,0,0.1);
+	color:black;
+}
+header > div nav > ul > li > .notification-area .time{
+	font-size: 10px;
+}
+header > div nav > ul > li > .notification-area label{
+	line-height: 10px;
+}
+header > div nav > ul > li > .notification-area{
+	position: absolute;
+	padding: 10px;
+	background-color: white;
+	margin-left: -253px;
+	border: 1px solid rgba(0,0,0,0.5);
+	margin-top: 6px;
+	width: 300px;
+	visibility: hidden;
+	border-radius: 3px;
+	z-index: 10;
+}
+header .loading-dots > a > span{
+	border: none;
+}
+/* END NOTIFICATION */

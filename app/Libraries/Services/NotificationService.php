@@ -164,7 +164,7 @@ class NotificationService {
 	
 	protected function getOriginUserDetails($notif) {
 		$data['name'] = $notif->origin_object->registration->first_name . ' ' . $notif->origin_object->registration->last_name;
-		$data['profile_route'] = route('profile.showProfile', array($notif->origin_object->user_id));
+		$data['profile_route'] = route('profile.view', array($notif->origin_object->user_id));
 		$data['id'] = $notif->origin_object->user_id;
 		return $data;
 	}
@@ -179,18 +179,12 @@ class NotificationService {
 		$params = json_decode($notif->params);
 		// if notification params has friend_ignore prop / if friend request is ignored
 		if(isset($params->friend_ignore)) {
-			return view('notifications.friend_request_ignore')
-				->with('active', $this->isActive($notif->is_read))
-				->with('profile_route', $origin_user['profile_route'])
-				->with('name', $origin_user['name']);
+			return $origin_user['name'];
 		}
 		
 		// if notification params has friend_accept prop / if friend request is accepted
 		if(isset($params->friend_accept)) {
-			return view('notifications.friend_request_accept')
-				->with('active', $this->isActive($notif->is_read))
-				->with('profile_route', $origin_user['profile_route'])
-				->with('name', $origin_user['name']);
+			return $origin_user['name'];
 		}
 		
 		// if notification params has friend_accept_for_req / if friend request is accepted
@@ -200,33 +194,26 @@ class NotificationService {
 				->with('profile_route', $origin_user['profile_route'])
 				->with('name', $origin_user['name']);
 		}
-			return view('notifications.friend_request')
+			return view('notifications.friend_request_accept_for_req')
 				->with('active', $this->isActive($notif->is_read))
 				->with('profile_route', $origin_user['profile_route'])
-				->with('name', $origin_user['name'])
-				->with('requesting_id', $origin_user['id']);		
+				->with('name', $origin_user['name']);	
 	}
 	
 	protected function formatLike($notif) {
 		$origin_user = $this->getOriginUserDetails($notif);
 		$params = json_decode($notif->params);
-		$post_route = route('profile.showProfile', array($notif->destination_user_id)) . '#post-' . $params->post_id;
+		$post_route = route('profile.view', array($notif->destination_user_id)) . '#post-' . $params->post_id;
 		
-		return view('notifications.post_like')
-				->with('active', $this->isActive($notif->is_read))
-				->with('name', $origin_user['name'])
-				->with('post_route', $post_route);
+		return $origin_user['name'];
 	}
 	
 	protected function formatComment($notif) {
 		$origin_user = $this->getOriginUserDetails($notif);
 		$params = json_decode($notif->params);
-		$post_route = route('profile.showProfile', array($notif->destination_user_id)) . '#post-' . $params->post_id;
+		$post_route = route('profile.view', array($notif->destination_user_id)) . '#post-' . $params->post_id;
 		
-		return view('notifications.post_comment')
-			->with('active', $this->isActive($notif->is_read))
-			->with('name', $origin_user['name'])
-			->with('post_route', $post_route);
+		return $origin_user['name'];
 	}
 	
 	/**

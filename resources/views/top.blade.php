@@ -24,7 +24,10 @@
           <li><a href="{{ Route('home') }}"><span>Home</span></a></li>
           <li><a href="{{ route('public.neighbors') }}"><img src="{{ URL::asset('assets/img/neighbors.png') }}"></a></li>
           <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/message.png') }}"></a></li>
-          <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/notification.png') }}"></a></li>
+          <li>
+            <a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/notification.png') }}"></a>
+            @include('include.notification')
+          </li>
           <li><a href="{{ Route('public.missingpets') }}"><img src="{{ URL::asset('assets/img/find.png') }}"></a></li>
           <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/track.png') }}"></a></li>
           <li><a href="javascript:void(0);"><img src="{{ URL::asset('assets/img/settings.png') }}"></a>
