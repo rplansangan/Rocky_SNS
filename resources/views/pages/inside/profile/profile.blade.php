@@ -6,7 +6,7 @@
 			@else
 				<img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-dp">
 			@endif
-			<a href="{{ Route('profile.view' , ['id' => $user_data['user_id']] ) }}" class="user-feed"><h3>{{ $profileInformation->first_name.' '.$profileInformation->last_name }}</h3></a>
+			<a href="javascript:void(0)" class="user-feed"><h3>{{ $profileInformation->first_name.' '.$profileInformation->last_name }}</h3></a>
 			<div class="prof-btns">
 				@if(Auth::id() != $profileInformation->user_id)
 					@if($friend_flags->friendRequest())	

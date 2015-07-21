@@ -506,6 +506,9 @@ input.btn {
   color: #2C3539;
   text-decoration: none;
 }
+a.user-feed {
+  text-decoration: none;
+}
 .prof-btns a {
   padding: 0 5px;
   color: #B7042C;
@@ -566,17 +569,22 @@ video{
 }
 .missingpets-area > img{
 	border-radius: 5px 5px 0px 0px;
+	width: 100%;
 }
-.missingpets-area > a{
-	border-radius: 5px;
-	padding: 15px 7px;
-	border:1px solid rgba(0,0,0,0.2);
-	background-color:  #b7042c;
-	clear: all;
+.missingpets-area > div > h2 {
+  margin-bottom: 30px;
 }
 .missingpets-area > a > span{
 	font-weight: bolder;
 	color:white;
+}
+.missingpets-area > div > a {
+  border-radius: 5px;
+  padding: 15px 7px;
+  border: 1px solid rgba(0,0,0,0.2);
+  background-color: #b7042c;
+  clear: all;
+  color: #fff;
 }
 /* END MISSING PETS */
 
