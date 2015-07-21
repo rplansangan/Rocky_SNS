@@ -110,7 +110,7 @@
               provide the best for your furry friend
             </p>
             <div class="button-group-new">
-              <a class="signup_btn" data-toggle="modal" data-target="#signupModal" href="#" id="btn2">Join Now</a>
+              <a class="signup_btn" data-toggle="modal" data-target="#signupModal" href="javascript:void(0)" id="btn2">Join Now</a>
             </div>
           </div>
         </div>

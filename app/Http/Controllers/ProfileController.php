@@ -72,25 +72,10 @@ class ProfileController extends Controller {
 	}
 	
 	public function showPetProfile($user_id, $pet_id) {
-		$data['sub_title'] = '- Neighbors';
+		$data['sub_title'] = '- Pet Profile';
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
 		$data['mid'] = 'pages.inside.profile.profilepet';
-		return view('pages.master' , $data);
-	}
-
-	public function petsList($user_id) {
-		$data['sub_title'] = '- Pet Lists';
-		$profileInformation = Registration::with([
-			'prof_pic' => function($q){
-				$q->where('is_profile_picture' , 1);
-				$q->where('pet_id' , 0);
-			}
-		])->where('user_id' , $user_id)->get();
-		$data['profileInformation'] = $profileInformation[0];
-		$data['left'] = 'include.superdogmenu';
-		$data['right'] = 'include.right';
-		$data['mid'] = 'pages.inside.petlist';
 		return view('pages.master' , $data);
 	}
 	

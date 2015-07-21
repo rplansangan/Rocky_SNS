@@ -502,6 +502,10 @@ input.btn {
 /* END DOGS OF THE WEEK */
 
 /*===PROFILE===*/
+.user-details > a > h3 {
+  color: #2C3539;
+  text-decoration: none;
+}
 .prof-btns a {
   padding: 0 5px;
   color: #B7042C;
@@ -510,8 +514,30 @@ input.btn {
 .prof-btns a:hover {
   color: #000;
 }
+.prof-btns a.active {
+  color: #000;
+}
 .mid .user-details .profile-pic{
 	width: 250px;
+}
+.petslistcont {
+  border: 0 !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+}
+.petslistcont > div > div {
+  border: 1px solid rgba(0,0,0,0.2);
+  background-color: white;
+  box-shadow: -1px 9px 28px #888888;
+  margin-bottom: 35px;
+  padding: 45px 30px;
+  border-radius: 8px;
+}
+.petslistcont > div > div a {
+  color: #B7042C;
+  font-weight: bold;
 }
 
 /* VIDEO */
@@ -520,11 +546,3 @@ video{
 	background-color: black;
 }
 /*END VIDEO */
-
-/*PET LIST*/
-.mid .search-input-petlist > a {
-  position: absolute;
-  top: 13px;
-  right: 20px;
-}
-/*END PETLIST*/
