@@ -3,10 +3,11 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
+use SNS\Libraries\Presenters\RegistrationPresenter;
 
 class Registration extends Model {
 
-	use SoftDeletes;
+	use SoftDeletes, RegistrationPresenter;
 	
 	/**
 	 *
