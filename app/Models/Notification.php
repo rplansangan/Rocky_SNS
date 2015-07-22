@@ -44,7 +44,6 @@ class Notification extends Model {
 			->where('origin_object_id', $from)
 			->where('destination_user_id', $to);
 	}
-	
 	public function object() {
 		return $this->morphTo('origin_object');
 	}

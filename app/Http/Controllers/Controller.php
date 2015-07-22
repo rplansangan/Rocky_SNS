@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Request;
 use SNS\Models\Pets;
 use SNS\Models\Registration;
 use SNS\Models\MissingPets;
-use SNS\Libraries\Facades\Notification;
 use SNS\Libraries\Services\FriendService;
 use SNS\Libraries\Cache\Initialize;
 use SNS\Libraries\Cache\Get;
@@ -44,7 +43,6 @@ abstract class Controller extends BaseController {
 	
 	protected function setGlobals() {	
 		$t = new FriendService; 
-		$data['user_notifs'] = Notification::collectInitial(Auth::id());
 		$data['my_pets'] = Pets::with([
 			'profile_pic' => function($q){
 				$q->where('is_profile_picture' , 1);

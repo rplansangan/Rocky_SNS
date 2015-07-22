@@ -28,19 +28,44 @@ class ProfileController extends Controller {
 		parent::__construct($init, $cacheGet);
 		
 	}
-	public function viewit(Request $request){
-		$input = array_except($request->all(), array('_token'));
-		$data['id'] = $input['id'];
+	public function showGallery($id){
 		$profileInformation = Registration::with([
 			'prof_pic' => function($q){
 				$q->where('is_profile_picture' , 1);
 				$q->where('pet_id' , 0);
 			}
-		])->where('user_id' , $input['id'])->get();
+		])->where('user_id' , $id)->get();
 		$data['profileInformation'] = $profileInformation[0];
-		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id(), $input['id']);
-		return view($input['viewit'] , $data);
-		
+		$data['title'] = $profileInformation[0]->first_name.' '.$profileInformation[0]->last_name;
+		$data['sub_title'] = ' - Gallery';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.profile.gallery';
+		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id(), $id);
+		$data['id'] = $id;
+		$data['friend_flags'] = FriendService::check(Auth::id());
+
+		return view('pages.master', $data);		
+	}
+
+	public function showAbout($id){
+		$profileInformation = Registration::with([
+			'prof_pic' => function($q){
+				$q->where('is_profile_picture' , 1);
+				$q->where('pet_id' , 0);
+			}
+		])->where('user_id' , $id)->get();
+		$data['profileInformation'] = $profileInformation[0];
+		$data['title'] = $profileInformation[0]->first_name.' '.$profileInformation[0]->last_name;
+		$data['sub_title'] = ' - About';
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.profile.about';
+		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id(), $id);
+		$data['id'] = $id;
+		$data['friend_flags'] = FriendService::check(Auth::id());
+
+		return view('pages.master', $data);		
 	}
 
 	public function showProfile($id){ 	   
@@ -51,17 +76,20 @@ class ProfileController extends Controller {
 			}
 		])->where('user_id' , $id)->get();
 		$data['profileInformation'] = $profileInformation[0];
+		$data['title'] = $profileInformation[0]->first_name.' '.$profileInformation[0]->last_name;
+		$data['sub_title'] = ' - Newsfeed';
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
 		$data['mid'] = 'pages.inside.profile.profile';
-		
+		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id(), $id);
 		$data['id'] = $id;
-		$data['friend_flags'] = FriendService::check($id);
+		$data['friend_flags'] = FriendService::check(Auth::id());
 
 		return view('pages.master', $data);		
 	}
 
 	public function petlist($id){
+		/*
 		$list = Pets::select(array('pet_id', 'user_id', 'pet_name', 'breed', 'pet_bday', 'pet_gender', 'pet_type'))
 		->where('user_id', $id)->with(array(
 			'profile_pic' => function($q) {
@@ -83,7 +111,31 @@ class ProfileController extends Controller {
 		
 		return view('profile.petlist')
 		->with('profile', $profile)
-		->with('list', $list);
+		->with('list', $list);*/
+	}
+
+	public function petsList($user_id) {
+		$profileInformation = Registration::with([
+			'prof_pic' => function($q){
+				$q->where('is_profile_picture' , 1);
+				$q->where('pet_id' , 0);
+			}
+		])->where('user_id' , $user_id)->get();
+		$data['profileInformation'] = $profileInformation[0];
+		$data['title'] = $profileInformation[0]->first_name.' '.$profileInformation[0]->last_name;
+		$data['sub_title'] = '- Pet Lists';
+		$profileInformation = Registration::with([
+			'prof_pic' => function($q){
+				$q->where('is_profile_picture' , 1);
+				$q->where('pet_id' , 0);
+			}
+		])->where('user_id' , $user_id)->get();
+		$data['profileInformation'] = $profileInformation[0];
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.petlist';
+		$data['friend_flags'] = FriendService::check(Auth::id());
+		return view('pages.master' , $data);
 	}
 	
 	public function showPetProfile($user_id, $pet_id) {

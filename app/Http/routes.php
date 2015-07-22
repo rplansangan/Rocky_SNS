@@ -34,6 +34,22 @@ Route::get('search', array(
 	'as' => 'neighbors.search',
 	'uses' => 'HomeController@neighborsSearch'
 ));
+Route::get('get/notification', array(
+	'as' => 'get.notification',
+	'uses' => 'HomeController@notification'
+));
+Route::post('profile/req/friend', array(
+	'as' => 'profile.request.friend',
+	'uses' => 'ProfileController@dispatchFriendRequest'
+));
+Route::post('profile/req/friend_ignore', array(
+	'as' => 'profile.request.friend_ignore',
+	'uses' => 'ProfileController@ignoreFriendReq'
+));
+Route::post('profile/req/accept/', array(
+	'as' => 'profile.request.add_friend',
+	'uses' => 'ProfileController@acceptFriendRequest'
+));
 // Login
 Route::post('login', array(
 	'as' => 'login',
@@ -113,11 +129,18 @@ Route::get('home', array(
 
 
 //inside sns
+Route::get('profile/{user_id}/about', [
+	'as' => 'profile.about',
+	'uses' => 'ProfileController@showAbout'
+]);
+Route::get('profile/{user_id}/gallery', [
+	'as' => 'profile.gallery',
+	'uses' => 'ProfileController@showGallery'
+]);
 Route::get('profile/{user_id}/pets/{pet_id}', [
 	'as' => 'profile.showPetProfile',
 	'uses' => 'ProfileController@showPetProfile'
 ]);
-
 Route::get('profile/{user_id}/listofpets', [
 	'as' => 'profile.petslist',
 	'uses' => 'ProfileController@petsList'

@@ -1,6 +1,7 @@
 <?php namespace SNS\Http\Controllers;
 
 use SNS\Http\Controllers\Controller;
+use SNS\Libraries\Facades\Notification;
 use Illuminate\Http\Request;
 use SNS\Models\User;
 use SNS\Models\Images;
@@ -132,6 +133,11 @@ class HomeController extends Controller {
 		return view('ajax.result' ,$data);
 	}
 	
+	public function notification(){
+		$data['user_notifs'] = Notification::collectInitial(Auth::id());
+		return view('include.notification' , $data);
+	}
+
 	public function neighborsSearch(Request $request){
 		$input = $request->all();
 

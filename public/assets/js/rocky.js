@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    
     $('[data-toggle="popover"]').popover();
     $(document).on('click' , '#addMediaBtn' , function(){
         $( "#fileMedia" ).trigger( "click" );
@@ -6,6 +7,8 @@ $(document).ready(function(){
 
     $(document).on('click' , '.body' , function(){
         $('#load-search').addClass('hidden');
+        $('#showNotif').next().attr('data-collapse' , 'close')
+        $('#showNotif').next().fadeOut();
     });
 
     var bar = $('.bar');
@@ -206,20 +209,29 @@ $(document).ready(function(){
         });
     }); 
 
-    $(document).on('click' , '.profile_menu' , function(){
-        var href = $(this).attr('route');
-        var viewit = $(this).attr('data-view');
-        var id = $(this).attr('data-id');
-        
-        $.ajax({
-            type:'post',
-            url:href,
-            data:{viewit:viewit , id:id},
-            success:function(response){
-               $('#viewloadhere').html(response);
-            }
-        });
+
+
+    $(document).on('click' , '#showNotif' , function(){
+        var collapse = $(this).next().attr('data-collapse');
+        var route = $(this).attr('route');
+        var a = $(this);
+        if(collapse == 'close'){
+            $.ajax({
+                url:route,
+                beforeSend:function(){
+                    $(a).next().html('Loading...');
+                },
+                success:function(response){
+                    $(a).next().html(response);
+                }
+            }).done(function(){
+                $(a).next().fadeIn();
+                $(a).next().attr('data-collapse' , 'open')
+            });
+        }else{
+            $(this).next().attr('data-collapse' , 'close')
+            $(this).next().fadeOut();
+        }
     });
 
 });
-

@@ -102,9 +102,7 @@ header span{
 	font-weight: bolder;
 	color: #2C3539;
 }
-header > div nav > ul > li:hover > ul , header > div nav > ul > li:hover > .notification-area{
-	visibility: visible;
-}
+
 header > div nav > ul > li > ul{
 	position: absolute;
 	padding: 10px;
@@ -548,9 +546,7 @@ a.user-feed {
 video{
 	background-color: black;
 }
-<<<<<<< HEAD
-/*END VIDEO */
-=======
+
 /*END VIDEO */
 
 /*PET LIST*/
@@ -621,7 +617,7 @@ header > div nav > ul > li > .notification-area{
 	border: 1px solid rgba(0,0,0,0.5);
 	margin-top: 6px;
 	width: 300px;
-	visibility: hidden;
+	display: none;
 	border-radius: 3px;
 	z-index: 10;
 }
@@ -629,4 +625,3 @@ header .loading-dots > a > span{
 	border: none;
 }
 /* END NOTIFICATION */
->>>>>>> origin/master
