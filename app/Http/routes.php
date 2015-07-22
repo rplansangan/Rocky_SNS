@@ -141,7 +141,7 @@ Route::get('profile/{user_id}/pets/{pet_id}', [
 	'as' => 'profile.showPetProfile',
 	'uses' => 'ProfileController@showPetProfile'
 ]);
-Route::get('profile/{user_id}/listofpets', [
+Route::get('profile/{user_id}/pets', [
 	'as' => 'profile.petslist',
 	'uses' => 'ProfileController@petsList'
 ]);
