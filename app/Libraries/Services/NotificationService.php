@@ -176,25 +176,26 @@ class NotificationService {
 	protected function formatFriendReq($notif) {		
 		$origin_user = $this->getOriginUserDetails($notif);
 		
-		$params = json_decode($notif->params);
+		$params = json_decode($notif->params, true);
 		// if notification params has friend_ignore prop / if friend request is ignored
-		if(isset($params->friend_ignore)) {
+		if(isset($params['friend_ignore'])) {
 			return $origin_user['name'];
 		}
 		
 		// if notification params has friend_accept prop / if friend request is accepted
-		if(isset($params->friend_accept)) {
+		if(isset($params['friend_accept'])) {
 			return $origin_user['name'];
 		}
 		
 		// if notification params has friend_accept_for_req / if friend request is accepted
-		if(isset($params->friend_accept_for_req)) {
+		if(isset($params['friend_accept_for_req'])) {
 			return view('notifications.friend_request_accept_for_req')
 				->with('active', $this->isActive($notif->is_read))
 				->with('profile_route', $origin_user['profile_route'])
-				->with('name', $origin_user['name']);
+				->with('name', $origin_user['name'])
+				->with('requesting_id', $origin_user['id']);
 		}
-			return view('notifications.friend_request_accept_for_req')
+			return view('notifications.friend_request')
 				->with('active', $this->isActive($notif->is_read))
 				->with('profile_route', $origin_user['profile_route'])
 				->with('name', $origin_user['name']);	
