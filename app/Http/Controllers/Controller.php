@@ -44,7 +44,7 @@ abstract class Controller extends BaseController {
 	
 	protected function setGlobals() {	
 		$t = new FriendService; 
-		#$data['user_notifs'] = Notification::collectInitial(Auth::id());
+		$data['user_notifs'] = Notification::collectInitial(Auth::id());
 		$data['my_pets'] = Pets::with([
 			'profile_pic' => function($q){
 				$q->where('is_profile_picture' , 1);

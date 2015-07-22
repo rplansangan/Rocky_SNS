@@ -31,6 +31,7 @@ class WelcomeController extends Controller {
 		$data['title'] = 'Under Construction';
 		return view('pages.master' , $data);
 	}
+	
 	public function test(){
 		echo 'ok';
 	}

@@ -28,7 +28,21 @@ class ProfileController extends Controller {
 		parent::__construct($init, $cacheGet);
 		
 	}
-	
+	public function viewit(Request $request){
+		$input = array_except($request->all(), array('_token'));
+		$data['id'] = $input['id'];
+		$profileInformation = Registration::with([
+			'prof_pic' => function($q){
+				$q->where('is_profile_picture' , 1);
+				$q->where('pet_id' , 0);
+			}
+		])->where('user_id' , $input['id'])->get();
+		$data['profileInformation'] = $profileInformation[0];
+		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id(), $input['id']);
+		return view($input['viewit'] , $data);
+		
+	}
+
 	public function showProfile($id){ 	   
 		$profileInformation = Registration::with([
 			'prof_pic' => function($q){
@@ -40,7 +54,7 @@ class ProfileController extends Controller {
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
 		$data['mid'] = 'pages.inside.profile.profile';
-		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id(), $id);
+		
 		$data['id'] = $id;
 		$data['friend_flags'] = FriendService::check($id);
 

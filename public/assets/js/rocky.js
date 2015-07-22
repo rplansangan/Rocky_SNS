@@ -206,5 +206,20 @@ $(document).ready(function(){
         });
     }); 
 
+    $(document).on('click' , '.profile_menu' , function(){
+        var href = $(this).attr('route');
+        var viewit = $(this).attr('data-view');
+        var id = $(this).attr('data-id');
+        
+        $.ajax({
+            type:'post',
+            url:href,
+            data:{viewit:viewit , id:id},
+            success:function(response){
+               $('#viewloadhere').html(response);
+            }
+        });
+    });
+
 });
 

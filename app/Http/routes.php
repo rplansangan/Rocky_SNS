@@ -96,6 +96,10 @@ Route::get('settings', array(
 	'as' => 'profile.settings',
 	'uses' => 'HomeController@settings'
 ));
+Route::post('profilemid', array(
+	'as' => 'view.profilemenu',
+	'uses' => 'ProfileController@viewit'
+));
 //home
 Route::get('home', array(
 	'as' => 'home',

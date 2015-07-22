@@ -115,51 +115,6 @@ $(document).on('ready' , function(){
 	});
 
 
-		$('.post-area').show();
-		$('.newsfeed').show();
-		$('.petslistcont').hide();
-		$('.useraboutcont').hide();
-		$('.gallerycont').hide();
-
-	$('.user-feed').on('click', function(){
-		$('.post-area').show();
-		$('.newsfeed').show();
-		$('.noPost').show();
-		$('.petslistcont').hide();
-		$('.useraboutcont').hide();
-		$('.gallerycont').hide();
-	});
-
-	$('#user_pets').on('click', function(){
-		$('#user_pets').addClass('active');
-		$('.petslistcont').show();
-		$('.useraboutcont').hide();
-		$('.gallerycont').hide();
-		$('.newsfeed').hide();
-		$('.post-area').hide();
-		$('.noPost').hide();
-	});
-
-	$('#about_user').on('click', function(){
-		$('#about_user').addClass('active');
-		$('.useraboutcont').show();
-		$('.petslistcont').hide();
-		$('.gallerycont').hide();
-		$('.newsfeed').hide();
-		$('.post-area').hide();
-		$('.noPost').hide();
-	});
-
-	$('#gallery').on('click', function(){
-		$('#gallery').addClass('active');
-		$('.gallerycont').show();
-		$('.useraboutcont').hide();
-		$('.petslistcont').hide();
-		$('.newsfeed').hide();
-		$('.post-area').hide();
-		$('.noPost').hide();
-	});
-
 	$('.pb').on('click', function(){
 		$('.pb').removeClass('active');
 		$(this).addClass('active');
