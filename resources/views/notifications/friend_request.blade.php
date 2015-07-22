@@ -3,4 +3,3 @@
 	'active' => $active,
 	'message' => trans('profile.friend.request_msg', array('name' => $name))
 ))
-
