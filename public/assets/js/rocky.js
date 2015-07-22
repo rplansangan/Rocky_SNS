@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    
     $('[data-toggle="popover"]').popover();
     $(document).on('click' , '#addMediaBtn' , function(){
         $( "#fileMedia" ).trigger( "click" );
@@ -6,6 +7,8 @@ $(document).ready(function(){
 
     $(document).on('click' , '.body' , function(){
         $('#load-search').addClass('hidden');
+        $('#showNotif').next().attr('data-collapse' , 'close')
+        $('#showNotif').next().fadeOut();
     });
 
     var bar = $('.bar');
@@ -206,20 +209,7 @@ $(document).ready(function(){
         });
     }); 
 
-    $(document).on('click' , '.profile_menu' , function(){
-        var href = $(this).attr('route');
-        var viewit = $(this).attr('data-view');
-        var id = $(this).attr('data-id');
-        
-        $.ajax({
-            type:'post',
-            url:href,
-            data:{viewit:viewit , id:id},
-            success:function(response){
-               $('#viewloadhere').html(response);
-            }
-        });
-    });
+
 
     $(document).on('click' , '#showNotif' , function(){
         var collapse = $(this).next().attr('data-collapse');
@@ -245,4 +235,3 @@ $(document).ready(function(){
     });
 
 });
-
