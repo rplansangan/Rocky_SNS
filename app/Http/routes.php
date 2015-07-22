@@ -29,6 +29,19 @@ Route::get('search', array(
 	'as' => 'neighbors.search',
 	'uses' => 'HomeController@neighborsSearch'
 ));
+
+Route::post('profile/req/friend', array(
+	'as' => 'profile.request.friend',
+	'uses' => 'ProfileController@dispatchFriendRequest'
+));
+Route::post('profile/req/friend_ignore', array(
+	'as' => 'profile.request.friend_ignore',
+	'uses' => 'ProfileController@ignoreFriendReq'
+));
+Route::post('profile/req/accept/', array(
+	'as' => 'profile.request.add_friend',
+	'uses' => 'ProfileController@acceptFriendRequest'
+));
 // Login
 Route::post('login', array(
 	'as' => 'login',

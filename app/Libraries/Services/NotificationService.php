@@ -194,7 +194,7 @@ class NotificationService {
 				->with('profile_route', $origin_user['profile_route'])
 				->with('name', $origin_user['name']);
 		}
-			return view('notifications.friend_request_accept_for_req')
+			return view('notifications.friend_request')
 				->with('active', $this->isActive($notif->is_read))
 				->with('profile_route', $origin_user['profile_route'])
 				->with('name', $origin_user['name']);	
