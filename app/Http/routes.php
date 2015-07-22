@@ -29,7 +29,10 @@ Route::get('search', array(
 	'as' => 'neighbors.search',
 	'uses' => 'HomeController@neighborsSearch'
 ));
-
+Route::get('get/notification', array(
+	'as' => 'get.notification',
+	'uses' => 'HomeController@notification'
+));
 Route::post('profile/req/friend', array(
 	'as' => 'profile.request.friend',
 	'uses' => 'ProfileController@dispatchFriendRequest'

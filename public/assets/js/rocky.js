@@ -221,5 +221,28 @@ $(document).ready(function(){
         });
     });
 
+    $(document).on('click' , '#showNotif' , function(){
+        var collapse = $(this).next().attr('data-collapse');
+        var route = $(this).attr('route');
+        var a = $(this);
+        if(collapse == 'close'){
+            $.ajax({
+                url:route,
+                beforeSend:function(){
+                    $(a).next().html('Loading...');
+                },
+                success:function(response){
+                    $(a).next().html(response);
+                }
+            }).done(function(){
+                $(a).next().fadeIn();
+                $(a).next().attr('data-collapse' , 'open')
+            });
+        }else{
+            $(this).next().attr('data-collapse' , 'close')
+            $(this).next().fadeOut();
+        }
+    });
+
 });
 

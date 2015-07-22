@@ -25,8 +25,8 @@
           <li><a href="{{ route('public.neighbors') }}"><img src="{{ URL::asset('assets/img/neighbors.png') }}"></a></li>
           <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/message.png') }}"></a></li>
           <li>
-            <a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/notification.png') }}"></a>
-            @include('include.notification')
+            <a href="javascript:void(0);" id="showNotif" route="{{ route('get.notification') }}" ><img src="{{ URL::asset('assets/img/notification.png') }}"></a>
+            <div class="notification-area arrow_box text-left" data-collapse="close"></div>
           </li>
           <li><a href="{{ Route('public.missingpets') }}"><img src="{{ URL::asset('assets/img/find.png') }}"></a></li>
           <li><a href="{{ Route('uc') }}"><img src="{{ URL::asset('assets/img/track.png') }}"></a></li>
