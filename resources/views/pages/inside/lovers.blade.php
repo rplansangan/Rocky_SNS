@@ -1,4 +1,3 @@
-{{ custom_print_r($user_notifs) }}
 @include('include.formPost')
 @include('include.newsfeed')
 <p class="text-center loading-dots">

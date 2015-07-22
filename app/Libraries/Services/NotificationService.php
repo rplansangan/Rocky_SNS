@@ -165,6 +165,8 @@ class NotificationService {
 	protected function getOriginUserDetails($notif) {
 		$data['name'] = $notif->origin_object->registration->first_name . ' ' . $notif->origin_object->registration->last_name;
 		$data['profile_route'] = route('profile.view', array($notif->origin_object->user_id));
+		$data['created_at'] = $notif->created_at;
+		$data['image'] = $notif->origin_object->registration->prof_pic;
 		$data['id'] = $notif->origin_object->user_id;
 		return $data;
 	}
@@ -193,11 +195,15 @@ class NotificationService {
 				->with('active', $this->isActive($notif->is_read))
 				->with('profile_route', $origin_user['profile_route'])
 				->with('name', $origin_user['name'])
+				->with('created_at' , $origin_user['created_at'])
+				->with('image' , $origin_user['image'])
 				->with('requesting_id', $origin_user['id']);
 		}
 			return view('notifications.friend_request')
 				->with('active', $this->isActive($notif->is_read))
 				->with('profile_route', $origin_user['profile_route'])
+				->with('created_at' , $origin_user['created_at'])
+				->with('image' , $origin_user['image'])
 				->with('name', $origin_user['name']);	
 	}
 	
@@ -215,8 +221,7 @@ class NotificationService {
 		$post_route = route('profile.view', array($notif->destination_user_id)) . '#post-' . $params->post_id;
 		
 		return $origin_user['name'];
-	}
-	
+	}	
 	/**
 	 * Formats each item depending on their respective notif_type
 	 * @param mixed $notif_collection
@@ -247,7 +252,7 @@ class NotificationService {
 	 */
 	public function collectInitial($user_id) {
 		$notif_collection = $this->notif
-								->select(array('origin_object_id', 'origin_object_type', 'is_read', 'params', 'destination_user_id', 'notif_type'))
+								->select(array('origin_object_id', 'origin_object_type', 'is_read', 'params', 'destination_user_id', 'notif_type' , 'created_at'))
 								->with(array('object'))
 								->userNotif($user_id);
 		
