@@ -103,46 +103,31 @@ class ProfileController extends Controller {
 	public function dispatchFriendRequest(Request $request) {
 		switch($request->get('act')) {
 			case 'add':
-			$response['message'] = $this->addFriend($request->get('requested_id'));
-			$response['act'] = 'req';
+				FriendService::add($request->get('requested_id'));
+				
+				$response['message'] = trans('profile.friend.is_pending');
+				$response['act'] = 'req';
 			break;		
  			case 'req':
- 			$response['message'] = $this->cancelFriendReq($request->get('requested_id'));
- 			$response['act'] = 'add';
+ 				FriendService::cancel($request->get('requested_id'));
+ 				
+	 			$response['message'] = trans('profile.friend.add_friend');
+	 			$response['act'] = 'add';
 			break;
 			case 'canc':
-			$response['message'] = $this->deleteFriend($request->get('requested_id'));
-			$response['act'] = 'add';
+				FriendService::delete($requested_id);
+				
+				$response['message'] = $this->deleteFriend($request->get('requested_id'));
+				$response['act'] = 'add';
+			case 'accept':
+				FriendService::accept($request->get('requested_id'));
+				
+				$response['message'] = trans('profile.friend.added');
+				$response['act'] = null;
 			break;
 		}
 		
 		return json_encode($response);
-	}
-	
-	protected function addFriend($requested_id) {
-		if(FriendService::add($requested_id)) {
-			return trans('profile.friend.is_pending');
-		}
-	}
-	
-	public function cancelFriendReq(Request $request) {
-		FriendService::cancel($request->get('req_id'));
- 		return trans('profile.friend.add_friend');
-	}
-	
-	protected function ignoreFriendReq(Request $request) {
-		FriendService::ignore($request->get('req_id'));
-		return redirect()->back();
-	}
-	
-	public function acceptFriendRequest(Request $request) {
-		FriendService::accept($request->get('req_id'));
-		return redirect()->back();
-	}
-	
-	public function deleteFriend($requested_id) {
-		FriendService::delete($requested_id);
-		return trans('profile.friend.add_friend');
 	}
 	
 	public function userFriends($user_id) {

@@ -9,6 +9,11 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('del', function() {
+	\Illuminate\Support\Facades\DB::table('friend_requests')->delete();
+	\Illuminate\Support\Facades\DB::table('notifications')->delete();
+	\Illuminate\Support\Facades\DB::table('user_friends')->delete();
+});
 Route::get('/', array(
     'as' => 'index',
     'uses' => 'WelcomeController@index',

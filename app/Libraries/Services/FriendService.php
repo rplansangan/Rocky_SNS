@@ -13,7 +13,7 @@ class FriendService {
 	 * SNS\Models\UserFriends;
 	 * @var unknown
 	 */
-	protected $list;
+	private $list;
 	
 	/**
 	 * SNS\Models\FriendRequest;
@@ -22,15 +22,15 @@ class FriendService {
 	 * status = 2 -> request cancelled by user
 	 * status = 3 -> request deleted by user
 	 * status = 9 -> request ack
-	 * @var unknown
+	 * @var integer
 	 */
-	protected $request;
+	private $request;
 	
 	/**
 	 * Friend list and request status
 	 * @var array
 	 */
-	protected $status;
+	private $status;
 	
 	/**
 	 * 
@@ -43,7 +43,7 @@ class FriendService {
 		
 		$this->request = new FriendRequest();
 		
-		$this->ids['current'] = Auth::id();
+		$this->ids['current'] = Auth::id(); 
 	}
 	
 	/**
@@ -51,9 +51,9 @@ class FriendService {
 	 * @param integer $requested_id
 	 * @return boolean
 	 */
-	protected function listCheck() {
+	private function listCheck() {
 		$q = $this->list
-				->select(array('user_id', 'friend_user_id'))
+				->select(['user_id', 'friend_user_id'])
 				->ofUserWithReq($this->ids['current'], $this->ids['requested'])->get();
 		return !$q->isEmpty();
 	}
@@ -63,11 +63,12 @@ class FriendService {
 	 * @param integer $requested_id
 	 * @return boolean
 	 */
-	protected function reqCheck() {
+	private function reqCheck() {
 		$q = $this->request
-				->select(array('requesting_user_id', 'requested_user_id'))
+				->select(['requesting_user_id', 'requested_user_id', 'status'])
 				->ofUserWithReq($this->ids['current'], $this->ids['requested'])
 				->whereNotIn('status', [2, 9])->latest()->take(1)->get();
+
 		return !$q->isEmpty();	
 			
 	}
@@ -80,23 +81,54 @@ class FriendService {
 	 */
 	public function check($requested_id) {
 		$this->ids['requested'] = $requested_id;
-				
+		
 		$this->status['is_friend'] = $this->listCheck();
 		$this->status['request'] = $this->reqCheck();
+		
+		$request = $this->request->select(['status', 'requesting_user_id', 'requested_user_id'])
+						->ofUserWithReq($this->ids['requested'], $this->ids['current'])
+						->latest()->take(1)->get();
+		
+		// check for 'added' user status
+		if(!$request->isEmpty()) {
+			if($request[0]->status == 0) {
+				$this->status['pending_act'] = true;
+			} else {
+				$this->status['pending_act'] = false;
+			}
+		} else {
+			$this->status['pending_act'] = false;
+		}
 		
 		return $this;
 	}
 	
 	/**
-	 * Gets request status
-	 * @return array
+	 * 
+	 * @return boolean
+	 */
+	public function isPending() {
+		return $this->status['pending'];
+	}
+	
+	/**
+	 * Check for pending friend request
+	 * @return boolean
+	 */
+	public function isPendingAccept() {
+		return $this->status['pending_act'];
+	}
+	
+	/**
+	 * Check for sent friend request
+	 * @return boolean
 	 */
 	public function friendRequest() {
 		return $this->status['request'];
 	}
 	
 	/**
-	 * Gets is_friend status
+	 * Checks if user has been added to friends
 	 * @return boolean
 	 */
 	public function isFriend() {
@@ -107,7 +139,7 @@ class FriendService {
 	 * Checks status property if a new friend request can be sent
 	 * @return boolean
 	 */
-	protected function allowRequest() {
+	private function allowRequest() {
 		// is_friend and request should be false so a friend request can be sent
 		if(!$this->status['is_friend'] AND !$this->status['request']){
 			return true;
@@ -119,7 +151,7 @@ class FriendService {
 	 * Checks for a previous request where status != 9
 	 * @param unknown $requested_id
 	 */
-	protected function previousRequest() {
+	private function previousRequest() {
 		$q = $this->request
 				->ofUserWithReq($this->ids['current'], $this->ids['requested'])
 				->whereNotIn('status', [9])->get();
@@ -230,13 +262,13 @@ class FriendService {
 			->delete();
 	}
 	
-	protected function updateRequest($ids, $status) {
+	private function updateRequest($ids, $status) {
 		$this->request->ofRequestedUser($ids['requested_id'], $ids['requesting_id'])->update(['status' => $status]);
 		
 		$this->request->ofRequestedUser($ids['requested_id'], $ids['requesting_id'])->delete();
 	}
 	
-	protected function deletedFriendRecords() {
+	private function deletedFriendRecords() {
 		UserFriends::where('user_id', $this->ids['current'])
 			->where('friend_user_id', $this->ids['requested'])
 			->delete();
@@ -249,7 +281,7 @@ class FriendService {
 	/**
 	 * Adds friend records for both users
 	 */
-	protected function addFriendRecords() {
+	private function addFriendRecords() {
 		UserFriends::create([
 			'user_id' => $this->ids['current'],
 			'friend_user_id' => $this->ids['requested']

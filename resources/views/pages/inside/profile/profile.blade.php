@@ -9,12 +9,31 @@
 			<a href="javascript:void(0)" class="user-feed" route="{{ Route('view.profilemenu') }}" data-view="pages.inside.post" ><h3>{{ $profileInformation->first_name.' '.$profileInformation->last_name }}</h3></a>
 			<div class="prof-btns">
 				@if(Auth::id() != $profileInformation->user_id)
-					@if($friend_flags->friendRequest())	
-						<a href="javascript:void(0)"  id="add_neighbor"  route="{{ Route('profile.request.friend') }}" user_id="{{ $profileInformation->user_id }}" data-act="req"><i class="fa fa-user-plus"></i> <span id="friendStatusText">{{ trans('profile.friend.is_pending') }}</span></a>								
-					@elseif(!$friend_flags->isFriend())
-						<a href="javascript:void(0)"  id="add_neighbor" route="{{ Route('profile.request.friend') }}" user_id="{{ $profileInformation->user_id }}" data-act="add"><i class="fa fa-user-plus"></i> <span id="friendStatusText">{{ trans('profile.friend.add_friend') }}</span></a>
+					@if($friend_flags->isFriend()) 
+						<a href="javascript:void(0)"  id="add_neighbor" route="{{ Route('profile.request.friend') }}" user_id="{{ $profileInformation->user_id }}" data-act="">
+							<i class="fa fa-user-times"></i>
+							<span id="friendStatusText">{{ trans('profile.friend.added') }}</span>
+						</a>
+					@elseif($friend_flags->isPendingAccept())
+						<a href="javascript:void(0)"  id="add_neighbor" route="{{ Route('profile.request.friend') }}" user_id="{{ $profileInformation->user_id }}" data-act="accept">
+							<i class="fa fa-user-times"></i>
+							<span id="friendStatusText">{{ trans('profile.friend.request_add') }}</span>
+						</a>
+					@elseif($friend_flags->friendRequest())
+						<a href="javascript:void(0)"  id="add_neighbor" route="{{ Route('profile.request.friend') }}" user_id="{{ $profileInformation->user_id }}" data-act="add">
+							<i class="fa fa-user-plus"></i>
+							<span id="friendStatusText">{{ trans('profile.friend.is_pending') }}</span>
+						</a>
+					@elseif($friend_flags->friendRequest())	
+						<a href="javascript:void(0)"  id="add_neighbor"  route="{{ Route('profile.request.friend') }}" user_id="{{ $profileInformation->user_id }}" data-act="req">
+							<i class="fa fa-user-plus"></i>
+							<span id="friendStatusText">{{ trans('profile.friend.is_pending') }}</span>
+						</a>								
 					@else
-						<a href="javascript:void(0)"  id="add_neighbor" route="{{ Route('profile.request.friend') }}" user_id="{{ $profileInformation->user_id }}" data-act="canc"><i class="fa fa-user-times"></i> <span id="friendStatusText">{{ trans('profile.friend.delete_friend') }}</span></a>
+						<a href="javascript:void(0)"  id="add_neighbor" route="{{ Route('profile.request.friend') }}" user_id="{{ $profileInformation->user_id }}" data-act="add">
+							<i class="fa fa-user-plus"></i>
+							<span id="friendStatusText">{{ trans('profile.friend.add_friend') }}</span>
+						</a>
 					@endif
 					<a href="javascript:void(0)" id="send_msg" class="pb"><i class="fa fa-envelope-o"></i> Send a message</a>
 				@endif
