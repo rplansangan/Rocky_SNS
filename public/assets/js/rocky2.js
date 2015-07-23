@@ -69,7 +69,7 @@ $(document).on('ready' , function(){
 			$(a).next().addClass('glyphicon-remove');
 		}else{
 			$.ajax({
-				type: $(this).attr('method'),
+				type: 'post',
 				url: route,
 				data: { 'email' : email },
 				success: function(response){

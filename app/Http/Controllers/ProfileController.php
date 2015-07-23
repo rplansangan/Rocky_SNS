@@ -115,32 +115,35 @@ class ProfileController extends Controller {
 	}
 
 	public function petsList($user_id) {
-		$profileInformation = Registration::with([
-			'prof_pic' => function($q){
-				$q->where('is_profile_picture' , 1);
-				$q->where('pet_id' , 0);
-			}
-		])->where('user_id' , $user_id)->get();
-		$data['profileInformation'] = $profileInformation[0];
-		$data['title'] = $profileInformation[0]->first_name.' '.$profileInformation[0]->last_name;
-		$data['sub_title'] = '- Pet Lists';
-		$profileInformation = Registration::with([
-			'prof_pic' => function($q){
-				$q->where('is_profile_picture' , 1);
-				$q->where('pet_id' , 0);
-			}
-		])->where('user_id' , $user_id)->get();
-		$data['profileInformation'] = $profileInformation[0];
+		$user = User::find($user_id);
+		
+		$profile = $user->load([
+						'registration',
+						'registration.prof_pic' => function($q) {
+							$q->where('is_profile_picture' , 1);
+							$q->where('pet_id' , 0);
+						},
+						'pets',
+						'pets.profile_pic' => function($q) {
+							$q->where('is_profile_picture', 1);
+						}
+					]);
+		
+		$data['profileInformation'] = $profile->registration;
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
 		$data['mid'] = 'pages.inside.petlist';
 		$data['friend_flags'] = FriendService::check($user_id);
+		$data['id'] = $user_id;
+		$data['title'] = $profile->registration->getFullName();
+		$data['sub_title'] = '- Pet Lists';
+		$data['pet'] = $profile->pets;
 		return view('pages.master' , $data);
 	}
 	
 	public function showPetProfile($user_id, $pet_id) {
 		$owner = Registration::find($user_id);
-		$data['sub_title'] = '- '.$owner->first_name.' '.$owner->last_name.' Pets';
+		$data['sub_title'] = '- '.$owner->getFullName().' Pets';
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
 		$data['mid'] = 'pages.inside.profile.profilepet';

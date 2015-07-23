@@ -89,4 +89,9 @@ class Registration extends Model {
 		return Carbon::createFromFormat(self::$dbDateFormat, $date)->format('Y-m-d');
 	}
 
+	// PRESENTERS
+	public function getFullName() {
+		return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
+	}
+
 }
