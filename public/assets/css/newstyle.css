@@ -102,7 +102,9 @@ header span{
 	font-weight: bolder;
 	color: #2C3539;
 }
-
+header > div nav > ul > li:hover > ul{
+	visibility: visible;
+}
 header > div nav > ul > li > ul{
 	position: absolute;
 	padding: 10px;

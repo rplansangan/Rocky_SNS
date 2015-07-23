@@ -53,6 +53,8 @@ class PostRepository {
 			$file->move(public_path() . $dir['root'] , $filename . '.' . $file->getClientOriginalExtension());
     		$filePath = public_path() . $dir['root'] .'/'. $filename . '.' . $file->getClientOriginalExtension() ;
 
+    		createThumbnail($filePath , $filename);
+
 			}catch (\Exception $e) {
 				DB::rollback();
 				return trans('errors.err_500');

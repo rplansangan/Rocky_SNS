@@ -6,6 +6,10 @@ function custom_print_r($array){
 	echo '</pre>';
 }
 
+function createThumbnail($file , $name){
+
+}
+
 function _ago($tm,$rcs = 0) {
    $cur_tm = time(); $dif = $cur_tm-$tm;
    $pds = array('second','minute','hour','day','week','month','year','decade');

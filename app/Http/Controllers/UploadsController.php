@@ -35,13 +35,4 @@ class UploadsController extends Controller {
 		return view('ajax.comment' , $data);
 	}
 	
-	public function video(Request $request){
-		$data['video'] = PostService::create($request->except(['file']), $request->file('file'));
-		return view('ajax.video' , $data);
-	}
-	
-	public function uploadView(){
-		$data['video'] = Images::with(['post' , 'register'])->where('image_mime' , 'like' , '%video%')->where('user_id' , Auth::id())->latest()->get();
-		return view('pages.viewupload' , $data);
-	}
 }

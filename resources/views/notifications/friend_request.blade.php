@@ -5,5 +5,3 @@
 	'message' => trans('profile.friend.request_msg')
 ))
 
-
->>>>>>> origin/master
