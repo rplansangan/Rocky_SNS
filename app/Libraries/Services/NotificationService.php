@@ -163,7 +163,15 @@ class NotificationService {
 	}
 	
 	protected function getOriginUserDetails($notif) {
-		$data['name'] = $notif->origin_object->registration->first_name . ' ' . $notif->origin_object->registration->last_name;
+		$notif->origin_object->load([
+				'registration',
+				'registration.prof_pic' => function($q) {
+					$q->where('is_profile_picture', 1);
+					$q->where('pet_id', 0);
+				}
+		])->get();
+		
+		$data['name'] = $notif->origin_object->registration->getFullName();
 		$data['profile_route'] = route('profile.view', array($notif->origin_object->user_id));
 		$data['created_at'] = $notif->created_at;
 		$data['image'] = $notif->origin_object->registration->prof_pic;
