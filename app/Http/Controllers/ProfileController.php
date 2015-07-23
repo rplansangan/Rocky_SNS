@@ -143,7 +143,7 @@ class ProfileController extends Controller {
 	
 	public function showPetProfile($user_id, $pet_id) {
 		$owner = Registration::find($user_id);
-		$data['sub_title'] = '- '.$owner->first_name.' '.$owner->last_name.' Pets';
+		$data['sub_title'] = '- '.$owner->getFullName().' Pets';
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
 		$data['mid'] = 'pages.inside.profile.profilepet';
