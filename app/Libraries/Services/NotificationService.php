@@ -179,39 +179,33 @@ class NotificationService {
 		$origin_user = $this->getOriginUserDetails($notif);
 		
 		$params = json_decode($notif->params, true);
+		
+		$params['active'] = $this->isActive($notif->is_read);
+		$params['profile_route'] = $origin_user['profile_route'];
+		$params['name'] = $origin_user['name'];
+		
 		// if notification params has friend_ignore prop / if friend request is ignored
 		if(isset($params['friend_ignore'])) {
-			return view('notifications.friend_request_ignore')
-				->with('active', $this->isActive($notif->is_read))
-				->with('profile_route', $origin_user['profile_route'])
-				->with('name', $origin_user['name']);
+			return view('notifications.friend_request_ignore', $params);
 		}
 		
 		// if notification params has friend_accept prop / if friend request is accepted
 		if(isset($params['friend_accept'])) {
-			return view('notifications.friend_request_accept')
+			return view('notifications.friend_request_accept', $params)
 				->with('created_at' , $origin_user['created_at'])
-				->with('image' , $origin_user['image'])
-				->with('profile_route', $origin_user['profile_route'])
-				->with('name', $origin_user['name']);
+				->with('image' , $origin_user['image']);
 		}
 		
 		// if notification params has friend_accept_for_req / if friend request is accepted
 		if(isset($params['friend_accept_for_req'])) {
-			return view('notifications.friend_request_accept_for_req')
-				->with('active', $this->isActive($notif->is_read))
-				->with('profile_route', $origin_user['profile_route'])
-				->with('name', $origin_user['name'])
+			return view('notifications.friend_request_accept_for_req', $params)
 				->with('created_at' , $origin_user['created_at'])
 				->with('image' , $origin_user['image'])
 				->with('requesting_id', $origin_user['id']);
 		}
-			return view('notifications.friend_request')
-				->with('active', $this->isActive($notif->is_read))
-				->with('profile_route', $origin_user['profile_route'])
+			return view('notifications.friend_request', $params)
 				->with('created_at' , $origin_user['created_at'])
-				->with('image' , $origin_user['image'])
-				->with('name', $origin_user['name']);	
+				->with('image' , $origin_user['image']);	
 	}
 	
 	protected function formatLike($notif) {
