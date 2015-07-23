@@ -128,7 +128,6 @@ class ProfileController extends Controller {
 							$q->where('is_profile_picture', 1);
 						}
 					]);
-		
 		$data['profileInformation'] = $profile->registration;
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';

@@ -6,9 +6,9 @@
 		@if(isset($pet) AND !$pet->isEmpty())
 			<div class="page-header">
 				@if(Auth::check())
-					<h2><i class="fa fa-paw"></i> My Pets<br/><small>You have 1 pet(s)</small><h2/>
+					<h2><i class="fa fa-paw"></i> My Pets<br/><small>You have {{ count($pet) }} pet(s)</small><h2/>
 				@else
-					<h2><i class="fa fa-paw"></i> {{ $title }}'s Pets<br/><small>{{ $title }} have 1 pet(s)</small></h2>
+					<h2><i class="fa fa-paw"></i> {{ $title }}'s Pets<br/><small>{{ $title }} have {{ count($pet) }} pet(s)</small></h2>
 				@endif
 			</div>
 			@foreach($pet as $row)
