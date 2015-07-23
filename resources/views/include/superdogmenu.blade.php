@@ -83,10 +83,11 @@
 			@else
 			<div class="text-left" style="padding:5px 0px 10px 0px">
 				<p style="padding-left: 25px;">You have no Neighbors</p>
-				<a href="#" style="padding-left: 25px; color: #b7042c;"><i class="fa fa-user-plus"></i> add neighbors</a>
+				<a href="{{ route('public.neighbors') }}" style="padding-left: 25px; color: #b7042c;"><i class="fa fa-user-plus"></i> add neighbors</a>
 			</div>
 			@endif
 	</nav>
+	<br clear="all">
 	<div class="text-center loading-dots">
 		<a href="#"><span>...</span></a>
 	</div>
