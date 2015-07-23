@@ -20,12 +20,7 @@
 							<span id="friendStatusText">{{ trans('profile.friend.request_add') }}</span>
 						</a>
 					@elseif($friend_flags->friendRequest())
-						<a href="javascript:void(0)"  id="add_neighbor" route="{{ Route('profile.request.friend') }}" user_id="{{ $profileInformation->user_id }}" data-act="add">
-							<i class="fa fa-user-plus"></i>
-							<span id="friendStatusText">{{ trans('profile.friend.is_pending') }}</span>
-						</a>
-					@elseif($friend_flags->friendRequest())	
-						<a href="javascript:void(0)"  id="add_neighbor"  route="{{ Route('profile.request.friend') }}" user_id="{{ $profileInformation->user_id }}" data-act="req">
+						<a href="javascript:void(0)"  id="add_neighbor" route="{{ Route('profile.request.friend') }}" user_id="{{ $profileInformation->user_id }}" data-act="">
 							<i class="fa fa-user-plus"></i>
 							<span id="friendStatusText">{{ trans('profile.friend.is_pending') }}</span>
 						</a>								
@@ -37,7 +32,7 @@
 					@endif
 					<a href="javascript:void(0)" id="send_msg" class="pb"><i class="fa fa-envelope-o"></i> Send a message</a>
 				@endif
-			<a href="{{ route('profile.petslist' , ['user_id' => $profileInformation->user_id]) }}" class="pb" ><i class="fa fa-paw"></i> 
+				<a href="{{ route('profile.petslist' , ['user_id' => $profileInformation->user_id]) }}" class="pb" ><i class="fa fa-paw"></i> 
 				@if(Auth::id() == $profileInformation->user_id) 
 				My Pets
 				@else
