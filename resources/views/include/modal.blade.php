@@ -153,7 +153,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">How to call this pet:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="pet_call_attn" class="form-control" placeholder="Name">
+                                        <input type="text" name="pet_call_attn" class="form-control" placeholder="Name" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -165,7 +165,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Animal Type:</label>
                                     <div class='col-sm-8'>
-                                        <select id="sel-ani-type" name="pet_type" class="form-control">
+                                        <select id="sel-ani-type" name="pet_type" class="form-control" required>
                                             <option></option>
                                             <option value="1">Dog</option>
                                             <option value="2">Cat</option>
@@ -188,14 +188,14 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Estimated Birthdate:</label>
                                     <div class='col-sm-8'>
-                                        <input type="date" class="form-control" id="pet_bday" name="pet_bday">
+                                        <input type="date" class="form-control" id="pet_bday" name="pet_bday" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Gender:</label>
                                     <div class="radio col-sm-2">
                                         <label>
-                                            <input type="radio" name="pet_gender" value="M">
+                                            <input type="radio" name="pet_gender" value="M" checked>
                                             Male
                                         </label>
                                     </div>
@@ -209,11 +209,11 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Weight in lb:</label>
                                     <div class="col-sm-3">
-                                        <input type="text" name="weight" class="form-control" placeholder="Weight">
+                                        <input type="text" name="weight" class="form-control" placeholder="Weight" required>
                                     </div>
                                     <label class="col-sm-2 control-label">Height in cm:</label>
                                     <div class="col-sm-3">
-                                        <input type="text" name="height" class="form-control" placeholder="Height">
+                                        <input type="text" name="height" class="form-control" placeholder="Height" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
