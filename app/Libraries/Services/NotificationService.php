@@ -181,12 +181,19 @@ class NotificationService {
 		$params = json_decode($notif->params, true);
 		// if notification params has friend_ignore prop / if friend request is ignored
 		if(isset($params['friend_ignore'])) {
-			return $origin_user['name'];
+			return view('notifications.friend_request_ignore')
+				->with('active', $this->isActive($notif->is_read))
+				->with('profile_route', $origin_user['profile_route'])
+				->with('name', $origin_user['name']);
 		}
 		
 		// if notification params has friend_accept prop / if friend request is accepted
 		if(isset($params['friend_accept'])) {
-			return $origin_user['name'];
+			return view('notifications.friend_request_accept')
+				->with('created_at' , $origin_user['created_at'])
+				->with('image' , $origin_user['image'])
+				->with('profile_route', $origin_user['profile_route'])
+				->with('name', $origin_user['name']);
 		}
 		
 		// if notification params has friend_accept_for_req / if friend request is accepted
@@ -255,7 +262,7 @@ class NotificationService {
 								->select(array('origin_object_id', 'origin_object_type', 'is_read', 'params', 'destination_user_id', 'notif_type' , 'created_at'))
 								->with(array('object'))
 								->userNotif($user_id);
-		
+
 		return $this->formatNotif($notif_collection);
 	}
 	
