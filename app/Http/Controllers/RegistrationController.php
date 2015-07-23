@@ -132,22 +132,16 @@ class RegistrationController extends Controller {
 		$input = array_except($request->all(), array('_token'));
 		$pet = new Pets();
 		$pet->user_id = Auth::id();
-		$pet->rocky_tag_no = $input['rocky_tag_no'];
 		$pet->pet_name = $input['pet_name'];
 		$pet->pet_gender = $input['pet_gender'];
 		$pet->pet_type = $input['pet_type'];
 		$pet->pet_bday = $input['pet_bday'];
 		$pet->food = $input['food'];
 		$pet->food_style = $input['food_style'];
-		$pet->brand = $input['brand'];
 		$pet->feeding_interval = $input['feeding_interval'];
 		$pet->feeding_time = $input['feeding_time'];
 		$pet->weight = $input['weight'];
 		$pet->height = $input['height'];
-		$pet->behavior = $input['behavior'];
-		$pet->pet_likes = $input['pet_likes'];
-		$pet->pet_dislikes = $input['pet_dislikes'];
-		$pet->identifying_marks = $input['identifying_marks'];
 		$pet->save();
 
 		if($request->file('petfile')) {

@@ -5,7 +5,11 @@
 	<div class="petslistcont text-center">
 		@if(isset($pet) AND !$pet->isEmpty())
 			<div class="page-header">
-				<h2>{{ $title }} Pets</h2>
+				@if(Auth::check())
+					<h2><i class="fa fa-paw"></i> My Pets<br/><small>You have 1 pet(s)</small><h2/>
+				@else
+					<h2><i class="fa fa-paw"></i> {{ $title }}'s Pets<br/><small>{{ $title }} have 1 pet(s)</small></h2>
+				@endif
 			</div>
 			@foreach($pet as $row)
 				<div class="col-lg-12 nopad">

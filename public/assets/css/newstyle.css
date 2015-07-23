@@ -548,9 +548,17 @@ a.user-feed {
   padding: 45px 30px;
   border-radius: 8px;
 }
+.petslistcont > div > div > img {
+  margin: 0 auto;
+  border-radius: 8px;
+}
 .petslistcont > div > div a {
   color: #B7042C;
   font-weight: bold;
+  font-size: 20px;
+}
+.page-header {
+  margin: 10px 0 0;
 }
 
 /* VIDEO */
