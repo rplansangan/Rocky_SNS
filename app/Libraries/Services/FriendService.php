@@ -55,6 +55,7 @@ class FriendService {
 		$q = $this->list
 				->select(['user_id', 'friend_user_id'])
 				->ofUserWithReq($this->ids['current'], $this->ids['requested'])->get();
+		
 		return !$q->isEmpty();
 	}
 	
@@ -68,7 +69,7 @@ class FriendService {
 				->select(['requesting_user_id', 'requested_user_id', 'status'])
 				->ofUserWithReq($this->ids['current'], $this->ids['requested'])
 				->whereNotIn('status', [2, 9])->latest()->take(1)->get();
-
+		
 		return !$q->isEmpty();	
 			
 	}

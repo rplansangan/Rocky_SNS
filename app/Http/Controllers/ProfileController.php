@@ -43,7 +43,7 @@ class ProfileController extends Controller {
 		$data['mid'] = 'pages.inside.profile.gallery';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id(), $id);
 		$data['id'] = $id;
-		$data['friend_flags'] = FriendService::check(Auth::id());
+		$data['friend_flags'] = FriendService::check($id);
 
 		return view('pages.master', $data);		
 	}
@@ -63,7 +63,7 @@ class ProfileController extends Controller {
 		$data['mid'] = 'pages.inside.profile.about';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id(), $id);
 		$data['id'] = $id;
-		$data['friend_flags'] = FriendService::check(Auth::id());
+		$data['friend_flags'] = FriendService::check($id);
 
 		return view('pages.master', $data);		
 	}
@@ -83,7 +83,7 @@ class ProfileController extends Controller {
 		$data['mid'] = 'pages.inside.profile.profile';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id(), $id);
 		$data['id'] = $id;
-		$data['friend_flags'] = FriendService::check(Auth::id());
+		$data['friend_flags'] = FriendService::check($id);
 
 		return view('pages.master', $data);		
 	}
@@ -134,7 +134,7 @@ class ProfileController extends Controller {
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
 		$data['mid'] = 'pages.inside.petlist';
-		$data['friend_flags'] = FriendService::check(Auth::id());
+		$data['friend_flags'] = FriendService::check($id);
 		return view('pages.master' , $data);
 	}
 	

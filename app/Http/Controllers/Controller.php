@@ -19,7 +19,10 @@ abstract class Controller extends BaseController {
 	
 
 	public function __construct(Initialize $init, Get $cacheGet) {
-		$this->initialize($init, $cacheGet);
+		// initialize should not be loaded on every ajax calls
+		if(!Request::ajax()) {
+			$this->initialize($init, $cacheGet);
+		}
 	}
 	
 	protected function initialize($init, $cacheGet) {
