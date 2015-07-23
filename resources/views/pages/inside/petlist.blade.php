@@ -3,33 +3,30 @@
 	@include('pages.inside.profile.profilehead')
 
 	<div class="petslistcont text-center">
-		<div class="col-lg-4">
-			<div>
-				<img src="{{ URL::asset('assets/images/neigh5.jpg') }}" class="img-responsive">
-				<h4><a href="{{ route('profile.showPetProfile') }}">Tyrion</a><br><small>Shih Tzu</small></h4>
-				<div class="col-lg-12 nopad">
-					<small>05/05/2015</small>
-				</div>
+		@if(isset($pet) AND !$pet->isEmpty())
+			<div class="page-header">
+				<h2>{{ $title }} Pets</h2>
 			</div>
-		</div>
-		<div class="col-lg-4">
-			<div>
-				<img src="{{ URL::asset('assets/images/neigh6.jpg') }}" class="img-responsive">
-				<h4><a href="{{ route('profile.showPetProfile') }}">Mulder</a><br><small>Golden Retriever</small></h4>
+			@foreach($pet as $row)
 				<div class="col-lg-12 nopad">
-					<small>05/05/2015</small>
+					<div>
+						@if(isset($row->profile_pic))
+							<img src="{{ mediaSrc($row->profile_pic->image_path , $row->profile_pic->image_name , $row->profile_pic->image_ext ) }}" class="img-responsive">
+						@else
+							<img src="{{ URL::asset('assets/images/neigh5.jpg') }}" class="img-responsive" style="margin:0 auto;">
+						@endif
+						<h4><a href="{{ route('profile.showPetProfile' ,['user_id' => $id , 'pet_id' => $row->pet_id ]) }}">{{ $row->pet_name }}</a><br><small>{{ $row->breed }}</small></h4>
+						<div class="col-lg-12 nopad">
+							<small>{{ $row->pet_bday }}</small>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div class="col-lg-4">
+			@endforeach
+		@else
 			<div>
-				<img src="{{ URL::asset('assets/images/neigh7.jpg') }}" class="img-responsive">
-				<h4><a href="{{ route('profile.showPetProfile') }}">Coffee</a><br><small>Shih Tzu</small></h4>
-				<div class="col-lg-12 nopad">
-					<small>05/05/2015</small>
-				</div>
+				<h2>No Pets</h2>
 			</div>
-		</div>
+		@endif
 	</div>
 @else
 	<div class="text-center">

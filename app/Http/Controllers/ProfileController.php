@@ -134,7 +134,14 @@ class ProfileController extends Controller {
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
 		$data['mid'] = 'pages.inside.petlist';
-		$data['friend_flags'] = FriendService::check($id);
+		$data['friend_flags'] = FriendService::check($user_id);
+		$data['id'] = $user_id;
+		$data['pet'] = Pets::select(array('pet_id', 'user_id', 'pet_name', 'breed', 'pet_bday', 'pet_gender', 'pet_type'))
+		->where('user_id', $user_id)->with(array(
+			'profile_pic' => function($q) {
+				$q->where('is_profile_picture', 1);
+			}
+			))->get();
 		return view('pages.master' , $data);
 	}
 	

@@ -5,10 +5,10 @@
 			@else
 			<img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-dp">
 			@endif
-			<h3>{{ $pet[0]->pet_name}} <br>
+			<h3>{{ @$pet[0]->pet_name}} <br>
 				<small class="text-muted">
 				@if(!empty($pet[0]->breed)) 
-					{{ $pet->breed }}
+					{{ @$pet->breed }}
 				@else 
 					no breed 
 				@endif
