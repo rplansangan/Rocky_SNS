@@ -136,6 +136,7 @@ class RegistrationController extends Controller {
 		$pet->pet_gender = $input['pet_gender'];
 		$pet->pet_type = $input['pet_type'];
 		$pet->pet_bday = $input['pet_bday'];
+		$pet->breed = $input['breed'];
 		$pet->food = $input['food'];
 		$pet->food_style = $input['food_style'];
 		$pet->feeding_interval = $input['feeding_interval'];

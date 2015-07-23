@@ -8,7 +8,7 @@
 			<h3>{{ @$pet[0]->pet_name}} <br>
 				<small class="text-muted">
 				@if(!empty($pet[0]->breed)) 
-					{{ @$pet->breed }}
+					{{ $pet[0]->breed }}
 				@else 
 					breed not indicated
 				@endif
