@@ -451,7 +451,7 @@ input.btn {
 	padding: 5px 3px;
 	color:#b7042c;
 }
-.mid .search-input-petshop > a{
+.mid .search-input-petshop > form > a{
 	position: absolute;
 	top: 32px;
 	right: 20px;

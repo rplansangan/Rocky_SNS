@@ -10,8 +10,10 @@
 				<a href="#">Penang</a>
 				<a href="#">More Cities..</a>
 			</span>
-			<input type="text" class="form-control input-lg " placeholder="Search for...">
-			<a href="#"><img src="{{ URL::asset('assets/img/search.png') }}"></a>
+			<form action="{{ route('neighbors.search') }}" method="GET" id="searchNeighborForm">
+				<input type="text" class="form-control input-lg " name="neighbors" placeholder="Search for...">
+				<a href="javascript:void(0);" id="neighborSearch"><img src="{{ URL::asset('assets/img/search.png') }}"></a>
+			</form>
 		</div>
 		<br clear="all">
 	</div>

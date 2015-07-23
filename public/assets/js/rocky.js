@@ -187,9 +187,15 @@ $(document).ready(function(){
         });
     });
 
+    $(document).on('click' , '#neighborSearch' , function(){
+        $('#searchNeighborForm').trigger('submit');
+    });
     $(document).on('click' , '#search , #loadMoreTrigger' , function(){
         $('#searchForm').trigger('submit');
     });
+
+
+
 
 
     $(document).on('click' , '#add_neighbor' , function(){
