@@ -153,7 +153,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">How to call this pet:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="pet_call_attn" class="form-control" placeholder="Name" required>
+                                        <input type="text" name="pet_call_attn" class="form-control" placeholder="Name">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -165,7 +165,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Animal Type:</label>
                                     <div class='col-sm-8'>
-                                        <select id="sel-ani-type" name="pet_type" class="form-control" required>
+                                        <select id="sel-ani-type" name="pet_type" class="form-control">
                                             <option></option>
                                             <option value="1">Dog</option>
                                             <option value="2">Cat</option>
