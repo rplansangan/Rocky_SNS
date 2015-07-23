@@ -134,7 +134,7 @@ class ProfileController extends Controller {
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
 		$data['mid'] = 'pages.inside.petlist';
-		$data['friend_flags'] = FriendService::check($id);
+		$data['friend_flags'] = FriendService::check($user_id);
 		return view('pages.master' , $data);
 	}
 	

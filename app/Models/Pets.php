@@ -52,7 +52,6 @@ class Pets extends Model {
 		'pet_name' => 'required',
 		'pet_type' => 'required',
 		'breed' => 'required',
-		'pet_bday' => 'required|date',
 		'pet_gender' => 'required',
 	);
 	

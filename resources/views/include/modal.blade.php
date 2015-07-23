@@ -138,7 +138,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Profile Picture</label>
                                     <div class='col-sm-9'>
-                                        <input type='file' name="petfile" class="custom-file-input" />
+                                        <input type='file' name="petfile" class="custom-file-input" required />
                                     </div>
                                 </div>
                                 <div class="form-group hidden view-image-here">
@@ -147,13 +147,13 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Pet Name:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="pet_name" class="form-control" placeholder="Name">
+                                        <input type="text" name="pet_name" class="form-control" placeholder="Name" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">How to call this pet:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="pet_call_attn" class="form-control" placeholder="Name">
+                                        <input type="text" name="pet_call_attn" class="form-control" placeholder="Name" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -165,7 +165,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Animal Type:</label>
                                     <div class='col-sm-8'>
-                                        <select id="sel-ani-type" name="pet_type" class="form-control">
+                                        <select id="sel-ani-type" name="pet_type" class="form-control" required>
                                             <option></option>
                                             <option value="1">Dog</option>
                                             <option value="2">Cat</option>
@@ -182,7 +182,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Breed:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="breed" class="form-control" placeholder="Breed">
+                                        <input type="text" name="breed" class="form-control" placeholder="Breed" required>
                                     </div>
                                 </div>
                                 <div class="form-group">

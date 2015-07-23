@@ -432,6 +432,12 @@ header > div nav > ul > li > ul > li > a:hover{
 .right-map {
   margin-top: 90px !important;
 }
+.right-map.notlogin {
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  margin-top: 30px !important;
+}
 input.btn {
   background-color: #b7042c;
   color: #fff;
