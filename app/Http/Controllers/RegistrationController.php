@@ -56,8 +56,8 @@ class RegistrationController extends Controller {
 			$reg->email_address = $input['email_address'];
 			$reg->save();
 
-			echo 'ok';
 			Auth::loginUsingId($user->user_id);
+			return 'ok';
 		}
 	}
 	
