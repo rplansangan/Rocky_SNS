@@ -189,7 +189,7 @@ header > div nav > ul > li > ul > li > a:hover{
 
 /* LEFT */
 .left span{
-	font-size: 12px;
+	font-size: 11px;
 }
 .left > div{
 	border-radius: 8px;
@@ -210,16 +210,16 @@ header > div nav > ul > li > ul > li > a:hover{
 	padding: 11px;
 }
 .left nav > ul > li{
-	padding: 10px 5px 10px 10px;
+	padding: 10px 4px 10px 2px;
 }
 .left span{
-	padding: 0px 12px;
+	padding: 0px 5px;
 	line-height: 10px;
 	color: #2C3539;
 	font-weight: bold;
 }
 .left > div > label{
-	padding: 10px 25px 0px 25px;
+	padding: 10px 25px 0px 15px;
 }
 .loading-dots > a , .loading-dots span{
 	font-size: 50px;
@@ -377,6 +377,13 @@ header > div nav > ul > li > ul > li > a:hover{
 /* END MID */
 
 /* RIGHT */
+<<<<<<< HEAD
+=======
+
+.right > div:first-child{
+	margin-top: 0px !important;
+}
+>>>>>>> origin/master
 .right > div{
 	border:1px solid rgba(0,0,0,0.2);
 	background-color: white;
@@ -421,7 +428,7 @@ nav.ffbtns {
 	padding: 5px 3px;
 	color:#b7042c;
 }
-.mid .search-input-petshop > form > a{
+.mid .search-input-petshop > form > a , .mid .search-input-petshop > a{
 	position: absolute;
 	top: 32px;
 	right: 20px;
