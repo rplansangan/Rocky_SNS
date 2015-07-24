@@ -7,11 +7,11 @@
 			<div class="col-lg-12">
 				<h5> 
 					@if(isset($row->user->prof_pic))
-					<a href="#"><img src="{{ mediaSrc($row->user->prof_pic->image_path, $row->user->prof_pic->image_name , $row->user->prof_pic->image_ext) }}" class="profile-pic"></a>
+					<a href="{{ route('profile.view' , ['id' => $row->user->user_id]) }}"><img src="{{ mediaSrc($row->user->prof_pic->image_path, $row->user->prof_pic->image_name , $row->user->prof_pic->image_ext) }}" class="profile-pic"></a>
 					@else
-					<a href="#"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic"></a>
+					<a href="{{ route('profile.view' , ['id' => $row->user->user_id]) }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic"></a>
 					@endif
-					<a href="#"><span>{{ $row->user->first_name.' '.$row->user->last_name }}</span></a>
+					<a href="{{ route('profile.view' , ['id' => $row->user->user_id]) }}"><span>{{ $row->user->first_name.' '.$row->user->last_name }}</span></a>
 					@if(isset($row->image))
 					@if(stristr($row->image->image_mime, 'image/'))
 					<label>Posted a photo</label>
