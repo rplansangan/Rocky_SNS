@@ -82,7 +82,7 @@ class Registration extends Model {
 	}
 	
 	public function prof_pic() {
-		return $this->hasOne('SNS\Models\Images', 'user_id', 'user_id');
+		return $this->hasOne('SNS\Models\Images', 'user_id', 'user_id')->where('is_profile_picture', 1)->where('pet_id', 0);
 	}
 	
 	public function getBirthDateAttribute($date) {

@@ -31,12 +31,10 @@ class ProfileController extends Controller {
 	public function showGallery($id){
 		$profileInformation = Registration::with([
 			'prof_pic' => function($q){
-				$q->where('is_profile_picture' , 1);
-				$q->where('pet_id' , 0);
 			}
 		])->where('user_id' , $id)->get();
 		$data['profileInformation'] = $profileInformation[0];
-		$data['title'] = $profileInformation[0]->first_name.' '.$profileInformation[0]->last_name;
+		$data['title'] = $profileInformation[0]->getFullName();
 		$data['sub_title'] = ' - Gallery';
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
@@ -49,14 +47,9 @@ class ProfileController extends Controller {
 	}
 
 	public function showAbout($id){
-		$profileInformation = Registration::with([
-			'prof_pic' => function($q){
-				$q->where('is_profile_picture' , 1);
-				$q->where('pet_id' , 0);
-			}
-		])->where('user_id' , $id)->get();
+		$profileInformation = Registration::with(['prof_pic'])->where('user_id' , $id)->get();
 		$data['profileInformation'] = $profileInformation[0];
-		$data['title'] = $profileInformation[0]->first_name.' '.$profileInformation[0]->last_name;
+		$data['title'] = $profileInformation[0]->getFullName();
 		$data['sub_title'] = ' - About';
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
@@ -69,14 +62,9 @@ class ProfileController extends Controller {
 	}
 
 	public function showProfile($id){ 	   
-		$profileInformation = Registration::with([
-			'prof_pic' => function($q){
-				$q->where('is_profile_picture' , 1);
-				$q->where('pet_id' , 0);
-			}
-		])->where('user_id' , $id)->get();
+		$profileInformation = Registration::with(['prof_pic'])->where('user_id' , $id)->get();
 		$data['profileInformation'] = $profileInformation[0];
-		$data['title'] = $profileInformation[0]->first_name.' '.$profileInformation[0]->last_name;
+		$data['title'] = $profileInformation[0]->getFullName();
 		$data['sub_title'] = ' - Newsfeed';
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
@@ -120,12 +108,9 @@ class ProfileController extends Controller {
 		$profile = $user->load([
 						'registration',
 						'registration.prof_pic' => function($q) {
-							$q->where('is_profile_picture' , 1);
-							$q->where('pet_id' , 0);
 						},
 						'pets',
 						'pets.profile_pic' => function($q) {
-							$q->where('is_profile_picture', 1);
 						}
 					]);
 		$data['profileInformation'] = $profile->registration;
@@ -148,7 +133,6 @@ class ProfileController extends Controller {
 		$data['mid'] = 'pages.inside.profile.profilepet';
 		$data['pet'] = Pets::with([
 			'profile_pic' => function($q){
-				$q->where('is_profile_picture' , 1);
 			}
 			])->where('pet_id' , $pet_id)->where('user_id' , $user_id)->get();
 		return view('pages.master' , $data);

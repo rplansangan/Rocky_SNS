@@ -40,7 +40,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 				'user_token',
 				'socket_id',
 				'attempts',
-				'time_lock'
+				'time_lock',
+				'selected_pet'
 			];
 	
 	/**
@@ -84,6 +85,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function pets() {
 		return $this->hasMany('SNS\Models\Pets', 'user_id');
 	}
+
+	public function selected_pet() {
+		return $this->hasOne('SNS\Models\Pets', 'pet_id', 'selected_pet');
+	}
 	
 	public function posts() {
 		return $this->hasMany('SNS\Models\Posts', 'user_id', 'user_id');
@@ -102,7 +107,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 	
 	public function prof_pic() {
-		return $this->hasOne('SNS\Models\Images', 'user_id', 'user_id');
+		return $this->hasOne('SNS\Models\Images', 'user_id', 'user_id')->where('is_profile_picture', 1)->where('pet_id', 0);
 	}
 	
 	public function adverts() {

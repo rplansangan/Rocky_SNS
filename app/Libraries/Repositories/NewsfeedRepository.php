@@ -75,14 +75,11 @@ class NewsfeedRepository {
 					},
 					'user.prof_pic' => function ($q) use ($profPicSelect) {
 						$q->addSelect($profPicSelect);
-						$q->where('is_profile_picture', 1);
-						$q->where('pet_id', 0);
 					},
 					'like' => function ($q) use ($likeSelect) {
 					   $q->addSelect($likeSelect);
 				    },
 					'comment' => function ($q) {
-					    $q->count();
 					}
 			])->latest()->take($take)->get();
 		} else if(is_null($id)) {
@@ -99,14 +96,11 @@ class NewsfeedRepository {
 					},
 					'user.prof_pic' => function ($q) use ($profPicSelect) {
 						$q->addSelect($profPicSelect);
-						$q->where('is_profile_picture', 1);
-						$q->where('pet_id', 0);
 					},
 					'like' => function ($q) use ($likeSelect) {
 						$q->addSelect($likeSelect);
 					},
 					'comment' => function ($q) {
-					    $q->count();
 					}
 			])->latest()->take($take)->get();
 		} else if(is_null($id) or $id === 0) {
@@ -123,14 +117,11 @@ class NewsfeedRepository {
 					},
 					'user.prof_pic' => function ($q) use ($profPicSelect) {
 						$q->addSelect($profPicSelect);
-						$q->where('is_profile_picture', 1);
-						$q->where('pet_id', 0);
 					},
 					'like' => function ($q) use ($likeSelect) {
 						$q->addSelect($likeSelect);
 					},
 					'comment' => function ($q) {
-						$q->count();
 					}
 			])->latest()->take($take)->get();
 		}
@@ -148,8 +139,6 @@ class NewsfeedRepository {
 				},
 				'user.prof_pic' => function ($q) use ($profPicSelect) {
 					$q->addSelect($profPicSelect);
-					$q->where('is_profile_picture', 1);
-					$q->where('pet_id', 0);
 				},
 				'like' => function ($q) use ($likeSelect) {
 					$q->addSelect($likeSelect);
@@ -177,14 +166,11 @@ class NewsfeedRepository {
 					},
 					'user.prof_pic' => function ($q) use($profPicSelect) {
 						$q->addSelect($profPicSelect);
-						$q->where('is_profile_picture', 1);
-						$q->where('pet_id', 0);
 					},
 					'like' => function ($q) use ($likeSelect) {
 						$q->addSelect($likeSelect);
 					},
 					'comment' => function ($q) {
-					    $q->count();
 					}
 			])->latest()->skip($skip)->take($take)->get();
 		}		
@@ -200,14 +186,11 @@ class NewsfeedRepository {
 				},
 				'user.prof_pic' => function ($q) use ($profPicSelect) {
 					$q->addSelect($profPicSelect);
-					$q->where('is_profile_picture', 1);
-					$q->where('pet_id', 0);
 				},
 				'like' => function ($q) use ($likeSelect) {
 					$q->addSelect($likeSelect);
 				},
 				'comment' => function ($q) {
-				    $q->count();
 				}
 		])->latest()->skip($skip)->take($take)->get();
 	}
