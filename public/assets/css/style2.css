@@ -2,6 +2,17 @@ html , body{
   background-color: #f5f5f5;
   font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
 }
+a.tnp {
+  color: #b7042c;
+  text-decoration: none;
+}
+a.tabclick {
+  color: #b7042c;
+}
+input.btn.btn-primary {
+  background-color: #b7042c;
+  border: 0;
+}
 .nopad{
   padding: 0px;
 }

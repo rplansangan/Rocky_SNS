@@ -92,7 +92,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <p class="col-sm-12 text-center">By clicking the Sign Up button, you agree to our <a href="#">Terms</a> and that you have read our <a href="#">Privacy policy</a>.</p>
+                                    <p class="col-sm-12 text-center">By clicking the Sign Up button, you agree to our <a href="#" class="tnp">Terms</a> and that you have read our <a href="#" class="tnp">Privacy policy</a>.</p>
                                     <div class="form-group text-right">
                                         <div class="col-sm-offset-2 col-sm-10">
                                             <input type="submit" value="Sign Up" class="btn btn-primary">
@@ -119,19 +119,20 @@
 
 <!-- ADD PETS -->
 <div class="modal fade" id="addpetModal" tabindex="-1" role="dialog" aria-labelledby="addpetModalLabel">
-    <div class="modal-dialog  modal-lg" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <div class="text-center">
-                    <h2>Add Your Pet <br><small>Please complete the form to add your pet</small></h2>
+                <div class="text-left">
+                    <h2>Add Your Pet <br></h2>
                 </div>
             </div>
 
             <div class="modal-body">
                 <div class="register-page">
                     <div class="register-main">
+                        <h2 style="margin-top: 0;"><small>Please complete the form to add your pet</small></h2>
                         <div style="margin-top:30px;">
                             <form method="POST" action="{{ route('register.petRegister') }}" class="form-horizontal reg " id="updateform" role="form" enctype="multipart/form-data">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -208,11 +209,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Weight in lb:</label>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <input type="text" name="weight" class="form-control" placeholder="Weight" required>
                                     </div>
-                                    <label class="col-sm-2 control-label">Height in cm:</label>
-                                    <div class="col-sm-3">
+                                    <label class="col-sm-3 control-label">Height in cm:</label>
+                                    <div class="col-sm-2">
                                         <input type="text" name="height" class="form-control" placeholder="Height" required>
                                     </div>
                                 </div>
