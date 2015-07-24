@@ -51,10 +51,6 @@
   </div>
 </div>
 
-<div>
-  <a href="#"><img src="{{ URL::asset('assets/img/post2.jpg') }}" class="img-responsive thumb"></a>
-</div>
-
 <div class="missingpets-area text-center">
   <img src="{{ URL::asset('assets/img/post1.jpg') }}" class="img-responsive">
   <div>
