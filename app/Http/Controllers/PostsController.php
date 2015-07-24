@@ -52,7 +52,11 @@ class PostsController extends Controller {
 	
 	public function getnewsfeed(Request $request) {
 		$input = array_except($request->all(), array('_token'));
-		$data['newsfeed'] = PostService::incrementalNewsFeed(Auth::id() , $input['skip'] , null , 10);
+		if(Auth::check()){
+			$data['newsfeed'] = PostService::incrementalNewsFeed(Auth::id() , $input['skip'] , null , 10);
+		}else{
+			$data['newsfeed'] = PostService::incrementalNewsFeed(1 , $input['skip'] , 1 , 10);
+		}
 		return view('include.newsfeed' , $data);
 	}
 

@@ -281,24 +281,24 @@ header > div nav > ul > li > ul > li > a:hover{
 	margin: 0 auto;
 	margin-top: 5px;
 }
-.mid .video-content , .mid .image-content{
+.mid .video-content , .mid .image-content , .right .video-content{
 	margin: 10px 0px;
 }
-.mid .newsfeed-content > .video-content , .mid .newsfeed-content > .video-content > div , .mid .newsfeed-bottom > div{
+.mid .newsfeed-content > .video-content , .mid .newsfeed-content > .video-content > div , .mid .newsfeed-bottom > div , .right .video-content{
 	display: inline-block;
 	position: relative;
 	z-index : 1;
 }
-.mid .newsfeed-content > .video-content img , .mid .newsfeed-bottom img{
+.mid .newsfeed-content > .video-content img , .mid .newsfeed-bottom img , .right .video-content img{
 	display: block;
 }
-.mid .newsfeed-content > .video-content > .play{
+.mid .newsfeed-content > .video-content > .play , .right .video-content > .play{
 	position: absolute; 
 	z-index: 1; 
 	top: 40%; 
 	right: 47%;
 }
-.mid .newsfeed-content > .video-content > .play > img{
+.mid .newsfeed-content > .video-content > .play > img , , .right .video-content > .play > img{
 	width: 80px;
 }
 
@@ -387,57 +387,13 @@ header > div nav > ul > li > ul > li > a:hover{
 	background-color: white;
 	box-shadow: -1px 9px 28px #888888;
 	margin: 20px 0px 20px 0px;
-	padding: 25px 5px 0px 5px;
+	padding: 1px;
 	border-radius: 8px;
 }
-.right > div > #rocky-last-location{
-	margin: 5px auto;
-	width: 90%;
-	height: 200px;
+.right .thumb{
+	border-radius: 8px;
 }
-.right > div > .pet-list > ul{
-	list-style-type: none;
-	padding: 30px 10px 5px 10px;
-}
-.right > div > .pet-list > ul > li{
-	display: inline-block;
-}
-.right > div > .pet-list > ul > li > a{
-	display: block;
-	padding: 5px;
-}
-.right > div > .pet-list > ul > li > .active{
-	border-bottom:3px solid #b7042c;
-}
-.right .button-group{
-	margin: 5px 0px;
-}
-.right .button-group > a{
-	display: inline-block;
-	padding: 5px;
-	font-size: 11px;
-	border-radius: 5px;
-	font-weight: bolder;
-	color:white;
-}
-.right .button-group #btn1{
-	background-color: #F7941E;
-}
-.right .button-group #btn2{
-	background-color: #b7042c;
-}
-.right > div > div{
-	padding: 10px;
-}
-.right-map {
-  margin-top: 90px !important;
-}
-.right-map.notlogin {
-  background-color: transparent;
-  border: 0;
-  box-shadow: none;
-  margin-top: 30px !important;
-}
+
 input.btn {
   background-color: #b7042c;
   color: #fff;

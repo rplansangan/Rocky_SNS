@@ -29,7 +29,7 @@ html , body{
 #landing > header > div > nav > ul{
   list-style-type: none;
   padding: 10px 35px;
-  margin-top: 25px;
+  margin-top: 20px;
 }
 #landing > header > div > nav > ul > li{
   display: inline-block;
@@ -42,16 +42,6 @@ html , body{
   padding: 10px 15px;
   line-height: 15px;
   border-radius: 5px;
-}
-#landing section > div > div:last-child{
-  margin-top: 30px;
-}
-#landing .landing-bg-section-2 > div{
-  height: 100%;
-  color:white;
-  background-image: url('../images/landing/bg.png');
-  background-size: cover;
-  background-position: top center;
 }
 .button-group{
   width: 100%;
@@ -122,30 +112,7 @@ html , body{
 #slider1 .item h1 {
   margin-bottom: 40px;
 }
-#landing section{
-  height: 350px;
-}
-#landing .text-left .button-group{
-  margin-top: 15px;
-  padding: 0px;
-  margin-left: -10px;
-}
-#landing .text-right .button-group{
-  margin-top: 15px;
-  padding: 0px;
-}
-#landing > .map > div > div{
-  margin-top: 30px;
-}
-#landing > .map > div{
-  background-image: url('../images/landing/map.jpg');
-}
-#landing > .map{
-  height: 350px;
-}
-#landing > .map p , #landing > .map h1{
-  color:white;
-}
+
 .button-group-new {
   margin-top: 15px;
 }
@@ -165,52 +132,4 @@ html , body{
 button.login {
   background-color: #b7042c;
   color: #fff;
-}
-footer{
-  padding: 20px 10px;
-}
-footer > nav > ul:first-child{
-  margin-top: 20px;
-}
-footer >  nav > ul{
-  list-style-type: none;
-}
-footer >  nav > ul > li{
-  display: inline-block;
-}
-footer a{
-  font-size: 18px;
-  padding: 10px;
-}
-.footer-subscribe{
-  width: 40%;
-  margin: 0px auto;
-}
-.footer-subscribe > div > input , .footer-subscribe > div > input:active , .footer-subscribe > div > input:focus{
-  border: 1px solid #b7042c; 
-  height: 50px;
-}
-.footer-subscribe > div > span > button{
-  border: 1px solid #b7042c;
-  background-color: #b7042c;
-  color: white;
-  height: 50px;
-}
-.footer-subscribe > div > span > button:hover{
-  border: 1px solid #b7042c;
-  background-color: #b7042c;
-  color: white;
-}
-section > div > div > #layer1{
-  position: absolute;
-  z-index: 1;
-}
-section > div > div > #layer2{
-  position: absolute;
-  z-index: 2;
-}
-#landing section > div{
-  width: 960px;
-  margin: 0px auto;
-  height: 350px;
 }

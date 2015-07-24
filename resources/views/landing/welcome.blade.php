@@ -53,48 +53,7 @@
      <input type="hidden" id="route" value="{{ Route('login') }}">
      <div class="container-fluid nopad" id="landing">
       @include('landing.top')
-      <!-- SLIDER -->
-      <div id="container">
-          <div id="sliderdiv1">
-              <div id="sliderdiv2">
-                  <div id="slider1">
-                      <div>
-                        <img src="{{ URL::asset('assets/images/landing/slider4.png') }}" alt="b01" width="960px" height="540px" />
-                          <div class="button-group">
-                            <a href="#" id="btn1">Learn More</a>
-                            <a class="signup_btn" data-toggle="modal" data-target="#signupModal" href="javascript:void(0)" id="btn2">Join Now</a>
-                            <br>
-                            <label>
-                              <a class="login_btn" data-toggle="modal" data-target="#loginModal" href="javascript:void(0)">Already a member? LOGIN</a>
-                            </label>
-                          </div>
-                      </div>
-                      <div>
-                        <img src="{{ URL::asset('assets/images/landing/slider1.jpg') }}" alt="b01" width="960px" height="540px" />
-                        <div class="item">
-                          <p>WHO WOULD YOU TURN TO</p>
-                          <h1>IF YOU LOST <br/> YOUR BEST FRIEND?</h1>
-                        </div>
-                      </div>
-                      <div>
-                        <img src="{{ URL::asset('assets/images/landing/slider2.jpg') }}" alt="b01" width="960px" height="540px" />
-                        <div class="item">
-                          <p>WHO WOULD YOU TURN TO</p>
-                          <h1>IF YOU LOST <br/> YOUR BEST FRIEND?</h1>
-                        </div>
-                      </div>
-                      <div>
-                        <img src="{{ URL::asset('assets/images/landing/slider3.jpg') }}" alt="b01" width="960px" height="540px" />
-                        <div class="item">
-                          <p>WHO WOULD YOU TURN TO</p>
-                          <h1>IF YOU LOST <br/> YOUR BEST FRIEND?</h1>
-                        </div>
-                      </div>
-                  </div>
-              </div>
-          </div>   
-      </div>
-      <!-- END SLIDER -->
+      
       <!-- SECTION -->
       <section class="text-right nopad">
         <div>

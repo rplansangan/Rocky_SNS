@@ -49,7 +49,11 @@ class HomeController extends Controller {
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
 		$data['mid'] = 'pages.inside.lovers';
-		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id(), null, 20);
+		if(Auth::check()){
+			$data['newsfeed'] = PostService::initialNewsFeed(Auth::id(), null, 20);
+		}else{
+			$data['newsfeed'] = PostService::initialNewsFeed(1, 1, 10);
+		}
 		return view('pages.master' , $data);
 	}
 

@@ -9,6 +9,7 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/style2.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/newstyle.css') }}">
     <link rel="shortcut icon" type="image/png" href="{{ URL::asset('assets/images/favicon.png') }}"/>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -23,11 +24,16 @@
   </head>
   <body>
     <input type="hidden" id="token" value="{{ csrf_token() }}">
+    @if(Auth::check())
     @include('top')
+    @else
+    @include('landing.top')
+    @endif
     @yield('content')
     @include('include.modal')
     <script src="{{ URL::asset('assets/js/jquery-form.js') }}"></script>
     <script src="{{ URL::asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/bxslider.js') }}"></script>
     <script src="{{ URL::asset('assets/js/rocky2.js') }}"></script>
     <script src="{{ URL::asset('assets/js/rocky.js') }}"></script>   
     <script type="text/javascript">

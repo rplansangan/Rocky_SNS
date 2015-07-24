@@ -17,11 +17,7 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		if(Auth::check()){
-			return redirect('home');
-		}else{
-			return view('landing.welcome');	
-		}
+		return redirect('home');
 	}
 
 	public function uc(){
