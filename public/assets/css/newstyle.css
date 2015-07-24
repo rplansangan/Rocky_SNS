@@ -377,13 +377,16 @@ header > div nav > ul > li > ul > li > a:hover{
 /* END MID */
 
 /* RIGHT */
-<<<<<<< HEAD
-=======
-
+.right > div {
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.2);
+  background-color: white;
+  box-shadow: -1px 9px 28px #888888;
+  margin-bottom: 45px;
+}
 .right > div:first-child{
 	margin-top: 0px !important;
 }
->>>>>>> origin/master
 .right > div{
 	border:1px solid rgba(0,0,0,0.2);
 	background-color: white;
