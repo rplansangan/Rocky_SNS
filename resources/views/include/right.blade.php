@@ -1,9 +1,54 @@
 <!-- RIGHT BAR -->
-<div class="video-content">
-  <div>
-    <img src="{{ URL::asset('assets/img/post1.jpg') }}" class="img-responsive thumb">
+<div>
+  <nav class="ffbtns">
+    <p><a href="#" class="rbone">FIND A PET</a></p>
+    <p><a href="#" class="rbone">I FOUND A PET</a></p>
+  </nav>
+</div>
+
+<div>
+  <div class="bxright">
+    <label class="text-muted">Funny Videos</label>
+    <div class="video-content">
+      <div>
+        <img src="{{ URL::asset('assets/img/vid1.jpg') }}" class="img-responsive thumb">
+      </div>
+      <a href="javascript:void(0);" route="#" class="play"><img src="{{ URL::asset('assets/img/play.png') }}" class="img-responsive"></a>
+    </div>
+    <div class="video-content">
+      <div>
+        <img src="{{ URL::asset('assets/img/vid2.jpg') }}" class="img-responsive thumb">
+      </div>
+      <a href="javascript:void(0);" route="#" class="play"><img src="{{ URL::asset('assets/img/play.png') }}" class="img-responsive"></a>
+    </div>
+    <div class="video-content">
+      <div>
+        <img src="{{ URL::asset('assets/img/vid3.jpg') }}" class="img-responsive thumb">
+      </div>
+      <a href="javascript:void(0);" route="#" class="play"><img src="{{ URL::asset('assets/img/play.png') }}" class="img-responsive"></a>
+    </div>
   </div>
-  <a href="javascript:void(0);" route="#" class="play"><img src="{{ URL::asset('assets/img/play.png') }}" class="img-responsive"></a>
+</div>
+
+<div>
+  <div class="bxright">
+    <label class="text-muted">Pet of the Week</label>
+    <div class="video-content">
+      <div>
+        <img src="{{ URL::asset('assets/img/nom1.jpg') }}" class="img-responsive thumb">
+      </div>
+    </div>
+    <div class="video-content">
+      <div>
+        <img src="{{ URL::asset('assets/img/nom2.jpg') }}" class="img-responsive thumb">
+      </div>
+    </div>
+    <div class="video-content">
+      <div>
+        <img src="{{ URL::asset('assets/img/nom3.jpg') }}" class="img-responsive thumb">
+      </div>
+    </div>
+  </div>
 </div>
 
 <div>

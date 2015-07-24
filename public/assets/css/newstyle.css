@@ -281,8 +281,11 @@ header > div nav > ul > li > ul > li > a:hover{
 	margin: 0 auto;
 	margin-top: 5px;
 }
-.mid .video-content , .mid .image-content , .right .video-content{
+.mid .video-content , .mid .image-content {
 	margin: 10px 0px;
+}
+.right .video-content{
+	margin: 0;
 }
 .mid .newsfeed-content > .video-content , .mid .newsfeed-content > .video-content > div , .mid .newsfeed-bottom > div , .right .video-content{
 	display: inline-block;
@@ -295,7 +298,7 @@ header > div nav > ul > li > ul > li > a:hover{
 .mid .newsfeed-content > .video-content > .play , .right .video-content > .play{
 	position: absolute; 
 	z-index: 1; 
-	top: 33%; 
+	top: 25%; 
 	left: 33%;
 }
 .mid .newsfeed-content > .video-content > .play > img , , .right .video-content > .play > img{
@@ -374,14 +377,6 @@ header > div nav > ul > li > ul > li > a:hover{
 /* END MID */
 
 /* RIGHT */
-.right{
-	background-image: url('../img/rocky.png');
-	background-position: top center;
-	background-repeat: no-repeat;
-}
-.right > div:first-child{
-	margin-top: 80px !important;
-}
 .right > div{
 	border:1px solid rgba(0,0,0,0.2);
 	background-color: white;
@@ -390,13 +385,32 @@ header > div nav > ul > li > ul > li > a:hover{
 	padding: 1px;
 	border-radius: 8px;
 }
+.right > div > div > label {
+  padding-left: 10px;
+  padding-bottom: 15px;
+}
 .right .thumb{
 	border-radius: 8px;
+	margin-bottom: 10px;
 }
-
 input.btn {
   background-color: #b7042c;
   color: #fff;
+}
+nav.ffbtns a {
+  color: #B7042C;
+  padding: 0px 12px;
+  line-height: 10px;
+  color: #2C3539;
+  font-weight: bold;
+  font-size: 12px;
+  text-decoration: none;
+}
+nav.ffbtns {
+  padding: 11px;
+}
+.bxright {
+  padding: 11px;
 }
 
 /* END RIGHT */
