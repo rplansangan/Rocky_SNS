@@ -295,8 +295,8 @@ header > div nav > ul > li > ul > li > a:hover{
 .mid .newsfeed-content > .video-content > .play , .right .video-content > .play{
 	position: absolute; 
 	z-index: 1; 
-	top: 40%; 
-	right: 47%;
+	top: 33%; 
+	left: 33%;
 }
 .mid .newsfeed-content > .video-content > .play > img , , .right .video-content > .play > img{
 	width: 80px;
