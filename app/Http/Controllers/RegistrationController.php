@@ -127,6 +127,17 @@ class RegistrationController extends Controller {
 		
 	}
 	
+	public function addPet(){
+
+		$pets = Pets::where('user_id' , Auth::id())->count();
+
+		if($pets == 0){
+			return view('pages.addpet');
+		}else{
+			return redirect('home');
+		}	
+		
+	}
 	
 	public function petRegister(Request $request) {
 		$input = array_except($request->all(), array('_token'));

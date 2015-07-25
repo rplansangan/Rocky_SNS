@@ -24,6 +24,7 @@
   </head>
   <body>
     <input type="hidden" id="token" value="{{ csrf_token() }}">
+    <input type="hidden" id="base_url" value="{{ URL::to('/') }}">
     @if(Auth::check())
     @include('top')
     @else

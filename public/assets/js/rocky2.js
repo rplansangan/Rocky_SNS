@@ -48,7 +48,7 @@ $(document).on('ready' , function(){
 						$('.loader').hide().text('Your email address is already Taken').fadeIn();
 					}else{
 						$('#signupModal').modal('hide');
-						location.reload();
+						window.location.href = $('#base_url').val()+"/add_pet";
 					}
 				}
 			});

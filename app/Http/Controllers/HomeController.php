@@ -4,6 +4,7 @@ use SNS\Http\Controllers\Controller;
 use SNS\Libraries\Facades\Notification;
 use Illuminate\Http\Request;
 use SNS\Models\User;
+use SNS\Models\Pets;
 use SNS\Models\Images;
 use SNS\Models\Registration;
 use SNS\Models\Business;
@@ -34,7 +35,9 @@ class HomeController extends Controller {
 	 * @return void
 	 */
 	public function __construct(Initialize $init, Get $cacheGet) {
-		parent::__construct($init, $cacheGet);		
+		parent::__construct($init, $cacheGet);
+
+			
 	}
 
 
@@ -45,6 +48,7 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
+		
 		$data['sub_title'] = '- Home';
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';

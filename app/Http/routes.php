@@ -13,6 +13,10 @@ Route::get('/', array(
     'as' => 'index',
     'uses' => 'WelcomeController@index',
 ));
+Route::get('add_pet', array(
+    'as' => 'add.pet',
+    'uses' => 'RegistrationController@addPet',
+));
 Route::post('check_email', array(
 	'as' => 'check.email',
 	'uses' => 'LoginController@check_email'

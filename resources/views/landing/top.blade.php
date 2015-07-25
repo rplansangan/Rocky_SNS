@@ -32,7 +32,7 @@ $(document).ready(function(){
     <div class="col-lg-10">
       <nav class="text-right">
         <ul>
-          <li><a href="javascript:void(0)" data-toggle="modal" data-target="#signupModal" href="javascript:void(0)">JOIN NOW</a></li>
+          <li><a href="javascript:void(0);" data-toggle="modal" data-target="#signupModal">JOIN NOW</a></li>
           <li><a href="#">ABOUT</a></li>
           <li><a href="{{ route('public.nearestpetshop') }}">PET NEEDS</a></li>
           <li><a href="{{ route('public.dogsoftheweek') }}">DOGS OF THE WEEK</a></li>
