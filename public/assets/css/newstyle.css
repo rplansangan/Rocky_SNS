@@ -422,6 +422,10 @@ nav.ffbtns {
 .bxright {
   padding: 11px;
 }
+#pwoneModal > div > div, #pwtwoModal > div > div, #pwthrModal > div > div {
+  padding: 30px 20px;
+  text-align: center;
+}
 
 /* END RIGHT */
 

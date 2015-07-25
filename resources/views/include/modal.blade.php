@@ -413,7 +413,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" class="btn btn-submit btn-primary" value="Report">
+                    <input type="submit" class="btn btn-submit tempo btn-primary" value="Report">
                 </div>
             </div>
         </div>
@@ -562,7 +562,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" class="btn btn-submit btn-primary" value="Report">
+                    <input type="submit" class="btn btn-submit tempo btn-primary" value="Report">
                 </div>
             </div>
         </div>
@@ -580,10 +580,27 @@
 </div>
 
 <!-- PET OF THE WEEK -->
-<div class="modal fade" id="petweekModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="pwoneModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog nopad modal-lg" role="document">
         <div class="modal-content nopad">
-            
+            <img src="{{ URL::asset('assets/img/nom1-large.jpg') }}">
+            <a href="#"><h3 style="color: #b7042c;">Tyrion<small> by Zia Milana</small></h3></a>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="pwtwoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog nopad modal-lg" role="document">
+        <div class="modal-content nopad">
+            <img src="{{ URL::asset('assets/img/nom2-large.jpg') }}">
+            <a href="#"><h3 style="color: #b7042c;">Smiley<small> by Mhar Bucad</small></h3></a>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="pwthrModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog nopad modal-lg" role="document">
+        <div class="modal-content nopad">
+            <img src="{{ URL::asset('assets/img/nom3-large.jpg') }}">
+            <a href="#"><h3 style="color: #b7042c;">Coffee<small> by Rap Hael</small></h3></a>
         </div>
     </div>
 </div>

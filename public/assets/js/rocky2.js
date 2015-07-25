@@ -7,6 +7,11 @@ $(document).on('ready' , function(){
 	$('.modal').on('shown.bs.modal', function () {
 		$('.loader').text(' ');
 	})
+
+	$('.tempo').on('click', function(e){
+		alert('Updated');
+		$('.modal').modal('hide');
+	});
 	
 	$(document).on('submit' , '.form-signin' , function(e){
 		var route = $(this).attr('action');

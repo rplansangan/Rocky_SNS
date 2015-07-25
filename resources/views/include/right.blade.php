@@ -36,17 +36,23 @@
     <label class="text-muted">Pet of the Week</label>
     <div class="video-content">
       <div>
-        <img src="{{ URL::asset('assets/img/nom1.jpg') }}" class="img-responsive thumb">
+        <a href="#" data-toggle="modal" data-target="#pwoneModal">
+          <img src="{{ URL::asset('assets/img/nom1-large.jpg') }}" class="img-responsive thumb">
+        </a>
       </div>
     </div>
     <div class="video-content">
       <div>
-        <img src="{{ URL::asset('assets/img/nom2.jpg') }}" class="img-responsive thumb">
+         <a href="#" data-toggle="modal" data-target="#pwtwoModal">
+          <img src="{{ URL::asset('assets/img/nom2-large.jpg') }}" class="img-responsive thumb">
+        </a>
       </div>
     </div>
     <div class="video-content">
       <div>
-        <img src="{{ URL::asset('assets/img/nom3.jpg') }}" class="img-responsive thumb">
+        <a href="#" data-toggle="modal" data-target="#pwthrModal">
+          <img src="{{ URL::asset('assets/img/nom3-large.jpg') }}" class="img-responsive thumb">
+        </a>
       </div>
     </div>
   </div>
