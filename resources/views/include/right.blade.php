@@ -1,8 +1,9 @@
 <!-- RIGHT BAR -->
 <div>
   <nav class="ffbtns">
-    <p><a href="#" class="findbtn">FIND A PET</a></p>
-    <p><a href="#" class="foundbtn">I FOUND A PET</a></p>
+
+    <p><a href="#" data-toggle="modal" data-target="#missingPet" class="findbtn">FIND A PET</a></p>
+    <p><a href="#" data-toggle="modal" data-target="#foundpet" class="foundbtn">I FOUND A PET</a></p>
   </nav>
 </div>
 
