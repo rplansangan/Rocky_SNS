@@ -40,7 +40,7 @@ class Newsfeed_view extends BaseModel {
 	}
 
 	public function userMain() {
-		return $this->hasOne('SNS\Models\User', 'user_id', 'user_id')
+		return $this->hasOne('SNS\Models\User', 'user_id', 'post_user_id')
 				->select(['user_id', 'selected_pet']);
 	}
 
