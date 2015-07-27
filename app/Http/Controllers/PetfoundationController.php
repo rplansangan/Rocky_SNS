@@ -49,7 +49,7 @@ class PetfoundationController extends Controller {
 	}
 
 	public function activate_petfoundation(Request $request){
-		$input = array_except($request->all(), array('_token'));
+		$input = array_except($request->all(), ['_token']);
 		$validate = Validator::make($input, PetFoundation::$initialRules);
 		
 		if($validate->fails()) {
@@ -86,21 +86,21 @@ class PetfoundationController extends Controller {
 					->withErrors(['message' => trans('errors.err_500')]);
 		}
 		
-		User::where('user_id' , '=' , Auth::id())->update(['is_merchant' => 1]);
+		User::find(Auth::id())->update(['is_merchant' => 1]);
 	
 		if(isset($input['myfile'])) {
 			$file = $input['myfile'];
 			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
 			$dir = StorageHelper::create(Auth::id());
 			try {
-				$img_data = new Images(array(
+				$img_data = new Images([
 						'user_id' => Auth::id(),
 						'image_path' => $dir,
 						'image_name' => $filename,
 						'image_mime' => $file->getMimeType(),
 						'image_ext' => $file->getClientOriginalExtension(),
 						'is_profile_picture' => 0
-				));
+				]);
 		
 				$foundation->image()->save($img_data);
 			} catch (\Exception $e) {
@@ -154,14 +154,14 @@ class PetfoundationController extends Controller {
 			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
 			$dir = StorageHelper::create(Auth::id());
 			try {
-				$img_data = new Images(array(
+				$img_data = new Images([
 						'user_id' => Auth::id(),
 						'image_path' => $dir,
 						'image_name' => $filename,
 						'image_mime' => $file->getMimeType(),
 						'image_ext' => $file->getClientOriginalExtension(),
 						'is_profile_picture' => 1
-				));
+				]);
 			
 				$this->removePreviousFoundation($foundation->petfoundation_id);
 				
@@ -182,13 +182,7 @@ class PetfoundationController extends Controller {
 
 	public function showAll() {
 		$col = PetFoundation::select(['petfoundation_id', 'petfoundation_name', 'user_id'])->latest()->get();
-		$col->load([
-				'prof_pic' => function($q) {
-					$q->addSelect(['image_id', 'foundation_id']);
-					$q->where('is_profile_picture', 1);
-					$q->where('adoption_id', 0);
-				}
-		]);
+		$col->load(['prof_pic']);
 		return view('pages.pet_foundation.list', ['list' => $col]);
 	}
 	
@@ -198,12 +192,7 @@ class PetfoundationController extends Controller {
 
 	public function adoptList($foundation_id){
 		$collection = PetAdoption::select(['pa_id', 'pet_name', 'background', 'foundation_id'])
-						->with([
-							'prof_pic' => function($q) {
-								$q->where('is_profile_picture', 1);
-								$q->addSelect(['image_id', 'user_id', 'adoption_id']);
-							},
-						])
+						->with(['prof_pic'])
 						->where('foundation_id', $foundation_id)
 						->get();
 		
@@ -300,19 +289,6 @@ class PetfoundationController extends Controller {
 		
 		return redirect()->back();
 	}
-	
-	public function getImage($user_id, $image_id) {
-		$img = PetFoundationImages::find($image_id);
-		
-		if($img->user_id != $user_id) {
-			return false;
-		}
-		
-		$file = Storage::get($img->image_path . '/' . $img->image_name . '.' . $img->image_ext);
-		
-		return (new Response($file, 200))->header('Content-Type', $img->image_mime);
-		
-	}
 
 	public function foundProjects(){
 		return view('pages.pet_foundation.projects');
@@ -324,14 +300,7 @@ class PetfoundationController extends Controller {
 					->orWhere('petfoundation_name', $request->get('name'))
 					->orWhere('city', $request->get('city'))
 					->orWhere('zip', $request->get('zip'))
-					->with([
-							'prof_pic' => function($q) {
-								$q->addSelect(['image_id', 'foundation_id']);
-								$q->where('is_profile_picture', 1);
-								$q->where('adoption_id', 0);
-							}
-					])
-					->paginate(20);
+					->with(['prof_pic'])->paginate(20);
 		// fix for url trailing slash
 		$col->setPath('');
 		return view('pages.pet_foundation.list', ['list' => $col]);

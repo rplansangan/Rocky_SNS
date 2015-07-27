@@ -79,7 +79,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 	
 	public function registration() {
-		return $this->hasOne('SNS\Models\Registration', 'user_id');
+		return $this->hasOne('SNS\Models\Registration', 'user_id')
+				->select(['registration_id', 'user_id', 'first_name', 'last_name']);
 	}
 	
 	public function pets() {
@@ -107,11 +108,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 	
 	public function prof_pic() {
-		return $this->hasOne('SNS\Models\Images', 'user_id', 'user_id')->where('is_profile_picture', 1)->where('pet_id', 0);
+		return $this->hasOne('SNS\Models\Images', 'user_id', 'user_id')
+				->where('is_profile_picture', 1)
+				->where('pet_id', 0);
 	}
 	
 	public function adverts() {
-		return $this->hasMany('SNS\Models\Advertise', 'user_id', 'user_id');
+		return $this->hasMany('SNS\Models\Advertise', 'user_id', 'user_id')
+				->select(array('id', 'user_id', 'title' , 'type', 'created_at'))
+				->latest();
 	}
 	
 	public function otheradd(){

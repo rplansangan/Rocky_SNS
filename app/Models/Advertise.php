@@ -45,7 +45,8 @@ class Advertise extends Model {
 	);
 	
 	public function post() {
-		return $this->hasOne('SNS\Models\Posts', 'advertise_id');
+		return $this->hasOne('SNS\Models\Posts', 'advertise_id')
+				->select(['user_id', 'post_id', 'post_message', 'advertise_id', 'created_at']);
 	}
 	
 	public function like() {

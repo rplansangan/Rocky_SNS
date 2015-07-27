@@ -132,12 +132,10 @@ class HomeController extends Controller {
 
 	public function search(Request $request){
 		$input = array_except($request->all(), array('_token'));
-		$data['info'] = Registration::with([
-			'prof_pic' => function($q){
-				$q->where('pet_id' , 0);
-				$q->where('is_profile_picture' , 1);
-			}
-		])->where('first_name' , 'LIKE' , '%'.$input['name'].'%')->orWhere('last_name' , 'LIKE' , '%'.$input['name'].'%')->limit(5)->get();
+		$data['info'] = Registration::with(['prof_pic'])
+						->where('first_name' , 'LIKE' , '%'.$input['name'].'%')
+						->orWhere('last_name' , 'LIKE' , '%'.$input['name'].'%')
+						->limit(5)->get();
 		return view('ajax.result' ,$data);
 	}
 	
@@ -154,12 +152,10 @@ class HomeController extends Controller {
 		$data['right'] = 'include.right';
 		$data['mid'] = 'pages.inside.search';
 
-		$data['info'] = Registration::with([
-			'prof_pic' => function($q){
-				$q->where('pet_id' , 0);
-				$q->where('is_profile_picture' , 1);
-			}
-		])->where('first_name' , 'LIKE' , '%'.$input['neighbors'].'%')->orWhere('last_name' , 'LIKE' , '%'.$input['neighbors'].'%')->get();
+		$data['info'] = Registration::with(['prof_pic'])
+						->where('first_name' , 'LIKE' , '%'.$input['neighbors'].'%')
+						->orWhere('last_name' , 'LIKE' , '%'.$input['neighbors'].'%')
+						->get();
 
 		return view('pages.master' , $data);
 	}

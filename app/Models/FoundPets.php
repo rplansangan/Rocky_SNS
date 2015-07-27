@@ -47,6 +47,7 @@ class FoundPets extends Model {
 
 	public function profile() {
 		return $this->hasOne('SNS\Models\Pets', 'rocky_tag_no', 'rocky_tag_no');
+				->select(['pet_id', 'user_id', 'rocky_tag_no']);
 	}
 	
 	public function image() {

@@ -34,7 +34,9 @@ class PetAdoption extends Model {
 	}
 	
 	public function prof_pic() {
-		return $this->hasOne('SNS\Models\PetFoundationImages', 'adoption_id', 'pa_id');
+		return $this->hasOne('SNS\Models\PetFoundationImages', 'adoption_id', 'pa_id')
+				->where('is_profile_picture', 1)
+				->select(['image_id', 'user_id', 'adoption_id']);
 	}
 	
 	public function images() {

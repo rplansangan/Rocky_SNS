@@ -55,7 +55,10 @@ class PetFoundation extends Model {
 	);
 
 	public function prof_pic() {
-		return $this->hasOne('SNS\Models\PetFoundationImages', 'foundation_id', 'petfoundation_id');
+		return $this->hasOne('SNS\Models\PetFoundationImages', 'foundation_id', 'petfoundation_id')
+						->where('is_profile_picture', 1)
+						->where('adoption_id', 0)
+						->select(['image_id', 'foundation_id']);
 	}
 	
 	public function image() {

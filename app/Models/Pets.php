@@ -65,7 +65,8 @@ class Pets extends Model {
 	
 	// RELATIONSHIPS
 	public function user() {
-		return $this->belongsTo('SNS\Models\User');
+		return $this->belongsTo('SNS\Models\User')
+				->select(['user_id']);
 	}
 	
 	public function image() {
@@ -73,17 +74,21 @@ class Pets extends Model {
 	}
 	
 	public function profile_pic() {
-		return $this->hasOne('SNS\Models\Images', 'pet_id')->where('is_profile_picture', 1);
+		return $this->hasOne('SNS\Models\Images', 'pet_id')
+				->where('is_profile_picture', 1)
+				->select(['image_id', 'user_id', 'pet_id']);
 	}
 	
 	public function pet_food() {
-		return $this->hasOne('SNS\Models\FoodBrands', 'id', 'brand');
+		return $this->hasOne('SNS\Models\FoodBrands', 'id', 'brand')
+				->select(['id', 'brand_name', 'animal_type_id']);
 	}
 	public function pet_type() {
 		return $this->hasOne('SNS\Models\AnimalType', 'id', 'pet_type');
 	}
 	public function pet_behavior() {
-		return $this->hasOne('SNS\Models\PetBehavior', 'id', 'behavior');
+		return $this->hasOne('SNS\Models\PetBehavior', 'id', 'behavior')
+				->select(['id', 'animal_type_id', 'behavior']);
 	}
 	
 	public function getPetBdayAttribute($date) {

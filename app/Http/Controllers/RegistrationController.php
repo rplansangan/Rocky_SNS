@@ -30,7 +30,7 @@ class RegistrationController extends Controller {
 	}
 	
 	public function register(Request $request) {
-		$input = array_except($request->all(), array('_token'));
+		$input = array_except($request->all(), ['_token']);
 		
 		$count = Registration::where('email_address' , $input['email_address'])->count();
 		
@@ -65,7 +65,7 @@ class RegistrationController extends Controller {
 	
 	public function updateDetails(Request $request, $id) {
 		Session::forget('details');
-		$input = array_except($request->all(), array('_token'));
+		$input = array_except($request->all(), ['_token']);
 		
 		DB::beginTransaction();
 		if($input) {
@@ -95,14 +95,14 @@ class RegistrationController extends Controller {
 				$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
 				$dir = StorageHelper::create(Auth::id());
 				
-				$img_data = new Images(array(
+				$img_data = new Images([
 						'user_id' => $reg->registration_id,
 						'image_path' => $dir,
 						'image_name' => $filename,
 						'image_mime' => $file->getMimeType(),
 						'image_ext' => $file->getClientOriginalExtension(),
 						'is_profile_picture' => 1
-				));
+				]);
 				
 				$img_data->save();
 				
@@ -140,7 +140,7 @@ class RegistrationController extends Controller {
 	}
 	
 	public function petRegister(Request $request) {
-		$input = array_except($request->all(), array('_token'));
+		$input = array_except($request->all(), ['_token']);
 		$pet = new Pets();
 		$pet->user_id = Auth::id();
 		$pet->pet_name = $input['pet_name'];
@@ -193,9 +193,12 @@ class RegistrationController extends Controller {
 	}
 	
 
-	protected function getPetBehavior($id) {
+	private function getPetBehavior($id) {
 		$q = new PetService();
-		$q->select(array('id', 'behavior'))->where('animal_type_id', $id)->orderBy('behavior', 'asc')->listPetBehavior();
+		$q->select(['id', 'behavior'])
+			->where('animal_type_id', $id)
+			->orderBy('behavior', 'asc')
+			->listPetBehavior();
 		
 		$q->setId('id');
 		$q->setLabel('behavior');
@@ -203,9 +206,12 @@ class RegistrationController extends Controller {
 		return $q->formatAsSelect();
 	}
 	
-	protected function getFoodBrands($id) {
+	private function getFoodBrands($id) {
 		$q = new PetService();
-		$q->select(array('id', 'brand_name'))->where('animal_type_id', $id)->orderBy('brand_name', 'asc')->listFoodBrand();
+		$q->select(['id', 'brand_name'])
+			->where('animal_type_id', $id)
+			->orderBy('brand_name', 'asc')
+			->listFoodBrand();
 		
 		$q->setId('id');
 		$q->setLabel('brand_name');
@@ -214,7 +220,7 @@ class RegistrationController extends Controller {
 	}
 
 	public function checkemail(Request $request){
-		$input = array_except($request->all(), array('_token'));
+		$input = array_except($request->all(), ['_token']);
 		echo Registration::where('email_address' , $input['email'])->count();
 	}
 	

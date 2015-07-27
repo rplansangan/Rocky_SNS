@@ -40,7 +40,8 @@ class Posts extends Model {
 	}
 	
 	public function image() {
-		return $this->hasOne('SNS\Models\Images', 'post_id');
+		return $this->hasOne('SNS\Models\Images', 'post_id')
+				->select(['user_id', 'image_id', 'post_id']);
 	}
 	
 	public function like() {

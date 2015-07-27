@@ -20,7 +20,7 @@ class PostsController extends Controller {
 	}
 	
 	public function isLike(Request $request){
-		$input = array_except($request->all(), array('_token'));
+		$input = array_except($request->all(), ['_token']);
 		$like = PostService::like($input['postid'] , $input['destination']);
 
 		return json_encode($like);
@@ -51,7 +51,7 @@ class PostsController extends Controller {
 	}
 	
 	public function getnewsfeed(Request $request) {
-		$input = array_except($request->all(), array('_token'));
+		$input = array_except($request->all(), ['_token']);
 		if(Auth::check()){
 			$data['newsfeed'] = PostService::incrementalNewsFeed(Auth::id() , $input['skip'] , null , 10);
 		}else{

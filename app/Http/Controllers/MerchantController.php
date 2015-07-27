@@ -49,18 +49,12 @@ class MerchantController extends Controller {
 
 	public function merchantProf($id){
 		$user = User::select(array('user_id'))->find($id);
-		$user->load(array(
-			'adverts' => function($q) {
-				$q->addSelect(array('id', 'user_id', 'title' , 'type', 'created_at'))->latest();
-			},
+		$user->load([
+			'adverts',
 			'bsns_reg',
-			'adverts.post' => function($q) {
-				$q->addSelect(array('user_id', 'post_id', 'post_message', 'advertise_id', 'created_at'));
-			},
-			'adverts.post.image' => function($q) {
-				$q->addSelect(array('user_id', 'image_id', 'post_id'));
-			}
-		));
+			'adverts.post',
+			'adverts.post.image'
+		]);
 				
 		if($user->adverts->isEmpty()) {		
 			return redirect()->route('addadvertise');
@@ -144,7 +138,7 @@ class MerchantController extends Controller {
 	}
 
 	public function add_advertisement(Request $request){
-		$input = array_except($request->all(), array('_token'));
+		$input = array_except($request->all(), ['_token']);
 		$validate = Validator::make($input, Advertise::$initialRules);
 
 		if($validate->fails()) {
@@ -184,14 +178,14 @@ class MerchantController extends Controller {
 			$filename = md5($file->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
 			$dir = StorageHelper::create(Auth::id());
 			try {
-				$img_data = new Images(array(
+				$img_data = new Images([
 						'user_id' => Auth::id(),
 						'image_path' => $dir,
 						'image_name' => $filename,
 						'image_mime' => $file->getMimeType(),
 						'image_ext' => $file->getClientOriginalExtension(),
 						'is_profile_picture' => 0
-				));
+				]);
 				
 				$advertise->post->image()->save($img_data);
 			} catch (\Exception $e) {
@@ -207,10 +201,10 @@ class MerchantController extends Controller {
 		DB::commit();
 		
 		if(User::find(Auth::id())->is_merchant == 1){
-			return redirect()->route('merchant.profile', array(Auth::id()));
+			return redirect()->route('merchant.profile', [Auth::id()]);
 		}
 		elseif(User::find(Auth::id())->is_member == 1){
-			return redirect()->route('profile.advertised' , array("id" => Auth::id() , "advertised_id" => $advertise->id) );
+			return redirect()->route('profile.advertised', ["id" => Auth::id() , "advertised_id" => $advertise->id]);
 		}
 		
 		
@@ -222,11 +216,10 @@ class MerchantController extends Controller {
 
 		$data['post'] = Advertise::where('user_id', $user_id)
 				->where('id', $advertise_id)
-				->with(array('post' , 'image'))->get();
+				->with(['post', 'image'])->get();
 	
 		$data['friend_flags'] = FriendService::check($user_id);	
 
-		#custom_print_r($data['post']);
 		return view('profile.individual', $data);
 	}
 
@@ -235,7 +228,7 @@ class MerchantController extends Controller {
 	}
 
 	public function addOrderInquire(Request $request){
-		$input = array_except($request->all(), array('_token'));
+		$input = array_except($request->all(), ['_token']);
 		$validate = Validator::make($input, AdvertiseOrder::$initialRules);
 
 		if($validate->fails()) {
@@ -253,8 +246,8 @@ class MerchantController extends Controller {
 	}
 
 	public function merch_adview($id, $advertise_id){
-		$user = User::select(array('user_id'))->find($id);
-		$user->load(array(
+		$user = User::select(['user_id'])->find($id);
+		$user->load([
 			'adverts' => function($q) use($advertise_id) {
 				$q->addSelect(array('id', 'user_id', 'title' , 'type', 'created_at'))->where('id' , $advertise_id);
 			},
@@ -271,7 +264,7 @@ class MerchantController extends Controller {
 			'otheradd.post.image' => function($q) {
 				$q->addSelect(array('user_id', 'image_id', 'post_id'));
 			}
-		));
+		]);
 				
 		$data['details'] = $user->adverts[0];
 		$data['otherads'] = $user->otheradd;

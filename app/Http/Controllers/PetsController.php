@@ -32,24 +32,15 @@ class PetsController extends Controller {
 		return view('ajax.rightfound' , $data);
 	}
 	public function missingPets(){
-		$data['info'] = MissingPets::where('isfind' , '0')->with(array('profile.image' , 'profile.user'))->get();	
+		$data['info'] = MissingPets::where('isfind' , '0')->with(['profile.image' , 'profile.user'])->get();	
 		return view('pages.missingpet' , $data);
 	}
 	public function foundPets() {
 		$col = FoundPets::with([
-				'profile' => function($q) {
-					$q->addSelect(['pet_id', 'user_id', 'rocky_tag_no']);
-				},
-				'profile.user' => function($q) {
-					$q->addSelect(['user_id']);
-				},
-				'profile.user.registration' => function($q) {
-					$q->addSelect(['registration_id', 'user_id', 'first_name', 'last_name']);
-				},
-				'profile.profile_pic' => function($q) {
-					$q->where('is_profile_picture', 1);
-					$q->addSelect(['image_id', 'user_id', 'pet_id']);
-				}])->get();
+				'profile',
+				'profile.user',
+				'profile.user.registration',
+				'profile.profile_pic'])->get();
 				
 		
 		return view('pages.foundpet', ['found_pets' => $col]);
@@ -64,33 +55,24 @@ class PetsController extends Controller {
 	}
 	
 	public function getpetselectedinfo(Request $request){
-		$input = array_except($request->all(), array('_token'));
+		$input = array_except($request->all(), ['_token']);
 		$data['info'] = Pets::where('rocky_tag_no' , $input['id'])->with(['foundpets','image', 'foundpets.image' , 'pet_food' , 'pet_behavior' , 'pet_type'])->get();
 		$data['info'] = $data['info'][0];
 		return view('ajax.foundmodal' , $data);
 	}
 	
 	public function getpetinfo(Request $request){
-		$input = array_except($request->all(), array('_token'));
+		$input = array_except($request->all(), ['_token']);
 		$pet = Pets::where('rocky_tag_no' ,  $input['id'])->get();
 		$data['pet_info'] = $pet[0];
-		$data['pet_info']->load(['pet_behavior' => function($q) {
-			$q->addSelect(['id', 'animal_type_id', 'behavior']);
-				},
-				'pet_food' => function($q) {
-					$q->addSelect(['id', 'brand_name', 'animal_type_id']);
-				},
-				'user.registration' => function($q) {
-					$q->addSelect(['registration_id', 'first_name', 'last_name', 'user_id']);
-				}
-			]);
+		$data['pet_info']->load(['pet_behavior', 'pet_food', 'user.registration']);
 	
-			$data['user_info'] = (Auth::check()) ? Auth::user()->registration : array();
+			$data['user_info'] = (Auth::check()) ? Auth::user()->registration : [];
 			return view('ajax.foundpet' , $data);
 	}
 	
 	public function addmissingpet(Request $request){
-		$input = array_except($request->all(), array('_token'));
+		$input = array_except($request->all(), ['_token']);
 		
 		DB::beginTransaction();
 		try {
@@ -170,12 +152,12 @@ class PetsController extends Controller {
 	}
 
 	public function findpets(){
-		$data['pets'] = Pets::where('user_id' , Auth::id())->with(array('image'))->get();
+		$data['pets'] = Pets::where('user_id' , Auth::id())->with(['image'])->get();
 		return view('ajax.missingpet' , $data);
 	}
 
 	public function addlostpet(Request $request){
-		$input = array_except($request->all(), array('_token'));
+		$input = array_except($request->all(), ['_token']);
 
 		$missing = new MissingPets;
 		if($input['with-tag'] == 'true'){

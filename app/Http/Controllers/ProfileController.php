@@ -29,10 +29,9 @@ class ProfileController extends Controller {
 		
 	}
 	public function showGallery($id){
-		$profileInformation = Registration::with([
-			'prof_pic' => function($q){
-			}
-		])->where('user_id' , $id)->get();
+		$profileInformation = Registration::with(['prof_pic'])
+								->where('user_id' , $id)->get();
+		
 		$data['profileInformation'] = $profileInformation[0];
 		$data['title'] = $profileInformation[0]->getFullName();
 		$data['sub_title'] = ' - Gallery';
@@ -47,7 +46,9 @@ class ProfileController extends Controller {
 	}
 
 	public function showAbout($id){
-		$profileInformation = Registration::with(['prof_pic'])->where('user_id' , $id)->get();
+		$profileInformation = Registration::with(['prof_pic'])
+								->where('user_id' , $id)->get();
+		
 		$data['profileInformation'] = $profileInformation[0];
 		$data['title'] = $profileInformation[0]->getFullName();
 		$data['sub_title'] = ' - About';
@@ -62,7 +63,9 @@ class ProfileController extends Controller {
 	}
 
 	public function showProfile($id){ 	   
-		$profileInformation = Registration::with(['prof_pic'])->where('user_id' , $id)->get();
+		$profileInformation = Registration::with(['prof_pic'])
+								->where('user_id' , $id)->get();
+		
 		$data['profileInformation'] = $profileInformation[0];
 		$data['title'] = $profileInformation[0]->getFullName();
 		$data['sub_title'] = ' - Newsfeed';
@@ -74,32 +77,6 @@ class ProfileController extends Controller {
 		$data['friend_flags'] = FriendService::check($id);
 
 		return view('pages.master', $data);		
-	}
-
-	public function petlist($id){
-		/*
-		$list = Pets::select(array('pet_id', 'user_id', 'pet_name', 'breed', 'pet_bday', 'pet_gender', 'pet_type'))
-		->where('user_id', $id)->with(array(
-			'profile_pic' => function($q) {
-				$q->addSelect('image_id', 'user_id', 'image_mime', 'pet_id');
-				$q->where('is_profile_picture', 1);
-			}
-			))->get();
-		
-		$profile = User::find($id);
-		
-		$profile->load(array(
-			'registration' => function($q) {
-				$q->addSelect(array('registration_id', 'user_id', 'first_name', 'last_name'));
-			}, 'prof_pic' => function($q) {
-				$q->whereIsProfilePicture(1);
-				$q->addSelect(array('image_id', 'user_id'));
-			}
-			));
-		
-		return view('profile.petlist')
-		->with('profile', $profile)
-		->with('list', $list);*/
 	}
 
 	public function petsList($user_id) {
@@ -175,7 +152,7 @@ class ProfileController extends Controller {
 	}
 	
 	public function editProfile(Request $request, Set $cacheSet) {
-		$input = array_except($request->all(), array('_token', 'userfile'));
+		$input = array_except($request->all(), ['_token', 'userfile']);
 
 		$user = Auth::user();
 		$user->load('registration');
@@ -216,12 +193,7 @@ class ProfileController extends Controller {
 			}
 		}
 		
-		$user->load([
-				'prof_pic' => function($q) { 
-						$q->where('pet_id', 0);
-						$q->where('is_profile_picture', 1);
-				}
-		]);
+		$user->load(['prof_pic']);
 		
 		$cacheSet->updateUserData($user);
 		DB::commit();
@@ -241,14 +213,14 @@ class ProfileController extends Controller {
 	
 	
 	private function changePassword($params) {
-		$validate = Validator::make(array(
+		$validate = Validator::make([
 			'password' => $params['password'],
 			'new_pass' => $params['new_password'],
 			'new_pass_confirmation' => $params['new_password_confirmation']
-			), array(
+			], [
 			'password' => 'required|min:6|max:24',
 			'new_pass' => 'required|confirmed|min:6|max:24'
-			), array(
+			], [
 			'password.required' => trans('profile.validation.password.required'),
 			'password.min' => trans('profile.validation.password.min'),
 			'password.max' => trans('profile.validation.password.max'),
@@ -256,16 +228,16 @@ class ProfileController extends Controller {
 			'new_pass.min' => trans('profile.validation.password.min'),
 			'new_pass.max' => trans('profile.validation.password.max'),
 			'new_pass.confirmed' => trans('profile.validation.password.confirm')
-			));
+			]);
 		
 		if($validate->passes()) {
 			$hash = Hash::check($params['password'], Auth::user()->password);
 			
 			if($hash == true) {
-				User::find(Auth::id())->update(array('password' => Hash::make($params['new_password'])));
-				return redirect()->back()->withErrors(array('message' => trans('profile.settings.password.changed')));
+				User::find(Auth::id())->update(['password' => Hash::make($params['new_password'])]);
+				return redirect()->back()->withErrors(['message' => trans('profile.settings.password.changed')]);
 			} else {
-				return redirect()->back()->withErrors(array('message' => trans('profile.settings.password.invalid')));
+				return redirect()->back()->withErrors(['message' => trans('profile.settings.password.invalid')]);
 			}
 		} else {
 			return redirect()->back()->withErrors($validate->errors()->all());
