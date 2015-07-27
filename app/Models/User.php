@@ -82,6 +82,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->hasOne('SNS\Models\Registration', 'user_id')
 				->select(['registration_id', 'user_id', 'first_name', 'last_name']);
 	}
+
+	public function fullRegistration() {
+		return $this->hasOne('SNS\Models\Registration', 'user_id');
+	}
 	
 	public function pets() {
 		return $this->hasMany('SNS\Models\Pets', 'user_id');

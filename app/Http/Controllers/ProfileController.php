@@ -200,7 +200,7 @@ class ProfileController extends Controller {
 		$data['mid'] = 'pages.inside.profile.profilesettings';
 		$data['title'] = 'Update Profile';
 		$data['profile'] = Auth::user();
-		$data['profile']->load(['registration']);
+		$data['profile']->load(['fullRegistration', 'prof_pic']);
 		return view('pages.master' , $data);
 	}
 	
