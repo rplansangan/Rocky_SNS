@@ -76,7 +76,7 @@ class Pets extends Model {
 	public function profile_pic() {
 		return $this->hasOne('SNS\Models\Images', 'pet_id')
 				->where('is_profile_picture', 1)
-				->select(['image_id', 'user_id', 'pet_id']);
+				->select(['image_id', 'user_id', 'pet_id', 'image_path', 'image_name', 'image_ext']);
 	}
 	
 	public function pet_food() {
