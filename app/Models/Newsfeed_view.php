@@ -30,19 +30,23 @@ class Newsfeed_view extends Model {
 	
 	// RELATIONSHIPS
 	public function post() {
-		return $this->hasOne('SNS\Models\Posts', 'post_id', 'post_id');
+		return $this->hasOne('SNS\Models\Posts', 'post_id', 'post_id')
+				->select(['post_id', 'user_id', 'post_message', 'created_at']);
 	}
 	
 	public function user() {
-		return $this->hasOne('SNS\Models\Registration', 'user_id', 'post_user_id');
+		return $this->hasOne('SNS\Models\Registration', 'user_id', 'post_user_id')
+				->select(['registration_id', 'user_id', 'first_name', 'last_name']);
 	}
 
 	public function image() {
-		return $this->hasOne('SNS\Models\Images', 'post_id', 'post_id');
+		return $this->hasOne('SNS\Models\Images', 'post_id', 'post_id')
+				->select(['image_id', 'post_id' , 'image_mime' , 'category', 'image_path', 'image_name', 'image_ext']);
 	}
 
 	public function like() {
-		return $this->hasMany('SNS\Models\Likes', 'post_id', 'post_id');
+		return $this->hasMany('SNS\Models\Likes', 'post_id', 'post_id')
+				->select(['like_id', 'post_id', 'like_user_id']);
 	}
 	
 	public function comment() {
