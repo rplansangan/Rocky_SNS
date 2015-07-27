@@ -27,7 +27,7 @@
 </div>
 
 
-<!-- SIGN IN -->
+<!-- SIGN UP -->
 <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="form-group  has-feedback">
                                       <label for="password">Password</label>
-                                      <input type="password" name="password" id="password" class="form-control"  placeholder="Password" data-toggle="tooltip" data-placement="left" title="Minimum of 8 Characters" required>
+                                      <input type="password" name="password" id="password" class="form-control"  placeholder="Password" required>
                                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     </div>
                                     <div class="form-group  has-feedback">
@@ -103,7 +103,70 @@
                                     </div>
                                 </form>
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="merch">...</div>
+                            <div role="tabpanel" class="tab-pane" id="merch">
+                                <br clear="all">
+                                <form action="{{ route('register') }}" method="POST" class="form-horizontal col-lg-12 form-signup ">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="hidden" name="user_type" value="2">
+                                    <div class="form-group  has-feedback">
+                                      <label >Business Name</label>
+                                      <input type="text" name="business_name"  id="business_name" class="form-control"  placeholder="Business Name"  required>
+                                      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                    </div>
+                                    <div class="form-group  has-feedback ">
+                                      <label>Email Address</label>
+                                      <input type="email" name="email_address" id="email_address" class="form-control" route="{{ Route('check.email') }}" placeholder="Email Address" required>
+                                      <span class="glyphicon  form-control-feedback" aria-hidden="true"></span>
+                                    </div>
+                                    <div class="form-group  has-feedback">
+                                      <label>Confirm Email</label>
+                                      <input type="email" name="email_address_confirmation" id="email_address_confirmation" class="form-control" placeholder="Confirm Email Address" required>
+                                      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                    </div>
+                                    <div class="form-group  has-feedback">
+                                      <label for="password">Password</label>
+                                      <input type="password" name="password" id="password" class="form-control"  placeholder="Password" required>
+                                      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                    </div>
+                                    <div class="form-group  has-feedback">
+                                      <label >First Name</label>
+                                      <input type="text" name="first_name"  class="form-control"  placeholder="First Name"  required>
+                                      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                    </div>
+                                    <div class="form-group  has-feedback">
+                                      <label>Last Name</label>
+                                      <input type="text" name="last_name"  class="form-control"  placeholder="Last Name"  required>
+                                      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                    </div>
+                                    <div class="form-group col-sm-12">
+                                        <label class="col-sm-4 col-sm-offset-1 control-label">Gender:</label>
+                                        <div class="radio col-sm-2">
+                                            <label>
+                                                <input type="radio" name="gender" value="M" checked>
+                                                Male
+                                            </label>
+                                        </div>
+                                        <div class="radio col-sm-2">
+                                            <label>
+                                                <input type="radio" name="gender" value="F">
+                                                Female
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <p class="col-sm-12 text-center">By clicking the Sign Up button, you agree to our <a href="#" class="tnp">Terms</a> and that you have read our <a href="#" class="tnp">Privacy policy</a>.</p>
+                                    <div class="form-group text-right">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <input type="submit" value="Sign Up" class="btn btn-primary">
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="text-warning text-center loader" style="margin-top:10px">asd</p>
+                                    </div>
+                                </form>
+
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="foundation">...</div>
+                            <div role="tabpanel" class="tab-pane" id="vet">...</div>
 
                         </div>
                     </div>
