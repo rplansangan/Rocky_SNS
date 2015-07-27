@@ -1,10 +1,10 @@
 <?php namespace SNS\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use SNS\Models\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 
-class Posts extends Model {
+class Posts extends BaseModel {
 
 	use SoftDeletes;
 	
@@ -26,9 +26,9 @@ class Posts extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array('post_message', 'user_id', 'post_tags', 'image_id');
+	protected $fillable = ['post_message', 'user_id', 'post_tags', 'image_id'];
 	
-	protected $dates = array('deleted_at');
+	protected $dates = ['deleted_at'];
 	
 	public static $dbDateFormat = 'Y-m-d H:i:s';
 	

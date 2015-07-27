@@ -1,17 +1,33 @@
 <?php namespace SNS\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use SNS\Models\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class FriendRequest extends Model {
+class FriendRequest extends BaseModel {
 
 	use SoftDeletes;
 	
+	/**
+	 *
+	 * @var string
+	 */
 	protected $primaryKey = 'request_id';
 	
-	protected $fillable = array('request_message', 'requesting_user_id', 'requested_user_id', 'status');
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
+	protected $table = 'friend_requests';	
 	
-	protected $dates = array('deleted_at');
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = ['request_message', 'requesting_user_id', 'requested_user_id', 'status'];
+	
+	protected $dates = ['deleted_at'];
 	
 	// SCOPES
 	public function scopeOfUser($query, $user_id) {

@@ -1,10 +1,10 @@
 <?php namespace SNS\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
+use SNS\Models\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Pets extends Model {
+class Pets extends BaseModel {
 
 	use SoftDeletes;
 	
@@ -26,34 +26,35 @@ class Pets extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array(
-			'user_id',
-			'rocky_tag_no',
-			'pet_name',
-			'pet_type',
-			'breed',
-			'pet_bday',
-			'pet_gender',
-			'food',
-			'pet_likes',
-			'pet_dislikes',
-			'food_style',
-			'brand',
-			'weight',
-			'height',
-			'behavior',
-			'feeding_interval',
-			'feeding_time',
-			'identifying_marks');
+	protected $fillable = [
+							'user_id',
+							'rocky_tag_no',
+							'pet_name',
+							'pet_type',
+							'breed',
+							'pet_bday',
+							'pet_gender',
+							'food',
+							'pet_likes',
+							'pet_dislikes',
+							'food_style',
+							'brand',
+							'weight',
+							'height',
+							'behavior',
+							'feeding_interval',
+							'feeding_time',
+							'identifying_marks'
+						];
 	
-	protected $dates = array('deleted_at');
+	protected $dates = ['deleted_at'];
 
-	public static $initialRules = array(
-		'pet_name' => 'required',
-		'pet_type' => 'required',
-		'breed' => 'required',
-		'pet_gender' => 'required',
-	);
+	public static $initialRules = [
+									'pet_name' => 'required',
+									'pet_type' => 'required',
+									'breed' => 'required',
+									'pet_gender' => 'required',
+								];
 	
 	public $dbDateFormat = 'Y-m-d H:i:s';
 	

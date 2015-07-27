@@ -1,9 +1,9 @@
 <?php namespace SNS\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use SNS\Models\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class VeterinarianRegistrations extends Model {
+class VeterinarianRegistrations extends BaseModel {
 	
 	use SoftDeletes;
 
@@ -25,7 +25,8 @@ class VeterinarianRegistrations extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['user_id', 
+	protected $fillable = [
+							'user_id', 
 							'license_number', 
 							'clinic_address1', 
 							'clinic_address2', 
@@ -36,7 +37,8 @@ class VeterinarianRegistrations extends Model {
 							'clinic_phone_area_code',
 							'clinic_phone_country_code',
 							'clinic_email_address',
-							'particulars'];
+							'particulars'
+							];
 	
 	protected $dates = ['deleted_at'];
 	

@@ -1,11 +1,21 @@
 <?php namespace SNS\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use SNS\Models\BaseModel;
 
-class PetBehavior extends Model {
+class PetBehavior extends BaseModel {
 
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
 	protected $table = 'pet_behaviors';
 	
-	protected $fillable = array('animal_type_id', 'behavior', 'particulars', 'order');
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = ['animal_type_id', 'behavior', 'particulars', 'order'];
 
 }

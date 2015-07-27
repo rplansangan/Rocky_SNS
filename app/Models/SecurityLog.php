@@ -1,8 +1,8 @@
 <?php namespace SNS\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use SNS\Models\BaseModel;
 
-class SecurityLog extends Model {
+class SecurityLog extends BaseModel {
 	
 	/**
 	 *
@@ -22,6 +22,6 @@ class SecurityLog extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array('ip_address', 'activity_code');
+	protected $fillable = ['ip_address', 'activity_code'];
 
 }

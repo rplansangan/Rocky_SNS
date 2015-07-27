@@ -1,16 +1,26 @@
 <?php namespace SNS\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use SNS\Models\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class AnimalType extends Model {
+class AnimalType extends BaseModel {
 
 	use SoftDeletes;
 	
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
 	protected $table = 'animal_types';
 	
-	protected $fillable = array('animal', 'particulars', 'order');
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = ['animal', 'particulars', 'order'];
 	
-	protected $dates = array('deleted_at');
+	protected $dates = ['deleted_at'];
 
 }

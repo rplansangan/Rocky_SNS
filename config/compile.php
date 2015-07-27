@@ -69,6 +69,7 @@ return [
 		realpath(__DIR__.'/../app/Models/Admin/ErrorLogs.php'),
 		
 		// Models
+		realpath(__DIR__.'/../app/Models/BaseModel.php'),
  		realpath(__DIR__.'/../app/Models/Comments.php'),
  		realpath(__DIR__.'/../app/Models/EmailValidation.php'),
  		realpath(__DIR__.'/../app/Models/FriendRequest.php'),

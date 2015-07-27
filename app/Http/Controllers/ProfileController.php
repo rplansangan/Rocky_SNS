@@ -75,7 +75,6 @@ class ProfileController extends Controller {
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id(), $id);
 		$data['id'] = $id;
 		$data['friend_flags'] = FriendService::check($id);
-
 		return view('pages.master', $data);		
 	}
 

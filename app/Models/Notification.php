@@ -1,15 +1,25 @@
 <?php namespace SNS\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use SNS\Models\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Notification extends Model {
+class Notification extends BaseModel {
 
 	use SoftDeletes;
 	
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
 	protected $table = 'notifications';
 	
-	protected $fillable = array(
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = [
 							'destination_user_id',
 							'origin_object_type',
 							'origin_object_id',
@@ -17,11 +27,9 @@ class Notification extends Model {
 							'is_read',
 							'params',
 							'notif_type'
-						);
+						];
 
-	protected $dates = array('deleted_at');
-	
-	// RELATIONSHIPS
+	protected $dates = ['deleted_at'];
 
 	// SCOPES
 	/**

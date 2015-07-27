@@ -1,10 +1,11 @@
 <?php namespace SNS\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use SNS\Models\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 
-class AdvertiseOrder extends Model {
+class AdvertiseOrder extends BaseModel {
+	
 	use SoftDeletes;
 	
 	/**
@@ -25,17 +26,17 @@ class AdvertiseOrder extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array(
-		'advertise_id',
-		'message',
-		'status'
-		);
+	protected $fillable = [
+							'advertise_id',
+							'message',
+							'status'
+						];
 	
-	protected $dates = array('deleted_at');
+	protected $dates = ['deleted_at'];
 
-	public static $initialRules = array(
-			'message' => 'required'		
-	);
+	public static $initialRules = [
+									'message' => 'required'		
+								];
 
 	
 }

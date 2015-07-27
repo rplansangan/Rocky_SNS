@@ -1,14 +1,24 @@
 <?php namespace SNS\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use SNS\Models\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class VideoCategories extends Model {
+class VideoCategories extends BaseModel {
 
 	use SoftDeletes;
 	
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
 	protected $table = 'post_categories';
 	
-	protected $fillable = array('category', 'particulars', 'order');
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = ['category', 'particulars', 'order'];
 
 }

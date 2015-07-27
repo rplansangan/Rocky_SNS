@@ -1,16 +1,26 @@
 <?php namespace SNS\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use SNS\Models\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class FoodBrands extends Model {
+class FoodBrands extends BaseModel {
 
 	use SoftDeletes;
 	
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
 	protected $table = 'food_brands';
 	
-	protected $fillable = array('brand_name', 'particulars', 'animal_type_id', 'order');
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = ['brand_name', 'particulars', 'animal_type_id', 'order'];
 	
-	protected $dates = array('deleted_at');
+	protected $dates = ['deleted_at'];
 
 }

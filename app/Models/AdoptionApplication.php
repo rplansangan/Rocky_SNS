@@ -1,9 +1,9 @@
-<?php namespace SNS;
+<?php namespace SNS\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use SNS\Models\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class AdoptionApplication extends Model {
+class AdoptionApplication extends BaseModel {
 
 	use SoftDeletes;
 	

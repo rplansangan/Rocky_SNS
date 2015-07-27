@@ -1,16 +1,26 @@
 <?php namespace SNS\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use SNS\Models\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class PostsCatg extends Model {
+class PostsCatg extends BaseModel {
 	
 	use SoftDeletes;
 
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
 	protected $table = 'posts_categories_pool';
 	
-	protected $fillable = array('post_id', 'media_cat_id');
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = ['post_id', 'media_cat_id'];
 	
-	protected $dates = array('deleted_at');
+	protected $dates = ['deleted_at'];
 
 }

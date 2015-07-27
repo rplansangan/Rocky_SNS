@@ -1,23 +1,37 @@
 <?php namespace SNS\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use SNS\Models\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Advertisement extends Model {
+class Advertisement extends BaseModel {
 
 	use SoftDeletes;
 
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
 	protected $table = 'advertisements';
 
+	/**
+	 *
+	 * @var string
+	 */
 	protected $primaryKey = 'advertisement_id';
 
-	protected $fillable = array('user_id', 'post_id', 'advertisement_type', 'advertisement_title');
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = ['user_id', 'post_id', 'advertisement_type', 'advertisement_title'];
 
-	protected $dates = array('deleted_at');
+	protected $dates = ['deleted_at'];
 
-	public static $initialRules = array(
-		'advertisement_type' => 'required',
-		'advertisement_title' => 'required',
-	);
+	public static $initialRules = [
+									'advertisement_type' => 'required',
+									'advertisement_title' => 'required',
+								];
 
 }

@@ -1,10 +1,10 @@
 <?php namespace SNS\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use SNS\Models\BaseModel;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Newsfeed_view extends Model {
+class Newsfeed_view extends BaseModel {
 
 	use SoftDeletes;
 	
@@ -18,7 +18,7 @@ class Newsfeed_view extends Model {
 	public static $dbDateFormat = 'Y-m-d H:i:s';
 	
 	public static $newsFeedFormat = 'Y-m-d H:i:s';
-	
+
 	// SCOPES
 	public function scopeOfUser($query, $user_id) {
 		return $query->where('user_id', $user_id);
@@ -37,6 +37,11 @@ class Newsfeed_view extends Model {
 	public function user() {
 		return $this->hasOne('SNS\Models\Registration', 'user_id', 'post_user_id')
 				->select(['registration_id', 'user_id', 'first_name', 'last_name']);
+	}
+
+	public function userMain() {
+		return $this->hasOne('SNS\Models\User', 'user_id', 'user_id')
+				->select(['user_id', 'selected_pet']);
 	}
 
 	public function image() {

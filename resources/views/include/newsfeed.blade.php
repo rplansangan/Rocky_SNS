@@ -6,18 +6,38 @@
 		<div class="row newsfeed-top">
 			<div class="col-lg-12">
 				<h5> 
-					@if(isset($row->user->prof_pic))
-					<a href="{{ route('profile.view' , ['id' => $row->user->user_id]) }}"><img src="{{ mediaSrc($row->user->prof_pic->image_path, $row->user->prof_pic->image_name , $row->user->prof_pic->image_ext) }}" class="profile-pic"></a>
+					@if($row->user->isNotNull('prof_pic'))
+						<a href="{{ route('profile.view' , ['id' => $row->user->user_id]) }}">
+							<img src="{{ mediaSrc($row->user->prof_pic->image_path, $row->user->prof_pic->image_name , $row->user->prof_pic->image_ext) }}" class="profile-pic">
+						</a>
 					@else
-					<a href="{{ route('profile.view' , ['id' => $row->user->user_id]) }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic"></a>
+						<a href="{{ route('profile.view' , ['id' => $row->user->user_id]) }}">
+							<img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic">
+						</a>
 					@endif
-					<a href="{{ route('profile.view' , ['id' => $row->user->user_id]) }}"><span>{{ $row->user->first_name.' '.$row->user->last_name }}</span></a>
-					@if(isset($row->image))
-					@if(stristr($row->image->image_mime, 'image/'))
-					<label>Posted a photo</label>
-					@else
-					<label>Posted a video</label>
+					<a href="{{ route('profile.view' , ['id' => $row->user->user_id]) }}">
+						<span>{{ $row->user->getFullName() }}</span>
+					</a>
+					
+					@if($row->isNotNull('userMain'))
+						@if($row->userMain->isNotNull('selectedPet'))
+							@if($row->userMain->selectedPet->isNotNull('profile_pic'))
+							<a href="{{ route('profile.showPetProfile', ['id' => $row->userMain->user_id, 'pet_id' => $row->userMain->selectedPet->pet_id]) }}">
+								<img src="{{ mediaSrc($row->userMain->selectedPet->profile_pic->image_path, $row->userMain->selectedPet->profile_pic->image_name, $row->userMain->selectedPet->profile_pic->image_ext) }}" class="profile-pic">
+							</a>							
+							@endif
+							<a href="{{ route('profile.showPetProfile', ['id' => $row->userMain->user_id, 'pet_id' => $row->userMain->selectedPet->pet_id]) }}">
+								<span>as {{ $row->userMain->selectedPet->pet_name }}</span>
+							</a>
+						@endif
 					@endif
+					
+					@if(($row->isNotNull('image')))
+						@if(stristr($row->image->image_mime, 'image/'))
+							<label>Posted a photo</label>
+						@else
+							<label>Posted a video</label>
+						@endif
 					@endif
 					<small>{{ _ago(strtotime($row->created_at)) }} ago</small>
 				</h5>
@@ -29,7 +49,7 @@
 		<div class="row newsfeed-content">
 			{!! $row->post->post_message !!}
 
-			@if(isset($row->image))
+			@if($row->isNotNull('image'))
 				@if(stristr($row->image->image_mime, 'image/'))
 				<div class="image-content">
 					<a href="#"><img src="{{  mediaSrc($row->image->image_path, $row->image->image_name , $row->image->image_ext)  }}" class="img-responsive img-thumbnail"></a>

@@ -1,14 +1,14 @@
 <?php namespace SNS\Models;
 
+use SNS\Models\BaseModel;
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
+class User extends BaseModel implements AuthenticatableContract, CanResetPasswordContract {
 
 	use Authenticatable, CanResetPassword, SoftDeletes;
 
@@ -91,8 +91,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->hasMany('SNS\Models\Pets', 'user_id');
 	}
 
-	public function selected_pet() {
-		return $this->hasOne('SNS\Models\Pets', 'pet_id', 'selected_pet');
+	public function selectedPet() {
+		return $this->hasOne('SNS\Models\Pets', 'pet_id', 'selected_pet')->select(['user_id', 'pet_id', 'pet_name']);
 	}
 	
 	public function posts() {

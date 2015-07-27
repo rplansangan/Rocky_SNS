@@ -1,9 +1,9 @@
 <?php namespace SNS\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use SNS\Models\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Comments extends Model {
+class Comments extends BaseModel {
 
 	use SoftDeletes;
 	
@@ -25,9 +25,9 @@ class Comments extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array('post_id', 'comment_message', 'comment_user_id');
+	protected $fillable = ['post_id', 'comment_message', 'comment_user_id'];
 	
-	protected $dates = array('deleted_at');
+	protected $dates = ['deleted_at'];
 	
 	// RELATIONSHIPS
 	public function user() {
@@ -37,7 +37,4 @@ class Comments extends Model {
 	public function post() {
 		return $this->belongsTo('SNS\Models\Posts', 'post_id');
 	}
-
-	
-
 }

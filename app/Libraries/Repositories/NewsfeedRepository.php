@@ -36,30 +36,30 @@ class NewsfeedRepository {
 			// used for user profiles
 			return $this->nf->where('friend_user_id', 0)
 						->ofPostUID($post_uid)
-						->with(['post',	'image', 'user', 'user.prof_pic', 'like', 'comment'])
+						->with(['post',	'image', 'user', 'user.prof_pic', 'like', 'comment', 'userMain.selectedPet', 'userMain.selectedPet.profile_pic'])
 						->latest()
 						->take($take)
 						->get();
 		} else if(is_null($id)) {
 			// used for authenticated user newsfeed access
 			return $this->nf->ofUser($id)
-					->where('friend_user_id', 0)
-					->with(['post', 'image', 'user', 'user.prof_pic', 'like', 'comment'])
-					->latest()
-					->take($take)
-					->get();
+						->where('friend_user_id', 0)
+						->with(['post', 'image', 'user', 'user.prof_pic', 'like', 'userMain.selectedPet', 'userMain.selectedPet.profile_pic'])
+						->latest()
+						->take($take)
+						->get();
 		} else if(is_null($id) or $id === 0) {
 			// used for public newsfeed access
 			return $this->nf->where('friend_user_id', 0)
-					->with(['post',	'image', 'user', 'user.prof_pic', 'like', 'comment'])
-					->latest()
-					->take($take)
-					->get();
+						->with(['post',	'image', 'user', 'user.prof_pic', 'like', 'userMain.selectedPet', 'userMain.selectedPet.profile_pic'])
+						->latest()
+						->take($take)
+						->get();
 		}
 		
 		// for authenticated users. used to display user's newsfeed
 		return $this->nf->ofUser($id)
-				->with(['post',	'image', 'user', 'user.prof_pic', 'like'])
+				->with(['post',	'image', 'user', 'user.prof_pic', 'like', 'userMain.selectedPet', 'userMain.selectedPet.profile_pic'])
 				->latest()
 				->take($take)
 				->get();
@@ -69,7 +69,7 @@ class NewsfeedRepository {
 		if($post_uid != null) {
 			return $this->nf->ofUser($id)
 					->ofPostUID($post_uid)
-					->with(['post',	'image', 'user', 'user.prof_pic', 'like', 'comment'])
+					->with(['post',	'image', 'user', 'user.prof_pic', 'like', 'userMain.selectedPet', 'userMain.selectedPet.profile_pic'])
 					->latest()
 					->skip($skip)
 					->take($take)
@@ -77,7 +77,7 @@ class NewsfeedRepository {
 		}		
 		
 		return $this->nf->ofUser($id)
-				->with(['post',	'image', 'user', 'user.prof_pic', 'like', 'comment'])
+				->with(['post',	'image', 'user', 'user.prof_pic', 'like', 'userMain.selectedPet', 'userMain.selectedPet.profile_pic'])
 				->latest()
 				->skip($skip)
 				->take($take)

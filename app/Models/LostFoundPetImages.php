@@ -1,9 +1,9 @@
 <?php namespace SNS\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use SNS\Models\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class LostFoundPetImages extends Model {
+class LostFoundPetImages extends BaseModel {
 
 	use SoftDeletes;
 	

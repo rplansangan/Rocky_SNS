@@ -1,10 +1,10 @@
 <?php namespace SNS\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use SNS\Models\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 
-class Advertise extends Model {
+class Advertise extends BaseModel {
 
 	use SoftDeletes;
 	
@@ -26,23 +26,23 @@ class Advertise extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array(
-		'user_id',
-		'message',
-		'status',
-		'type'
-		);
+	protected $fillable = [
+							'user_id',
+							'message',
+							'status',
+							'type'
+						];
 	
-	protected $dates = array('deleted_at');
+	protected $dates = ['deleted_at'];
 
 	public static $dbDateFormat = 'Y-m-d H:i:s';
 	
 	public static $newsFeedFormat = 'F n @ g:i a';
 	
-	public static $initialRules = array(
-			'message' => 'required'	,	
-			'title' => 'required'		
-	);
+	public static $initialRules = [
+									'message' => 'required'	,	
+									'title' => 'required'		
+								];
 	
 	public function post() {
 		return $this->hasOne('SNS\Models\Posts', 'advertise_id')
