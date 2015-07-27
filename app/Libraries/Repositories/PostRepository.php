@@ -63,23 +63,7 @@ class PostRepository {
 		
 		DB::commit();
 		
-		$post->load([
-				'user' => function($q) {
-					$q->addSelect(['registration_id', 'user_id', 'first_name', 'last_name']);
-				},
-				'user.prof_pic' => function($q) {
-					$q->addSelect(['image_id', 'user_id', 'image_path', 'image_name', 'image_ext']);
-					$q->where('is_profile_picture', 1);
-					$q->where('pet_id', 0);
-					$q->where('business_id', 0);
-				},
-				'image' => function($q) {
-					$q->addSelect(['image_id', 'post_id', 'image_mime' , 'category', 'image_path', 'image_name', 'image_ext']);
-				},
-				'like' => function($q) {
-					$q->addSelect(['like_id', 'post_id']);
-				}
-		]);	
+		$post->load(['user', 'user.prof_pic', 'image', 'like']);	
 		
 		return $post;
 	}

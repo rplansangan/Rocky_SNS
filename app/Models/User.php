@@ -82,6 +82,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->hasOne('SNS\Models\Registration', 'user_id')
 				->select(['registration_id', 'user_id', 'first_name', 'last_name']);
 	}
+
+	public function fullRegistration() {
+		return $this->hasOne('SNS\Models\Registration', 'user_id');
+	}
 	
 	public function pets() {
 		return $this->hasMany('SNS\Models\Pets', 'user_id');
@@ -109,6 +113,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	
 	public function prof_pic() {
 		return $this->hasOne('SNS\Models\Images', 'user_id', 'user_id')
+				->select(['image_id', 'user_id', 'image_path', 'image_name', 'image_ext'])
 				->where('is_profile_picture', 1)
 				->where('pet_id', 0);
 	}

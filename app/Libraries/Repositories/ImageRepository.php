@@ -21,13 +21,13 @@ class ImageRepository {
 		$filename = md5($data->getClientOriginalName() . Auth::user()->email_address . Carbon::now());
 		$dir = StorageHelper::create(Auth::id());
 		
-		$img = $this->image->create(array(
+		$img = $this->image->create([
 				'user_id' => Auth::id(),
 				'image_path' => $dir,
 				'image_name' => $filename . $data->getClientOriginalExtension(),
 				'image_mime' => $data->getMimeType(),
 				'image_ext' => $data->getClientOriginalExtension()
-		));	
+		]);	
 		$data->move(storage_path('app') . '/' . $dir, $filename . '.' . $img->image_ext);	
 		
 		return $img;

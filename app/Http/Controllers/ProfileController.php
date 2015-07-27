@@ -82,14 +82,7 @@ class ProfileController extends Controller {
 	public function petsList($user_id) {
 		$user = User::find($user_id);
 		
-		$profile = $user->load([
-						'registration',
-						'registration.prof_pic' => function($q) {
-						},
-						'pets',
-						'pets.profile_pic' => function($q) {
-						}
-					]);
+		$profile = $user->load(['registration',	'registration.prof_pic', 'pets', 'pets.profile_pic']);
 		$data['profileInformation'] = $profile->registration;
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
@@ -207,7 +200,7 @@ class ProfileController extends Controller {
 		$data['mid'] = 'pages.inside.profile.profilesettings';
 		$data['title'] = 'Update Profile';
 		$data['profile'] = Auth::user();
-		$data['profile']->load(['registration']);
+		$data['profile']->load(['fullRegistration', 'prof_pic']);
 		return view('pages.master' , $data);
 	}
 	
