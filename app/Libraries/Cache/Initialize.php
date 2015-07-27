@@ -99,14 +99,7 @@ class Initialize {
     	if(!$this->checkAuth()) {
     		$params = $this->auth->user();
     		
-    		$params->load([
-    				'registration' => function($q) {
-    					$q->addSelect(['registration_id', 'user_id', 'first_name', 'last_name']);
-    				},
-    				'prof_pic' => function($q) {
-    					$q->addSelect(['image_id', 'user_id', 'image_path', 'image_name', 'image_ext']);
-    				}
-    		]);
+    		$params->load(['registration', 'prof_pic']);
     		 
     		$user = [
 	    		'user_id' => $params->user_id,

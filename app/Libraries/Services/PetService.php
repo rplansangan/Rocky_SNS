@@ -63,9 +63,9 @@ class PetService {
 	}
 	
 	public function formatAsSelect() {
-		$items = array();
+		$items = [];
 		foreach($this->collection as $key) {
-			$items[] = array('id' => $key->{$this->getEquiv('id')}, 'label' => $key->{$this->getEquiv('label')});
+			$items[] = ['id' => $key->{$this->getEquiv('id')}, 'label' => $key->{$this->getEquiv('label')}];
 		}
 		
 		$params['items'] = $items;

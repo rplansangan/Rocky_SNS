@@ -88,9 +88,9 @@ class NotificationService {
 	 * @param array $params
 	 * @return \SNS\Libraries\Services\NotificationService
 	 */
-	public function params($params = array()) {
+	public function params($params = []) {
 		if(!is_null($this->current_params['params'])) {
-			$this->current_params['params'] = array_merge($this->removeKey($params, array('notif_type')), $params);
+			$this->current_params['params'] = array_merge($this->removeKey($params, ['notif_type']), $params);
 		} else {
 			$this->current_params['params'] = $this->removeKey($params, 'notif_type');
 		}
@@ -112,7 +112,7 @@ class NotificationService {
 		}
 	}
 	
-	public function updateParams($params = array()) {	
+	public function updateParams($params = []) {	
 		if($this->current_params['params'] != null) {
 			$params = json_encode(array_merge($params, $this->current_params['params']));
 		} else {
@@ -123,7 +123,7 @@ class NotificationService {
 			->where('destination_user_id', $this->destination_details['destination_user_id'])
 			->where('origin_object_id', $this->current_details['details']['id'])
 			->where('params', json_encode($this->current_params['params']))
-			->update(array('params' => $params));
+			->update(['params' => $params]);
 				
 		return $this;
 	}
@@ -163,16 +163,10 @@ class NotificationService {
 	}
 	
 	protected function getOriginUserDetails($notif) {
-		$notif->origin_object->load([
-				'registration',
-				'registration.prof_pic' => function($q) {
-					$q->where('is_profile_picture', 1);
-					$q->where('pet_id', 0);
-				}
-		])->get();
+		$notif->origin_object->load(['registration', 'registration.prof_pic'])->get();
 		
 		$data['name'] = $notif->origin_object->registration->getFullName();
-		$data['profile_route'] = route('profile.view', array($notif->origin_object->user_id));
+		$data['profile_route'] = route('profile.view', [$notif->origin_object->user_id]);
 		$data['created_at'] = $notif->created_at;
 		$data['image'] = $notif->origin_object->registration->prof_pic;
 		$data['id'] = $notif->origin_object->user_id;
@@ -219,7 +213,7 @@ class NotificationService {
 	protected function formatLike($notif) {
 		$origin_user = $this->getOriginUserDetails($notif);
 		$params = json_decode($notif->params);
-		$post_route = route('profile.view', array($notif->destination_user_id)) . '#post-' . $params->post_id;
+		$post_route = route('profile.view', [$notif->destination_user_id]) . '#post-' . $params->post_id;
 		
 		return $origin_user['name'];
 	}
@@ -227,7 +221,7 @@ class NotificationService {
 	protected function formatComment($notif) {
 		$origin_user = $this->getOriginUserDetails($notif);
 		$params = json_decode($notif->params);
-		$post_route = route('profile.view', array($notif->destination_user_id)) . '#post-' . $params->post_id;
+		$post_route = route('profile.view', [$notif->destination_user_id]) . '#post-' . $params->post_id;
 		
 		return $origin_user['name'];
 	}	
@@ -261,8 +255,8 @@ class NotificationService {
 	 */
 	public function collectInitial($user_id) {
 		$notif_collection = $this->notif
-								->select(array('origin_object_id', 'origin_object_type', 'is_read', 'params', 'destination_user_id', 'notif_type' , 'created_at'))
-								->with(array('object'))
+								->select(['origin_object_id', 'origin_object_type', 'is_read', 'params', 'destination_user_id', 'notif_type' , 'created_at'])
+								->with(['object'])
 								->userNotif($user_id);
 
 		return $this->formatNotif($notif_collection);
@@ -276,8 +270,8 @@ class NotificationService {
 	 */
 	public function collectIncremental($user_id, $take, $offset) {
 		return $this->notif
-					->select(array('origin_object_id', 'l10n_key', 'is_read', 'params'))
-					->with(array('object'))
+					->select(['origin_object_id', 'l10n_key', 'is_read', 'params'])
+					->with(['object'])
 					->userNotifIncremental($user_id, $take, $offset);
 	}
 	
@@ -298,20 +292,20 @@ class NotificationService {
 	 * @param integer $to
 	 * @param array $more_params
 	 */
-	public function setIsRead($object_type, $from, $to, $more_params = array()) {
+	public function setIsRead($object_type, $from, $to, $more_params = []) {
 		if(!$more_params) {
 			$this->notif->notifByObj($object_type, $to, $from)
-				->update(array('is_read' => 1));
+				->update(['is_read' => 1]);
 		} else {
 			$params = $this->notif->select('params')
 						->notifByObj($object_type, $to, $from)
 						->latest()->take(1)->get();
 			
 			$this->notif->notifByObj($object_type, $to, $from)
-				->latest()->take(1)->update(array(
+				->latest()->take(1)->update([
 						'is_read' => 1,
 						'params' => $this->mergeParams(json_decode($params[0]->params), $more_params, 'json')
-				));
+				]);
 		}
 	}
 	

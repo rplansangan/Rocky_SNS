@@ -82,14 +82,7 @@ class ProfileController extends Controller {
 	public function petsList($user_id) {
 		$user = User::find($user_id);
 		
-		$profile = $user->load([
-						'registration',
-						'registration.prof_pic' => function($q) {
-						},
-						'pets',
-						'pets.profile_pic' => function($q) {
-						}
-					]);
+		$profile = $user->load(['registration',	'registration.prof_pic', 'pets', 'pets.profile_pic']);
 		$data['profileInformation'] = $profile->registration;
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';

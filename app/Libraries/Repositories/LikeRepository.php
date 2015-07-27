@@ -11,14 +11,14 @@ class LikeRepository {
 		$q = Likes::where('post_id', $post_id)->where('like_user_id', Auth::id())->get();
 
 		if($q->isEmpty()) {
-			$like = Likes::create(array('post_id' => $post_id, 'like_user_id' => Auth::id()));
+			$like = Likes::create(['post_id' => $post_id, 'like_user_id' => Auth::id()]);
 			$response['liked'] = true;
 			
 			if(Auth::id() != $destination) {
 				Notification::origin('Like', Auth::id())
 					->destinationId($destination)
 					->notifType('post_like')
-					->params(array('post_id' => $like->post_id))
+					->params(['post_id' => $like->post_id])
 					->send();
 			}
 						
@@ -27,7 +27,7 @@ class LikeRepository {
 			Notification::origin('Like', Auth::id())
 				->destinationId($destination)
 				->notifType('post_like')
-				->params(array('post_id' => (string)$like[0]->post_id))
+				->params(['post_id' => (string)$like[0]->post_id])
 				->delete();
 				
 			Likes::where('post_id', $post_id)->where('like_user_id', Auth::id())->delete();

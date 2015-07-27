@@ -36,16 +36,18 @@ class Posts extends Model {
 	
 	// RELATIONSHIPS
 	public function user() {
-		return $this->hasOne('SNS\Models\Registration', 'user_id', 'user_id');
+		return $this->hasOne('SNS\Models\Registration', 'user_id', 'user_id')
+				->select(['registration_id', 'user_id', 'first_name', 'last_name']);
 	}
 	
 	public function image() {
 		return $this->hasOne('SNS\Models\Images', 'post_id')
-				->select(['user_id', 'image_id', 'post_id']);
+				->seelect(['image_id', 'post_id', 'image_mime' , 'category', 'image_path', 'image_name', 'image_ext']);
 	}
 	
 	public function like() {
-		return $this->hasMany('SNS\Models\Likes', 'post_id');
+		return $this->hasMany('SNS\Models\Likes', 'post_id')
+				->select(['like_id', 'post_id']);
 	}
 	
 	public function comment() {
