@@ -37,7 +37,7 @@ class Posts extends BaseModel {
 	// RELATIONSHIPS
 	public function pet() {
 		return $this->hasOne('SNS\Models\Pets', 'pet_id', 'pet_id')
-			->select(['pet_id', 'user_id']);
+			->select(['pet_id', 'user_id', 'pet_name']);
 	}
 	
 	public function user() {

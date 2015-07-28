@@ -18,6 +18,7 @@
 					<a href="{{ route('profile.view' , ['id' => $row->user->user_id]) }}">
 						<span>{{ $row->user->getFullName() }}</span>
 					</a>
+					
 					@if($row->post->isNotNull('pet'))
 							@if($row->post->pet->isNotNull('profile_pic'))
 							<a href="{{ route('profile.showPetProfile', ['id' => $row->post->user_id, 'pet_id' => $row->post->pet->pet_id]) }}">

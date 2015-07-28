@@ -46,8 +46,7 @@ class HomeController extends Controller {
 	 * @return Response
 	 */
 	public function index()
-	{
-		
+	{		
 		$data['sub_title'] = '- Home';
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
