@@ -93,7 +93,7 @@
 			<li><a href="{{ route('public.nearestpetshop') }}"><img src="{{ URL::asset('assets/img/cart.png') }}"><span>Nearest Petshop</span></a></li>
 			<li><a href="{{ route('public.nearestvet') }}"><img src="{{ URL::asset('assets/img/vet.png') }}"><span>Nearest Vet</span></a></li>
 			<li><a href="{{ route('public.foundation') }}"><img src="{{ URL::asset('assets/img/foundation.jpg') }}"><span>Animal Shelters</span></a></li>
-			<li><a href="#"><img src="{{ URL::asset('assets/img/foundation.jpg') }}"><span>Adopt a Pet</span></a></li>
+			<li><a href="#"><img src="{{ URL::asset('assets/img/adopt.png') }}"><span>Adopt a Pet</span></a></li>
 		</ul>
 	</nav>
 </div>
@@ -115,9 +115,9 @@
 	<nav>
 		<ul>
 			<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/img/prestau.png') }}"><span>Restaurants</span></a></li>
-			<li><a href="#"><img src="{{ URL::asset('assets/img/grooming.png') }}"><span>Hotels</span></a></li>
-			<li><a href="#"><img src="{{ URL::asset('assets/img/pwalking.png') }}"><span>Park/Beach</span></a></li>
-			<li><a href="#"><img src="{{ URL::asset('assets/img/photel.png') }}"><span>Travel</span></a></li>
+			<li><a href="#"><img src="{{ URL::asset('assets/img/hotel.png') }}"><span>Hotels</span></a></li>
+			<li><a href="#"><img src="{{ URL::asset('assets/img/park.png') }}"><span>Park/Beach</span></a></li>
+			<li><a href="#"><img src="{{ URL::asset('assets/img/travel.png') }}"><span>Travel</span></a></li>
 		</ul>
 	</nav>
 </div>
