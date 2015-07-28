@@ -87,10 +87,14 @@
 		@if(Auth::check())
 		<div class="reply-textarea">
 			<div class="col-lg-12 nopad">
-				@if(isset($user_data['profile_picture_path']))
-				<a href="#" class="arrow_right"><img src="{{ mediaSrcAlt($user_data['profile_picture_path'], $user_data['profile_picture_ext']) }}" class="img-thumbnail profile-pic"></a>
+				@if(isset($user_data->prof_pic))
+				<a href="#" class="arrow_right">
+					<img src="<?php echo mediaSrc($user_data->prof_pic->image_path, $user_data->prof_pic->image_name, $user_data->prof_pic->image_ext); ?>" class="img-thumbnail profile-pic">
+				</a>
 				@else
-				<a href="#" class="arrow_right"><img src="{{ URL::asset('assets/img/prof.png') }}" class="img-thumbnail profile-pic"></a>
+				<a href="#" class="arrow_right">
+					<img src="{{ URL::asset('assets/img/prof.png') }}" class="img-thumbnail profile-pic">
+				</a>
 				@endif
 				<textarea class="form-control insertComment"  post-user-id="{{ $row->post_user_id }}" post-id="{{ $row->post->post_id }}" route="{{ Route('insert.comment') }}" placeholder="Write a comment"></textarea>
 			</div>

@@ -91,7 +91,7 @@ class User extends BaseModel implements AuthenticatableContract, CanResetPasswor
 		return $this->hasMany('SNS\Models\Pets', 'user_id');
 	}
 
-	public function selectedPet() {
+	public function selected_pet() {
 		return $this->hasOne('SNS\Models\Pets', 'pet_id', 'selected_pet')->select(['user_id', 'pet_id', 'pet_name']);
 	}
 	

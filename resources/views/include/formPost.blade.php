@@ -2,10 +2,14 @@
 <!-- POST FORM -->
 <div class="post-area">
 	<div class="col-lg-1">
-		@if(isset($user_data['profile_picture_path']))
-		<a href="{{ Route('profile.view' , ['id' => $user_data['user_id']] ) }}" class="arrow_right"><img src="<?php echo mediaSrcAlt($user_data['profile_picture_path'], $user_data['profile_picture_ext']); ?>" class="img-thumbnail"></a>
+		@if(isset($user_data->prof_pic))
+		<a href="{{ Route('profile.view' , ['id' => $user_data->user_id] ) }}" class="arrow_right">
+			<img src="<?php echo mediaSrc($user_data->selected_pet->profile_pic->image_path, $user_data->selected_pet->profile_pic->image_name, $user_data->selected_pet->profile_pic->image_ext); ?>" class="img-thumbnail">
+		</a>
 		@else
-		<a href="{{ Route('profile.view' , ['id' => $user_data['user_id']] ) }}" class="arrow_right"><img src="{{ URL::asset('assets/images/default-pic.png')  }}" class="img-thumbnail"></a>
+		<a href="{{ Route('profile.view' , ['id' => $user_data->user_id] ) }}" class="arrow_right">
+			<img src="{{ URL::asset('assets/images/default-pic.png')  }}" class="img-thumbnail">
+		</a>
 		@endif
 	</div>
 	<div class="col-lg-11">
