@@ -26,7 +26,7 @@ class Posts extends BaseModel {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['post_message', 'user_id', 'post_tags', 'image_id'];
+	protected $fillable = ['post_message', 'user_id', 'pet_id', 'post_tags', 'image_id'];
 	
 	protected $dates = ['deleted_at'];
 	
