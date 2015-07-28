@@ -9,7 +9,22 @@
 			<li><a href="{{ route('home') }}"><img src="{{ URL::asset('assets/img/notification.png') }}" class="profile-pic"><span>Newsfeed</span></a></li>
 			@endif
 			@if(Auth::check())
-			<li><a href="{{ route('profile.edit') }}"><img src="{{ URL::asset('assets/img/edit-profile.png') }}"><span>Edit Profile</span></a></li>
+			<li>
+				<a href="javascript:void(0);" data-toggle="collapse" data-target="#petlist-edit" aria-expanded="false" aria-controls="petlist-edit"><img src="{{ URL::asset('assets/img/edit-profile.png') }}"><span>Edit Profile</span></a>
+				@if(isset($my_pets))
+					@if(!$my_pets->isEmpty())
+						<ul class="petlist-edit collapse" id="petlist-edit">
+							@foreach($my_pets as $row)
+								@if(isset($row->profile_pic))
+								<li><a href="{{ route('profile.showPetProfile' , ['user_id' => Auth::id() , 'pet_id' => $row->pet_id]) }}"><img src="{{ mediaSrc($row->profile_pic->image_path , $row->profile_pic->image_name , $row->profile_pic->image_ext) }}" class="profile-pic"><span>{{ $row->pet_name }}</span></a></li>
+								@else
+								<li><a href="{{ route('profile.showPetProfile' , ['user_id' => Auth::id() , 'pet_id' => $row->pet_id]) }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic"><span>{{ $row->pet_name }}</span></a></li>
+								@endif
+							@endforeach
+						</ul>
+					@endif
+				@endif
+			</li>
 			@else
 			<li><a href="{{ route('public.neighbors') }}"><img src="{{ URL::asset('assets/img/neighbors.png') }}"><span>Neighbors</span></a></li>
 			@endif
