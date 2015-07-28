@@ -50,10 +50,10 @@
 <div>
 	<nav>
 		<ul>
-			<li><a href="{{ route('public.nearestpetshop') }}"><img src="{{ URL::asset('assets/img/cart.png') }}"><span>Pet groomers</span></a></li>
-			<li><a href="{{ route('public.nearestvet') }}"><img src="{{ URL::asset('assets/img/vet.png') }}"><span>Pet Walkers</span></a></li>
-			<li><a href="{{ route('public.foundation') }}"><img src="{{ URL::asset('assets/img/foundation.jpg') }}"><span>Pet Hotels</span></a></li>
-			<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/img/foundation.jpg') }}"><span>Pet Dating</span></a></li>
+			<li><a href="{{ route('public.nearestpetshop') }}"><img src="{{ URL::asset('assets/img/grooming.png') }}"><span>Pet groomers</span></a></li>
+			<li><a href="{{ route('public.nearestvet') }}"><img src="{{ URL::asset('assets/img/pwalking.png') }}"><span>Pet Walkers</span></a></li>
+			<li><a href="{{ route('public.foundation') }}"><img src="{{ URL::asset('assets/img/photel.png') }}"><span>Pet Hotels</span></a></li>
+			<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/img/pdating.png') }}"><span>Pet Dating</span></a></li>
 		</ul>
 	</nav>
 </div>
@@ -64,7 +64,7 @@
 			<li><a href="{{ route('public.nearestpetshop') }}"><img src="{{ URL::asset('assets/img/cart.png') }}"><span>Nearest Petshop</span></a></li>
 			<li><a href="{{ route('public.nearestvet') }}"><img src="{{ URL::asset('assets/img/vet.png') }}"><span>Nearest Vet</span></a></li>
 			<li><a href="{{ route('public.foundation') }}"><img src="{{ URL::asset('assets/img/foundation.jpg') }}"><span>Animal Shelters</span></a></li>
-			<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/img/foundation.jpg') }}"><span>Pet-friendly Restaurants</span></a></li>
+			<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/img/prestau.png') }}"><span>Pet-friendly Restaurants</span></a></li>
 		</ul>
 	</nav>
 </div>
