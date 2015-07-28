@@ -145,7 +145,7 @@ Route::get('profile/{user_id}/pets', [
 	'uses' => 'ProfileController@petsList'
 ]);
 
-Route::get('home/dogsoftheweek', [
+Route::get('home/petsoftheweek', [
 	'as' => 'public.dogsoftheweek',
 	'uses' => 'HomeController@dogsWeek'
 ]);

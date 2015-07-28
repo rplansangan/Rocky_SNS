@@ -415,6 +415,7 @@ header > div nav > ul > li > ul > li > a:hover{
 .right .thumb{
 	border-radius: 8px;
 	margin-bottom: 10px;
+	width: 100%;
 }
 input.btn {
   background-color: #b7042c;

@@ -1,7 +1,7 @@
 <div>
 	<div class="text-center">
 		<img src="{{ URL::asset('assets/img/trophy-large.png') }}">
-		<h3>Dogs of the week <br><small class="text-muted">Share your funny videos and vote to be the dogs of the week</small></h3>
+		<h3>Pet of the week <br><small class="text-muted">Share your funny videos and vote to be the pet of the week</small></h3>
 		<div class="col-lg-6 col-lg-offset-3 search-input">
 			<div class="input-group">
 		      <input type="text" class="form-control input-lg " placeholder="Search for...">

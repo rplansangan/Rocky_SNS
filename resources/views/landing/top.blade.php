@@ -32,11 +32,12 @@ $(document).ready(function(){
     <div class="col-lg-10">
       <nav class="text-right">
         <ul>
-          <li><a href="javascript:void(0);" data-toggle="modal" data-target="#signupModal">JOIN NOW</a></li>
-          <li><a href="#">ABOUT</a></li>
-          <li><a href="{{ route('public.nearestpetshop') }}">PET NEEDS</a></li>
-          <li><a href="{{ route('public.dogsoftheweek') }}">DOGS OF THE WEEK</a></li>
-          <li><a class="active" href="#">ROCKY RANGER</a></li>
+          <li><a href="#">ABOUT</a><br/><small><p></p>&nbsp;</small></li>
+          <li><a href="{{ route('public.nearestpetshop') }}">PET NEEDS</a><br/><small><p></p>&nbsp;</small></li>
+          <li><a href="{{ route('public.dogsoftheweek') }}">PET OF THE WEEK</a><br/><small><p></p>&nbsp;</small></li>
+          <li><a data-toggle="modal" data-target="#missingPet" class="red" href="#">FIND A PET</a><br/>
+            <small><p></p><a href="#" data-toggle="modal" data-target="#foundpet">I Found a Pet</a></small></li>
+          <li><a class="orange" href="javascript:void(0);" data-toggle="modal" data-target="#signupModal">JOIN NOW</a><br/><small><p></p>&nbsp;</small></li>
         </ul>
       </nav>
     </div>

@@ -50,7 +50,7 @@
 				@endif
 			</li>
 			@else
-			<li><a href="{{ route('public.neighbors') }}"><img src="{{ URL::asset('assets/img/neighbors.png') }}"><span>Neighbors</span></a></li>
+			
 			@endif
 		</ul>
 	</nav>
@@ -87,26 +87,41 @@
 @endif
 
 <div>
-	<nav>
-		<ul>
-			<li><a href="{{ route('public.nearestpetshop') }}"><img src="{{ URL::asset('assets/img/grooming.png') }}"><span>Pet groomers</span></a></li>
-			<li><a href="{{ route('public.nearestvet') }}"><img src="{{ URL::asset('assets/img/pwalking.png') }}"><span>Pet Walkers</span></a></li>
-			<li><a href="{{ route('public.foundation') }}"><img src="{{ URL::asset('assets/img/photel.png') }}"><span>Pet Hotels</span></a></li>
-			<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/img/pdating.png') }}"><span>Pet Dating</span></a></li>
-		</ul>
-	</nav>
-</div>
-
-<div>
+	<label class="text-muted">PET NEEDS</label>
 	<nav>
 		<ul>
 			<li><a href="{{ route('public.nearestpetshop') }}"><img src="{{ URL::asset('assets/img/cart.png') }}"><span>Nearest Petshop</span></a></li>
 			<li><a href="{{ route('public.nearestvet') }}"><img src="{{ URL::asset('assets/img/vet.png') }}"><span>Nearest Vet</span></a></li>
 			<li><a href="{{ route('public.foundation') }}"><img src="{{ URL::asset('assets/img/foundation.jpg') }}"><span>Animal Shelters</span></a></li>
-			<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/img/prestau.png') }}"><span>Pet-friendly Restaurants</span></a></li>
+			<li><a href="#"><img src="{{ URL::asset('assets/img/foundation.jpg') }}"><span>Adopt a Pet</span></a></li>
 		</ul>
 	</nav>
 </div>
+
+<div>
+	<label class="text-muted">PET WANTS</label>
+	<nav>
+		<ul>
+			<li><a href="#"><img src="{{ URL::asset('assets/img/grooming.png') }}"><span>Pet groomers</span></a></li>
+			<li><a href="#"><img src="{{ URL::asset('assets/img/pwalking.png') }}"><span>Pet Walkers</span></a></li>
+			<li><a href="#"><img src="{{ URL::asset('assets/img/photel.png') }}"><span>Pet Boarding</span></a></li>
+			<li><a href="#"><img src="{{ URL::asset('assets/img/pdating.png') }}"><span>Pet Dating</span></a></li>
+		</ul>
+	</nav>
+</div>
+
+<div>
+	<label class="text-muted">PET-FRIENDLY</label>
+	<nav>
+		<ul>
+			<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/img/prestau.png') }}"><span>Restaurants</span></a></li>
+			<li><a href="#"><img src="{{ URL::asset('assets/img/grooming.png') }}"><span>Hotels</span></a></li>
+			<li><a href="#"><img src="{{ URL::asset('assets/img/pwalking.png') }}"><span>Park/Beach</span></a></li>
+			<li><a href="#"><img src="{{ URL::asset('assets/img/photel.png') }}"><span>Travel</span></a></li>
+		</ul>
+	</nav>
+</div>
+
 <div>
 	<label class="text-muted">WHAT TO WATCH</label>
 	<nav>
@@ -114,7 +129,7 @@
 			@if(Auth::check())
 			<li><a href="{{ route('public.myuploads') }}"><img src="{{ URL::asset('assets/img/upload.png') }}" ><span>My Uploads</span></a></li>
 			@endif
-			<li><a href="{{ route('public.dogsoftheweek') }}"><img src="{{ URL::asset('assets/img/trophy.png') }}" ><span>Dogs of the week</span></a></li>
+			<li><a href="{{ route('public.dogsoftheweek') }}"><img src="{{ URL::asset('assets/img/trophy.png') }}" ><span>Pet of the week</span></a></li>
 			@if(Auth::check())
 			<li><a href="{{ route('public.history') }}"><img src="{{ URL::asset('assets/img/history.png') }}" ><span>History</span></a></li>
 			@endif

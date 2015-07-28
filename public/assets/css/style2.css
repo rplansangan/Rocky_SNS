@@ -24,8 +24,12 @@ input.btn.btn-primary {
   color: black;
   text-decoration: none;
 }
-#landing .active{
+#landing .red{
   background-color: #b7042c;
+  color: white;
+}
+#landing .orange{
+  background-color: #FF6800;
   color: white;
 }
 #landing > header{
@@ -39,20 +43,24 @@ input.btn.btn-primary {
 }
 #landing > header > div > nav > ul{
   list-style-type: none;
-  padding: 10px 35px;
-  margin-top: 20px;
+  padding: 10px 35px 5px 35px;
+  margin-top: 5px;
+  margin-bottom: 0;
 }
 #landing > header > div > nav > ul > li{
   display: inline-block;
 }
 #landing > header > div > nav > ul > li > a:not(.active):hover{
-  color: #b7042c;
+  color: #191919;
 }
 #landing > header > div > nav > ul > li > a{
   font-weight: bolder;
   padding: 10px 15px;
   line-height: 15px;
   border-radius: 5px;
+}
+#landing small a {
+    padding: 13px;
 }
 .button-group{
   width: 100%;
