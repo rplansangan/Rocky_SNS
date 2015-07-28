@@ -79,7 +79,7 @@ class ProfileController extends Controller {
 				2 - Merchant
 				3 - Animal Shelter
 				4 - Veterinarian
-	
+				
 		*/
 
 		if(Auth::user()->user_type == 2){
