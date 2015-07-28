@@ -27,7 +27,7 @@ class ProfileController extends Controller {
 	public function __construct(Initialize $init, Get $cacheGet) {
 		parent::__construct($init, $cacheGet);
 
-		#$this->middleware('checkPet');
+		$this->middleware('checkPet');
 		
 	}
 	public function showGallery($id){
@@ -79,7 +79,7 @@ class ProfileController extends Controller {
 				2 - Merchant
 				3 - Animal Shelter
 				4 - Veterinarian
-				
+
 		*/
 
 		if(Auth::user()->user_type == 2){
