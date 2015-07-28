@@ -35,6 +35,11 @@ class Posts extends BaseModel {
 	public static $newsFeedFormat = 'Y-m-d H:i:s';
 	
 	// RELATIONSHIPS
+	public function pet() {
+		return $this->hasOne('SNS\Models\Pets', 'pet_id', 'pet_id')
+			->select(['pet_id', 'user_id']);
+	}
+	
 	public function user() {
 		return $this->hasOne('SNS\Models\Registration', 'user_id', 'user_id')
 				->select(['registration_id', 'user_id', 'first_name', 'last_name']);

@@ -28,20 +28,15 @@ class Newsfeed_view extends BaseModel {
 		return $query->where('post_user_id', $user_id);
 	}
 	
-	// RELATIONSHIPS
+	// RELATIONSHIPS	
 	public function post() {
 		return $this->hasOne('SNS\Models\Posts', 'post_id', 'post_id')
-				->select(['post_id', 'user_id', 'post_message', 'created_at']);
+				->select(['post_id', 'user_id', 'pet_id', 'post_message', 'created_at']);
 	}
 	
 	public function user() {
 		return $this->hasOne('SNS\Models\Registration', 'user_id', 'post_user_id')
 				->select(['registration_id', 'user_id', 'first_name', 'last_name']);
-	}
-
-	public function userMain() {
-		return $this->hasOne('SNS\Models\User', 'user_id', 'post_user_id')
-				->select(['user_id', 'selected_pet']);
 	}
 
 	public function image() {

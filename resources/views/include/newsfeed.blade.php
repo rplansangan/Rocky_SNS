@@ -18,18 +18,15 @@
 					<a href="{{ route('profile.view' , ['id' => $row->user->user_id]) }}">
 						<span>{{ $row->user->getFullName() }}</span>
 					</a>
-					
-					@if($row->isNotNull('userMain'))
-						@if($row->userMain->isNotNull('selectedPet'))
-							@if($row->userMain->selectedPet->isNotNull('profile_pic'))
-							<a href="{{ route('profile.showPetProfile', ['id' => $row->userMain->user_id, 'pet_id' => $row->userMain->selectedPet->pet_id]) }}">
-								<img src="{{ mediaSrc($row->userMain->selectedPet->profile_pic->image_path, $row->userMain->selectedPet->profile_pic->image_name, $row->userMain->selectedPet->profile_pic->image_ext) }}" class="profile-pic">
+					@if($row->post->isNotNull('pet'))
+							@if($row->post->pet->isNotNull('profile_pic'))
+							<a href="{{ route('profile.showPetProfile', ['id' => $row->post->user_id, 'pet_id' => $row->post->pet->pet_id]) }}">
+								<img src="{{ mediaSrc($row->post->pet->profile_pic->image_path, $row->post->pet->profile_pic->image_name, $row->post->pet->profile_pic->image_ext) }}" class="profile-pic">
 							</a>							
 							@endif
-							<a href="{{ route('profile.showPetProfile', ['id' => $row->userMain->user_id, 'pet_id' => $row->userMain->selectedPet->pet_id]) }}">
-								<span>as {{ $row->userMain->selectedPet->pet_name }}</span>
+							<a href="{{ route('profile.showPetProfile', ['id' => $row->post->user_id, 'pet_id' => $row->post->pet->pet_id]) }}">
+								<span>as {{ $row->post->pet->pet_name }}</span>
 							</a>
-						@endif
 					@endif
 					
 					@if(($row->isNotNull('image')))
