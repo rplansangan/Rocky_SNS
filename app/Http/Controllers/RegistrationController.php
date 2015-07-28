@@ -5,6 +5,8 @@ use SNS\Models\Registration;
 use SNS\Models\Pets;
 use SNS\Models\User;
 use SNS\Models\Business;
+use SNS\Models\PetFoundation;
+use SNS\Models\VeterinarianRegistration;
 use SNS\Libraries\Services\ValidationService as EmailValidationService;
 use SNS\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -37,6 +39,15 @@ class RegistrationController extends Controller {
 		if($count){
 			echo 'not';
 		}else{
+			/*
+				User types
+
+				1 - Member
+				2 - Merchant
+				3 - Animal Shelter
+				4 - Veterinarian
+	
+			*/
 			$user = new User();
 			$user->email_address = $input['email_address'];
 			$user->password = Hash::make($input['password']);
@@ -56,6 +67,21 @@ class RegistrationController extends Controller {
 			$reg->email_address = $input['email_address'];
 			$reg->save();
 
+			if($input['user_type'] == 2){
+				$business = new Business();
+				$business->business_name = $input['business_name'];
+				$business->user_id = $user->user_id;
+				$business->save();
+			}else if($input['user_type'] == 3){
+				$pf = new PetFoundation();
+				$pf->petfoundation_name = $input['foundation_name'];
+				$pf->user_id = $user->user_id;
+				$pf->save();
+			}else if($input['user_type'] == 4){
+				$vet = new VeterinarianRegistration();
+				$vet->user_id = $user->user_id;
+				$vet->save();
+			}
 			Auth::loginUsingId($user->user_id);
 			return 'ok';
 		}

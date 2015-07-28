@@ -9,6 +9,7 @@ class WelcomeController extends Controller {
 
 	public function __construct(Initialize $init, Get $cacheGet) {
 		parent::__construct($init, $cacheGet);		
+		
 	}
 	/**
 	 * Show the application welcome screen to the user.

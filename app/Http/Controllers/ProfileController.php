@@ -26,11 +26,12 @@ class ProfileController extends Controller {
 	
 	public function __construct(Initialize $init, Get $cacheGet) {
 		parent::__construct($init, $cacheGet);
+
+		#$this->middleware('checkPet');
 		
 	}
 	public function showGallery($id){
-		$profileInformation = Registration::with(['prof_pic'])
-								->where('user_id' , $id)->get();
+		$profileInformation = Registration::with(['prof_pic'])->where('user_id' , $id)->get();
 		
 		$data['profileInformation'] = $profileInformation[0];
 		$data['title'] = $profileInformation[0]->getFullName();
@@ -46,9 +47,7 @@ class ProfileController extends Controller {
 	}
 
 	public function showAbout($id){
-		$profileInformation = Registration::with(['prof_pic'])
-								->where('user_id' , $id)->get();
-		
+		$profileInformation = Registration::with(['prof_pic'])->where('user_id' , $id)->get();
 		$data['profileInformation'] = $profileInformation[0];
 		$data['title'] = $profileInformation[0]->getFullName();
 		$data['sub_title'] = ' - About';
@@ -58,29 +57,44 @@ class ProfileController extends Controller {
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id(), $id);
 		$data['id'] = $id;
 		$data['friend_flags'] = FriendService::check($id);
-
 		return view('pages.master', $data);		
 	}
 
 	public function showProfile($id){ 	   
-		$profileInformation = Registration::with(['prof_pic'])
-								->where('user_id' , $id)->get();
-		
+		$profileInformation = Registration::with(['prof_pic'])->where('user_id' , $id)->get();
 		$data['profileInformation'] = $profileInformation[0];
 		$data['title'] = $profileInformation[0]->getFullName();
 		$data['sub_title'] = ' - Newsfeed';
-		$data['left'] = 'include.superdogmenu';
-		$data['right'] = 'include.right';
-		$data['mid'] = 'pages.inside.profile.profile';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id(), $id);
 		$data['id'] = $id;
 		$data['friend_flags'] = FriendService::check($id);
+		$data['left'] = 'include.superdogmenu';
+		$data['right'] = 'include.right';
+		$data['mid'] = 'pages.inside.profile.profile';
+
+		/*
+			User types
+
+				1 - Member
+				2 - Merchant
+				3 - Animal Shelter
+				4 - Veterinarian
+	
+		*/
+
+		if(Auth::user()->user_type == 2){
+			$data['mid'] = 'pages.inside.profile.merchant.profile';
+		}else if(Auth::user()->user_type == 3){
+			$data['mid'] = 'pages.inside.profile.foundation.profile';
+		}else if(Auth::user()->user_type == 4){
+			$data['mid'] = 'pages.inside.profile.vet.profile';
+		}
+
 		return view('pages.master', $data);		
 	}
 
 	public function petsList($user_id) {
 		$user = User::find($user_id);
-		
 		$profile = $user->load(['registration',	'registration.prof_pic', 'pets', 'pets.profile_pic']);
 		$data['profileInformation'] = $profile->registration;
 		$data['left'] = 'include.superdogmenu';
@@ -100,10 +114,7 @@ class ProfileController extends Controller {
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
 		$data['mid'] = 'pages.inside.profile.profilepet';
-		$data['pet'] = Pets::with([
-			'profile_pic' => function($q){
-			}
-			])->where('pet_id' , $pet_id)->where('user_id' , $user_id)->get();
+		$data['pet'] = Pets::with(['profile_pic'])->where('pet_id' , $pet_id)->where('user_id' , $user_id)->get();
 		return view('pages.master' , $data);
 	}
 	
@@ -111,44 +122,36 @@ class ProfileController extends Controller {
 		switch($request->get('act')) {
 			case 'add':
 				FriendService::add($request->get('requested_id'));
-				
 				$response['message'] = trans('profile.friend.is_pending');
 				$response['act'] = 'req';
 			break;		
  			case 'req':
  				FriendService::cancel($request->get('requested_id'));
- 				
 	 			$response['message'] = trans('profile.friend.add_friend');
 	 			$response['act'] = 'add';
 			break;
 			case 'canc':
 				FriendService::delete($requested_id);
-				
 				$response['message'] = $this->deleteFriend($request->get('requested_id'));
 				$response['act'] = 'add';
 			case 'accept':
 				FriendService::accept($request->get('requested_id'));
-				
 				$response['message'] = trans('profile.friend.added');
 				$response['act'] = null;
 			break;
 		}
-		
 		return json_encode($response);
 	}
 	
 	public function userFriends($user_id) {
 		$friends = FriendService::collect($user_id);		
-		return view('pages.friends_listing')
-		->with('friends', $friends);
+		return view('pages.friends_listing')->with('friends', $friends);
 	}
 	
 	public function editProfile(Request $request, Set $cacheSet) {
 		$input = array_except($request->all(), ['_token', 'userfile']);
-
 		$user = Auth::user();
 		$user->load('registration');
-		
 		$reg = $user->registration;
 		while(($current = current($input)) !== false) {
 			$key = key($input);
@@ -156,7 +159,6 @@ class ProfileController extends Controller {
 			next($input);
 		}
 		$reg->save();
-
 		$file = $request->file('userfile');
 
 		if(isset($file)){
@@ -189,7 +191,7 @@ class ProfileController extends Controller {
 		
 		$cacheSet->updateUserData($user);
 		DB::commit();
-		echo 'Updated';
+		return 'Updated';
 	}
 
 	

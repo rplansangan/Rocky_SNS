@@ -36,8 +36,7 @@ class HomeController extends Controller {
 	 */
 	public function __construct(Initialize $init, Get $cacheGet) {
 		parent::__construct($init, $cacheGet);
-
-			
+		#$this->middleware('checkPet');
 	}
 
 

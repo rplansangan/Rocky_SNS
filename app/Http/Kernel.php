@@ -30,7 +30,8 @@ class Kernel extends HttpKernel {
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'SNS\Http\Middleware\RedirectIfAuthenticated',
 		'verified' => 'SNS\Http\Middleware\Verified',
-		'manage' => 'SNS\Http\Middleware\Manage'
+		'manage' => 'SNS\Http\Middleware\Manage',
+		'checkPet' => 'SNS\Http\Middleware\checkPet'
 	];
 
 }

@@ -54,17 +54,17 @@
                                     <input type="hidden" name="user_type" value="1">
                                     <div class="form-group  has-feedback ">
                                       <label>Email Address</label>
-                                      <input type="email" name="email_address" id="email_address" class="form-control" route="{{ Route('check.email') }}" placeholder="Email Address" required>
+                                      <input type="email" name="email_address" class="form-control email_address" route="{{ Route('check.email') }}" placeholder="Email Address" required>
                                       <span class="glyphicon  form-control-feedback" aria-hidden="true"></span>
                                     </div>
                                     <div class="form-group  has-feedback">
                                       <label>Confirm Email</label>
-                                      <input type="email" name="email_address_confirmation" id="email_address_confirmation" class="form-control" placeholder="Confirm Email Address" required>
+                                      <input type="email" name="email_address_confirmation" class="form-control email_address_confirmation" placeholder="Confirm Email Address" required>
                                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     </div>
                                     <div class="form-group  has-feedback">
                                       <label for="password">Password</label>
-                                      <input type="password" name="password" id="password" class="form-control"  placeholder="Password" required>
+                                      <input type="password" name="password" class="form-control password"  placeholder="Password" required>
                                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     </div>
                                     <div class="form-group  has-feedback">
@@ -115,17 +115,17 @@
                                     </div>
                                     <div class="form-group  has-feedback ">
                                       <label>Email Address</label>
-                                      <input type="email" name="email_address" id="email_address" class="form-control" route="{{ Route('check.email') }}" placeholder="Email Address" required>
+                                      <input type="email" name="email_address" class="form-control email_address" route="{{ Route('check.email') }}" placeholder="Email Address" required>
                                       <span class="glyphicon  form-control-feedback" aria-hidden="true"></span>
                                     </div>
                                     <div class="form-group  has-feedback">
                                       <label>Confirm Email</label>
-                                      <input type="email" name="email_address_confirmation" id="email_address_confirmation" class="form-control" placeholder="Confirm Email Address" required>
+                                      <input type="email" name="email_address_confirmation" class="form-control email_address_confirmation" placeholder="Confirm Email Address" required>
                                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     </div>
                                     <div class="form-group  has-feedback">
                                       <label for="password">Password</label>
-                                      <input type="password" name="password" id="password" class="form-control"  placeholder="Password" required>
+                                      <input type="password" name="password" class="form-control password"  placeholder="Password" required>
                                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     </div>
                                     <div class="form-group  has-feedback">
@@ -165,9 +165,124 @@
                                 </form>
 
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="foundation">...</div>
-                            <div role="tabpanel" class="tab-pane" id="vet">...</div>
+                            <div role="tabpanel" class="tab-pane" id="foundation">
+                                 <br clear="all">
+                                <form action="{{ route('register') }}" method="POST" class="form-horizontal col-lg-12 form-signup ">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="hidden" name="user_type" value="3">
+                                    <div class="form-group  has-feedback">
+                                      <label >Foundation Name</label>
+                                      <input type="text" name="foundation_name"  id="foundation_name" class="form-control"  placeholder="Foundation Name"  required>
+                                      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                    </div>
+                                    <div class="form-group  has-feedback ">
+                                      <label>Email Address</label>
+                                      <input type="email" name="email_address" class="form-control email_address" route="{{ Route('check.email') }}" placeholder="Email Address" required>
+                                      <span class="glyphicon  form-control-feedback" aria-hidden="true"></span>
+                                    </div>
+                                    <div class="form-group  has-feedback">
+                                      <label>Confirm Email</label>
+                                      <input type="email" name="email_address_confirmation" class="form-control email_address_confirmation" placeholder="Confirm Email Address" required>
+                                      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                    </div>
+                                    <div class="form-group  has-feedback">
+                                      <label for="password">Password</label>
+                                      <input type="password" name="password" class="form-control password"  placeholder="Password" required>
+                                      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                    </div>
+                                    <div class="form-group  has-feedback">
+                                      <label >First Name</label>
+                                      <input type="text" name="first_name"  class="form-control"  placeholder="First Name"  required>
+                                      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                    </div>
+                                    <div class="form-group  has-feedback">
+                                      <label>Last Name</label>
+                                      <input type="text" name="last_name"  class="form-control"  placeholder="Last Name"  required>
+                                      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                    </div>
+                                    <div class="form-group col-sm-12">
+                                        <label class="col-sm-4 col-sm-offset-1 control-label">Gender:</label>
+                                        <div class="radio col-sm-2">
+                                            <label>
+                                                <input type="radio" name="gender" value="M" checked>
+                                                Male
+                                            </label>
+                                        </div>
+                                        <div class="radio col-sm-2">
+                                            <label>
+                                                <input type="radio" name="gender" value="F">
+                                                Female
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <p class="col-sm-12 text-center">By clicking the Sign Up button, you agree to our <a href="#" class="tnp">Terms</a> and that you have read our <a href="#" class="tnp">Privacy policy</a>.</p>
+                                    <div class="form-group text-right">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <input type="submit" value="Sign Up" class="btn btn-primary">
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="text-warning text-center loader" style="margin-top:10px">asd</p>
+                                    </div>
+                                </form>
 
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="vet">
+                                 <br clear="all">
+                                <form action="{{ route('register') }}" method="POST" class="form-horizontal col-lg-12 form-signup ">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="hidden" name="user_type" value="4">
+                                    <div class="form-group  has-feedback ">
+                                      <label>Email Address</label>
+                                      <input type="email" name="email_address" class="form-control email_address" route="{{ Route('check.email') }}" placeholder="Email Address" required>
+                                      <span class="glyphicon  form-control-feedback" aria-hidden="true"></span>
+                                    </div>
+                                    <div class="form-group  has-feedback">
+                                      <label>Confirm Email</label>
+                                      <input type="email" name="email_address_confirmation" class="form-control email_address_confirmation" placeholder="Confirm Email Address" required>
+                                      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                    </div>
+                                    <div class="form-group  has-feedback">
+                                      <label for="password">Password</label>
+                                      <input type="password" name="password" class="form-control password"  placeholder="Password" required>
+                                      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                    </div>
+                                    <div class="form-group  has-feedback">
+                                      <label >First Name</label>
+                                      <input type="text" name="first_name"  class="form-control"  placeholder="First Name"  required>
+                                      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                    </div>
+                                    <div class="form-group  has-feedback">
+                                      <label>Last Name</label>
+                                      <input type="text" name="last_name"  class="form-control"  placeholder="Last Name"  required>
+                                      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                    </div>
+                                    <div class="form-group col-sm-12">
+                                        <label class="col-sm-4 col-sm-offset-1 control-label">Gender:</label>
+                                        <div class="radio col-sm-2">
+                                            <label>
+                                                <input type="radio" name="gender" value="M" checked>
+                                                Male
+                                            </label>
+                                        </div>
+                                        <div class="radio col-sm-2">
+                                            <label>
+                                                <input type="radio" name="gender" value="F">
+                                                Female
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <p class="col-sm-12 text-center">By clicking the Sign Up button, you agree to our <a href="#" class="tnp">Terms</a> and that you have read our <a href="#" class="tnp">Privacy policy</a>.</p>
+                                    <div class="form-group text-right">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <input type="submit" value="Sign Up" class="btn btn-primary">
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="text-warning text-center loader" style="margin-top:10px">asd</p>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
 

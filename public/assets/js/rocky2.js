@@ -38,7 +38,7 @@ $(document).on('ready' , function(){
 	$(document).on('submit' , '.form-signup' , function(e){
 		var route = $(this).attr('action');
 		var data = $(this).serialize();
-		if($('#password').val().length < 8){
+		if($(this).find('.password').val().length < 8){
 			$('.loader').hide().text('Minimum of 8 Characters').fadeIn();
 		}else{
 			$.ajax({
@@ -61,7 +61,7 @@ $(document).on('ready' , function(){
 		e.preventDefault();
 	});
 
-	$(document).on('focusout' , '#email_address' , function(){
+	$(document).on('focusout' , '.email_address' , function(){
 		var route = $(this).attr('route');
 		var email = $(this).val();
 		var a = $(this)
@@ -95,8 +95,8 @@ $(document).on('ready' , function(){
 
 	});
 
-	$(document).on('focusout' , '#email_address_confirmation' , function(){
-		var email_first = $('#email_address').val();
+	$(document).on('focusout' , '.email_address_confirmation' , function(){
+		var email_first = $(this).parent().prev().find('.email_address').val();
 		if($(this).val().length != 0){
 			if($(this).val() != email_first){
 				$(this).parent().addClass('has-error');
@@ -108,7 +108,7 @@ $(document).on('ready' , function(){
 		}
 	});
 
-	$(document).on('focusout' , '#password' , function(){
+	$(document).on('focusout' , '.password' , function(){
 		count = $(this).val().length;
 		if(count < 8 && count != 0){
 			$(this).parent().addClass('has-error');
