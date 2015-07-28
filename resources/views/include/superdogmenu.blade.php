@@ -1,20 +1,29 @@
 <div>
 	<nav>
-		<ul>
-			@if(!isset($user_data->selected_pet->profile_pic) AND Auth::check())
-			<li>
-				<a href="{{ Route('profile.view' , ['id' => $user_data->user_id] ) }}">
-					<img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic" >
-					<span><?php echo $user_data->selected_pet->pet_name; ?></span>
-				</a>
-			</li>
-			@elseif(Auth::check())
-			<li>
-				<a href="{{ Route('profile.view' , ['id' => $user_data->user_id] ) }}">
-					<img src="<?php echo mediaSrc($user_data->selected_pet->profile_pic->image_path, $user_data->selected_pet->profile_pic->image_name, $user_data->selected_pet->profile_pic->image_ext); ?>" class="profile-pic">
-					<span><?php echo $user_data->selected_pet->pet_name; ?></span>
-				</a>
-			</li>
+		<ul>		
+			@if(Auth::check())
+				@if(isset($user_data->selected_pet))
+				<li>
+					<a href="{{ Route('profile.view' , ['id' => $user_data->user_id] ) }}">
+						<img src="<?php echo mediaSrc($user_data->selected_pet->profile_pic->image_path, $user_data->selected_pet->profile_pic->image_name, $user_data->selected_pet->profile_pic->image_ext); ?>" class="profile-pic">
+						<span><?php echo $user_data->selected_pet->pet_name; ?></span>
+					</a>
+				</li>
+				@elseif(isset($user_data->prof_pic))
+				<li>
+					<a href="{{ Route('profile.view' , ['id' => $user_data->user_id] ) }}">
+						<img src="<?php echo mediaSrc($user_data->prof_pic->image_path, $user_data->prof_pic->image_name, $user_data->prof_pic->image_ext); ?>" class="profile-pic">
+						<span><?php echo $user_data->registration->first_name . ' ' . $user_data->registration->last_name; ?></span>
+					</a>
+				</li>		
+				@else
+				<li>
+					<a href="{{ Route('profile.view' , ['id' => $user_data->user_id] ) }}">
+						<img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic" >
+						<span><?php echo $user_data->registration->first_name . ' ' . $user_data->registration->last_name; ?></span>
+					</a>
+				</li>
+				@endif
 			@else
 			<li>
 				<a href="{{ route('home') }}">
