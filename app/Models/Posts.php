@@ -47,7 +47,7 @@ class Posts extends BaseModel {
 	
 	public function image() {
 		return $this->hasOne('SNS\Models\Images', 'post_id')
-				->seelect(['image_id', 'post_id', 'image_mime' , 'category', 'image_path', 'image_name', 'image_ext']);
+				->select(['image_id', 'post_id', 'image_mime' , 'category', 'image_path', 'image_name', 'image_ext']);
 	}
 	
 	public function like() {

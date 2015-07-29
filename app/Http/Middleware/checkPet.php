@@ -14,7 +14,7 @@ class checkPet {
 	public function handle($request, Closure $next)
 	{
 		if(Auth::check()){
-			if(!Auth::user()->pets->count()){
+			if(!Auth::user()->pets->count() AND Auth::user()->user_type == 1){
 				return redirect()->route('add.pet');
 			}
 		}
