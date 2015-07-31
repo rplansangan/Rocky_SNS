@@ -59,7 +59,6 @@ class Get {
 		    	
 		    	if($this->cache->exists($this->keysProfile . $id)) {
 		    		return $this->populateUserData(json_decode($this->cache->get($this->keysProfile . $id), true));
-		    		return json_decode($this->cache->get($this->keysProfile . $id));
 		    	}
 		    break;
 		    
@@ -69,8 +68,7 @@ class Get {
 	    		}
 	    		
 	    		if($this->cache->get($this->keysProfile . $id)) {	    			
-	    			$this->populateUserData(json_decode($this->cache->get($this->keysProfile . $id), true));
-	    			return json_decode($this->cache->get($this->keysProfile . $id));
+	    			return $this->populateUserData(json_decode($this->cache->get($this->keysProfile . $id), true));
 	    		}
 	    	break;
     	}
