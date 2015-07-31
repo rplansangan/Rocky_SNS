@@ -83,7 +83,9 @@ abstract class BaseViewModel {
 	
 	public function fillRelations(array $attributes) {
 		foreach($attributes as $key => $value) {
-			$this->setRelation($key, $value);
+			if(!is_null($value)) {
+				$this->setRelation($key, $value);
+			}
 		}
 	}
 	

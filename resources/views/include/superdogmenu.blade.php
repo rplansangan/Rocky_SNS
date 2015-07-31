@@ -4,30 +4,30 @@
 			@if(Auth::check())
 				@if($user_data->isNotNull('selected'))
 				<li>
-					<a href="{{ Route('profile.view' , ['id' => $user_data->user_id] ) }}">
+					<a href="<?php echo route('profile.view' , ['id' => $user_data->user_id] ) ?>">
 						<img src="<?php echo mediaSrc($user_data->selected->profile_pic->image_path, $user_data->selected->profile_pic->image_name, $user_data->selected->profile_pic->image_ext); ?>" class="profile-pic">
 						<span><?php echo $user_data->selected->pet_name; ?></span>
 					</a>
 				</li>
-				@elseif($user_data->isNotNull('prof_pic')))
+				@elseif($user_data->isNotNull('prof_pic'))
 				<li>
-					<a href="{{ Route('profile.view' , ['id' => $user_data->user_id] ) }}">
+					<a href="<?php echo route('profile.view' , ['id' => $user_data->user_id] ) ?>">
 						<img src="<?php echo mediaSrc($user_data->prof_pic->image_path, $user_data->prof_pic->image_name, $user_data->prof_pic->image_ext); ?>" class="profile-pic">
 						<span><?php echo $user_data->registration->first_name . ' ' . $user_data->registration->last_name; ?></span>
 					</a>
 				</li>		
 				@else
 				<li>
-					<a href="{{ Route('profile.view' , ['id' => $user_data->user_id] ) }}">
-						<img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic" >
+					<a href="<?php echo route('profile.view' , ['id' => $user_data->user_id] ) ?>">
+						<img src="<?php echo URL::asset('assets/images/default-pic.png') ?>" class="profile-pic" >
 						<span><?php echo $user_data->registration->first_name . ' ' . $user_data->registration->last_name; ?></span>
 					</a>
 				</li>
 				@endif
 			@else
 			<li>
-				<a href="{{ route('home') }}">
-					<img src="{{ URL::asset('assets/img/notification.png') }}" class="profile-pic">
+				<a href="<?php echo route('home') ?>">
+					<img src="<?php echo URL::asset('assets/img/notification.png') ?>" class="profile-pic">
 					<span>Newsfeed</span>
 				</a>
 			</li>
@@ -40,9 +40,18 @@
 						<ul class="petlist-edit collapse" id="petlist-edit">
 							@foreach($my_pets as $row)
 								@if(isset($row->profile_pic))
-								<li><a href="{{ route('profile.showPetProfile' , ['user_id' => Auth::id() , 'pet_id' => $row->pet_id]) }}"><img src="{{ mediaSrc($row->profile_pic->image_path , $row->profile_pic->image_name , $row->profile_pic->image_ext) }}" class="profile-pic"><span>{{ $row->pet_name }}</span></a></li>
+								<li><a href="<?php echo route('profile.showPetProfile' , ['user_id' => Auth::id() , 'pet_id' => $row->pet_id]) ?>">
+										<img src="<?php echo mediaSrc($row->profile_pic->image_path , $row->profile_pic->image_name , $row->profile_pic->image_ext) ?>" class="profile-pic">
+										<span><?php echo $row->pet_name ?></span>
+									</a>
+								</li>
 								@else
-								<li><a href="{{ route('profile.showPetProfile' , ['user_id' => Auth::id() , 'pet_id' => $row->pet_id]) }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic"><span>{{ $row->pet_name }}</span></a></li>
+								<li>
+									<a href="<?php echo route('profile.showPetProfile' , ['user_id' => Auth::id() , 'pet_id' => $row->pet_id]) ?>">
+										<img src="<?php echo URL::asset('assets/images/default-pic.png') ?>" class="profile-pic">
+										<span><?php echo $row->pet_name ?></span>
+									</a>
+								</li>
 								@endif
 							@endforeach
 						</ul>
