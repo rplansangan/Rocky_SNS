@@ -19,6 +19,13 @@ abstract class Controller extends BaseController {
 	
 
 	public function __construct(Initialize $init, Get $cacheGet) {
+		// mobile user agent detection.
+		// this part will update _user so the application will know whether to use mobile or desktop layout
+		if(str_contains($_SERVER['HTTP_USER_AGENT'], ['iPhone', 'iPad', 'Android'])) {
+			echo 'Mobile layout is under construction';
+			die();
+		}
+		
 		// initialize should not be loaded on every ajax calls
 		if(!Request::ajax()) {
 			$this->initialize($init, $cacheGet);

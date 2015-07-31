@@ -6,6 +6,7 @@ use Predis\Client;
 use SNS\Libraries\Traits\Keys;
 use SNS\Libraries\Traits\Expirations;
 use Illuminate\Support\Facades\Cache;
+use SNS\Libraries\ViewModels\User;
 
 /**
  * 
@@ -57,6 +58,7 @@ class Get {
 		    	}
 		    	
 		    	if($this->cache->exists($this->keysProfile . $id)) {
+		    		return $this->populateUserData(json_decode($this->cache->get($this->keysProfile . $id), true));
 		    		return json_decode($this->cache->get($this->keysProfile . $id));
 		    	}
 		    break;
@@ -66,11 +68,16 @@ class Get {
 	    			$id = $this->auth->id();
 	    		}
 	    		
-	    		if($this->cache->get($this->keysProfile . $id)) {
+	    		if($this->cache->get($this->keysProfile . $id)) {	    			
+	    			$this->populateUserData(json_decode($this->cache->get($this->keysProfile . $id), true));
 	    			return json_decode($this->cache->get($this->keysProfile . $id));
 	    		}
 	    	break;
     	}
+    }
+    
+    private function populateUserData($data) {
+		return new User($data);
     }
 
 }

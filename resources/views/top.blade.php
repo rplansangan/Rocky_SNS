@@ -16,14 +16,14 @@
       @if(Auth::check())
       <nav class="hidden-sm hidden-xs">
         <ul>
-          @if(!isset($user_data->prof_pic) AND Auth::check())
+          @if(!$user_data->isNotNull('prof_pic'))
           <li>
             <a href="{{ Route('profile.view' , ['id' => $user_data->user_id] ) }}">
               <img src="{{ URL::asset('assets/images/default-pic.png') }}">
               <span><?php echo $user_data->registration->first_name . ' ' . $user_data->registration->last_name; ?></span>
             </a>
           </li>
-          @elseif(Auth::check())
+          @else
           <li>
             <a href="{{ Route('profile.view' , ['id' => $user_data->user_id] ) }}">
               <img src="<?php echo mediaSrc($user_data->prof_pic->image_path, $user_data->prof_pic->image_name, $user_data->prof_pic->image_ext); ?>">

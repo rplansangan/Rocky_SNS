@@ -63,7 +63,7 @@ class User extends BaseModel implements AuthenticatableContract, CanResetPasswor
 	 */
 	protected $hidden = ['password', 'remember_token'];
 	
-	protected $dates = ['deleted_at'];
+	protected $dates = ['deleted_at', 'created_at', 'udpated_at'];
 
 	public static $dbDateFormat = 'Y-m-d H:i:s';
 	
@@ -91,7 +91,7 @@ class User extends BaseModel implements AuthenticatableContract, CanResetPasswor
 		return $this->hasMany('SNS\Models\Pets', 'user_id');
 	}
 
-	public function selected_pet() {
+	public function selected() {
 		return $this->hasOne('SNS\Models\Pets', 'pet_id', 'selected_pet')->select(['user_id', 'pet_id', 'pet_name']);
 	}
 	

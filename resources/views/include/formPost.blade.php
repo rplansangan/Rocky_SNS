@@ -2,11 +2,11 @@
 <!-- POST FORM -->
 <div class="post-area">
 	<div class="col-lg-1">
-		@if(isset($user_data->selected_pet))
+		@if($user_data->isNotNull('selected'))
 		<a href="{{ Route('profile.view' , ['id' => $user_data->user_id] ) }}" class="arrow_right">
-			<img src="<?php echo mediaSrc($user_data->selected_pet->profile_pic->image_path, $user_data->selected_pet->profile_pic->image_name, $user_data->selected_pet->profile_pic->image_ext); ?>" class="img-thumbnail">
+			<img src="<?php echo mediaSrc($user_data->selected->profile_pic->image_path, $user_data->selected->profile_pic->image_name, $user_data->selected->profile_pic->image_ext); ?>" class="img-thumbnail">
 		</a>
-		@elseif(isset($user_data->prof_pic))
+		@elseif($user_data->isNotNull('prof_pic'))
 		<a href="{{ Route('profile.view' , ['id' => $user_data->user_id] ) }}" class="arrow_right">
 			<img src="<?php echo mediaSrc($user_data->prof_pic->image_path, $user_data->prof_pic->image_name, $user_data->prof_pic->image_ext); ?>" class="img-thumbnail">
 		</a>

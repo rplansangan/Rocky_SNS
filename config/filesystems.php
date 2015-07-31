@@ -15,7 +15,7 @@ return [
 	|
 	*/
 
-	'default' => env('STORAGE_DISK'),
+	'default' => env('STORAGE_DISK', 'local'),
 
 	/*
 	|--------------------------------------------------------------------------

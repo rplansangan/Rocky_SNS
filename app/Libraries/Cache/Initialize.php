@@ -100,13 +100,10 @@ class Initialize {
     		$params = $this->auth->user();
     		
     		// loads global relationships
-    		$params->load(['registration', 'prof_pic', 'selected_pet', 'selected_pet.profile_pic']);
-    		 
-    		// merges all user data before encoding as json
-    		$profile = json_encode($params);
+    		$params->load(['registration', 'prof_pic', 'selected', 'selected.profile_pic']);    		
     		
     		// passes queried user data to cache
-    		$this->initProfile($params, $params);
+    		$this->initProfile($params, json_encode($params));
     	}
     }
 }
