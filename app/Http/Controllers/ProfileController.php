@@ -60,17 +60,18 @@ class ProfileController extends Controller {
 		return view('pages.master', $data);		
 	}
 
-	public function showProfile($id){ 	   
-		$profileInformation = Registration::with(['prof_pic'])->where('user_id' , $id)->get();
-		$data['profileInformation'] = $profileInformation[0];
-		$data['title'] = $profileInformation[0]->getFullName();
+	public function showProfile($id){ 	 
+		$profile = User::find($id);
+		$profile->load(['registration', 'registration.prof_pic']);
+		
+		$data['profileInformation'] = $profile->registration;
+		$data['title'] = $profile->registration->getFullName();
 		$data['sub_title'] = ' - Newsfeed';
 		$data['newsfeed'] = PostService::initialNewsFeed(Auth::id(), $id);
 		$data['id'] = $id;
 		$data['friend_flags'] = FriendService::check($id);
 		$data['left'] = 'include.superdogmenu';
 		$data['right'] = 'include.right';
-		$data['mid'] = 'pages.inside.profile.profile';
 
 		/*
 			User types
@@ -81,14 +82,24 @@ class ProfileController extends Controller {
 				4 - Veterinarian
 
 		*/
-
-		if(Auth::user()->user_type == 2){
-			$data['mid'] = 'pages.inside.profile.merchant.profile';
-		}else if(Auth::user()->user_type == 3){
-			$data['mid'] = 'pages.inside.profile.foundation.profile';
-		}else if(Auth::user()->user_type == 4){
-			$data['mid'] = 'pages.inside.profile.vet.profile';
-		}
+		if(!Auth::check()) {
+			$data['mid'] = 'pages.inside.profile.profile';
+		} else {
+			switch($profile->user_type) {
+				case 2:
+					$data['mid'] = 'pages.inside.profile.merchant.profile';
+					break;					
+				case 3:
+					$data['mid'] = 'pages.inside.profile.foundation.profile';
+					break;					
+				case 4:
+					$data['mid'] = 'pages.inside.profile.vet.profile';
+					break;					
+				default:
+					$data['mid'] = 'pages.inside.profile.profile';
+					break;
+			}
+		}	
 
 		return view('pages.master', $data);		
 	}
