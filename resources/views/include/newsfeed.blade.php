@@ -73,7 +73,7 @@
 				@endif
 			</div>
 			<div>
-				<a href="javascript:void(0);"  class="comment-down" post-id="{{ $row->post->post_id }}" route="{{ Route('get.comment') }}" ><img src="{{ URL::asset('assets/img/comment.png') }}"></a>
+				<a href="javascript:void(0);"  class="comment-down" post-id="{{ $row->post->post_id }}" data-action="close" route="{{ Route('get.comment') }}" ><img src="{{ URL::asset('assets/img/comment.png') }}"></a>
 			</div>
 		</div>
 		<!-- END COMMENT SECTION -->
