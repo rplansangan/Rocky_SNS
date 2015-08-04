@@ -31,7 +31,8 @@ class Comments extends BaseModel {
 	
 	// RELATIONSHIPS
 	public function user() {
-		return $this->hasOne('SNS\Models\Registration', 'user_id', 'comment_user_id');
+		return $this->hasOne('SNS\Models\Registration', 'user_id', 'comment_user_id')
+				->select(['user_id', 'first_name', 'last_name']);
 	}
 	
 	public function post() {

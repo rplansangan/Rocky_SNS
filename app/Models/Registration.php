@@ -80,7 +80,10 @@ class Registration extends BaseModel {
 	}
 	
 	public function prof_pic() {
-		return $this->hasOne('SNS\Models\Images', 'user_id', 'user_id')->where('is_profile_picture', 1)->where('pet_id', 0);
+		return $this->hasOne('SNS\Models\Images', 'user_id', 'user_id')
+				->select(['image_id', 'user_id', 'image_path', 'image_name', 'image_ext'])
+				->where('is_profile_picture', 1)
+				->where('pet_id', 0);
 	}
 	
 	public function getBirthDateAttribute($date) {

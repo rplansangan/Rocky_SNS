@@ -149,6 +149,20 @@ class PostService {
 	public function getComment($postId) {
 		return $this->comment->get($postId);
 	}
+	
+	/**
+	 * 
+	 * @param integer $postId
+	 * @param integer $skip
+	 * @param integer $take
+	 */
+	public function getIncrementalComment($postId, $skip, $take = null) {
+		if(!$take) {
+			$take = 5;
+		}
+		
+		return $this->comment->incremental($postId, $skip, $take);
+	}
 
 	public function checkNewPost(){
 		return $this->newsfeed->checkNewPost(Auth::id(),Auth::user()->last_post);
