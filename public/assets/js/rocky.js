@@ -58,21 +58,29 @@ $(document).ready(function(){
     });
 
     $(document).on('click' , '.comment-down' , function(){
-        $(this).parent().parent().parent().next().slideDown( "slow" );
-        var id = $(this).attr('post-id');
-        var route = $(this).attr('route');
-        var ito = $(this);
-        $.ajax({
-            url : route,
-            type: 'post',
-            data : { post_id:id },
-            beforeSend: function(){
-                $(ito).parent().parent().parent().next().find('.comment_loading_area').hide().html('Loading...').fadeIn();
-            },
-            success: function(a){
-                $(ito).parent().parent().parent().next().find('.comment_loading_area').html(a);
-            }
-        });
+        var action = $(this).attr('data-action');
+
+        if(action == 'close'){
+            $(this).parent().parent().parent().next().slideDown( "slow" );
+            $(this).attr('data-action' , 'open');
+            var id = $(this).attr('post-id');
+            var route = $(this).attr('route');
+            var ito = $(this);
+            $.ajax({
+                url : route,
+                type: 'post',
+                data : { post_id:id },
+                beforeSend: function(){
+                    $(ito).parent().parent().parent().next().find('.comment_loading_area').hide().html('Loading...').fadeIn();
+                },
+                success: function(a){
+                    $(ito).parent().parent().parent().next().find('.comment_loading_area').html(a);
+                }
+            });
+        }else{
+            $(this).parent().parent().parent().next().slideUp( "slow" );
+            $(this).attr('data-action' , 'close');
+        }
     });
 
     $(document).on('keyup' , '#search-top' , function(){

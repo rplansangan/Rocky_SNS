@@ -101,6 +101,7 @@
 		<ul>
 			<li><a href="{{ route('public.nearestpetshop') }}"><img src="{{ URL::asset('assets/img/cart.png') }}"><span>Nearest Petshop</span></a></li>
 			<li><a href="{{ route('public.nearestvet') }}"><img src="{{ URL::asset('assets/img/vet.png') }}"><span>Nearest Vet</span></a></li>
+			<li><a href="#"><img src="{{ URL::asset('assets/img/vet.png') }}"><span>Pet Insurance</span></a></li>
 			<li><a href="{{ route('public.foundation') }}"><img src="{{ URL::asset('assets/img/foundation.jpg') }}"><span>Animal Shelters</span></a></li>
 			<li><a href="#"><img src="{{ URL::asset('assets/img/adopt.png') }}"><span>Adopt a Pet</span></a></li>
 		</ul>
@@ -146,34 +147,21 @@
 		</ul>
 	</nav>
 </div>
-@if(Auth::check())
+
+
 <div>
-	<label class="text-muted">MY NEIGHBORS</label>
+	<label class="text-muted">COMMUNITY</label>
 	<nav>
-		@if(!$neighbors->isEmpty())
 		<ul>
-			@foreach($neighbors as $row)
-			@if(isset($row->profile->registration->prof_pic))
-			<li><a href="{{ Route('profile.view' , ['id' => $row->profile->registration->user_id] ) }}"><img src="{{ mediaSrc($row->profile->registration->prof_pic->image_path , $row->profile->registration->prof_pic->image_name , $row->profile->registration->prof_pic->image_ext)  }}" class="profile-pic"><span>{{ $row->profile->registration->first_name.' '.$row->profile->registration->last_name }}</span></a></li>
-			@else
-			<li><a href="{{ Route('profile.view' , ['id' => $row->profile->registration->user_id] ) }}"><img src="{{ URL::asset('assets/images/default-pic.png') }}" class="profile-pic"><span>{{ $row->profile->registration->first_name.' '.$row->profile->registration->last_name }}</span></a></li>
-			@endif
-			@endforeach
+			<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/img/pwalking-.png') }}"><span>Walk with a Buddy</span></a></li>
+			<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/img/Caretakers.png') }}"><span>Care takers</span></a></li>
+			<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/img/Pet_Gathering1.png') }}"><span>Pet Gathering</span></a></li>
+			<li><a href="{{ route('uc') }}"><img src="{{ URL::asset('assets/img/Find_Neighbour.png') }}"><span>Find My Neighbours</span></a></li>
 		</ul>
-		@else
-		<div class="text-left" style="padding:5px 0px 10px 0px">
-			<p style="padding-left: 25px;">You have no Neighbors</p>
-			<a href="{{ route('public.neighbors') }}" style="padding-left: 25px; color: #b7042c;"><i class="fa fa-user-plus"></i> add neighbors</a>
-		</div>
-		@endif
 	</nav>
 	<br clear="all">
-	<div class="text-center loading-dots">
-		<a href="#"><span>...</span></a>
-	</div>
-	<br clear="all">
 </div>
-@endif
+
 
 
 
