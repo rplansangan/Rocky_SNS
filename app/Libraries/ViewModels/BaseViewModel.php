@@ -1,5 +1,8 @@
 <?php namespace SNS\Libraries\ViewModels;
 
+use SNS\Libraries\Traits\Expirations;
+use SNS\Libraries\Traits\Keys;
+
 /**
  * This object will act as an adapter for cached public attributes of Eloquent Models via Redis.
  * Some algorithms/methods have been based/taken from Laravel's Illuminate\Database\Eloquent\Model
@@ -7,6 +10,15 @@
  *
  */
 abstract class BaseViewModel {
+	
+	use Expirations, Keys;
+	
+	/**
+	 * Cache key to be used for the ViewModel
+	 * 
+	 * @var string
+	 */
+	protected $cacheKey;
 	
 	/**
 	 * The primary key for the model.

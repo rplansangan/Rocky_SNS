@@ -76,4 +76,14 @@ class Set {
 		}
 	}
 	
+	public function setUser($user) {
+		$key =  str_replace('$id', $user->user_id, $this->keysUser);
+		$this->cache->set($key, $user);
+	}
+	
+	public function setReg($reg) {
+		$key = str_replace('$id', $reg->user_id, $this->keysRegistration);
+		$this->cache->set($key, $reg);
+	}
+	
 }

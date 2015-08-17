@@ -9,6 +9,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('redis', ['uses' => 'TestController@cache']);
 Route::get('/', array(
     'as' => 'index',
     'uses' => 'WelcomeController@index',
